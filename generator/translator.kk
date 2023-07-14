@@ -3,6 +3,7 @@ import std/data/linearmap
 import std/data/linearset
 import std/jsextern
 import ext/idl
+import mdn
 import utils
 
 struct translator
@@ -12,7 +13,54 @@ struct translator
   libraries: linearMap<string, library> = LinearMap([])
   typeToDeclarations: linearMap<string, node> = LinearMap([])
   typeToLibrary: linearMap<string, string> = LinearMap([])
+  interfaceLikes: linearMap<string, partial-interface-like> = LinearMap([])
   includes: list<includes> = []
+
+struct partial-interface-like
+  name: string
+  tp: string
+  inheritance: maybe<string> = Nothing
+  mdnInterface: maybe<mdnInterface> = Nothing
+  operations: linearMap<string, overridableOp> = LinearMap([])
+  static-ops: linearMap<string, overridableOp> = LinearMap([])
+  members: list<member> = []
+  static-members: list<member> = []
+  extension-members: list<member> = []
+  constructor: maybe<overridableCon> = Nothing
+
+fun pinterface-like(n: interface-like, mdn: maybe<mdnInterface>)
+  n.get-members.list.foldl(Partial-interface-like(n.get-name, n.get-type, n.get-inheritence, mdn)) fn(pi, m)
+    pi.add-member(m)
+
+fun hasHtmlConstructorAttribute(c: member): bool
+  c.get-ext-attrs.list.any(fn(a) a.get-name == "HTMLConstructor")
+
+fun add-member(pi: partial-interface-like, m: member): exn partial-interface-like
+  match m.get-type
+    "constructor" ->
+      val c = m.as-constructor
+      if m.hasHtmlConstructorAttribute then pi
+      else 
+        match pi.constructor
+          Nothing -> pi(constructor=Just(overridableMember(c)))
+          Just(oc) -> pi(constructor=Just(update(oc, c)))
+    // TODO: More
+
+type overridableOp;
+
+struct overridableMember
+  parameters: list<parameter>
+
+fun overridableMember(c: jsobject<t>, ?is-subtype: is-subtype<t,constructor_t>): overridableMember
+  OverridableMember([]) // TOOD: More
+
+fun update(c: overridableCon, m: constructor): overridableCon
+  c // TODO: 
+
+
+alias overridableCon = overridableMember
+
+struct parameter;
 
 struct library
   url: path
@@ -26,44 +74,21 @@ struct library
   callback-interfaces: list<interface-like> = []
 
 fun add-interface(lib: library, node: interface-like): library
-  match lib
-    Library(url, il, pi, im, pim, td, en, cb, cbi) ->
-      Library(url, Cons(node, il), pi, im, pim, td, en, cb, cbi)
-
+  lib(interface-likes=Cons(node, lib.interface-likes))
 fun add-partial-interface(lib: library, node: interface-like): library
-  match lib
-    Library(url, il, pi, im, pim, td, en, cb, cbi) ->
-      Library(url, il, Cons(node, pi), im, pim, td, en, cb, cbi)
-
+  lib(partial-interfaces=Cons(node, lib.partial-interfaces))
 fun add-partial-interface-mixin(lib: library, node: interface-like): library
-  match lib
-    Library(url, il, pi, im, pim, td, en, cb, cbi) ->
-      Library(url, il, pi, im, Cons(node, pim), td, en, cb, cbi)
-
+  lib(partial-interface-mixins=Cons(node, lib.partial-interface-mixins))
 fun add-interface-mixin(lib: library, node: interface-like): library
-  match lib
-    Library(url, il, pi, im, pim, td, en, cb, cbi) ->
-      Library(url, il, pi, Cons(node, im), pim, td, en, cb, cbi)
-
+  lib(interface-mixins=Cons(node, lib.interface-mixins))
 fun add-typedef(lib: library, node: typedef): library
-  match lib
-    Library(url, il, pi, im, pim, td, en, cb, cbi) ->
-      Library(url, il, pi, im, pim, Cons(node, td), en, cb, cbi)
-
+  lib(typedefs=Cons(node, lib.typedefs))
 fun add-enum(lib: library, node: jsenum): library
-  match lib
-    Library(url, il, pi, im, pim, td, en, cb, cbi) ->
-      Library(url, il, pi, im, pim, td, Cons(node, en), cb, cbi)
-
+  lib(enums=Cons(node, lib.enums))
 fun add-callback(lib: library, node: callback): library
-  match lib
-    Library(url, il, pi, im, pim, td, en, cb, cbi) ->
-      Library(url, il, pi, im, pim, td, en, Cons(node, cb), cbi)
-
+  lib(callbacks=Cons(node, lib.callbacks))
 fun add-callback-interface(lib: library, node: interface-like): library
-  match lib
-    Library(url, il, pi, im, pim, td, en, cb, cbi) ->
-      Library(url, il, pi, im, pim, td, en, cb, Cons(node, cbi))
+  lib(callback-interfaces=Cons(node, lib.callback-interfaces))
 
 fun collect(t: translator, shortname: string, ast: jsarray<node>): exn translator
   match t
@@ -87,14 +112,14 @@ fun add(t: translator, lib: library, node: node): exn (translator, library)
     (t, l)
   fun add-interface-like(is-mixin: bool = False): (translator, library)
     val ilike = node.as-interface-like()
-    if node.get-partial then 
+    if ilike.get-partial then 
       if is-mixin then lib.add-partial-interface-mixin(ilike).library
       else lib.add-partial-interface(ilike).library
     else
       if is-mixin then 
-        (t.add-named(node, ilike.get-name(?as-named=interface-like/as-named), lib.url), lib.add-partial-interface-mixin(ilike))
+        (t.add-named(node, ilike.get-name, lib.url), lib.add-partial-interface-mixin(ilike))
       else
-        (t.add-named(node, ilike.get-name(?as-named=interface-like/as-named), lib.url), lib.add-interface(ilike))
+        (t.add-named(node, ilike.get-name, lib.url), lib.add-interface(ilike))
   match tp
     "interface mixin" -> add-interface-like(True)
     "interface" -> add-interface-like()
@@ -108,7 +133,7 @@ fun add(t: translator, lib: library, node: node): exn (translator, library)
       (t.add-named(node, en.get-name(), lib.url), lib.add-enum(en))
     "callback interface" -> 
       val cb = node.as-interface-like
-      (t.add-named(node, cb.get-name(?as-named=interface-like/as-named), lib.url), lib.add-callback-interface(cb))
+      (t.add-named(node, cb.get-name, lib.url), lib.add-callback-interface(cb))
     "callback" -> 
       val cl = node.as-callback
       if cl.get-name() == "Function" then lib.library

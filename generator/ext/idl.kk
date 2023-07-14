@@ -11,19 +11,19 @@ pub alias idltype = jsobject<idltype_t>
 pub inline fun idltype/as-idltype(x: idltype): idltype
   x
 
-pub inline fun idltype/get-type(x: jsobject<t>, ?as-idltype: (jsobject<t>) -> idltype): maybe<string>
+pub inline fun idltype/get-type(x: idltype): maybe<string>
   x.get-mstring("type")
 
-pub inline fun idltype/get-generic(x: jsobject<t>, ?as-idltype: (jsobject<t>) -> idltype): string
+pub inline fun idltype/get-generic(x: idltype): string
   x.get-string("generic")
 
-pub inline fun idltype/get-idl-type(x: jsobject<t>, ?as-idltype: (jsobject<t>) -> idltype): jsobject<any>
+pub inline fun idltype/get-idl-type(x: idltype): jsobject<any>
   x.get-obj("idlType")
 
-pub inline fun idltype/get-nullable(x: jsobject<t>, ?as-idltype: (jsobject<t>) -> idltype): bool
+pub inline fun idltype/get-nullable(x: idltype): bool
   x.get-bool("nullable")
 
-pub inline fun idltype/get-union(x: jsobject<t>, ?as-idltype: (jsobject<t>) -> idltype): bool
+pub inline fun idltype/get-union(x: idltype): bool
   x.get-bool("union")
 
 /// The abstract node interface in the IDL AST. All nodes that can occur at the
@@ -31,29 +31,10 @@ pub inline fun idltype/get-union(x: jsobject<t>, ?as-idltype: (jsobject<t>) -> i
 type node_t
 pub alias node = jsobject<node_t>
 
-pub inline fun node/as-node(node: node): node
-  node
+pub inline fun node/as-node(x: node): node
+  x
 
-pub inline fun node/as-interface-like(node: jsobject<t>): interface-like
-  Jsobject(node.internal)
-
-pub inline fun node/as-typedef(node: jsobject<t>): typedef
-  Jsobject(node.internal)
-
-pub inline fun node/as-enum(node: jsobject<t>): jsenum
-  Jsobject(node.internal)
-
-pub inline fun node/as-includes(node: jsobject<t>): includes
-  Jsobject(node.internal)
-
-pub inline fun node/as-callback(node: jsobject<t>): callback
-  Jsobject(node.internal)
-
-pub inline fun node/as-constant(node: jsobject<t>): constant
-  Jsobject(node.internal)
-
-
-pub inline fun node/get-type(node: jsobject<t>): string
+pub inline fun node/get-type(node: jsobject<t>, ?is-subtype: is-subtype<t,node_t>): string
   node.get-string("type")
 
 
@@ -62,13 +43,13 @@ pub inline fun node/get-type(node: jsobject<t>): string
 type named_t
 pub alias named-node = jsobject<named_t>
 
-pub inline fun named/as-named(x: named-node): named-node
-  x
+pub inline fun named/is-subtype(x: named-node, y: node): bool
+  True
 
-pub inline fun named/as-node(x: jsobject<t>, ?as-named: (jsobject<t>) -> node): node
-  Jsobject(x.internal)
+pub inline fun named/as-named-node(x: jsobject<t>, ?as-node: (jsobject<t>) -> node): named-node
+  x.as-node.subtype-cast
 
-pub inline fun named/get-name(x: jsobject<t>, ?as-named: (jsobject<t>) -> named-node): string
+pub inline fun named/get-name(x: jsobject<t>, ?is-subtype: is-subtype<t,named_t>): string
   x.get-string("name")
 
 /// [Interfacelike] captures multiple IDL types:
@@ -81,240 +62,232 @@ pub inline fun named/get-name(x: jsobject<t>, ?as-named: (jsobject<t>) -> named-
 type interface-like_t
 pub alias interface-like = jsobject<interface-like_t>
 
-pub inline fun interface-like/as-named(x: interface-like): named-node
-  Jsobject(x.internal)
+pub inline fun interface-like/is-subtype(x: interface-like, y: named-node): bool
+  True
 
-pub inline fun interface-like/get-partial(x: jsobject<t>, ?as-interface-like: (jsobject<t>) -> interface-like): bool
+pub inline fun named-node/as-interface-like(x: jsobject<t>, ?as-named-node: (jsobject<t>) -> named-node): interface-like
+  x.as-named-node.subtype-cast
+
+pub inline fun interface-like/get-partial(x: jsobject<t>, ?is-subtype: is-subtype<t,interface-like_t>): bool
   x.get-bool("partial")
 
-pub inline fun interface-like/get-members(x: jsobject<t>, ?as-interface-like: (jsobject<t>) -> interface-like): jsarray<member>
-  Jsarray(x.get-array("members").internal)
+pub inline fun interface-like/get-members(x: jsobject<t>, ?is-subtype: is-subtype<t,interface-like_t>): jsarray<member>
+  x.get-array("members")
 
-pub inline fun interface-like/get-inheritence(x: jsobject<t>, ?as-interface-like: (jsobject<t>) -> interface-like): maybe<string>
+pub inline fun interface-like/get-inheritence(x: jsobject<t>, ?is-subtype: is-subtype<t,interface-like_t>): maybe<string>
   x.get-mstring("inheritance")
 
 
 type callback_t
 pub alias callback = jsobject<callback_t>
 
-pub inline fun callback/as-callback(x: callback): callback
-  x
+pub inline fun callback/is-subtype(x: callback, y: named-node): bool
+  True
 
-pub inline fun callback/as-named(x: jsobject<t>, ?as-callback: (jsobject<t>) -> callback): named-node
-  Jsobject(x.internal)
+pub inline fun callback/get-idl-type(x: jsobject<t>, ?is-subtype: is-subtype<t,callback_t>): idltype
+  x.get-obj("idlType")
 
-pub inline fun callback/get-idl-type(x: jsobject<t>, ?as-callback: (jsobject<t>) -> callback): idltype
-  Jsobject(x.get-obj("idlType").internal)
-
-pub inline fun callback/get-arguments(x: jsobject<t>, ?as-callback: (jsobject<t>) -> callback): jsarray<argument>
-  Jsarray(x.get-array("arguments").internal)
+pub inline fun callback/get-arguments(x: jsobject<t>, ?is-subtype: is-subtype<t,callback_t>): jsarray<argument>
+  x.get-array("arguments")
 
 
 type enum-value_t
 pub alias enum-value = jsobject<enum-value_t>
 
-pub inline fun enum-value/as-enum-value(x: enum-value): enum-value
-  x
-
-pub inline fun enum-value/get-type(x: jsobject<t>, ?as-enum-value: (jsobject<t>) -> enum-value): string
+pub inline fun enum-value/get-type(x: jsobject<t>, ?is-subtype: is-subtype<t,enum-value_t>): string
   x.get-string("type")
 
-pub inline fun enum-value/get-value(x: jsobject<t>, ?as-enum-value: (jsobject<t>) -> enum-value): string
+pub inline fun enum-value/get-value(x: jsobject<t>, ?is-subtype: is-subtype<t,enum-value_t>): string
   x.get-string("value")
 
 type enum_t
 pub alias jsenum = jsobject<enum_t>
 
-pub inline fun enum/as-enum(x: jsenum): jsenum
-  x
+pub inline fun enum/is-subtype(x: jsenum, y: named-node): bool
+  True
 
-pub inline fun enum/as-named(x: jsobject<t>, ?as-enum: (jsobject<t>) -> jsenum): named-node
-  Jsobject(x.internal)
-
+pub inline fun node/as-enum(x: node): jsenum
+  x.unsafe-cast
+ 
 type typedef_t
 pub alias typedef = jsobject<typedef_t>
 
-pub inline fun typedef/as-typedef(x: typedef): typedef
-  x
+pub inline fun typedef/is-subtype(x: typedef, y: named-node): bool
+  True
 
-pub inline fun typedef/as-named(x: jsobject<t>, ?as-typedef: (jsobject<t>) -> typedef): named-node
-  Jsobject(x.internal)
+pub inline fun node/as-typedef(x: node): typedef
+  x.unsafe-cast
 
-pub inline fun typedef/get-idl-type(x: jsobject<t>, ?as-typedef: (jsobject<t>) -> typedef): idltype
-  Jsobject(x.get-obj("idlType").internal)
+pub inline fun typedef/get-idl-type(x: jsobject<t>, ?is-subtype: is-subtype<t,typedef_t>): idltype
+  x.get-obj("idlType")
 
 type includes_t
 pub alias includes = jsobject<includes_t>
 
-pub inline fun includes/as-includes(x: includes): includes
-  x
+pub fun is-subtype(x: includes, y: node): bool
+  True
 
-pub inline fun includes/as-node(x: jsobject<t>, ?as-includes: (jsobject<t>) -> includes): node
-  Jsobject(x.internal)
-
-pub inline fun includes/get-target(x: jsobject<t>, ?as-includes: (jsobject<t>) -> includes): string
+pub inline fun includes/get-target(x: jsobject<t>, ?is-subtype: is-subtype<t,includes_t>): string
   x.get-string("target")
 
-pub inline fun includes/get-includes(x: jsobject<t>, ?as-includes: (jsobject<t>) -> includes): string
+pub inline fun includes/get-includes(x: jsobject<t>, ?is-subtype: is-subtype<t,includes_t>): string
   x.get-string("includes")
 
 
 type member_t
 pub alias member = jsobject<member_t>
 
+pub inline fun node/as-member(x: node): member
+  x.unsafe-cast
+
 pub inline fun member/as-member(x: member): member
   x
 
-pub inline fun member/get-type(x: jsobject<t>, ?as-member: (jsobject<t>) -> member): string
+pub inline fun member/get-type(x: jsobject<t>, ?is-subtype: is-subtype<t,member_t>): string
   x.get-string("type")
 
-pub inline fun member/get-ext-attrs(x: jsobject<t>, ?as-member: (jsobject<t>) -> member): jsarray<extended-attribute>
-  Jsarray(x.get-array("extAttrs").internal)
+pub inline fun member/get-ext-attrs(x: jsobject<t>, ?is-subtype: is-subtype<t,member_t>): jsarray<extended-attribute>
+  x.get-array("extAttrs")
 
 
 type extended-attribute_t
 pub alias extended-attribute = jsobject<extended-attribute_t>
 
-pub inline fun extended-attribute/as-extended-attribute(x: extended-attribute): extended-attribute
-  x
 
-pub inline fun extended-attribute/get-name(x: jsobject<t>, ?as-extended-attribute: (jsobject<t>) -> extended-attribute): string
+pub inline fun extended-attribute/get-name(x: jsobject<t>, ?is-subtype: is-subtype<t,extended-attribute_t>): string
   x.get-string("name")
 
 type argument_t
 pub alias argument = jsobject<argument_t>
 
-pub inline fun argument/as-argument(x: argument): argument
-  x
+pub inline fun argument/is-subtype(x: argument, y: member): bool
+  True
 
-pub inline fun argument/get-default-value(x: jsobject<t>, ?as-argument: (jsobject<t>) -> argument): maybe<jsvalue>
-  x.get-mobj("default").unsafe-cast()
+pub inline fun member/as-argument(x: jsobject<t>, ?as-member: (jsobject<t>) -> member): argument
+  x.as-member.subtype-cast
 
-pub inline fun argument/get-optional(x: jsobject<t>, ?as-argument: (jsobject<t>) -> argument): bool
+pub inline fun argument/get-default-value(x: jsobject<t>, ?is-subtype: is-subtype<t,argument_t>): maybe<jsvalue>
+  x.get-mobj("default")
+
+pub inline fun argument/get-optional(x: jsobject<t>, ?is-subtype: is-subtype<t,argument_t>): bool
   x.get-bool("optional")
 
-pub inline fun argument/get-variadic(x: jsobject<t>, ?as-argument: (jsobject<t>) -> argument): bool
+pub inline fun argument/get-variadic(x: jsobject<t>, ?is-subtype: is-subtype<t,argument_t>): bool
   x.get-bool("variadic")
 
-pub inline fun argument/get-idl-type(x: jsobject<t>, ?as-argument: (jsobject<t>) -> argument): idltype
-  Jsobject(x.get-obj("idlType").internal)
+pub inline fun argument/get-idl-type(x: jsobject<t>, ?is-subtype: is-subtype<t,argument_t>): idltype
+  x.get-obj("idlType")
 
-pub inline fun argument/get-name(x: jsobject<t>, ?as-argument: (jsobject<t>) -> argument): string
+pub inline fun argument/get-name(x: jsobject<t>, ?is-subtype: is-subtype<t,argument_t>): string
   x.get-string("name")
 
 
 type operation_t
 pub alias operation = jsobject<operation_t>
 
-pub inline fun operation/as-operation(x: operation): operation
-  x
+pub inline fun operation/is-subtype(x: operation, y: member): bool
+  True
 
-pub inline fun operation/as-member(x: jsobject<t>, ?as-operation: (jsobject<t>) -> operation): member
-  Jsobject(x.internal)
+pub inline fun member/as-operation(x: jsobject<t>, ?as-member: (jsobject<t>) -> member): operation
+  x.as-member.subtype-cast
 
-pub inline fun operation/as-special(x: jsobject<t>, ?as-operation: (jsobject<t>) -> operation): string
+pub inline fun operation/as-special(x: jsobject<t>, ?is-subtype: is-subtype<t,operation_t>): string
   x.get-string("special")
 
-pub inline fun operation/get-idl-type(x: jsobject<t>, ?as-operation: (jsobject<t>) -> operation): idltype
-  Jsobject(x.get-obj("idlType").internal)
+pub inline fun operation/get-idl-type(x: jsobject<t>, ?is-subtype: is-subtype<t,operation_t>): idltype
+  x.get-obj("idlType")
 
-pub inline fun operation/get-name(x: jsobject<t>, ?as-operation: (jsobject<t>) -> operation): string
+pub inline fun operation/get-name(x: jsobject<t>, ?is-subtype: is-subtype<t,operation_t>): string
   x.get-string("name")
 
-pub inline fun operation/get-arguments(x: jsobject<t>, ?as-operation: (jsobject<t>) -> operation): jsarray<argument>
-  Jsarray(x.get-array("arguments").internal)
+pub inline fun operation/get-arguments(x: jsobject<t>, ?is-subtype: is-subtype<t,operation_t>): jsarray<argument>
+  x.get-array("arguments")
 
 
 type constructor_t
 pub alias constructor = jsobject<constructor_t>
 
-pub inline fun constructor/as-constructor(x: constructor): constructor
-  x
+pub inline fun constructor/is-subtype(x: constructor, y: member): bool
+  True
 
-pub inline fun constructor/as-member(x: jsobject<t>, ?as-constructor: (jsobject<t>) -> constructor): member
-  Jsobject(x.internal)
+pub inline fun member/as-constructor(x: jsobject<t>, ?as-member: (jsobject<t>) -> member): constructor
+  x.as-member.subtype-cast
 
-pub inline fun constructor/get-arguments(x: jsobject<t>, ?as-constructor: (jsobject<t>) -> constructor): jsarray<argument>
-  Jsarray(x.get-array("arguments").internal)
+pub inline fun constructor/get-arguments(x: jsobject<t>, ?is-subtype: is-subtype<t,constructor_t>): jsarray<argument>
+  x.get-array("arguments")
 
 
 type attribute_t
 pub alias attribute = jsobject<attribute_t>
 
-pub inline fun attribute/as-attribute(x: attribute): attribute
-  x
+pub inline fun attribute/is-subtype(x: attribute, y: member): bool
+  True
 
-pub inline fun attribute/as-member(x: jsobject<t>, ?as-attribute: (jsobject<t>) -> attribute): member
-  Jsobject(x.internal)
+pub inline fun member/as-attribute(x: jsobject<t>, ?as-member: (jsobject<t>) -> member): attribute
+  x.as-member.subtype-cast
 
-pub inline fun attribute/special(x: jsobject<t>, ?as-attribute: (jsobject<t>) -> attribute): string
+pub inline fun attribute/special(x: jsobject<t>, ?is-subtype: is-subtype<t,attribute_t>): string
   x.get-string("special")
 
-pub inline fun attribute/get-read-only(x: jsobject<t>, ?as-attribute: (jsobject<t>) -> attribute): bool
+pub inline fun attribute/get-read-only(x: jsobject<t>, ?is-subtype: is-subtype<t,attribute_t>): bool
   x.get-bool("readonly")
 
-pub inline fun attribute/get-idl-type(x: jsobject<t>, ?as-attribute: (jsobject<t>) -> attribute): idltype
-  Jsobject(x.get-obj("idlType").internal)
+pub inline fun attribute/get-idl-type(x: jsobject<t>, ?is-subtype: is-subtype<t,attribute_t>): idltype
+  x.get-obj("idlType")
 
-pub inline fun attribute/get-name(x: jsobject<t>, ?as-attribute: (jsobject<t>) -> attribute): string
+pub inline fun attribute/get-name(x: jsobject<t>, ?is-subtype: is-subtype<t,attribute_t>): string
   x.get-string("name")
 
 
 type field_t
 pub alias field = jsobject<field_t>
 
-pub inline fun field/as-field(x: field): field
-  x
+pub inline fun field/is-subtype(x: field, y: member): bool
+  True
 
-pub inline fun field/as-member(x: jsobject<t>, ?as-field: (jsobject<t>) -> field): member
-  Jsobject(x.internal)
+pub inline fun member/as-field(x: jsobject<t>, ?as-member: (jsobject<t>) -> member): field
+  x.as-member.subtype-cast
 
-pub inline fun field/name(x: jsobject<t>, ?as-field: (jsobject<t>) -> field): string
+pub inline fun field/name(x: jsobject<t>, ?is-subtype: is-subtype<t,field_t>): string
   x.get-string("name")
 
-pub inline fun field/required(x: jsobject<t>, ?as-field: (jsobject<t>) -> field): bool
+pub inline fun field/required(x: jsobject<t>, ?is-subtype: is-subtype<t,field_t>): bool
   x.get-bool("required")
 
-pub inline fun field/get-idl-type(x: jsobject<t>, ?as-field: (jsobject<t>) -> field): idltype
-  Jsobject(x.get-obj("idlType").internal)
+pub inline fun field/get-idl-type(x: jsobject<t>, ?is-subtype: is-subtype<t,field_t>): idltype
+  x.get-obj("idlType")
 
-pub inline fun field/get-default-value(x: jsobject<t>, ?as-field: (jsobject<t>) -> field): maybe<jsvalue>
-  x.get-mobj("default").unsafe-cast()
+pub inline fun field/get-default-value(x: jsobject<t>, ?is-subtype: is-subtype<t,field_t>): maybe<jsvalue>
+  x.get-mobj("default")
 
 
 type value_t
 pub alias jsvalue = jsobject<value_t>
 
-pub inline fun value/as-value(x: jsvalue): jsvalue
-  x
-
-pub inline fun value/get-type(x: jsobject<t>, ?as-value: (jsobject<t>) -> jsvalue): string
+pub inline fun value/get-type(x: jsobject<t>): string
   x.get-string("type")
 
-pub inline fun value/get-value(x: jsobject<t>, ?as-value: (jsobject<t>) -> jsvalue): jsobject<s>
-  Jsobject(x.get-obj("value").internal)
+pub inline fun value/get-value(x: jsobject<t>): jsobject<s>
+  x.get-obj("value")
 
-pub inline fun value/get-negative(x: jsobject<t>, ?as-value: (jsobject<t>) -> jsvalue): maybe<bool>
+pub inline fun value/get-negative(x: jsobject<t>): maybe<bool>
   x.get-mbool("negative")
 
 
 type constant_t
 pub alias constant = jsobject<constant_t>
 
-pub inline fun constant/as-constant(x: constant): constant
-  x
+pub inline fun constant/is-subtype(x: constant, y: member): bool
+  True
 
-pub inline fun constant/as-member(x: jsobject<t>, ?as-constant: (jsobject<t>) -> constant): member
-  Jsobject(x.internal)
+pub inline fun constant/get-idl-type(x: jsobject<t>, ?is-subtype: is-subtype<t,constant_t>): idltype
+  x.get-obj("idlType")
 
-pub inline fun constant/get-idl-type(x: jsobject<t>, ?as-constant: (jsobject<t>) -> constant): idltype
-  Jsobject(x.get-obj("idlType").internal)
-
-pub inline fun constant/get-name(x: jsobject<t>, ?as-constant: (jsobject<t>) -> constant): string
+pub inline fun constant/get-name(x: jsobject<t>, ?is-subtype: is-subtype<t,constant_t>): string
   x.get-string("name")
 
-pub inline fun constant/get-value(x: jsobject<t>, ?as-constant: (jsobject<t>) -> constant): jsvalue
-  Jsobject(x.get-obj("value").internal)
+pub inline fun constant/get-value(x: jsobject<t>, ?is-subtype: is-subtype<t,constant_t>): jsvalue
+  x.get-obj("value")
 
 
 /// Grab bag to handle declarations in members:
@@ -325,33 +298,27 @@ pub inline fun constant/get-value(x: jsobject<t>, ?as-constant: (jsobject<t>) ->
 type member-declaration_t
 pub alias member-declaration = jsobject<member-declaration_t>
 
-pub inline fun member-declaration/as-member-declaration(x: member-declaration): member-declaration
-  x
-
-pub inline fun member-declaration/get-type(x: jsobject<t>, ?as-member-declaration: (jsobject<t>) -> member-declaration): string
+pub inline fun member-declaration/get-type(x: jsobject<t>, ?is-subtype: is-subtype<t,member-declaration_t>): string
   x.get-string("type")
 
-pub inline fun member-declaration/get-idl-type(x: jsobject<t>, ?as-member-declaration: (jsobject<t>) -> member-declaration): idltype
-  Jsobject(x.get-obj("idlType").internal)
+pub inline fun member-declaration/get-idl-type(x: jsobject<t>, ?is-subtype: is-subtype<t,member-declaration_t>): idltype
+  x.get-obj("idlType")
 
-pub inline fun member-declaration/get-readonly(x: jsobject<t>, ?as-member-declaration: (jsobject<t>) -> member-declaration): bool
+pub inline fun member-declaration/get-readonly(x: jsobject<t>, ?is-subtype: is-subtype<t,member-declaration_t>): bool
   x.get-bool("readonly")
 
-pub inline fun member-declaration/get-async(x: jsobject<t>, ?as-member-declaration: (jsobject<t>) -> member-declaration): bool
+pub inline fun member-declaration/get-async(x: jsobject<t>, ?is-subtype: is-subtype<t,member-declaration_t>): bool
   x.get-bool("async")
 
-pub inline fun member-declaration/get-arguments(x: jsobject<t>, ?as-member-declaration: (jsobject<t>) -> member-declaration): jsarray<argument>
-  Jsarray(x.get-array("arguments").internal)
+pub inline fun member-declaration/get-arguments(x: jsobject<t>, ?is-subtype: is-subtype<t,member-declaration_t>): jsarray<argument>
+  x.get-array("arguments")
 
 
 type eof_t
 pub alias eof = jsobject<eof_t>
 
-pub inline fun eof/as-eof(x: eof): eof
-  x
-
-pub inline fun eof/get-type(x: jsobject<t>, ?as-eof: (jsobject<t>) -> eof): string
+pub inline fun eof/get-type(x: jsobject<t>, ?is-subtype: is-subtype<t,eof_t>): string
   x.get-string("type")
 
-pub inline fun eof/get-value(x: jsobject<t>, ?as-eof: (jsobject<t>) -> eof): string
+pub inline fun eof/get-value(x: jsobject<t>, ?is-subtype: is-subtype<t,eof_t>): string
   x.get-string("value")
