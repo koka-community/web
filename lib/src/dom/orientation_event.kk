@@ -1,159 +1,232 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct DeviceOrientationEvent
-{,
-,
-,
+pub value struct deviceOrientationEvent
+  obj: jsObject
 
-}
-pub extern newDeviceOrientationEvent([type: String], [eventInitDict: DeviceOrientationEventInit])
-(pub extern requestPermission( [], []))
+pub inline fun newDeviceOrientationEvent(type': string, eventInitDict': deviceOrientationEventInit)
+  newJsObject2("DeviceOrientationEvent", type', eventInitDict')"
+pub inline fun requestPermission(): web jsPromise
+  jsOperation1("requestPermission")
 
-pub extern getalpha(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"alpha\")"
-pub extern getbeta(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"beta\")"
-pub extern getgamma(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"gamma\")"
-pub extern getabsolute(this: js_object): web bool
-	c inline "getObjectField(#1, \"absolute\")"
-struct DeviceOrientationEventInit
-{  alpha: maybe<double>,
-  beta: maybe<double>,
-  gamma: maybe<double>,
-  absolute: bool
-}
-pub extern newDeviceOrientationEventInit([alpha: maybe<maybe<double>> = Nothing, beta: maybe<maybe<double>> = Nothing, gamma: maybe<maybe<double>> = Nothing, absolute: maybe<bool> = Nothing])
-()
+pub inline fun alpha(obj: deviceOrientationEvent): web maybe<double>
+  getJsObjectField(obj.obj, "alpha")
 
-pub extern setalpha(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalpha(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"alpha\")"
-pub extern setbeta(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbeta(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"beta\")"
-pub extern setgamma(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getgamma(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"gamma\")"
-pub extern setabsolute(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getabsolute(this: js_object): web bool
-	c inline "getObjectField(#1, \"absolute\")"
-struct DeviceMotionEventAcceleration
-{,
-,
+pub inline fun beta(obj: deviceOrientationEvent): web maybe<double>
+  getJsObjectField(obj.obj, "beta")
 
-}
+pub inline fun gamma(obj: deviceOrientationEvent): web maybe<double>
+  getJsObjectField(obj.obj, "gamma")
 
-()
+pub inline fun absolute(obj: deviceOrientationEvent): web bool
+  getJsObjectField(obj.obj, "absolute")
 
-pub extern getx(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"x\")"
-pub extern gety(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"y\")"
-pub extern getz(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"z\")"
-struct DeviceMotionEventRotationRate
-{,
-,
+pub value struct deviceOrientationEventInit
+  obj: jsObject
 
-}
+pub fun newDeviceOrientationEventInit(alpha: maybe<maybe<double>> = Nothing, beta: maybe<maybe<double>> = Nothing, gamma: maybe<maybe<double>> = Nothing, absolute: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match alpha
+    Just(it) -> setJsObjectField(obj, "alpha", it)
+    Nothing -> ()
+  match beta
+    Just(it) -> setJsObjectField(obj, "beta", it)
+    Nothing -> ()
+  match gamma
+    Just(it) -> setJsObjectField(obj, "gamma", it)
+    Nothing -> ()
+  match absolute
+    Just(it) -> setJsObjectField(obj, "absolute", it)
+    Nothing -> ()
 
-()
+  DeviceOrientationEventInit(obj);
 
-pub extern getalpha(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"alpha\")"
-pub extern getbeta(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"beta\")"
-pub extern getgamma(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"gamma\")"
-struct DeviceMotionEvent
-{,
-,
-,
+pub inline fun alpha(obj: deviceOrientationEventInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "alpha", value.obj)
 
-}
-pub extern newDeviceMotionEvent([type: String], [eventInitDict: DeviceMotionEventInit])
-(pub extern requestPermission( [], []))
+pub inline fun alpha(obj: deviceOrientationEventInit): web maybe<double>
+  getJsObjectField(obj.obj, "alpha")
 
-pub extern getacceleration(this: js_object): web maybe<DeviceMotionEventAcceleration>
-	c inline "getObjectField(#1, \"acceleration\")"
-pub extern getaccelerationIncludingGravity(this: js_object): web maybe<DeviceMotionEventAcceleration>
-	c inline "getObjectField(#1, \"accelerationIncludingGravity\")"
-pub extern getrotationRate(this: js_object): web maybe<DeviceMotionEventRotationRate>
-	c inline "getObjectField(#1, \"rotationRate\")"
-pub extern getinterval(this: js_object): web double
-	c inline "getObjectField(#1, \"interval\")"
-struct DeviceMotionEventAccelerationInit
-{  x: maybe<double>,
-  y: maybe<double>,
-  z: maybe<double>
-}
-pub extern newDeviceMotionEventAccelerationInit([x: maybe<maybe<double>> = Nothing, y: maybe<maybe<double>> = Nothing, z: maybe<maybe<double>> = Nothing])
-()
+pub inline fun beta(obj: deviceOrientationEventInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "beta", value.obj)
 
-pub extern setx(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getx(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"x\")"
-pub extern sety(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gety(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"y\")"
-pub extern setz(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getz(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"z\")"
-struct DeviceMotionEventRotationRateInit
-{  alpha: maybe<double>,
-  beta: maybe<double>,
-  gamma: maybe<double>
-}
-pub extern newDeviceMotionEventRotationRateInit([alpha: maybe<maybe<double>> = Nothing, beta: maybe<maybe<double>> = Nothing, gamma: maybe<maybe<double>> = Nothing])
-()
+pub inline fun beta(obj: deviceOrientationEventInit): web maybe<double>
+  getJsObjectField(obj.obj, "beta")
 
-pub extern setalpha(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalpha(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"alpha\")"
-pub extern setbeta(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbeta(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"beta\")"
-pub extern setgamma(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getgamma(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"gamma\")"
-struct DeviceMotionEventInit
-{  acceleration: DeviceMotionEventAccelerationInit,
-  accelerationIncludingGravity: DeviceMotionEventAccelerationInit,
-  rotationRate: DeviceMotionEventRotationRateInit,
-  interval: double
-}
-pub extern newDeviceMotionEventInit([acceleration: maybe<DeviceMotionEventAccelerationInit> = Nothing, accelerationIncludingGravity: maybe<DeviceMotionEventAccelerationInit> = Nothing, rotationRate: maybe<DeviceMotionEventRotationRateInit> = Nothing, interval: maybe<double> = Nothing])
-()
+pub inline fun gamma(obj: deviceOrientationEventInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "gamma", value.obj)
 
-pub extern setacceleration(this: js_object, value: DeviceMotionEventAccelerationInit): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getacceleration(this: js_object): web DeviceMotionEventAccelerationInit
-	c inline "getObjectField(#1, \"acceleration\")"
-pub extern setaccelerationIncludingGravity(this: js_object, value: DeviceMotionEventAccelerationInit): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaccelerationIncludingGravity(this: js_object): web DeviceMotionEventAccelerationInit
-	c inline "getObjectField(#1, \"accelerationIncludingGravity\")"
-pub extern setrotationRate(this: js_object, value: DeviceMotionEventRotationRateInit): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrotationRate(this: js_object): web DeviceMotionEventRotationRateInit
-	c inline "getObjectField(#1, \"rotationRate\")"
-pub extern setinterval(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinterval(this: js_object): web double
-	c inline "getObjectField(#1, \"interval\")"
+pub inline fun gamma(obj: deviceOrientationEventInit): web maybe<double>
+  getJsObjectField(obj.obj, "gamma")
+
+pub inline fun absolute(obj: deviceOrientationEventInit, value: bool): web ()
+  setJsObjectField(obj.obj, "absolute", value.obj)
+
+pub inline fun absolute(obj: deviceOrientationEventInit): web bool
+  getJsObjectField(obj.obj, "absolute")
+
+pub value struct deviceMotionEventAcceleration
+  obj: jsObject
+
+
+pub inline fun x(obj: deviceMotionEventAcceleration): web maybe<double>
+  getJsObjectField(obj.obj, "x")
+
+pub inline fun y(obj: deviceMotionEventAcceleration): web maybe<double>
+  getJsObjectField(obj.obj, "y")
+
+pub inline fun z(obj: deviceMotionEventAcceleration): web maybe<double>
+  getJsObjectField(obj.obj, "z")
+
+pub value struct deviceMotionEventRotationRate
+  obj: jsObject
+
+
+pub inline fun alpha(obj: deviceMotionEventRotationRate): web maybe<double>
+  getJsObjectField(obj.obj, "alpha")
+
+pub inline fun beta(obj: deviceMotionEventRotationRate): web maybe<double>
+  getJsObjectField(obj.obj, "beta")
+
+pub inline fun gamma(obj: deviceMotionEventRotationRate): web maybe<double>
+  getJsObjectField(obj.obj, "gamma")
+
+pub value struct deviceMotionEvent
+  obj: jsObject
+
+pub inline fun newDeviceMotionEvent(type': string, eventInitDict': deviceMotionEventInit)
+  newJsObject2("DeviceMotionEvent", type', eventInitDict')"
+pub inline fun requestPermission(): web jsPromise
+  jsOperation1("requestPermission")
+
+pub inline fun acceleration(obj: deviceMotionEvent): web maybe<deviceMotionEventAcceleration>
+  getJsObjectField(obj.obj, "acceleration")
+
+pub inline fun accelerationIncludingGravity(obj: deviceMotionEvent): web maybe<deviceMotionEventAcceleration>
+  getJsObjectField(obj.obj, "accelerationIncludingGravity")
+
+pub inline fun rotationRate(obj: deviceMotionEvent): web maybe<deviceMotionEventRotationRate>
+  getJsObjectField(obj.obj, "rotationRate")
+
+pub inline fun interval(obj: deviceMotionEvent): web double
+  getJsObjectField(obj.obj, "interval")
+
+pub value struct deviceMotionEventAccelerationInit
+  obj: jsObject
+
+pub fun newDeviceMotionEventAccelerationInit(x: maybe<maybe<double>> = Nothing, y: maybe<maybe<double>> = Nothing, z: maybe<maybe<double>> = Nothing)
+  val obj = newJsObject();
+  match x
+    Just(it) -> setJsObjectField(obj, "x", it)
+    Nothing -> ()
+  match y
+    Just(it) -> setJsObjectField(obj, "y", it)
+    Nothing -> ()
+  match z
+    Just(it) -> setJsObjectField(obj, "z", it)
+    Nothing -> ()
+
+  DeviceMotionEventAccelerationInit(obj);
+
+pub inline fun x(obj: deviceMotionEventAccelerationInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "x", value.obj)
+
+pub inline fun x(obj: deviceMotionEventAccelerationInit): web maybe<double>
+  getJsObjectField(obj.obj, "x")
+
+pub inline fun y(obj: deviceMotionEventAccelerationInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "y", value.obj)
+
+pub inline fun y(obj: deviceMotionEventAccelerationInit): web maybe<double>
+  getJsObjectField(obj.obj, "y")
+
+pub inline fun z(obj: deviceMotionEventAccelerationInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "z", value.obj)
+
+pub inline fun z(obj: deviceMotionEventAccelerationInit): web maybe<double>
+  getJsObjectField(obj.obj, "z")
+
+pub value struct deviceMotionEventRotationRateInit
+  obj: jsObject
+
+pub fun newDeviceMotionEventRotationRateInit(alpha: maybe<maybe<double>> = Nothing, beta: maybe<maybe<double>> = Nothing, gamma: maybe<maybe<double>> = Nothing)
+  val obj = newJsObject();
+  match alpha
+    Just(it) -> setJsObjectField(obj, "alpha", it)
+    Nothing -> ()
+  match beta
+    Just(it) -> setJsObjectField(obj, "beta", it)
+    Nothing -> ()
+  match gamma
+    Just(it) -> setJsObjectField(obj, "gamma", it)
+    Nothing -> ()
+
+  DeviceMotionEventRotationRateInit(obj);
+
+pub inline fun alpha(obj: deviceMotionEventRotationRateInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "alpha", value.obj)
+
+pub inline fun alpha(obj: deviceMotionEventRotationRateInit): web maybe<double>
+  getJsObjectField(obj.obj, "alpha")
+
+pub inline fun beta(obj: deviceMotionEventRotationRateInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "beta", value.obj)
+
+pub inline fun beta(obj: deviceMotionEventRotationRateInit): web maybe<double>
+  getJsObjectField(obj.obj, "beta")
+
+pub inline fun gamma(obj: deviceMotionEventRotationRateInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "gamma", value.obj)
+
+pub inline fun gamma(obj: deviceMotionEventRotationRateInit): web maybe<double>
+  getJsObjectField(obj.obj, "gamma")
+
+pub value struct deviceMotionEventInit
+  obj: jsObject
+
+pub fun newDeviceMotionEventInit(acceleration: maybe<deviceMotionEventAccelerationInit> = Nothing, accelerationIncludingGravity: maybe<deviceMotionEventAccelerationInit> = Nothing, rotationRate: maybe<deviceMotionEventRotationRateInit> = Nothing, interval: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match acceleration
+    Just(it) -> setJsObjectField(obj, "acceleration", it)
+    Nothing -> ()
+  match accelerationIncludingGravity
+    Just(it) -> setJsObjectField(obj, "accelerationIncludingGravity", it)
+    Nothing -> ()
+  match rotationRate
+    Just(it) -> setJsObjectField(obj, "rotationRate", it)
+    Nothing -> ()
+  match interval
+    Just(it) -> setJsObjectField(obj, "interval", it)
+    Nothing -> ()
+
+  DeviceMotionEventInit(obj);
+
+pub inline fun acceleration(obj: deviceMotionEventInit, value: deviceMotionEventAccelerationInit): web ()
+  setJsObjectField(obj.obj, "acceleration", value.obj)
+
+pub inline fun acceleration(obj: deviceMotionEventInit): web deviceMotionEventAccelerationInit
+  getJsObjectField(obj.obj, "acceleration")
+
+pub inline fun accelerationIncludingGravity(obj: deviceMotionEventInit, value: deviceMotionEventAccelerationInit): web ()
+  setJsObjectField(obj.obj, "accelerationIncludingGravity", value.obj)
+
+pub inline fun accelerationIncludingGravity(obj: deviceMotionEventInit): web deviceMotionEventAccelerationInit
+  getJsObjectField(obj.obj, "accelerationIncludingGravity")
+
+pub inline fun rotationRate(obj: deviceMotionEventInit, value: deviceMotionEventRotationRateInit): web ()
+  setJsObjectField(obj.obj, "rotationRate", value.obj)
+
+pub inline fun rotationRate(obj: deviceMotionEventInit): web deviceMotionEventRotationRateInit
+  getJsObjectField(obj.obj, "rotationRate")
+
+pub inline fun interval(obj: deviceMotionEventInit, value: double): web ()
+  setJsObjectField(obj.obj, "interval", value.obj)
+
+pub inline fun interval(obj: deviceMotionEventInit): web double
+  getJsObjectField(obj.obj, "interval")
+

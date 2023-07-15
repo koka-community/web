@@ -1,15 +1,18 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct WEBGL_lose_context
-{
-}
+pub value struct webgL_lose_context
+  obj: jsObject
 
-()
 
-pub extern loseContext(this: js_object, [], [])
-pub extern restoreContext(this: js_object, [], [])
+pub inline fun loseContext(obj: webgL_lose_context): web ()
+  jsOperation2(obj.obj, "loseContext")
+
+pub inline fun restoreContext(obj: webgL_lose_context): web ()
+  jsOperation2(obj.obj, "restoreContext")
+

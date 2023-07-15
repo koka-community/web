@@ -1,26 +1,36 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
-alias IdleRequestCallback = JSFunction
+pub alias idleRequestCallback = jsFunction;
 
 
-struct IdleRequestOptions
-{  timeout: int
-}
-pub extern newIdleRequestOptions([timeout: maybe<int> = Nothing])
-()
 
-pub extern settimeout(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimeout(this: js_object): web int
-	c inline "getObjectField(#1, \"timeout\")"
-struct IdleDeadline
-{
-}
+pub value struct idleRequestOptions
+  obj: jsObject
 
-()
+pub fun newIdleRequestOptions(timeout: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match timeout
+    Just(it) -> setJsObjectField(obj, "timeout", it)
+    Nothing -> ()
 
-pub extern timeRemaining(this: js_object, [], [])
-pub extern getdidTimeout(this: js_object): web bool
-	c inline "getObjectField(#1, \"didTimeout\")"
+  IdleRequestOptions(obj);
+
+pub inline fun timeout(obj: idleRequestOptions, value: int): web ()
+  setJsObjectField(obj.obj, "timeout", value.obj)
+
+pub inline fun timeout(obj: idleRequestOptions): web int
+  getJsObjectField(obj.obj, "timeout")
+
+pub value struct idleDeadline
+  obj: jsObject
+
+
+pub inline fun timeRemaining(obj: idleDeadline): web hr_time/domHighResTimeStamp
+  jsOperation2(obj.obj, "timeRemaining")
+
+pub inline fun didTimeout(obj: idleDeadline): web bool
+  getJsObjectField(obj.obj, "didTimeout")
+

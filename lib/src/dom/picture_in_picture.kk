@@ -1,41 +1,47 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct PictureInPictureWindow
-{,
-,
+pub value struct pictureInPictureWindow
+  obj: jsObject
 
-}
 
-()
+pub inline fun width(obj: pictureInPictureWindow): web int
+  getJsObjectField(obj.obj, "width")
 
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-pub extern setonresize(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonresize(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onresize\")"
-struct PictureInPictureEvent
-{
-}
-pub extern newPictureInPictureEvent([type: String, eventInitDict: PictureInPictureEventInit], [])
-()
+pub inline fun height(obj: pictureInPictureWindow): web int
+  getJsObjectField(obj.obj, "height")
 
-pub extern getpictureInPictureWindow(this: js_object): web PictureInPictureWindow
-	c inline "getObjectField(#1, \"pictureInPictureWindow\")"
-struct PictureInPictureEventInit
-{  pictureInPictureWindow: PictureInPictureWindow
-}
-pub extern newPictureInPictureEventInit([pictureInPictureWindow: PictureInPictureWindow])
-()
+pub inline fun onresize(obj: pictureInPictureWindow, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onresize", value.obj)
 
-pub extern setpictureInPictureWindow(this: js_object, value: PictureInPictureWindow): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpictureInPictureWindow(this: js_object): web PictureInPictureWindow
-	c inline "getObjectField(#1, \"pictureInPictureWindow\")"
+pub inline fun onresize(obj: pictureInPictureWindow): web html/eventHandler
+  getJsObjectField(obj.obj, "onresize")
+
+pub value struct pictureInPictureEvent
+  obj: jsObject
+
+pub inline fun newPictureInPictureEvent(type': string, eventInitDict': pictureInPictureEventInit)
+  newJsObject2("PictureInPictureEvent", type', eventInitDict')"
+
+pub inline fun pictureInPictureWindow(obj: pictureInPictureEvent): web pictureInPictureWindow
+  getJsObjectField(obj.obj, "pictureInPictureWindow")
+
+pub value struct pictureInPictureEventInit
+  obj: jsObject
+
+pub fun newPictureInPictureEventInit(pictureInPictureWindow: pictureInPictureWindow)
+  val obj = newJsObject();
+  setJsObjectField(obj, "pictureInPictureWindow", pictureInPictureWindow);
+  PictureInPictureEventInit(obj);
+
+pub inline fun pictureInPictureWindow(obj: pictureInPictureEventInit, value: pictureInPictureWindow): web ()
+  setJsObjectField(obj.obj, "pictureInPictureWindow", value.obj)
+
+pub inline fun pictureInPictureWindow(obj: pictureInPictureEventInit): web pictureInPictureWindow
+  getJsObjectField(obj.obj, "pictureInPictureWindow")
+

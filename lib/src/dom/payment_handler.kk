@@ -1,350 +1,585 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias PaymentDelegation = String
-alias PaymentShippingType = String
-struct PaymentManager
-{
-}
+pub alias paymentDelegation = string;
 
-()
 
-pub extern enableDelegations(this: js_object, [delegations: dart:js_interop/JSArray], [])
-pub extern setuserHint(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuserHint(this: js_object): web String
-	c inline "getObjectField(#1, \"userHint\")"
-struct CanMakePaymentEvent
-{
-}
-pub extern newCanMakePaymentEvent([type: String], [])
-()
+pub alias paymentShippingType = string;
 
-pub extern respondWith(this: js_object, [canMakePaymentResponse: dart:js_interop/JSPromise], [])
-struct PaymentRequestDetailsUpdate
-{  error: String,
-  total: payment_request.kk/PaymentCurrencyAmount,
-  modifiers: dart:js_interop/JSArray,
-  shippingOptions: dart:js_interop/JSArray,
-  paymentMethodErrors: dart:js_interop/JSObject,
-  shippingAddressErrors: AddressErrors
-}
-pub extern newPaymentRequestDetailsUpdate([error: maybe<String> = Nothing, total: maybe<payment_request.kk/PaymentCurrencyAmount> = Nothing, modifiers: maybe<dart:js_interop/JSArray> = Nothing, shippingOptions: maybe<dart:js_interop/JSArray> = Nothing, paymentMethodErrors: maybe<dart:js_interop/JSObject> = Nothing, shippingAddressErrors: maybe<AddressErrors> = Nothing])
-()
+pub value struct paymentManager
+  obj: jsObject
 
-pub extern seterror(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geterror(this: js_object): web String
-	c inline "getObjectField(#1, \"error\")"
-pub extern settotal(this: js_object, value: payment_request.kk/PaymentCurrencyAmount): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettotal(this: js_object): web payment_request.kk/PaymentCurrencyAmount
-	c inline "getObjectField(#1, \"total\")"
-pub extern setmodifiers(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmodifiers(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"modifiers\")"
-pub extern setshippingOptions(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshippingOptions(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"shippingOptions\")"
-pub extern setpaymentMethodErrors(this: js_object, value: dart:js_interop/JSObject): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpaymentMethodErrors(this: js_object): web dart:js_interop/JSObject
-	c inline "getObjectField(#1, \"paymentMethodErrors\")"
-pub extern setshippingAddressErrors(this: js_object, value: AddressErrors): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshippingAddressErrors(this: js_object): web AddressErrors
-	c inline "getObjectField(#1, \"shippingAddressErrors\")"
-struct PaymentRequestEvent
-{,
-,
-,
-,
-,
-,
-,
 
-}
-pub extern newPaymentRequestEvent([type: String], [eventInitDict: PaymentRequestEventInit])
-()
+pub inline fun enableDelegations(obj: paymentManager, delegations': jsArray): web jsPromise
+  jsOperation3(obj.obj, "enableDelegations", delegations'.obj)
 
-pub extern openWindow(this: js_object, [url: String], [])
-pub extern changePaymentMethod(this: js_object, [methodName: String], [methodDetails: maybe<dart:js_interop/JSObject> =  Nothing])
-pub extern changeShippingAddress(this: js_object, [], [shippingAddress: AddressInit])
-pub extern changeShippingOption(this: js_object, [shippingOption: String], [])
-pub extern respondWith(this: js_object, [handlerResponsePromise: dart:js_interop/JSPromise], [])
-pub extern gettopOrigin(this: js_object): web String
-	c inline "getObjectField(#1, \"topOrigin\")"
-pub extern getpaymentRequestOrigin(this: js_object): web String
-	c inline "getObjectField(#1, \"paymentRequestOrigin\")"
-pub extern getpaymentRequestId(this: js_object): web String
-	c inline "getObjectField(#1, \"paymentRequestId\")"
-pub extern getmethodData(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"methodData\")"
-pub extern gettotal(this: js_object): web dart:js_interop/JSObject
-	c inline "getObjectField(#1, \"total\")"
-pub extern getmodifiers(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"modifiers\")"
-pub extern getpaymentOptions(this: js_object): web maybe<dart:js_interop/JSObject>
-	c inline "getObjectField(#1, \"paymentOptions\")"
-pub extern getshippingOptions(this: js_object): web maybe<dart:js_interop/JSArray>
-	c inline "getObjectField(#1, \"shippingOptions\")"
-struct PaymentRequestEventInit
-{  topOrigin: String,
-  paymentRequestOrigin: String,
-  paymentRequestId: String,
-  methodData: dart:js_interop/JSArray,
-  total: payment_request.kk/PaymentCurrencyAmount,
-  modifiers: dart:js_interop/JSArray,
-  paymentOptions: PaymentOptions,
-  shippingOptions: dart:js_interop/JSArray
-}
-pub extern newPaymentRequestEventInit([topOrigin: maybe<String> = Nothing, paymentRequestOrigin: maybe<String> = Nothing, paymentRequestId: maybe<String> = Nothing, methodData: maybe<dart:js_interop/JSArray> = Nothing, total: maybe<payment_request.kk/PaymentCurrencyAmount> = Nothing, modifiers: maybe<dart:js_interop/JSArray> = Nothing, paymentOptions: maybe<PaymentOptions> = Nothing, shippingOptions: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun userHint(obj: paymentManager, value: string): web ()
+  setJsObjectField(obj.obj, "userHint", value.obj)
 
-pub extern settopOrigin(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettopOrigin(this: js_object): web String
-	c inline "getObjectField(#1, \"topOrigin\")"
-pub extern setpaymentRequestOrigin(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpaymentRequestOrigin(this: js_object): web String
-	c inline "getObjectField(#1, \"paymentRequestOrigin\")"
-pub extern setpaymentRequestId(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpaymentRequestId(this: js_object): web String
-	c inline "getObjectField(#1, \"paymentRequestId\")"
-pub extern setmethodData(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmethodData(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"methodData\")"
-pub extern settotal(this: js_object, value: payment_request.kk/PaymentCurrencyAmount): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettotal(this: js_object): web payment_request.kk/PaymentCurrencyAmount
-	c inline "getObjectField(#1, \"total\")"
-pub extern setmodifiers(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmodifiers(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"modifiers\")"
-pub extern setpaymentOptions(this: js_object, value: PaymentOptions): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpaymentOptions(this: js_object): web PaymentOptions
-	c inline "getObjectField(#1, \"paymentOptions\")"
-pub extern setshippingOptions(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshippingOptions(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"shippingOptions\")"
-struct PaymentHandlerResponse
-{  methodName: String,
-  details: dart:js_interop/JSObject,
-  payerName: maybe<String>,
-  payerEmail: maybe<String>,
-  payerPhone: maybe<String>,
-  shippingAddress: AddressInit,
-  shippingOption: maybe<String>
-}
-pub extern newPaymentHandlerResponse([methodName: maybe<String> = Nothing, details: maybe<dart:js_interop/JSObject> = Nothing, payerName: maybe<maybe<String>> = Nothing, payerEmail: maybe<maybe<String>> = Nothing, payerPhone: maybe<maybe<String>> = Nothing, shippingAddress: maybe<AddressInit> = Nothing, shippingOption: maybe<maybe<String>> = Nothing])
-()
+pub inline fun userHint(obj: paymentManager): web string
+  getJsObjectField(obj.obj, "userHint")
 
-pub extern setmethodName(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmethodName(this: js_object): web String
-	c inline "getObjectField(#1, \"methodName\")"
-pub extern setdetails(this: js_object, value: dart:js_interop/JSObject): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdetails(this: js_object): web dart:js_interop/JSObject
-	c inline "getObjectField(#1, \"details\")"
-pub extern setpayerName(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpayerName(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"payerName\")"
-pub extern setpayerEmail(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpayerEmail(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"payerEmail\")"
-pub extern setpayerPhone(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpayerPhone(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"payerPhone\")"
-pub extern setshippingAddress(this: js_object, value: AddressInit): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshippingAddress(this: js_object): web AddressInit
-	c inline "getObjectField(#1, \"shippingAddress\")"
-pub extern setshippingOption(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshippingOption(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"shippingOption\")"
-struct AddressInit
-{  country: String,
-  addressLine: dart:js_interop/JSArray,
-  region: String,
-  city: String,
-  dependentLocality: String,
-  postalCode: String,
-  sortingCode: String,
-  organization: String,
-  recipient: String,
-  phone: String
-}
-pub extern newAddressInit([country: maybe<String> = Nothing, addressLine: maybe<dart:js_interop/JSArray> = Nothing, region: maybe<String> = Nothing, city: maybe<String> = Nothing, dependentLocality: maybe<String> = Nothing, postalCode: maybe<String> = Nothing, sortingCode: maybe<String> = Nothing, organization: maybe<String> = Nothing, recipient: maybe<String> = Nothing, phone: maybe<String> = Nothing])
-()
+pub value struct canMakePaymentEvent
+  obj: jsObject
 
-pub extern setcountry(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcountry(this: js_object): web String
-	c inline "getObjectField(#1, \"country\")"
-pub extern setaddressLine(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaddressLine(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"addressLine\")"
-pub extern setregion(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getregion(this: js_object): web String
-	c inline "getObjectField(#1, \"region\")"
-pub extern setcity(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcity(this: js_object): web String
-	c inline "getObjectField(#1, \"city\")"
-pub extern setdependentLocality(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdependentLocality(this: js_object): web String
-	c inline "getObjectField(#1, \"dependentLocality\")"
-pub extern setpostalCode(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpostalCode(this: js_object): web String
-	c inline "getObjectField(#1, \"postalCode\")"
-pub extern setsortingCode(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsortingCode(this: js_object): web String
-	c inline "getObjectField(#1, \"sortingCode\")"
-pub extern setorganization(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getorganization(this: js_object): web String
-	c inline "getObjectField(#1, \"organization\")"
-pub extern setrecipient(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrecipient(this: js_object): web String
-	c inline "getObjectField(#1, \"recipient\")"
-pub extern setphone(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getphone(this: js_object): web String
-	c inline "getObjectField(#1, \"phone\")"
-struct PaymentOptions
-{  requestPayerName: bool,
-  requestBillingAddress: bool,
-  requestPayerEmail: bool,
-  requestPayerPhone: bool,
-  requestShipping: bool,
-  shippingType: PaymentShippingType
-}
-pub extern newPaymentOptions([requestPayerName: maybe<bool> = Nothing, requestBillingAddress: maybe<bool> = Nothing, requestPayerEmail: maybe<bool> = Nothing, requestPayerPhone: maybe<bool> = Nothing, requestShipping: maybe<bool> = Nothing, shippingType: maybe<PaymentShippingType> = Nothing])
-()
+pub inline fun newCanMakePaymentEvent(type': string)
+  newJsObject1("CanMakePaymentEvent", type')"
 
-pub extern setrequestPayerName(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequestPayerName(this: js_object): web bool
-	c inline "getObjectField(#1, \"requestPayerName\")"
-pub extern setrequestBillingAddress(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequestBillingAddress(this: js_object): web bool
-	c inline "getObjectField(#1, \"requestBillingAddress\")"
-pub extern setrequestPayerEmail(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequestPayerEmail(this: js_object): web bool
-	c inline "getObjectField(#1, \"requestPayerEmail\")"
-pub extern setrequestPayerPhone(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequestPayerPhone(this: js_object): web bool
-	c inline "getObjectField(#1, \"requestPayerPhone\")"
-pub extern setrequestShipping(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequestShipping(this: js_object): web bool
-	c inline "getObjectField(#1, \"requestShipping\")"
-pub extern setshippingType(this: js_object, value: PaymentShippingType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshippingType(this: js_object): web PaymentShippingType
-	c inline "getObjectField(#1, \"shippingType\")"
-struct PaymentShippingOption
-{  id: String,
-  label: String,
-  amount: payment_request.kk/PaymentCurrencyAmount,
-  selected: bool
-}
-pub extern newPaymentShippingOption([id: String, label: String, amount: payment_request.kk/PaymentCurrencyAmount, selected: maybe<bool> = Nothing])
-()
+pub inline fun respondWith(obj: canMakePaymentEvent, canMakePaymentResponse': jsPromise): web ()
+  jsOperation3(obj.obj, "respondWith", canMakePaymentResponse'.obj)
 
-pub extern setid(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern setlabel(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlabel(this: js_object): web String
-	c inline "getObjectField(#1, \"label\")"
-pub extern setamount(this: js_object, value: payment_request.kk/PaymentCurrencyAmount): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getamount(this: js_object): web payment_request.kk/PaymentCurrencyAmount
-	c inline "getObjectField(#1, \"amount\")"
-pub extern setselected(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselected(this: js_object): web bool
-	c inline "getObjectField(#1, \"selected\")"
-struct AddressErrors
-{  addressLine: String,
-  city: String,
-  country: String,
-  dependentLocality: String,
-  organization: String,
-  phone: String,
-  postalCode: String,
-  recipient: String,
-  region: String,
-  sortingCode: String
-}
-pub extern newAddressErrors([addressLine: maybe<String> = Nothing, city: maybe<String> = Nothing, country: maybe<String> = Nothing, dependentLocality: maybe<String> = Nothing, organization: maybe<String> = Nothing, phone: maybe<String> = Nothing, postalCode: maybe<String> = Nothing, recipient: maybe<String> = Nothing, region: maybe<String> = Nothing, sortingCode: maybe<String> = Nothing])
-()
+pub value struct paymentRequestDetailsUpdate
+  obj: jsObject
 
-pub extern setaddressLine(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaddressLine(this: js_object): web String
-	c inline "getObjectField(#1, \"addressLine\")"
-pub extern setcity(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcity(this: js_object): web String
-	c inline "getObjectField(#1, \"city\")"
-pub extern setcountry(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcountry(this: js_object): web String
-	c inline "getObjectField(#1, \"country\")"
-pub extern setdependentLocality(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdependentLocality(this: js_object): web String
-	c inline "getObjectField(#1, \"dependentLocality\")"
-pub extern setorganization(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getorganization(this: js_object): web String
-	c inline "getObjectField(#1, \"organization\")"
-pub extern setphone(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getphone(this: js_object): web String
-	c inline "getObjectField(#1, \"phone\")"
-pub extern setpostalCode(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpostalCode(this: js_object): web String
-	c inline "getObjectField(#1, \"postalCode\")"
-pub extern setrecipient(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrecipient(this: js_object): web String
-	c inline "getObjectField(#1, \"recipient\")"
-pub extern setregion(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getregion(this: js_object): web String
-	c inline "getObjectField(#1, \"region\")"
-pub extern setsortingCode(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsortingCode(this: js_object): web String
-	c inline "getObjectField(#1, \"sortingCode\")"
+pub fun newPaymentRequestDetailsUpdate(error: maybe<string> = Nothing, total: maybe<payment_request/paymentCurrencyAmount> = Nothing, modifiers: maybe<jsArray> = Nothing, shippingOptions: maybe<jsArray> = Nothing, paymentMethodErrors: maybe<jsObject> = Nothing, shippingAddressErrors: maybe<addressErrors> = Nothing)
+  val obj = newJsObject();
+  match error
+    Just(it) -> setJsObjectField(obj, "error", it)
+    Nothing -> ()
+  match total
+    Just(it) -> setJsObjectField(obj, "total", it)
+    Nothing -> ()
+  match modifiers
+    Just(it) -> setJsObjectField(obj, "modifiers", it)
+    Nothing -> ()
+  match shippingOptions
+    Just(it) -> setJsObjectField(obj, "shippingOptions", it)
+    Nothing -> ()
+  match paymentMethodErrors
+    Just(it) -> setJsObjectField(obj, "paymentMethodErrors", it)
+    Nothing -> ()
+  match shippingAddressErrors
+    Just(it) -> setJsObjectField(obj, "shippingAddressErrors", it)
+    Nothing -> ()
+
+  PaymentRequestDetailsUpdate(obj);
+
+pub inline fun error(obj: paymentRequestDetailsUpdate, value: string): web ()
+  setJsObjectField(obj.obj, "error", value.obj)
+
+pub inline fun error(obj: paymentRequestDetailsUpdate): web string
+  getJsObjectField(obj.obj, "error")
+
+pub inline fun total(obj: paymentRequestDetailsUpdate, value: payment_request/paymentCurrencyAmount): web ()
+  setJsObjectField(obj.obj, "total", value.obj)
+
+pub inline fun total(obj: paymentRequestDetailsUpdate): web payment_request/paymentCurrencyAmount
+  getJsObjectField(obj.obj, "total")
+
+pub inline fun modifiers(obj: paymentRequestDetailsUpdate, value: jsArray): web ()
+  setJsObjectField(obj.obj, "modifiers", value.obj)
+
+pub inline fun modifiers(obj: paymentRequestDetailsUpdate): web jsArray
+  getJsObjectField(obj.obj, "modifiers")
+
+pub inline fun shippingOptions(obj: paymentRequestDetailsUpdate, value: jsArray): web ()
+  setJsObjectField(obj.obj, "shippingOptions", value.obj)
+
+pub inline fun shippingOptions(obj: paymentRequestDetailsUpdate): web jsArray
+  getJsObjectField(obj.obj, "shippingOptions")
+
+pub inline fun paymentMethodErrors(obj: paymentRequestDetailsUpdate, value: jsObject): web ()
+  setJsObjectField(obj.obj, "paymentMethodErrors", value.obj)
+
+pub inline fun paymentMethodErrors(obj: paymentRequestDetailsUpdate): web jsObject
+  getJsObjectField(obj.obj, "paymentMethodErrors")
+
+pub inline fun shippingAddressErrors(obj: paymentRequestDetailsUpdate, value: addressErrors): web ()
+  setJsObjectField(obj.obj, "shippingAddressErrors", value.obj)
+
+pub inline fun shippingAddressErrors(obj: paymentRequestDetailsUpdate): web addressErrors
+  getJsObjectField(obj.obj, "shippingAddressErrors")
+
+pub value struct paymentRequestEvent
+  obj: jsObject
+
+pub inline fun newPaymentRequestEvent(type': string, eventInitDict': paymentRequestEventInit)
+  newJsObject2("PaymentRequestEvent", type', eventInitDict')"
+
+pub inline fun openWindow(obj: paymentRequestEvent, url': string): web jsPromise
+  jsOperation3(obj.obj, "openWindow", url'.obj)
+
+pub inline fun changePaymentMethod(obj: paymentRequestEvent, methodName': string, methodDetails': maybe<jsObject> =  Nothing): web jsPromise
+  jsOperation4(obj.obj, "changePaymentMethod", methodName'.obj, methodDetails'.obj)
+
+pub inline fun changeShippingAddress(obj: paymentRequestEvent, shippingAddress': addressInit): web jsPromise
+  jsOperation3(obj.obj, "changeShippingAddress", shippingAddress'.obj)
+
+pub inline fun changeShippingOption(obj: paymentRequestEvent, shippingOption': string): web jsPromise
+  jsOperation3(obj.obj, "changeShippingOption", shippingOption'.obj)
+
+pub inline fun respondWith(obj: paymentRequestEvent, handlerResponsePromise': jsPromise): web ()
+  jsOperation3(obj.obj, "respondWith", handlerResponsePromise'.obj)
+
+pub inline fun topOrigin(obj: paymentRequestEvent): web string
+  getJsObjectField(obj.obj, "topOrigin")
+
+pub inline fun paymentRequestOrigin(obj: paymentRequestEvent): web string
+  getJsObjectField(obj.obj, "paymentRequestOrigin")
+
+pub inline fun paymentRequestId(obj: paymentRequestEvent): web string
+  getJsObjectField(obj.obj, "paymentRequestId")
+
+pub inline fun methodData(obj: paymentRequestEvent): web jsArray
+  getJsObjectField(obj.obj, "methodData")
+
+pub inline fun total(obj: paymentRequestEvent): web jsObject
+  getJsObjectField(obj.obj, "total")
+
+pub inline fun modifiers(obj: paymentRequestEvent): web jsArray
+  getJsObjectField(obj.obj, "modifiers")
+
+pub inline fun paymentOptions(obj: paymentRequestEvent): web maybe<jsObject>
+  getJsObjectField(obj.obj, "paymentOptions")
+
+pub inline fun shippingOptions(obj: paymentRequestEvent): web maybe<jsArray>
+  getJsObjectField(obj.obj, "shippingOptions")
+
+pub value struct paymentRequestEventInit
+  obj: jsObject
+
+pub fun newPaymentRequestEventInit(topOrigin: maybe<string> = Nothing, paymentRequestOrigin: maybe<string> = Nothing, paymentRequestId: maybe<string> = Nothing, methodData: maybe<jsArray> = Nothing, total: maybe<payment_request/paymentCurrencyAmount> = Nothing, modifiers: maybe<jsArray> = Nothing, paymentOptions: maybe<paymentOptions> = Nothing, shippingOptions: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match topOrigin
+    Just(it) -> setJsObjectField(obj, "topOrigin", it)
+    Nothing -> ()
+  match paymentRequestOrigin
+    Just(it) -> setJsObjectField(obj, "paymentRequestOrigin", it)
+    Nothing -> ()
+  match paymentRequestId
+    Just(it) -> setJsObjectField(obj, "paymentRequestId", it)
+    Nothing -> ()
+  match methodData
+    Just(it) -> setJsObjectField(obj, "methodData", it)
+    Nothing -> ()
+  match total
+    Just(it) -> setJsObjectField(obj, "total", it)
+    Nothing -> ()
+  match modifiers
+    Just(it) -> setJsObjectField(obj, "modifiers", it)
+    Nothing -> ()
+  match paymentOptions
+    Just(it) -> setJsObjectField(obj, "paymentOptions", it)
+    Nothing -> ()
+  match shippingOptions
+    Just(it) -> setJsObjectField(obj, "shippingOptions", it)
+    Nothing -> ()
+
+  PaymentRequestEventInit(obj);
+
+pub inline fun topOrigin(obj: paymentRequestEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "topOrigin", value.obj)
+
+pub inline fun topOrigin(obj: paymentRequestEventInit): web string
+  getJsObjectField(obj.obj, "topOrigin")
+
+pub inline fun paymentRequestOrigin(obj: paymentRequestEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "paymentRequestOrigin", value.obj)
+
+pub inline fun paymentRequestOrigin(obj: paymentRequestEventInit): web string
+  getJsObjectField(obj.obj, "paymentRequestOrigin")
+
+pub inline fun paymentRequestId(obj: paymentRequestEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "paymentRequestId", value.obj)
+
+pub inline fun paymentRequestId(obj: paymentRequestEventInit): web string
+  getJsObjectField(obj.obj, "paymentRequestId")
+
+pub inline fun methodData(obj: paymentRequestEventInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "methodData", value.obj)
+
+pub inline fun methodData(obj: paymentRequestEventInit): web jsArray
+  getJsObjectField(obj.obj, "methodData")
+
+pub inline fun total(obj: paymentRequestEventInit, value: payment_request/paymentCurrencyAmount): web ()
+  setJsObjectField(obj.obj, "total", value.obj)
+
+pub inline fun total(obj: paymentRequestEventInit): web payment_request/paymentCurrencyAmount
+  getJsObjectField(obj.obj, "total")
+
+pub inline fun modifiers(obj: paymentRequestEventInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "modifiers", value.obj)
+
+pub inline fun modifiers(obj: paymentRequestEventInit): web jsArray
+  getJsObjectField(obj.obj, "modifiers")
+
+pub inline fun paymentOptions(obj: paymentRequestEventInit, value: paymentOptions): web ()
+  setJsObjectField(obj.obj, "paymentOptions", value.obj)
+
+pub inline fun paymentOptions(obj: paymentRequestEventInit): web paymentOptions
+  getJsObjectField(obj.obj, "paymentOptions")
+
+pub inline fun shippingOptions(obj: paymentRequestEventInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "shippingOptions", value.obj)
+
+pub inline fun shippingOptions(obj: paymentRequestEventInit): web jsArray
+  getJsObjectField(obj.obj, "shippingOptions")
+
+pub value struct paymentHandlerResponse
+  obj: jsObject
+
+pub fun newPaymentHandlerResponse(methodName: maybe<string> = Nothing, details: maybe<jsObject> = Nothing, payerName: maybe<maybe<string>> = Nothing, payerEmail: maybe<maybe<string>> = Nothing, payerPhone: maybe<maybe<string>> = Nothing, shippingAddress: maybe<addressInit> = Nothing, shippingOption: maybe<maybe<string>> = Nothing)
+  val obj = newJsObject();
+  match methodName
+    Just(it) -> setJsObjectField(obj, "methodName", it)
+    Nothing -> ()
+  match details
+    Just(it) -> setJsObjectField(obj, "details", it)
+    Nothing -> ()
+  match payerName
+    Just(it) -> setJsObjectField(obj, "payerName", it)
+    Nothing -> ()
+  match payerEmail
+    Just(it) -> setJsObjectField(obj, "payerEmail", it)
+    Nothing -> ()
+  match payerPhone
+    Just(it) -> setJsObjectField(obj, "payerPhone", it)
+    Nothing -> ()
+  match shippingAddress
+    Just(it) -> setJsObjectField(obj, "shippingAddress", it)
+    Nothing -> ()
+  match shippingOption
+    Just(it) -> setJsObjectField(obj, "shippingOption", it)
+    Nothing -> ()
+
+  PaymentHandlerResponse(obj);
+
+pub inline fun methodName(obj: paymentHandlerResponse, value: string): web ()
+  setJsObjectField(obj.obj, "methodName", value.obj)
+
+pub inline fun methodName(obj: paymentHandlerResponse): web string
+  getJsObjectField(obj.obj, "methodName")
+
+pub inline fun details(obj: paymentHandlerResponse, value: jsObject): web ()
+  setJsObjectField(obj.obj, "details", value.obj)
+
+pub inline fun details(obj: paymentHandlerResponse): web jsObject
+  getJsObjectField(obj.obj, "details")
+
+pub inline fun payerName(obj: paymentHandlerResponse, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "payerName", value.obj)
+
+pub inline fun payerName(obj: paymentHandlerResponse): web maybe<string>
+  getJsObjectField(obj.obj, "payerName")
+
+pub inline fun payerEmail(obj: paymentHandlerResponse, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "payerEmail", value.obj)
+
+pub inline fun payerEmail(obj: paymentHandlerResponse): web maybe<string>
+  getJsObjectField(obj.obj, "payerEmail")
+
+pub inline fun payerPhone(obj: paymentHandlerResponse, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "payerPhone", value.obj)
+
+pub inline fun payerPhone(obj: paymentHandlerResponse): web maybe<string>
+  getJsObjectField(obj.obj, "payerPhone")
+
+pub inline fun shippingAddress(obj: paymentHandlerResponse, value: addressInit): web ()
+  setJsObjectField(obj.obj, "shippingAddress", value.obj)
+
+pub inline fun shippingAddress(obj: paymentHandlerResponse): web addressInit
+  getJsObjectField(obj.obj, "shippingAddress")
+
+pub inline fun shippingOption(obj: paymentHandlerResponse, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "shippingOption", value.obj)
+
+pub inline fun shippingOption(obj: paymentHandlerResponse): web maybe<string>
+  getJsObjectField(obj.obj, "shippingOption")
+
+pub value struct addressInit
+  obj: jsObject
+
+pub fun newAddressInit(country: maybe<string> = Nothing, addressLine: maybe<jsArray> = Nothing, region: maybe<string> = Nothing, city: maybe<string> = Nothing, dependentLocality: maybe<string> = Nothing, postalCode: maybe<string> = Nothing, sortingCode: maybe<string> = Nothing, organization: maybe<string> = Nothing, recipient: maybe<string> = Nothing, phone: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match country
+    Just(it) -> setJsObjectField(obj, "country", it)
+    Nothing -> ()
+  match addressLine
+    Just(it) -> setJsObjectField(obj, "addressLine", it)
+    Nothing -> ()
+  match region
+    Just(it) -> setJsObjectField(obj, "region", it)
+    Nothing -> ()
+  match city
+    Just(it) -> setJsObjectField(obj, "city", it)
+    Nothing -> ()
+  match dependentLocality
+    Just(it) -> setJsObjectField(obj, "dependentLocality", it)
+    Nothing -> ()
+  match postalCode
+    Just(it) -> setJsObjectField(obj, "postalCode", it)
+    Nothing -> ()
+  match sortingCode
+    Just(it) -> setJsObjectField(obj, "sortingCode", it)
+    Nothing -> ()
+  match organization
+    Just(it) -> setJsObjectField(obj, "organization", it)
+    Nothing -> ()
+  match recipient
+    Just(it) -> setJsObjectField(obj, "recipient", it)
+    Nothing -> ()
+  match phone
+    Just(it) -> setJsObjectField(obj, "phone", it)
+    Nothing -> ()
+
+  AddressInit(obj);
+
+pub inline fun country(obj: addressInit, value: string): web ()
+  setJsObjectField(obj.obj, "country", value.obj)
+
+pub inline fun country(obj: addressInit): web string
+  getJsObjectField(obj.obj, "country")
+
+pub inline fun addressLine(obj: addressInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "addressLine", value.obj)
+
+pub inline fun addressLine(obj: addressInit): web jsArray
+  getJsObjectField(obj.obj, "addressLine")
+
+pub inline fun region(obj: addressInit, value: string): web ()
+  setJsObjectField(obj.obj, "region", value.obj)
+
+pub inline fun region(obj: addressInit): web string
+  getJsObjectField(obj.obj, "region")
+
+pub inline fun city(obj: addressInit, value: string): web ()
+  setJsObjectField(obj.obj, "city", value.obj)
+
+pub inline fun city(obj: addressInit): web string
+  getJsObjectField(obj.obj, "city")
+
+pub inline fun dependentLocality(obj: addressInit, value: string): web ()
+  setJsObjectField(obj.obj, "dependentLocality", value.obj)
+
+pub inline fun dependentLocality(obj: addressInit): web string
+  getJsObjectField(obj.obj, "dependentLocality")
+
+pub inline fun postalCode(obj: addressInit, value: string): web ()
+  setJsObjectField(obj.obj, "postalCode", value.obj)
+
+pub inline fun postalCode(obj: addressInit): web string
+  getJsObjectField(obj.obj, "postalCode")
+
+pub inline fun sortingCode(obj: addressInit, value: string): web ()
+  setJsObjectField(obj.obj, "sortingCode", value.obj)
+
+pub inline fun sortingCode(obj: addressInit): web string
+  getJsObjectField(obj.obj, "sortingCode")
+
+pub inline fun organization(obj: addressInit, value: string): web ()
+  setJsObjectField(obj.obj, "organization", value.obj)
+
+pub inline fun organization(obj: addressInit): web string
+  getJsObjectField(obj.obj, "organization")
+
+pub inline fun recipient(obj: addressInit, value: string): web ()
+  setJsObjectField(obj.obj, "recipient", value.obj)
+
+pub inline fun recipient(obj: addressInit): web string
+  getJsObjectField(obj.obj, "recipient")
+
+pub inline fun phone(obj: addressInit, value: string): web ()
+  setJsObjectField(obj.obj, "phone", value.obj)
+
+pub inline fun phone(obj: addressInit): web string
+  getJsObjectField(obj.obj, "phone")
+
+pub value struct paymentOptions
+  obj: jsObject
+
+pub fun newPaymentOptions(requestPayerName: maybe<bool> = Nothing, requestBillingAddress: maybe<bool> = Nothing, requestPayerEmail: maybe<bool> = Nothing, requestPayerPhone: maybe<bool> = Nothing, requestShipping: maybe<bool> = Nothing, shippingType: maybe<paymentShippingType> = Nothing)
+  val obj = newJsObject();
+  match requestPayerName
+    Just(it) -> setJsObjectField(obj, "requestPayerName", it)
+    Nothing -> ()
+  match requestBillingAddress
+    Just(it) -> setJsObjectField(obj, "requestBillingAddress", it)
+    Nothing -> ()
+  match requestPayerEmail
+    Just(it) -> setJsObjectField(obj, "requestPayerEmail", it)
+    Nothing -> ()
+  match requestPayerPhone
+    Just(it) -> setJsObjectField(obj, "requestPayerPhone", it)
+    Nothing -> ()
+  match requestShipping
+    Just(it) -> setJsObjectField(obj, "requestShipping", it)
+    Nothing -> ()
+  match shippingType
+    Just(it) -> setJsObjectField(obj, "shippingType", it)
+    Nothing -> ()
+
+  PaymentOptions(obj);
+
+pub inline fun requestPayerName(obj: paymentOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "requestPayerName", value.obj)
+
+pub inline fun requestPayerName(obj: paymentOptions): web bool
+  getJsObjectField(obj.obj, "requestPayerName")
+
+pub inline fun requestBillingAddress(obj: paymentOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "requestBillingAddress", value.obj)
+
+pub inline fun requestBillingAddress(obj: paymentOptions): web bool
+  getJsObjectField(obj.obj, "requestBillingAddress")
+
+pub inline fun requestPayerEmail(obj: paymentOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "requestPayerEmail", value.obj)
+
+pub inline fun requestPayerEmail(obj: paymentOptions): web bool
+  getJsObjectField(obj.obj, "requestPayerEmail")
+
+pub inline fun requestPayerPhone(obj: paymentOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "requestPayerPhone", value.obj)
+
+pub inline fun requestPayerPhone(obj: paymentOptions): web bool
+  getJsObjectField(obj.obj, "requestPayerPhone")
+
+pub inline fun requestShipping(obj: paymentOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "requestShipping", value.obj)
+
+pub inline fun requestShipping(obj: paymentOptions): web bool
+  getJsObjectField(obj.obj, "requestShipping")
+
+pub inline fun shippingType(obj: paymentOptions, value: paymentShippingType): web ()
+  setJsObjectField(obj.obj, "shippingType", value.obj)
+
+pub inline fun shippingType(obj: paymentOptions): web paymentShippingType
+  getJsObjectField(obj.obj, "shippingType")
+
+pub value struct paymentShippingOption
+  obj: jsObject
+
+pub fun newPaymentShippingOption(id: string, label: string, amount: payment_request/paymentCurrencyAmount, selected: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "id", id);  setJsObjectField(obj, "label", label);  setJsObjectField(obj, "amount", amount);  match selected
+    Just(it) -> setJsObjectField(obj, "selected", it)
+    Nothing -> ()
+
+  PaymentShippingOption(obj);
+
+pub inline fun id(obj: paymentShippingOption, value: string): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: paymentShippingOption): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun label(obj: paymentShippingOption, value: string): web ()
+  setJsObjectField(obj.obj, "label", value.obj)
+
+pub inline fun label(obj: paymentShippingOption): web string
+  getJsObjectField(obj.obj, "label")
+
+pub inline fun amount(obj: paymentShippingOption, value: payment_request/paymentCurrencyAmount): web ()
+  setJsObjectField(obj.obj, "amount", value.obj)
+
+pub inline fun amount(obj: paymentShippingOption): web payment_request/paymentCurrencyAmount
+  getJsObjectField(obj.obj, "amount")
+
+pub inline fun selected(obj: paymentShippingOption, value: bool): web ()
+  setJsObjectField(obj.obj, "selected", value.obj)
+
+pub inline fun selected(obj: paymentShippingOption): web bool
+  getJsObjectField(obj.obj, "selected")
+
+pub value struct addressErrors
+  obj: jsObject
+
+pub fun newAddressErrors(addressLine: maybe<string> = Nothing, city: maybe<string> = Nothing, country: maybe<string> = Nothing, dependentLocality: maybe<string> = Nothing, organization: maybe<string> = Nothing, phone: maybe<string> = Nothing, postalCode: maybe<string> = Nothing, recipient: maybe<string> = Nothing, region: maybe<string> = Nothing, sortingCode: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match addressLine
+    Just(it) -> setJsObjectField(obj, "addressLine", it)
+    Nothing -> ()
+  match city
+    Just(it) -> setJsObjectField(obj, "city", it)
+    Nothing -> ()
+  match country
+    Just(it) -> setJsObjectField(obj, "country", it)
+    Nothing -> ()
+  match dependentLocality
+    Just(it) -> setJsObjectField(obj, "dependentLocality", it)
+    Nothing -> ()
+  match organization
+    Just(it) -> setJsObjectField(obj, "organization", it)
+    Nothing -> ()
+  match phone
+    Just(it) -> setJsObjectField(obj, "phone", it)
+    Nothing -> ()
+  match postalCode
+    Just(it) -> setJsObjectField(obj, "postalCode", it)
+    Nothing -> ()
+  match recipient
+    Just(it) -> setJsObjectField(obj, "recipient", it)
+    Nothing -> ()
+  match region
+    Just(it) -> setJsObjectField(obj, "region", it)
+    Nothing -> ()
+  match sortingCode
+    Just(it) -> setJsObjectField(obj, "sortingCode", it)
+    Nothing -> ()
+
+  AddressErrors(obj);
+
+pub inline fun addressLine(obj: addressErrors, value: string): web ()
+  setJsObjectField(obj.obj, "addressLine", value.obj)
+
+pub inline fun addressLine(obj: addressErrors): web string
+  getJsObjectField(obj.obj, "addressLine")
+
+pub inline fun city(obj: addressErrors, value: string): web ()
+  setJsObjectField(obj.obj, "city", value.obj)
+
+pub inline fun city(obj: addressErrors): web string
+  getJsObjectField(obj.obj, "city")
+
+pub inline fun country(obj: addressErrors, value: string): web ()
+  setJsObjectField(obj.obj, "country", value.obj)
+
+pub inline fun country(obj: addressErrors): web string
+  getJsObjectField(obj.obj, "country")
+
+pub inline fun dependentLocality(obj: addressErrors, value: string): web ()
+  setJsObjectField(obj.obj, "dependentLocality", value.obj)
+
+pub inline fun dependentLocality(obj: addressErrors): web string
+  getJsObjectField(obj.obj, "dependentLocality")
+
+pub inline fun organization(obj: addressErrors, value: string): web ()
+  setJsObjectField(obj.obj, "organization", value.obj)
+
+pub inline fun organization(obj: addressErrors): web string
+  getJsObjectField(obj.obj, "organization")
+
+pub inline fun phone(obj: addressErrors, value: string): web ()
+  setJsObjectField(obj.obj, "phone", value.obj)
+
+pub inline fun phone(obj: addressErrors): web string
+  getJsObjectField(obj.obj, "phone")
+
+pub inline fun postalCode(obj: addressErrors, value: string): web ()
+  setJsObjectField(obj.obj, "postalCode", value.obj)
+
+pub inline fun postalCode(obj: addressErrors): web string
+  getJsObjectField(obj.obj, "postalCode")
+
+pub inline fun recipient(obj: addressErrors, value: string): web ()
+  setJsObjectField(obj.obj, "recipient", value.obj)
+
+pub inline fun recipient(obj: addressErrors): web string
+  getJsObjectField(obj.obj, "recipient")
+
+pub inline fun region(obj: addressErrors, value: string): web ()
+  setJsObjectField(obj.obj, "region", value.obj)
+
+pub inline fun region(obj: addressErrors): web string
+  getJsObjectField(obj.obj, "region")
+
+pub inline fun sortingCode(obj: addressErrors, value: string): web ()
+  setJsObjectField(obj.obj, "sortingCode", value.obj)
+
+pub inline fun sortingCode(obj: addressErrors): web string
+  getJsObjectField(obj.obj, "sortingCode")
+

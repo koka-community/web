@@ -1,25 +1,31 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct AmbientLightSensor
-{
-}
-pub extern newAmbientLightSensor([], [sensorOptions: generic_sensor.kk/SensorOptions])
-()
+pub value struct ambientLightSensor
+  obj: jsObject
 
-pub extern getilluminance(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"illuminance\")"
-struct AmbientLightReadingValues
-{  illuminance: maybe<double>
-}
-pub extern newAmbientLightReadingValues([illuminance: maybe<double>])
-()
+pub inline fun newAmbientLightSensor(sensorOptions': generic_sensor/sensorOptions)
+  newJsObject1("AmbientLightSensor", sensorOptions')"
 
-pub extern setilluminance(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getilluminance(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"illuminance\")"
+pub inline fun illuminance(obj: ambientLightSensor): web maybe<double>
+  getJsObjectField(obj.obj, "illuminance")
+
+pub value struct ambientLightReadingValues
+  obj: jsObject
+
+pub fun newAmbientLightReadingValues(illuminance: maybe<double>)
+  val obj = newJsObject();
+  setJsObjectField(obj, "illuminance", illuminance);
+  AmbientLightReadingValues(obj);
+
+pub inline fun illuminance(obj: ambientLightReadingValues, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "illuminance", value.obj)
+
+pub inline fun illuminance(obj: ambientLightReadingValues): web maybe<double>
+  getJsObjectField(obj.obj, "illuminance")
+

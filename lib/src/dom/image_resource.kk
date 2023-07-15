@@ -1,32 +1,49 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct ImageResource
-{  src: String,
-  sizes: String,
-  type: String,
-  label: String
-}
-pub extern newImageResource([src: String, sizes: maybe<String> = Nothing, type: maybe<String> = Nothing, label: maybe<String> = Nothing])
-()
+pub value struct imageResource
+  obj: jsObject
 
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern setsizes(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsizes(this: js_object): web String
-	c inline "getObjectField(#1, \"sizes\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setlabel(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlabel(this: js_object): web String
-	c inline "getObjectField(#1, \"label\")"
+pub fun newImageResource(src: string, sizes: maybe<string> = Nothing, type: maybe<string> = Nothing, label: maybe<string> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "src", src);  match sizes
+    Just(it) -> setJsObjectField(obj, "sizes", it)
+    Nothing -> ()
+  match type
+    Just(it) -> setJsObjectField(obj, "type", it)
+    Nothing -> ()
+  match label
+    Just(it) -> setJsObjectField(obj, "label", it)
+    Nothing -> ()
+
+  ImageResource(obj);
+
+pub inline fun src(obj: imageResource, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: imageResource): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun sizes(obj: imageResource, value: string): web ()
+  setJsObjectField(obj.obj, "sizes", value.obj)
+
+pub inline fun sizes(obj: imageResource): web string
+  getJsObjectField(obj.obj, "sizes")
+
+pub inline fun type(obj: imageResource, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: imageResource): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun label(obj: imageResource, value: string): web ()
+  setJsObjectField(obj.obj, "label", value.obj)
+
+pub inline fun label(obj: imageResource): web string
+  getJsObjectField(obj.obj, "label")
+

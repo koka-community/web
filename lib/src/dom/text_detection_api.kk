@@ -1,34 +1,43 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct TextDetector
-{
-}
-pub extern newTextDetector([], [])
-()
+pub value struct textDetector
+  obj: jsObject
 
-pub extern detect(this: js_object, [image: html.kk/ImageBitmapSource], [])
-struct DetectedText
-{  boundingBox: geometry.kk/DOMRectReadOnly,
-  rawValue: String,
-  cornerPoints: dart:js_interop/JSArray
-}
-pub extern newDetectedText([boundingBox: geometry.kk/DOMRectReadOnly, rawValue: String, cornerPoints: dart:js_interop/JSArray])
-()
+pub inline fun newTextDetector()
+  newJsObject0("TextDetector")"
 
-pub extern setboundingBox(this: js_object, value: geometry.kk/DOMRectReadOnly): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getboundingBox(this: js_object): web geometry.kk/DOMRectReadOnly
-	c inline "getObjectField(#1, \"boundingBox\")"
-pub extern setrawValue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrawValue(this: js_object): web String
-	c inline "getObjectField(#1, \"rawValue\")"
-pub extern setcornerPoints(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcornerPoints(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"cornerPoints\")"
+pub inline fun detect(obj: textDetector, image': html/imageBitmapSource): web jsPromise
+  jsOperation3(obj.obj, "detect", image'.obj)
+
+pub value struct detectedText
+  obj: jsObject
+
+pub fun newDetectedText(boundingBox: geometry/domRectReadOnly, rawValue: string, cornerPoints: jsArray)
+  val obj = newJsObject();
+  setJsObjectField(obj, "boundingBox", boundingBox);  setJsObjectField(obj, "rawValue", rawValue);  setJsObjectField(obj, "cornerPoints", cornerPoints);
+  DetectedText(obj);
+
+pub inline fun boundingBox(obj: detectedText, value: geometry/domRectReadOnly): web ()
+  setJsObjectField(obj.obj, "boundingBox", value.obj)
+
+pub inline fun boundingBox(obj: detectedText): web geometry/domRectReadOnly
+  getJsObjectField(obj.obj, "boundingBox")
+
+pub inline fun rawValue(obj: detectedText, value: string): web ()
+  setJsObjectField(obj.obj, "rawValue", value.obj)
+
+pub inline fun rawValue(obj: detectedText): web string
+  getJsObjectField(obj.obj, "rawValue")
+
+pub inline fun cornerPoints(obj: detectedText, value: jsArray): web ()
+  setJsObjectField(obj.obj, "cornerPoints", value.obj)
+
+pub inline fun cornerPoints(obj: detectedText): web jsArray
+  getJsObjectField(obj.obj, "cornerPoints")
+

@@ -1,80 +1,103 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
-alias ErrorCallback = JSFunction
-alias FileSystemEntryCallback = JSFunction
-alias FileSystemEntriesCallback = JSFunction
-alias FileCallback = JSFunction
+pub alias errorCallback = jsFunction;
 
 
-struct FileSystemEntry
-{,
-,
-,
-,
+pub alias fileSystemEntryCallback = jsFunction;
 
-}
 
-()
+pub alias fileSystemEntriesCallback = jsFunction;
 
-pub extern getParent(this: js_object, [], [successCallback: FileSystemEntryCallback, errorCallback: ErrorCallback])
-pub extern getisFile(this: js_object): web bool
-	c inline "getObjectField(#1, \"isFile\")"
-pub extern getisDirectory(this: js_object): web bool
-	c inline "getObjectField(#1, \"isDirectory\")"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getfullPath(this: js_object): web String
-	c inline "getObjectField(#1, \"fullPath\")"
-pub extern getfilesystem(this: js_object): web FileSystem
-	c inline "getObjectField(#1, \"filesystem\")"
-struct FileSystemDirectoryEntry
-{
-}
 
-()
+pub alias fileCallback = jsFunction;
 
-pub extern createReader(this: js_object, [], [])
-pub extern getFile(this: js_object, [], [path: maybe<String> =  Nothing, options: FileSystemFlags, successCallback: FileSystemEntryCallback, errorCallback: ErrorCallback])
-pub extern getDirectory(this: js_object, [], [path: maybe<String> =  Nothing, options: FileSystemFlags, successCallback: FileSystemEntryCallback, errorCallback: ErrorCallback])
-struct FileSystemFlags
-{  create: bool,
-  exclusive: bool
-}
-pub extern newFileSystemFlags([create: maybe<bool> = Nothing, exclusive: maybe<bool> = Nothing])
-()
 
-pub extern setcreate(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcreate(this: js_object): web bool
-	c inline "getObjectField(#1, \"create\")"
-pub extern setexclusive(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getexclusive(this: js_object): web bool
-	c inline "getObjectField(#1, \"exclusive\")"
-struct FileSystemDirectoryReader
-{
-}
 
-()
+pub value struct fileSystemEntry
+  obj: jsObject
 
-pub extern readEntries(this: js_object, [successCallback: FileSystemEntriesCallback], [errorCallback: ErrorCallback])
-struct FileSystemFileEntry
-{
-}
 
-()
+pub inline fun getParent(obj: fileSystemEntry, successCallback': fileSystemEntryCallback, errorCallback': errorCallback): web ()
+  jsOperation4(obj.obj, "getParent", successCallback'.obj, errorCallback'.obj)
 
-pub extern file(this: js_object, [successCallback: FileCallback], [errorCallback: ErrorCallback])
-struct FileSystem
-{,
+pub inline fun isFile(obj: fileSystemEntry): web bool
+  getJsObjectField(obj.obj, "isFile")
 
-}
+pub inline fun isDirectory(obj: fileSystemEntry): web bool
+  getJsObjectField(obj.obj, "isDirectory")
 
-()
+pub inline fun name(obj: fileSystemEntry): web string
+  getJsObjectField(obj.obj, "name")
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getroot(this: js_object): web FileSystemDirectoryEntry
-	c inline "getObjectField(#1, \"root\")"
+pub inline fun fullPath(obj: fileSystemEntry): web string
+  getJsObjectField(obj.obj, "fullPath")
+
+pub inline fun filesystem(obj: fileSystemEntry): web fileSystem
+  getJsObjectField(obj.obj, "filesystem")
+
+pub value struct fileSystemDirectoryEntry
+  obj: jsObject
+
+
+pub inline fun createReader(obj: fileSystemDirectoryEntry): web fileSystemDirectoryReader
+  jsOperation2(obj.obj, "createReader")
+
+pub inline fun getFile(obj: fileSystemDirectoryEntry, path': maybe<string> =  Nothing, options': fileSystemFlags, successCallback': fileSystemEntryCallback, errorCallback': errorCallback): web ()
+  jsOperation6(obj.obj, "getFile", path'.obj, options'.obj, successCallback'.obj, errorCallback'.obj)
+
+pub inline fun getDirectory(obj: fileSystemDirectoryEntry, path': maybe<string> =  Nothing, options': fileSystemFlags, successCallback': fileSystemEntryCallback, errorCallback': errorCallback): web ()
+  jsOperation6(obj.obj, "getDirectory", path'.obj, options'.obj, successCallback'.obj, errorCallback'.obj)
+
+pub value struct fileSystemFlags
+  obj: jsObject
+
+pub fun newFileSystemFlags(create: maybe<bool> = Nothing, exclusive: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match create
+    Just(it) -> setJsObjectField(obj, "create", it)
+    Nothing -> ()
+  match exclusive
+    Just(it) -> setJsObjectField(obj, "exclusive", it)
+    Nothing -> ()
+
+  FileSystemFlags(obj);
+
+pub inline fun create(obj: fileSystemFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "create", value.obj)
+
+pub inline fun create(obj: fileSystemFlags): web bool
+  getJsObjectField(obj.obj, "create")
+
+pub inline fun exclusive(obj: fileSystemFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "exclusive", value.obj)
+
+pub inline fun exclusive(obj: fileSystemFlags): web bool
+  getJsObjectField(obj.obj, "exclusive")
+
+pub value struct fileSystemDirectoryReader
+  obj: jsObject
+
+
+pub inline fun readEntries(obj: fileSystemDirectoryReader, successCallback': fileSystemEntriesCallback, errorCallback': errorCallback): web ()
+  jsOperation4(obj.obj, "readEntries", successCallback'.obj, errorCallback'.obj)
+
+pub value struct fileSystemFileEntry
+  obj: jsObject
+
+
+pub inline fun file(obj: fileSystemFileEntry, successCallback': fileCallback, errorCallback': errorCallback): web ()
+  jsOperation4(obj.obj, "file", successCallback'.obj, errorCallback'.obj)
+
+pub value struct fileSystem
+  obj: jsObject
+
+
+pub inline fun name(obj: fileSystem): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun root(obj: fileSystem): web fileSystemDirectoryEntry
+  getJsObjectField(obj.obj, "root")
+

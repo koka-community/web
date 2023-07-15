@@ -1,22 +1,35 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias FullscreenNavigationUI = String
-struct FullscreenOptions
-{  navigationUI: FullscreenNavigationUI,
-  screen: window_management.kk/ScreenDetailed
-}
-pub extern newFullscreenOptions([navigationUI: maybe<FullscreenNavigationUI> = Nothing, screen: maybe<window_management.kk/ScreenDetailed> = Nothing])
-()
+pub alias fullscreenNavigationUI = string;
 
-pub extern setnavigationUI(this: js_object, value: FullscreenNavigationUI): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnavigationUI(this: js_object): web FullscreenNavigationUI
-	c inline "getObjectField(#1, \"navigationUI\")"
-pub extern setscreen(this: js_object, value: window_management.kk/ScreenDetailed): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscreen(this: js_object): web window_management.kk/ScreenDetailed
-	c inline "getObjectField(#1, \"screen\")"
+pub value struct fullscreenOptions
+  obj: jsObject
+
+pub fun newFullscreenOptions(navigationUI: maybe<fullscreenNavigationUI> = Nothing, screen: maybe<window_management/screenDetailed> = Nothing)
+  val obj = newJsObject();
+  match navigationUI
+    Just(it) -> setJsObjectField(obj, "navigationUI", it)
+    Nothing -> ()
+  match screen
+    Just(it) -> setJsObjectField(obj, "screen", it)
+    Nothing -> ()
+
+  FullscreenOptions(obj);
+
+pub inline fun navigationUI(obj: fullscreenOptions, value: fullscreenNavigationUI): web ()
+  setJsObjectField(obj.obj, "navigationUI", value.obj)
+
+pub inline fun navigationUI(obj: fullscreenOptions): web fullscreenNavigationUI
+  getJsObjectField(obj.obj, "navigationUI")
+
+pub inline fun screen(obj: fullscreenOptions, value: window_management/screenDetailed): web ()
+  setJsObjectField(obj.obj, "screen", value.obj)
+
+pub inline fun screen(obj: fullscreenOptions): web window_management/screenDetailed
+  getJsObjectField(obj.obj, "screen")
+

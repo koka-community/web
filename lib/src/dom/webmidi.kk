@@ -1,154 +1,196 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias MIDIPortType = String
-alias MIDIPortDeviceState = String
-alias MIDIPortConnectionState = String
-struct MidiPermissionDescriptor
-{  sysex: bool
-}
-pub extern newMidiPermissionDescriptor([sysex: maybe<bool> = Nothing])
-()
-
-pub extern setsysex(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsysex(this: js_object): web bool
-	c inline "getObjectField(#1, \"sysex\")"
-struct MIDIOptions
-{  sysex: bool,
-  software: bool
-}
-pub extern newMIDIOptions([sysex: maybe<bool> = Nothing, software: maybe<bool> = Nothing])
-()
-
-pub extern setsysex(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsysex(this: js_object): web bool
-	c inline "getObjectField(#1, \"sysex\")"
-pub extern setsoftware(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsoftware(this: js_object): web bool
-	c inline "getObjectField(#1, \"software\")"
-struct MIDIInputMap
-{
-}
-
-()
+pub alias midiPortType = string;
 
 
-struct MIDIOutputMap
-{
-}
-
-()
+pub alias midiPortDeviceState = string;
 
 
-struct MIDIAccess
-{,
-,
-,
+pub alias midiPortConnectionState = string;
 
-}
+pub value struct midiPermissionDescriptor
+  obj: jsObject
 
-()
+pub fun newMidiPermissionDescriptor(sysex: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match sysex
+    Just(it) -> setJsObjectField(obj, "sysex", it)
+    Nothing -> ()
 
-pub extern getinputs(this: js_object): web MIDIInputMap
-	c inline "getObjectField(#1, \"inputs\")"
-pub extern getoutputs(this: js_object): web MIDIOutputMap
-	c inline "getObjectField(#1, \"outputs\")"
-pub extern setonstatechange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonstatechange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onstatechange\")"
-pub extern getsysexEnabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"sysexEnabled\")"
-struct MIDIPort
-{,
-,
-,
-,
-,
-,
-,
+  MidiPermissionDescriptor(obj);
 
-}
+pub inline fun sysex(obj: midiPermissionDescriptor, value: bool): web ()
+  setJsObjectField(obj.obj, "sysex", value.obj)
 
-()
+pub inline fun sysex(obj: midiPermissionDescriptor): web bool
+  getJsObjectField(obj.obj, "sysex")
 
-pub extern open(this: js_object, [], [])
-pub extern close(this: js_object, [], [])
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern getmanufacturer(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"manufacturer\")"
-pub extern getname(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"name\")"
-pub extern gettype(this: js_object): web MIDIPortType
-	c inline "getObjectField(#1, \"type\")"
-pub extern getversion(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"version\")"
-pub extern getstate(this: js_object): web MIDIPortDeviceState
-	c inline "getObjectField(#1, \"state\")"
-pub extern getconnection(this: js_object): web MIDIPortConnectionState
-	c inline "getObjectField(#1, \"connection\")"
-pub extern setonstatechange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonstatechange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onstatechange\")"
-struct MIDIInput
-{
-}
+pub value struct midiOptions
+  obj: jsObject
 
-()
+pub fun newMidiOptions(sysex: maybe<bool> = Nothing, software: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match sysex
+    Just(it) -> setJsObjectField(obj, "sysex", it)
+    Nothing -> ()
+  match software
+    Just(it) -> setJsObjectField(obj, "software", it)
+    Nothing -> ()
 
-pub extern setonmidimessage(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmidimessage(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onmidimessage\")"
-struct MIDIOutput
-{
-}
+  MidiOptions(obj);
 
-()
+pub inline fun sysex(obj: midiOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "sysex", value.obj)
 
-pub extern send(this: js_object, [data: dart:js_interop/JSArray], [timestamp: hr_time.kk/DOMHighResTimeStamp])
-pub extern clear(this: js_object, [], [])
-struct MIDIMessageEvent
-{
-}
-pub extern newMIDIMessageEvent([type: String], [eventInitDict: MIDIMessageEventInit])
-()
+pub inline fun sysex(obj: midiOptions): web bool
+  getJsObjectField(obj.obj, "sysex")
 
-pub extern getdata(this: js_object): web dart:js_interop/JSUint8Array
-	c inline "getObjectField(#1, \"data\")"
-struct MIDIMessageEventInit
-{  data: dart:js_interop/JSUint8Array
-}
-pub extern newMIDIMessageEventInit([data: maybe<dart:js_interop/JSUint8Array> = Nothing])
-()
+pub inline fun software(obj: midiOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "software", value.obj)
 
-pub extern setdata(this: js_object, value: dart:js_interop/JSUint8Array): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdata(this: js_object): web dart:js_interop/JSUint8Array
-	c inline "getObjectField(#1, \"data\")"
-struct MIDIConnectionEvent
-{
-}
-pub extern newMIDIConnectionEvent([type: String], [eventInitDict: MIDIConnectionEventInit])
-()
+pub inline fun software(obj: midiOptions): web bool
+  getJsObjectField(obj.obj, "software")
 
-pub extern getport(this: js_object): web MIDIPort
-	c inline "getObjectField(#1, \"port\")"
-struct MIDIConnectionEventInit
-{  port: MIDIPort
-}
-pub extern newMIDIConnectionEventInit([port: maybe<MIDIPort> = Nothing])
-()
+pub value struct midiInputMap
+  obj: jsObject
 
-pub extern setport(this: js_object, value: MIDIPort): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getport(this: js_object): web MIDIPort
-	c inline "getObjectField(#1, \"port\")"
+
+
+pub value struct midiOutputMap
+  obj: jsObject
+
+
+
+pub value struct midiAccess
+  obj: jsObject
+
+
+pub inline fun inputs(obj: midiAccess): web midiInputMap
+  getJsObjectField(obj.obj, "inputs")
+
+pub inline fun outputs(obj: midiAccess): web midiOutputMap
+  getJsObjectField(obj.obj, "outputs")
+
+pub inline fun onstatechange(obj: midiAccess, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onstatechange", value.obj)
+
+pub inline fun onstatechange(obj: midiAccess): web html/eventHandler
+  getJsObjectField(obj.obj, "onstatechange")
+
+pub inline fun sysexEnabled(obj: midiAccess): web bool
+  getJsObjectField(obj.obj, "sysexEnabled")
+
+pub value struct midiPort
+  obj: jsObject
+
+
+pub inline fun open(obj: midiPort): web jsPromise
+  jsOperation2(obj.obj, "open")
+
+pub inline fun close(obj: midiPort): web jsPromise
+  jsOperation2(obj.obj, "close")
+
+pub inline fun id(obj: midiPort): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun manufacturer(obj: midiPort): web maybe<string>
+  getJsObjectField(obj.obj, "manufacturer")
+
+pub inline fun name(obj: midiPort): web maybe<string>
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun type(obj: midiPort): web midiPortType
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun version(obj: midiPort): web maybe<string>
+  getJsObjectField(obj.obj, "version")
+
+pub inline fun state(obj: midiPort): web midiPortDeviceState
+  getJsObjectField(obj.obj, "state")
+
+pub inline fun connection(obj: midiPort): web midiPortConnectionState
+  getJsObjectField(obj.obj, "connection")
+
+pub inline fun onstatechange(obj: midiPort, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onstatechange", value.obj)
+
+pub inline fun onstatechange(obj: midiPort): web html/eventHandler
+  getJsObjectField(obj.obj, "onstatechange")
+
+pub value struct midiInput
+  obj: jsObject
+
+
+pub inline fun onmidimessage(obj: midiInput, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onmidimessage", value.obj)
+
+pub inline fun onmidimessage(obj: midiInput): web html/eventHandler
+  getJsObjectField(obj.obj, "onmidimessage")
+
+pub value struct midiOutput
+  obj: jsObject
+
+
+pub inline fun send(obj: midiOutput, data': jsArray, timestamp': hr_time/domHighResTimeStamp): web ()
+  jsOperation4(obj.obj, "send", data'.obj, timestamp'.obj)
+
+pub inline fun clear(obj: midiOutput): web ()
+  jsOperation2(obj.obj, "clear")
+
+pub value struct midiMessageEvent
+  obj: jsObject
+
+pub inline fun newMidiMessageEvent(type': string, eventInitDict': midiMessageEventInit)
+  newJsObject2("MidiMessageEvent", type', eventInitDict')"
+
+pub inline fun data(obj: midiMessageEvent): web jsUint8Array
+  getJsObjectField(obj.obj, "data")
+
+pub value struct midiMessageEventInit
+  obj: jsObject
+
+pub fun newMidiMessageEventInit(data: maybe<jsUint8Array> = Nothing)
+  val obj = newJsObject();
+  match data
+    Just(it) -> setJsObjectField(obj, "data", it)
+    Nothing -> ()
+
+  MidiMessageEventInit(obj);
+
+pub inline fun data(obj: midiMessageEventInit, value: jsUint8Array): web ()
+  setJsObjectField(obj.obj, "data", value.obj)
+
+pub inline fun data(obj: midiMessageEventInit): web jsUint8Array
+  getJsObjectField(obj.obj, "data")
+
+pub value struct midiConnectionEvent
+  obj: jsObject
+
+pub inline fun newMidiConnectionEvent(type': string, eventInitDict': midiConnectionEventInit)
+  newJsObject2("MidiConnectionEvent", type', eventInitDict')"
+
+pub inline fun port(obj: midiConnectionEvent): web midiPort
+  getJsObjectField(obj.obj, "port")
+
+pub value struct midiConnectionEventInit
+  obj: jsObject
+
+pub fun newMidiConnectionEventInit(port: maybe<midiPort> = Nothing)
+  val obj = newJsObject();
+  match port
+    Just(it) -> setJsObjectField(obj, "port", it)
+    Nothing -> ()
+
+  MidiConnectionEventInit(obj);
+
+pub inline fun port(obj: midiConnectionEventInit, value: midiPort): web ()
+  setJsObjectField(obj.obj, "port", value.obj)
+
+pub inline fun port(obj: midiConnectionEventInit): web midiPort
+  getJsObjectField(obj.obj, "port")
+

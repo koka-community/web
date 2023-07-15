@@ -1,137 +1,222 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias FileSystemWriteChunkType = JSAny
+import web/wasm
+pub alias fileSystemWriteChunkType = JSAny;
 
 
-alias FileSystemHandleKind = String
-alias WriteCommandType = String
-struct FileSystemHandle
-{,
 
-}
+pub alias fileSystemHandleKind = string;
 
-()
 
-pub extern queryPermission(this: js_object, [], [descriptor: file_system_access.kk/FileSystemHandlePermissionDescriptor])
-pub extern requestPermission(this: js_object, [], [descriptor: file_system_access.kk/FileSystemHandlePermissionDescriptor])
-pub extern isSameEntry(this: js_object, [other: FileSystemHandle], [])
-pub extern getkind(this: js_object): web FileSystemHandleKind
-	c inline "getObjectField(#1, \"kind\")"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-struct FileSystemCreateWritableOptions
-{  keepExistingData: bool
-}
-pub extern newFileSystemCreateWritableOptions([keepExistingData: maybe<bool> = Nothing])
-()
+pub alias writeCommandType = string;
 
-pub extern setkeepExistingData(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getkeepExistingData(this: js_object): web bool
-	c inline "getObjectField(#1, \"keepExistingData\")"
-struct FileSystemFileHandle
-{
-}
+pub value struct fileSystemHandle
+  obj: jsObject
 
-()
 
-pub extern getFile(this: js_object, [], [])
-pub extern createWritable(this: js_object, [], [options: FileSystemCreateWritableOptions])
-pub extern createSyncAccessHandle(this: js_object, [], [])
-struct FileSystemGetFileOptions
-{  create: bool
-}
-pub extern newFileSystemGetFileOptions([create: maybe<bool> = Nothing])
-()
+pub inline fun queryPermission(obj: fileSystemHandle, descriptor': file_system_access/fileSystemHandlePermissionDescriptor): web jsPromise
+  jsOperation3(obj.obj, "queryPermission", descriptor'.obj)
 
-pub extern setcreate(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcreate(this: js_object): web bool
-	c inline "getObjectField(#1, \"create\")"
-struct FileSystemGetDirectoryOptions
-{  create: bool
-}
-pub extern newFileSystemGetDirectoryOptions([create: maybe<bool> = Nothing])
-()
+pub inline fun requestPermission(obj: fileSystemHandle, descriptor': file_system_access/fileSystemHandlePermissionDescriptor): web jsPromise
+  jsOperation3(obj.obj, "requestPermission", descriptor'.obj)
 
-pub extern setcreate(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcreate(this: js_object): web bool
-	c inline "getObjectField(#1, \"create\")"
-struct FileSystemRemoveOptions
-{  recursive: bool
-}
-pub extern newFileSystemRemoveOptions([recursive: maybe<bool> = Nothing])
-()
+pub inline fun isSameEntry(obj: fileSystemHandle, other': fileSystemHandle): web jsPromise
+  jsOperation3(obj.obj, "isSameEntry", other'.obj)
 
-pub extern setrecursive(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrecursive(this: js_object): web bool
-	c inline "getObjectField(#1, \"recursive\")"
-struct FileSystemDirectoryHandle
-{
-}
+pub inline fun kind(obj: fileSystemHandle): web fileSystemHandleKind
+  getJsObjectField(obj.obj, "kind")
 
-()
+pub inline fun name(obj: fileSystemHandle): web string
+  getJsObjectField(obj.obj, "name")
 
-pub extern getFileHandle(this: js_object, [name: String], [options: FileSystemGetFileOptions])
-pub extern getDirectoryHandle(this: js_object, [name: String], [options: FileSystemGetDirectoryOptions])
-pub extern removeEntry(this: js_object, [name: String], [options: FileSystemRemoveOptions])
-pub extern resolve(this: js_object, [possibleDescendant: FileSystemHandle], [])
-struct WriteParams
-{  type: WriteCommandType,
-  size: maybe<int>,
-  position: maybe<int>,
-  data: maybe<dart:js_interop/JSAny>
-}
-pub extern newWriteParams([type: WriteCommandType, size: maybe<maybe<int>> = Nothing, position: maybe<maybe<int>> = Nothing, data: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
+pub value struct fileSystemCreateWritableOptions
+  obj: jsObject
 
-pub extern settype(this: js_object, value: WriteCommandType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web WriteCommandType
-	c inline "getObjectField(#1, \"type\")"
-pub extern setsize(this: js_object, value: maybe<int>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsize(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"size\")"
-pub extern setposition(this: js_object, value: maybe<int>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getposition(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"position\")"
-pub extern setdata(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdata(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"data\")"
-struct FileSystemWritableFileStream
-{
-}
+pub fun newFileSystemCreateWritableOptions(keepExistingData: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match keepExistingData
+    Just(it) -> setJsObjectField(obj, "keepExistingData", it)
+    Nothing -> ()
 
-()
+  FileSystemCreateWritableOptions(obj);
 
-pub extern write(this: js_object, [data: FileSystemWriteChunkType], [])
-pub extern seek(this: js_object, [position: int], [])
-pub extern truncate(this: js_object, [size: int], [])
-struct FileSystemReadWriteOptions
-{  at: int
-}
-pub extern newFileSystemReadWriteOptions([at: maybe<int> = Nothing])
-()
+pub inline fun keepExistingData(obj: fileSystemCreateWritableOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "keepExistingData", value.obj)
 
-pub extern setat(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getat(this: js_object): web int
-	c inline "getObjectField(#1, \"at\")"
-struct FileSystemSyncAccessHandle
-{
-}
+pub inline fun keepExistingData(obj: fileSystemCreateWritableOptions): web bool
+  getJsObjectField(obj.obj, "keepExistingData")
 
-()
+pub value struct fileSystemFileHandle
+  obj: jsObject
 
-pub extern read(this: js_object, [buffer: webidl.kk/AllowSharedBufferSource], [options: FileSystemReadWriteOptions])
-pub extern write(this: js_object, [buffer: webidl.kk/AllowSharedBufferSource], [options: FileSystemReadWriteOptions])
-pub extern truncate(this: js_object, [newSize: int], [])
-pub extern getSize(this: js_object, [], [])
-pub extern flush(this: js_object, [], [])
-pub extern close(this: js_object, [], [])
+
+pub inline fun getFile(obj: fileSystemFileHandle): web jsPromise
+  jsOperation2(obj.obj, "getFile")
+
+pub inline fun createWritable(obj: fileSystemFileHandle, options': fileSystemCreateWritableOptions): web jsPromise
+  jsOperation3(obj.obj, "createWritable", options'.obj)
+
+pub inline fun createSyncAccessHandle(obj: fileSystemFileHandle): web jsPromise
+  jsOperation2(obj.obj, "createSyncAccessHandle")
+
+pub value struct fileSystemGetFileOptions
+  obj: jsObject
+
+pub fun newFileSystemGetFileOptions(create: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match create
+    Just(it) -> setJsObjectField(obj, "create", it)
+    Nothing -> ()
+
+  FileSystemGetFileOptions(obj);
+
+pub inline fun create(obj: fileSystemGetFileOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "create", value.obj)
+
+pub inline fun create(obj: fileSystemGetFileOptions): web bool
+  getJsObjectField(obj.obj, "create")
+
+pub value struct fileSystemGetDirectoryOptions
+  obj: jsObject
+
+pub fun newFileSystemGetDirectoryOptions(create: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match create
+    Just(it) -> setJsObjectField(obj, "create", it)
+    Nothing -> ()
+
+  FileSystemGetDirectoryOptions(obj);
+
+pub inline fun create(obj: fileSystemGetDirectoryOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "create", value.obj)
+
+pub inline fun create(obj: fileSystemGetDirectoryOptions): web bool
+  getJsObjectField(obj.obj, "create")
+
+pub value struct fileSystemRemoveOptions
+  obj: jsObject
+
+pub fun newFileSystemRemoveOptions(recursive: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match recursive
+    Just(it) -> setJsObjectField(obj, "recursive", it)
+    Nothing -> ()
+
+  FileSystemRemoveOptions(obj);
+
+pub inline fun recursive(obj: fileSystemRemoveOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "recursive", value.obj)
+
+pub inline fun recursive(obj: fileSystemRemoveOptions): web bool
+  getJsObjectField(obj.obj, "recursive")
+
+pub value struct fileSystemDirectoryHandle
+  obj: jsObject
+
+
+pub inline fun getFileHandle(obj: fileSystemDirectoryHandle, name': string, options': fileSystemGetFileOptions): web jsPromise
+  jsOperation4(obj.obj, "getFileHandle", name'.obj, options'.obj)
+
+pub inline fun getDirectoryHandle(obj: fileSystemDirectoryHandle, name': string, options': fileSystemGetDirectoryOptions): web jsPromise
+  jsOperation4(obj.obj, "getDirectoryHandle", name'.obj, options'.obj)
+
+pub inline fun removeEntry(obj: fileSystemDirectoryHandle, name': string, options': fileSystemRemoveOptions): web jsPromise
+  jsOperation4(obj.obj, "removeEntry", name'.obj, options'.obj)
+
+pub inline fun resolve(obj: fileSystemDirectoryHandle, possibleDescendant': fileSystemHandle): web jsPromise
+  jsOperation3(obj.obj, "resolve", possibleDescendant'.obj)
+
+pub value struct writeParams
+  obj: jsObject
+
+pub fun newWriteParams(type: writeCommandType, size: maybe<maybe<int>> = Nothing, position: maybe<maybe<int>> = Nothing, data: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "type", type);  match size
+    Just(it) -> setJsObjectField(obj, "size", it)
+    Nothing -> ()
+  match position
+    Just(it) -> setJsObjectField(obj, "position", it)
+    Nothing -> ()
+  match data
+    Just(it) -> setJsObjectField(obj, "data", it)
+    Nothing -> ()
+
+  WriteParams(obj);
+
+pub inline fun type(obj: writeParams, value: writeCommandType): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: writeParams): web writeCommandType
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun size(obj: writeParams, value: maybe<int>): web ()
+  setJsObjectField(obj.obj, "size", value.obj)
+
+pub inline fun size(obj: writeParams): web maybe<int>
+  getJsObjectField(obj.obj, "size")
+
+pub inline fun position(obj: writeParams, value: maybe<int>): web ()
+  setJsObjectField(obj.obj, "position", value.obj)
+
+pub inline fun position(obj: writeParams): web maybe<int>
+  getJsObjectField(obj.obj, "position")
+
+pub inline fun data(obj: writeParams, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "data", value.obj)
+
+pub inline fun data(obj: writeParams): web maybe<jsObject>
+  getJsObjectField(obj.obj, "data")
+
+pub value struct fileSystemWritableFileStream
+  obj: jsObject
+
+
+pub inline fun write(obj: fileSystemWritableFileStream, data': fileSystemWriteChunkType): web jsPromise
+  jsOperation3(obj.obj, "write", data'.obj)
+
+pub inline fun seek(obj: fileSystemWritableFileStream, position': int): web jsPromise
+  jsOperation3(obj.obj, "seek", position'.obj)
+
+pub inline fun truncate(obj: fileSystemWritableFileStream, size': int): web jsPromise
+  jsOperation3(obj.obj, "truncate", size'.obj)
+
+pub value struct fileSystemReadWriteOptions
+  obj: jsObject
+
+pub fun newFileSystemReadWriteOptions(at: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match at
+    Just(it) -> setJsObjectField(obj, "at", it)
+    Nothing -> ()
+
+  FileSystemReadWriteOptions(obj);
+
+pub inline fun at(obj: fileSystemReadWriteOptions, value: int): web ()
+  setJsObjectField(obj.obj, "at", value.obj)
+
+pub inline fun at(obj: fileSystemReadWriteOptions): web int
+  getJsObjectField(obj.obj, "at")
+
+pub value struct fileSystemSyncAccessHandle
+  obj: jsObject
+
+
+pub inline fun read(obj: fileSystemSyncAccessHandle, buffer': webidl/allowSharedBufferSource, options': fileSystemReadWriteOptions): web int
+  jsOperation4(obj.obj, "read", buffer'.obj, options'.obj)
+
+pub inline fun write(obj: fileSystemSyncAccessHandle, buffer': webidl/allowSharedBufferSource, options': fileSystemReadWriteOptions): web int
+  jsOperation4(obj.obj, "write", buffer'.obj, options'.obj)
+
+pub inline fun truncate(obj: fileSystemSyncAccessHandle, newSize': int): web ()
+  jsOperation3(obj.obj, "truncate", newSize'.obj)
+
+pub inline fun getSize(obj: fileSystemSyncAccessHandle): web int
+  jsOperation2(obj.obj, "getSize")
+
+pub inline fun flush(obj: fileSystemSyncAccessHandle): web ()
+  jsOperation2(obj.obj, "flush")
+
+pub inline fun close(obj: fileSystemSyncAccessHandle): web ()
+  jsOperation2(obj.obj, "close")
+

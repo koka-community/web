@@ -1,15 +1,18 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct WEBGL_multi_draw_instanced_base_vertex_base_instance
-{
-}
+pub value struct webgL_multi_draw_instanced_base_vertex_base_instance
+  obj: jsObject
 
-()
 
-pub extern multiDrawArraysInstancedBaseInstanceWEBGL(this: js_object, [mode: webgl1.kk/GLenum, firstsList: maybe<dart:js_interop/JSAny>, firstsOffset: webgl1.kk/GLuint, countsList: maybe<dart:js_interop/JSAny>, countsOffset: webgl1.kk/GLuint, instanceCountsList: maybe<dart:js_interop/JSAny>, instanceCountsOffset: webgl1.kk/GLuint, baseInstancesList: maybe<dart:js_interop/JSAny>, baseInstancesOffset: webgl1.kk/GLuint, drawcount: webgl1.kk/GLsizei], [])
-pub extern multiDrawElementsInstancedBaseVertexBaseInstanceWEBGL(this: js_object, [mode: webgl1.kk/GLenum, countsList: maybe<dart:js_interop/JSAny>, countsOffset: webgl1.kk/GLuint, type: webgl1.kk/GLenum, offsetsList: maybe<dart:js_interop/JSAny>, offsetsOffset: webgl1.kk/GLuint, instanceCountsList: maybe<dart:js_interop/JSAny>, instanceCountsOffset: webgl1.kk/GLuint, baseVerticesList: maybe<dart:js_interop/JSAny>, baseVerticesOffset: webgl1.kk/GLuint, baseInstancesList: maybe<dart:js_interop/JSAny>, baseInstancesOffset: webgl1.kk/GLuint, drawcount: webgl1.kk/GLsizei], [])
+pub inline fun multiDrawArraysInstancedBaseInstanceWEBGL(obj: webgL_multi_draw_instanced_base_vertex_base_instance, mode': webgl1/gLenum, firstsList': maybe<jsObject>, firstsOffset': webgl1/gLuint, countsList': maybe<jsObject>, countsOffset': webgl1/gLuint, instanceCountsList': maybe<jsObject>, instanceCountsOffset': webgl1/gLuint, baseInstancesList': maybe<jsObject>, baseInstancesOffset': webgl1/gLuint, drawcount': webgl1/gLsizei): web ()
+  jsOperation12(obj.obj, "multiDrawArraysInstancedBaseInstanceWEBGL", mode'.obj, firstsList'.obj, firstsOffset'.obj, countsList'.obj, countsOffset'.obj, instanceCountsList'.obj, instanceCountsOffset'.obj, baseInstancesList'.obj, baseInstancesOffset'.obj, drawcount'.obj)
+
+pub inline fun multiDrawElementsInstancedBaseVertexBaseInstanceWEBGL(obj: webgL_multi_draw_instanced_base_vertex_base_instance, mode': webgl1/gLenum, countsList': maybe<jsObject>, countsOffset': webgl1/gLuint, type': webgl1/gLenum, offsetsList': maybe<jsObject>, offsetsOffset': webgl1/gLuint, instanceCountsList': maybe<jsObject>, instanceCountsOffset': webgl1/gLuint, baseVerticesList': maybe<jsObject>, baseVerticesOffset': webgl1/gLuint, baseInstancesList': maybe<jsObject>, baseInstancesOffset': webgl1/gLuint, drawcount': webgl1/gLsizei): web ()
+  jsOperation15(obj.obj, "multiDrawElementsInstancedBaseVertexBaseInstanceWEBGL", mode'.obj, countsList'.obj, countsOffset'.obj, type'.obj, offsetsList'.obj, offsetsOffset'.obj, instanceCountsList'.obj, instanceCountsOffset'.obj, baseVerticesList'.obj, baseVerticesOffset'.obj, baseInstancesList'.obj, baseInstancesOffset'.obj, drawcount'.obj)
+

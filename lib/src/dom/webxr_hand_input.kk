@@ -1,33 +1,33 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias XRHandJoint = String
-struct XRHand
-{,
+pub alias xrHandJoint = string;
 
-}
+pub value struct xrHand
+  obj: jsObject
 
-()
 
-pub extern get(this: js_object, [key: XRHandJoint], [])
-pub extern getsize(this: js_object): web int
-	c inline "getObjectField(#1, \"size\")"
-struct XRJointSpace
-{
-}
+pub inline fun get(obj: xrHand, key': xrHandJoint): web xrJointSpace
+  jsOperation3(obj.obj, "get", key'.obj)
 
-()
+pub inline fun size(obj: xrHand): web int
+  getJsObjectField(obj.obj, "size")
 
-pub extern getjointName(this: js_object): web XRHandJoint
-	c inline "getObjectField(#1, \"jointName\")"
-struct XRJointPose
-{
-}
+pub value struct xrJointSpace
+  obj: jsObject
 
-()
 
-pub extern getradius(this: js_object): web double
-	c inline "getObjectField(#1, \"radius\")"
+pub inline fun jointName(obj: xrJointSpace): web xrHandJoint
+  getJsObjectField(obj.obj, "jointName")
+
+pub value struct xrJointPose
+  obj: jsObject
+
+
+pub inline fun radius(obj: xrJointPose): web double
+  getJsObjectField(obj.obj, "radius")
+

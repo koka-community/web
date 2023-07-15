@@ -1,68 +1,104 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias ClipboardItemData = JSPromise
-alias ClipboardItems = JSArray
+import web/wasm
+pub alias clipboardItemData = JSPromise;
 
 
-alias PresentationStyle = String
-struct ClipboardEventInit
-{  clipboardData: maybe<html.kk/DataTransfer>
-}
-pub extern newClipboardEventInit([clipboardData: maybe<maybe<html.kk/DataTransfer>> = Nothing])
-()
+pub alias clipboardItems = JSArray;
 
-pub extern setclipboardData(this: js_object, value: maybe<html.kk/DataTransfer>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclipboardData(this: js_object): web maybe<html.kk/DataTransfer>
-	c inline "getObjectField(#1, \"clipboardData\")"
-struct ClipboardEvent
-{
-}
-pub extern newClipboardEvent([type: String], [eventInitDict: ClipboardEventInit])
-()
 
-pub extern getclipboardData(this: js_object): web maybe<html.kk/DataTransfer>
-	c inline "getObjectField(#1, \"clipboardData\")"
-struct ClipboardItem
-{,
 
-}
-pub extern newClipboardItem([items: maybe<dart:js_interop/JSAny>], [options: ClipboardItemOptions])
-()
+pub alias presentationStyle = string;
 
-pub extern getType(this: js_object, [type: String], [])
-pub extern getpresentationStyle(this: js_object): web PresentationStyle
-	c inline "getObjectField(#1, \"presentationStyle\")"
-pub extern gettypes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"types\")"
-struct ClipboardItemOptions
-{  presentationStyle: PresentationStyle
-}
-pub extern newClipboardItemOptions([presentationStyle: maybe<PresentationStyle> = Nothing])
-()
+pub value struct clipboardEventInit
+  obj: jsObject
 
-pub extern setpresentationStyle(this: js_object, value: PresentationStyle): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpresentationStyle(this: js_object): web PresentationStyle
-	c inline "getObjectField(#1, \"presentationStyle\")"
-struct Clipboard
-{
-}
+pub fun newClipboardEventInit(clipboardData: maybe<maybe<html/dataTransfer>> = Nothing)
+  val obj = newJsObject();
+  match clipboardData
+    Just(it) -> setJsObjectField(obj, "clipboardData", it)
+    Nothing -> ()
 
-()
+  ClipboardEventInit(obj);
 
-pub extern read(this: js_object, [], [])
-pub extern readText(this: js_object, [], [])
-pub extern write(this: js_object, [data: ClipboardItems], [])
-pub extern writeText(this: js_object, [data: String], [])
-struct ClipboardPermissionDescriptor
-{  allowWithoutGesture: bool
-}
-pub extern newClipboardPermissionDescriptor([allowWithoutGesture: maybe<bool> = Nothing])
-()
+pub inline fun clipboardData(obj: clipboardEventInit, value: maybe<html/dataTransfer>): web ()
+  setJsObjectField(obj.obj, "clipboardData", value.obj)
 
-pub extern setallowWithoutGesture(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getallowWithoutGesture(this: js_object): web bool
-	c inline "getObjectField(#1, \"allowWithoutGesture\")"
+pub inline fun clipboardData(obj: clipboardEventInit): web maybe<html/dataTransfer>
+  getJsObjectField(obj.obj, "clipboardData")
+
+pub value struct clipboardEvent
+  obj: jsObject
+
+pub inline fun newClipboardEvent(type': string, eventInitDict': clipboardEventInit)
+  newJsObject2("ClipboardEvent", type', eventInitDict')"
+
+pub inline fun clipboardData(obj: clipboardEvent): web maybe<html/dataTransfer>
+  getJsObjectField(obj.obj, "clipboardData")
+
+pub value struct clipboardItem
+  obj: jsObject
+
+pub inline fun newClipboardItem(items': maybe<jsObject>, options': clipboardItemOptions)
+  newJsObject2("ClipboardItem", items', options')"
+
+pub inline fun getType(obj: clipboardItem, type': string): web jsPromise
+  jsOperation3(obj.obj, "getType", type'.obj)
+
+pub inline fun presentationStyle(obj: clipboardItem): web presentationStyle
+  getJsObjectField(obj.obj, "presentationStyle")
+
+pub inline fun types(obj: clipboardItem): web jsArray
+  getJsObjectField(obj.obj, "types")
+
+pub value struct clipboardItemOptions
+  obj: jsObject
+
+pub fun newClipboardItemOptions(presentationStyle: maybe<presentationStyle> = Nothing)
+  val obj = newJsObject();
+  match presentationStyle
+    Just(it) -> setJsObjectField(obj, "presentationStyle", it)
+    Nothing -> ()
+
+  ClipboardItemOptions(obj);
+
+pub inline fun presentationStyle(obj: clipboardItemOptions, value: presentationStyle): web ()
+  setJsObjectField(obj.obj, "presentationStyle", value.obj)
+
+pub inline fun presentationStyle(obj: clipboardItemOptions): web presentationStyle
+  getJsObjectField(obj.obj, "presentationStyle")
+
+pub value struct clipboard
+  obj: jsObject
+
+
+pub inline fun read(obj: clipboard): web jsPromise
+  jsOperation2(obj.obj, "read")
+
+pub inline fun readText(obj: clipboard): web jsPromise
+  jsOperation2(obj.obj, "readText")
+
+pub inline fun write(obj: clipboard, data': clipboardItems): web jsPromise
+  jsOperation3(obj.obj, "write", data'.obj)
+
+pub inline fun writeText(obj: clipboard, data': string): web jsPromise
+  jsOperation3(obj.obj, "writeText", data'.obj)
+
+pub value struct clipboardPermissionDescriptor
+  obj: jsObject
+
+pub fun newClipboardPermissionDescriptor(allowWithoutGesture: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match allowWithoutGesture
+    Just(it) -> setJsObjectField(obj, "allowWithoutGesture", it)
+    Nothing -> ()
+
+  ClipboardPermissionDescriptor(obj);
+
+pub inline fun allowWithoutGesture(obj: clipboardPermissionDescriptor, value: bool): web ()
+  setJsObjectField(obj.obj, "allowWithoutGesture", value.obj)
+
+pub inline fun allowWithoutGesture(obj: clipboardPermissionDescriptor): web bool
+  getJsObjectField(obj.obj, "allowWithoutGesture")
+

@@ -1,497 +1,762 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias AlgorithmIdentifier = JSAny
-alias HashAlgorithmIdentifier = AlgorithmIdentifier
-alias BigInteger = JSUint8Array
-alias NamedCurve = String
+import web/wasm
+pub alias algorithmIdentifier = JSAny;
 
 
-alias KeyType = String
-alias KeyUsage = String
-alias KeyFormat = String
-struct Crypto
-{
-}
+pub alias hashAlgorithmIdentifier = AlgorithmIdentifier;
 
-()
 
-pub extern getRandomValues(this: js_object, [array: webidl.kk/ArrayBufferView], [])
-pub extern randomUUID(this: js_object, [], [])
-pub extern getsubtle(this: js_object): web SubtleCrypto
-	c inline "getObjectField(#1, \"subtle\")"
-struct Algorithm
-{  name: String
-}
-pub extern newAlgorithm([name: String])
-()
+pub alias bigInteger = JSUint8Array;
 
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-struct KeyAlgorithm
-{  name: String
-}
-pub extern newKeyAlgorithm([name: String])
-()
 
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-struct CryptoKey
-{,
-,
-,
+pub alias namedCurve = String;
 
-}
 
-()
 
-pub extern gettype(this: js_object): web KeyType
-	c inline "getObjectField(#1, \"type\")"
-pub extern getextractable(this: js_object): web bool
-	c inline "getObjectField(#1, \"extractable\")"
-pub extern getalgorithm(this: js_object): web dart:js_interop/JSObject
-	c inline "getObjectField(#1, \"algorithm\")"
-pub extern getusages(this: js_object): web dart:js_interop/JSObject
-	c inline "getObjectField(#1, \"usages\")"
-struct SubtleCrypto
-{
-}
+pub alias keyType = string;
 
-()
 
-pub extern encrypt(this: js_object, [algorithm: AlgorithmIdentifier, key: CryptoKey, data: webidl.kk/BufferSource], [])
-pub extern decrypt(this: js_object, [algorithm: AlgorithmIdentifier, key: CryptoKey, data: webidl.kk/BufferSource], [])
-pub extern sign(this: js_object, [algorithm: AlgorithmIdentifier, key: CryptoKey, data: webidl.kk/BufferSource], [])
-pub extern verify(this: js_object, [algorithm: AlgorithmIdentifier, key: CryptoKey, signature: webidl.kk/BufferSource, data: webidl.kk/BufferSource], [])
-pub extern digest(this: js_object, [algorithm: AlgorithmIdentifier, data: webidl.kk/BufferSource], [])
-pub extern generateKey(this: js_object, [algorithm: AlgorithmIdentifier, extractable: bool, keyUsages: dart:js_interop/JSArray], [])
-pub extern deriveKey(this: js_object, [algorithm: AlgorithmIdentifier, baseKey: CryptoKey, derivedKeyType: AlgorithmIdentifier, extractable: bool, keyUsages: dart:js_interop/JSArray], [])
-pub extern deriveBits(this: js_object, [algorithm: AlgorithmIdentifier, baseKey: CryptoKey, length: int], [])
-pub extern importKey(this: js_object, [format: KeyFormat, keyData: maybe<dart:js_interop/JSAny>, algorithm: AlgorithmIdentifier, extractable: bool, keyUsages: dart:js_interop/JSArray], [])
-pub extern exportKey(this: js_object, [format: KeyFormat, key: CryptoKey], [])
-pub extern wrapKey(this: js_object, [format: KeyFormat, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: AlgorithmIdentifier], [])
-pub extern unwrapKey(this: js_object, [format: KeyFormat, wrappedKey: webidl.kk/BufferSource, unwrappingKey: CryptoKey, unwrapAlgorithm: AlgorithmIdentifier, unwrappedKeyAlgorithm: AlgorithmIdentifier, extractable: bool, keyUsages: dart:js_interop/JSArray], [])
-struct RsaOtherPrimesInfo
-{  r: String,
-  d: String,
-  t: String
-}
-pub extern newRsaOtherPrimesInfo([r: maybe<String> = Nothing, d: maybe<String> = Nothing, t: maybe<String> = Nothing])
-()
+pub alias keyUsage = string;
 
-pub extern setr(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getr(this: js_object): web String
-	c inline "getObjectField(#1, \"r\")"
-pub extern setd(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getd(this: js_object): web String
-	c inline "getObjectField(#1, \"d\")"
-pub extern sett(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gett(this: js_object): web String
-	c inline "getObjectField(#1, \"t\")"
-struct JsonWebKey
-{  kty: String,
-  use: String,
-  key_ops: dart:js_interop/JSArray,
-  alg: String,
-  ext: bool,
-  crv: String,
-  x: String,
-  y: String,
-  d: String,
-  n: String,
-  e: String,
-  p: String,
-  q: String,
-  dp: String,
-  dq: String,
-  qi: String,
-  oth: dart:js_interop/JSArray,
-  k: String
-}
-pub extern newJsonWebKey([kty: maybe<String> = Nothing, use: maybe<String> = Nothing, key_ops: maybe<dart:js_interop/JSArray> = Nothing, alg: maybe<String> = Nothing, ext: maybe<bool> = Nothing, crv: maybe<String> = Nothing, x: maybe<String> = Nothing, y: maybe<String> = Nothing, d: maybe<String> = Nothing, n: maybe<String> = Nothing, e: maybe<String> = Nothing, p: maybe<String> = Nothing, q: maybe<String> = Nothing, dp: maybe<String> = Nothing, dq: maybe<String> = Nothing, qi: maybe<String> = Nothing, oth: maybe<dart:js_interop/JSArray> = Nothing, k: maybe<String> = Nothing])
-()
 
-pub extern setkty(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getkty(this: js_object): web String
-	c inline "getObjectField(#1, \"kty\")"
-pub extern setuse(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuse(this: js_object): web String
-	c inline "getObjectField(#1, \"use\")"
-pub extern setkeyOps(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getkeyOps(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"key_ops\")"
-pub extern setalg(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalg(this: js_object): web String
-	c inline "getObjectField(#1, \"alg\")"
-pub extern setext(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getext(this: js_object): web bool
-	c inline "getObjectField(#1, \"ext\")"
-pub extern setcrv(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcrv(this: js_object): web String
-	c inline "getObjectField(#1, \"crv\")"
-pub extern setx(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getx(this: js_object): web String
-	c inline "getObjectField(#1, \"x\")"
-pub extern sety(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gety(this: js_object): web String
-	c inline "getObjectField(#1, \"y\")"
-pub extern setd(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getd(this: js_object): web String
-	c inline "getObjectField(#1, \"d\")"
-pub extern setn(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getn(this: js_object): web String
-	c inline "getObjectField(#1, \"n\")"
-pub extern sete(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gete(this: js_object): web String
-	c inline "getObjectField(#1, \"e\")"
-pub extern setp(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getp(this: js_object): web String
-	c inline "getObjectField(#1, \"p\")"
-pub extern setq(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getq(this: js_object): web String
-	c inline "getObjectField(#1, \"q\")"
-pub extern setdp(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdp(this: js_object): web String
-	c inline "getObjectField(#1, \"dp\")"
-pub extern setdq(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdq(this: js_object): web String
-	c inline "getObjectField(#1, \"dq\")"
-pub extern setqi(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getqi(this: js_object): web String
-	c inline "getObjectField(#1, \"qi\")"
-pub extern setoth(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoth(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"oth\")"
-pub extern setk(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getk(this: js_object): web String
-	c inline "getObjectField(#1, \"k\")"
-struct CryptoKeyPair
-{  publicKey: CryptoKey,
-  privateKey: CryptoKey
-}
-pub extern newCryptoKeyPair([publicKey: maybe<CryptoKey> = Nothing, privateKey: maybe<CryptoKey> = Nothing])
-()
+pub alias keyFormat = string;
 
-pub extern setpublicKey(this: js_object, value: CryptoKey): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpublicKey(this: js_object): web CryptoKey
-	c inline "getObjectField(#1, \"publicKey\")"
-pub extern setprivateKey(this: js_object, value: CryptoKey): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprivateKey(this: js_object): web CryptoKey
-	c inline "getObjectField(#1, \"privateKey\")"
-struct RsaKeyGenParams
-{  modulusLength: int,
-  publicExponent: BigInteger
-}
-pub extern newRsaKeyGenParams([modulusLength: int, publicExponent: BigInteger])
-()
+pub value struct crypto
+  obj: jsObject
 
-pub extern setmodulusLength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmodulusLength(this: js_object): web int
-	c inline "getObjectField(#1, \"modulusLength\")"
-pub extern setpublicExponent(this: js_object, value: BigInteger): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpublicExponent(this: js_object): web BigInteger
-	c inline "getObjectField(#1, \"publicExponent\")"
-struct RsaHashedKeyGenParams
-{  hash: HashAlgorithmIdentifier
-}
-pub extern newRsaHashedKeyGenParams([hash: HashAlgorithmIdentifier])
-()
 
-pub extern sethash(this: js_object, value: HashAlgorithmIdentifier): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethash(this: js_object): web HashAlgorithmIdentifier
-	c inline "getObjectField(#1, \"hash\")"
-struct RsaKeyAlgorithm
-{  modulusLength: int,
-  publicExponent: BigInteger
-}
-pub extern newRsaKeyAlgorithm([modulusLength: int, publicExponent: BigInteger])
-()
+pub inline fun getRandomValues(obj: crypto, array': webidl/arrayBufferView): web webidl/arrayBufferView
+  jsOperation3(obj.obj, "getRandomValues", array'.obj)
 
-pub extern setmodulusLength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmodulusLength(this: js_object): web int
-	c inline "getObjectField(#1, \"modulusLength\")"
-pub extern setpublicExponent(this: js_object, value: BigInteger): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpublicExponent(this: js_object): web BigInteger
-	c inline "getObjectField(#1, \"publicExponent\")"
-struct RsaHashedKeyAlgorithm
-{  hash: KeyAlgorithm
-}
-pub extern newRsaHashedKeyAlgorithm([hash: KeyAlgorithm])
-()
+pub inline fun randomUUID(obj: crypto): web string
+  jsOperation2(obj.obj, "randomUUID")
 
-pub extern sethash(this: js_object, value: KeyAlgorithm): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethash(this: js_object): web KeyAlgorithm
-	c inline "getObjectField(#1, \"hash\")"
-struct RsaHashedImportParams
-{  hash: HashAlgorithmIdentifier
-}
-pub extern newRsaHashedImportParams([hash: HashAlgorithmIdentifier])
-()
+pub inline fun subtle(obj: crypto): web subtleCrypto
+  getJsObjectField(obj.obj, "subtle")
 
-pub extern sethash(this: js_object, value: HashAlgorithmIdentifier): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethash(this: js_object): web HashAlgorithmIdentifier
-	c inline "getObjectField(#1, \"hash\")"
-struct RsaPssParams
-{  saltLength: int
-}
-pub extern newRsaPssParams([saltLength: int])
-()
+pub value struct algorithm
+  obj: jsObject
 
-pub extern setsaltLength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsaltLength(this: js_object): web int
-	c inline "getObjectField(#1, \"saltLength\")"
-struct RsaOaepParams
-{  label: webidl.kk/BufferSource
-}
-pub extern newRsaOaepParams([label: maybe<webidl.kk/BufferSource> = Nothing])
-()
+pub fun newAlgorithm(name: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "name", name);
+  Algorithm(obj);
 
-pub extern setlabel(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlabel(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"label\")"
-struct EcdsaParams
-{  hash: HashAlgorithmIdentifier
-}
-pub extern newEcdsaParams([hash: HashAlgorithmIdentifier])
-()
+pub inline fun name(obj: algorithm, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
 
-pub extern sethash(this: js_object, value: HashAlgorithmIdentifier): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethash(this: js_object): web HashAlgorithmIdentifier
-	c inline "getObjectField(#1, \"hash\")"
-struct EcKeyGenParams
-{  namedCurve: NamedCurve
-}
-pub extern newEcKeyGenParams([namedCurve: NamedCurve])
-()
+pub inline fun name(obj: algorithm): web string
+  getJsObjectField(obj.obj, "name")
 
-pub extern setnamedCurve(this: js_object, value: NamedCurve): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnamedCurve(this: js_object): web NamedCurve
-	c inline "getObjectField(#1, \"namedCurve\")"
-struct EcKeyAlgorithm
-{  namedCurve: NamedCurve
-}
-pub extern newEcKeyAlgorithm([namedCurve: NamedCurve])
-()
+pub value struct keyAlgorithm
+  obj: jsObject
 
-pub extern setnamedCurve(this: js_object, value: NamedCurve): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnamedCurve(this: js_object): web NamedCurve
-	c inline "getObjectField(#1, \"namedCurve\")"
-struct EcKeyImportParams
-{  namedCurve: NamedCurve
-}
-pub extern newEcKeyImportParams([namedCurve: NamedCurve])
-()
+pub fun newKeyAlgorithm(name: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "name", name);
+  KeyAlgorithm(obj);
 
-pub extern setnamedCurve(this: js_object, value: NamedCurve): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnamedCurve(this: js_object): web NamedCurve
-	c inline "getObjectField(#1, \"namedCurve\")"
-struct EcdhKeyDeriveParams
-{  public: CryptoKey
-}
-pub extern newEcdhKeyDeriveParams([public: CryptoKey])
-()
+pub inline fun name(obj: keyAlgorithm, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
 
-pub extern setpublic(this: js_object, value: CryptoKey): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpublic(this: js_object): web CryptoKey
-	c inline "getObjectField(#1, \"public\")"
-struct AesCtrParams
-{  counter: webidl.kk/BufferSource,
-  length: int
-}
-pub extern newAesCtrParams([counter: webidl.kk/BufferSource, length: int])
-()
+pub inline fun name(obj: keyAlgorithm): web string
+  getJsObjectField(obj.obj, "name")
 
-pub extern setcounter(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcounter(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"counter\")"
-pub extern setlength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct AesKeyAlgorithm
-{  length: int
-}
-pub extern newAesKeyAlgorithm([length: int])
-()
+pub value struct cryptoKey
+  obj: jsObject
 
-pub extern setlength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct AesKeyGenParams
-{  length: int
-}
-pub extern newAesKeyGenParams([length: int])
-()
 
-pub extern setlength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct AesDerivedKeyParams
-{  length: int
-}
-pub extern newAesDerivedKeyParams([length: int])
-()
+pub inline fun type(obj: cryptoKey): web keyType
+  getJsObjectField(obj.obj, "type")
 
-pub extern setlength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct AesCbcParams
-{  iv: webidl.kk/BufferSource
-}
-pub extern newAesCbcParams([iv: webidl.kk/BufferSource])
-()
+pub inline fun extractable(obj: cryptoKey): web bool
+  getJsObjectField(obj.obj, "extractable")
 
-pub extern setiv(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getiv(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"iv\")"
-struct AesGcmParams
-{  iv: webidl.kk/BufferSource,
-  additionalData: webidl.kk/BufferSource,
-  tagLength: int
-}
-pub extern newAesGcmParams([iv: webidl.kk/BufferSource, additionalData: maybe<webidl.kk/BufferSource> = Nothing, tagLength: maybe<int> = Nothing])
-()
+pub inline fun algorithm(obj: cryptoKey): web jsObject
+  getJsObjectField(obj.obj, "algorithm")
 
-pub extern setiv(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getiv(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"iv\")"
-pub extern setadditionalData(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getadditionalData(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"additionalData\")"
-pub extern settagLength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettagLength(this: js_object): web int
-	c inline "getObjectField(#1, \"tagLength\")"
-struct HmacImportParams
-{  hash: HashAlgorithmIdentifier,
-  length: int
-}
-pub extern newHmacImportParams([hash: HashAlgorithmIdentifier, length: maybe<int> = Nothing])
-()
+pub inline fun usages(obj: cryptoKey): web jsObject
+  getJsObjectField(obj.obj, "usages")
 
-pub extern sethash(this: js_object, value: HashAlgorithmIdentifier): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethash(this: js_object): web HashAlgorithmIdentifier
-	c inline "getObjectField(#1, \"hash\")"
-pub extern setlength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct HmacKeyAlgorithm
-{  hash: KeyAlgorithm,
-  length: int
-}
-pub extern newHmacKeyAlgorithm([hash: KeyAlgorithm, length: int])
-()
+pub value struct subtleCrypto
+  obj: jsObject
 
-pub extern sethash(this: js_object, value: KeyAlgorithm): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethash(this: js_object): web KeyAlgorithm
-	c inline "getObjectField(#1, \"hash\")"
-pub extern setlength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct HmacKeyGenParams
-{  hash: HashAlgorithmIdentifier,
-  length: int
-}
-pub extern newHmacKeyGenParams([hash: HashAlgorithmIdentifier, length: maybe<int> = Nothing])
-()
 
-pub extern sethash(this: js_object, value: HashAlgorithmIdentifier): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethash(this: js_object): web HashAlgorithmIdentifier
-	c inline "getObjectField(#1, \"hash\")"
-pub extern setlength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct HkdfParams
-{  hash: HashAlgorithmIdentifier,
-  salt: webidl.kk/BufferSource,
-  info: webidl.kk/BufferSource
-}
-pub extern newHkdfParams([hash: HashAlgorithmIdentifier, salt: webidl.kk/BufferSource, info: webidl.kk/BufferSource])
-()
+pub inline fun encrypt(obj: subtleCrypto, algorithm': algorithmIdentifier, key': cryptoKey, data': webidl/bufferSource): web jsPromise
+  jsOperation5(obj.obj, "encrypt", algorithm'.obj, key'.obj, data'.obj)
 
-pub extern sethash(this: js_object, value: HashAlgorithmIdentifier): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethash(this: js_object): web HashAlgorithmIdentifier
-	c inline "getObjectField(#1, \"hash\")"
-pub extern setsalt(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsalt(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"salt\")"
-pub extern setinfo(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinfo(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"info\")"
-struct Pbkdf2Params
-{  salt: webidl.kk/BufferSource,
-  iterations: int,
-  hash: HashAlgorithmIdentifier
-}
-pub extern newPbkdf2Params([salt: webidl.kk/BufferSource, iterations: int, hash: HashAlgorithmIdentifier])
-()
+pub inline fun decrypt(obj: subtleCrypto, algorithm': algorithmIdentifier, key': cryptoKey, data': webidl/bufferSource): web jsPromise
+  jsOperation5(obj.obj, "decrypt", algorithm'.obj, key'.obj, data'.obj)
 
-pub extern setsalt(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsalt(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"salt\")"
-pub extern setiterations(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getiterations(this: js_object): web int
-	c inline "getObjectField(#1, \"iterations\")"
-pub extern sethash(this: js_object, value: HashAlgorithmIdentifier): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethash(this: js_object): web HashAlgorithmIdentifier
-	c inline "getObjectField(#1, \"hash\")"
+pub inline fun sign(obj: subtleCrypto, algorithm': algorithmIdentifier, key': cryptoKey, data': webidl/bufferSource): web jsPromise
+  jsOperation5(obj.obj, "sign", algorithm'.obj, key'.obj, data'.obj)
+
+pub inline fun verify(obj: subtleCrypto, algorithm': algorithmIdentifier, key': cryptoKey, signature': webidl/bufferSource, data': webidl/bufferSource): web jsPromise
+  jsOperation6(obj.obj, "verify", algorithm'.obj, key'.obj, signature'.obj, data'.obj)
+
+pub inline fun digest(obj: subtleCrypto, algorithm': algorithmIdentifier, data': webidl/bufferSource): web jsPromise
+  jsOperation4(obj.obj, "digest", algorithm'.obj, data'.obj)
+
+pub inline fun generateKey(obj: subtleCrypto, algorithm': algorithmIdentifier, extractable': bool, keyUsages': jsArray): web jsPromise
+  jsOperation5(obj.obj, "generateKey", algorithm'.obj, extractable'.obj, keyUsages'.obj)
+
+pub inline fun deriveKey(obj: subtleCrypto, algorithm': algorithmIdentifier, baseKey': cryptoKey, derivedKeyType': algorithmIdentifier, extractable': bool, keyUsages': jsArray): web jsPromise
+  jsOperation7(obj.obj, "deriveKey", algorithm'.obj, baseKey'.obj, derivedKeyType'.obj, extractable'.obj, keyUsages'.obj)
+
+pub inline fun deriveBits(obj: subtleCrypto, algorithm': algorithmIdentifier, baseKey': cryptoKey, length': int): web jsPromise
+  jsOperation5(obj.obj, "deriveBits", algorithm'.obj, baseKey'.obj, length'.obj)
+
+pub inline fun importKey(obj: subtleCrypto, format': keyFormat, keyData': maybe<jsObject>, algorithm': algorithmIdentifier, extractable': bool, keyUsages': jsArray): web jsPromise
+  jsOperation7(obj.obj, "importKey", format'.obj, keyData'.obj, algorithm'.obj, extractable'.obj, keyUsages'.obj)
+
+pub inline fun exportKey(obj: subtleCrypto, format': keyFormat, key': cryptoKey): web jsPromise
+  jsOperation4(obj.obj, "exportKey", format'.obj, key'.obj)
+
+pub inline fun wrapKey(obj: subtleCrypto, format': keyFormat, key': cryptoKey, wrappingKey': cryptoKey, wrapAlgorithm': algorithmIdentifier): web jsPromise
+  jsOperation6(obj.obj, "wrapKey", format'.obj, key'.obj, wrappingKey'.obj, wrapAlgorithm'.obj)
+
+pub inline fun unwrapKey(obj: subtleCrypto, format': keyFormat, wrappedKey': webidl/bufferSource, unwrappingKey': cryptoKey, unwrapAlgorithm': algorithmIdentifier, unwrappedKeyAlgorithm': algorithmIdentifier, extractable': bool, keyUsages': jsArray): web jsPromise
+  jsOperation9(obj.obj, "unwrapKey", format'.obj, wrappedKey'.obj, unwrappingKey'.obj, unwrapAlgorithm'.obj, unwrappedKeyAlgorithm'.obj, extractable'.obj, keyUsages'.obj)
+
+pub value struct rsaOtherPrimesInfo
+  obj: jsObject
+
+pub fun newRsaOtherPrimesInfo(r: maybe<string> = Nothing, d: maybe<string> = Nothing, t: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match r
+    Just(it) -> setJsObjectField(obj, "r", it)
+    Nothing -> ()
+  match d
+    Just(it) -> setJsObjectField(obj, "d", it)
+    Nothing -> ()
+  match t
+    Just(it) -> setJsObjectField(obj, "t", it)
+    Nothing -> ()
+
+  RsaOtherPrimesInfo(obj);
+
+pub inline fun r(obj: rsaOtherPrimesInfo, value: string): web ()
+  setJsObjectField(obj.obj, "r", value.obj)
+
+pub inline fun r(obj: rsaOtherPrimesInfo): web string
+  getJsObjectField(obj.obj, "r")
+
+pub inline fun d(obj: rsaOtherPrimesInfo, value: string): web ()
+  setJsObjectField(obj.obj, "d", value.obj)
+
+pub inline fun d(obj: rsaOtherPrimesInfo): web string
+  getJsObjectField(obj.obj, "d")
+
+pub inline fun t(obj: rsaOtherPrimesInfo, value: string): web ()
+  setJsObjectField(obj.obj, "t", value.obj)
+
+pub inline fun t(obj: rsaOtherPrimesInfo): web string
+  getJsObjectField(obj.obj, "t")
+
+pub value struct jsonWebKey
+  obj: jsObject
+
+pub fun newJsonWebKey(kty: maybe<string> = Nothing, use: maybe<string> = Nothing, key_ops: maybe<jsArray> = Nothing, alg: maybe<string> = Nothing, ext: maybe<bool> = Nothing, crv: maybe<string> = Nothing, x: maybe<string> = Nothing, y: maybe<string> = Nothing, d: maybe<string> = Nothing, n: maybe<string> = Nothing, e: maybe<string> = Nothing, p: maybe<string> = Nothing, q: maybe<string> = Nothing, dp: maybe<string> = Nothing, dq: maybe<string> = Nothing, qi: maybe<string> = Nothing, oth: maybe<jsArray> = Nothing, k: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match kty
+    Just(it) -> setJsObjectField(obj, "kty", it)
+    Nothing -> ()
+  match use
+    Just(it) -> setJsObjectField(obj, "use", it)
+    Nothing -> ()
+  match key_ops
+    Just(it) -> setJsObjectField(obj, "key_ops", it)
+    Nothing -> ()
+  match alg
+    Just(it) -> setJsObjectField(obj, "alg", it)
+    Nothing -> ()
+  match ext
+    Just(it) -> setJsObjectField(obj, "ext", it)
+    Nothing -> ()
+  match crv
+    Just(it) -> setJsObjectField(obj, "crv", it)
+    Nothing -> ()
+  match x
+    Just(it) -> setJsObjectField(obj, "x", it)
+    Nothing -> ()
+  match y
+    Just(it) -> setJsObjectField(obj, "y", it)
+    Nothing -> ()
+  match d
+    Just(it) -> setJsObjectField(obj, "d", it)
+    Nothing -> ()
+  match n
+    Just(it) -> setJsObjectField(obj, "n", it)
+    Nothing -> ()
+  match e
+    Just(it) -> setJsObjectField(obj, "e", it)
+    Nothing -> ()
+  match p
+    Just(it) -> setJsObjectField(obj, "p", it)
+    Nothing -> ()
+  match q
+    Just(it) -> setJsObjectField(obj, "q", it)
+    Nothing -> ()
+  match dp
+    Just(it) -> setJsObjectField(obj, "dp", it)
+    Nothing -> ()
+  match dq
+    Just(it) -> setJsObjectField(obj, "dq", it)
+    Nothing -> ()
+  match qi
+    Just(it) -> setJsObjectField(obj, "qi", it)
+    Nothing -> ()
+  match oth
+    Just(it) -> setJsObjectField(obj, "oth", it)
+    Nothing -> ()
+  match k
+    Just(it) -> setJsObjectField(obj, "k", it)
+    Nothing -> ()
+
+  JsonWebKey(obj);
+
+pub inline fun kty(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "kty", value.obj)
+
+pub inline fun kty(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "kty")
+
+pub inline fun use(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "use", value.obj)
+
+pub inline fun use(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "use")
+
+pub inline fun keyOps(obj: jsonWebKey, value: jsArray): web ()
+  setJsObjectField(obj.obj, "key_ops", value.obj)
+
+pub inline fun keyOps(obj: jsonWebKey): web jsArray
+  getJsObjectField(obj.obj, "key_ops")
+
+pub inline fun alg(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "alg", value.obj)
+
+pub inline fun alg(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "alg")
+
+pub inline fun ext(obj: jsonWebKey, value: bool): web ()
+  setJsObjectField(obj.obj, "ext", value.obj)
+
+pub inline fun ext(obj: jsonWebKey): web bool
+  getJsObjectField(obj.obj, "ext")
+
+pub inline fun crv(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "crv", value.obj)
+
+pub inline fun crv(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "crv")
+
+pub inline fun x(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "x", value.obj)
+
+pub inline fun x(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "x")
+
+pub inline fun y(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "y", value.obj)
+
+pub inline fun y(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "y")
+
+pub inline fun d(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "d", value.obj)
+
+pub inline fun d(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "d")
+
+pub inline fun n(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "n", value.obj)
+
+pub inline fun n(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "n")
+
+pub inline fun e(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "e", value.obj)
+
+pub inline fun e(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "e")
+
+pub inline fun p(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "p", value.obj)
+
+pub inline fun p(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "p")
+
+pub inline fun q(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "q", value.obj)
+
+pub inline fun q(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "q")
+
+pub inline fun dp(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "dp", value.obj)
+
+pub inline fun dp(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "dp")
+
+pub inline fun dq(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "dq", value.obj)
+
+pub inline fun dq(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "dq")
+
+pub inline fun qi(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "qi", value.obj)
+
+pub inline fun qi(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "qi")
+
+pub inline fun oth(obj: jsonWebKey, value: jsArray): web ()
+  setJsObjectField(obj.obj, "oth", value.obj)
+
+pub inline fun oth(obj: jsonWebKey): web jsArray
+  getJsObjectField(obj.obj, "oth")
+
+pub inline fun k(obj: jsonWebKey, value: string): web ()
+  setJsObjectField(obj.obj, "k", value.obj)
+
+pub inline fun k(obj: jsonWebKey): web string
+  getJsObjectField(obj.obj, "k")
+
+pub value struct cryptoKeyPair
+  obj: jsObject
+
+pub fun newCryptoKeyPair(publicKey: maybe<cryptoKey> = Nothing, privateKey: maybe<cryptoKey> = Nothing)
+  val obj = newJsObject();
+  match publicKey
+    Just(it) -> setJsObjectField(obj, "publicKey", it)
+    Nothing -> ()
+  match privateKey
+    Just(it) -> setJsObjectField(obj, "privateKey", it)
+    Nothing -> ()
+
+  CryptoKeyPair(obj);
+
+pub inline fun publicKey(obj: cryptoKeyPair, value: cryptoKey): web ()
+  setJsObjectField(obj.obj, "publicKey", value.obj)
+
+pub inline fun publicKey(obj: cryptoKeyPair): web cryptoKey
+  getJsObjectField(obj.obj, "publicKey")
+
+pub inline fun privateKey(obj: cryptoKeyPair, value: cryptoKey): web ()
+  setJsObjectField(obj.obj, "privateKey", value.obj)
+
+pub inline fun privateKey(obj: cryptoKeyPair): web cryptoKey
+  getJsObjectField(obj.obj, "privateKey")
+
+pub value struct rsaKeyGenParams
+  obj: jsObject
+
+pub fun newRsaKeyGenParams(modulusLength: int, publicExponent: bigInteger)
+  val obj = newJsObject();
+  setJsObjectField(obj, "modulusLength", modulusLength);  setJsObjectField(obj, "publicExponent", publicExponent);
+  RsaKeyGenParams(obj);
+
+pub inline fun modulusLength(obj: rsaKeyGenParams, value: int): web ()
+  setJsObjectField(obj.obj, "modulusLength", value.obj)
+
+pub inline fun modulusLength(obj: rsaKeyGenParams): web int
+  getJsObjectField(obj.obj, "modulusLength")
+
+pub inline fun publicExponent(obj: rsaKeyGenParams, value: bigInteger): web ()
+  setJsObjectField(obj.obj, "publicExponent", value.obj)
+
+pub inline fun publicExponent(obj: rsaKeyGenParams): web bigInteger
+  getJsObjectField(obj.obj, "publicExponent")
+
+pub value struct rsaHashedKeyGenParams
+  obj: jsObject
+
+pub fun newRsaHashedKeyGenParams(hash: hashAlgorithmIdentifier)
+  val obj = newJsObject();
+  setJsObjectField(obj, "hash", hash);
+  RsaHashedKeyGenParams(obj);
+
+pub inline fun hash(obj: rsaHashedKeyGenParams, value: hashAlgorithmIdentifier): web ()
+  setJsObjectField(obj.obj, "hash", value.obj)
+
+pub inline fun hash(obj: rsaHashedKeyGenParams): web hashAlgorithmIdentifier
+  getJsObjectField(obj.obj, "hash")
+
+pub value struct rsaKeyAlgorithm
+  obj: jsObject
+
+pub fun newRsaKeyAlgorithm(modulusLength: int, publicExponent: bigInteger)
+  val obj = newJsObject();
+  setJsObjectField(obj, "modulusLength", modulusLength);  setJsObjectField(obj, "publicExponent", publicExponent);
+  RsaKeyAlgorithm(obj);
+
+pub inline fun modulusLength(obj: rsaKeyAlgorithm, value: int): web ()
+  setJsObjectField(obj.obj, "modulusLength", value.obj)
+
+pub inline fun modulusLength(obj: rsaKeyAlgorithm): web int
+  getJsObjectField(obj.obj, "modulusLength")
+
+pub inline fun publicExponent(obj: rsaKeyAlgorithm, value: bigInteger): web ()
+  setJsObjectField(obj.obj, "publicExponent", value.obj)
+
+pub inline fun publicExponent(obj: rsaKeyAlgorithm): web bigInteger
+  getJsObjectField(obj.obj, "publicExponent")
+
+pub value struct rsaHashedKeyAlgorithm
+  obj: jsObject
+
+pub fun newRsaHashedKeyAlgorithm(hash: keyAlgorithm)
+  val obj = newJsObject();
+  setJsObjectField(obj, "hash", hash);
+  RsaHashedKeyAlgorithm(obj);
+
+pub inline fun hash(obj: rsaHashedKeyAlgorithm, value: keyAlgorithm): web ()
+  setJsObjectField(obj.obj, "hash", value.obj)
+
+pub inline fun hash(obj: rsaHashedKeyAlgorithm): web keyAlgorithm
+  getJsObjectField(obj.obj, "hash")
+
+pub value struct rsaHashedImportParams
+  obj: jsObject
+
+pub fun newRsaHashedImportParams(hash: hashAlgorithmIdentifier)
+  val obj = newJsObject();
+  setJsObjectField(obj, "hash", hash);
+  RsaHashedImportParams(obj);
+
+pub inline fun hash(obj: rsaHashedImportParams, value: hashAlgorithmIdentifier): web ()
+  setJsObjectField(obj.obj, "hash", value.obj)
+
+pub inline fun hash(obj: rsaHashedImportParams): web hashAlgorithmIdentifier
+  getJsObjectField(obj.obj, "hash")
+
+pub value struct rsaPssParams
+  obj: jsObject
+
+pub fun newRsaPssParams(saltLength: int)
+  val obj = newJsObject();
+  setJsObjectField(obj, "saltLength", saltLength);
+  RsaPssParams(obj);
+
+pub inline fun saltLength(obj: rsaPssParams, value: int): web ()
+  setJsObjectField(obj.obj, "saltLength", value.obj)
+
+pub inline fun saltLength(obj: rsaPssParams): web int
+  getJsObjectField(obj.obj, "saltLength")
+
+pub value struct rsaOaepParams
+  obj: jsObject
+
+pub fun newRsaOaepParams(label: maybe<webidl/bufferSource> = Nothing)
+  val obj = newJsObject();
+  match label
+    Just(it) -> setJsObjectField(obj, "label", it)
+    Nothing -> ()
+
+  RsaOaepParams(obj);
+
+pub inline fun label(obj: rsaOaepParams, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "label", value.obj)
+
+pub inline fun label(obj: rsaOaepParams): web webidl/bufferSource
+  getJsObjectField(obj.obj, "label")
+
+pub value struct ecdsaParams
+  obj: jsObject
+
+pub fun newEcdsaParams(hash: hashAlgorithmIdentifier)
+  val obj = newJsObject();
+  setJsObjectField(obj, "hash", hash);
+  EcdsaParams(obj);
+
+pub inline fun hash(obj: ecdsaParams, value: hashAlgorithmIdentifier): web ()
+  setJsObjectField(obj.obj, "hash", value.obj)
+
+pub inline fun hash(obj: ecdsaParams): web hashAlgorithmIdentifier
+  getJsObjectField(obj.obj, "hash")
+
+pub value struct ecKeyGenParams
+  obj: jsObject
+
+pub fun newEcKeyGenParams(namedCurve: namedCurve)
+  val obj = newJsObject();
+  setJsObjectField(obj, "namedCurve", namedCurve);
+  EcKeyGenParams(obj);
+
+pub inline fun namedCurve(obj: ecKeyGenParams, value: namedCurve): web ()
+  setJsObjectField(obj.obj, "namedCurve", value.obj)
+
+pub inline fun namedCurve(obj: ecKeyGenParams): web namedCurve
+  getJsObjectField(obj.obj, "namedCurve")
+
+pub value struct ecKeyAlgorithm
+  obj: jsObject
+
+pub fun newEcKeyAlgorithm(namedCurve: namedCurve)
+  val obj = newJsObject();
+  setJsObjectField(obj, "namedCurve", namedCurve);
+  EcKeyAlgorithm(obj);
+
+pub inline fun namedCurve(obj: ecKeyAlgorithm, value: namedCurve): web ()
+  setJsObjectField(obj.obj, "namedCurve", value.obj)
+
+pub inline fun namedCurve(obj: ecKeyAlgorithm): web namedCurve
+  getJsObjectField(obj.obj, "namedCurve")
+
+pub value struct ecKeyImportParams
+  obj: jsObject
+
+pub fun newEcKeyImportParams(namedCurve: namedCurve)
+  val obj = newJsObject();
+  setJsObjectField(obj, "namedCurve", namedCurve);
+  EcKeyImportParams(obj);
+
+pub inline fun namedCurve(obj: ecKeyImportParams, value: namedCurve): web ()
+  setJsObjectField(obj.obj, "namedCurve", value.obj)
+
+pub inline fun namedCurve(obj: ecKeyImportParams): web namedCurve
+  getJsObjectField(obj.obj, "namedCurve")
+
+pub value struct ecdhKeyDeriveParams
+  obj: jsObject
+
+pub fun newEcdhKeyDeriveParams(public: cryptoKey)
+  val obj = newJsObject();
+  setJsObjectField(obj, "public", public);
+  EcdhKeyDeriveParams(obj);
+
+pub inline fun public(obj: ecdhKeyDeriveParams, value: cryptoKey): web ()
+  setJsObjectField(obj.obj, "public", value.obj)
+
+pub inline fun public(obj: ecdhKeyDeriveParams): web cryptoKey
+  getJsObjectField(obj.obj, "public")
+
+pub value struct aesCtrParams
+  obj: jsObject
+
+pub fun newAesCtrParams(counter: webidl/bufferSource, length: int)
+  val obj = newJsObject();
+  setJsObjectField(obj, "counter", counter);  setJsObjectField(obj, "length", length);
+  AesCtrParams(obj);
+
+pub inline fun counter(obj: aesCtrParams, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "counter", value.obj)
+
+pub inline fun counter(obj: aesCtrParams): web webidl/bufferSource
+  getJsObjectField(obj.obj, "counter")
+
+pub inline fun length(obj: aesCtrParams, value: int): web ()
+  setJsObjectField(obj.obj, "length", value.obj)
+
+pub inline fun length(obj: aesCtrParams): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct aesKeyAlgorithm
+  obj: jsObject
+
+pub fun newAesKeyAlgorithm(length: int)
+  val obj = newJsObject();
+  setJsObjectField(obj, "length", length);
+  AesKeyAlgorithm(obj);
+
+pub inline fun length(obj: aesKeyAlgorithm, value: int): web ()
+  setJsObjectField(obj.obj, "length", value.obj)
+
+pub inline fun length(obj: aesKeyAlgorithm): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct aesKeyGenParams
+  obj: jsObject
+
+pub fun newAesKeyGenParams(length: int)
+  val obj = newJsObject();
+  setJsObjectField(obj, "length", length);
+  AesKeyGenParams(obj);
+
+pub inline fun length(obj: aesKeyGenParams, value: int): web ()
+  setJsObjectField(obj.obj, "length", value.obj)
+
+pub inline fun length(obj: aesKeyGenParams): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct aesDerivedKeyParams
+  obj: jsObject
+
+pub fun newAesDerivedKeyParams(length: int)
+  val obj = newJsObject();
+  setJsObjectField(obj, "length", length);
+  AesDerivedKeyParams(obj);
+
+pub inline fun length(obj: aesDerivedKeyParams, value: int): web ()
+  setJsObjectField(obj.obj, "length", value.obj)
+
+pub inline fun length(obj: aesDerivedKeyParams): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct aesCbcParams
+  obj: jsObject
+
+pub fun newAesCbcParams(iv: webidl/bufferSource)
+  val obj = newJsObject();
+  setJsObjectField(obj, "iv", iv);
+  AesCbcParams(obj);
+
+pub inline fun iv(obj: aesCbcParams, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "iv", value.obj)
+
+pub inline fun iv(obj: aesCbcParams): web webidl/bufferSource
+  getJsObjectField(obj.obj, "iv")
+
+pub value struct aesGcmParams
+  obj: jsObject
+
+pub fun newAesGcmParams(iv: webidl/bufferSource, additionalData: maybe<webidl/bufferSource> = Nothing, tagLength: maybe<int> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "iv", iv);  match additionalData
+    Just(it) -> setJsObjectField(obj, "additionalData", it)
+    Nothing -> ()
+  match tagLength
+    Just(it) -> setJsObjectField(obj, "tagLength", it)
+    Nothing -> ()
+
+  AesGcmParams(obj);
+
+pub inline fun iv(obj: aesGcmParams, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "iv", value.obj)
+
+pub inline fun iv(obj: aesGcmParams): web webidl/bufferSource
+  getJsObjectField(obj.obj, "iv")
+
+pub inline fun additionalData(obj: aesGcmParams, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "additionalData", value.obj)
+
+pub inline fun additionalData(obj: aesGcmParams): web webidl/bufferSource
+  getJsObjectField(obj.obj, "additionalData")
+
+pub inline fun tagLength(obj: aesGcmParams, value: int): web ()
+  setJsObjectField(obj.obj, "tagLength", value.obj)
+
+pub inline fun tagLength(obj: aesGcmParams): web int
+  getJsObjectField(obj.obj, "tagLength")
+
+pub value struct hmacImportParams
+  obj: jsObject
+
+pub fun newHmacImportParams(hash: hashAlgorithmIdentifier, length: maybe<int> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "hash", hash);  match length
+    Just(it) -> setJsObjectField(obj, "length", it)
+    Nothing -> ()
+
+  HmacImportParams(obj);
+
+pub inline fun hash(obj: hmacImportParams, value: hashAlgorithmIdentifier): web ()
+  setJsObjectField(obj.obj, "hash", value.obj)
+
+pub inline fun hash(obj: hmacImportParams): web hashAlgorithmIdentifier
+  getJsObjectField(obj.obj, "hash")
+
+pub inline fun length(obj: hmacImportParams, value: int): web ()
+  setJsObjectField(obj.obj, "length", value.obj)
+
+pub inline fun length(obj: hmacImportParams): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct hmacKeyAlgorithm
+  obj: jsObject
+
+pub fun newHmacKeyAlgorithm(hash: keyAlgorithm, length: int)
+  val obj = newJsObject();
+  setJsObjectField(obj, "hash", hash);  setJsObjectField(obj, "length", length);
+  HmacKeyAlgorithm(obj);
+
+pub inline fun hash(obj: hmacKeyAlgorithm, value: keyAlgorithm): web ()
+  setJsObjectField(obj.obj, "hash", value.obj)
+
+pub inline fun hash(obj: hmacKeyAlgorithm): web keyAlgorithm
+  getJsObjectField(obj.obj, "hash")
+
+pub inline fun length(obj: hmacKeyAlgorithm, value: int): web ()
+  setJsObjectField(obj.obj, "length", value.obj)
+
+pub inline fun length(obj: hmacKeyAlgorithm): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct hmacKeyGenParams
+  obj: jsObject
+
+pub fun newHmacKeyGenParams(hash: hashAlgorithmIdentifier, length: maybe<int> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "hash", hash);  match length
+    Just(it) -> setJsObjectField(obj, "length", it)
+    Nothing -> ()
+
+  HmacKeyGenParams(obj);
+
+pub inline fun hash(obj: hmacKeyGenParams, value: hashAlgorithmIdentifier): web ()
+  setJsObjectField(obj.obj, "hash", value.obj)
+
+pub inline fun hash(obj: hmacKeyGenParams): web hashAlgorithmIdentifier
+  getJsObjectField(obj.obj, "hash")
+
+pub inline fun length(obj: hmacKeyGenParams, value: int): web ()
+  setJsObjectField(obj.obj, "length", value.obj)
+
+pub inline fun length(obj: hmacKeyGenParams): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct hkdfParams
+  obj: jsObject
+
+pub fun newHkdfParams(hash: hashAlgorithmIdentifier, salt: webidl/bufferSource, info: webidl/bufferSource)
+  val obj = newJsObject();
+  setJsObjectField(obj, "hash", hash);  setJsObjectField(obj, "salt", salt);  setJsObjectField(obj, "info", info);
+  HkdfParams(obj);
+
+pub inline fun hash(obj: hkdfParams, value: hashAlgorithmIdentifier): web ()
+  setJsObjectField(obj.obj, "hash", value.obj)
+
+pub inline fun hash(obj: hkdfParams): web hashAlgorithmIdentifier
+  getJsObjectField(obj.obj, "hash")
+
+pub inline fun salt(obj: hkdfParams, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "salt", value.obj)
+
+pub inline fun salt(obj: hkdfParams): web webidl/bufferSource
+  getJsObjectField(obj.obj, "salt")
+
+pub inline fun info(obj: hkdfParams, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "info", value.obj)
+
+pub inline fun info(obj: hkdfParams): web webidl/bufferSource
+  getJsObjectField(obj.obj, "info")
+
+pub value struct pbkdf2Params
+  obj: jsObject
+
+pub fun newPbkdf2Params(salt: webidl/bufferSource, iterations: int, hash: hashAlgorithmIdentifier)
+  val obj = newJsObject();
+  setJsObjectField(obj, "salt", salt);  setJsObjectField(obj, "iterations", iterations);  setJsObjectField(obj, "hash", hash);
+  Pbkdf2Params(obj);
+
+pub inline fun salt(obj: pbkdf2Params, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "salt", value.obj)
+
+pub inline fun salt(obj: pbkdf2Params): web webidl/bufferSource
+  getJsObjectField(obj.obj, "salt")
+
+pub inline fun iterations(obj: pbkdf2Params, value: int): web ()
+  setJsObjectField(obj.obj, "iterations", value.obj)
+
+pub inline fun iterations(obj: pbkdf2Params): web int
+  getJsObjectField(obj.obj, "iterations")
+
+pub inline fun hash(obj: pbkdf2Params, value: hashAlgorithmIdentifier): web ()
+  setJsObjectField(obj.obj, "hash", value.obj)
+
+pub inline fun hash(obj: pbkdf2Params): web hashAlgorithmIdentifier
+  getJsObjectField(obj.obj, "hash")
+

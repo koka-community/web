@@ -1,119 +1,166 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias XRHitTestTrackableType = String
-struct XRHitTestOptionsInit
-{  space: webxr.kk/XRSpace,
-  entityTypes: dart:js_interop/JSArray,
-  offsetRay: XRRay
-}
-pub extern newXRHitTestOptionsInit([space: webxr.kk/XRSpace, entityTypes: maybe<dart:js_interop/JSArray> = Nothing, offsetRay: maybe<XRRay> = Nothing])
-()
+pub alias xrHitTestTrackableType = string;
 
-pub extern setspace(this: js_object, value: webxr.kk/XRSpace): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getspace(this: js_object): web webxr.kk/XRSpace
-	c inline "getObjectField(#1, \"space\")"
-pub extern setentityTypes(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getentityTypes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"entityTypes\")"
-pub extern setoffsetRay(this: js_object, value: XRRay): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoffsetRay(this: js_object): web XRRay
-	c inline "getObjectField(#1, \"offsetRay\")"
-struct XRTransientInputHitTestOptionsInit
-{  profile: String,
-  entityTypes: dart:js_interop/JSArray,
-  offsetRay: XRRay
-}
-pub extern newXRTransientInputHitTestOptionsInit([profile: String, entityTypes: maybe<dart:js_interop/JSArray> = Nothing, offsetRay: maybe<XRRay> = Nothing])
-()
+pub value struct xrHitTestOptionsInit
+  obj: jsObject
 
-pub extern setprofile(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprofile(this: js_object): web String
-	c inline "getObjectField(#1, \"profile\")"
-pub extern setentityTypes(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getentityTypes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"entityTypes\")"
-pub extern setoffsetRay(this: js_object, value: XRRay): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoffsetRay(this: js_object): web XRRay
-	c inline "getObjectField(#1, \"offsetRay\")"
-struct XRHitTestSource
-{
-}
+pub fun newXrHitTestOptionsInit(space: webxr/xrSpace, entityTypes: maybe<jsArray> = Nothing, offsetRay: maybe<xrRay> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "space", space);  match entityTypes
+    Just(it) -> setJsObjectField(obj, "entityTypes", it)
+    Nothing -> ()
+  match offsetRay
+    Just(it) -> setJsObjectField(obj, "offsetRay", it)
+    Nothing -> ()
 
-()
+  XrHitTestOptionsInit(obj);
 
-pub extern cancel(this: js_object, [], [])
-struct XRTransientInputHitTestSource
-{
-}
+pub inline fun space(obj: xrHitTestOptionsInit, value: webxr/xrSpace): web ()
+  setJsObjectField(obj.obj, "space", value.obj)
 
-()
+pub inline fun space(obj: xrHitTestOptionsInit): web webxr/xrSpace
+  getJsObjectField(obj.obj, "space")
 
-pub extern cancel(this: js_object, [], [])
-struct XRHitTestResult
-{
-}
+pub inline fun entityTypes(obj: xrHitTestOptionsInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "entityTypes", value.obj)
 
-()
+pub inline fun entityTypes(obj: xrHitTestOptionsInit): web jsArray
+  getJsObjectField(obj.obj, "entityTypes")
 
-pub extern createAnchor(this: js_object, [], [])
-pub extern getPose(this: js_object, [baseSpace: webxr.kk/XRSpace], [])
-struct XRTransientInputHitTestResult
-{,
+pub inline fun offsetRay(obj: xrHitTestOptionsInit, value: xrRay): web ()
+  setJsObjectField(obj.obj, "offsetRay", value.obj)
 
-}
+pub inline fun offsetRay(obj: xrHitTestOptionsInit): web xrRay
+  getJsObjectField(obj.obj, "offsetRay")
 
-()
+pub value struct xrTransientInputHitTestOptionsInit
+  obj: jsObject
 
-pub extern getinputSource(this: js_object): web webxr.kk/XRInputSource
-	c inline "getObjectField(#1, \"inputSource\")"
-pub extern getresults(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"results\")"
-struct XRRayDirectionInit
-{  x: double,
-  y: double,
-  z: double,
-  w: double
-}
-pub extern newXRRayDirectionInit([x: maybe<double> = Nothing, y: maybe<double> = Nothing, z: maybe<double> = Nothing, w: maybe<double> = Nothing])
-()
+pub fun newXrTransientInputHitTestOptionsInit(profile: string, entityTypes: maybe<jsArray> = Nothing, offsetRay: maybe<xrRay> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "profile", profile);  match entityTypes
+    Just(it) -> setJsObjectField(obj, "entityTypes", it)
+    Nothing -> ()
+  match offsetRay
+    Just(it) -> setJsObjectField(obj, "offsetRay", it)
+    Nothing -> ()
 
-pub extern setx(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getx(this: js_object): web double
-	c inline "getObjectField(#1, \"x\")"
-pub extern sety(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gety(this: js_object): web double
-	c inline "getObjectField(#1, \"y\")"
-pub extern setz(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getz(this: js_object): web double
-	c inline "getObjectField(#1, \"z\")"
-pub extern setw(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getw(this: js_object): web double
-	c inline "getObjectField(#1, \"w\")"
-struct XRRay
-{,
-,
+  XrTransientInputHitTestOptionsInit(obj);
 
-}
-pub extern newXRRay([], [originOrTransform: maybe<dart:js_interop/JSAny>, direction: XRRayDirectionInit])
-()
+pub inline fun profile(obj: xrTransientInputHitTestOptionsInit, value: string): web ()
+  setJsObjectField(obj.obj, "profile", value.obj)
 
-pub extern getorigin(this: js_object): web geometry.kk/DOMPointReadOnly
-	c inline "getObjectField(#1, \"origin\")"
-pub extern getdirection(this: js_object): web geometry.kk/DOMPointReadOnly
-	c inline "getObjectField(#1, \"direction\")"
-pub extern getmatrix(this: js_object): web dart:js_interop/JSFloat32Array
-	c inline "getObjectField(#1, \"matrix\")"
+pub inline fun profile(obj: xrTransientInputHitTestOptionsInit): web string
+  getJsObjectField(obj.obj, "profile")
+
+pub inline fun entityTypes(obj: xrTransientInputHitTestOptionsInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "entityTypes", value.obj)
+
+pub inline fun entityTypes(obj: xrTransientInputHitTestOptionsInit): web jsArray
+  getJsObjectField(obj.obj, "entityTypes")
+
+pub inline fun offsetRay(obj: xrTransientInputHitTestOptionsInit, value: xrRay): web ()
+  setJsObjectField(obj.obj, "offsetRay", value.obj)
+
+pub inline fun offsetRay(obj: xrTransientInputHitTestOptionsInit): web xrRay
+  getJsObjectField(obj.obj, "offsetRay")
+
+pub value struct xrHitTestSource
+  obj: jsObject
+
+
+pub inline fun cancel(obj: xrHitTestSource): web ()
+  jsOperation2(obj.obj, "cancel")
+
+pub value struct xrTransientInputHitTestSource
+  obj: jsObject
+
+
+pub inline fun cancel(obj: xrTransientInputHitTestSource): web ()
+  jsOperation2(obj.obj, "cancel")
+
+pub value struct xrHitTestResult
+  obj: jsObject
+
+
+pub inline fun createAnchor(obj: xrHitTestResult): web jsPromise
+  jsOperation2(obj.obj, "createAnchor")
+
+pub inline fun getPose(obj: xrHitTestResult, baseSpace': webxr/xrSpace): web maybe<webxr/xrPose>
+  jsOperation3(obj.obj, "getPose", baseSpace'.obj)
+
+pub value struct xrTransientInputHitTestResult
+  obj: jsObject
+
+
+pub inline fun inputSource(obj: xrTransientInputHitTestResult): web webxr/xrInputSource
+  getJsObjectField(obj.obj, "inputSource")
+
+pub inline fun results(obj: xrTransientInputHitTestResult): web jsArray
+  getJsObjectField(obj.obj, "results")
+
+pub value struct xrRayDirectionInit
+  obj: jsObject
+
+pub fun newXrRayDirectionInit(x: maybe<double> = Nothing, y: maybe<double> = Nothing, z: maybe<double> = Nothing, w: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match x
+    Just(it) -> setJsObjectField(obj, "x", it)
+    Nothing -> ()
+  match y
+    Just(it) -> setJsObjectField(obj, "y", it)
+    Nothing -> ()
+  match z
+    Just(it) -> setJsObjectField(obj, "z", it)
+    Nothing -> ()
+  match w
+    Just(it) -> setJsObjectField(obj, "w", it)
+    Nothing -> ()
+
+  XrRayDirectionInit(obj);
+
+pub inline fun x(obj: xrRayDirectionInit, value: double): web ()
+  setJsObjectField(obj.obj, "x", value.obj)
+
+pub inline fun x(obj: xrRayDirectionInit): web double
+  getJsObjectField(obj.obj, "x")
+
+pub inline fun y(obj: xrRayDirectionInit, value: double): web ()
+  setJsObjectField(obj.obj, "y", value.obj)
+
+pub inline fun y(obj: xrRayDirectionInit): web double
+  getJsObjectField(obj.obj, "y")
+
+pub inline fun z(obj: xrRayDirectionInit, value: double): web ()
+  setJsObjectField(obj.obj, "z", value.obj)
+
+pub inline fun z(obj: xrRayDirectionInit): web double
+  getJsObjectField(obj.obj, "z")
+
+pub inline fun w(obj: xrRayDirectionInit, value: double): web ()
+  setJsObjectField(obj.obj, "w", value.obj)
+
+pub inline fun w(obj: xrRayDirectionInit): web double
+  getJsObjectField(obj.obj, "w")
+
+pub value struct xrRay
+  obj: jsObject
+
+pub inline fun newXrRay(originOrTransform': maybe<jsObject>, direction': xrRayDirectionInit)
+  newJsObject2("XrRay", originOrTransform', direction')"
+
+pub inline fun origin(obj: xrRay): web geometry/domPointReadOnly
+  getJsObjectField(obj.obj, "origin")
+
+pub inline fun direction(obj: xrRay): web geometry/domPointReadOnly
+  getJsObjectField(obj.obj, "direction")
+
+pub inline fun matrix(obj: xrRay): web jsFloat32Array
+  getJsObjectField(obj.obj, "matrix")
+

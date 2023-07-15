@@ -1,24 +1,26 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct XRAnchor
-{
-}
+pub value struct xrAnchor
+  obj: jsObject
 
-()
 
-pub extern requestPersistentHandle(this: js_object, [], [])
-pub extern delete(this: js_object, [], [])
-pub extern getanchorSpace(this: js_object): web webxr.kk/XRSpace
-	c inline "getObjectField(#1, \"anchorSpace\")"
-struct XRAnchorSet
-{
-}
+pub inline fun requestPersistentHandle(obj: xrAnchor): web jsPromise
+  jsOperation2(obj.obj, "requestPersistentHandle")
 
-()
+pub inline fun delete(obj: xrAnchor): web ()
+  jsOperation2(obj.obj, "delete")
+
+pub inline fun anchorSpace(obj: xrAnchor): web webxr/xrSpace
+  getJsObjectField(obj.obj, "anchorSpace")
+
+pub value struct xrAnchorSet
+  obj: jsObject
+
 
 

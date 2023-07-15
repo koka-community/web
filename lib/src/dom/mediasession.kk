@@ -1,142 +1,223 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
-alias MediaSessionActionHandler = JSFunction
+pub alias mediaSessionActionHandler = jsFunction;
 
-alias MediaSessionPlaybackState = String
-alias MediaSessionAction = String
-struct MediaSession
-{,
 
-}
+pub alias mediaSessionPlaybackState = string;
 
-()
 
-pub extern setActionHandler(this: js_object, [action: MediaSessionAction, handler: maybe<MediaSessionActionHandler> =  Nothing], [])
-pub extern setPositionState(this: js_object, [], [state: MediaPositionState])
-pub extern setMicrophoneActive(this: js_object, [active: bool], [])
-pub extern setCameraActive(this: js_object, [active: bool], [])
-pub extern setmetadata(this: js_object, value: maybe<MediaMetadata>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmetadata(this: js_object): web maybe<MediaMetadata>
-	c inline "getObjectField(#1, \"metadata\")"
-pub extern setplaybackState(this: js_object, value: MediaSessionPlaybackState): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getplaybackState(this: js_object): web MediaSessionPlaybackState
-	c inline "getObjectField(#1, \"playbackState\")"
-struct MediaMetadata
-{,
-,
-,
+pub alias mediaSessionAction = string;
 
-}
-pub extern newMediaMetadata([], [init: MediaMetadataInit])
-()
+pub value struct mediaSession
+  obj: jsObject
 
-pub extern settitle(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettitle(this: js_object): web String
-	c inline "getObjectField(#1, \"title\")"
-pub extern setartist(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getartist(this: js_object): web String
-	c inline "getObjectField(#1, \"artist\")"
-pub extern setalbum(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalbum(this: js_object): web String
-	c inline "getObjectField(#1, \"album\")"
-pub extern setartwork(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getartwork(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"artwork\")"
-struct MediaMetadataInit
-{  title: String,
-  artist: String,
-  album: String,
-  artwork: dart:js_interop/JSArray
-}
-pub extern newMediaMetadataInit([title: maybe<String> = Nothing, artist: maybe<String> = Nothing, album: maybe<String> = Nothing, artwork: maybe<dart:js_interop/JSArray> = Nothing])
-()
 
-pub extern settitle(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettitle(this: js_object): web String
-	c inline "getObjectField(#1, \"title\")"
-pub extern setartist(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getartist(this: js_object): web String
-	c inline "getObjectField(#1, \"artist\")"
-pub extern setalbum(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalbum(this: js_object): web String
-	c inline "getObjectField(#1, \"album\")"
-pub extern setartwork(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getartwork(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"artwork\")"
-struct MediaImage
-{  src: String,
-  sizes: String,
-  type: String
-}
-pub extern newMediaImage([src: String, sizes: maybe<String> = Nothing, type: maybe<String> = Nothing])
-()
+pub inline fun setActionHandler(obj: mediaSession, action': mediaSessionAction, handler': maybe<mediaSessionActionHandler> =  Nothing): web ()
+  jsOperation4(obj.obj, "setActionHandler", action'.obj, handler'.obj)
 
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern setsizes(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsizes(this: js_object): web String
-	c inline "getObjectField(#1, \"sizes\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-struct MediaPositionState
-{  duration: double,
-  playbackRate: double,
-  position: double
-}
-pub extern newMediaPositionState([duration: maybe<double> = Nothing, playbackRate: maybe<double> = Nothing, position: maybe<double> = Nothing])
-()
+pub inline fun setPositionState(obj: mediaSession, state': mediaPositionState): web ()
+  jsOperation3(obj.obj, "setPositionState", state'.obj)
 
-pub extern setduration(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getduration(this: js_object): web double
-	c inline "getObjectField(#1, \"duration\")"
-pub extern setplaybackRate(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getplaybackRate(this: js_object): web double
-	c inline "getObjectField(#1, \"playbackRate\")"
-pub extern setposition(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getposition(this: js_object): web double
-	c inline "getObjectField(#1, \"position\")"
-struct MediaSessionActionDetails
-{  action: MediaSessionAction,
-  seekOffset: double,
-  seekTime: double,
-  fastSeek: bool
-}
-pub extern newMediaSessionActionDetails([action: MediaSessionAction, seekOffset: maybe<double> = Nothing, seekTime: maybe<double> = Nothing, fastSeek: maybe<bool> = Nothing])
-()
+pub inline fun setMicrophoneActive(obj: mediaSession, active': bool): web ()
+  jsOperation3(obj.obj, "setMicrophoneActive", active'.obj)
 
-pub extern setaction(this: js_object, value: MediaSessionAction): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaction(this: js_object): web MediaSessionAction
-	c inline "getObjectField(#1, \"action\")"
-pub extern setseekOffset(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getseekOffset(this: js_object): web double
-	c inline "getObjectField(#1, \"seekOffset\")"
-pub extern setseekTime(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getseekTime(this: js_object): web double
-	c inline "getObjectField(#1, \"seekTime\")"
-pub extern setfastSeek(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfastSeek(this: js_object): web bool
-	c inline "getObjectField(#1, \"fastSeek\")"
+pub inline fun setCameraActive(obj: mediaSession, active': bool): web ()
+  jsOperation3(obj.obj, "setCameraActive", active'.obj)
+
+pub inline fun metadata(obj: mediaSession, value: maybe<mediaMetadata>): web ()
+  setJsObjectField(obj.obj, "metadata", value.obj)
+
+pub inline fun metadata(obj: mediaSession): web maybe<mediaMetadata>
+  getJsObjectField(obj.obj, "metadata")
+
+pub inline fun playbackState(obj: mediaSession, value: mediaSessionPlaybackState): web ()
+  setJsObjectField(obj.obj, "playbackState", value.obj)
+
+pub inline fun playbackState(obj: mediaSession): web mediaSessionPlaybackState
+  getJsObjectField(obj.obj, "playbackState")
+
+pub value struct mediaMetadata
+  obj: jsObject
+
+pub inline fun newMediaMetadata(init': mediaMetadataInit)
+  newJsObject1("MediaMetadata", init')"
+
+pub inline fun title(obj: mediaMetadata, value: string): web ()
+  setJsObjectField(obj.obj, "title", value.obj)
+
+pub inline fun title(obj: mediaMetadata): web string
+  getJsObjectField(obj.obj, "title")
+
+pub inline fun artist(obj: mediaMetadata, value: string): web ()
+  setJsObjectField(obj.obj, "artist", value.obj)
+
+pub inline fun artist(obj: mediaMetadata): web string
+  getJsObjectField(obj.obj, "artist")
+
+pub inline fun album(obj: mediaMetadata, value: string): web ()
+  setJsObjectField(obj.obj, "album", value.obj)
+
+pub inline fun album(obj: mediaMetadata): web string
+  getJsObjectField(obj.obj, "album")
+
+pub inline fun artwork(obj: mediaMetadata, value: jsArray): web ()
+  setJsObjectField(obj.obj, "artwork", value.obj)
+
+pub inline fun artwork(obj: mediaMetadata): web jsArray
+  getJsObjectField(obj.obj, "artwork")
+
+pub value struct mediaMetadataInit
+  obj: jsObject
+
+pub fun newMediaMetadataInit(title: maybe<string> = Nothing, artist: maybe<string> = Nothing, album: maybe<string> = Nothing, artwork: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match title
+    Just(it) -> setJsObjectField(obj, "title", it)
+    Nothing -> ()
+  match artist
+    Just(it) -> setJsObjectField(obj, "artist", it)
+    Nothing -> ()
+  match album
+    Just(it) -> setJsObjectField(obj, "album", it)
+    Nothing -> ()
+  match artwork
+    Just(it) -> setJsObjectField(obj, "artwork", it)
+    Nothing -> ()
+
+  MediaMetadataInit(obj);
+
+pub inline fun title(obj: mediaMetadataInit, value: string): web ()
+  setJsObjectField(obj.obj, "title", value.obj)
+
+pub inline fun title(obj: mediaMetadataInit): web string
+  getJsObjectField(obj.obj, "title")
+
+pub inline fun artist(obj: mediaMetadataInit, value: string): web ()
+  setJsObjectField(obj.obj, "artist", value.obj)
+
+pub inline fun artist(obj: mediaMetadataInit): web string
+  getJsObjectField(obj.obj, "artist")
+
+pub inline fun album(obj: mediaMetadataInit, value: string): web ()
+  setJsObjectField(obj.obj, "album", value.obj)
+
+pub inline fun album(obj: mediaMetadataInit): web string
+  getJsObjectField(obj.obj, "album")
+
+pub inline fun artwork(obj: mediaMetadataInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "artwork", value.obj)
+
+pub inline fun artwork(obj: mediaMetadataInit): web jsArray
+  getJsObjectField(obj.obj, "artwork")
+
+pub value struct mediaImage
+  obj: jsObject
+
+pub fun newMediaImage(src: string, sizes: maybe<string> = Nothing, type: maybe<string> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "src", src);  match sizes
+    Just(it) -> setJsObjectField(obj, "sizes", it)
+    Nothing -> ()
+  match type
+    Just(it) -> setJsObjectField(obj, "type", it)
+    Nothing -> ()
+
+  MediaImage(obj);
+
+pub inline fun src(obj: mediaImage, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: mediaImage): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun sizes(obj: mediaImage, value: string): web ()
+  setJsObjectField(obj.obj, "sizes", value.obj)
+
+pub inline fun sizes(obj: mediaImage): web string
+  getJsObjectField(obj.obj, "sizes")
+
+pub inline fun type(obj: mediaImage, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: mediaImage): web string
+  getJsObjectField(obj.obj, "type")
+
+pub value struct mediaPositionState
+  obj: jsObject
+
+pub fun newMediaPositionState(duration: maybe<double> = Nothing, playbackRate: maybe<double> = Nothing, position: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match duration
+    Just(it) -> setJsObjectField(obj, "duration", it)
+    Nothing -> ()
+  match playbackRate
+    Just(it) -> setJsObjectField(obj, "playbackRate", it)
+    Nothing -> ()
+  match position
+    Just(it) -> setJsObjectField(obj, "position", it)
+    Nothing -> ()
+
+  MediaPositionState(obj);
+
+pub inline fun duration(obj: mediaPositionState, value: double): web ()
+  setJsObjectField(obj.obj, "duration", value.obj)
+
+pub inline fun duration(obj: mediaPositionState): web double
+  getJsObjectField(obj.obj, "duration")
+
+pub inline fun playbackRate(obj: mediaPositionState, value: double): web ()
+  setJsObjectField(obj.obj, "playbackRate", value.obj)
+
+pub inline fun playbackRate(obj: mediaPositionState): web double
+  getJsObjectField(obj.obj, "playbackRate")
+
+pub inline fun position(obj: mediaPositionState, value: double): web ()
+  setJsObjectField(obj.obj, "position", value.obj)
+
+pub inline fun position(obj: mediaPositionState): web double
+  getJsObjectField(obj.obj, "position")
+
+pub value struct mediaSessionActionDetails
+  obj: jsObject
+
+pub fun newMediaSessionActionDetails(action: mediaSessionAction, seekOffset: maybe<double> = Nothing, seekTime: maybe<double> = Nothing, fastSeek: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "action", action);  match seekOffset
+    Just(it) -> setJsObjectField(obj, "seekOffset", it)
+    Nothing -> ()
+  match seekTime
+    Just(it) -> setJsObjectField(obj, "seekTime", it)
+    Nothing -> ()
+  match fastSeek
+    Just(it) -> setJsObjectField(obj, "fastSeek", it)
+    Nothing -> ()
+
+  MediaSessionActionDetails(obj);
+
+pub inline fun action(obj: mediaSessionActionDetails, value: mediaSessionAction): web ()
+  setJsObjectField(obj.obj, "action", value.obj)
+
+pub inline fun action(obj: mediaSessionActionDetails): web mediaSessionAction
+  getJsObjectField(obj.obj, "action")
+
+pub inline fun seekOffset(obj: mediaSessionActionDetails, value: double): web ()
+  setJsObjectField(obj.obj, "seekOffset", value.obj)
+
+pub inline fun seekOffset(obj: mediaSessionActionDetails): web double
+  getJsObjectField(obj.obj, "seekOffset")
+
+pub inline fun seekTime(obj: mediaSessionActionDetails, value: double): web ()
+  setJsObjectField(obj.obj, "seekTime", value.obj)
+
+pub inline fun seekTime(obj: mediaSessionActionDetails): web double
+  getJsObjectField(obj.obj, "seekTime")
+
+pub inline fun fastSeek(obj: mediaSessionActionDetails, value: bool): web ()
+  setJsObjectField(obj.obj, "fastSeek", value.obj)
+
+pub inline fun fastSeek(obj: mediaSessionActionDetails): web bool
+  getJsObjectField(obj.obj, "fastSeek")
+

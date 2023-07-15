@@ -1,172 +1,269 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias ParityType = String
-alias FlowControlType = String
-struct Serial
-{,
+pub alias parityType = string;
 
-}
 
-()
+pub alias flowControlType = string;
 
-pub extern getPorts(this: js_object, [], [])
-pub extern requestPort(this: js_object, [], [options: SerialPortRequestOptions])
-pub extern setonconnect(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonconnect(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onconnect\")"
-pub extern setondisconnect(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondisconnect(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"ondisconnect\")"
-struct SerialPortRequestOptions
-{  filters: dart:js_interop/JSArray
-}
-pub extern newSerialPortRequestOptions([filters: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub value struct serial
+  obj: jsObject
 
-pub extern setfilters(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfilters(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"filters\")"
-struct SerialPortFilter
-{  usbVendorId: int,
-  usbProductId: int
-}
-pub extern newSerialPortFilter([usbVendorId: maybe<int> = Nothing, usbProductId: maybe<int> = Nothing])
-()
 
-pub extern setusbVendorId(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusbVendorId(this: js_object): web int
-	c inline "getObjectField(#1, \"usbVendorId\")"
-pub extern setusbProductId(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusbProductId(this: js_object): web int
-	c inline "getObjectField(#1, \"usbProductId\")"
-struct SerialPort
-{,
-,
-,
+pub inline fun getPorts(obj: serial): web jsPromise
+  jsOperation2(obj.obj, "getPorts")
 
-}
+pub inline fun requestPort(obj: serial, options': serialPortRequestOptions): web jsPromise
+  jsOperation3(obj.obj, "requestPort", options'.obj)
 
-()
+pub inline fun onconnect(obj: serial, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onconnect", value.obj)
 
-pub extern getInfo(this: js_object, [], [])
-pub extern open(this: js_object, [options: SerialOptions], [])
-pub extern setSignals(this: js_object, [], [signals: SerialOutputSignals])
-pub extern getSignals(this: js_object, [], [])
-pub extern close(this: js_object, [], [])
-pub extern forget(this: js_object, [], [])
-pub extern setonconnect(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonconnect(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onconnect\")"
-pub extern setondisconnect(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondisconnect(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"ondisconnect\")"
-pub extern getreadable(this: js_object): web streams.kk/ReadableStream
-	c inline "getObjectField(#1, \"readable\")"
-pub extern getwritable(this: js_object): web streams.kk/WritableStream
-	c inline "getObjectField(#1, \"writable\")"
-struct SerialPortInfo
-{  usbVendorId: int,
-  usbProductId: int
-}
-pub extern newSerialPortInfo([usbVendorId: maybe<int> = Nothing, usbProductId: maybe<int> = Nothing])
-()
+pub inline fun onconnect(obj: serial): web html/eventHandler
+  getJsObjectField(obj.obj, "onconnect")
 
-pub extern setusbVendorId(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusbVendorId(this: js_object): web int
-	c inline "getObjectField(#1, \"usbVendorId\")"
-pub extern setusbProductId(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusbProductId(this: js_object): web int
-	c inline "getObjectField(#1, \"usbProductId\")"
-struct SerialOptions
-{  baudRate: int,
-  dataBits: int,
-  stopBits: int,
-  parity: ParityType,
-  bufferSize: int,
-  flowControl: FlowControlType
-}
-pub extern newSerialOptions([baudRate: int, dataBits: maybe<int> = Nothing, stopBits: maybe<int> = Nothing, parity: maybe<ParityType> = Nothing, bufferSize: maybe<int> = Nothing, flowControl: maybe<FlowControlType> = Nothing])
-()
+pub inline fun ondisconnect(obj: serial, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "ondisconnect", value.obj)
 
-pub extern setbaudRate(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbaudRate(this: js_object): web int
-	c inline "getObjectField(#1, \"baudRate\")"
-pub extern setdataBits(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdataBits(this: js_object): web int
-	c inline "getObjectField(#1, \"dataBits\")"
-pub extern setstopBits(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstopBits(this: js_object): web int
-	c inline "getObjectField(#1, \"stopBits\")"
-pub extern setparity(this: js_object, value: ParityType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getparity(this: js_object): web ParityType
-	c inline "getObjectField(#1, \"parity\")"
-pub extern setbufferSize(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbufferSize(this: js_object): web int
-	c inline "getObjectField(#1, \"bufferSize\")"
-pub extern setflowControl(this: js_object, value: FlowControlType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getflowControl(this: js_object): web FlowControlType
-	c inline "getObjectField(#1, \"flowControl\")"
-struct SerialOutputSignals
-{  dataTerminalReady: bool,
-  requestToSend: bool,
-  break: bool
-}
-pub extern newSerialOutputSignals([dataTerminalReady: maybe<bool> = Nothing, requestToSend: maybe<bool> = Nothing, break_: maybe<bool> = Nothing])
-()
+pub inline fun ondisconnect(obj: serial): web html/eventHandler
+  getJsObjectField(obj.obj, "ondisconnect")
 
-pub extern setdataTerminalReady(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdataTerminalReady(this: js_object): web bool
-	c inline "getObjectField(#1, \"dataTerminalReady\")"
-pub extern setrequestToSend(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequestToSend(this: js_object): web bool
-	c inline "getObjectField(#1, \"requestToSend\")"
-pub extern setbreak(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbreak(this: js_object): web bool
-	c inline "getObjectField(#1, \"break_\")"
-struct SerialInputSignals
-{  dataCarrierDetect: bool,
-  clearToSend: bool,
-  ringIndicator: bool,
-  dataSetReady: bool
-}
-pub extern newSerialInputSignals([dataCarrierDetect: bool, clearToSend: bool, ringIndicator: bool, dataSetReady: bool])
-()
+pub value struct serialPortRequestOptions
+  obj: jsObject
 
-pub extern setdataCarrierDetect(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdataCarrierDetect(this: js_object): web bool
-	c inline "getObjectField(#1, \"dataCarrierDetect\")"
-pub extern setclearToSend(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclearToSend(this: js_object): web bool
-	c inline "getObjectField(#1, \"clearToSend\")"
-pub extern setringIndicator(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getringIndicator(this: js_object): web bool
-	c inline "getObjectField(#1, \"ringIndicator\")"
-pub extern setdataSetReady(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdataSetReady(this: js_object): web bool
-	c inline "getObjectField(#1, \"dataSetReady\")"
+pub fun newSerialPortRequestOptions(filters: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match filters
+    Just(it) -> setJsObjectField(obj, "filters", it)
+    Nothing -> ()
+
+  SerialPortRequestOptions(obj);
+
+pub inline fun filters(obj: serialPortRequestOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "filters", value.obj)
+
+pub inline fun filters(obj: serialPortRequestOptions): web jsArray
+  getJsObjectField(obj.obj, "filters")
+
+pub value struct serialPortFilter
+  obj: jsObject
+
+pub fun newSerialPortFilter(usbVendorId: maybe<int> = Nothing, usbProductId: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match usbVendorId
+    Just(it) -> setJsObjectField(obj, "usbVendorId", it)
+    Nothing -> ()
+  match usbProductId
+    Just(it) -> setJsObjectField(obj, "usbProductId", it)
+    Nothing -> ()
+
+  SerialPortFilter(obj);
+
+pub inline fun usbVendorId(obj: serialPortFilter, value: int): web ()
+  setJsObjectField(obj.obj, "usbVendorId", value.obj)
+
+pub inline fun usbVendorId(obj: serialPortFilter): web int
+  getJsObjectField(obj.obj, "usbVendorId")
+
+pub inline fun usbProductId(obj: serialPortFilter, value: int): web ()
+  setJsObjectField(obj.obj, "usbProductId", value.obj)
+
+pub inline fun usbProductId(obj: serialPortFilter): web int
+  getJsObjectField(obj.obj, "usbProductId")
+
+pub value struct serialPort
+  obj: jsObject
+
+
+pub inline fun getInfo(obj: serialPort): web serialPortInfo
+  jsOperation2(obj.obj, "getInfo")
+
+pub inline fun open(obj: serialPort, options': serialOptions): web jsPromise
+  jsOperation3(obj.obj, "open", options'.obj)
+
+pub inline fun setSignals(obj: serialPort, signals': serialOutputSignals): web jsPromise
+  jsOperation3(obj.obj, "setSignals", signals'.obj)
+
+pub inline fun getSignals(obj: serialPort): web jsPromise
+  jsOperation2(obj.obj, "getSignals")
+
+pub inline fun close(obj: serialPort): web jsPromise
+  jsOperation2(obj.obj, "close")
+
+pub inline fun forget(obj: serialPort): web jsPromise
+  jsOperation2(obj.obj, "forget")
+
+pub inline fun onconnect(obj: serialPort, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onconnect", value.obj)
+
+pub inline fun onconnect(obj: serialPort): web html/eventHandler
+  getJsObjectField(obj.obj, "onconnect")
+
+pub inline fun ondisconnect(obj: serialPort, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "ondisconnect", value.obj)
+
+pub inline fun ondisconnect(obj: serialPort): web html/eventHandler
+  getJsObjectField(obj.obj, "ondisconnect")
+
+pub inline fun readable(obj: serialPort): web streams/readableStream
+  getJsObjectField(obj.obj, "readable")
+
+pub inline fun writable(obj: serialPort): web streams/writableStream
+  getJsObjectField(obj.obj, "writable")
+
+pub value struct serialPortInfo
+  obj: jsObject
+
+pub fun newSerialPortInfo(usbVendorId: maybe<int> = Nothing, usbProductId: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match usbVendorId
+    Just(it) -> setJsObjectField(obj, "usbVendorId", it)
+    Nothing -> ()
+  match usbProductId
+    Just(it) -> setJsObjectField(obj, "usbProductId", it)
+    Nothing -> ()
+
+  SerialPortInfo(obj);
+
+pub inline fun usbVendorId(obj: serialPortInfo, value: int): web ()
+  setJsObjectField(obj.obj, "usbVendorId", value.obj)
+
+pub inline fun usbVendorId(obj: serialPortInfo): web int
+  getJsObjectField(obj.obj, "usbVendorId")
+
+pub inline fun usbProductId(obj: serialPortInfo, value: int): web ()
+  setJsObjectField(obj.obj, "usbProductId", value.obj)
+
+pub inline fun usbProductId(obj: serialPortInfo): web int
+  getJsObjectField(obj.obj, "usbProductId")
+
+pub value struct serialOptions
+  obj: jsObject
+
+pub fun newSerialOptions(baudRate: int, dataBits: maybe<int> = Nothing, stopBits: maybe<int> = Nothing, parity: maybe<parityType> = Nothing, bufferSize: maybe<int> = Nothing, flowControl: maybe<flowControlType> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "baudRate", baudRate);  match dataBits
+    Just(it) -> setJsObjectField(obj, "dataBits", it)
+    Nothing -> ()
+  match stopBits
+    Just(it) -> setJsObjectField(obj, "stopBits", it)
+    Nothing -> ()
+  match parity
+    Just(it) -> setJsObjectField(obj, "parity", it)
+    Nothing -> ()
+  match bufferSize
+    Just(it) -> setJsObjectField(obj, "bufferSize", it)
+    Nothing -> ()
+  match flowControl
+    Just(it) -> setJsObjectField(obj, "flowControl", it)
+    Nothing -> ()
+
+  SerialOptions(obj);
+
+pub inline fun baudRate(obj: serialOptions, value: int): web ()
+  setJsObjectField(obj.obj, "baudRate", value.obj)
+
+pub inline fun baudRate(obj: serialOptions): web int
+  getJsObjectField(obj.obj, "baudRate")
+
+pub inline fun dataBits(obj: serialOptions, value: int): web ()
+  setJsObjectField(obj.obj, "dataBits", value.obj)
+
+pub inline fun dataBits(obj: serialOptions): web int
+  getJsObjectField(obj.obj, "dataBits")
+
+pub inline fun stopBits(obj: serialOptions, value: int): web ()
+  setJsObjectField(obj.obj, "stopBits", value.obj)
+
+pub inline fun stopBits(obj: serialOptions): web int
+  getJsObjectField(obj.obj, "stopBits")
+
+pub inline fun parity(obj: serialOptions, value: parityType): web ()
+  setJsObjectField(obj.obj, "parity", value.obj)
+
+pub inline fun parity(obj: serialOptions): web parityType
+  getJsObjectField(obj.obj, "parity")
+
+pub inline fun bufferSize(obj: serialOptions, value: int): web ()
+  setJsObjectField(obj.obj, "bufferSize", value.obj)
+
+pub inline fun bufferSize(obj: serialOptions): web int
+  getJsObjectField(obj.obj, "bufferSize")
+
+pub inline fun flowControl(obj: serialOptions, value: flowControlType): web ()
+  setJsObjectField(obj.obj, "flowControl", value.obj)
+
+pub inline fun flowControl(obj: serialOptions): web flowControlType
+  getJsObjectField(obj.obj, "flowControl")
+
+pub value struct serialOutputSignals
+  obj: jsObject
+
+pub fun newSerialOutputSignals(dataTerminalReady: maybe<bool> = Nothing, requestToSend: maybe<bool> = Nothing, break_: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match dataTerminalReady
+    Just(it) -> setJsObjectField(obj, "dataTerminalReady", it)
+    Nothing -> ()
+  match requestToSend
+    Just(it) -> setJsObjectField(obj, "requestToSend", it)
+    Nothing -> ()
+  match break_
+    Just(it) -> setJsObjectField(obj, "break_", it)
+    Nothing -> ()
+
+  SerialOutputSignals(obj);
+
+pub inline fun dataTerminalReady(obj: serialOutputSignals, value: bool): web ()
+  setJsObjectField(obj.obj, "dataTerminalReady", value.obj)
+
+pub inline fun dataTerminalReady(obj: serialOutputSignals): web bool
+  getJsObjectField(obj.obj, "dataTerminalReady")
+
+pub inline fun requestToSend(obj: serialOutputSignals, value: bool): web ()
+  setJsObjectField(obj.obj, "requestToSend", value.obj)
+
+pub inline fun requestToSend(obj: serialOutputSignals): web bool
+  getJsObjectField(obj.obj, "requestToSend")
+
+pub inline fun break(obj: serialOutputSignals, value: bool): web ()
+  setJsObjectField(obj.obj, "break_", value.obj)
+
+pub inline fun break(obj: serialOutputSignals): web bool
+  getJsObjectField(obj.obj, "break_")
+
+pub value struct serialInputSignals
+  obj: jsObject
+
+pub fun newSerialInputSignals(dataCarrierDetect: bool, clearToSend: bool, ringIndicator: bool, dataSetReady: bool)
+  val obj = newJsObject();
+  setJsObjectField(obj, "dataCarrierDetect", dataCarrierDetect);  setJsObjectField(obj, "clearToSend", clearToSend);  setJsObjectField(obj, "ringIndicator", ringIndicator);  setJsObjectField(obj, "dataSetReady", dataSetReady);
+  SerialInputSignals(obj);
+
+pub inline fun dataCarrierDetect(obj: serialInputSignals, value: bool): web ()
+  setJsObjectField(obj.obj, "dataCarrierDetect", value.obj)
+
+pub inline fun dataCarrierDetect(obj: serialInputSignals): web bool
+  getJsObjectField(obj.obj, "dataCarrierDetect")
+
+pub inline fun clearToSend(obj: serialInputSignals, value: bool): web ()
+  setJsObjectField(obj.obj, "clearToSend", value.obj)
+
+pub inline fun clearToSend(obj: serialInputSignals): web bool
+  getJsObjectField(obj.obj, "clearToSend")
+
+pub inline fun ringIndicator(obj: serialInputSignals, value: bool): web ()
+  setJsObjectField(obj.obj, "ringIndicator", value.obj)
+
+pub inline fun ringIndicator(obj: serialInputSignals): web bool
+  getJsObjectField(obj.obj, "ringIndicator")
+
+pub inline fun dataSetReady(obj: serialInputSignals, value: bool): web ()
+  setJsObjectField(obj.obj, "dataSetReady", value.obj)
+
+pub inline fun dataSetReady(obj: serialInputSignals): web bool
+  getJsObjectField(obj.obj, "dataSetReady")
+

@@ -1,25 +1,34 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct ContentVisibilityAutoStateChangeEvent
-{
-}
-pub extern newContentVisibilityAutoStateChangeEvent([type: String], [eventInitDict: ContentVisibilityAutoStateChangeEventInit])
-()
+pub value struct contentVisibilityAutoStateChangeEvent
+  obj: jsObject
 
-pub extern getskipped(this: js_object): web bool
-	c inline "getObjectField(#1, \"skipped\")"
-struct ContentVisibilityAutoStateChangeEventInit
-{  skipped: bool
-}
-pub extern newContentVisibilityAutoStateChangeEventInit([skipped: maybe<bool> = Nothing])
-()
+pub inline fun newContentVisibilityAutoStateChangeEvent(type': string, eventInitDict': contentVisibilityAutoStateChangeEventInit)
+  newJsObject2("ContentVisibilityAutoStateChangeEvent", type', eventInitDict')"
 
-pub extern setskipped(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getskipped(this: js_object): web bool
-	c inline "getObjectField(#1, \"skipped\")"
+pub inline fun skipped(obj: contentVisibilityAutoStateChangeEvent): web bool
+  getJsObjectField(obj.obj, "skipped")
+
+pub value struct contentVisibilityAutoStateChangeEventInit
+  obj: jsObject
+
+pub fun newContentVisibilityAutoStateChangeEventInit(skipped: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match skipped
+    Just(it) -> setJsObjectField(obj, "skipped", it)
+    Nothing -> ()
+
+  ContentVisibilityAutoStateChangeEventInit(obj);
+
+pub inline fun skipped(obj: contentVisibilityAutoStateChangeEventInit, value: bool): web ()
+  setJsObjectField(obj.obj, "skipped", value.obj)
+
+pub inline fun skipped(obj: contentVisibilityAutoStateChangeEventInit): web bool
+  getJsObjectField(obj.obj, "skipped")
+

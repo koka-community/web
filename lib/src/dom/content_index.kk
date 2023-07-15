@@ -1,69 +1,95 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias ContentCategory = String
-struct ContentDescription
-{  id: String,
-  title: String,
-  description: String,
-  category: ContentCategory,
-  icons: dart:js_interop/JSArray,
-  url: String
-}
-pub extern newContentDescription([id: String, title: String, description: String, category: maybe<ContentCategory> = Nothing, icons: maybe<dart:js_interop/JSArray> = Nothing, url: String])
-()
+pub alias contentCategory = string;
 
-pub extern setid(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern settitle(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettitle(this: js_object): web String
-	c inline "getObjectField(#1, \"title\")"
-pub extern setdescription(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdescription(this: js_object): web String
-	c inline "getObjectField(#1, \"description\")"
-pub extern setcategory(this: js_object, value: ContentCategory): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcategory(this: js_object): web ContentCategory
-	c inline "getObjectField(#1, \"category\")"
-pub extern seticons(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geticons(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"icons\")"
-pub extern seturl(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
-struct ContentIndex
-{
-}
+pub value struct contentDescription
+  obj: jsObject
 
-()
+pub fun newContentDescription(id: string, title: string, description: string, category: maybe<contentCategory> = Nothing, icons: maybe<jsArray> = Nothing, url: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "id", id);  setJsObjectField(obj, "title", title);  setJsObjectField(obj, "description", description);  match category
+    Just(it) -> setJsObjectField(obj, "category", it)
+    Nothing -> ()
+  match icons
+    Just(it) -> setJsObjectField(obj, "icons", it)
+    Nothing -> ()
+  setJsObjectField(obj, "url", url);
+  ContentDescription(obj);
 
-pub extern add(this: js_object, [description: ContentDescription], [])
-pub extern delete(this: js_object, [id: String], [])
-pub extern getAll(this: js_object, [], [])
-struct ContentIndexEventInit
-{  id: String
-}
-pub extern newContentIndexEventInit([id: String])
-()
+pub inline fun id(obj: contentDescription, value: string): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
 
-pub extern setid(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-struct ContentIndexEvent
-{
-}
-pub extern newContentIndexEvent([type: String, init: ContentIndexEventInit], [])
-()
+pub inline fun id(obj: contentDescription): web string
+  getJsObjectField(obj.obj, "id")
 
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
+pub inline fun title(obj: contentDescription, value: string): web ()
+  setJsObjectField(obj.obj, "title", value.obj)
+
+pub inline fun title(obj: contentDescription): web string
+  getJsObjectField(obj.obj, "title")
+
+pub inline fun description(obj: contentDescription, value: string): web ()
+  setJsObjectField(obj.obj, "description", value.obj)
+
+pub inline fun description(obj: contentDescription): web string
+  getJsObjectField(obj.obj, "description")
+
+pub inline fun category(obj: contentDescription, value: contentCategory): web ()
+  setJsObjectField(obj.obj, "category", value.obj)
+
+pub inline fun category(obj: contentDescription): web contentCategory
+  getJsObjectField(obj.obj, "category")
+
+pub inline fun icons(obj: contentDescription, value: jsArray): web ()
+  setJsObjectField(obj.obj, "icons", value.obj)
+
+pub inline fun icons(obj: contentDescription): web jsArray
+  getJsObjectField(obj.obj, "icons")
+
+pub inline fun url(obj: contentDescription, value: string): web ()
+  setJsObjectField(obj.obj, "url", value.obj)
+
+pub inline fun url(obj: contentDescription): web string
+  getJsObjectField(obj.obj, "url")
+
+pub value struct contentIndex
+  obj: jsObject
+
+
+pub inline fun add(obj: contentIndex, description': contentDescription): web jsPromise
+  jsOperation3(obj.obj, "add", description'.obj)
+
+pub inline fun delete(obj: contentIndex, id': string): web jsPromise
+  jsOperation3(obj.obj, "delete", id'.obj)
+
+pub inline fun getAll(obj: contentIndex): web jsPromise
+  jsOperation2(obj.obj, "getAll")
+
+pub value struct contentIndexEventInit
+  obj: jsObject
+
+pub fun newContentIndexEventInit(id: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "id", id);
+  ContentIndexEventInit(obj);
+
+pub inline fun id(obj: contentIndexEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: contentIndexEventInit): web string
+  getJsObjectField(obj.obj, "id")
+
+pub value struct contentIndexEvent
+  obj: jsObject
+
+pub inline fun newContentIndexEvent(type': string, init': contentIndexEventInit)
+  newJsObject2("ContentIndexEvent", type', init')"
+
+pub inline fun id(obj: contentIndexEvent): web string
+  getJsObjectField(obj.obj, "id")
+

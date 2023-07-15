@@ -1,203 +1,309 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias PasswordCredentialInit = JSAny
+import web/wasm
+pub alias passwordCredentialInit = JSAny;
 
 
-alias CredentialMediationRequirement = String
-struct Credential
-{,
 
-}
+pub alias credentialMediationRequirement = string;
 
-(pub extern isConditionalMediationAvailable( [], []))
+pub value struct credential
+  obj: jsObject
 
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-struct CredentialUserData
-{,
+pub inline fun isConditionalMediationAvailable(): web jsPromise
+  jsOperation1("isConditionalMediationAvailable")
 
-}
+pub inline fun id(obj: credential): web string
+  getJsObjectField(obj.obj, "id")
 
-()
+pub inline fun type(obj: credential): web string
+  getJsObjectField(obj.obj, "type")
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern geticonURL(this: js_object): web String
-	c inline "getObjectField(#1, \"iconURL\")"
-struct CredentialsContainer
-{
-}
+pub value struct credentialUserData
+  obj: jsObject
 
-()
 
-pub extern get(this: js_object, [], [options: CredentialRequestOptions])
-pub extern store(this: js_object, [credential: Credential], [])
-pub extern create(this: js_object, [], [options: CredentialCreationOptions])
-pub extern preventSilentAccess(this: js_object, [], [])
-struct CredentialData
-{  id: String
-}
-pub extern newCredentialData([id: String])
-()
+pub inline fun name(obj: credentialUserData): web string
+  getJsObjectField(obj.obj, "name")
 
-pub extern setid(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-struct CredentialRequestOptions
-{  identity: fedcm.kk/IdentityCredentialRequestOptions,
-  mediation: CredentialMediationRequirement,
-  signal: dom.kk/AbortSignal,
-  password: bool,
-  federated: FederatedCredentialRequestOptions,
-  otp: web_otp.kk/OTPCredentialRequestOptions,
-  publicKey: webauthn.kk/PublicKeyCredentialRequestOptions
-}
-pub extern newCredentialRequestOptions([identity: maybe<fedcm.kk/IdentityCredentialRequestOptions> = Nothing, mediation: maybe<CredentialMediationRequirement> = Nothing, signal: maybe<dom.kk/AbortSignal> = Nothing, password: maybe<bool> = Nothing, federated: maybe<FederatedCredentialRequestOptions> = Nothing, otp: maybe<web_otp.kk/OTPCredentialRequestOptions> = Nothing, publicKey: maybe<webauthn.kk/PublicKeyCredentialRequestOptions> = Nothing])
-()
+pub inline fun iconURL(obj: credentialUserData): web string
+  getJsObjectField(obj.obj, "iconURL")
 
-pub extern setidentity(this: js_object, value: fedcm.kk/IdentityCredentialRequestOptions): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getidentity(this: js_object): web fedcm.kk/IdentityCredentialRequestOptions
-	c inline "getObjectField(#1, \"identity\")"
-pub extern setmediation(this: js_object, value: CredentialMediationRequirement): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmediation(this: js_object): web CredentialMediationRequirement
-	c inline "getObjectField(#1, \"mediation\")"
-pub extern setsignal(this: js_object, value: dom.kk/AbortSignal): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsignal(this: js_object): web dom.kk/AbortSignal
-	c inline "getObjectField(#1, \"signal\")"
-pub extern setpassword(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpassword(this: js_object): web bool
-	c inline "getObjectField(#1, \"password\")"
-pub extern setfederated(this: js_object, value: FederatedCredentialRequestOptions): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfederated(this: js_object): web FederatedCredentialRequestOptions
-	c inline "getObjectField(#1, \"federated\")"
-pub extern setotp(this: js_object, value: web_otp.kk/OTPCredentialRequestOptions): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getotp(this: js_object): web web_otp.kk/OTPCredentialRequestOptions
-	c inline "getObjectField(#1, \"otp\")"
-pub extern setpublicKey(this: js_object, value: webauthn.kk/PublicKeyCredentialRequestOptions): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpublicKey(this: js_object): web webauthn.kk/PublicKeyCredentialRequestOptions
-	c inline "getObjectField(#1, \"publicKey\")"
-struct CredentialCreationOptions
-{  signal: dom.kk/AbortSignal,
-  password: PasswordCredentialInit,
-  federated: FederatedCredentialInit,
-  publicKey: webauthn.kk/PublicKeyCredentialCreationOptions
-}
-pub extern newCredentialCreationOptions([signal: maybe<dom.kk/AbortSignal> = Nothing, password: maybe<PasswordCredentialInit> = Nothing, federated: maybe<FederatedCredentialInit> = Nothing, publicKey: maybe<webauthn.kk/PublicKeyCredentialCreationOptions> = Nothing])
-()
+pub value struct credentialsContainer
+  obj: jsObject
 
-pub extern setsignal(this: js_object, value: dom.kk/AbortSignal): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsignal(this: js_object): web dom.kk/AbortSignal
-	c inline "getObjectField(#1, \"signal\")"
-pub extern setpassword(this: js_object, value: PasswordCredentialInit): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpassword(this: js_object): web PasswordCredentialInit
-	c inline "getObjectField(#1, \"password\")"
-pub extern setfederated(this: js_object, value: FederatedCredentialInit): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfederated(this: js_object): web FederatedCredentialInit
-	c inline "getObjectField(#1, \"federated\")"
-pub extern setpublicKey(this: js_object, value: webauthn.kk/PublicKeyCredentialCreationOptions): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpublicKey(this: js_object): web webauthn.kk/PublicKeyCredentialCreationOptions
-	c inline "getObjectField(#1, \"publicKey\")"
-struct PasswordCredential
-{
-}
-pub extern newPasswordCredential([dataOrForm: maybe<dart:js_interop/JSAny>], [])
-()
 
-pub extern getpassword(this: js_object): web String
-	c inline "getObjectField(#1, \"password\")"
-struct PasswordCredentialData
-{  name: String,
-  iconURL: String,
-  origin: String,
-  password: String
-}
-pub extern newPasswordCredentialData([name: maybe<String> = Nothing, iconURL: maybe<String> = Nothing, origin: String, password: String])
-()
+pub inline fun get(obj: credentialsContainer, options': credentialRequestOptions): web jsPromise
+  jsOperation3(obj.obj, "get", options'.obj)
 
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern seticonURL(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geticonURL(this: js_object): web String
-	c inline "getObjectField(#1, \"iconURL\")"
-pub extern setorigin(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getorigin(this: js_object): web String
-	c inline "getObjectField(#1, \"origin\")"
-pub extern setpassword(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpassword(this: js_object): web String
-	c inline "getObjectField(#1, \"password\")"
-struct FederatedCredential
-{,
+pub inline fun store(obj: credentialsContainer, credential': credential): web jsPromise
+  jsOperation3(obj.obj, "store", credential'.obj)
 
-}
-pub extern newFederatedCredential([data: FederatedCredentialInit], [])
-()
+pub inline fun create(obj: credentialsContainer, options': credentialCreationOptions): web jsPromise
+  jsOperation3(obj.obj, "create", options'.obj)
 
-pub extern getprovider(this: js_object): web String
-	c inline "getObjectField(#1, \"provider\")"
-pub extern getprotocol(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"protocol\")"
-struct FederatedCredentialRequestOptions
-{  providers: dart:js_interop/JSArray,
-  protocols: dart:js_interop/JSArray
-}
-pub extern newFederatedCredentialRequestOptions([providers: maybe<dart:js_interop/JSArray> = Nothing, protocols: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun preventSilentAccess(obj: credentialsContainer): web jsPromise
+  jsOperation2(obj.obj, "preventSilentAccess")
 
-pub extern setproviders(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getproviders(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"providers\")"
-pub extern setprotocols(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprotocols(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"protocols\")"
-struct FederatedCredentialInit
-{  name: String,
-  iconURL: String,
-  origin: String,
-  provider: String,
-  protocol: String
-}
-pub extern newFederatedCredentialInit([name: maybe<String> = Nothing, iconURL: maybe<String> = Nothing, origin: String, provider: String, protocol: maybe<String> = Nothing])
-()
+pub value struct credentialData
+  obj: jsObject
 
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern seticonURL(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geticonURL(this: js_object): web String
-	c inline "getObjectField(#1, \"iconURL\")"
-pub extern setorigin(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getorigin(this: js_object): web String
-	c inline "getObjectField(#1, \"origin\")"
-pub extern setprovider(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprovider(this: js_object): web String
-	c inline "getObjectField(#1, \"provider\")"
-pub extern setprotocol(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprotocol(this: js_object): web String
-	c inline "getObjectField(#1, \"protocol\")"
+pub fun newCredentialData(id: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "id", id);
+  CredentialData(obj);
+
+pub inline fun id(obj: credentialData, value: string): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: credentialData): web string
+  getJsObjectField(obj.obj, "id")
+
+pub value struct credentialRequestOptions
+  obj: jsObject
+
+pub fun newCredentialRequestOptions(identity: maybe<fedcm/identityCredentialRequestOptions> = Nothing, mediation: maybe<credentialMediationRequirement> = Nothing, signal: maybe<dom/abortSignal> = Nothing, password: maybe<bool> = Nothing, federated: maybe<federatedCredentialRequestOptions> = Nothing, otp: maybe<web_otp/otpCredentialRequestOptions> = Nothing, publicKey: maybe<webauthn/publicKeyCredentialRequestOptions> = Nothing)
+  val obj = newJsObject();
+  match identity
+    Just(it) -> setJsObjectField(obj, "identity", it)
+    Nothing -> ()
+  match mediation
+    Just(it) -> setJsObjectField(obj, "mediation", it)
+    Nothing -> ()
+  match signal
+    Just(it) -> setJsObjectField(obj, "signal", it)
+    Nothing -> ()
+  match password
+    Just(it) -> setJsObjectField(obj, "password", it)
+    Nothing -> ()
+  match federated
+    Just(it) -> setJsObjectField(obj, "federated", it)
+    Nothing -> ()
+  match otp
+    Just(it) -> setJsObjectField(obj, "otp", it)
+    Nothing -> ()
+  match publicKey
+    Just(it) -> setJsObjectField(obj, "publicKey", it)
+    Nothing -> ()
+
+  CredentialRequestOptions(obj);
+
+pub inline fun identity(obj: credentialRequestOptions, value: fedcm/identityCredentialRequestOptions): web ()
+  setJsObjectField(obj.obj, "identity", value.obj)
+
+pub inline fun identity(obj: credentialRequestOptions): web fedcm/identityCredentialRequestOptions
+  getJsObjectField(obj.obj, "identity")
+
+pub inline fun mediation(obj: credentialRequestOptions, value: credentialMediationRequirement): web ()
+  setJsObjectField(obj.obj, "mediation", value.obj)
+
+pub inline fun mediation(obj: credentialRequestOptions): web credentialMediationRequirement
+  getJsObjectField(obj.obj, "mediation")
+
+pub inline fun signal(obj: credentialRequestOptions, value: dom/abortSignal): web ()
+  setJsObjectField(obj.obj, "signal", value.obj)
+
+pub inline fun signal(obj: credentialRequestOptions): web dom/abortSignal
+  getJsObjectField(obj.obj, "signal")
+
+pub inline fun password(obj: credentialRequestOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "password", value.obj)
+
+pub inline fun password(obj: credentialRequestOptions): web bool
+  getJsObjectField(obj.obj, "password")
+
+pub inline fun federated(obj: credentialRequestOptions, value: federatedCredentialRequestOptions): web ()
+  setJsObjectField(obj.obj, "federated", value.obj)
+
+pub inline fun federated(obj: credentialRequestOptions): web federatedCredentialRequestOptions
+  getJsObjectField(obj.obj, "federated")
+
+pub inline fun otp(obj: credentialRequestOptions, value: web_otp/otpCredentialRequestOptions): web ()
+  setJsObjectField(obj.obj, "otp", value.obj)
+
+pub inline fun otp(obj: credentialRequestOptions): web web_otp/otpCredentialRequestOptions
+  getJsObjectField(obj.obj, "otp")
+
+pub inline fun publicKey(obj: credentialRequestOptions, value: webauthn/publicKeyCredentialRequestOptions): web ()
+  setJsObjectField(obj.obj, "publicKey", value.obj)
+
+pub inline fun publicKey(obj: credentialRequestOptions): web webauthn/publicKeyCredentialRequestOptions
+  getJsObjectField(obj.obj, "publicKey")
+
+pub value struct credentialCreationOptions
+  obj: jsObject
+
+pub fun newCredentialCreationOptions(signal: maybe<dom/abortSignal> = Nothing, password: maybe<passwordCredentialInit> = Nothing, federated: maybe<federatedCredentialInit> = Nothing, publicKey: maybe<webauthn/publicKeyCredentialCreationOptions> = Nothing)
+  val obj = newJsObject();
+  match signal
+    Just(it) -> setJsObjectField(obj, "signal", it)
+    Nothing -> ()
+  match password
+    Just(it) -> setJsObjectField(obj, "password", it)
+    Nothing -> ()
+  match federated
+    Just(it) -> setJsObjectField(obj, "federated", it)
+    Nothing -> ()
+  match publicKey
+    Just(it) -> setJsObjectField(obj, "publicKey", it)
+    Nothing -> ()
+
+  CredentialCreationOptions(obj);
+
+pub inline fun signal(obj: credentialCreationOptions, value: dom/abortSignal): web ()
+  setJsObjectField(obj.obj, "signal", value.obj)
+
+pub inline fun signal(obj: credentialCreationOptions): web dom/abortSignal
+  getJsObjectField(obj.obj, "signal")
+
+pub inline fun password(obj: credentialCreationOptions, value: passwordCredentialInit): web ()
+  setJsObjectField(obj.obj, "password", value.obj)
+
+pub inline fun password(obj: credentialCreationOptions): web passwordCredentialInit
+  getJsObjectField(obj.obj, "password")
+
+pub inline fun federated(obj: credentialCreationOptions, value: federatedCredentialInit): web ()
+  setJsObjectField(obj.obj, "federated", value.obj)
+
+pub inline fun federated(obj: credentialCreationOptions): web federatedCredentialInit
+  getJsObjectField(obj.obj, "federated")
+
+pub inline fun publicKey(obj: credentialCreationOptions, value: webauthn/publicKeyCredentialCreationOptions): web ()
+  setJsObjectField(obj.obj, "publicKey", value.obj)
+
+pub inline fun publicKey(obj: credentialCreationOptions): web webauthn/publicKeyCredentialCreationOptions
+  getJsObjectField(obj.obj, "publicKey")
+
+pub value struct passwordCredential
+  obj: jsObject
+
+pub inline fun newPasswordCredential(dataOrForm': maybe<jsObject>)
+  newJsObject1("PasswordCredential", dataOrForm')"
+
+pub inline fun password(obj: passwordCredential): web string
+  getJsObjectField(obj.obj, "password")
+
+pub value struct passwordCredentialData
+  obj: jsObject
+
+pub fun newPasswordCredentialData(name: maybe<string> = Nothing, iconURL: maybe<string> = Nothing, origin: string, password: string)
+  val obj = newJsObject();
+  match name
+    Just(it) -> setJsObjectField(obj, "name", it)
+    Nothing -> ()
+  match iconURL
+    Just(it) -> setJsObjectField(obj, "iconURL", it)
+    Nothing -> ()
+  setJsObjectField(obj, "origin", origin);  setJsObjectField(obj, "password", password);
+  PasswordCredentialData(obj);
+
+pub inline fun name(obj: passwordCredentialData, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: passwordCredentialData): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun iconURL(obj: passwordCredentialData, value: string): web ()
+  setJsObjectField(obj.obj, "iconURL", value.obj)
+
+pub inline fun iconURL(obj: passwordCredentialData): web string
+  getJsObjectField(obj.obj, "iconURL")
+
+pub inline fun origin(obj: passwordCredentialData, value: string): web ()
+  setJsObjectField(obj.obj, "origin", value.obj)
+
+pub inline fun origin(obj: passwordCredentialData): web string
+  getJsObjectField(obj.obj, "origin")
+
+pub inline fun password(obj: passwordCredentialData, value: string): web ()
+  setJsObjectField(obj.obj, "password", value.obj)
+
+pub inline fun password(obj: passwordCredentialData): web string
+  getJsObjectField(obj.obj, "password")
+
+pub value struct federatedCredential
+  obj: jsObject
+
+pub inline fun newFederatedCredential(data': federatedCredentialInit)
+  newJsObject1("FederatedCredential", data')"
+
+pub inline fun provider(obj: federatedCredential): web string
+  getJsObjectField(obj.obj, "provider")
+
+pub inline fun protocol(obj: federatedCredential): web maybe<string>
+  getJsObjectField(obj.obj, "protocol")
+
+pub value struct federatedCredentialRequestOptions
+  obj: jsObject
+
+pub fun newFederatedCredentialRequestOptions(providers: maybe<jsArray> = Nothing, protocols: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match providers
+    Just(it) -> setJsObjectField(obj, "providers", it)
+    Nothing -> ()
+  match protocols
+    Just(it) -> setJsObjectField(obj, "protocols", it)
+    Nothing -> ()
+
+  FederatedCredentialRequestOptions(obj);
+
+pub inline fun providers(obj: federatedCredentialRequestOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "providers", value.obj)
+
+pub inline fun providers(obj: federatedCredentialRequestOptions): web jsArray
+  getJsObjectField(obj.obj, "providers")
+
+pub inline fun protocols(obj: federatedCredentialRequestOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "protocols", value.obj)
+
+pub inline fun protocols(obj: federatedCredentialRequestOptions): web jsArray
+  getJsObjectField(obj.obj, "protocols")
+
+pub value struct federatedCredentialInit
+  obj: jsObject
+
+pub fun newFederatedCredentialInit(name: maybe<string> = Nothing, iconURL: maybe<string> = Nothing, origin: string, provider: string, protocol: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match name
+    Just(it) -> setJsObjectField(obj, "name", it)
+    Nothing -> ()
+  match iconURL
+    Just(it) -> setJsObjectField(obj, "iconURL", it)
+    Nothing -> ()
+  setJsObjectField(obj, "origin", origin);  setJsObjectField(obj, "provider", provider);  match protocol
+    Just(it) -> setJsObjectField(obj, "protocol", it)
+    Nothing -> ()
+
+  FederatedCredentialInit(obj);
+
+pub inline fun name(obj: federatedCredentialInit, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: federatedCredentialInit): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun iconURL(obj: federatedCredentialInit, value: string): web ()
+  setJsObjectField(obj.obj, "iconURL", value.obj)
+
+pub inline fun iconURL(obj: federatedCredentialInit): web string
+  getJsObjectField(obj.obj, "iconURL")
+
+pub inline fun origin(obj: federatedCredentialInit, value: string): web ()
+  setJsObjectField(obj.obj, "origin", value.obj)
+
+pub inline fun origin(obj: federatedCredentialInit): web string
+  getJsObjectField(obj.obj, "origin")
+
+pub inline fun provider(obj: federatedCredentialInit, value: string): web ()
+  setJsObjectField(obj.obj, "provider", value.obj)
+
+pub inline fun provider(obj: federatedCredentialInit): web string
+  getJsObjectField(obj.obj, "provider")
+
+pub inline fun protocol(obj: federatedCredentialInit, value: string): web ()
+  setJsObjectField(obj.obj, "protocol", value.obj)
+
+pub inline fun protocol(obj: federatedCredentialInit): web string
+  getJsObjectField(obj.obj, "protocol")
+

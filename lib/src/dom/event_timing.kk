@@ -1,35 +1,35 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct PerformanceEventTiming
-{,
-,
-,
-,
+pub value struct performanceEventTiming
+  obj: jsObject
 
-}
 
-()
+pub inline fun toJSON(obj: performanceEventTiming): web jsObject
+  jsOperation2(obj.obj, "toJSON")
 
-pub extern toJSON(this: js_object, [], [])
-pub extern getprocessingStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"processingStart\")"
-pub extern getprocessingEnd(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"processingEnd\")"
-pub extern getcancelable(this: js_object): web bool
-	c inline "getObjectField(#1, \"cancelable\")"
-pub extern gettarget(this: js_object): web maybe<dom.kk/Node>
-	c inline "getObjectField(#1, \"target\")"
-pub extern getinteractionId(this: js_object): web int
-	c inline "getObjectField(#1, \"interactionId\")"
-struct EventCounts
-{
-}
+pub inline fun processingStart(obj: performanceEventTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "processingStart")
 
-()
+pub inline fun processingEnd(obj: performanceEventTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "processingEnd")
+
+pub inline fun cancelable(obj: performanceEventTiming): web bool
+  getJsObjectField(obj.obj, "cancelable")
+
+pub inline fun target(obj: performanceEventTiming): web maybe<dom/node>
+  getJsObjectField(obj.obj, "target")
+
+pub inline fun interactionId(obj: performanceEventTiming): web int
+  getJsObjectField(obj.obj, "interactionId")
+
+pub value struct eventCounts
+  obj: jsObject
+
 
 

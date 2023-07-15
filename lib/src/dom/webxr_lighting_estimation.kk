@@ -1,44 +1,52 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias XRReflectionFormat = String
-struct XRLightProbe
-{,
+pub alias xrReflectionFormat = string;
 
-}
+pub value struct xrLightProbe
+  obj: jsObject
 
-()
 
-pub extern getprobeSpace(this: js_object): web webxr.kk/XRSpace
-	c inline "getObjectField(#1, \"probeSpace\")"
-pub extern setonreflectionchange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonreflectionchange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onreflectionchange\")"
-struct XRLightEstimate
-{,
-,
+pub inline fun probeSpace(obj: xrLightProbe): web webxr/xrSpace
+  getJsObjectField(obj.obj, "probeSpace")
 
-}
+pub inline fun onreflectionchange(obj: xrLightProbe, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onreflectionchange", value.obj)
 
-()
+pub inline fun onreflectionchange(obj: xrLightProbe): web html/eventHandler
+  getJsObjectField(obj.obj, "onreflectionchange")
 
-pub extern getsphericalHarmonicsCoefficients(this: js_object): web dart:js_interop/JSFloat32Array
-	c inline "getObjectField(#1, \"sphericalHarmonicsCoefficients\")"
-pub extern getprimaryLightDirection(this: js_object): web geometry.kk/DOMPointReadOnly
-	c inline "getObjectField(#1, \"primaryLightDirection\")"
-pub extern getprimaryLightIntensity(this: js_object): web geometry.kk/DOMPointReadOnly
-	c inline "getObjectField(#1, \"primaryLightIntensity\")"
-struct XRLightProbeInit
-{  reflectionFormat: XRReflectionFormat
-}
-pub extern newXRLightProbeInit([reflectionFormat: maybe<XRReflectionFormat> = Nothing])
-()
+pub value struct xrLightEstimate
+  obj: jsObject
 
-pub extern setreflectionFormat(this: js_object, value: XRReflectionFormat): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreflectionFormat(this: js_object): web XRReflectionFormat
-	c inline "getObjectField(#1, \"reflectionFormat\")"
+
+pub inline fun sphericalHarmonicsCoefficients(obj: xrLightEstimate): web jsFloat32Array
+  getJsObjectField(obj.obj, "sphericalHarmonicsCoefficients")
+
+pub inline fun primaryLightDirection(obj: xrLightEstimate): web geometry/domPointReadOnly
+  getJsObjectField(obj.obj, "primaryLightDirection")
+
+pub inline fun primaryLightIntensity(obj: xrLightEstimate): web geometry/domPointReadOnly
+  getJsObjectField(obj.obj, "primaryLightIntensity")
+
+pub value struct xrLightProbeInit
+  obj: jsObject
+
+pub fun newXrLightProbeInit(reflectionFormat: maybe<xrReflectionFormat> = Nothing)
+  val obj = newJsObject();
+  match reflectionFormat
+    Just(it) -> setJsObjectField(obj, "reflectionFormat", it)
+    Nothing -> ()
+
+  XrLightProbeInit(obj);
+
+pub inline fun reflectionFormat(obj: xrLightProbeInit, value: xrReflectionFormat): web ()
+  setJsObjectField(obj.obj, "reflectionFormat", value.obj)
+
+pub inline fun reflectionFormat(obj: xrLightProbeInit): web xrReflectionFormat
+  getJsObjectField(obj.obj, "reflectionFormat")
+

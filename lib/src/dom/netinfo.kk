@@ -1,42 +1,48 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias Megabit = double
-alias Millisecond = int
+import web/wasm
+pub alias megabit = double;
 
 
-alias ConnectionType = String
-alias EffectiveConnectionType = String
-struct NavigatorNetworkInformation
-{
-}
+pub alias millisecond = int;
 
-()
 
-pub extern getconnection(this: js_object): web NetworkInformation
-	c inline "getObjectField(#1, \"connection\")"
-struct NetworkInformation
-{,
-,
-,
-,
-,
 
-}
+pub alias connectionType = string;
 
-()
 
-pub extern gettype(this: js_object): web ConnectionType
-	c inline "getObjectField(#1, \"type\")"
-pub extern geteffectiveType(this: js_object): web EffectiveConnectionType
-	c inline "getObjectField(#1, \"effectiveType\")"
-pub extern getdownlinkMax(this: js_object): web Megabit
-	c inline "getObjectField(#1, \"downlinkMax\")"
-pub extern getdownlink(this: js_object): web Megabit
-	c inline "getObjectField(#1, \"downlink\")"
-pub extern getrtt(this: js_object): web Millisecond
-	c inline "getObjectField(#1, \"rtt\")"
-pub extern setonchange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonchange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onchange\")"
+pub alias effectiveConnectionType = string;
+
+pub value struct navigatorNetworkInformation
+  obj: jsObject
+
+
+pub inline fun connection(obj: navigatorNetworkInformation): web networkInformation
+  getJsObjectField(obj.obj, "connection")
+
+pub value struct networkInformation
+  obj: jsObject
+
+
+pub inline fun type(obj: networkInformation): web connectionType
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun effectiveType(obj: networkInformation): web effectiveConnectionType
+  getJsObjectField(obj.obj, "effectiveType")
+
+pub inline fun downlinkMax(obj: networkInformation): web megabit
+  getJsObjectField(obj.obj, "downlinkMax")
+
+pub inline fun downlink(obj: networkInformation): web megabit
+  getJsObjectField(obj.obj, "downlink")
+
+pub inline fun rtt(obj: networkInformation): web millisecond
+  getJsObjectField(obj.obj, "rtt")
+
+pub inline fun onchange(obj: networkInformation, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onchange", value.obj)
+
+pub inline fun onchange(obj: networkInformation): web html/eventHandler
+  getJsObjectField(obj.obj, "onchange")
+

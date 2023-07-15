@@ -1,224 +1,343 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias PaymentComplete = String
-struct PaymentRequest
-{,
+pub alias paymentComplete = string;
 
-}
-pub extern newPaymentRequest([methodData: dart:js_interop/JSArray, details: PaymentDetailsInit], [])
-(pub extern isSecurePaymentConfirmationAvailable( [], []))
+pub value struct paymentRequest
+  obj: jsObject
 
-pub extern show(this: js_object, [], [detailsPromise: dart:js_interop/JSPromise])
-pub extern abort(this: js_object, [], [])
-pub extern canMakePayment(this: js_object, [], [])
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern setonpaymentmethodchange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpaymentmethodchange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onpaymentmethodchange\")"
-struct PaymentMethodData
-{  supportedMethods: String,
-  data: dart:js_interop/JSObject
-}
-pub extern newPaymentMethodData([supportedMethods: String, data: maybe<dart:js_interop/JSObject> = Nothing])
-()
+pub inline fun newPaymentRequest(methodData': jsArray, details': paymentDetailsInit)
+  newJsObject2("PaymentRequest", methodData', details')"
+pub inline fun isSecurePaymentConfirmationAvailable(): web jsPromise
+  jsOperation1("isSecurePaymentConfirmationAvailable")
 
-pub extern setsupportedMethods(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsupportedMethods(this: js_object): web String
-	c inline "getObjectField(#1, \"supportedMethods\")"
-pub extern setdata(this: js_object, value: dart:js_interop/JSObject): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdata(this: js_object): web dart:js_interop/JSObject
-	c inline "getObjectField(#1, \"data\")"
-struct PaymentCurrencyAmount
-{  currency: String,
-  value: String
-}
-pub extern newPaymentCurrencyAmount([currency: String, value: String])
-()
+pub inline fun show(obj: paymentRequest, detailsPromise': jsPromise): web jsPromise
+  jsOperation3(obj.obj, "show", detailsPromise'.obj)
 
-pub extern setcurrency(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcurrency(this: js_object): web String
-	c inline "getObjectField(#1, \"currency\")"
-pub extern setvalue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web String
-	c inline "getObjectField(#1, \"value\")"
-struct PaymentDetailsBase
-{  displayItems: dart:js_interop/JSArray,
-  modifiers: dart:js_interop/JSArray
-}
-pub extern newPaymentDetailsBase([displayItems: maybe<dart:js_interop/JSArray> = Nothing, modifiers: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun abort(obj: paymentRequest): web jsPromise
+  jsOperation2(obj.obj, "abort")
 
-pub extern setdisplayItems(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisplayItems(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"displayItems\")"
-pub extern setmodifiers(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmodifiers(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"modifiers\")"
-struct PaymentDetailsInit
-{  id: String,
-  total: PaymentItem
-}
-pub extern newPaymentDetailsInit([id: maybe<String> = Nothing, total: PaymentItem])
-()
+pub inline fun canMakePayment(obj: paymentRequest): web jsPromise
+  jsOperation2(obj.obj, "canMakePayment")
 
-pub extern setid(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern settotal(this: js_object, value: PaymentItem): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettotal(this: js_object): web PaymentItem
-	c inline "getObjectField(#1, \"total\")"
-struct PaymentDetailsUpdate
-{  total: PaymentItem,
-  paymentMethodErrors: dart:js_interop/JSObject
-}
-pub extern newPaymentDetailsUpdate([total: maybe<PaymentItem> = Nothing, paymentMethodErrors: maybe<dart:js_interop/JSObject> = Nothing])
-()
+pub inline fun id(obj: paymentRequest): web string
+  getJsObjectField(obj.obj, "id")
 
-pub extern settotal(this: js_object, value: PaymentItem): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettotal(this: js_object): web PaymentItem
-	c inline "getObjectField(#1, \"total\")"
-pub extern setpaymentMethodErrors(this: js_object, value: dart:js_interop/JSObject): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpaymentMethodErrors(this: js_object): web dart:js_interop/JSObject
-	c inline "getObjectField(#1, \"paymentMethodErrors\")"
-struct PaymentDetailsModifier
-{  supportedMethods: String,
-  total: PaymentItem,
-  additionalDisplayItems: dart:js_interop/JSArray,
-  data: dart:js_interop/JSObject
-}
-pub extern newPaymentDetailsModifier([supportedMethods: String, total: maybe<PaymentItem> = Nothing, additionalDisplayItems: maybe<dart:js_interop/JSArray> = Nothing, data: maybe<dart:js_interop/JSObject> = Nothing])
-()
+pub inline fun onpaymentmethodchange(obj: paymentRequest, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onpaymentmethodchange", value.obj)
 
-pub extern setsupportedMethods(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsupportedMethods(this: js_object): web String
-	c inline "getObjectField(#1, \"supportedMethods\")"
-pub extern settotal(this: js_object, value: PaymentItem): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettotal(this: js_object): web PaymentItem
-	c inline "getObjectField(#1, \"total\")"
-pub extern setadditionalDisplayItems(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getadditionalDisplayItems(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"additionalDisplayItems\")"
-pub extern setdata(this: js_object, value: dart:js_interop/JSObject): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdata(this: js_object): web dart:js_interop/JSObject
-	c inline "getObjectField(#1, \"data\")"
-struct PaymentItem
-{  label: String,
-  amount: PaymentCurrencyAmount,
-  pending: bool
-}
-pub extern newPaymentItem([label: String, amount: PaymentCurrencyAmount, pending: maybe<bool> = Nothing])
-()
+pub inline fun onpaymentmethodchange(obj: paymentRequest): web html/eventHandler
+  getJsObjectField(obj.obj, "onpaymentmethodchange")
 
-pub extern setlabel(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlabel(this: js_object): web String
-	c inline "getObjectField(#1, \"label\")"
-pub extern setamount(this: js_object, value: PaymentCurrencyAmount): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getamount(this: js_object): web PaymentCurrencyAmount
-	c inline "getObjectField(#1, \"amount\")"
-pub extern setpending(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpending(this: js_object): web bool
-	c inline "getObjectField(#1, \"pending\")"
-struct PaymentCompleteDetails
-{  data: maybe<dart:js_interop/JSObject>
-}
-pub extern newPaymentCompleteDetails([data: maybe<maybe<dart:js_interop/JSObject>> = Nothing])
-()
+pub value struct paymentMethodData
+  obj: jsObject
 
-pub extern setdata(this: js_object, value: maybe<dart:js_interop/JSObject>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdata(this: js_object): web maybe<dart:js_interop/JSObject>
-	c inline "getObjectField(#1, \"data\")"
-struct PaymentResponse
-{,
-,
+pub fun newPaymentMethodData(supportedMethods: string, data: maybe<jsObject> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "supportedMethods", supportedMethods);  match data
+    Just(it) -> setJsObjectField(obj, "data", it)
+    Nothing -> ()
 
-}
+  PaymentMethodData(obj);
 
-()
+pub inline fun supportedMethods(obj: paymentMethodData, value: string): web ()
+  setJsObjectField(obj.obj, "supportedMethods", value.obj)
 
-pub extern toJSON(this: js_object, [], [])
-pub extern complete(this: js_object, [], [result: PaymentComplete, details: PaymentCompleteDetails])
-pub extern retry(this: js_object, [], [errorFields: PaymentValidationErrors])
-pub extern getrequestId(this: js_object): web String
-	c inline "getObjectField(#1, \"requestId\")"
-pub extern getmethodName(this: js_object): web String
-	c inline "getObjectField(#1, \"methodName\")"
-pub extern getdetails(this: js_object): web dart:js_interop/JSObject
-	c inline "getObjectField(#1, \"details\")"
-struct PaymentValidationErrors
-{  error: String,
-  paymentMethod: dart:js_interop/JSObject
-}
-pub extern newPaymentValidationErrors([error: maybe<String> = Nothing, paymentMethod: maybe<dart:js_interop/JSObject> = Nothing])
-()
+pub inline fun supportedMethods(obj: paymentMethodData): web string
+  getJsObjectField(obj.obj, "supportedMethods")
 
-pub extern seterror(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geterror(this: js_object): web String
-	c inline "getObjectField(#1, \"error\")"
-pub extern setpaymentMethod(this: js_object, value: dart:js_interop/JSObject): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpaymentMethod(this: js_object): web dart:js_interop/JSObject
-	c inline "getObjectField(#1, \"paymentMethod\")"
-struct PaymentMethodChangeEvent
-{,
+pub inline fun data(obj: paymentMethodData, value: jsObject): web ()
+  setJsObjectField(obj.obj, "data", value.obj)
 
-}
-pub extern newPaymentMethodChangeEvent([type: String], [eventInitDict: PaymentMethodChangeEventInit])
-()
+pub inline fun data(obj: paymentMethodData): web jsObject
+  getJsObjectField(obj.obj, "data")
 
-pub extern getmethodName(this: js_object): web String
-	c inline "getObjectField(#1, \"methodName\")"
-pub extern getmethodDetails(this: js_object): web maybe<dart:js_interop/JSObject>
-	c inline "getObjectField(#1, \"methodDetails\")"
-struct PaymentMethodChangeEventInit
-{  methodName: String,
-  methodDetails: maybe<dart:js_interop/JSObject>
-}
-pub extern newPaymentMethodChangeEventInit([methodName: maybe<String> = Nothing, methodDetails: maybe<maybe<dart:js_interop/JSObject>> = Nothing])
-()
+pub value struct paymentCurrencyAmount
+  obj: jsObject
 
-pub extern setmethodName(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmethodName(this: js_object): web String
-	c inline "getObjectField(#1, \"methodName\")"
-pub extern setmethodDetails(this: js_object, value: maybe<dart:js_interop/JSObject>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmethodDetails(this: js_object): web maybe<dart:js_interop/JSObject>
-	c inline "getObjectField(#1, \"methodDetails\")"
-struct PaymentRequestUpdateEvent
-{
-}
-pub extern newPaymentRequestUpdateEvent([type: String], [eventInitDict: PaymentRequestUpdateEventInit])
-()
+pub fun newPaymentCurrencyAmount(currency: string, value: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "currency", currency);  setJsObjectField(obj, "value", value);
+  PaymentCurrencyAmount(obj);
 
-pub extern updateWith(this: js_object, [detailsPromise: dart:js_interop/JSPromise], [])
-struct PaymentRequestUpdateEventInit
-{
-}
-pub extern newPaymentRequestUpdateEventInit([])
-()
+pub inline fun currency(obj: paymentCurrencyAmount, value: string): web ()
+  setJsObjectField(obj.obj, "currency", value.obj)
+
+pub inline fun currency(obj: paymentCurrencyAmount): web string
+  getJsObjectField(obj.obj, "currency")
+
+pub inline fun value(obj: paymentCurrencyAmount, value: string): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: paymentCurrencyAmount): web string
+  getJsObjectField(obj.obj, "value")
+
+pub value struct paymentDetailsBase
+  obj: jsObject
+
+pub fun newPaymentDetailsBase(displayItems: maybe<jsArray> = Nothing, modifiers: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match displayItems
+    Just(it) -> setJsObjectField(obj, "displayItems", it)
+    Nothing -> ()
+  match modifiers
+    Just(it) -> setJsObjectField(obj, "modifiers", it)
+    Nothing -> ()
+
+  PaymentDetailsBase(obj);
+
+pub inline fun displayItems(obj: paymentDetailsBase, value: jsArray): web ()
+  setJsObjectField(obj.obj, "displayItems", value.obj)
+
+pub inline fun displayItems(obj: paymentDetailsBase): web jsArray
+  getJsObjectField(obj.obj, "displayItems")
+
+pub inline fun modifiers(obj: paymentDetailsBase, value: jsArray): web ()
+  setJsObjectField(obj.obj, "modifiers", value.obj)
+
+pub inline fun modifiers(obj: paymentDetailsBase): web jsArray
+  getJsObjectField(obj.obj, "modifiers")
+
+pub value struct paymentDetailsInit
+  obj: jsObject
+
+pub fun newPaymentDetailsInit(id: maybe<string> = Nothing, total: paymentItem)
+  val obj = newJsObject();
+  match id
+    Just(it) -> setJsObjectField(obj, "id", it)
+    Nothing -> ()
+  setJsObjectField(obj, "total", total);
+  PaymentDetailsInit(obj);
+
+pub inline fun id(obj: paymentDetailsInit, value: string): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: paymentDetailsInit): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun total(obj: paymentDetailsInit, value: paymentItem): web ()
+  setJsObjectField(obj.obj, "total", value.obj)
+
+pub inline fun total(obj: paymentDetailsInit): web paymentItem
+  getJsObjectField(obj.obj, "total")
+
+pub value struct paymentDetailsUpdate
+  obj: jsObject
+
+pub fun newPaymentDetailsUpdate(total: maybe<paymentItem> = Nothing, paymentMethodErrors: maybe<jsObject> = Nothing)
+  val obj = newJsObject();
+  match total
+    Just(it) -> setJsObjectField(obj, "total", it)
+    Nothing -> ()
+  match paymentMethodErrors
+    Just(it) -> setJsObjectField(obj, "paymentMethodErrors", it)
+    Nothing -> ()
+
+  PaymentDetailsUpdate(obj);
+
+pub inline fun total(obj: paymentDetailsUpdate, value: paymentItem): web ()
+  setJsObjectField(obj.obj, "total", value.obj)
+
+pub inline fun total(obj: paymentDetailsUpdate): web paymentItem
+  getJsObjectField(obj.obj, "total")
+
+pub inline fun paymentMethodErrors(obj: paymentDetailsUpdate, value: jsObject): web ()
+  setJsObjectField(obj.obj, "paymentMethodErrors", value.obj)
+
+pub inline fun paymentMethodErrors(obj: paymentDetailsUpdate): web jsObject
+  getJsObjectField(obj.obj, "paymentMethodErrors")
+
+pub value struct paymentDetailsModifier
+  obj: jsObject
+
+pub fun newPaymentDetailsModifier(supportedMethods: string, total: maybe<paymentItem> = Nothing, additionalDisplayItems: maybe<jsArray> = Nothing, data: maybe<jsObject> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "supportedMethods", supportedMethods);  match total
+    Just(it) -> setJsObjectField(obj, "total", it)
+    Nothing -> ()
+  match additionalDisplayItems
+    Just(it) -> setJsObjectField(obj, "additionalDisplayItems", it)
+    Nothing -> ()
+  match data
+    Just(it) -> setJsObjectField(obj, "data", it)
+    Nothing -> ()
+
+  PaymentDetailsModifier(obj);
+
+pub inline fun supportedMethods(obj: paymentDetailsModifier, value: string): web ()
+  setJsObjectField(obj.obj, "supportedMethods", value.obj)
+
+pub inline fun supportedMethods(obj: paymentDetailsModifier): web string
+  getJsObjectField(obj.obj, "supportedMethods")
+
+pub inline fun total(obj: paymentDetailsModifier, value: paymentItem): web ()
+  setJsObjectField(obj.obj, "total", value.obj)
+
+pub inline fun total(obj: paymentDetailsModifier): web paymentItem
+  getJsObjectField(obj.obj, "total")
+
+pub inline fun additionalDisplayItems(obj: paymentDetailsModifier, value: jsArray): web ()
+  setJsObjectField(obj.obj, "additionalDisplayItems", value.obj)
+
+pub inline fun additionalDisplayItems(obj: paymentDetailsModifier): web jsArray
+  getJsObjectField(obj.obj, "additionalDisplayItems")
+
+pub inline fun data(obj: paymentDetailsModifier, value: jsObject): web ()
+  setJsObjectField(obj.obj, "data", value.obj)
+
+pub inline fun data(obj: paymentDetailsModifier): web jsObject
+  getJsObjectField(obj.obj, "data")
+
+pub value struct paymentItem
+  obj: jsObject
+
+pub fun newPaymentItem(label: string, amount: paymentCurrencyAmount, pending: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "label", label);  setJsObjectField(obj, "amount", amount);  match pending
+    Just(it) -> setJsObjectField(obj, "pending", it)
+    Nothing -> ()
+
+  PaymentItem(obj);
+
+pub inline fun label(obj: paymentItem, value: string): web ()
+  setJsObjectField(obj.obj, "label", value.obj)
+
+pub inline fun label(obj: paymentItem): web string
+  getJsObjectField(obj.obj, "label")
+
+pub inline fun amount(obj: paymentItem, value: paymentCurrencyAmount): web ()
+  setJsObjectField(obj.obj, "amount", value.obj)
+
+pub inline fun amount(obj: paymentItem): web paymentCurrencyAmount
+  getJsObjectField(obj.obj, "amount")
+
+pub inline fun pending(obj: paymentItem, value: bool): web ()
+  setJsObjectField(obj.obj, "pending", value.obj)
+
+pub inline fun pending(obj: paymentItem): web bool
+  getJsObjectField(obj.obj, "pending")
+
+pub value struct paymentCompleteDetails
+  obj: jsObject
+
+pub fun newPaymentCompleteDetails(data: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match data
+    Just(it) -> setJsObjectField(obj, "data", it)
+    Nothing -> ()
+
+  PaymentCompleteDetails(obj);
+
+pub inline fun data(obj: paymentCompleteDetails, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "data", value.obj)
+
+pub inline fun data(obj: paymentCompleteDetails): web maybe<jsObject>
+  getJsObjectField(obj.obj, "data")
+
+pub value struct paymentResponse
+  obj: jsObject
+
+
+pub inline fun toJSON(obj: paymentResponse): web jsObject
+  jsOperation2(obj.obj, "toJSON")
+
+pub inline fun complete(obj: paymentResponse, result': paymentComplete, details': paymentCompleteDetails): web jsPromise
+  jsOperation4(obj.obj, "complete", result'.obj, details'.obj)
+
+pub inline fun retry(obj: paymentResponse, errorFields': paymentValidationErrors): web jsPromise
+  jsOperation3(obj.obj, "retry", errorFields'.obj)
+
+pub inline fun requestId(obj: paymentResponse): web string
+  getJsObjectField(obj.obj, "requestId")
+
+pub inline fun methodName(obj: paymentResponse): web string
+  getJsObjectField(obj.obj, "methodName")
+
+pub inline fun details(obj: paymentResponse): web jsObject
+  getJsObjectField(obj.obj, "details")
+
+pub value struct paymentValidationErrors
+  obj: jsObject
+
+pub fun newPaymentValidationErrors(error: maybe<string> = Nothing, paymentMethod: maybe<jsObject> = Nothing)
+  val obj = newJsObject();
+  match error
+    Just(it) -> setJsObjectField(obj, "error", it)
+    Nothing -> ()
+  match paymentMethod
+    Just(it) -> setJsObjectField(obj, "paymentMethod", it)
+    Nothing -> ()
+
+  PaymentValidationErrors(obj);
+
+pub inline fun error(obj: paymentValidationErrors, value: string): web ()
+  setJsObjectField(obj.obj, "error", value.obj)
+
+pub inline fun error(obj: paymentValidationErrors): web string
+  getJsObjectField(obj.obj, "error")
+
+pub inline fun paymentMethod(obj: paymentValidationErrors, value: jsObject): web ()
+  setJsObjectField(obj.obj, "paymentMethod", value.obj)
+
+pub inline fun paymentMethod(obj: paymentValidationErrors): web jsObject
+  getJsObjectField(obj.obj, "paymentMethod")
+
+pub value struct paymentMethodChangeEvent
+  obj: jsObject
+
+pub inline fun newPaymentMethodChangeEvent(type': string, eventInitDict': paymentMethodChangeEventInit)
+  newJsObject2("PaymentMethodChangeEvent", type', eventInitDict')"
+
+pub inline fun methodName(obj: paymentMethodChangeEvent): web string
+  getJsObjectField(obj.obj, "methodName")
+
+pub inline fun methodDetails(obj: paymentMethodChangeEvent): web maybe<jsObject>
+  getJsObjectField(obj.obj, "methodDetails")
+
+pub value struct paymentMethodChangeEventInit
+  obj: jsObject
+
+pub fun newPaymentMethodChangeEventInit(methodName: maybe<string> = Nothing, methodDetails: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match methodName
+    Just(it) -> setJsObjectField(obj, "methodName", it)
+    Nothing -> ()
+  match methodDetails
+    Just(it) -> setJsObjectField(obj, "methodDetails", it)
+    Nothing -> ()
+
+  PaymentMethodChangeEventInit(obj);
+
+pub inline fun methodName(obj: paymentMethodChangeEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "methodName", value.obj)
+
+pub inline fun methodName(obj: paymentMethodChangeEventInit): web string
+  getJsObjectField(obj.obj, "methodName")
+
+pub inline fun methodDetails(obj: paymentMethodChangeEventInit, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "methodDetails", value.obj)
+
+pub inline fun methodDetails(obj: paymentMethodChangeEventInit): web maybe<jsObject>
+  getJsObjectField(obj.obj, "methodDetails")
+
+pub value struct paymentRequestUpdateEvent
+  obj: jsObject
+
+pub inline fun newPaymentRequestUpdateEvent(type': string, eventInitDict': paymentRequestUpdateEventInit)
+  newJsObject2("PaymentRequestUpdateEvent", type', eventInitDict')"
+
+pub inline fun updateWith(obj: paymentRequestUpdateEvent, detailsPromise': jsPromise): web ()
+  jsOperation3(obj.obj, "updateWith", detailsPromise'.obj)
+
+pub value struct paymentRequestUpdateEventInit
+  obj: jsObject
+
+pub fun newPaymentRequestUpdateEventInit()
+  val obj = newJsObject();
+
+  PaymentRequestUpdateEventInit(obj);
 

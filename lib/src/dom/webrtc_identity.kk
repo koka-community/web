@@ -1,118 +1,163 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
-alias GenerateAssertionCallback = JSFunction
-alias ValidateAssertionCallback = JSFunction
+pub alias generateAssertionCallback = jsFunction;
 
-alias RTCErrorDetailTypeIdp = String
-struct RTCIdentityProviderGlobalScope
-{
-}
 
-()
+pub alias validateAssertionCallback = jsFunction;
 
-pub extern getrtcIdentityProvider(this: js_object): web RTCIdentityProviderRegistrar
-	c inline "getObjectField(#1, \"rtcIdentityProvider\")"
-struct RTCIdentityProviderRegistrar
-{
-}
 
-()
+pub alias rtcErrorDetailTypeIdp = string;
 
-pub extern register(this: js_object, [idp: RTCIdentityProvider], [])
-struct RTCIdentityProvider
-{  generateAssertion: GenerateAssertionCallback,
-  validateAssertion: ValidateAssertionCallback
-}
-pub extern newRTCIdentityProvider([generateAssertion: GenerateAssertionCallback, validateAssertion: ValidateAssertionCallback])
-()
+pub value struct rtcIdentityProviderGlobalScope
+  obj: jsObject
 
-pub extern setgenerateAssertion(this: js_object, value: GenerateAssertionCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getgenerateAssertion(this: js_object): web GenerateAssertionCallback
-	c inline "getObjectField(#1, \"generateAssertion\")"
-pub extern setvalidateAssertion(this: js_object, value: ValidateAssertionCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalidateAssertion(this: js_object): web ValidateAssertionCallback
-	c inline "getObjectField(#1, \"validateAssertion\")"
-struct RTCIdentityAssertionResult
-{  idp: RTCIdentityProviderDetails,
-  assertion: String
-}
-pub extern newRTCIdentityAssertionResult([idp: RTCIdentityProviderDetails, assertion: String])
-()
 
-pub extern setidp(this: js_object, value: RTCIdentityProviderDetails): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getidp(this: js_object): web RTCIdentityProviderDetails
-	c inline "getObjectField(#1, \"idp\")"
-pub extern setassertion(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getassertion(this: js_object): web String
-	c inline "getObjectField(#1, \"assertion\")"
-struct RTCIdentityProviderDetails
-{  domain: String,
-  protocol: String
-}
-pub extern newRTCIdentityProviderDetails([domain: String, protocol: maybe<String> = Nothing])
-()
+pub inline fun rtcIdentityProvider(obj: rtcIdentityProviderGlobalScope): web rtcIdentityProviderRegistrar
+  getJsObjectField(obj.obj, "rtcIdentityProvider")
 
-pub extern setdomain(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdomain(this: js_object): web String
-	c inline "getObjectField(#1, \"domain\")"
-pub extern setprotocol(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprotocol(this: js_object): web String
-	c inline "getObjectField(#1, \"protocol\")"
-struct RTCIdentityValidationResult
-{  identity: String,
-  contents: String
-}
-pub extern newRTCIdentityValidationResult([identity: String, contents: String])
-()
+pub value struct rtcIdentityProviderRegistrar
+  obj: jsObject
 
-pub extern setidentity(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getidentity(this: js_object): web String
-	c inline "getObjectField(#1, \"identity\")"
-pub extern setcontents(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcontents(this: js_object): web String
-	c inline "getObjectField(#1, \"contents\")"
-struct RTCIdentityProviderOptions
-{  protocol: String,
-  usernameHint: String,
-  peerIdentity: String
-}
-pub extern newRTCIdentityProviderOptions([protocol: maybe<String> = Nothing, usernameHint: maybe<String> = Nothing, peerIdentity: maybe<String> = Nothing])
-()
 
-pub extern setprotocol(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprotocol(this: js_object): web String
-	c inline "getObjectField(#1, \"protocol\")"
-pub extern setusernameHint(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusernameHint(this: js_object): web String
-	c inline "getObjectField(#1, \"usernameHint\")"
-pub extern setpeerIdentity(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpeerIdentity(this: js_object): web String
-	c inline "getObjectField(#1, \"peerIdentity\")"
-struct RTCIdentityAssertion
-{,
+pub inline fun register(obj: rtcIdentityProviderRegistrar, idp': rtcIdentityProvider): web ()
+  jsOperation3(obj.obj, "register", idp'.obj)
 
-}
-pub extern newRTCIdentityAssertion([idp: String, name: String], [])
-()
+pub value struct rtcIdentityProvider
+  obj: jsObject
 
-pub extern setidp(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getidp(this: js_object): web String
-	c inline "getObjectField(#1, \"idp\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
+pub fun newRtcIdentityProvider(generateAssertion: generateAssertionCallback, validateAssertion: validateAssertionCallback)
+  val obj = newJsObject();
+  setJsObjectField(obj, "generateAssertion", generateAssertion);  setJsObjectField(obj, "validateAssertion", validateAssertion);
+  RtcIdentityProvider(obj);
+
+pub inline fun generateAssertion(obj: rtcIdentityProvider, value: generateAssertionCallback): web ()
+  setJsObjectField(obj.obj, "generateAssertion", value.obj)
+
+pub inline fun generateAssertion(obj: rtcIdentityProvider): web generateAssertionCallback
+  getJsObjectField(obj.obj, "generateAssertion")
+
+pub inline fun validateAssertion(obj: rtcIdentityProvider, value: validateAssertionCallback): web ()
+  setJsObjectField(obj.obj, "validateAssertion", value.obj)
+
+pub inline fun validateAssertion(obj: rtcIdentityProvider): web validateAssertionCallback
+  getJsObjectField(obj.obj, "validateAssertion")
+
+pub value struct rtcIdentityAssertionResult
+  obj: jsObject
+
+pub fun newRtcIdentityAssertionResult(idp: rtcIdentityProviderDetails, assertion: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "idp", idp);  setJsObjectField(obj, "assertion", assertion);
+  RtcIdentityAssertionResult(obj);
+
+pub inline fun idp(obj: rtcIdentityAssertionResult, value: rtcIdentityProviderDetails): web ()
+  setJsObjectField(obj.obj, "idp", value.obj)
+
+pub inline fun idp(obj: rtcIdentityAssertionResult): web rtcIdentityProviderDetails
+  getJsObjectField(obj.obj, "idp")
+
+pub inline fun assertion(obj: rtcIdentityAssertionResult, value: string): web ()
+  setJsObjectField(obj.obj, "assertion", value.obj)
+
+pub inline fun assertion(obj: rtcIdentityAssertionResult): web string
+  getJsObjectField(obj.obj, "assertion")
+
+pub value struct rtcIdentityProviderDetails
+  obj: jsObject
+
+pub fun newRtcIdentityProviderDetails(domain: string, protocol: maybe<string> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "domain", domain);  match protocol
+    Just(it) -> setJsObjectField(obj, "protocol", it)
+    Nothing -> ()
+
+  RtcIdentityProviderDetails(obj);
+
+pub inline fun domain(obj: rtcIdentityProviderDetails, value: string): web ()
+  setJsObjectField(obj.obj, "domain", value.obj)
+
+pub inline fun domain(obj: rtcIdentityProviderDetails): web string
+  getJsObjectField(obj.obj, "domain")
+
+pub inline fun protocol(obj: rtcIdentityProviderDetails, value: string): web ()
+  setJsObjectField(obj.obj, "protocol", value.obj)
+
+pub inline fun protocol(obj: rtcIdentityProviderDetails): web string
+  getJsObjectField(obj.obj, "protocol")
+
+pub value struct rtcIdentityValidationResult
+  obj: jsObject
+
+pub fun newRtcIdentityValidationResult(identity: string, contents: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "identity", identity);  setJsObjectField(obj, "contents", contents);
+  RtcIdentityValidationResult(obj);
+
+pub inline fun identity(obj: rtcIdentityValidationResult, value: string): web ()
+  setJsObjectField(obj.obj, "identity", value.obj)
+
+pub inline fun identity(obj: rtcIdentityValidationResult): web string
+  getJsObjectField(obj.obj, "identity")
+
+pub inline fun contents(obj: rtcIdentityValidationResult, value: string): web ()
+  setJsObjectField(obj.obj, "contents", value.obj)
+
+pub inline fun contents(obj: rtcIdentityValidationResult): web string
+  getJsObjectField(obj.obj, "contents")
+
+pub value struct rtcIdentityProviderOptions
+  obj: jsObject
+
+pub fun newRtcIdentityProviderOptions(protocol: maybe<string> = Nothing, usernameHint: maybe<string> = Nothing, peerIdentity: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match protocol
+    Just(it) -> setJsObjectField(obj, "protocol", it)
+    Nothing -> ()
+  match usernameHint
+    Just(it) -> setJsObjectField(obj, "usernameHint", it)
+    Nothing -> ()
+  match peerIdentity
+    Just(it) -> setJsObjectField(obj, "peerIdentity", it)
+    Nothing -> ()
+
+  RtcIdentityProviderOptions(obj);
+
+pub inline fun protocol(obj: rtcIdentityProviderOptions, value: string): web ()
+  setJsObjectField(obj.obj, "protocol", value.obj)
+
+pub inline fun protocol(obj: rtcIdentityProviderOptions): web string
+  getJsObjectField(obj.obj, "protocol")
+
+pub inline fun usernameHint(obj: rtcIdentityProviderOptions, value: string): web ()
+  setJsObjectField(obj.obj, "usernameHint", value.obj)
+
+pub inline fun usernameHint(obj: rtcIdentityProviderOptions): web string
+  getJsObjectField(obj.obj, "usernameHint")
+
+pub inline fun peerIdentity(obj: rtcIdentityProviderOptions, value: string): web ()
+  setJsObjectField(obj.obj, "peerIdentity", value.obj)
+
+pub inline fun peerIdentity(obj: rtcIdentityProviderOptions): web string
+  getJsObjectField(obj.obj, "peerIdentity")
+
+pub value struct rtcIdentityAssertion
+  obj: jsObject
+
+pub inline fun newRtcIdentityAssertion(idp': string, name': string)
+  newJsObject2("RtcIdentityAssertion", idp', name')"
+
+pub inline fun idp(obj: rtcIdentityAssertion, value: string): web ()
+  setJsObjectField(obj.obj, "idp", value.obj)
+
+pub inline fun idp(obj: rtcIdentityAssertion): web string
+  getJsObjectField(obj.obj, "idp")
+
+pub inline fun name(obj: rtcIdentityAssertion, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: rtcIdentityAssertion): web string
+  getJsObjectField(obj.obj, "name")
+

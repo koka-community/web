@@ -1,37 +1,43 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct PermissionsPolicy
-{
-}
+pub value struct permissionsPolicy
+  obj: jsObject
 
-()
 
-pub extern allowsFeature(this: js_object, [feature: String], [origin: String])
-pub extern features(this: js_object, [], [])
-pub extern allowedFeatures(this: js_object, [], [])
-pub extern getAllowlistForFeature(this: js_object, [feature: String], [])
-struct PermissionsPolicyViolationReportBody
-{,
-,
-,
-,
+pub inline fun allowsFeature(obj: permissionsPolicy, feature': string, origin': string): web bool
+  jsOperation4(obj.obj, "allowsFeature", feature'.obj, origin'.obj)
 
-}
+pub inline fun features(obj: permissionsPolicy): web jsArray
+  jsOperation2(obj.obj, "features")
 
-()
+pub inline fun allowedFeatures(obj: permissionsPolicy): web jsArray
+  jsOperation2(obj.obj, "allowedFeatures")
 
-pub extern getfeatureId(this: js_object): web String
-	c inline "getObjectField(#1, \"featureId\")"
-pub extern getsourceFile(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"sourceFile\")"
-pub extern getlineNumber(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"lineNumber\")"
-pub extern getcolumnNumber(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"columnNumber\")"
-pub extern getdisposition(this: js_object): web String
-	c inline "getObjectField(#1, \"disposition\")"
+pub inline fun getAllowlistForFeature(obj: permissionsPolicy, feature': string): web jsArray
+  jsOperation3(obj.obj, "getAllowlistForFeature", feature'.obj)
+
+pub value struct permissionsPolicyViolationReportBody
+  obj: jsObject
+
+
+pub inline fun featureId(obj: permissionsPolicyViolationReportBody): web string
+  getJsObjectField(obj.obj, "featureId")
+
+pub inline fun sourceFile(obj: permissionsPolicyViolationReportBody): web maybe<string>
+  getJsObjectField(obj.obj, "sourceFile")
+
+pub inline fun lineNumber(obj: permissionsPolicyViolationReportBody): web maybe<int>
+  getJsObjectField(obj.obj, "lineNumber")
+
+pub inline fun columnNumber(obj: permissionsPolicyViolationReportBody): web maybe<int>
+  getJsObjectField(obj.obj, "columnNumber")
+
+pub inline fun disposition(obj: permissionsPolicyViolationReportBody): web string
+  getJsObjectField(obj.obj, "disposition")
+

@@ -1,27 +1,42 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct AV1EncoderConfig
-{  forceScreenContentTools: bool
-}
-pub extern newAV1EncoderConfig([forceScreenContentTools: maybe<bool> = Nothing])
-()
+pub value struct aV1EncoderConfig
+  obj: jsObject
 
-pub extern setforceScreenContentTools(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getforceScreenContentTools(this: js_object): web bool
-	c inline "getObjectField(#1, \"forceScreenContentTools\")"
-struct VideoEncoderEncodeOptionsForAv1
-{  quantizer: maybe<int>
-}
-pub extern newVideoEncoderEncodeOptionsForAv1([quantizer: maybe<maybe<int>> = Nothing])
-()
+pub fun newAV1EncoderConfig(forceScreenContentTools: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match forceScreenContentTools
+    Just(it) -> setJsObjectField(obj, "forceScreenContentTools", it)
+    Nothing -> ()
 
-pub extern setquantizer(this: js_object, value: maybe<int>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getquantizer(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"quantizer\")"
+  AV1EncoderConfig(obj);
+
+pub inline fun forceScreenContentTools(obj: aV1EncoderConfig, value: bool): web ()
+  setJsObjectField(obj.obj, "forceScreenContentTools", value.obj)
+
+pub inline fun forceScreenContentTools(obj: aV1EncoderConfig): web bool
+  getJsObjectField(obj.obj, "forceScreenContentTools")
+
+pub value struct videoEncoderEncodeOptionsForAv1
+  obj: jsObject
+
+pub fun newVideoEncoderEncodeOptionsForAv1(quantizer: maybe<maybe<int>> = Nothing)
+  val obj = newJsObject();
+  match quantizer
+    Just(it) -> setJsObjectField(obj, "quantizer", it)
+    Nothing -> ()
+
+  VideoEncoderEncodeOptionsForAv1(obj);
+
+pub inline fun quantizer(obj: videoEncoderEncodeOptionsForAv1, value: maybe<int>): web ()
+  setJsObjectField(obj.obj, "quantizer", value.obj)
+
+pub inline fun quantizer(obj: videoEncoderEncodeOptionsForAv1): web maybe<int>
+  getJsObjectField(obj.obj, "quantizer")
+

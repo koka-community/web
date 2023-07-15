@@ -1,96 +1,130 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct TextDecoderCommon
-{,
-,
+pub value struct textDecoderCommon
+  obj: jsObject
 
-}
 
-()
+pub inline fun encoding(obj: textDecoderCommon): web string
+  getJsObjectField(obj.obj, "encoding")
 
-pub extern getencoding(this: js_object): web String
-	c inline "getObjectField(#1, \"encoding\")"
-pub extern getfatal(this: js_object): web bool
-	c inline "getObjectField(#1, \"fatal\")"
-pub extern getignoreBOM(this: js_object): web bool
-	c inline "getObjectField(#1, \"ignoreBOM\")"
-struct TextDecoderOptions
-{  fatal: bool,
-  ignoreBOM: bool
-}
-pub extern newTextDecoderOptions([fatal: maybe<bool> = Nothing, ignoreBOM: maybe<bool> = Nothing])
-()
+pub inline fun fatal(obj: textDecoderCommon): web bool
+  getJsObjectField(obj.obj, "fatal")
 
-pub extern setfatal(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfatal(this: js_object): web bool
-	c inline "getObjectField(#1, \"fatal\")"
-pub extern setignoreBOM(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getignoreBOM(this: js_object): web bool
-	c inline "getObjectField(#1, \"ignoreBOM\")"
-struct TextDecodeOptions
-{  stream: bool
-}
-pub extern newTextDecodeOptions([stream: maybe<bool> = Nothing])
-()
+pub inline fun ignoreBOM(obj: textDecoderCommon): web bool
+  getJsObjectField(obj.obj, "ignoreBOM")
 
-pub extern setstream(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstream(this: js_object): web bool
-	c inline "getObjectField(#1, \"stream\")"
-struct TextDecoder
-{
-}
-pub extern newTextDecoder([], [label: String, options: TextDecoderOptions])
-()
+pub value struct textDecoderOptions
+  obj: jsObject
 
-pub extern decode(this: js_object, [], [input: webidl.kk/AllowSharedBufferSource, options: TextDecodeOptions])
-struct TextEncoderCommon
-{
-}
+pub fun newTextDecoderOptions(fatal: maybe<bool> = Nothing, ignoreBOM: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match fatal
+    Just(it) -> setJsObjectField(obj, "fatal", it)
+    Nothing -> ()
+  match ignoreBOM
+    Just(it) -> setJsObjectField(obj, "ignoreBOM", it)
+    Nothing -> ()
 
-()
+  TextDecoderOptions(obj);
 
-pub extern getencoding(this: js_object): web String
-	c inline "getObjectField(#1, \"encoding\")"
-struct TextEncoderEncodeIntoResult
-{  read: int,
-  written: int
-}
-pub extern newTextEncoderEncodeIntoResult([read: maybe<int> = Nothing, written: maybe<int> = Nothing])
-()
+pub inline fun fatal(obj: textDecoderOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "fatal", value.obj)
 
-pub extern setread(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getread(this: js_object): web int
-	c inline "getObjectField(#1, \"read\")"
-pub extern setwritten(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwritten(this: js_object): web int
-	c inline "getObjectField(#1, \"written\")"
-struct TextEncoder
-{
-}
-pub extern newTextEncoder([], [])
-()
+pub inline fun fatal(obj: textDecoderOptions): web bool
+  getJsObjectField(obj.obj, "fatal")
 
-pub extern encode(this: js_object, [], [input: String])
-pub extern encodeInto(this: js_object, [source: String, destination: dart:js_interop/JSUint8Array], [])
-struct TextDecoderStream
-{
-}
-pub extern newTextDecoderStream([], [label: String, options: TextDecoderOptions])
-()
+pub inline fun ignoreBOM(obj: textDecoderOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "ignoreBOM", value.obj)
 
-struct TextEncoderStream
-{
-}
-pub extern newTextEncoderStream([], [])
-()
+pub inline fun ignoreBOM(obj: textDecoderOptions): web bool
+  getJsObjectField(obj.obj, "ignoreBOM")
+
+pub value struct textDecodeOptions
+  obj: jsObject
+
+pub fun newTextDecodeOptions(stream: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match stream
+    Just(it) -> setJsObjectField(obj, "stream", it)
+    Nothing -> ()
+
+  TextDecodeOptions(obj);
+
+pub inline fun stream(obj: textDecodeOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "stream", value.obj)
+
+pub inline fun stream(obj: textDecodeOptions): web bool
+  getJsObjectField(obj.obj, "stream")
+
+pub value struct textDecoder
+  obj: jsObject
+
+pub inline fun newTextDecoder(label': string, options': textDecoderOptions)
+  newJsObject2("TextDecoder", label', options')"
+
+pub inline fun decode(obj: textDecoder, input': webidl/allowSharedBufferSource, options': textDecodeOptions): web string
+  jsOperation4(obj.obj, "decode", input'.obj, options'.obj)
+
+pub value struct textEncoderCommon
+  obj: jsObject
+
+
+pub inline fun encoding(obj: textEncoderCommon): web string
+  getJsObjectField(obj.obj, "encoding")
+
+pub value struct textEncoderEncodeIntoResult
+  obj: jsObject
+
+pub fun newTextEncoderEncodeIntoResult(read: maybe<int> = Nothing, written: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match read
+    Just(it) -> setJsObjectField(obj, "read", it)
+    Nothing -> ()
+  match written
+    Just(it) -> setJsObjectField(obj, "written", it)
+    Nothing -> ()
+
+  TextEncoderEncodeIntoResult(obj);
+
+pub inline fun read(obj: textEncoderEncodeIntoResult, value: int): web ()
+  setJsObjectField(obj.obj, "read", value.obj)
+
+pub inline fun read(obj: textEncoderEncodeIntoResult): web int
+  getJsObjectField(obj.obj, "read")
+
+pub inline fun written(obj: textEncoderEncodeIntoResult, value: int): web ()
+  setJsObjectField(obj.obj, "written", value.obj)
+
+pub inline fun written(obj: textEncoderEncodeIntoResult): web int
+  getJsObjectField(obj.obj, "written")
+
+pub value struct textEncoder
+  obj: jsObject
+
+pub inline fun newTextEncoder()
+  newJsObject0("TextEncoder")"
+
+pub inline fun encode(obj: textEncoder, input': string): web jsUint8Array
+  jsOperation3(obj.obj, "encode", input'.obj)
+
+pub inline fun encodeInto(obj: textEncoder, source': string, destination': jsUint8Array): web textEncoderEncodeIntoResult
+  jsOperation4(obj.obj, "encodeInto", source'.obj, destination'.obj)
+
+pub value struct textDecoderStream
+  obj: jsObject
+
+pub inline fun newTextDecoderStream(label': string, options': textDecoderOptions)
+  newJsObject2("TextDecoderStream", label', options')"
+
+pub value struct textEncoderStream
+  obj: jsObject
+
+pub inline fun newTextEncoderStream()
+  newJsObject0("TextEncoderStream")"
 

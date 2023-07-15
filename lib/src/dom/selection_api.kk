@@ -1,52 +1,84 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct Selection
-{,
-,
-,
-,
-,
-,
-,
+pub value struct selection
+  obj: jsObject
 
-}
 
-()
+pub inline fun getRangeAt(obj: selection, index': int): web dom/range
+  jsOperation3(obj.obj, "getRangeAt", index'.obj)
 
-pub extern getRangeAt(this: js_object, [index: int], [])
-pub extern addRange(this: js_object, [range: dom.kk/Range], [])
-pub extern removeRange(this: js_object, [range: dom.kk/Range], [])
-pub extern removeAllRanges(this: js_object, [], [])
-pub extern empty(this: js_object, [], [])
-pub extern getComposedRanges(this: js_object, [shadowRoots: dom.kk/ShadowRoot], [])
-pub extern collapse(this: js_object, [node: maybe<dom.kk/Node> =  Nothing], [offset: int])
-pub extern setPosition(this: js_object, [node: maybe<dom.kk/Node> =  Nothing], [offset: int])
-pub extern collapseToStart(this: js_object, [], [])
-pub extern collapseToEnd(this: js_object, [], [])
-pub extern extend(this: js_object, [node: dom.kk/Node], [offset: int])
-pub extern setBaseAndExtent(this: js_object, [anchorNode: dom.kk/Node, anchorOffset: int, focusNode: dom.kk/Node, focusOffset: int], [])
-pub extern selectAllChildren(this: js_object, [node: dom.kk/Node], [])
-pub extern modify(this: js_object, [], [alter: String, direction: String, granularity: String])
-pub extern deleteFromDocument(this: js_object, [], [])
-pub extern containsNode(this: js_object, [node: dom.kk/Node], [allowPartialContainment: bool])
-pub extern getanchorNode(this: js_object): web maybe<dom.kk/Node>
-	c inline "getObjectField(#1, \"anchorNode\")"
-pub extern getanchorOffset(this: js_object): web int
-	c inline "getObjectField(#1, \"anchorOffset\")"
-pub extern getfocusNode(this: js_object): web maybe<dom.kk/Node>
-	c inline "getObjectField(#1, \"focusNode\")"
-pub extern getfocusOffset(this: js_object): web int
-	c inline "getObjectField(#1, \"focusOffset\")"
-pub extern getisCollapsed(this: js_object): web bool
-	c inline "getObjectField(#1, \"isCollapsed\")"
-pub extern getrangeCount(this: js_object): web int
-	c inline "getObjectField(#1, \"rangeCount\")"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern getdirection(this: js_object): web String
-	c inline "getObjectField(#1, \"direction\")"
+pub inline fun addRange(obj: selection, range': dom/range): web ()
+  jsOperation3(obj.obj, "addRange", range'.obj)
+
+pub inline fun removeRange(obj: selection, range': dom/range): web ()
+  jsOperation3(obj.obj, "removeRange", range'.obj)
+
+pub inline fun removeAllRanges(obj: selection): web ()
+  jsOperation2(obj.obj, "removeAllRanges")
+
+pub inline fun empty(obj: selection): web ()
+  jsOperation2(obj.obj, "empty")
+
+pub inline fun getComposedRanges(obj: selection, shadowRoots': dom/shadowRoot): web jsArray
+  jsOperation3(obj.obj, "getComposedRanges", shadowRoots'.obj)
+
+pub inline fun collapse(obj: selection, node': maybe<dom/node> =  Nothing, offset': int): web ()
+  jsOperation4(obj.obj, "collapse", node'.obj, offset'.obj)
+
+pub inline fun setPosition(obj: selection, node': maybe<dom/node> =  Nothing, offset': int): web ()
+  jsOperation4(obj.obj, "setPosition", node'.obj, offset'.obj)
+
+pub inline fun collapseToStart(obj: selection): web ()
+  jsOperation2(obj.obj, "collapseToStart")
+
+pub inline fun collapseToEnd(obj: selection): web ()
+  jsOperation2(obj.obj, "collapseToEnd")
+
+pub inline fun extend(obj: selection, node': dom/node, offset': int): web ()
+  jsOperation4(obj.obj, "extend", node'.obj, offset'.obj)
+
+pub inline fun setBaseAndExtent(obj: selection, anchorNode': dom/node, anchorOffset': int, focusNode': dom/node, focusOffset': int): web ()
+  jsOperation6(obj.obj, "setBaseAndExtent", anchorNode'.obj, anchorOffset'.obj, focusNode'.obj, focusOffset'.obj)
+
+pub inline fun selectAllChildren(obj: selection, node': dom/node): web ()
+  jsOperation3(obj.obj, "selectAllChildren", node'.obj)
+
+pub inline fun modify(obj: selection, alter': string, direction': string, granularity': string): web ()
+  jsOperation5(obj.obj, "modify", alter'.obj, direction'.obj, granularity'.obj)
+
+pub inline fun deleteFromDocument(obj: selection): web ()
+  jsOperation2(obj.obj, "deleteFromDocument")
+
+pub inline fun containsNode(obj: selection, node': dom/node, allowPartialContainment': bool): web bool
+  jsOperation4(obj.obj, "containsNode", node'.obj, allowPartialContainment'.obj)
+
+pub inline fun anchorNode(obj: selection): web maybe<dom/node>
+  getJsObjectField(obj.obj, "anchorNode")
+
+pub inline fun anchorOffset(obj: selection): web int
+  getJsObjectField(obj.obj, "anchorOffset")
+
+pub inline fun focusNode(obj: selection): web maybe<dom/node>
+  getJsObjectField(obj.obj, "focusNode")
+
+pub inline fun focusOffset(obj: selection): web int
+  getJsObjectField(obj.obj, "focusOffset")
+
+pub inline fun isCollapsed(obj: selection): web bool
+  getJsObjectField(obj.obj, "isCollapsed")
+
+pub inline fun rangeCount(obj: selection): web int
+  getJsObjectField(obj.obj, "rangeCount")
+
+pub inline fun type(obj: selection): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun direction(obj: selection): web string
+  getJsObjectField(obj.obj, "direction")
+

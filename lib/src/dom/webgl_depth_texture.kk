@@ -1,14 +1,14 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct WEBGL_depth_texture
-{
-}
+pub value struct webgL_depth_texture
+  obj: jsObject
 
-(pub extern UNSIGNED_INT_24_8_WEBGL(): webgl1.kk/GLenum
-	c inline "getConstant(\"UNSIGNED_INT_24_8_WEBGL\")")
+pub inline fun unsignedinT248WEBGL(): webgl1/gLenum
+  getConstant("UNSIGNED_INT_24_8_WEBGL")
 

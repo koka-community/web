@@ -1,43 +1,49 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct PaintWorkletGlobalScope
-{
-}
+pub value struct paintWorkletGlobalScope
+  obj: jsObject
 
-()
 
-pub extern registerPaint(this: js_object, [name: String, paintCtor: webidl.kk/VoidFunction], [])
-pub extern getdevicePixelRatio(this: js_object): web double
-	c inline "getObjectField(#1, \"devicePixelRatio\")"
-struct PaintRenderingContext2DSettings
-{  alpha: bool
-}
-pub extern newPaintRenderingContext2DSettings([alpha: maybe<bool> = Nothing])
-()
+pub inline fun registerPaint(obj: paintWorkletGlobalScope, name': string, paintCtor': webidl/voidFunction): web ()
+  jsOperation4(obj.obj, "registerPaint", name'.obj, paintCtor'.obj)
 
-pub extern setalpha(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalpha(this: js_object): web bool
-	c inline "getObjectField(#1, \"alpha\")"
-struct PaintRenderingContext2D
-{
-}
+pub inline fun devicePixelRatio(obj: paintWorkletGlobalScope): web double
+  getJsObjectField(obj.obj, "devicePixelRatio")
 
-()
+pub value struct paintRenderingContext2DSettings
+  obj: jsObject
 
-struct PaintSize
-{,
+pub fun newPaintRenderingContext2DSettings(alpha: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match alpha
+    Just(it) -> setJsObjectField(obj, "alpha", it)
+    Nothing -> ()
 
-}
+  PaintRenderingContext2DSettings(obj);
 
-()
+pub inline fun alpha(obj: paintRenderingContext2DSettings, value: bool): web ()
+  setJsObjectField(obj.obj, "alpha", value.obj)
 
-pub extern getwidth(this: js_object): web double
-	c inline "getObjectField(#1, \"width\")"
-pub extern getheight(this: js_object): web double
-	c inline "getObjectField(#1, \"height\")"
+pub inline fun alpha(obj: paintRenderingContext2DSettings): web bool
+  getJsObjectField(obj.obj, "alpha")
+
+pub value struct paintRenderingContext2D
+  obj: jsObject
+
+
+pub value struct paintSize
+  obj: jsObject
+
+
+pub inline fun width(obj: paintSize): web double
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: paintSize): web double
+  getJsObjectField(obj.obj, "height")
+

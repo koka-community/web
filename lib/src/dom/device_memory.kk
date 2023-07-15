@@ -1,15 +1,15 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct NavigatorDeviceMemory
-{
-}
+pub value struct navigatorDeviceMemory
+  obj: jsObject
 
-()
 
-pub extern getdeviceMemory(this: js_object): web double
-	c inline "getObjectField(#1, \"deviceMemory\")"
+pub inline fun deviceMemory(obj: navigatorDeviceMemory): web double
+  getJsObjectField(obj.obj, "deviceMemory")
+

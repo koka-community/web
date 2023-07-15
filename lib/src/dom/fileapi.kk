@@ -1,132 +1,194 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias BlobPart = JSAny
+import web/wasm
+pub alias blobPart = JSAny;
 
 
-alias EndingType = String
-struct Blob
-{,
 
-}
-pub extern newBlob([], [blobParts: dart:js_interop/JSArray, options: BlobPropertyBag])
-()
+pub alias endingType = string;
 
-pub extern slice(this: js_object, [], [start: int, end: int, contentType: String])
-pub extern stream(this: js_object, [], [])
-pub extern text(this: js_object, [], [])
-pub extern arrayBuffer(this: js_object, [], [])
-pub extern getsize(this: js_object): web int
-	c inline "getObjectField(#1, \"size\")"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-struct BlobPropertyBag
-{  type: String,
-  endings: EndingType
-}
-pub extern newBlobPropertyBag([type: maybe<String> = Nothing, endings: maybe<EndingType> = Nothing])
-()
+pub value struct blob
+  obj: jsObject
 
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setendings(this: js_object, value: EndingType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getendings(this: js_object): web EndingType
-	c inline "getObjectField(#1, \"endings\")"
-struct File
-{,
-,
+pub inline fun newBlob(blobParts': jsArray, options': blobPropertyBag)
+  newJsObject2("Blob", blobParts', options')"
 
-}
-pub extern newFile([fileBits: dart:js_interop/JSArray, fileName: String], [options: FilePropertyBag])
-()
+pub inline fun slice(obj: blob, start': int, end': int, contentType': string): web blob
+  jsOperation5(obj.obj, "slice", start'.obj, end'.obj, contentType'.obj)
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getlastModified(this: js_object): web int
-	c inline "getObjectField(#1, \"lastModified\")"
-pub extern getwebkitRelativePath(this: js_object): web String
-	c inline "getObjectField(#1, \"webkitRelativePath\")"
-struct FilePropertyBag
-{  lastModified: int
-}
-pub extern newFilePropertyBag([lastModified: maybe<int> = Nothing])
-()
+pub inline fun stream(obj: blob): web streams/readableStream
+  jsOperation2(obj.obj, "stream")
 
-pub extern setlastModified(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlastModified(this: js_object): web int
-	c inline "getObjectField(#1, \"lastModified\")"
-struct FileList
-{
-}
+pub inline fun text(obj: blob): web jsPromise
+  jsOperation2(obj.obj, "text")
 
-()
+pub inline fun arrayBuffer(obj: blob): web jsPromise
+  jsOperation2(obj.obj, "arrayBuffer")
 
-pub extern item(this: js_object, [index: int], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct FileReader
-{,
-,
-,
-,
-,
-,
-,
-,
+pub inline fun size(obj: blob): web int
+  getJsObjectField(obj.obj, "size")
 
-}
-pub extern newFileReader([], [])
-(pub extern EMPTY(): int
-	c inline "getConstant(\"EMPTY\")", pub extern LOADING(): int
-	c inline "getConstant(\"LOADING\")", pub extern DONE(): int
-	c inline "getConstant(\"DONE\")")
+pub inline fun type(obj: blob): web string
+  getJsObjectField(obj.obj, "type")
 
-pub extern readAsArrayBuffer(this: js_object, [blob: Blob], [])
-pub extern readAsBinaryString(this: js_object, [blob: Blob], [])
-pub extern readAsText(this: js_object, [blob: Blob], [encoding: String])
-pub extern readAsDataURL(this: js_object, [blob: Blob], [])
-pub extern abort(this: js_object, [], [])
-pub extern getreadyState(this: js_object): web int
-	c inline "getObjectField(#1, \"readyState\")"
-pub extern getresult(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"result\")"
-pub extern geterror(this: js_object): web maybe<webidl.kk/DOMException>
-	c inline "getObjectField(#1, \"error\")"
-pub extern setonloadstart(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonloadstart(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onloadstart\")"
-pub extern setonprogress(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonprogress(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onprogress\")"
-pub extern setonload(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonload(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onload\")"
-pub extern setonabort(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonabort(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onabort\")"
-pub extern setonerror(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonerror(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onerror\")"
-pub extern setonloadend(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonloadend(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onloadend\")"
-struct FileReaderSync
-{
-}
-pub extern newFileReaderSync([], [])
-()
+pub value struct blobPropertyBag
+  obj: jsObject
 
-pub extern readAsArrayBuffer(this: js_object, [blob: Blob], [])
-pub extern readAsBinaryString(this: js_object, [blob: Blob], [])
-pub extern readAsText(this: js_object, [blob: Blob], [encoding: String])
-pub extern readAsDataURL(this: js_object, [blob: Blob], [])
+pub fun newBlobPropertyBag(type: maybe<string> = Nothing, endings: maybe<endingType> = Nothing)
+  val obj = newJsObject();
+  match type
+    Just(it) -> setJsObjectField(obj, "type", it)
+    Nothing -> ()
+  match endings
+    Just(it) -> setJsObjectField(obj, "endings", it)
+    Nothing -> ()
+
+  BlobPropertyBag(obj);
+
+pub inline fun type(obj: blobPropertyBag, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: blobPropertyBag): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun endings(obj: blobPropertyBag, value: endingType): web ()
+  setJsObjectField(obj.obj, "endings", value.obj)
+
+pub inline fun endings(obj: blobPropertyBag): web endingType
+  getJsObjectField(obj.obj, "endings")
+
+pub value struct file
+  obj: jsObject
+
+pub inline fun newFile(fileBits': jsArray, fileName': string, options': filePropertyBag)
+  newJsObject3("File", fileBits', fileName', options')"
+
+pub inline fun name(obj: file): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun lastModified(obj: file): web int
+  getJsObjectField(obj.obj, "lastModified")
+
+pub inline fun webkitRelativePath(obj: file): web string
+  getJsObjectField(obj.obj, "webkitRelativePath")
+
+pub value struct filePropertyBag
+  obj: jsObject
+
+pub fun newFilePropertyBag(lastModified: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match lastModified
+    Just(it) -> setJsObjectField(obj, "lastModified", it)
+    Nothing -> ()
+
+  FilePropertyBag(obj);
+
+pub inline fun lastModified(obj: filePropertyBag, value: int): web ()
+  setJsObjectField(obj.obj, "lastModified", value.obj)
+
+pub inline fun lastModified(obj: filePropertyBag): web int
+  getJsObjectField(obj.obj, "lastModified")
+
+pub value struct fileList
+  obj: jsObject
+
+
+pub inline fun item(obj: fileList, index': int): web maybe<file>
+  jsOperation3(obj.obj, "item", index'.obj)
+
+pub inline fun length(obj: fileList): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct fileReader
+  obj: jsObject
+
+pub inline fun newFileReader()
+  newJsObject0("FileReader")"
+pub inline fun emptY(): int
+  getConstant("EMPTY")
+
+pub inline fun loadinG(): int
+  getConstant("LOADING")
+
+pub inline fun donE(): int
+  getConstant("DONE")
+
+pub inline fun readAsArrayBuffer(obj: fileReader, blob': blob): web ()
+  jsOperation3(obj.obj, "readAsArrayBuffer", blob'.obj)
+
+pub inline fun readAsBinaryString(obj: fileReader, blob': blob): web ()
+  jsOperation3(obj.obj, "readAsBinaryString", blob'.obj)
+
+pub inline fun readAsText(obj: fileReader, blob': blob, encoding': string): web ()
+  jsOperation4(obj.obj, "readAsText", blob'.obj, encoding'.obj)
+
+pub inline fun readAsDataURL(obj: fileReader, blob': blob): web ()
+  jsOperation3(obj.obj, "readAsDataURL", blob'.obj)
+
+pub inline fun abort(obj: fileReader): web ()
+  jsOperation2(obj.obj, "abort")
+
+pub inline fun readyState(obj: fileReader): web int
+  getJsObjectField(obj.obj, "readyState")
+
+pub inline fun result(obj: fileReader): web maybe<jsObject>
+  getJsObjectField(obj.obj, "result")
+
+pub inline fun error(obj: fileReader): web maybe<webidl/domException>
+  getJsObjectField(obj.obj, "error")
+
+pub inline fun onloadstart(obj: fileReader, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onloadstart", value.obj)
+
+pub inline fun onloadstart(obj: fileReader): web html/eventHandler
+  getJsObjectField(obj.obj, "onloadstart")
+
+pub inline fun onprogress(obj: fileReader, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onprogress", value.obj)
+
+pub inline fun onprogress(obj: fileReader): web html/eventHandler
+  getJsObjectField(obj.obj, "onprogress")
+
+pub inline fun onload(obj: fileReader, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onload", value.obj)
+
+pub inline fun onload(obj: fileReader): web html/eventHandler
+  getJsObjectField(obj.obj, "onload")
+
+pub inline fun onabort(obj: fileReader, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onabort", value.obj)
+
+pub inline fun onabort(obj: fileReader): web html/eventHandler
+  getJsObjectField(obj.obj, "onabort")
+
+pub inline fun onerror(obj: fileReader, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onerror", value.obj)
+
+pub inline fun onerror(obj: fileReader): web html/eventHandler
+  getJsObjectField(obj.obj, "onerror")
+
+pub inline fun onloadend(obj: fileReader, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onloadend", value.obj)
+
+pub inline fun onloadend(obj: fileReader): web html/eventHandler
+  getJsObjectField(obj.obj, "onloadend")
+
+pub value struct fileReaderSync
+  obj: jsObject
+
+pub inline fun newFileReaderSync()
+  newJsObject0("FileReaderSync")"
+
+pub inline fun readAsArrayBuffer(obj: fileReaderSync, blob': blob): web jsArrayBuffer
+  jsOperation3(obj.obj, "readAsArrayBuffer", blob'.obj)
+
+pub inline fun readAsBinaryString(obj: fileReaderSync, blob': blob): web string
+  jsOperation3(obj.obj, "readAsBinaryString", blob'.obj)
+
+pub inline fun readAsText(obj: fileReaderSync, blob': blob, encoding': string): web string
+  jsOperation4(obj.obj, "readAsText", blob'.obj, encoding'.obj)
+
+pub inline fun readAsDataURL(obj: fileReaderSync, blob': blob): web string
+  jsOperation3(obj.obj, "readAsDataURL", blob'.obj)
+

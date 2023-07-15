@@ -1,45 +1,73 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias DOMHighResTimeStamp = double
-alias EpochTimeStamp = int
+import web/wasm
+pub alias domHighResTimeStamp = double;
+
+
+pub alias epochTimeStamp = int;
 
 
 
-struct Performance
-{,
-,
-,
-,
-,
 
-}
+pub value struct performance
+  obj: jsObject
 
-()
 
-pub extern now(this: js_object, [], [])
-pub extern toJSON(this: js_object, [], [])
-pub extern measureUserAgentSpecificMemory(this: js_object, [], [])
-pub extern getEntries(this: js_object, [], [])
-pub extern getEntriesByType(this: js_object, [type: String], [])
-pub extern getEntriesByName(this: js_object, [name: String], [type: String])
-pub extern clearResourceTimings(this: js_object, [], [])
-pub extern setResourceTimingBufferSize(this: js_object, [maxSize: int], [])
-pub extern mark(this: js_object, [markName: String], [markOptions: user_timing.kk/PerformanceMarkOptions])
-pub extern clearMarks(this: js_object, [], [markName: String])
-pub extern measure(this: js_object, [measureName: String], [startOrMeasureOptions: maybe<dart:js_interop/JSAny>, endMark: String])
-pub extern clearMeasures(this: js_object, [], [measureName: String])
-pub extern geteventCounts(this: js_object): web event_timing.kk/EventCounts
-	c inline "getObjectField(#1, \"eventCounts\")"
-pub extern getinteractionCount(this: js_object): web int
-	c inline "getObjectField(#1, \"interactionCount\")"
-pub extern gettimeOrigin(this: js_object): web DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"timeOrigin\")"
-pub extern gettiming(this: js_object): web navigation_timing.kk/PerformanceTiming
-	c inline "getObjectField(#1, \"timing\")"
-pub extern getnavigation(this: js_object): web navigation_timing.kk/PerformanceNavigation
-	c inline "getObjectField(#1, \"navigation\")"
-pub extern setonresourcetimingbufferfull(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonresourcetimingbufferfull(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onresourcetimingbufferfull\")"
+pub inline fun now(obj: performance): web domHighResTimeStamp
+  jsOperation2(obj.obj, "now")
+
+pub inline fun toJSON(obj: performance): web jsObject
+  jsOperation2(obj.obj, "toJSON")
+
+pub inline fun measureUserAgentSpecificMemory(obj: performance): web jsPromise
+  jsOperation2(obj.obj, "measureUserAgentSpecificMemory")
+
+pub inline fun getEntries(obj: performance): web performance_timeline/performanceEntryList
+  jsOperation2(obj.obj, "getEntries")
+
+pub inline fun getEntriesByType(obj: performance, type': string): web performance_timeline/performanceEntryList
+  jsOperation3(obj.obj, "getEntriesByType", type'.obj)
+
+pub inline fun getEntriesByName(obj: performance, name': string, type': string): web performance_timeline/performanceEntryList
+  jsOperation4(obj.obj, "getEntriesByName", name'.obj, type'.obj)
+
+pub inline fun clearResourceTimings(obj: performance): web ()
+  jsOperation2(obj.obj, "clearResourceTimings")
+
+pub inline fun setResourceTimingBufferSize(obj: performance, maxSize': int): web ()
+  jsOperation3(obj.obj, "setResourceTimingBufferSize", maxSize'.obj)
+
+pub inline fun mark(obj: performance, markName': string, markOptions': user_timing/performanceMarkOptions): web user_timing/performanceMark
+  jsOperation4(obj.obj, "mark", markName'.obj, markOptions'.obj)
+
+pub inline fun clearMarks(obj: performance, markName': string): web ()
+  jsOperation3(obj.obj, "clearMarks", markName'.obj)
+
+pub inline fun measure(obj: performance, measureName': string, startOrMeasureOptions': maybe<jsObject>, endMark': string): web user_timing/performanceMeasure
+  jsOperation5(obj.obj, "measure", measureName'.obj, startOrMeasureOptions'.obj, endMark'.obj)
+
+pub inline fun clearMeasures(obj: performance, measureName': string): web ()
+  jsOperation3(obj.obj, "clearMeasures", measureName'.obj)
+
+pub inline fun eventCounts(obj: performance): web event_timing/eventCounts
+  getJsObjectField(obj.obj, "eventCounts")
+
+pub inline fun interactionCount(obj: performance): web int
+  getJsObjectField(obj.obj, "interactionCount")
+
+pub inline fun timeOrigin(obj: performance): web domHighResTimeStamp
+  getJsObjectField(obj.obj, "timeOrigin")
+
+pub inline fun timing(obj: performance): web navigation_timing/performanceTiming
+  getJsObjectField(obj.obj, "timing")
+
+pub inline fun navigation(obj: performance): web navigation_timing/performanceNavigation
+  getJsObjectField(obj.obj, "navigation")
+
+pub inline fun onresourcetimingbufferfull(obj: performance, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onresourcetimingbufferfull", value.obj)
+
+pub inline fun onresourcetimingbufferfull(obj: performance): web html/eventHandler
+  getJsObjectField(obj.obj, "onresourcetimingbufferfull")
+

@@ -1,57 +1,58 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct ScreenDetails
-{,
-,
-,
+pub value struct screenDetails
+  obj: jsObject
 
-}
 
-()
+pub inline fun screens(obj: screenDetails): web jsArray
+  getJsObjectField(obj.obj, "screens")
 
-pub extern getscreens(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"screens\")"
-pub extern getcurrentScreen(this: js_object): web ScreenDetailed
-	c inline "getObjectField(#1, \"currentScreen\")"
-pub extern setonscreenschange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonscreenschange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onscreenschange\")"
-pub extern setoncurrentscreenchange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncurrentscreenchange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"oncurrentscreenchange\")"
-struct ScreenDetailed
-{,
-,
-,
-,
-,
-,
-,
+pub inline fun currentScreen(obj: screenDetails): web screenDetailed
+  getJsObjectField(obj.obj, "currentScreen")
 
-}
+pub inline fun onscreenschange(obj: screenDetails, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onscreenschange", value.obj)
 
-()
+pub inline fun onscreenschange(obj: screenDetails): web html/eventHandler
+  getJsObjectField(obj.obj, "onscreenschange")
 
-pub extern getavailLeft(this: js_object): web int
-	c inline "getObjectField(#1, \"availLeft\")"
-pub extern getavailTop(this: js_object): web int
-	c inline "getObjectField(#1, \"availTop\")"
-pub extern getleft(this: js_object): web int
-	c inline "getObjectField(#1, \"left\")"
-pub extern gettop(this: js_object): web int
-	c inline "getObjectField(#1, \"top\")"
-pub extern getisPrimary(this: js_object): web bool
-	c inline "getObjectField(#1, \"isPrimary\")"
-pub extern getisInternal(this: js_object): web bool
-	c inline "getObjectField(#1, \"isInternal\")"
-pub extern getdevicePixelRatio(this: js_object): web double
-	c inline "getObjectField(#1, \"devicePixelRatio\")"
-pub extern getlabel(this: js_object): web String
-	c inline "getObjectField(#1, \"label\")"
+pub inline fun oncurrentscreenchange(obj: screenDetails, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "oncurrentscreenchange", value.obj)
+
+pub inline fun oncurrentscreenchange(obj: screenDetails): web html/eventHandler
+  getJsObjectField(obj.obj, "oncurrentscreenchange")
+
+pub value struct screenDetailed
+  obj: jsObject
+
+
+pub inline fun availLeft(obj: screenDetailed): web int
+  getJsObjectField(obj.obj, "availLeft")
+
+pub inline fun availTop(obj: screenDetailed): web int
+  getJsObjectField(obj.obj, "availTop")
+
+pub inline fun left(obj: screenDetailed): web int
+  getJsObjectField(obj.obj, "left")
+
+pub inline fun top(obj: screenDetailed): web int
+  getJsObjectField(obj.obj, "top")
+
+pub inline fun isPrimary(obj: screenDetailed): web bool
+  getJsObjectField(obj.obj, "isPrimary")
+
+pub inline fun isInternal(obj: screenDetailed): web bool
+  getJsObjectField(obj.obj, "isInternal")
+
+pub inline fun devicePixelRatio(obj: screenDetailed): web double
+  getJsObjectField(obj.obj, "devicePixelRatio")
+
+pub inline fun label(obj: screenDetailed): web string
+  getJsObjectField(obj.obj, "label")
+

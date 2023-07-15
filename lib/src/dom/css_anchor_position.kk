@@ -1,23 +1,22 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct CSSPositionFallbackRule
-{
-}
+pub value struct cssPositionFallbackRule
+  obj: jsObject
 
-()
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-struct CSSTryRule
-{
-}
+pub inline fun name(obj: cssPositionFallbackRule): web string
+  getJsObjectField(obj.obj, "name")
 
-()
+pub value struct cssTryRule
+  obj: jsObject
 
-pub extern getstyle(this: js_object): web cssom.kk/CSSStyleDeclaration
-	c inline "getObjectField(#1, \"style\")"
+
+pub inline fun style(obj: cssTryRule): web cssom/cssStyleDeclaration
+  getJsObjectField(obj.obj, "style")
+

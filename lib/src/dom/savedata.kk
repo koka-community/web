@@ -1,15 +1,15 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct NetworkInformationSaveData
-{
-}
+pub value struct networkInformationSaveData
+  obj: jsObject
 
-()
 
-pub extern getsaveData(this: js_object): web bool
-	c inline "getObjectField(#1, \"saveData\")"
+pub inline fun saveData(obj: networkInformationSaveData): web bool
+  getJsObjectField(obj.obj, "saveData")
+

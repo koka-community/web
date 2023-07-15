@@ -1,82 +1,85 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias RenderBlockingStatusType = String
-struct PerformanceResourceTiming
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub alias renderBlockingStatusType = string;
 
-}
+pub value struct performanceResourceTiming
+  obj: jsObject
 
-()
 
-pub extern toJSON(this: js_object, [], [])
-pub extern getinitiatorType(this: js_object): web String
-	c inline "getObjectField(#1, \"initiatorType\")"
-pub extern getdeliveryType(this: js_object): web String
-	c inline "getObjectField(#1, \"deliveryType\")"
-pub extern getnextHopProtocol(this: js_object): web String
-	c inline "getObjectField(#1, \"nextHopProtocol\")"
-pub extern getworkerStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"workerStart\")"
-pub extern getredirectStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"redirectStart\")"
-pub extern getredirectEnd(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"redirectEnd\")"
-pub extern getfetchStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"fetchStart\")"
-pub extern getdomainLookupStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"domainLookupStart\")"
-pub extern getdomainLookupEnd(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"domainLookupEnd\")"
-pub extern getconnectStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"connectStart\")"
-pub extern getconnectEnd(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"connectEnd\")"
-pub extern getsecureConnectionStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"secureConnectionStart\")"
-pub extern getrequestStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"requestStart\")"
-pub extern getfirstInterimResponseStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"firstInterimResponseStart\")"
-pub extern getresponseStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"responseStart\")"
-pub extern getresponseEnd(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"responseEnd\")"
-pub extern gettransferSize(this: js_object): web int
-	c inline "getObjectField(#1, \"transferSize\")"
-pub extern getencodedBodySize(this: js_object): web int
-	c inline "getObjectField(#1, \"encodedBodySize\")"
-pub extern getdecodedBodySize(this: js_object): web int
-	c inline "getObjectField(#1, \"decodedBodySize\")"
-pub extern getresponseStatus(this: js_object): web int
-	c inline "getObjectField(#1, \"responseStatus\")"
-pub extern getrenderBlockingStatus(this: js_object): web RenderBlockingStatusType
-	c inline "getObjectField(#1, \"renderBlockingStatus\")"
-pub extern getcontentType(this: js_object): web String
-	c inline "getObjectField(#1, \"contentType\")"
-pub extern getserverTiming(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"serverTiming\")"
+pub inline fun toJSON(obj: performanceResourceTiming): web jsObject
+  jsOperation2(obj.obj, "toJSON")
+
+pub inline fun initiatorType(obj: performanceResourceTiming): web string
+  getJsObjectField(obj.obj, "initiatorType")
+
+pub inline fun deliveryType(obj: performanceResourceTiming): web string
+  getJsObjectField(obj.obj, "deliveryType")
+
+pub inline fun nextHopProtocol(obj: performanceResourceTiming): web string
+  getJsObjectField(obj.obj, "nextHopProtocol")
+
+pub inline fun workerStart(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "workerStart")
+
+pub inline fun redirectStart(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "redirectStart")
+
+pub inline fun redirectEnd(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "redirectEnd")
+
+pub inline fun fetchStart(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "fetchStart")
+
+pub inline fun domainLookupStart(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "domainLookupStart")
+
+pub inline fun domainLookupEnd(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "domainLookupEnd")
+
+pub inline fun connectStart(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "connectStart")
+
+pub inline fun connectEnd(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "connectEnd")
+
+pub inline fun secureConnectionStart(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "secureConnectionStart")
+
+pub inline fun requestStart(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "requestStart")
+
+pub inline fun firstInterimResponseStart(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "firstInterimResponseStart")
+
+pub inline fun responseStart(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "responseStart")
+
+pub inline fun responseEnd(obj: performanceResourceTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "responseEnd")
+
+pub inline fun transferSize(obj: performanceResourceTiming): web int
+  getJsObjectField(obj.obj, "transferSize")
+
+pub inline fun encodedBodySize(obj: performanceResourceTiming): web int
+  getJsObjectField(obj.obj, "encodedBodySize")
+
+pub inline fun decodedBodySize(obj: performanceResourceTiming): web int
+  getJsObjectField(obj.obj, "decodedBodySize")
+
+pub inline fun responseStatus(obj: performanceResourceTiming): web int
+  getJsObjectField(obj.obj, "responseStatus")
+
+pub inline fun renderBlockingStatus(obj: performanceResourceTiming): web renderBlockingStatusType
+  getJsObjectField(obj.obj, "renderBlockingStatus")
+
+pub inline fun contentType(obj: performanceResourceTiming): web string
+  getJsObjectField(obj.obj, "contentType")
+
+pub inline fun serverTiming(obj: performanceResourceTiming): web jsArray
+  getJsObjectField(obj.obj, "serverTiming")
+

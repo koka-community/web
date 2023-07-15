@@ -1,14 +1,15 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct WEBGL_debug_shaders
-{
-}
+pub value struct webgL_debug_shaders
+  obj: jsObject
 
-()
 
-pub extern getTranslatedShaderSource(this: js_object, [shader: webgl1.kk/WebGLShader], [])
+pub inline fun getTranslatedShaderSource(obj: webgL_debug_shaders, shader': webgl1/webGLShader): web string
+  jsOperation3(obj.obj, "getTranslatedShaderSource", shader'.obj)
+

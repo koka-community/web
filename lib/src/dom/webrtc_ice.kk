@@ -1,22 +1,34 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct RTCIceGatherOptions
-{  gatherPolicy: webrtc.kk/RTCIceTransportPolicy,
-  iceServers: dart:js_interop/JSArray
-}
-pub extern newRTCIceGatherOptions([gatherPolicy: maybe<webrtc.kk/RTCIceTransportPolicy> = Nothing, iceServers: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub value struct rtcIceGatherOptions
+  obj: jsObject
 
-pub extern setgatherPolicy(this: js_object, value: webrtc.kk/RTCIceTransportPolicy): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getgatherPolicy(this: js_object): web webrtc.kk/RTCIceTransportPolicy
-	c inline "getObjectField(#1, \"gatherPolicy\")"
-pub extern seticeServers(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geticeServers(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"iceServers\")"
+pub fun newRtcIceGatherOptions(gatherPolicy: maybe<webrtc/rtcIceTransportPolicy> = Nothing, iceServers: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match gatherPolicy
+    Just(it) -> setJsObjectField(obj, "gatherPolicy", it)
+    Nothing -> ()
+  match iceServers
+    Just(it) -> setJsObjectField(obj, "iceServers", it)
+    Nothing -> ()
+
+  RtcIceGatherOptions(obj);
+
+pub inline fun gatherPolicy(obj: rtcIceGatherOptions, value: webrtc/rtcIceTransportPolicy): web ()
+  setJsObjectField(obj.obj, "gatherPolicy", value.obj)
+
+pub inline fun gatherPolicy(obj: rtcIceGatherOptions): web webrtc/rtcIceTransportPolicy
+  getJsObjectField(obj.obj, "gatherPolicy")
+
+pub inline fun iceServers(obj: rtcIceGatherOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "iceServers", value.obj)
+
+pub inline fun iceServers(obj: rtcIceGatherOptions): web jsArray
+  getJsObjectField(obj.obj, "iceServers")
+

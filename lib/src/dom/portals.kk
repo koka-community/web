@@ -1,79 +1,109 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct HTMLPortalElement
-{,
-,
-,
+pub value struct htmlPortalElement
+  obj: jsObject
 
-}
-pub extern newHTMLPortalElement([], [])
-()
+pub inline fun newHtmlPortalElement()
+  newJsObject0("HtmlPortalElement")"
 
-pub extern activate(this: js_object, [], [options: PortalActivateOptions])
-pub extern postMessage(this: js_object, [message: maybe<dart:js_interop/JSAny>], [options: html.kk/StructuredSerializeOptions])
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern setreferrerPolicy(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreferrerPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"referrerPolicy\")"
-pub extern setonmessage(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessage(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onmessage\")"
-pub extern setonmessageerror(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessageerror(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onmessageerror\")"
-struct PortalActivateOptions
-{  data: maybe<dart:js_interop/JSAny>
-}
-pub extern newPortalActivateOptions([data: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
+pub inline fun activate(obj: htmlPortalElement, options': portalActivateOptions): web jsPromise
+  jsOperation3(obj.obj, "activate", options'.obj)
 
-pub extern setdata(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdata(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"data\")"
-struct PortalHost
-{,
+pub inline fun postMessage(obj: htmlPortalElement, message': maybe<jsObject>, options': html/structuredSerializeOptions): web ()
+  jsOperation4(obj.obj, "postMessage", message'.obj, options'.obj)
 
-}
+pub inline fun src(obj: htmlPortalElement, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
 
-()
+pub inline fun src(obj: htmlPortalElement): web string
+  getJsObjectField(obj.obj, "src")
 
-pub extern postMessage(this: js_object, [message: maybe<dart:js_interop/JSAny>], [options: html.kk/StructuredSerializeOptions])
-pub extern setonmessage(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessage(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onmessage\")"
-pub extern setonmessageerror(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessageerror(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onmessageerror\")"
-struct PortalActivateEvent
-{
-}
-pub extern newPortalActivateEvent([type: String], [eventInitDict: PortalActivateEventInit])
-()
+pub inline fun referrerPolicy(obj: htmlPortalElement, value: string): web ()
+  setJsObjectField(obj.obj, "referrerPolicy", value.obj)
 
-pub extern adoptPredecessor(this: js_object, [], [])
-pub extern getdata(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"data\")"
-struct PortalActivateEventInit
-{  data: maybe<dart:js_interop/JSAny>
-}
-pub extern newPortalActivateEventInit([data: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
+pub inline fun referrerPolicy(obj: htmlPortalElement): web string
+  getJsObjectField(obj.obj, "referrerPolicy")
 
-pub extern setdata(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdata(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"data\")"
+pub inline fun onmessage(obj: htmlPortalElement, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessage", value.obj)
+
+pub inline fun onmessage(obj: htmlPortalElement): web html/eventHandler
+  getJsObjectField(obj.obj, "onmessage")
+
+pub inline fun onmessageerror(obj: htmlPortalElement, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessageerror", value.obj)
+
+pub inline fun onmessageerror(obj: htmlPortalElement): web html/eventHandler
+  getJsObjectField(obj.obj, "onmessageerror")
+
+pub value struct portalActivateOptions
+  obj: jsObject
+
+pub fun newPortalActivateOptions(data: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match data
+    Just(it) -> setJsObjectField(obj, "data", it)
+    Nothing -> ()
+
+  PortalActivateOptions(obj);
+
+pub inline fun data(obj: portalActivateOptions, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "data", value.obj)
+
+pub inline fun data(obj: portalActivateOptions): web maybe<jsObject>
+  getJsObjectField(obj.obj, "data")
+
+pub value struct portalHost
+  obj: jsObject
+
+
+pub inline fun postMessage(obj: portalHost, message': maybe<jsObject>, options': html/structuredSerializeOptions): web ()
+  jsOperation4(obj.obj, "postMessage", message'.obj, options'.obj)
+
+pub inline fun onmessage(obj: portalHost, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessage", value.obj)
+
+pub inline fun onmessage(obj: portalHost): web html/eventHandler
+  getJsObjectField(obj.obj, "onmessage")
+
+pub inline fun onmessageerror(obj: portalHost, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessageerror", value.obj)
+
+pub inline fun onmessageerror(obj: portalHost): web html/eventHandler
+  getJsObjectField(obj.obj, "onmessageerror")
+
+pub value struct portalActivateEvent
+  obj: jsObject
+
+pub inline fun newPortalActivateEvent(type': string, eventInitDict': portalActivateEventInit)
+  newJsObject2("PortalActivateEvent", type', eventInitDict')"
+
+pub inline fun adoptPredecessor(obj: portalActivateEvent): web htmlPortalElement
+  jsOperation2(obj.obj, "adoptPredecessor")
+
+pub inline fun data(obj: portalActivateEvent): web maybe<jsObject>
+  getJsObjectField(obj.obj, "data")
+
+pub value struct portalActivateEventInit
+  obj: jsObject
+
+pub fun newPortalActivateEventInit(data: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match data
+    Just(it) -> setJsObjectField(obj, "data", it)
+    Nothing -> ()
+
+  PortalActivateEventInit(obj);
+
+pub inline fun data(obj: portalActivateEventInit, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "data", value.obj)
+
+pub inline fun data(obj: portalActivateEventInit): web maybe<jsObject>
+  getJsObjectField(obj.obj, "data")
+

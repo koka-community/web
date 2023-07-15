@@ -1,15 +1,15 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct CSSAnimation
-{
-}
+pub value struct cssAnimation
+  obj: jsObject
 
-()
 
-pub extern getanimationName(this: js_object): web String
-	c inline "getObjectField(#1, \"animationName\")"
+pub inline fun animationName(obj: cssAnimation): web string
+  getJsObjectField(obj.obj, "animationName")
+

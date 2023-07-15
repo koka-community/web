@@ -44,7 +44,8 @@ const String generatedFileDisclaimer = 'Generated from Web IDL definitions.';
 extension StringExt on String {
   String get kebabToSnake => toLowerCase().replaceAll('-', '_');
 
-  String get snakeToPascal => replaceAllMapped(
+  String get snakeToPascal => capitalize(snakeToCamel);
+  String get snakeToCamel => replaceAllMapped(
         _snakeBit,
         (match) => match[0]!.toUpperCase(),
       ).replaceAll('_', '');
@@ -58,3 +59,12 @@ const packageRoot = 'package:web';
 
 String capitalize(String s) =>
     s.isEmpty ? '' : '${s[0].toUpperCase()}${s.substring(1)}';
+
+String lower(String s) =>
+    s.isEmpty ? '' : '${s[0].toLowerCase()}${lowerRest(s.substring(1))}';
+String lowerRest(String s) {
+  if (s.isEmpty) return '';
+  if (s.length == 1) return s;
+  if (s[1].toLowerCase() == s[1]) return s;
+  return '${s[0].toLowerCase()}${lowerRest(s.substring(1))}';
+}

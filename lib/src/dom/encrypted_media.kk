@@ -1,184 +1,276 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias MediaKeysRequirement = String
-alias MediaKeySessionType = String
-alias MediaKeySessionClosedReason = String
-alias MediaKeyStatus = String
-alias MediaKeyMessageType = String
-struct MediaKeySystemConfiguration
-{  label: String,
-  initDataTypes: dart:js_interop/JSArray,
-  audioCapabilities: dart:js_interop/JSArray,
-  videoCapabilities: dart:js_interop/JSArray,
-  distinctiveIdentifier: MediaKeysRequirement,
-  persistentState: MediaKeysRequirement,
-  sessionTypes: dart:js_interop/JSArray
-}
-pub extern newMediaKeySystemConfiguration([label: maybe<String> = Nothing, initDataTypes: maybe<dart:js_interop/JSArray> = Nothing, audioCapabilities: maybe<dart:js_interop/JSArray> = Nothing, videoCapabilities: maybe<dart:js_interop/JSArray> = Nothing, distinctiveIdentifier: maybe<MediaKeysRequirement> = Nothing, persistentState: maybe<MediaKeysRequirement> = Nothing, sessionTypes: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub alias mediaKeysRequirement = string;
 
-pub extern setlabel(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlabel(this: js_object): web String
-	c inline "getObjectField(#1, \"label\")"
-pub extern setinitDataTypes(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinitDataTypes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"initDataTypes\")"
-pub extern setaudioCapabilities(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaudioCapabilities(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"audioCapabilities\")"
-pub extern setvideoCapabilities(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvideoCapabilities(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"videoCapabilities\")"
-pub extern setdistinctiveIdentifier(this: js_object, value: MediaKeysRequirement): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdistinctiveIdentifier(this: js_object): web MediaKeysRequirement
-	c inline "getObjectField(#1, \"distinctiveIdentifier\")"
-pub extern setpersistentState(this: js_object, value: MediaKeysRequirement): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpersistentState(this: js_object): web MediaKeysRequirement
-	c inline "getObjectField(#1, \"persistentState\")"
-pub extern setsessionTypes(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsessionTypes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"sessionTypes\")"
-struct MediaKeySystemMediaCapability
-{  contentType: String,
-  encryptionScheme: maybe<String>,
-  robustness: String
-}
-pub extern newMediaKeySystemMediaCapability([contentType: maybe<String> = Nothing, encryptionScheme: maybe<maybe<String>> = Nothing, robustness: maybe<String> = Nothing])
-()
 
-pub extern setcontentType(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcontentType(this: js_object): web String
-	c inline "getObjectField(#1, \"contentType\")"
-pub extern setencryptionScheme(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getencryptionScheme(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"encryptionScheme\")"
-pub extern setrobustness(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrobustness(this: js_object): web String
-	c inline "getObjectField(#1, \"robustness\")"
-struct MediaKeySystemAccess
-{
-}
+pub alias mediaKeySessionType = string;
 
-()
 
-pub extern getConfiguration(this: js_object, [], [])
-pub extern createMediaKeys(this: js_object, [], [])
-pub extern getkeySystem(this: js_object): web String
-	c inline "getObjectField(#1, \"keySystem\")"
-struct MediaKeys
-{
-}
+pub alias mediaKeySessionClosedReason = string;
 
-()
 
-pub extern createSession(this: js_object, [], [sessionType: MediaKeySessionType])
-pub extern setServerCertificate(this: js_object, [serverCertificate: webidl.kk/BufferSource], [])
-struct MediaKeySession
-{,
-,
-,
-,
-,
+pub alias mediaKeyStatus = string;
 
-}
 
-()
+pub alias mediaKeyMessageType = string;
 
-pub extern generateRequest(this: js_object, [initDataType: String, initData: webidl.kk/BufferSource], [])
-pub extern load(this: js_object, [sessionId: String], [])
-pub extern update(this: js_object, [response: webidl.kk/BufferSource], [])
-pub extern close(this: js_object, [], [])
-pub extern remove(this: js_object, [], [])
-pub extern getsessionId(this: js_object): web String
-	c inline "getObjectField(#1, \"sessionId\")"
-pub extern getexpiration(this: js_object): web double
-	c inline "getObjectField(#1, \"expiration\")"
-pub extern getclosed(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"closed\")"
-pub extern getkeyStatuses(this: js_object): web MediaKeyStatusMap
-	c inline "getObjectField(#1, \"keyStatuses\")"
-pub extern setonkeystatuseschange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonkeystatuseschange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onkeystatuseschange\")"
-pub extern setonmessage(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessage(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onmessage\")"
-struct MediaKeyStatusMap
-{,
+pub value struct mediaKeySystemConfiguration
+  obj: jsObject
 
-}
+pub fun newMediaKeySystemConfiguration(label: maybe<string> = Nothing, initDataTypes: maybe<jsArray> = Nothing, audioCapabilities: maybe<jsArray> = Nothing, videoCapabilities: maybe<jsArray> = Nothing, distinctiveIdentifier: maybe<mediaKeysRequirement> = Nothing, persistentState: maybe<mediaKeysRequirement> = Nothing, sessionTypes: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match label
+    Just(it) -> setJsObjectField(obj, "label", it)
+    Nothing -> ()
+  match initDataTypes
+    Just(it) -> setJsObjectField(obj, "initDataTypes", it)
+    Nothing -> ()
+  match audioCapabilities
+    Just(it) -> setJsObjectField(obj, "audioCapabilities", it)
+    Nothing -> ()
+  match videoCapabilities
+    Just(it) -> setJsObjectField(obj, "videoCapabilities", it)
+    Nothing -> ()
+  match distinctiveIdentifier
+    Just(it) -> setJsObjectField(obj, "distinctiveIdentifier", it)
+    Nothing -> ()
+  match persistentState
+    Just(it) -> setJsObjectField(obj, "persistentState", it)
+    Nothing -> ()
+  match sessionTypes
+    Just(it) -> setJsObjectField(obj, "sessionTypes", it)
+    Nothing -> ()
 
-()
+  MediaKeySystemConfiguration(obj);
 
-pub extern has(this: js_object, [keyId: webidl.kk/BufferSource], [])
-pub extern get(this: js_object, [keyId: webidl.kk/BufferSource], [])
-pub extern getsize(this: js_object): web int
-	c inline "getObjectField(#1, \"size\")"
-struct MediaKeyMessageEvent
-{,
+pub inline fun label(obj: mediaKeySystemConfiguration, value: string): web ()
+  setJsObjectField(obj.obj, "label", value.obj)
 
-}
-pub extern newMediaKeyMessageEvent([type: String, eventInitDict: MediaKeyMessageEventInit], [])
-()
+pub inline fun label(obj: mediaKeySystemConfiguration): web string
+  getJsObjectField(obj.obj, "label")
 
-pub extern getmessageType(this: js_object): web MediaKeyMessageType
-	c inline "getObjectField(#1, \"messageType\")"
-pub extern getmessage(this: js_object): web dart:js_interop/JSArrayBuffer
-	c inline "getObjectField(#1, \"message\")"
-struct MediaKeyMessageEventInit
-{  messageType: MediaKeyMessageType,
-  message: dart:js_interop/JSArrayBuffer
-}
-pub extern newMediaKeyMessageEventInit([messageType: MediaKeyMessageType, message: dart:js_interop/JSArrayBuffer])
-()
+pub inline fun initDataTypes(obj: mediaKeySystemConfiguration, value: jsArray): web ()
+  setJsObjectField(obj.obj, "initDataTypes", value.obj)
 
-pub extern setmessageType(this: js_object, value: MediaKeyMessageType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmessageType(this: js_object): web MediaKeyMessageType
-	c inline "getObjectField(#1, \"messageType\")"
-pub extern setmessage(this: js_object, value: dart:js_interop/JSArrayBuffer): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmessage(this: js_object): web dart:js_interop/JSArrayBuffer
-	c inline "getObjectField(#1, \"message\")"
-struct MediaEncryptedEvent
-{,
+pub inline fun initDataTypes(obj: mediaKeySystemConfiguration): web jsArray
+  getJsObjectField(obj.obj, "initDataTypes")
 
-}
-pub extern newMediaEncryptedEvent([type: String], [eventInitDict: MediaEncryptedEventInit])
-()
+pub inline fun audioCapabilities(obj: mediaKeySystemConfiguration, value: jsArray): web ()
+  setJsObjectField(obj.obj, "audioCapabilities", value.obj)
 
-pub extern getinitDataType(this: js_object): web String
-	c inline "getObjectField(#1, \"initDataType\")"
-pub extern getinitData(this: js_object): web maybe<dart:js_interop/JSArrayBuffer>
-	c inline "getObjectField(#1, \"initData\")"
-struct MediaEncryptedEventInit
-{  initDataType: String,
-  initData: maybe<dart:js_interop/JSArrayBuffer>
-}
-pub extern newMediaEncryptedEventInit([initDataType: maybe<String> = Nothing, initData: maybe<maybe<dart:js_interop/JSArrayBuffer>> = Nothing])
-()
+pub inline fun audioCapabilities(obj: mediaKeySystemConfiguration): web jsArray
+  getJsObjectField(obj.obj, "audioCapabilities")
 
-pub extern setinitDataType(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinitDataType(this: js_object): web String
-	c inline "getObjectField(#1, \"initDataType\")"
-pub extern setinitData(this: js_object, value: maybe<dart:js_interop/JSArrayBuffer>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinitData(this: js_object): web maybe<dart:js_interop/JSArrayBuffer>
-	c inline "getObjectField(#1, \"initData\")"
+pub inline fun videoCapabilities(obj: mediaKeySystemConfiguration, value: jsArray): web ()
+  setJsObjectField(obj.obj, "videoCapabilities", value.obj)
+
+pub inline fun videoCapabilities(obj: mediaKeySystemConfiguration): web jsArray
+  getJsObjectField(obj.obj, "videoCapabilities")
+
+pub inline fun distinctiveIdentifier(obj: mediaKeySystemConfiguration, value: mediaKeysRequirement): web ()
+  setJsObjectField(obj.obj, "distinctiveIdentifier", value.obj)
+
+pub inline fun distinctiveIdentifier(obj: mediaKeySystemConfiguration): web mediaKeysRequirement
+  getJsObjectField(obj.obj, "distinctiveIdentifier")
+
+pub inline fun persistentState(obj: mediaKeySystemConfiguration, value: mediaKeysRequirement): web ()
+  setJsObjectField(obj.obj, "persistentState", value.obj)
+
+pub inline fun persistentState(obj: mediaKeySystemConfiguration): web mediaKeysRequirement
+  getJsObjectField(obj.obj, "persistentState")
+
+pub inline fun sessionTypes(obj: mediaKeySystemConfiguration, value: jsArray): web ()
+  setJsObjectField(obj.obj, "sessionTypes", value.obj)
+
+pub inline fun sessionTypes(obj: mediaKeySystemConfiguration): web jsArray
+  getJsObjectField(obj.obj, "sessionTypes")
+
+pub value struct mediaKeySystemMediaCapability
+  obj: jsObject
+
+pub fun newMediaKeySystemMediaCapability(contentType: maybe<string> = Nothing, encryptionScheme: maybe<maybe<string>> = Nothing, robustness: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match contentType
+    Just(it) -> setJsObjectField(obj, "contentType", it)
+    Nothing -> ()
+  match encryptionScheme
+    Just(it) -> setJsObjectField(obj, "encryptionScheme", it)
+    Nothing -> ()
+  match robustness
+    Just(it) -> setJsObjectField(obj, "robustness", it)
+    Nothing -> ()
+
+  MediaKeySystemMediaCapability(obj);
+
+pub inline fun contentType(obj: mediaKeySystemMediaCapability, value: string): web ()
+  setJsObjectField(obj.obj, "contentType", value.obj)
+
+pub inline fun contentType(obj: mediaKeySystemMediaCapability): web string
+  getJsObjectField(obj.obj, "contentType")
+
+pub inline fun encryptionScheme(obj: mediaKeySystemMediaCapability, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "encryptionScheme", value.obj)
+
+pub inline fun encryptionScheme(obj: mediaKeySystemMediaCapability): web maybe<string>
+  getJsObjectField(obj.obj, "encryptionScheme")
+
+pub inline fun robustness(obj: mediaKeySystemMediaCapability, value: string): web ()
+  setJsObjectField(obj.obj, "robustness", value.obj)
+
+pub inline fun robustness(obj: mediaKeySystemMediaCapability): web string
+  getJsObjectField(obj.obj, "robustness")
+
+pub value struct mediaKeySystemAccess
+  obj: jsObject
+
+
+pub inline fun getConfiguration(obj: mediaKeySystemAccess): web mediaKeySystemConfiguration
+  jsOperation2(obj.obj, "getConfiguration")
+
+pub inline fun createMediaKeys(obj: mediaKeySystemAccess): web jsPromise
+  jsOperation2(obj.obj, "createMediaKeys")
+
+pub inline fun keySystem(obj: mediaKeySystemAccess): web string
+  getJsObjectField(obj.obj, "keySystem")
+
+pub value struct mediaKeys
+  obj: jsObject
+
+
+pub inline fun createSession(obj: mediaKeys, sessionType': mediaKeySessionType): web mediaKeySession
+  jsOperation3(obj.obj, "createSession", sessionType'.obj)
+
+pub inline fun setServerCertificate(obj: mediaKeys, serverCertificate': webidl/bufferSource): web jsPromise
+  jsOperation3(obj.obj, "setServerCertificate", serverCertificate'.obj)
+
+pub value struct mediaKeySession
+  obj: jsObject
+
+
+pub inline fun generateRequest(obj: mediaKeySession, initDataType': string, initData': webidl/bufferSource): web jsPromise
+  jsOperation4(obj.obj, "generateRequest", initDataType'.obj, initData'.obj)
+
+pub inline fun load(obj: mediaKeySession, sessionId': string): web jsPromise
+  jsOperation3(obj.obj, "load", sessionId'.obj)
+
+pub inline fun update(obj: mediaKeySession, response': webidl/bufferSource): web jsPromise
+  jsOperation3(obj.obj, "update", response'.obj)
+
+pub inline fun close(obj: mediaKeySession): web jsPromise
+  jsOperation2(obj.obj, "close")
+
+pub inline fun remove(obj: mediaKeySession): web jsPromise
+  jsOperation2(obj.obj, "remove")
+
+pub inline fun sessionId(obj: mediaKeySession): web string
+  getJsObjectField(obj.obj, "sessionId")
+
+pub inline fun expiration(obj: mediaKeySession): web double
+  getJsObjectField(obj.obj, "expiration")
+
+pub inline fun closed(obj: mediaKeySession): web jsPromise
+  getJsObjectField(obj.obj, "closed")
+
+pub inline fun keyStatuses(obj: mediaKeySession): web mediaKeyStatusMap
+  getJsObjectField(obj.obj, "keyStatuses")
+
+pub inline fun onkeystatuseschange(obj: mediaKeySession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onkeystatuseschange", value.obj)
+
+pub inline fun onkeystatuseschange(obj: mediaKeySession): web html/eventHandler
+  getJsObjectField(obj.obj, "onkeystatuseschange")
+
+pub inline fun onmessage(obj: mediaKeySession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessage", value.obj)
+
+pub inline fun onmessage(obj: mediaKeySession): web html/eventHandler
+  getJsObjectField(obj.obj, "onmessage")
+
+pub value struct mediaKeyStatusMap
+  obj: jsObject
+
+
+pub inline fun has(obj: mediaKeyStatusMap, keyId': webidl/bufferSource): web bool
+  jsOperation3(obj.obj, "has", keyId'.obj)
+
+pub inline fun get(obj: mediaKeyStatusMap, keyId': webidl/bufferSource): web maybe<jsObject>
+  jsOperation3(obj.obj, "get", keyId'.obj)
+
+pub inline fun size(obj: mediaKeyStatusMap): web int
+  getJsObjectField(obj.obj, "size")
+
+pub value struct mediaKeyMessageEvent
+  obj: jsObject
+
+pub inline fun newMediaKeyMessageEvent(type': string, eventInitDict': mediaKeyMessageEventInit)
+  newJsObject2("MediaKeyMessageEvent", type', eventInitDict')"
+
+pub inline fun messageType(obj: mediaKeyMessageEvent): web mediaKeyMessageType
+  getJsObjectField(obj.obj, "messageType")
+
+pub inline fun message(obj: mediaKeyMessageEvent): web jsArrayBuffer
+  getJsObjectField(obj.obj, "message")
+
+pub value struct mediaKeyMessageEventInit
+  obj: jsObject
+
+pub fun newMediaKeyMessageEventInit(messageType: mediaKeyMessageType, message: jsArrayBuffer)
+  val obj = newJsObject();
+  setJsObjectField(obj, "messageType", messageType);  setJsObjectField(obj, "message", message);
+  MediaKeyMessageEventInit(obj);
+
+pub inline fun messageType(obj: mediaKeyMessageEventInit, value: mediaKeyMessageType): web ()
+  setJsObjectField(obj.obj, "messageType", value.obj)
+
+pub inline fun messageType(obj: mediaKeyMessageEventInit): web mediaKeyMessageType
+  getJsObjectField(obj.obj, "messageType")
+
+pub inline fun message(obj: mediaKeyMessageEventInit, value: jsArrayBuffer): web ()
+  setJsObjectField(obj.obj, "message", value.obj)
+
+pub inline fun message(obj: mediaKeyMessageEventInit): web jsArrayBuffer
+  getJsObjectField(obj.obj, "message")
+
+pub value struct mediaEncryptedEvent
+  obj: jsObject
+
+pub inline fun newMediaEncryptedEvent(type': string, eventInitDict': mediaEncryptedEventInit)
+  newJsObject2("MediaEncryptedEvent", type', eventInitDict')"
+
+pub inline fun initDataType(obj: mediaEncryptedEvent): web string
+  getJsObjectField(obj.obj, "initDataType")
+
+pub inline fun initData(obj: mediaEncryptedEvent): web maybe<jsArrayBuffer>
+  getJsObjectField(obj.obj, "initData")
+
+pub value struct mediaEncryptedEventInit
+  obj: jsObject
+
+pub fun newMediaEncryptedEventInit(initDataType: maybe<string> = Nothing, initData: maybe<maybe<jsArrayBuffer>> = Nothing)
+  val obj = newJsObject();
+  match initDataType
+    Just(it) -> setJsObjectField(obj, "initDataType", it)
+    Nothing -> ()
+  match initData
+    Just(it) -> setJsObjectField(obj, "initData", it)
+    Nothing -> ()
+
+  MediaEncryptedEventInit(obj);
+
+pub inline fun initDataType(obj: mediaEncryptedEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "initDataType", value.obj)
+
+pub inline fun initDataType(obj: mediaEncryptedEventInit): web string
+  getJsObjectField(obj.obj, "initDataType")
+
+pub inline fun initData(obj: mediaEncryptedEventInit, value: maybe<jsArrayBuffer>): web ()
+  setJsObjectField(obj.obj, "initData", value.obj)
+
+pub inline fun initData(obj: mediaEncryptedEventInit): web maybe<jsArrayBuffer>
+  getJsObjectField(obj.obj, "initData")
+

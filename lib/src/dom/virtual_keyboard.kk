@@ -1,27 +1,33 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct VirtualKeyboard
-{,
-,
+pub value struct virtualKeyboard
+  obj: jsObject
 
-}
 
-()
+pub inline fun show(obj: virtualKeyboard): web ()
+  jsOperation2(obj.obj, "show")
 
-pub extern show(this: js_object, [], [])
-pub extern hide(this: js_object, [], [])
-pub extern getboundingRect(this: js_object): web geometry.kk/DOMRect
-	c inline "getObjectField(#1, \"boundingRect\")"
-pub extern setoverlaysContent(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoverlaysContent(this: js_object): web bool
-	c inline "getObjectField(#1, \"overlaysContent\")"
-pub extern setongeometrychange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getongeometrychange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"ongeometrychange\")"
+pub inline fun hide(obj: virtualKeyboard): web ()
+  jsOperation2(obj.obj, "hide")
+
+pub inline fun boundingRect(obj: virtualKeyboard): web geometry/domRect
+  getJsObjectField(obj.obj, "boundingRect")
+
+pub inline fun overlaysContent(obj: virtualKeyboard, value: bool): web ()
+  setJsObjectField(obj.obj, "overlaysContent", value.obj)
+
+pub inline fun overlaysContent(obj: virtualKeyboard): web bool
+  getJsObjectField(obj.obj, "overlaysContent")
+
+pub inline fun ongeometrychange(obj: virtualKeyboard, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "ongeometrychange", value.obj)
+
+pub inline fun ongeometrychange(obj: virtualKeyboard): web html/eventHandler
+  getJsObjectField(obj.obj, "ongeometrychange")
+

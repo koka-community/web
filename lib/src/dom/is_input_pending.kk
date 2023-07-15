@@ -1,24 +1,32 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct IsInputPendingOptions
-{  includeContinuous: bool
-}
-pub extern newIsInputPendingOptions([includeContinuous: maybe<bool> = Nothing])
-()
+pub value struct isInputPendingOptions
+  obj: jsObject
 
-pub extern setincludeContinuous(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getincludeContinuous(this: js_object): web bool
-	c inline "getObjectField(#1, \"includeContinuous\")"
-struct Scheduling
-{
-}
+pub fun newIsInputPendingOptions(includeContinuous: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match includeContinuous
+    Just(it) -> setJsObjectField(obj, "includeContinuous", it)
+    Nothing -> ()
 
-()
+  IsInputPendingOptions(obj);
 
-pub extern isInputPending(this: js_object, [], [isInputPendingOptions: IsInputPendingOptions])
+pub inline fun includeContinuous(obj: isInputPendingOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "includeContinuous", value.obj)
+
+pub inline fun includeContinuous(obj: isInputPendingOptions): web bool
+  getJsObjectField(obj.obj, "includeContinuous")
+
+pub value struct scheduling
+  obj: jsObject
+
+
+pub inline fun isInputPending(obj: scheduling, isInputPendingOptions': isInputPendingOptions): web bool
+  jsOperation3(obj.obj, "isInputPending", isInputPendingOptions'.obj)
+

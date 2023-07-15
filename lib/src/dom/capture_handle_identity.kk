@@ -1,42 +1,69 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct CaptureHandleConfig
-{  exposeOrigin: bool,
-  handle: String,
-  permittedOrigins: dart:js_interop/JSArray
-}
-pub extern newCaptureHandleConfig([exposeOrigin: maybe<bool> = Nothing, handle: maybe<String> = Nothing, permittedOrigins: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub value struct captureHandleConfig
+  obj: jsObject
 
-pub extern setexposeOrigin(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getexposeOrigin(this: js_object): web bool
-	c inline "getObjectField(#1, \"exposeOrigin\")"
-pub extern sethandle(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethandle(this: js_object): web String
-	c inline "getObjectField(#1, \"handle\")"
-pub extern setpermittedOrigins(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpermittedOrigins(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"permittedOrigins\")"
-struct CaptureHandle
-{  origin: String,
-  handle: String
-}
-pub extern newCaptureHandle([origin: maybe<String> = Nothing, handle: maybe<String> = Nothing])
-()
+pub fun newCaptureHandleConfig(exposeOrigin: maybe<bool> = Nothing, handle: maybe<string> = Nothing, permittedOrigins: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match exposeOrigin
+    Just(it) -> setJsObjectField(obj, "exposeOrigin", it)
+    Nothing -> ()
+  match handle
+    Just(it) -> setJsObjectField(obj, "handle", it)
+    Nothing -> ()
+  match permittedOrigins
+    Just(it) -> setJsObjectField(obj, "permittedOrigins", it)
+    Nothing -> ()
 
-pub extern setorigin(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getorigin(this: js_object): web String
-	c inline "getObjectField(#1, \"origin\")"
-pub extern sethandle(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethandle(this: js_object): web String
-	c inline "getObjectField(#1, \"handle\")"
+  CaptureHandleConfig(obj);
+
+pub inline fun exposeOrigin(obj: captureHandleConfig, value: bool): web ()
+  setJsObjectField(obj.obj, "exposeOrigin", value.obj)
+
+pub inline fun exposeOrigin(obj: captureHandleConfig): web bool
+  getJsObjectField(obj.obj, "exposeOrigin")
+
+pub inline fun handle(obj: captureHandleConfig, value: string): web ()
+  setJsObjectField(obj.obj, "handle", value.obj)
+
+pub inline fun handle(obj: captureHandleConfig): web string
+  getJsObjectField(obj.obj, "handle")
+
+pub inline fun permittedOrigins(obj: captureHandleConfig, value: jsArray): web ()
+  setJsObjectField(obj.obj, "permittedOrigins", value.obj)
+
+pub inline fun permittedOrigins(obj: captureHandleConfig): web jsArray
+  getJsObjectField(obj.obj, "permittedOrigins")
+
+pub value struct captureHandle
+  obj: jsObject
+
+pub fun newCaptureHandle(origin: maybe<string> = Nothing, handle: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match origin
+    Just(it) -> setJsObjectField(obj, "origin", it)
+    Nothing -> ()
+  match handle
+    Just(it) -> setJsObjectField(obj, "handle", it)
+    Nothing -> ()
+
+  CaptureHandle(obj);
+
+pub inline fun origin(obj: captureHandle, value: string): web ()
+  setJsObjectField(obj.obj, "origin", value.obj)
+
+pub inline fun origin(obj: captureHandle): web string
+  getJsObjectField(obj.obj, "origin")
+
+pub inline fun handle(obj: captureHandle, value: string): web ()
+  setJsObjectField(obj.obj, "handle", value.obj)
+
+pub inline fun handle(obj: captureHandle): web string
+  getJsObjectField(obj.obj, "handle")
+

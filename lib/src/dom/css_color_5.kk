@@ -1,24 +1,24 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct CSSColorProfileRule
-{,
-,
-,
+pub value struct cssColorProfileRule
+  obj: jsObject
 
-}
 
-()
+pub inline fun name(obj: cssColorProfileRule): web string
+  getJsObjectField(obj.obj, "name")
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern getrenderingIntent(this: js_object): web String
-	c inline "getObjectField(#1, \"renderingIntent\")"
-pub extern getcomponents(this: js_object): web String
-	c inline "getObjectField(#1, \"components\")"
+pub inline fun src(obj: cssColorProfileRule): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun renderingIntent(obj: cssColorProfileRule): web string
+  getJsObjectField(obj.obj, "renderingIntent")
+
+pub inline fun components(obj: cssColorProfileRule): web string
+  getJsObjectField(obj.obj, "components")
+

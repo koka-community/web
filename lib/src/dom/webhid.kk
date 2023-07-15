@@ -1,347 +1,562 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias HIDUnitSystem = String
-struct HID
-{,
+pub alias hidUnitSystem = string;
 
-}
+pub value struct hiD
+  obj: jsObject
 
-()
 
-pub extern getDevices(this: js_object, [], [])
-pub extern requestDevice(this: js_object, [options: HIDDeviceRequestOptions], [])
-pub extern setonconnect(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonconnect(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onconnect\")"
-pub extern setondisconnect(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondisconnect(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"ondisconnect\")"
-struct HIDDeviceRequestOptions
-{  filters: dart:js_interop/JSArray,
-  exclusionFilters: dart:js_interop/JSArray
-}
-pub extern newHIDDeviceRequestOptions([filters: dart:js_interop/JSArray, exclusionFilters: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun getDevices(obj: hiD): web jsPromise
+  jsOperation2(obj.obj, "getDevices")
 
-pub extern setfilters(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfilters(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"filters\")"
-pub extern setexclusionFilters(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getexclusionFilters(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"exclusionFilters\")"
-struct HIDDeviceFilter
-{  vendorId: int,
-  productId: int,
-  usagePage: int,
-  usage: int
-}
-pub extern newHIDDeviceFilter([vendorId: maybe<int> = Nothing, productId: maybe<int> = Nothing, usagePage: maybe<int> = Nothing, usage: maybe<int> = Nothing])
-()
+pub inline fun requestDevice(obj: hiD, options': hidDeviceRequestOptions): web jsPromise
+  jsOperation3(obj.obj, "requestDevice", options'.obj)
 
-pub extern setvendorId(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvendorId(this: js_object): web int
-	c inline "getObjectField(#1, \"vendorId\")"
-pub extern setproductId(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getproductId(this: js_object): web int
-	c inline "getObjectField(#1, \"productId\")"
-pub extern setusagePage(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusagePage(this: js_object): web int
-	c inline "getObjectField(#1, \"usagePage\")"
-pub extern setusage(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusage(this: js_object): web int
-	c inline "getObjectField(#1, \"usage\")"
-struct HIDDevice
-{,
-,
-,
-,
-,
+pub inline fun onconnect(obj: hiD, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onconnect", value.obj)
 
-}
+pub inline fun onconnect(obj: hiD): web html/eventHandler
+  getJsObjectField(obj.obj, "onconnect")
 
-()
+pub inline fun ondisconnect(obj: hiD, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "ondisconnect", value.obj)
 
-pub extern open(this: js_object, [], [])
-pub extern close(this: js_object, [], [])
-pub extern forget(this: js_object, [], [])
-pub extern sendReport(this: js_object, [reportId: int, data: webidl.kk/BufferSource], [])
-pub extern sendFeatureReport(this: js_object, [reportId: int, data: webidl.kk/BufferSource], [])
-pub extern receiveFeatureReport(this: js_object, [reportId: int], [])
-pub extern setoninputreport(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoninputreport(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"oninputreport\")"
-pub extern getopened(this: js_object): web bool
-	c inline "getObjectField(#1, \"opened\")"
-pub extern getvendorId(this: js_object): web int
-	c inline "getObjectField(#1, \"vendorId\")"
-pub extern getproductId(this: js_object): web int
-	c inline "getObjectField(#1, \"productId\")"
-pub extern getproductName(this: js_object): web String
-	c inline "getObjectField(#1, \"productName\")"
-pub extern getcollections(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"collections\")"
-struct HIDConnectionEvent
-{
-}
-pub extern newHIDConnectionEvent([type: String, eventInitDict: HIDConnectionEventInit], [])
-()
+pub inline fun ondisconnect(obj: hiD): web html/eventHandler
+  getJsObjectField(obj.obj, "ondisconnect")
 
-pub extern getdevice(this: js_object): web HIDDevice
-	c inline "getObjectField(#1, \"device\")"
-struct HIDConnectionEventInit
-{  device: HIDDevice
-}
-pub extern newHIDConnectionEventInit([device: HIDDevice])
-()
+pub value struct hidDeviceRequestOptions
+  obj: jsObject
 
-pub extern setdevice(this: js_object, value: HIDDevice): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdevice(this: js_object): web HIDDevice
-	c inline "getObjectField(#1, \"device\")"
-struct HIDInputReportEvent
-{,
-,
+pub fun newHidDeviceRequestOptions(filters: jsArray, exclusionFilters: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "filters", filters);  match exclusionFilters
+    Just(it) -> setJsObjectField(obj, "exclusionFilters", it)
+    Nothing -> ()
 
-}
-pub extern newHIDInputReportEvent([type: String, eventInitDict: HIDInputReportEventInit], [])
-()
+  HidDeviceRequestOptions(obj);
 
-pub extern getdevice(this: js_object): web HIDDevice
-	c inline "getObjectField(#1, \"device\")"
-pub extern getreportId(this: js_object): web int
-	c inline "getObjectField(#1, \"reportId\")"
-pub extern getdata(this: js_object): web dart:js_interop/JSDataView
-	c inline "getObjectField(#1, \"data\")"
-struct HIDInputReportEventInit
-{  device: HIDDevice,
-  reportId: int,
-  data: dart:js_interop/JSDataView
-}
-pub extern newHIDInputReportEventInit([device: HIDDevice, reportId: int, data: dart:js_interop/JSDataView])
-()
+pub inline fun filters(obj: hidDeviceRequestOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "filters", value.obj)
 
-pub extern setdevice(this: js_object, value: HIDDevice): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdevice(this: js_object): web HIDDevice
-	c inline "getObjectField(#1, \"device\")"
-pub extern setreportId(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreportId(this: js_object): web int
-	c inline "getObjectField(#1, \"reportId\")"
-pub extern setdata(this: js_object, value: dart:js_interop/JSDataView): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdata(this: js_object): web dart:js_interop/JSDataView
-	c inline "getObjectField(#1, \"data\")"
-struct HIDCollectionInfo
-{  usagePage: int,
-  usage: int,
-  type: int,
-  children: dart:js_interop/JSArray,
-  inputReports: dart:js_interop/JSArray,
-  outputReports: dart:js_interop/JSArray,
-  featureReports: dart:js_interop/JSArray
-}
-pub extern newHIDCollectionInfo([usagePage: maybe<int> = Nothing, usage: maybe<int> = Nothing, type: maybe<int> = Nothing, children: maybe<dart:js_interop/JSArray> = Nothing, inputReports: maybe<dart:js_interop/JSArray> = Nothing, outputReports: maybe<dart:js_interop/JSArray> = Nothing, featureReports: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun filters(obj: hidDeviceRequestOptions): web jsArray
+  getJsObjectField(obj.obj, "filters")
 
-pub extern setusagePage(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusagePage(this: js_object): web int
-	c inline "getObjectField(#1, \"usagePage\")"
-pub extern setusage(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusage(this: js_object): web int
-	c inline "getObjectField(#1, \"usage\")"
-pub extern settype(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web int
-	c inline "getObjectField(#1, \"type\")"
-pub extern setchildren(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchildren(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"children\")"
-pub extern setinputReports(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinputReports(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"inputReports\")"
-pub extern setoutputReports(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoutputReports(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"outputReports\")"
-pub extern setfeatureReports(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfeatureReports(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"featureReports\")"
-struct HIDReportInfo
-{  reportId: int,
-  items: dart:js_interop/JSArray
-}
-pub extern newHIDReportInfo([reportId: maybe<int> = Nothing, items: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun exclusionFilters(obj: hidDeviceRequestOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "exclusionFilters", value.obj)
 
-pub extern setreportId(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreportId(this: js_object): web int
-	c inline "getObjectField(#1, \"reportId\")"
-pub extern setitems(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getitems(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"items\")"
-struct HIDReportItem
-{  isAbsolute: bool,
-  isArray: bool,
-  isBufferedBytes: bool,
-  isConstant: bool,
-  isLinear: bool,
-  isRange: bool,
-  isVolatile: bool,
-  hasNull: bool,
-  hasPreferredState: bool,
-  wrap: bool,
-  usages: dart:js_interop/JSArray,
-  usageMinimum: int,
-  usageMaximum: int,
-  reportSize: int,
-  reportCount: int,
-  unitExponent: int,
-  unitSystem: HIDUnitSystem,
-  unitFactorLengthExponent: int,
-  unitFactorMassExponent: int,
-  unitFactorTimeExponent: int,
-  unitFactorTemperatureExponent: int,
-  unitFactorCurrentExponent: int,
-  unitFactorLuminousIntensityExponent: int,
-  logicalMinimum: int,
-  logicalMaximum: int,
-  physicalMinimum: int,
-  physicalMaximum: int,
-  strings: dart:js_interop/JSArray
-}
-pub extern newHIDReportItem([isAbsolute: maybe<bool> = Nothing, isArray: maybe<bool> = Nothing, isBufferedBytes: maybe<bool> = Nothing, isConstant: maybe<bool> = Nothing, isLinear: maybe<bool> = Nothing, isRange: maybe<bool> = Nothing, isVolatile: maybe<bool> = Nothing, hasNull: maybe<bool> = Nothing, hasPreferredState: maybe<bool> = Nothing, wrap: maybe<bool> = Nothing, usages: maybe<dart:js_interop/JSArray> = Nothing, usageMinimum: maybe<int> = Nothing, usageMaximum: maybe<int> = Nothing, reportSize: maybe<int> = Nothing, reportCount: maybe<int> = Nothing, unitExponent: maybe<int> = Nothing, unitSystem: maybe<HIDUnitSystem> = Nothing, unitFactorLengthExponent: maybe<int> = Nothing, unitFactorMassExponent: maybe<int> = Nothing, unitFactorTimeExponent: maybe<int> = Nothing, unitFactorTemperatureExponent: maybe<int> = Nothing, unitFactorCurrentExponent: maybe<int> = Nothing, unitFactorLuminousIntensityExponent: maybe<int> = Nothing, logicalMinimum: maybe<int> = Nothing, logicalMaximum: maybe<int> = Nothing, physicalMinimum: maybe<int> = Nothing, physicalMaximum: maybe<int> = Nothing, strings: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun exclusionFilters(obj: hidDeviceRequestOptions): web jsArray
+  getJsObjectField(obj.obj, "exclusionFilters")
 
-pub extern setisAbsolute(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getisAbsolute(this: js_object): web bool
-	c inline "getObjectField(#1, \"isAbsolute\")"
-pub extern setisArray(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getisArray(this: js_object): web bool
-	c inline "getObjectField(#1, \"isArray\")"
-pub extern setisBufferedBytes(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getisBufferedBytes(this: js_object): web bool
-	c inline "getObjectField(#1, \"isBufferedBytes\")"
-pub extern setisConstant(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getisConstant(this: js_object): web bool
-	c inline "getObjectField(#1, \"isConstant\")"
-pub extern setisLinear(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getisLinear(this: js_object): web bool
-	c inline "getObjectField(#1, \"isLinear\")"
-pub extern setisRange(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getisRange(this: js_object): web bool
-	c inline "getObjectField(#1, \"isRange\")"
-pub extern setisVolatile(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getisVolatile(this: js_object): web bool
-	c inline "getObjectField(#1, \"isVolatile\")"
-pub extern sethasNull(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethasNull(this: js_object): web bool
-	c inline "getObjectField(#1, \"hasNull\")"
-pub extern sethasPreferredState(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethasPreferredState(this: js_object): web bool
-	c inline "getObjectField(#1, \"hasPreferredState\")"
-pub extern setwrap(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwrap(this: js_object): web bool
-	c inline "getObjectField(#1, \"wrap\")"
-pub extern setusages(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusages(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"usages\")"
-pub extern setusageMinimum(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusageMinimum(this: js_object): web int
-	c inline "getObjectField(#1, \"usageMinimum\")"
-pub extern setusageMaximum(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusageMaximum(this: js_object): web int
-	c inline "getObjectField(#1, \"usageMaximum\")"
-pub extern setreportSize(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreportSize(this: js_object): web int
-	c inline "getObjectField(#1, \"reportSize\")"
-pub extern setreportCount(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreportCount(this: js_object): web int
-	c inline "getObjectField(#1, \"reportCount\")"
-pub extern setunitExponent(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getunitExponent(this: js_object): web int
-	c inline "getObjectField(#1, \"unitExponent\")"
-pub extern setunitSystem(this: js_object, value: HIDUnitSystem): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getunitSystem(this: js_object): web HIDUnitSystem
-	c inline "getObjectField(#1, \"unitSystem\")"
-pub extern setunitFactorLengthExponent(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getunitFactorLengthExponent(this: js_object): web int
-	c inline "getObjectField(#1, \"unitFactorLengthExponent\")"
-pub extern setunitFactorMassExponent(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getunitFactorMassExponent(this: js_object): web int
-	c inline "getObjectField(#1, \"unitFactorMassExponent\")"
-pub extern setunitFactorTimeExponent(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getunitFactorTimeExponent(this: js_object): web int
-	c inline "getObjectField(#1, \"unitFactorTimeExponent\")"
-pub extern setunitFactorTemperatureExponent(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getunitFactorTemperatureExponent(this: js_object): web int
-	c inline "getObjectField(#1, \"unitFactorTemperatureExponent\")"
-pub extern setunitFactorCurrentExponent(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getunitFactorCurrentExponent(this: js_object): web int
-	c inline "getObjectField(#1, \"unitFactorCurrentExponent\")"
-pub extern setunitFactorLuminousIntensityExponent(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getunitFactorLuminousIntensityExponent(this: js_object): web int
-	c inline "getObjectField(#1, \"unitFactorLuminousIntensityExponent\")"
-pub extern setlogicalMinimum(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlogicalMinimum(this: js_object): web int
-	c inline "getObjectField(#1, \"logicalMinimum\")"
-pub extern setlogicalMaximum(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlogicalMaximum(this: js_object): web int
-	c inline "getObjectField(#1, \"logicalMaximum\")"
-pub extern setphysicalMinimum(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getphysicalMinimum(this: js_object): web int
-	c inline "getObjectField(#1, \"physicalMinimum\")"
-pub extern setphysicalMaximum(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getphysicalMaximum(this: js_object): web int
-	c inline "getObjectField(#1, \"physicalMaximum\")"
-pub extern setstrings(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstrings(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"strings\")"
+pub value struct hidDeviceFilter
+  obj: jsObject
+
+pub fun newHidDeviceFilter(vendorId: maybe<int> = Nothing, productId: maybe<int> = Nothing, usagePage: maybe<int> = Nothing, usage: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match vendorId
+    Just(it) -> setJsObjectField(obj, "vendorId", it)
+    Nothing -> ()
+  match productId
+    Just(it) -> setJsObjectField(obj, "productId", it)
+    Nothing -> ()
+  match usagePage
+    Just(it) -> setJsObjectField(obj, "usagePage", it)
+    Nothing -> ()
+  match usage
+    Just(it) -> setJsObjectField(obj, "usage", it)
+    Nothing -> ()
+
+  HidDeviceFilter(obj);
+
+pub inline fun vendorId(obj: hidDeviceFilter, value: int): web ()
+  setJsObjectField(obj.obj, "vendorId", value.obj)
+
+pub inline fun vendorId(obj: hidDeviceFilter): web int
+  getJsObjectField(obj.obj, "vendorId")
+
+pub inline fun productId(obj: hidDeviceFilter, value: int): web ()
+  setJsObjectField(obj.obj, "productId", value.obj)
+
+pub inline fun productId(obj: hidDeviceFilter): web int
+  getJsObjectField(obj.obj, "productId")
+
+pub inline fun usagePage(obj: hidDeviceFilter, value: int): web ()
+  setJsObjectField(obj.obj, "usagePage", value.obj)
+
+pub inline fun usagePage(obj: hidDeviceFilter): web int
+  getJsObjectField(obj.obj, "usagePage")
+
+pub inline fun usage(obj: hidDeviceFilter, value: int): web ()
+  setJsObjectField(obj.obj, "usage", value.obj)
+
+pub inline fun usage(obj: hidDeviceFilter): web int
+  getJsObjectField(obj.obj, "usage")
+
+pub value struct hidDevice
+  obj: jsObject
+
+
+pub inline fun open(obj: hidDevice): web jsPromise
+  jsOperation2(obj.obj, "open")
+
+pub inline fun close(obj: hidDevice): web jsPromise
+  jsOperation2(obj.obj, "close")
+
+pub inline fun forget(obj: hidDevice): web jsPromise
+  jsOperation2(obj.obj, "forget")
+
+pub inline fun sendReport(obj: hidDevice, reportId': int, data': webidl/bufferSource): web jsPromise
+  jsOperation4(obj.obj, "sendReport", reportId'.obj, data'.obj)
+
+pub inline fun sendFeatureReport(obj: hidDevice, reportId': int, data': webidl/bufferSource): web jsPromise
+  jsOperation4(obj.obj, "sendFeatureReport", reportId'.obj, data'.obj)
+
+pub inline fun receiveFeatureReport(obj: hidDevice, reportId': int): web jsPromise
+  jsOperation3(obj.obj, "receiveFeatureReport", reportId'.obj)
+
+pub inline fun oninputreport(obj: hidDevice, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "oninputreport", value.obj)
+
+pub inline fun oninputreport(obj: hidDevice): web html/eventHandler
+  getJsObjectField(obj.obj, "oninputreport")
+
+pub inline fun opened(obj: hidDevice): web bool
+  getJsObjectField(obj.obj, "opened")
+
+pub inline fun vendorId(obj: hidDevice): web int
+  getJsObjectField(obj.obj, "vendorId")
+
+pub inline fun productId(obj: hidDevice): web int
+  getJsObjectField(obj.obj, "productId")
+
+pub inline fun productName(obj: hidDevice): web string
+  getJsObjectField(obj.obj, "productName")
+
+pub inline fun collections(obj: hidDevice): web jsArray
+  getJsObjectField(obj.obj, "collections")
+
+pub value struct hidConnectionEvent
+  obj: jsObject
+
+pub inline fun newHidConnectionEvent(type': string, eventInitDict': hidConnectionEventInit)
+  newJsObject2("HidConnectionEvent", type', eventInitDict')"
+
+pub inline fun device(obj: hidConnectionEvent): web hidDevice
+  getJsObjectField(obj.obj, "device")
+
+pub value struct hidConnectionEventInit
+  obj: jsObject
+
+pub fun newHidConnectionEventInit(device: hidDevice)
+  val obj = newJsObject();
+  setJsObjectField(obj, "device", device);
+  HidConnectionEventInit(obj);
+
+pub inline fun device(obj: hidConnectionEventInit, value: hidDevice): web ()
+  setJsObjectField(obj.obj, "device", value.obj)
+
+pub inline fun device(obj: hidConnectionEventInit): web hidDevice
+  getJsObjectField(obj.obj, "device")
+
+pub value struct hidInputReportEvent
+  obj: jsObject
+
+pub inline fun newHidInputReportEvent(type': string, eventInitDict': hidInputReportEventInit)
+  newJsObject2("HidInputReportEvent", type', eventInitDict')"
+
+pub inline fun device(obj: hidInputReportEvent): web hidDevice
+  getJsObjectField(obj.obj, "device")
+
+pub inline fun reportId(obj: hidInputReportEvent): web int
+  getJsObjectField(obj.obj, "reportId")
+
+pub inline fun data(obj: hidInputReportEvent): web jsDataView
+  getJsObjectField(obj.obj, "data")
+
+pub value struct hidInputReportEventInit
+  obj: jsObject
+
+pub fun newHidInputReportEventInit(device: hidDevice, reportId: int, data: jsDataView)
+  val obj = newJsObject();
+  setJsObjectField(obj, "device", device);  setJsObjectField(obj, "reportId", reportId);  setJsObjectField(obj, "data", data);
+  HidInputReportEventInit(obj);
+
+pub inline fun device(obj: hidInputReportEventInit, value: hidDevice): web ()
+  setJsObjectField(obj.obj, "device", value.obj)
+
+pub inline fun device(obj: hidInputReportEventInit): web hidDevice
+  getJsObjectField(obj.obj, "device")
+
+pub inline fun reportId(obj: hidInputReportEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "reportId", value.obj)
+
+pub inline fun reportId(obj: hidInputReportEventInit): web int
+  getJsObjectField(obj.obj, "reportId")
+
+pub inline fun data(obj: hidInputReportEventInit, value: jsDataView): web ()
+  setJsObjectField(obj.obj, "data", value.obj)
+
+pub inline fun data(obj: hidInputReportEventInit): web jsDataView
+  getJsObjectField(obj.obj, "data")
+
+pub value struct hidCollectionInfo
+  obj: jsObject
+
+pub fun newHidCollectionInfo(usagePage: maybe<int> = Nothing, usage: maybe<int> = Nothing, type: maybe<int> = Nothing, children: maybe<jsArray> = Nothing, inputReports: maybe<jsArray> = Nothing, outputReports: maybe<jsArray> = Nothing, featureReports: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match usagePage
+    Just(it) -> setJsObjectField(obj, "usagePage", it)
+    Nothing -> ()
+  match usage
+    Just(it) -> setJsObjectField(obj, "usage", it)
+    Nothing -> ()
+  match type
+    Just(it) -> setJsObjectField(obj, "type", it)
+    Nothing -> ()
+  match children
+    Just(it) -> setJsObjectField(obj, "children", it)
+    Nothing -> ()
+  match inputReports
+    Just(it) -> setJsObjectField(obj, "inputReports", it)
+    Nothing -> ()
+  match outputReports
+    Just(it) -> setJsObjectField(obj, "outputReports", it)
+    Nothing -> ()
+  match featureReports
+    Just(it) -> setJsObjectField(obj, "featureReports", it)
+    Nothing -> ()
+
+  HidCollectionInfo(obj);
+
+pub inline fun usagePage(obj: hidCollectionInfo, value: int): web ()
+  setJsObjectField(obj.obj, "usagePage", value.obj)
+
+pub inline fun usagePage(obj: hidCollectionInfo): web int
+  getJsObjectField(obj.obj, "usagePage")
+
+pub inline fun usage(obj: hidCollectionInfo, value: int): web ()
+  setJsObjectField(obj.obj, "usage", value.obj)
+
+pub inline fun usage(obj: hidCollectionInfo): web int
+  getJsObjectField(obj.obj, "usage")
+
+pub inline fun type(obj: hidCollectionInfo, value: int): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: hidCollectionInfo): web int
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun children(obj: hidCollectionInfo, value: jsArray): web ()
+  setJsObjectField(obj.obj, "children", value.obj)
+
+pub inline fun children(obj: hidCollectionInfo): web jsArray
+  getJsObjectField(obj.obj, "children")
+
+pub inline fun inputReports(obj: hidCollectionInfo, value: jsArray): web ()
+  setJsObjectField(obj.obj, "inputReports", value.obj)
+
+pub inline fun inputReports(obj: hidCollectionInfo): web jsArray
+  getJsObjectField(obj.obj, "inputReports")
+
+pub inline fun outputReports(obj: hidCollectionInfo, value: jsArray): web ()
+  setJsObjectField(obj.obj, "outputReports", value.obj)
+
+pub inline fun outputReports(obj: hidCollectionInfo): web jsArray
+  getJsObjectField(obj.obj, "outputReports")
+
+pub inline fun featureReports(obj: hidCollectionInfo, value: jsArray): web ()
+  setJsObjectField(obj.obj, "featureReports", value.obj)
+
+pub inline fun featureReports(obj: hidCollectionInfo): web jsArray
+  getJsObjectField(obj.obj, "featureReports")
+
+pub value struct hidReportInfo
+  obj: jsObject
+
+pub fun newHidReportInfo(reportId: maybe<int> = Nothing, items: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match reportId
+    Just(it) -> setJsObjectField(obj, "reportId", it)
+    Nothing -> ()
+  match items
+    Just(it) -> setJsObjectField(obj, "items", it)
+    Nothing -> ()
+
+  HidReportInfo(obj);
+
+pub inline fun reportId(obj: hidReportInfo, value: int): web ()
+  setJsObjectField(obj.obj, "reportId", value.obj)
+
+pub inline fun reportId(obj: hidReportInfo): web int
+  getJsObjectField(obj.obj, "reportId")
+
+pub inline fun items(obj: hidReportInfo, value: jsArray): web ()
+  setJsObjectField(obj.obj, "items", value.obj)
+
+pub inline fun items(obj: hidReportInfo): web jsArray
+  getJsObjectField(obj.obj, "items")
+
+pub value struct hidReportItem
+  obj: jsObject
+
+pub fun newHidReportItem(isAbsolute: maybe<bool> = Nothing, isArray: maybe<bool> = Nothing, isBufferedBytes: maybe<bool> = Nothing, isConstant: maybe<bool> = Nothing, isLinear: maybe<bool> = Nothing, isRange: maybe<bool> = Nothing, isVolatile: maybe<bool> = Nothing, hasNull: maybe<bool> = Nothing, hasPreferredState: maybe<bool> = Nothing, wrap: maybe<bool> = Nothing, usages: maybe<jsArray> = Nothing, usageMinimum: maybe<int> = Nothing, usageMaximum: maybe<int> = Nothing, reportSize: maybe<int> = Nothing, reportCount: maybe<int> = Nothing, unitExponent: maybe<int> = Nothing, unitSystem: maybe<hidUnitSystem> = Nothing, unitFactorLengthExponent: maybe<int> = Nothing, unitFactorMassExponent: maybe<int> = Nothing, unitFactorTimeExponent: maybe<int> = Nothing, unitFactorTemperatureExponent: maybe<int> = Nothing, unitFactorCurrentExponent: maybe<int> = Nothing, unitFactorLuminousIntensityExponent: maybe<int> = Nothing, logicalMinimum: maybe<int> = Nothing, logicalMaximum: maybe<int> = Nothing, physicalMinimum: maybe<int> = Nothing, physicalMaximum: maybe<int> = Nothing, strings: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match isAbsolute
+    Just(it) -> setJsObjectField(obj, "isAbsolute", it)
+    Nothing -> ()
+  match isArray
+    Just(it) -> setJsObjectField(obj, "isArray", it)
+    Nothing -> ()
+  match isBufferedBytes
+    Just(it) -> setJsObjectField(obj, "isBufferedBytes", it)
+    Nothing -> ()
+  match isConstant
+    Just(it) -> setJsObjectField(obj, "isConstant", it)
+    Nothing -> ()
+  match isLinear
+    Just(it) -> setJsObjectField(obj, "isLinear", it)
+    Nothing -> ()
+  match isRange
+    Just(it) -> setJsObjectField(obj, "isRange", it)
+    Nothing -> ()
+  match isVolatile
+    Just(it) -> setJsObjectField(obj, "isVolatile", it)
+    Nothing -> ()
+  match hasNull
+    Just(it) -> setJsObjectField(obj, "hasNull", it)
+    Nothing -> ()
+  match hasPreferredState
+    Just(it) -> setJsObjectField(obj, "hasPreferredState", it)
+    Nothing -> ()
+  match wrap
+    Just(it) -> setJsObjectField(obj, "wrap", it)
+    Nothing -> ()
+  match usages
+    Just(it) -> setJsObjectField(obj, "usages", it)
+    Nothing -> ()
+  match usageMinimum
+    Just(it) -> setJsObjectField(obj, "usageMinimum", it)
+    Nothing -> ()
+  match usageMaximum
+    Just(it) -> setJsObjectField(obj, "usageMaximum", it)
+    Nothing -> ()
+  match reportSize
+    Just(it) -> setJsObjectField(obj, "reportSize", it)
+    Nothing -> ()
+  match reportCount
+    Just(it) -> setJsObjectField(obj, "reportCount", it)
+    Nothing -> ()
+  match unitExponent
+    Just(it) -> setJsObjectField(obj, "unitExponent", it)
+    Nothing -> ()
+  match unitSystem
+    Just(it) -> setJsObjectField(obj, "unitSystem", it)
+    Nothing -> ()
+  match unitFactorLengthExponent
+    Just(it) -> setJsObjectField(obj, "unitFactorLengthExponent", it)
+    Nothing -> ()
+  match unitFactorMassExponent
+    Just(it) -> setJsObjectField(obj, "unitFactorMassExponent", it)
+    Nothing -> ()
+  match unitFactorTimeExponent
+    Just(it) -> setJsObjectField(obj, "unitFactorTimeExponent", it)
+    Nothing -> ()
+  match unitFactorTemperatureExponent
+    Just(it) -> setJsObjectField(obj, "unitFactorTemperatureExponent", it)
+    Nothing -> ()
+  match unitFactorCurrentExponent
+    Just(it) -> setJsObjectField(obj, "unitFactorCurrentExponent", it)
+    Nothing -> ()
+  match unitFactorLuminousIntensityExponent
+    Just(it) -> setJsObjectField(obj, "unitFactorLuminousIntensityExponent", it)
+    Nothing -> ()
+  match logicalMinimum
+    Just(it) -> setJsObjectField(obj, "logicalMinimum", it)
+    Nothing -> ()
+  match logicalMaximum
+    Just(it) -> setJsObjectField(obj, "logicalMaximum", it)
+    Nothing -> ()
+  match physicalMinimum
+    Just(it) -> setJsObjectField(obj, "physicalMinimum", it)
+    Nothing -> ()
+  match physicalMaximum
+    Just(it) -> setJsObjectField(obj, "physicalMaximum", it)
+    Nothing -> ()
+  match strings
+    Just(it) -> setJsObjectField(obj, "strings", it)
+    Nothing -> ()
+
+  HidReportItem(obj);
+
+pub inline fun isAbsolute(obj: hidReportItem, value: bool): web ()
+  setJsObjectField(obj.obj, "isAbsolute", value.obj)
+
+pub inline fun isAbsolute(obj: hidReportItem): web bool
+  getJsObjectField(obj.obj, "isAbsolute")
+
+pub inline fun isArray(obj: hidReportItem, value: bool): web ()
+  setJsObjectField(obj.obj, "isArray", value.obj)
+
+pub inline fun isArray(obj: hidReportItem): web bool
+  getJsObjectField(obj.obj, "isArray")
+
+pub inline fun isBufferedBytes(obj: hidReportItem, value: bool): web ()
+  setJsObjectField(obj.obj, "isBufferedBytes", value.obj)
+
+pub inline fun isBufferedBytes(obj: hidReportItem): web bool
+  getJsObjectField(obj.obj, "isBufferedBytes")
+
+pub inline fun isConstant(obj: hidReportItem, value: bool): web ()
+  setJsObjectField(obj.obj, "isConstant", value.obj)
+
+pub inline fun isConstant(obj: hidReportItem): web bool
+  getJsObjectField(obj.obj, "isConstant")
+
+pub inline fun isLinear(obj: hidReportItem, value: bool): web ()
+  setJsObjectField(obj.obj, "isLinear", value.obj)
+
+pub inline fun isLinear(obj: hidReportItem): web bool
+  getJsObjectField(obj.obj, "isLinear")
+
+pub inline fun isRange(obj: hidReportItem, value: bool): web ()
+  setJsObjectField(obj.obj, "isRange", value.obj)
+
+pub inline fun isRange(obj: hidReportItem): web bool
+  getJsObjectField(obj.obj, "isRange")
+
+pub inline fun isVolatile(obj: hidReportItem, value: bool): web ()
+  setJsObjectField(obj.obj, "isVolatile", value.obj)
+
+pub inline fun isVolatile(obj: hidReportItem): web bool
+  getJsObjectField(obj.obj, "isVolatile")
+
+pub inline fun hasNull(obj: hidReportItem, value: bool): web ()
+  setJsObjectField(obj.obj, "hasNull", value.obj)
+
+pub inline fun hasNull(obj: hidReportItem): web bool
+  getJsObjectField(obj.obj, "hasNull")
+
+pub inline fun hasPreferredState(obj: hidReportItem, value: bool): web ()
+  setJsObjectField(obj.obj, "hasPreferredState", value.obj)
+
+pub inline fun hasPreferredState(obj: hidReportItem): web bool
+  getJsObjectField(obj.obj, "hasPreferredState")
+
+pub inline fun wrap(obj: hidReportItem, value: bool): web ()
+  setJsObjectField(obj.obj, "wrap", value.obj)
+
+pub inline fun wrap(obj: hidReportItem): web bool
+  getJsObjectField(obj.obj, "wrap")
+
+pub inline fun usages(obj: hidReportItem, value: jsArray): web ()
+  setJsObjectField(obj.obj, "usages", value.obj)
+
+pub inline fun usages(obj: hidReportItem): web jsArray
+  getJsObjectField(obj.obj, "usages")
+
+pub inline fun usageMinimum(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "usageMinimum", value.obj)
+
+pub inline fun usageMinimum(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "usageMinimum")
+
+pub inline fun usageMaximum(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "usageMaximum", value.obj)
+
+pub inline fun usageMaximum(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "usageMaximum")
+
+pub inline fun reportSize(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "reportSize", value.obj)
+
+pub inline fun reportSize(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "reportSize")
+
+pub inline fun reportCount(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "reportCount", value.obj)
+
+pub inline fun reportCount(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "reportCount")
+
+pub inline fun unitExponent(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "unitExponent", value.obj)
+
+pub inline fun unitExponent(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "unitExponent")
+
+pub inline fun unitSystem(obj: hidReportItem, value: hidUnitSystem): web ()
+  setJsObjectField(obj.obj, "unitSystem", value.obj)
+
+pub inline fun unitSystem(obj: hidReportItem): web hidUnitSystem
+  getJsObjectField(obj.obj, "unitSystem")
+
+pub inline fun unitFactorLengthExponent(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "unitFactorLengthExponent", value.obj)
+
+pub inline fun unitFactorLengthExponent(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "unitFactorLengthExponent")
+
+pub inline fun unitFactorMassExponent(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "unitFactorMassExponent", value.obj)
+
+pub inline fun unitFactorMassExponent(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "unitFactorMassExponent")
+
+pub inline fun unitFactorTimeExponent(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "unitFactorTimeExponent", value.obj)
+
+pub inline fun unitFactorTimeExponent(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "unitFactorTimeExponent")
+
+pub inline fun unitFactorTemperatureExponent(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "unitFactorTemperatureExponent", value.obj)
+
+pub inline fun unitFactorTemperatureExponent(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "unitFactorTemperatureExponent")
+
+pub inline fun unitFactorCurrentExponent(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "unitFactorCurrentExponent", value.obj)
+
+pub inline fun unitFactorCurrentExponent(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "unitFactorCurrentExponent")
+
+pub inline fun unitFactorLuminousIntensityExponent(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "unitFactorLuminousIntensityExponent", value.obj)
+
+pub inline fun unitFactorLuminousIntensityExponent(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "unitFactorLuminousIntensityExponent")
+
+pub inline fun logicalMinimum(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "logicalMinimum", value.obj)
+
+pub inline fun logicalMinimum(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "logicalMinimum")
+
+pub inline fun logicalMaximum(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "logicalMaximum", value.obj)
+
+pub inline fun logicalMaximum(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "logicalMaximum")
+
+pub inline fun physicalMinimum(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "physicalMinimum", value.obj)
+
+pub inline fun physicalMinimum(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "physicalMinimum")
+
+pub inline fun physicalMaximum(obj: hidReportItem, value: int): web ()
+  setJsObjectField(obj.obj, "physicalMaximum", value.obj)
+
+pub inline fun physicalMaximum(obj: hidReportItem): web int
+  getJsObjectField(obj.obj, "physicalMaximum")
+
+pub inline fun strings(obj: hidReportItem, value: jsArray): web ()
+  setJsObjectField(obj.obj, "strings", value.obj)
+
+pub inline fun strings(obj: hidReportItem): web jsArray
+  getJsObjectField(obj.obj, "strings")
+

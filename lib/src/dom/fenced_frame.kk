@@ -1,82 +1,107 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias FencedFrameConfigSize = JSAny
-alias FencedFrameConfigURL = String
-alias ReportEventType = JSAny
+import web/wasm
+pub alias fencedFrameConfigSize = JSAny;
 
 
-alias OpaqueProperty = String
-alias FenceReportingDestination = String
-struct HTMLFencedFrameElement
-{,
-,
-,
+pub alias fencedFrameConfigURL = String;
 
-}
-pub extern newHTMLFencedFrameElement([], [])
-()
 
-pub extern setconfig(this: js_object, value: maybe<FencedFrameConfig>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getconfig(this: js_object): web maybe<FencedFrameConfig>
-	c inline "getObjectField(#1, \"config\")"
-pub extern setwidth(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web String
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web String
-	c inline "getObjectField(#1, \"height\")"
-pub extern setallow(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getallow(this: js_object): web String
-	c inline "getObjectField(#1, \"allow\")"
-struct FencedFrameConfig
-{,
-,
-,
+pub alias reportEventType = JSAny;
 
-}
 
-()
 
-pub extern setSharedStorageContext(this: js_object, [contextString: String], [])
-pub extern getcontainerWidth(this: js_object): web maybe<FencedFrameConfigSize>
-	c inline "getObjectField(#1, \"containerWidth\")"
-pub extern getcontainerHeight(this: js_object): web maybe<FencedFrameConfigSize>
-	c inline "getObjectField(#1, \"containerHeight\")"
-pub extern getcontentWidth(this: js_object): web maybe<FencedFrameConfigSize>
-	c inline "getObjectField(#1, \"contentWidth\")"
-pub extern getcontentHeight(this: js_object): web maybe<FencedFrameConfigSize>
-	c inline "getObjectField(#1, \"contentHeight\")"
-struct FenceEvent
-{  eventType: String,
-  eventData: String,
-  destination: dart:js_interop/JSArray
-}
-pub extern newFenceEvent([eventType: String, eventData: String, destination: dart:js_interop/JSArray])
-()
+pub alias opaqueProperty = string;
 
-pub extern seteventType(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geteventType(this: js_object): web String
-	c inline "getObjectField(#1, \"eventType\")"
-pub extern seteventData(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geteventData(this: js_object): web String
-	c inline "getObjectField(#1, \"eventData\")"
-pub extern setdestination(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdestination(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"destination\")"
-struct Fence
-{
-}
 
-()
+pub alias fenceReportingDestination = string;
 
-pub extern reportEvent(this: js_object, [event: ReportEventType], [])
-pub extern setReportEventDataForAutomaticBeacons(this: js_object, [event: FenceEvent], [])
-pub extern getNestedConfigs(this: js_object, [], [])
+pub value struct htmlFencedFrameElement
+  obj: jsObject
+
+pub inline fun newHtmlFencedFrameElement()
+  newJsObject0("HtmlFencedFrameElement")"
+
+pub inline fun config(obj: htmlFencedFrameElement, value: maybe<fencedFrameConfig>): web ()
+  setJsObjectField(obj.obj, "config", value.obj)
+
+pub inline fun config(obj: htmlFencedFrameElement): web maybe<fencedFrameConfig>
+  getJsObjectField(obj.obj, "config")
+
+pub inline fun width(obj: htmlFencedFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlFencedFrameElement): web string
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: htmlFencedFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: htmlFencedFrameElement): web string
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun allow(obj: htmlFencedFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "allow", value.obj)
+
+pub inline fun allow(obj: htmlFencedFrameElement): web string
+  getJsObjectField(obj.obj, "allow")
+
+pub value struct fencedFrameConfig
+  obj: jsObject
+
+
+pub inline fun setSharedStorageContext(obj: fencedFrameConfig, contextString': string): web ()
+  jsOperation3(obj.obj, "setSharedStorageContext", contextString'.obj)
+
+pub inline fun containerWidth(obj: fencedFrameConfig): web maybe<fencedFrameConfigSize>
+  getJsObjectField(obj.obj, "containerWidth")
+
+pub inline fun containerHeight(obj: fencedFrameConfig): web maybe<fencedFrameConfigSize>
+  getJsObjectField(obj.obj, "containerHeight")
+
+pub inline fun contentWidth(obj: fencedFrameConfig): web maybe<fencedFrameConfigSize>
+  getJsObjectField(obj.obj, "contentWidth")
+
+pub inline fun contentHeight(obj: fencedFrameConfig): web maybe<fencedFrameConfigSize>
+  getJsObjectField(obj.obj, "contentHeight")
+
+pub value struct fenceEvent
+  obj: jsObject
+
+pub fun newFenceEvent(eventType: string, eventData: string, destination: jsArray)
+  val obj = newJsObject();
+  setJsObjectField(obj, "eventType", eventType);  setJsObjectField(obj, "eventData", eventData);  setJsObjectField(obj, "destination", destination);
+  FenceEvent(obj);
+
+pub inline fun eventType(obj: fenceEvent, value: string): web ()
+  setJsObjectField(obj.obj, "eventType", value.obj)
+
+pub inline fun eventType(obj: fenceEvent): web string
+  getJsObjectField(obj.obj, "eventType")
+
+pub inline fun eventData(obj: fenceEvent, value: string): web ()
+  setJsObjectField(obj.obj, "eventData", value.obj)
+
+pub inline fun eventData(obj: fenceEvent): web string
+  getJsObjectField(obj.obj, "eventData")
+
+pub inline fun destination(obj: fenceEvent, value: jsArray): web ()
+  setJsObjectField(obj.obj, "destination", value.obj)
+
+pub inline fun destination(obj: fenceEvent): web jsArray
+  getJsObjectField(obj.obj, "destination")
+
+pub value struct fence
+  obj: jsObject
+
+
+pub inline fun reportEvent(obj: fence, event': reportEventType): web ()
+  jsOperation3(obj.obj, "reportEvent", event'.obj)
+
+pub inline fun setReportEventDataForAutomaticBeacons(obj: fence, event': fenceEvent): web ()
+  jsOperation3(obj.obj, "setReportEventDataForAutomaticBeacons", event'.obj)
+
+pub inline fun getNestedConfigs(obj: fence): web jsArray
+  jsOperation2(obj.obj, "getNestedConfigs")
+

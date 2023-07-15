@@ -1,92 +1,143 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias ItemType = String
-struct DigitalGoodsService
-{
-}
+pub alias itemType = string;
 
-()
+pub value struct digitalGoodsService
+  obj: jsObject
 
-pub extern getDetails(this: js_object, [itemIds: dart:js_interop/JSArray], [])
-pub extern listPurchases(this: js_object, [], [])
-pub extern listPurchaseHistory(this: js_object, [], [])
-pub extern consume(this: js_object, [purchaseToken: String], [])
-struct ItemDetails
-{  itemId: String,
-  title: String,
-  price: payment_request.kk/PaymentCurrencyAmount,
-  type: ItemType,
-  description: String,
-  iconURLs: dart:js_interop/JSArray,
-  subscriptionPeriod: String,
-  freeTrialPeriod: String,
-  introductoryPrice: payment_request.kk/PaymentCurrencyAmount,
-  introductoryPricePeriod: String,
-  introductoryPriceCycles: int
-}
-pub extern newItemDetails([itemId: String, title: String, price: payment_request.kk/PaymentCurrencyAmount, type: maybe<ItemType> = Nothing, description: maybe<String> = Nothing, iconURLs: maybe<dart:js_interop/JSArray> = Nothing, subscriptionPeriod: maybe<String> = Nothing, freeTrialPeriod: maybe<String> = Nothing, introductoryPrice: maybe<payment_request.kk/PaymentCurrencyAmount> = Nothing, introductoryPricePeriod: maybe<String> = Nothing, introductoryPriceCycles: maybe<int> = Nothing])
-()
 
-pub extern setitemId(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getitemId(this: js_object): web String
-	c inline "getObjectField(#1, \"itemId\")"
-pub extern settitle(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettitle(this: js_object): web String
-	c inline "getObjectField(#1, \"title\")"
-pub extern setprice(this: js_object, value: payment_request.kk/PaymentCurrencyAmount): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprice(this: js_object): web payment_request.kk/PaymentCurrencyAmount
-	c inline "getObjectField(#1, \"price\")"
-pub extern settype(this: js_object, value: ItemType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web ItemType
-	c inline "getObjectField(#1, \"type\")"
-pub extern setdescription(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdescription(this: js_object): web String
-	c inline "getObjectField(#1, \"description\")"
-pub extern seticonURLs(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geticonURLs(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"iconURLs\")"
-pub extern setsubscriptionPeriod(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsubscriptionPeriod(this: js_object): web String
-	c inline "getObjectField(#1, \"subscriptionPeriod\")"
-pub extern setfreeTrialPeriod(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfreeTrialPeriod(this: js_object): web String
-	c inline "getObjectField(#1, \"freeTrialPeriod\")"
-pub extern setintroductoryPrice(this: js_object, value: payment_request.kk/PaymentCurrencyAmount): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getintroductoryPrice(this: js_object): web payment_request.kk/PaymentCurrencyAmount
-	c inline "getObjectField(#1, \"introductoryPrice\")"
-pub extern setintroductoryPricePeriod(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getintroductoryPricePeriod(this: js_object): web String
-	c inline "getObjectField(#1, \"introductoryPricePeriod\")"
-pub extern setintroductoryPriceCycles(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getintroductoryPriceCycles(this: js_object): web int
-	c inline "getObjectField(#1, \"introductoryPriceCycles\")"
-struct PurchaseDetails
-{  itemId: String,
-  purchaseToken: String
-}
-pub extern newPurchaseDetails([itemId: String, purchaseToken: String])
-()
+pub inline fun getDetails(obj: digitalGoodsService, itemIds': jsArray): web jsPromise
+  jsOperation3(obj.obj, "getDetails", itemIds'.obj)
 
-pub extern setitemId(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getitemId(this: js_object): web String
-	c inline "getObjectField(#1, \"itemId\")"
-pub extern setpurchaseToken(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpurchaseToken(this: js_object): web String
-	c inline "getObjectField(#1, \"purchaseToken\")"
+pub inline fun listPurchases(obj: digitalGoodsService): web jsPromise
+  jsOperation2(obj.obj, "listPurchases")
+
+pub inline fun listPurchaseHistory(obj: digitalGoodsService): web jsPromise
+  jsOperation2(obj.obj, "listPurchaseHistory")
+
+pub inline fun consume(obj: digitalGoodsService, purchaseToken': string): web jsPromise
+  jsOperation3(obj.obj, "consume", purchaseToken'.obj)
+
+pub value struct itemDetails
+  obj: jsObject
+
+pub fun newItemDetails(itemId: string, title: string, price: payment_request/paymentCurrencyAmount, type: maybe<itemType> = Nothing, description: maybe<string> = Nothing, iconURLs: maybe<jsArray> = Nothing, subscriptionPeriod: maybe<string> = Nothing, freeTrialPeriod: maybe<string> = Nothing, introductoryPrice: maybe<payment_request/paymentCurrencyAmount> = Nothing, introductoryPricePeriod: maybe<string> = Nothing, introductoryPriceCycles: maybe<int> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "itemId", itemId);  setJsObjectField(obj, "title", title);  setJsObjectField(obj, "price", price);  match type
+    Just(it) -> setJsObjectField(obj, "type", it)
+    Nothing -> ()
+  match description
+    Just(it) -> setJsObjectField(obj, "description", it)
+    Nothing -> ()
+  match iconURLs
+    Just(it) -> setJsObjectField(obj, "iconURLs", it)
+    Nothing -> ()
+  match subscriptionPeriod
+    Just(it) -> setJsObjectField(obj, "subscriptionPeriod", it)
+    Nothing -> ()
+  match freeTrialPeriod
+    Just(it) -> setJsObjectField(obj, "freeTrialPeriod", it)
+    Nothing -> ()
+  match introductoryPrice
+    Just(it) -> setJsObjectField(obj, "introductoryPrice", it)
+    Nothing -> ()
+  match introductoryPricePeriod
+    Just(it) -> setJsObjectField(obj, "introductoryPricePeriod", it)
+    Nothing -> ()
+  match introductoryPriceCycles
+    Just(it) -> setJsObjectField(obj, "introductoryPriceCycles", it)
+    Nothing -> ()
+
+  ItemDetails(obj);
+
+pub inline fun itemId(obj: itemDetails, value: string): web ()
+  setJsObjectField(obj.obj, "itemId", value.obj)
+
+pub inline fun itemId(obj: itemDetails): web string
+  getJsObjectField(obj.obj, "itemId")
+
+pub inline fun title(obj: itemDetails, value: string): web ()
+  setJsObjectField(obj.obj, "title", value.obj)
+
+pub inline fun title(obj: itemDetails): web string
+  getJsObjectField(obj.obj, "title")
+
+pub inline fun price(obj: itemDetails, value: payment_request/paymentCurrencyAmount): web ()
+  setJsObjectField(obj.obj, "price", value.obj)
+
+pub inline fun price(obj: itemDetails): web payment_request/paymentCurrencyAmount
+  getJsObjectField(obj.obj, "price")
+
+pub inline fun type(obj: itemDetails, value: itemType): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: itemDetails): web itemType
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun description(obj: itemDetails, value: string): web ()
+  setJsObjectField(obj.obj, "description", value.obj)
+
+pub inline fun description(obj: itemDetails): web string
+  getJsObjectField(obj.obj, "description")
+
+pub inline fun iconURLs(obj: itemDetails, value: jsArray): web ()
+  setJsObjectField(obj.obj, "iconURLs", value.obj)
+
+pub inline fun iconURLs(obj: itemDetails): web jsArray
+  getJsObjectField(obj.obj, "iconURLs")
+
+pub inline fun subscriptionPeriod(obj: itemDetails, value: string): web ()
+  setJsObjectField(obj.obj, "subscriptionPeriod", value.obj)
+
+pub inline fun subscriptionPeriod(obj: itemDetails): web string
+  getJsObjectField(obj.obj, "subscriptionPeriod")
+
+pub inline fun freeTrialPeriod(obj: itemDetails, value: string): web ()
+  setJsObjectField(obj.obj, "freeTrialPeriod", value.obj)
+
+pub inline fun freeTrialPeriod(obj: itemDetails): web string
+  getJsObjectField(obj.obj, "freeTrialPeriod")
+
+pub inline fun introductoryPrice(obj: itemDetails, value: payment_request/paymentCurrencyAmount): web ()
+  setJsObjectField(obj.obj, "introductoryPrice", value.obj)
+
+pub inline fun introductoryPrice(obj: itemDetails): web payment_request/paymentCurrencyAmount
+  getJsObjectField(obj.obj, "introductoryPrice")
+
+pub inline fun introductoryPricePeriod(obj: itemDetails, value: string): web ()
+  setJsObjectField(obj.obj, "introductoryPricePeriod", value.obj)
+
+pub inline fun introductoryPricePeriod(obj: itemDetails): web string
+  getJsObjectField(obj.obj, "introductoryPricePeriod")
+
+pub inline fun introductoryPriceCycles(obj: itemDetails, value: int): web ()
+  setJsObjectField(obj.obj, "introductoryPriceCycles", value.obj)
+
+pub inline fun introductoryPriceCycles(obj: itemDetails): web int
+  getJsObjectField(obj.obj, "introductoryPriceCycles")
+
+pub value struct purchaseDetails
+  obj: jsObject
+
+pub fun newPurchaseDetails(itemId: string, purchaseToken: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "itemId", itemId);  setJsObjectField(obj, "purchaseToken", purchaseToken);
+  PurchaseDetails(obj);
+
+pub inline fun itemId(obj: purchaseDetails, value: string): web ()
+  setJsObjectField(obj.obj, "itemId", value.obj)
+
+pub inline fun itemId(obj: purchaseDetails): web string
+  getJsObjectField(obj.obj, "itemId")
+
+pub inline fun purchaseToken(obj: purchaseDetails, value: string): web ()
+  setJsObjectField(obj.obj, "purchaseToken", value.obj)
+
+pub inline fun purchaseToken(obj: purchaseDetails): web string
+  getJsObjectField(obj.obj, "purchaseToken")
+

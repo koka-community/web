@@ -1,376 +1,595 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias ReadableStreamReader = JSAny
-alias ReadableStreamController = JSAny
-alias UnderlyingSourceStartCallback = JSFunction
-alias UnderlyingSourcePullCallback = JSFunction
-alias UnderlyingSourceCancelCallback = JSFunction
-alias UnderlyingSinkStartCallback = JSFunction
-alias UnderlyingSinkWriteCallback = JSFunction
-alias UnderlyingSinkCloseCallback = JSFunction
-alias UnderlyingSinkAbortCallback = JSFunction
-alias TransformerStartCallback = JSFunction
-alias TransformerFlushCallback = JSFunction
-alias TransformerTransformCallback = JSFunction
-alias QueuingStrategySize = JSFunction
+import web/wasm
+pub alias readableStreamReader = JSAny;
 
-alias ReadableStreamReaderMode = String
-alias ReadableStreamType = String
-struct ReadableStream
-{,
 
-}
-pub extern newReadableStream([], [underlyingSource: dart:js_interop/JSObject, strategy: QueuingStrategy])
-(pub extern from( [asyncIterable: maybe<dart:js_interop/JSAny>], []))
+pub alias readableStreamController = JSAny;
 
-pub extern cancel(this: js_object, [], [reason: maybe<dart:js_interop/JSAny>])
-pub extern getReader(this: js_object, [], [options: ReadableStreamGetReaderOptions])
-pub extern pipeThrough(this: js_object, [transform: ReadableWritablePair], [options: StreamPipeOptions])
-pub extern pipeTo(this: js_object, [destination: WritableStream], [options: StreamPipeOptions])
-pub extern tee(this: js_object, [], [])
-pub extern getlocked(this: js_object): web bool
-	c inline "getObjectField(#1, \"locked\")"
-struct ReadableStreamGetReaderOptions
-{  mode: ReadableStreamReaderMode
-}
-pub extern newReadableStreamGetReaderOptions([mode: maybe<ReadableStreamReaderMode> = Nothing])
-()
+pub alias underlyingSourceStartCallback = jsFunction;
 
-pub extern setmode(this: js_object, value: ReadableStreamReaderMode): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmode(this: js_object): web ReadableStreamReaderMode
-	c inline "getObjectField(#1, \"mode\")"
-struct ReadableStreamIteratorOptions
-{  preventCancel: bool
-}
-pub extern newReadableStreamIteratorOptions([preventCancel: maybe<bool> = Nothing])
-()
 
-pub extern setpreventCancel(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpreventCancel(this: js_object): web bool
-	c inline "getObjectField(#1, \"preventCancel\")"
-struct ReadableWritablePair
-{  readable: ReadableStream,
-  writable: WritableStream
-}
-pub extern newReadableWritablePair([readable: ReadableStream, writable: WritableStream])
-()
+pub alias underlyingSourcePullCallback = jsFunction;
 
-pub extern setreadable(this: js_object, value: ReadableStream): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreadable(this: js_object): web ReadableStream
-	c inline "getObjectField(#1, \"readable\")"
-pub extern setwritable(this: js_object, value: WritableStream): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwritable(this: js_object): web WritableStream
-	c inline "getObjectField(#1, \"writable\")"
-struct StreamPipeOptions
-{  preventClose: bool,
-  preventAbort: bool,
-  preventCancel: bool,
-  signal: dom.kk/AbortSignal
-}
-pub extern newStreamPipeOptions([preventClose: maybe<bool> = Nothing, preventAbort: maybe<bool> = Nothing, preventCancel: maybe<bool> = Nothing, signal: maybe<dom.kk/AbortSignal> = Nothing])
-()
 
-pub extern setpreventClose(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpreventClose(this: js_object): web bool
-	c inline "getObjectField(#1, \"preventClose\")"
-pub extern setpreventAbort(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpreventAbort(this: js_object): web bool
-	c inline "getObjectField(#1, \"preventAbort\")"
-pub extern setpreventCancel(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpreventCancel(this: js_object): web bool
-	c inline "getObjectField(#1, \"preventCancel\")"
-pub extern setsignal(this: js_object, value: dom.kk/AbortSignal): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsignal(this: js_object): web dom.kk/AbortSignal
-	c inline "getObjectField(#1, \"signal\")"
-struct UnderlyingSource
-{  start: UnderlyingSourceStartCallback,
-  pull: UnderlyingSourcePullCallback,
-  cancel: UnderlyingSourceCancelCallback,
-  type: ReadableStreamType,
-  autoAllocateChunkSize: int
-}
-pub extern newUnderlyingSource([start: maybe<UnderlyingSourceStartCallback> = Nothing, pull: maybe<UnderlyingSourcePullCallback> = Nothing, cancel: maybe<UnderlyingSourceCancelCallback> = Nothing, type: maybe<ReadableStreamType> = Nothing, autoAllocateChunkSize: maybe<int> = Nothing])
-()
+pub alias underlyingSourceCancelCallback = jsFunction;
 
-pub extern setstart(this: js_object, value: UnderlyingSourceStartCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstart(this: js_object): web UnderlyingSourceStartCallback
-	c inline "getObjectField(#1, \"start\")"
-pub extern setpull(this: js_object, value: UnderlyingSourcePullCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpull(this: js_object): web UnderlyingSourcePullCallback
-	c inline "getObjectField(#1, \"pull\")"
-pub extern setcancel(this: js_object, value: UnderlyingSourceCancelCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcancel(this: js_object): web UnderlyingSourceCancelCallback
-	c inline "getObjectField(#1, \"cancel\")"
-pub extern settype(this: js_object, value: ReadableStreamType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web ReadableStreamType
-	c inline "getObjectField(#1, \"type\")"
-pub extern setautoAllocateChunkSize(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getautoAllocateChunkSize(this: js_object): web int
-	c inline "getObjectField(#1, \"autoAllocateChunkSize\")"
-struct ReadableStreamGenericReader
-{
-}
 
-()
+pub alias underlyingSinkStartCallback = jsFunction;
 
-pub extern cancel(this: js_object, [], [reason: maybe<dart:js_interop/JSAny>])
-pub extern getclosed(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"closed\")"
-struct ReadableStreamDefaultReader
-{
-}
-pub extern newReadableStreamDefaultReader([stream: ReadableStream], [])
-()
 
-pub extern read(this: js_object, [], [])
-pub extern releaseLock(this: js_object, [], [])
-struct ReadableStreamReadResult
-{  value: maybe<dart:js_interop/JSAny>,
-  done: bool
-}
-pub extern newReadableStreamReadResult([value: maybe<maybe<dart:js_interop/JSAny>> = Nothing, done: maybe<bool> = Nothing])
-()
+pub alias underlyingSinkWriteCallback = jsFunction;
 
-pub extern setvalue(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"value\")"
-pub extern setdone(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdone(this: js_object): web bool
-	c inline "getObjectField(#1, \"done\")"
-struct ReadableStreamBYOBReader
-{
-}
-pub extern newReadableStreamBYOBReader([stream: ReadableStream], [])
-()
 
-pub extern read(this: js_object, [view: webidl.kk/ArrayBufferView], [])
-pub extern releaseLock(this: js_object, [], [])
-struct ReadableStreamDefaultController
-{
-}
+pub alias underlyingSinkCloseCallback = jsFunction;
 
-()
 
-pub extern close(this: js_object, [], [])
-pub extern enqueue(this: js_object, [], [chunk: maybe<dart:js_interop/JSAny>])
-pub extern error(this: js_object, [], [e: maybe<dart:js_interop/JSAny>])
-pub extern getdesiredSize(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"desiredSize\")"
-struct ReadableByteStreamController
-{,
+pub alias underlyingSinkAbortCallback = jsFunction;
 
-}
 
-()
+pub alias transformerStartCallback = jsFunction;
 
-pub extern close(this: js_object, [], [])
-pub extern enqueue(this: js_object, [chunk: webidl.kk/ArrayBufferView], [])
-pub extern error(this: js_object, [], [e: maybe<dart:js_interop/JSAny>])
-pub extern getbyobRequest(this: js_object): web maybe<ReadableStreamBYOBRequest>
-	c inline "getObjectField(#1, \"byobRequest\")"
-pub extern getdesiredSize(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"desiredSize\")"
-struct ReadableStreamBYOBRequest
-{
-}
 
-()
+pub alias transformerFlushCallback = jsFunction;
 
-pub extern respond(this: js_object, [bytesWritten: int], [])
-pub extern respondWithNewView(this: js_object, [view: webidl.kk/ArrayBufferView], [])
-pub extern getview(this: js_object): web maybe<webidl.kk/ArrayBufferView>
-	c inline "getObjectField(#1, \"view\")"
-struct WritableStream
-{
-}
-pub extern newWritableStream([], [underlyingSink: dart:js_interop/JSObject, strategy: QueuingStrategy])
-()
 
-pub extern abort(this: js_object, [], [reason: maybe<dart:js_interop/JSAny>])
-pub extern close(this: js_object, [], [])
-pub extern getWriter(this: js_object, [], [])
-pub extern getlocked(this: js_object): web bool
-	c inline "getObjectField(#1, \"locked\")"
-struct UnderlyingSink
-{  start: UnderlyingSinkStartCallback,
-  write: UnderlyingSinkWriteCallback,
-  close: UnderlyingSinkCloseCallback,
-  abort: UnderlyingSinkAbortCallback,
-  type: maybe<dart:js_interop/JSAny>
-}
-pub extern newUnderlyingSink([start: maybe<UnderlyingSinkStartCallback> = Nothing, write: maybe<UnderlyingSinkWriteCallback> = Nothing, close: maybe<UnderlyingSinkCloseCallback> = Nothing, abort: maybe<UnderlyingSinkAbortCallback> = Nothing, type: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
+pub alias transformerTransformCallback = jsFunction;
 
-pub extern setstart(this: js_object, value: UnderlyingSinkStartCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstart(this: js_object): web UnderlyingSinkStartCallback
-	c inline "getObjectField(#1, \"start\")"
-pub extern setwrite(this: js_object, value: UnderlyingSinkWriteCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwrite(this: js_object): web UnderlyingSinkWriteCallback
-	c inline "getObjectField(#1, \"write\")"
-pub extern setclose(this: js_object, value: UnderlyingSinkCloseCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclose(this: js_object): web UnderlyingSinkCloseCallback
-	c inline "getObjectField(#1, \"close\")"
-pub extern setabort(this: js_object, value: UnderlyingSinkAbortCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getabort(this: js_object): web UnderlyingSinkAbortCallback
-	c inline "getObjectField(#1, \"abort\")"
-pub extern settype(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"type\")"
-struct WritableStreamDefaultWriter
-{,
-,
 
-}
-pub extern newWritableStreamDefaultWriter([stream: WritableStream], [])
-()
+pub alias queuingStrategySize = jsFunction;
 
-pub extern abort(this: js_object, [], [reason: maybe<dart:js_interop/JSAny>])
-pub extern close(this: js_object, [], [])
-pub extern releaseLock(this: js_object, [], [])
-pub extern write(this: js_object, [], [chunk: maybe<dart:js_interop/JSAny>])
-pub extern getclosed(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"closed\")"
-pub extern getdesiredSize(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"desiredSize\")"
-pub extern getready(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"ready\")"
-struct WritableStreamDefaultController
-{
-}
 
-()
+pub alias readableStreamReaderMode = string;
 
-pub extern error(this: js_object, [], [e: maybe<dart:js_interop/JSAny>])
-pub extern getsignal(this: js_object): web dom.kk/AbortSignal
-	c inline "getObjectField(#1, \"signal\")"
-struct TransformStream
-{,
 
-}
-pub extern newTransformStream([], [transformer: dart:js_interop/JSObject, writableStrategy: QueuingStrategy, readableStrategy: QueuingStrategy])
-()
+pub alias readableStreamType = string;
 
-pub extern getreadable(this: js_object): web ReadableStream
-	c inline "getObjectField(#1, \"readable\")"
-pub extern getwritable(this: js_object): web WritableStream
-	c inline "getObjectField(#1, \"writable\")"
-struct Transformer
-{  start: TransformerStartCallback,
-  transform: TransformerTransformCallback,
-  flush: TransformerFlushCallback,
-  readableType: maybe<dart:js_interop/JSAny>,
-  writableType: maybe<dart:js_interop/JSAny>
-}
-pub extern newTransformer([start: maybe<TransformerStartCallback> = Nothing, transform: maybe<TransformerTransformCallback> = Nothing, flush: maybe<TransformerFlushCallback> = Nothing, readableType: maybe<maybe<dart:js_interop/JSAny>> = Nothing, writableType: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
+pub value struct readableStream
+  obj: jsObject
 
-pub extern setstart(this: js_object, value: TransformerStartCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstart(this: js_object): web TransformerStartCallback
-	c inline "getObjectField(#1, \"start\")"
-pub extern settransform(this: js_object, value: TransformerTransformCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransform(this: js_object): web TransformerTransformCallback
-	c inline "getObjectField(#1, \"transform\")"
-pub extern setflush(this: js_object, value: TransformerFlushCallback): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getflush(this: js_object): web TransformerFlushCallback
-	c inline "getObjectField(#1, \"flush\")"
-pub extern setreadableType(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreadableType(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"readableType\")"
-pub extern setwritableType(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwritableType(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"writableType\")"
-struct TransformStreamDefaultController
-{
-}
+pub inline fun newReadableStream(underlyingSource': jsObject, strategy': queuingStrategy)
+  newJsObject2("ReadableStream", underlyingSource', strategy')"
+pub inline fun from(asyncIterable': maybe<jsObject>): web readableStream
+  jsOperation2("from", asyncIterable'.obj)
 
-()
+pub inline fun cancel(obj: readableStream, reason': maybe<jsObject>): web jsPromise
+  jsOperation3(obj.obj, "cancel", reason'.obj)
 
-pub extern enqueue(this: js_object, [], [chunk: maybe<dart:js_interop/JSAny>])
-pub extern error(this: js_object, [], [reason: maybe<dart:js_interop/JSAny>])
-pub extern terminate(this: js_object, [], [])
-pub extern getdesiredSize(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"desiredSize\")"
-struct QueuingStrategy
-{  highWaterMark: double,
-  size: QueuingStrategySize
-}
-pub extern newQueuingStrategy([highWaterMark: maybe<double> = Nothing, size: maybe<QueuingStrategySize> = Nothing])
-()
+pub inline fun getReader(obj: readableStream, options': readableStreamGetReaderOptions): web readableStreamReader
+  jsOperation3(obj.obj, "getReader", options'.obj)
 
-pub extern sethighWaterMark(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethighWaterMark(this: js_object): web double
-	c inline "getObjectField(#1, \"highWaterMark\")"
-pub extern setsize(this: js_object, value: QueuingStrategySize): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsize(this: js_object): web QueuingStrategySize
-	c inline "getObjectField(#1, \"size\")"
-struct QueuingStrategyInit
-{  highWaterMark: double
-}
-pub extern newQueuingStrategyInit([highWaterMark: double])
-()
+pub inline fun pipeThrough(obj: readableStream, transform': readableWritablePair, options': streamPipeOptions): web readableStream
+  jsOperation4(obj.obj, "pipeThrough", transform'.obj, options'.obj)
 
-pub extern sethighWaterMark(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethighWaterMark(this: js_object): web double
-	c inline "getObjectField(#1, \"highWaterMark\")"
-struct ByteLengthQueuingStrategy
-{,
+pub inline fun pipeTo(obj: readableStream, destination': writableStream, options': streamPipeOptions): web jsPromise
+  jsOperation4(obj.obj, "pipeTo", destination'.obj, options'.obj)
 
-}
-pub extern newByteLengthQueuingStrategy([init: QueuingStrategyInit], [])
-()
+pub inline fun tee(obj: readableStream): web jsArray
+  jsOperation2(obj.obj, "tee")
 
-pub extern gethighWaterMark(this: js_object): web double
-	c inline "getObjectField(#1, \"highWaterMark\")"
-pub extern getsize(this: js_object): web dart:js_interop/JSFunction
-	c inline "getObjectField(#1, \"size\")"
-struct CountQueuingStrategy
-{,
+pub inline fun locked(obj: readableStream): web bool
+  getJsObjectField(obj.obj, "locked")
 
-}
-pub extern newCountQueuingStrategy([init: QueuingStrategyInit], [])
-()
+pub value struct readableStreamGetReaderOptions
+  obj: jsObject
 
-pub extern gethighWaterMark(this: js_object): web double
-	c inline "getObjectField(#1, \"highWaterMark\")"
-pub extern getsize(this: js_object): web dart:js_interop/JSFunction
-	c inline "getObjectField(#1, \"size\")"
-struct GenericTransformStream
-{,
+pub fun newReadableStreamGetReaderOptions(mode: maybe<readableStreamReaderMode> = Nothing)
+  val obj = newJsObject();
+  match mode
+    Just(it) -> setJsObjectField(obj, "mode", it)
+    Nothing -> ()
 
-}
+  ReadableStreamGetReaderOptions(obj);
 
-()
+pub inline fun mode(obj: readableStreamGetReaderOptions, value: readableStreamReaderMode): web ()
+  setJsObjectField(obj.obj, "mode", value.obj)
 
-pub extern getreadable(this: js_object): web ReadableStream
-	c inline "getObjectField(#1, \"readable\")"
-pub extern getwritable(this: js_object): web WritableStream
-	c inline "getObjectField(#1, \"writable\")"
+pub inline fun mode(obj: readableStreamGetReaderOptions): web readableStreamReaderMode
+  getJsObjectField(obj.obj, "mode")
+
+pub value struct readableStreamIteratorOptions
+  obj: jsObject
+
+pub fun newReadableStreamIteratorOptions(preventCancel: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match preventCancel
+    Just(it) -> setJsObjectField(obj, "preventCancel", it)
+    Nothing -> ()
+
+  ReadableStreamIteratorOptions(obj);
+
+pub inline fun preventCancel(obj: readableStreamIteratorOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "preventCancel", value.obj)
+
+pub inline fun preventCancel(obj: readableStreamIteratorOptions): web bool
+  getJsObjectField(obj.obj, "preventCancel")
+
+pub value struct readableWritablePair
+  obj: jsObject
+
+pub fun newReadableWritablePair(readable: readableStream, writable: writableStream)
+  val obj = newJsObject();
+  setJsObjectField(obj, "readable", readable);  setJsObjectField(obj, "writable", writable);
+  ReadableWritablePair(obj);
+
+pub inline fun readable(obj: readableWritablePair, value: readableStream): web ()
+  setJsObjectField(obj.obj, "readable", value.obj)
+
+pub inline fun readable(obj: readableWritablePair): web readableStream
+  getJsObjectField(obj.obj, "readable")
+
+pub inline fun writable(obj: readableWritablePair, value: writableStream): web ()
+  setJsObjectField(obj.obj, "writable", value.obj)
+
+pub inline fun writable(obj: readableWritablePair): web writableStream
+  getJsObjectField(obj.obj, "writable")
+
+pub value struct streamPipeOptions
+  obj: jsObject
+
+pub fun newStreamPipeOptions(preventClose: maybe<bool> = Nothing, preventAbort: maybe<bool> = Nothing, preventCancel: maybe<bool> = Nothing, signal: maybe<dom/abortSignal> = Nothing)
+  val obj = newJsObject();
+  match preventClose
+    Just(it) -> setJsObjectField(obj, "preventClose", it)
+    Nothing -> ()
+  match preventAbort
+    Just(it) -> setJsObjectField(obj, "preventAbort", it)
+    Nothing -> ()
+  match preventCancel
+    Just(it) -> setJsObjectField(obj, "preventCancel", it)
+    Nothing -> ()
+  match signal
+    Just(it) -> setJsObjectField(obj, "signal", it)
+    Nothing -> ()
+
+  StreamPipeOptions(obj);
+
+pub inline fun preventClose(obj: streamPipeOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "preventClose", value.obj)
+
+pub inline fun preventClose(obj: streamPipeOptions): web bool
+  getJsObjectField(obj.obj, "preventClose")
+
+pub inline fun preventAbort(obj: streamPipeOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "preventAbort", value.obj)
+
+pub inline fun preventAbort(obj: streamPipeOptions): web bool
+  getJsObjectField(obj.obj, "preventAbort")
+
+pub inline fun preventCancel(obj: streamPipeOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "preventCancel", value.obj)
+
+pub inline fun preventCancel(obj: streamPipeOptions): web bool
+  getJsObjectField(obj.obj, "preventCancel")
+
+pub inline fun signal(obj: streamPipeOptions, value: dom/abortSignal): web ()
+  setJsObjectField(obj.obj, "signal", value.obj)
+
+pub inline fun signal(obj: streamPipeOptions): web dom/abortSignal
+  getJsObjectField(obj.obj, "signal")
+
+pub value struct underlyingSource
+  obj: jsObject
+
+pub fun newUnderlyingSource(start: maybe<underlyingSourceStartCallback> = Nothing, pull: maybe<underlyingSourcePullCallback> = Nothing, cancel: maybe<underlyingSourceCancelCallback> = Nothing, type: maybe<readableStreamType> = Nothing, autoAllocateChunkSize: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match start
+    Just(it) -> setJsObjectField(obj, "start", it)
+    Nothing -> ()
+  match pull
+    Just(it) -> setJsObjectField(obj, "pull", it)
+    Nothing -> ()
+  match cancel
+    Just(it) -> setJsObjectField(obj, "cancel", it)
+    Nothing -> ()
+  match type
+    Just(it) -> setJsObjectField(obj, "type", it)
+    Nothing -> ()
+  match autoAllocateChunkSize
+    Just(it) -> setJsObjectField(obj, "autoAllocateChunkSize", it)
+    Nothing -> ()
+
+  UnderlyingSource(obj);
+
+pub inline fun start(obj: underlyingSource, value: underlyingSourceStartCallback): web ()
+  setJsObjectField(obj.obj, "start", value.obj)
+
+pub inline fun start(obj: underlyingSource): web underlyingSourceStartCallback
+  getJsObjectField(obj.obj, "start")
+
+pub inline fun pull(obj: underlyingSource, value: underlyingSourcePullCallback): web ()
+  setJsObjectField(obj.obj, "pull", value.obj)
+
+pub inline fun pull(obj: underlyingSource): web underlyingSourcePullCallback
+  getJsObjectField(obj.obj, "pull")
+
+pub inline fun cancel(obj: underlyingSource, value: underlyingSourceCancelCallback): web ()
+  setJsObjectField(obj.obj, "cancel", value.obj)
+
+pub inline fun cancel(obj: underlyingSource): web underlyingSourceCancelCallback
+  getJsObjectField(obj.obj, "cancel")
+
+pub inline fun type(obj: underlyingSource, value: readableStreamType): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: underlyingSource): web readableStreamType
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun autoAllocateChunkSize(obj: underlyingSource, value: int): web ()
+  setJsObjectField(obj.obj, "autoAllocateChunkSize", value.obj)
+
+pub inline fun autoAllocateChunkSize(obj: underlyingSource): web int
+  getJsObjectField(obj.obj, "autoAllocateChunkSize")
+
+pub value struct readableStreamGenericReader
+  obj: jsObject
+
+
+pub inline fun cancel(obj: readableStreamGenericReader, reason': maybe<jsObject>): web jsPromise
+  jsOperation3(obj.obj, "cancel", reason'.obj)
+
+pub inline fun closed(obj: readableStreamGenericReader): web jsPromise
+  getJsObjectField(obj.obj, "closed")
+
+pub value struct readableStreamDefaultReader
+  obj: jsObject
+
+pub inline fun newReadableStreamDefaultReader(stream': readableStream)
+  newJsObject1("ReadableStreamDefaultReader", stream')"
+
+pub inline fun read(obj: readableStreamDefaultReader): web jsPromise
+  jsOperation2(obj.obj, "read")
+
+pub inline fun releaseLock(obj: readableStreamDefaultReader): web ()
+  jsOperation2(obj.obj, "releaseLock")
+
+pub value struct readableStreamReadResult
+  obj: jsObject
+
+pub fun newReadableStreamReadResult(value: maybe<maybe<jsObject>> = Nothing, done: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match value
+    Just(it) -> setJsObjectField(obj, "value", it)
+    Nothing -> ()
+  match done
+    Just(it) -> setJsObjectField(obj, "done", it)
+    Nothing -> ()
+
+  ReadableStreamReadResult(obj);
+
+pub inline fun value(obj: readableStreamReadResult, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: readableStreamReadResult): web maybe<jsObject>
+  getJsObjectField(obj.obj, "value")
+
+pub inline fun done(obj: readableStreamReadResult, value: bool): web ()
+  setJsObjectField(obj.obj, "done", value.obj)
+
+pub inline fun done(obj: readableStreamReadResult): web bool
+  getJsObjectField(obj.obj, "done")
+
+pub value struct readableStreamBYOBReader
+  obj: jsObject
+
+pub inline fun newReadableStreamBYOBReader(stream': readableStream)
+  newJsObject1("ReadableStreamBYOBReader", stream')"
+
+pub inline fun read(obj: readableStreamBYOBReader, view': webidl/arrayBufferView): web jsPromise
+  jsOperation3(obj.obj, "read", view'.obj)
+
+pub inline fun releaseLock(obj: readableStreamBYOBReader): web ()
+  jsOperation2(obj.obj, "releaseLock")
+
+pub value struct readableStreamDefaultController
+  obj: jsObject
+
+
+pub inline fun close(obj: readableStreamDefaultController): web ()
+  jsOperation2(obj.obj, "close")
+
+pub inline fun enqueue(obj: readableStreamDefaultController, chunk': maybe<jsObject>): web ()
+  jsOperation3(obj.obj, "enqueue", chunk'.obj)
+
+pub inline fun error(obj: readableStreamDefaultController, e': maybe<jsObject>): web ()
+  jsOperation3(obj.obj, "error", e'.obj)
+
+pub inline fun desiredSize(obj: readableStreamDefaultController): web maybe<double>
+  getJsObjectField(obj.obj, "desiredSize")
+
+pub value struct readableByteStreamController
+  obj: jsObject
+
+
+pub inline fun close(obj: readableByteStreamController): web ()
+  jsOperation2(obj.obj, "close")
+
+pub inline fun enqueue(obj: readableByteStreamController, chunk': webidl/arrayBufferView): web ()
+  jsOperation3(obj.obj, "enqueue", chunk'.obj)
+
+pub inline fun error(obj: readableByteStreamController, e': maybe<jsObject>): web ()
+  jsOperation3(obj.obj, "error", e'.obj)
+
+pub inline fun byobRequest(obj: readableByteStreamController): web maybe<readableStreamBYOBRequest>
+  getJsObjectField(obj.obj, "byobRequest")
+
+pub inline fun desiredSize(obj: readableByteStreamController): web maybe<double>
+  getJsObjectField(obj.obj, "desiredSize")
+
+pub value struct readableStreamBYOBRequest
+  obj: jsObject
+
+
+pub inline fun respond(obj: readableStreamBYOBRequest, bytesWritten': int): web ()
+  jsOperation3(obj.obj, "respond", bytesWritten'.obj)
+
+pub inline fun respondWithNewView(obj: readableStreamBYOBRequest, view': webidl/arrayBufferView): web ()
+  jsOperation3(obj.obj, "respondWithNewView", view'.obj)
+
+pub inline fun view(obj: readableStreamBYOBRequest): web maybe<webidl/arrayBufferView>
+  getJsObjectField(obj.obj, "view")
+
+pub value struct writableStream
+  obj: jsObject
+
+pub inline fun newWritableStream(underlyingSink': jsObject, strategy': queuingStrategy)
+  newJsObject2("WritableStream", underlyingSink', strategy')"
+
+pub inline fun abort(obj: writableStream, reason': maybe<jsObject>): web jsPromise
+  jsOperation3(obj.obj, "abort", reason'.obj)
+
+pub inline fun close(obj: writableStream): web jsPromise
+  jsOperation2(obj.obj, "close")
+
+pub inline fun getWriter(obj: writableStream): web writableStreamDefaultWriter
+  jsOperation2(obj.obj, "getWriter")
+
+pub inline fun locked(obj: writableStream): web bool
+  getJsObjectField(obj.obj, "locked")
+
+pub value struct underlyingSink
+  obj: jsObject
+
+pub fun newUnderlyingSink(start: maybe<underlyingSinkStartCallback> = Nothing, write: maybe<underlyingSinkWriteCallback> = Nothing, close: maybe<underlyingSinkCloseCallback> = Nothing, abort: maybe<underlyingSinkAbortCallback> = Nothing, type: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match start
+    Just(it) -> setJsObjectField(obj, "start", it)
+    Nothing -> ()
+  match write
+    Just(it) -> setJsObjectField(obj, "write", it)
+    Nothing -> ()
+  match close
+    Just(it) -> setJsObjectField(obj, "close", it)
+    Nothing -> ()
+  match abort
+    Just(it) -> setJsObjectField(obj, "abort", it)
+    Nothing -> ()
+  match type
+    Just(it) -> setJsObjectField(obj, "type", it)
+    Nothing -> ()
+
+  UnderlyingSink(obj);
+
+pub inline fun start(obj: underlyingSink, value: underlyingSinkStartCallback): web ()
+  setJsObjectField(obj.obj, "start", value.obj)
+
+pub inline fun start(obj: underlyingSink): web underlyingSinkStartCallback
+  getJsObjectField(obj.obj, "start")
+
+pub inline fun write(obj: underlyingSink, value: underlyingSinkWriteCallback): web ()
+  setJsObjectField(obj.obj, "write", value.obj)
+
+pub inline fun write(obj: underlyingSink): web underlyingSinkWriteCallback
+  getJsObjectField(obj.obj, "write")
+
+pub inline fun close(obj: underlyingSink, value: underlyingSinkCloseCallback): web ()
+  setJsObjectField(obj.obj, "close", value.obj)
+
+pub inline fun close(obj: underlyingSink): web underlyingSinkCloseCallback
+  getJsObjectField(obj.obj, "close")
+
+pub inline fun abort(obj: underlyingSink, value: underlyingSinkAbortCallback): web ()
+  setJsObjectField(obj.obj, "abort", value.obj)
+
+pub inline fun abort(obj: underlyingSink): web underlyingSinkAbortCallback
+  getJsObjectField(obj.obj, "abort")
+
+pub inline fun type(obj: underlyingSink, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: underlyingSink): web maybe<jsObject>
+  getJsObjectField(obj.obj, "type")
+
+pub value struct writableStreamDefaultWriter
+  obj: jsObject
+
+pub inline fun newWritableStreamDefaultWriter(stream': writableStream)
+  newJsObject1("WritableStreamDefaultWriter", stream')"
+
+pub inline fun abort(obj: writableStreamDefaultWriter, reason': maybe<jsObject>): web jsPromise
+  jsOperation3(obj.obj, "abort", reason'.obj)
+
+pub inline fun close(obj: writableStreamDefaultWriter): web jsPromise
+  jsOperation2(obj.obj, "close")
+
+pub inline fun releaseLock(obj: writableStreamDefaultWriter): web ()
+  jsOperation2(obj.obj, "releaseLock")
+
+pub inline fun write(obj: writableStreamDefaultWriter, chunk': maybe<jsObject>): web jsPromise
+  jsOperation3(obj.obj, "write", chunk'.obj)
+
+pub inline fun closed(obj: writableStreamDefaultWriter): web jsPromise
+  getJsObjectField(obj.obj, "closed")
+
+pub inline fun desiredSize(obj: writableStreamDefaultWriter): web maybe<double>
+  getJsObjectField(obj.obj, "desiredSize")
+
+pub inline fun ready(obj: writableStreamDefaultWriter): web jsPromise
+  getJsObjectField(obj.obj, "ready")
+
+pub value struct writableStreamDefaultController
+  obj: jsObject
+
+
+pub inline fun error(obj: writableStreamDefaultController, e': maybe<jsObject>): web ()
+  jsOperation3(obj.obj, "error", e'.obj)
+
+pub inline fun signal(obj: writableStreamDefaultController): web dom/abortSignal
+  getJsObjectField(obj.obj, "signal")
+
+pub value struct transformStream
+  obj: jsObject
+
+pub inline fun newTransformStream(transformer': jsObject, writableStrategy': queuingStrategy, readableStrategy': queuingStrategy)
+  newJsObject3("TransformStream", transformer', writableStrategy', readableStrategy')"
+
+pub inline fun readable(obj: transformStream): web readableStream
+  getJsObjectField(obj.obj, "readable")
+
+pub inline fun writable(obj: transformStream): web writableStream
+  getJsObjectField(obj.obj, "writable")
+
+pub value struct transformer
+  obj: jsObject
+
+pub fun newTransformer(start: maybe<transformerStartCallback> = Nothing, transform: maybe<transformerTransformCallback> = Nothing, flush: maybe<transformerFlushCallback> = Nothing, readableType: maybe<maybe<jsObject>> = Nothing, writableType: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match start
+    Just(it) -> setJsObjectField(obj, "start", it)
+    Nothing -> ()
+  match transform
+    Just(it) -> setJsObjectField(obj, "transform", it)
+    Nothing -> ()
+  match flush
+    Just(it) -> setJsObjectField(obj, "flush", it)
+    Nothing -> ()
+  match readableType
+    Just(it) -> setJsObjectField(obj, "readableType", it)
+    Nothing -> ()
+  match writableType
+    Just(it) -> setJsObjectField(obj, "writableType", it)
+    Nothing -> ()
+
+  Transformer(obj);
+
+pub inline fun start(obj: transformer, value: transformerStartCallback): web ()
+  setJsObjectField(obj.obj, "start", value.obj)
+
+pub inline fun start(obj: transformer): web transformerStartCallback
+  getJsObjectField(obj.obj, "start")
+
+pub inline fun transform(obj: transformer, value: transformerTransformCallback): web ()
+  setJsObjectField(obj.obj, "transform", value.obj)
+
+pub inline fun transform(obj: transformer): web transformerTransformCallback
+  getJsObjectField(obj.obj, "transform")
+
+pub inline fun flush(obj: transformer, value: transformerFlushCallback): web ()
+  setJsObjectField(obj.obj, "flush", value.obj)
+
+pub inline fun flush(obj: transformer): web transformerFlushCallback
+  getJsObjectField(obj.obj, "flush")
+
+pub inline fun readableType(obj: transformer, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "readableType", value.obj)
+
+pub inline fun readableType(obj: transformer): web maybe<jsObject>
+  getJsObjectField(obj.obj, "readableType")
+
+pub inline fun writableType(obj: transformer, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "writableType", value.obj)
+
+pub inline fun writableType(obj: transformer): web maybe<jsObject>
+  getJsObjectField(obj.obj, "writableType")
+
+pub value struct transformStreamDefaultController
+  obj: jsObject
+
+
+pub inline fun enqueue(obj: transformStreamDefaultController, chunk': maybe<jsObject>): web ()
+  jsOperation3(obj.obj, "enqueue", chunk'.obj)
+
+pub inline fun error(obj: transformStreamDefaultController, reason': maybe<jsObject>): web ()
+  jsOperation3(obj.obj, "error", reason'.obj)
+
+pub inline fun terminate(obj: transformStreamDefaultController): web ()
+  jsOperation2(obj.obj, "terminate")
+
+pub inline fun desiredSize(obj: transformStreamDefaultController): web maybe<double>
+  getJsObjectField(obj.obj, "desiredSize")
+
+pub value struct queuingStrategy
+  obj: jsObject
+
+pub fun newQueuingStrategy(highWaterMark: maybe<double> = Nothing, size: maybe<queuingStrategySize> = Nothing)
+  val obj = newJsObject();
+  match highWaterMark
+    Just(it) -> setJsObjectField(obj, "highWaterMark", it)
+    Nothing -> ()
+  match size
+    Just(it) -> setJsObjectField(obj, "size", it)
+    Nothing -> ()
+
+  QueuingStrategy(obj);
+
+pub inline fun highWaterMark(obj: queuingStrategy, value: double): web ()
+  setJsObjectField(obj.obj, "highWaterMark", value.obj)
+
+pub inline fun highWaterMark(obj: queuingStrategy): web double
+  getJsObjectField(obj.obj, "highWaterMark")
+
+pub inline fun size(obj: queuingStrategy, value: queuingStrategySize): web ()
+  setJsObjectField(obj.obj, "size", value.obj)
+
+pub inline fun size(obj: queuingStrategy): web queuingStrategySize
+  getJsObjectField(obj.obj, "size")
+
+pub value struct queuingStrategyInit
+  obj: jsObject
+
+pub fun newQueuingStrategyInit(highWaterMark: double)
+  val obj = newJsObject();
+  setJsObjectField(obj, "highWaterMark", highWaterMark);
+  QueuingStrategyInit(obj);
+
+pub inline fun highWaterMark(obj: queuingStrategyInit, value: double): web ()
+  setJsObjectField(obj.obj, "highWaterMark", value.obj)
+
+pub inline fun highWaterMark(obj: queuingStrategyInit): web double
+  getJsObjectField(obj.obj, "highWaterMark")
+
+pub value struct byteLengthQueuingStrategy
+  obj: jsObject
+
+pub inline fun newByteLengthQueuingStrategy(init': queuingStrategyInit)
+  newJsObject1("ByteLengthQueuingStrategy", init')"
+
+pub inline fun highWaterMark(obj: byteLengthQueuingStrategy): web double
+  getJsObjectField(obj.obj, "highWaterMark")
+
+pub inline fun size(obj: byteLengthQueuingStrategy): web jsFunction
+  getJsObjectField(obj.obj, "size")
+
+pub value struct countQueuingStrategy
+  obj: jsObject
+
+pub inline fun newCountQueuingStrategy(init': queuingStrategyInit)
+  newJsObject1("CountQueuingStrategy", init')"
+
+pub inline fun highWaterMark(obj: countQueuingStrategy): web double
+  getJsObjectField(obj.obj, "highWaterMark")
+
+pub inline fun size(obj: countQueuingStrategy): web jsFunction
+  getJsObjectField(obj.obj, "size")
+
+pub value struct genericTransformStream
+  obj: jsObject
+
+
+pub inline fun readable(obj: genericTransformStream): web readableStream
+  getJsObjectField(obj.obj, "readable")
+
+pub inline fun writable(obj: genericTransformStream): web writableStream
+  getJsObjectField(obj.obj, "writable")
+

@@ -1,68 +1,97 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias ReportList = JSArray
-alias ReportingObserverCallback = JSFunction
+import web/wasm
+pub alias reportList = JSArray;
+
+pub alias reportingObserverCallback = jsFunction;
 
 
-struct ReportBody
-{
-}
 
-()
+pub value struct reportBody
+  obj: jsObject
 
-pub extern toJSON(this: js_object, [], [])
-struct Report
-{,
-,
 
-}
+pub inline fun toJSON(obj: reportBody): web jsObject
+  jsOperation2(obj.obj, "toJSON")
 
-()
+pub value struct report
+  obj: jsObject
 
-pub extern toJSON(this: js_object, [], [])
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
-pub extern getbody(this: js_object): web maybe<ReportBody>
-	c inline "getObjectField(#1, \"body\")"
-struct ReportingObserver
-{
-}
-pub extern newReportingObserver([callback: ReportingObserverCallback], [options: ReportingObserverOptions])
-()
 
-pub extern observe(this: js_object, [], [])
-pub extern disconnect(this: js_object, [], [])
-pub extern takeRecords(this: js_object, [], [])
-struct ReportingObserverOptions
-{  types: dart:js_interop/JSArray,
-  buffered: bool
-}
-pub extern newReportingObserverOptions([types: maybe<dart:js_interop/JSArray> = Nothing, buffered: maybe<bool> = Nothing])
-()
+pub inline fun toJSON(obj: report): web jsObject
+  jsOperation2(obj.obj, "toJSON")
 
-pub extern settypes(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettypes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"types\")"
-pub extern setbuffered(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbuffered(this: js_object): web bool
-	c inline "getObjectField(#1, \"buffered\")"
-struct GenerateTestReportParameters
-{  message: String,
-  group: String
-}
-pub extern newGenerateTestReportParameters([message: String, group: maybe<String> = Nothing])
-()
+pub inline fun type(obj: report): web string
+  getJsObjectField(obj.obj, "type")
 
-pub extern setmessage(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmessage(this: js_object): web String
-	c inline "getObjectField(#1, \"message\")"
-pub extern setgroup(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getgroup(this: js_object): web String
-	c inline "getObjectField(#1, \"group\")"
+pub inline fun url(obj: report): web string
+  getJsObjectField(obj.obj, "url")
+
+pub inline fun body(obj: report): web maybe<reportBody>
+  getJsObjectField(obj.obj, "body")
+
+pub value struct reportingObserver
+  obj: jsObject
+
+pub inline fun newReportingObserver(callback': reportingObserverCallback, options': reportingObserverOptions)
+  newJsObject2("ReportingObserver", callback', options')"
+
+pub inline fun observe(obj: reportingObserver): web ()
+  jsOperation2(obj.obj, "observe")
+
+pub inline fun disconnect(obj: reportingObserver): web ()
+  jsOperation2(obj.obj, "disconnect")
+
+pub inline fun takeRecords(obj: reportingObserver): web reportList
+  jsOperation2(obj.obj, "takeRecords")
+
+pub value struct reportingObserverOptions
+  obj: jsObject
+
+pub fun newReportingObserverOptions(types: maybe<jsArray> = Nothing, buffered: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match types
+    Just(it) -> setJsObjectField(obj, "types", it)
+    Nothing -> ()
+  match buffered
+    Just(it) -> setJsObjectField(obj, "buffered", it)
+    Nothing -> ()
+
+  ReportingObserverOptions(obj);
+
+pub inline fun types(obj: reportingObserverOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "types", value.obj)
+
+pub inline fun types(obj: reportingObserverOptions): web jsArray
+  getJsObjectField(obj.obj, "types")
+
+pub inline fun buffered(obj: reportingObserverOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "buffered", value.obj)
+
+pub inline fun buffered(obj: reportingObserverOptions): web bool
+  getJsObjectField(obj.obj, "buffered")
+
+pub value struct generateTestReportParameters
+  obj: jsObject
+
+pub fun newGenerateTestReportParameters(message: string, group: maybe<string> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "message", message);  match group
+    Just(it) -> setJsObjectField(obj, "group", it)
+    Nothing -> ()
+
+  GenerateTestReportParameters(obj);
+
+pub inline fun message(obj: generateTestReportParameters, value: string): web ()
+  setJsObjectField(obj.obj, "message", value.obj)
+
+pub inline fun message(obj: generateTestReportParameters): web string
+  getJsObjectField(obj.obj, "message")
+
+pub inline fun group(obj: generateTestReportParameters, value: string): web ()
+  setJsObjectField(obj.obj, "group", value.obj)
+
+pub inline fun group(obj: generateTestReportParameters): web string
+  getJsObjectField(obj.obj, "group")
+

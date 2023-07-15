@@ -1,85 +1,91 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct TimeEvent
-{,
+pub value struct timeEvent
+  obj: jsObject
 
-}
 
-()
+pub inline fun initTimeEvent(obj: timeEvent, typeArg': string, viewArg': maybe<html/window> =  Nothing, detailArg': int): web ()
+  jsOperation5(obj.obj, "initTimeEvent", typeArg'.obj, viewArg'.obj, detailArg'.obj)
 
-pub extern initTimeEvent(this: js_object, [typeArg: String, viewArg: maybe<html.kk/Window> =  Nothing, detailArg: int], [])
-pub extern getview(this: js_object): web maybe<html.kk/Window>
-	c inline "getObjectField(#1, \"view\")"
-pub extern getdetail(this: js_object): web int
-	c inline "getObjectField(#1, \"detail\")"
-struct SVGAnimationElement
-{,
-,
-,
+pub inline fun view(obj: timeEvent): web maybe<html/window>
+  getJsObjectField(obj.obj, "view")
 
-}
+pub inline fun detail(obj: timeEvent): web int
+  getJsObjectField(obj.obj, "detail")
 
-()
+pub value struct svgAnimationElement
+  obj: jsObject
 
-pub extern getStartTime(this: js_object, [], [])
-pub extern getCurrentTime(this: js_object, [], [])
-pub extern getSimpleDuration(this: js_object, [], [])
-pub extern beginElement(this: js_object, [], [])
-pub extern beginElementAt(this: js_object, [offset: double], [])
-pub extern endElement(this: js_object, [], [])
-pub extern endElementAt(this: js_object, [offset: double], [])
-pub extern gettargetElement(this: js_object): web maybe<svg.kk/SVGElement>
-	c inline "getObjectField(#1, \"targetElement\")"
-pub extern setonbegin(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonbegin(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onbegin\")"
-pub extern setonend(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonend(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onend\")"
-pub extern setonrepeat(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonrepeat(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onrepeat\")"
-struct SVGAnimateElement
-{
-}
 
-()
+pub inline fun getStartTime(obj: svgAnimationElement): web double
+  jsOperation2(obj.obj, "getStartTime")
 
-struct SVGSetElement
-{
-}
+pub inline fun getCurrentTime(obj: svgAnimationElement): web double
+  jsOperation2(obj.obj, "getCurrentTime")
 
-()
+pub inline fun getSimpleDuration(obj: svgAnimationElement): web double
+  jsOperation2(obj.obj, "getSimpleDuration")
 
-struct SVGAnimateMotionElement
-{
-}
+pub inline fun beginElement(obj: svgAnimationElement): web ()
+  jsOperation2(obj.obj, "beginElement")
 
-()
+pub inline fun beginElementAt(obj: svgAnimationElement, offset': double): web ()
+  jsOperation3(obj.obj, "beginElementAt", offset'.obj)
 
-struct SVGMPathElement
-{
-}
+pub inline fun endElement(obj: svgAnimationElement): web ()
+  jsOperation2(obj.obj, "endElement")
 
-()
+pub inline fun endElementAt(obj: svgAnimationElement, offset': double): web ()
+  jsOperation3(obj.obj, "endElementAt", offset'.obj)
 
-struct SVGAnimateTransformElement
-{
-}
+pub inline fun targetElement(obj: svgAnimationElement): web maybe<svg/svgElement>
+  getJsObjectField(obj.obj, "targetElement")
 
-()
+pub inline fun onbegin(obj: svgAnimationElement, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onbegin", value.obj)
 
-struct SVGDiscardElement
-{
-}
+pub inline fun onbegin(obj: svgAnimationElement): web html/eventHandler
+  getJsObjectField(obj.obj, "onbegin")
 
-()
+pub inline fun onend(obj: svgAnimationElement, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onend", value.obj)
+
+pub inline fun onend(obj: svgAnimationElement): web html/eventHandler
+  getJsObjectField(obj.obj, "onend")
+
+pub inline fun onrepeat(obj: svgAnimationElement, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onrepeat", value.obj)
+
+pub inline fun onrepeat(obj: svgAnimationElement): web html/eventHandler
+  getJsObjectField(obj.obj, "onrepeat")
+
+pub value struct svgAnimateElement
+  obj: jsObject
+
+
+pub value struct svgSetElement
+  obj: jsObject
+
+
+pub value struct svgAnimateMotionElement
+  obj: jsObject
+
+
+pub value struct svgmPathElement
+  obj: jsObject
+
+
+pub value struct svgAnimateTransformElement
+  obj: jsObject
+
+
+pub value struct svgDiscardElement
+  obj: jsObject
+
 

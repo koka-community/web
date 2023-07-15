@@ -1,77 +1,130 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct MemoryMeasurement
-{  bytes: int,
-  breakdown: dart:js_interop/JSArray
-}
-pub extern newMemoryMeasurement([bytes: maybe<int> = Nothing, breakdown: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub value struct memoryMeasurement
+  obj: jsObject
 
-pub extern setbytes(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbytes(this: js_object): web int
-	c inline "getObjectField(#1, \"bytes\")"
-pub extern setbreakdown(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbreakdown(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"breakdown\")"
-struct MemoryBreakdownEntry
-{  bytes: int,
-  attribution: dart:js_interop/JSArray,
-  types: dart:js_interop/JSArray
-}
-pub extern newMemoryBreakdownEntry([bytes: maybe<int> = Nothing, attribution: maybe<dart:js_interop/JSArray> = Nothing, types: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub fun newMemoryMeasurement(bytes: maybe<int> = Nothing, breakdown: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match bytes
+    Just(it) -> setJsObjectField(obj, "bytes", it)
+    Nothing -> ()
+  match breakdown
+    Just(it) -> setJsObjectField(obj, "breakdown", it)
+    Nothing -> ()
 
-pub extern setbytes(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbytes(this: js_object): web int
-	c inline "getObjectField(#1, \"bytes\")"
-pub extern setattribution(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getattribution(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"attribution\")"
-pub extern settypes(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettypes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"types\")"
-struct MemoryAttribution
-{  url: String,
-  container: MemoryAttributionContainer,
-  scope: String
-}
-pub extern newMemoryAttribution([url: maybe<String> = Nothing, container: maybe<MemoryAttributionContainer> = Nothing, scope: maybe<String> = Nothing])
-()
+  MemoryMeasurement(obj);
 
-pub extern seturl(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
-pub extern setcontainer(this: js_object, value: MemoryAttributionContainer): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcontainer(this: js_object): web MemoryAttributionContainer
-	c inline "getObjectField(#1, \"container\")"
-pub extern setscope(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscope(this: js_object): web String
-	c inline "getObjectField(#1, \"scope\")"
-struct MemoryAttributionContainer
-{  id: String,
-  src: String
-}
-pub extern newMemoryAttributionContainer([id: maybe<String> = Nothing, src: maybe<String> = Nothing])
-()
+pub inline fun bytes(obj: memoryMeasurement, value: int): web ()
+  setJsObjectField(obj.obj, "bytes", value.obj)
 
-pub extern setid(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
+pub inline fun bytes(obj: memoryMeasurement): web int
+  getJsObjectField(obj.obj, "bytes")
+
+pub inline fun breakdown(obj: memoryMeasurement, value: jsArray): web ()
+  setJsObjectField(obj.obj, "breakdown", value.obj)
+
+pub inline fun breakdown(obj: memoryMeasurement): web jsArray
+  getJsObjectField(obj.obj, "breakdown")
+
+pub value struct memoryBreakdownEntry
+  obj: jsObject
+
+pub fun newMemoryBreakdownEntry(bytes: maybe<int> = Nothing, attribution: maybe<jsArray> = Nothing, types: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match bytes
+    Just(it) -> setJsObjectField(obj, "bytes", it)
+    Nothing -> ()
+  match attribution
+    Just(it) -> setJsObjectField(obj, "attribution", it)
+    Nothing -> ()
+  match types
+    Just(it) -> setJsObjectField(obj, "types", it)
+    Nothing -> ()
+
+  MemoryBreakdownEntry(obj);
+
+pub inline fun bytes(obj: memoryBreakdownEntry, value: int): web ()
+  setJsObjectField(obj.obj, "bytes", value.obj)
+
+pub inline fun bytes(obj: memoryBreakdownEntry): web int
+  getJsObjectField(obj.obj, "bytes")
+
+pub inline fun attribution(obj: memoryBreakdownEntry, value: jsArray): web ()
+  setJsObjectField(obj.obj, "attribution", value.obj)
+
+pub inline fun attribution(obj: memoryBreakdownEntry): web jsArray
+  getJsObjectField(obj.obj, "attribution")
+
+pub inline fun types(obj: memoryBreakdownEntry, value: jsArray): web ()
+  setJsObjectField(obj.obj, "types", value.obj)
+
+pub inline fun types(obj: memoryBreakdownEntry): web jsArray
+  getJsObjectField(obj.obj, "types")
+
+pub value struct memoryAttribution
+  obj: jsObject
+
+pub fun newMemoryAttribution(url: maybe<string> = Nothing, container: maybe<memoryAttributionContainer> = Nothing, scope: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match url
+    Just(it) -> setJsObjectField(obj, "url", it)
+    Nothing -> ()
+  match container
+    Just(it) -> setJsObjectField(obj, "container", it)
+    Nothing -> ()
+  match scope
+    Just(it) -> setJsObjectField(obj, "scope", it)
+    Nothing -> ()
+
+  MemoryAttribution(obj);
+
+pub inline fun url(obj: memoryAttribution, value: string): web ()
+  setJsObjectField(obj.obj, "url", value.obj)
+
+pub inline fun url(obj: memoryAttribution): web string
+  getJsObjectField(obj.obj, "url")
+
+pub inline fun container(obj: memoryAttribution, value: memoryAttributionContainer): web ()
+  setJsObjectField(obj.obj, "container", value.obj)
+
+pub inline fun container(obj: memoryAttribution): web memoryAttributionContainer
+  getJsObjectField(obj.obj, "container")
+
+pub inline fun scope(obj: memoryAttribution, value: string): web ()
+  setJsObjectField(obj.obj, "scope", value.obj)
+
+pub inline fun scope(obj: memoryAttribution): web string
+  getJsObjectField(obj.obj, "scope")
+
+pub value struct memoryAttributionContainer
+  obj: jsObject
+
+pub fun newMemoryAttributionContainer(id: maybe<string> = Nothing, src: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match id
+    Just(it) -> setJsObjectField(obj, "id", it)
+    Nothing -> ()
+  match src
+    Just(it) -> setJsObjectField(obj, "src", it)
+    Nothing -> ()
+
+  MemoryAttributionContainer(obj);
+
+pub inline fun id(obj: memoryAttributionContainer, value: string): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: memoryAttributionContainer): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun src(obj: memoryAttributionContainer, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: memoryAttributionContainer): web string
+  getJsObjectField(obj.obj, "src")
+

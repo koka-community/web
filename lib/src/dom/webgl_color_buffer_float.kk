@@ -1,16 +1,20 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct WEBGL_color_buffer_float
-{
-}
+pub value struct webgL_color_buffer_float
+  obj: jsObject
 
-(pub extern RGBA32F_EXT(): webgl1.kk/GLenum
-	c inline "getConstant(\"RGBA32F_EXT\")", pub extern FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT(): webgl1.kk/GLenum
-	c inline "getConstant(\"FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT\")", pub extern UNSIGNED_NORMALIZED_EXT(): webgl1.kk/GLenum
-	c inline "getConstant(\"UNSIGNED_NORMALIZED_EXT\")")
+pub inline fun rgbA32FEXT(): webgl1/gLenum
+  getConstant("RGBA32F_EXT")
+
+pub inline fun framebufferattachmentcomponenttypeexT(): webgl1/gLenum
+  getConstant("FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT")
+
+pub inline fun unsignednormalizedexT(): webgl1/gLenum
+  getConstant("UNSIGNED_NORMALIZED_EXT")
 

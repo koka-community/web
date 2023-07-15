@@ -1,88 +1,100 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias CSSStringSource = JSAny
-alias CSSToken = JSAny
+import web/wasm
+pub alias cssStringSource = JSAny;
+
+
+pub alias cssToken = JSAny;
 
 
 
-struct CSSParserOptions
-{  atRules: dart:js_interop/JSObject
-}
-pub extern newCSSParserOptions([atRules: maybe<dart:js_interop/JSObject> = Nothing])
-()
 
-pub extern setatRules(this: js_object, value: dart:js_interop/JSObject): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getatRules(this: js_object): web dart:js_interop/JSObject
-	c inline "getObjectField(#1, \"atRules\")"
-struct CSSParserRule
-{
-}
+pub value struct cssParserOptions
+  obj: jsObject
 
-()
+pub fun newCssParserOptions(atRules: maybe<jsObject> = Nothing)
+  val obj = newJsObject();
+  match atRules
+    Just(it) -> setJsObjectField(obj, "atRules", it)
+    Nothing -> ()
 
-struct CSSParserAtRule
-{,
-,
+  CssParserOptions(obj);
 
-}
-pub extern newCSSParserAtRule([name: String, prelude: dart:js_interop/JSArray], [body: maybe<dart:js_interop/JSArray> =  Nothing])
-()
+pub inline fun atRules(obj: cssParserOptions, value: jsObject): web ()
+  setJsObjectField(obj.obj, "atRules", value.obj)
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getprelude(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"prelude\")"
-pub extern getbody(this: js_object): web maybe<dart:js_interop/JSArray>
-	c inline "getObjectField(#1, \"body\")"
-struct CSSParserQualifiedRule
-{,
+pub inline fun atRules(obj: cssParserOptions): web jsObject
+  getJsObjectField(obj.obj, "atRules")
 
-}
-pub extern newCSSParserQualifiedRule([prelude: dart:js_interop/JSArray], [body: maybe<dart:js_interop/JSArray> =  Nothing])
-()
+pub value struct cssParserRule
+  obj: jsObject
 
-pub extern getprelude(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"prelude\")"
-pub extern getbody(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"body\")"
-struct CSSParserDeclaration
-{,
 
-}
-pub extern newCSSParserDeclaration([name: String], [body: dart:js_interop/JSArray])
-()
+pub value struct cssParserAtRule
+  obj: jsObject
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getbody(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"body\")"
-struct CSSParserValue
-{
-}
+pub inline fun newCssParserAtRule(name': string, prelude': jsArray, body': maybe<jsArray> =  Nothing)
+  newJsObject3("CssParserAtRule", name', prelude', body')"
 
-()
+pub inline fun name(obj: cssParserAtRule): web string
+  getJsObjectField(obj.obj, "name")
 
-struct CSSParserBlock
-{,
+pub inline fun prelude(obj: cssParserAtRule): web jsArray
+  getJsObjectField(obj.obj, "prelude")
 
-}
-pub extern newCSSParserBlock([name: String, body: dart:js_interop/JSArray], [])
-()
+pub inline fun body(obj: cssParserAtRule): web maybe<jsArray>
+  getJsObjectField(obj.obj, "body")
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getbody(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"body\")"
-struct CSSParserFunction
-{,
+pub value struct cssParserQualifiedRule
+  obj: jsObject
 
-}
-pub extern newCSSParserFunction([name: String, args: dart:js_interop/JSArray], [])
-()
+pub inline fun newCssParserQualifiedRule(prelude': jsArray, body': maybe<jsArray> =  Nothing)
+  newJsObject2("CssParserQualifiedRule", prelude', body')"
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getargs(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"args\")"
+pub inline fun prelude(obj: cssParserQualifiedRule): web jsArray
+  getJsObjectField(obj.obj, "prelude")
+
+pub inline fun body(obj: cssParserQualifiedRule): web jsArray
+  getJsObjectField(obj.obj, "body")
+
+pub value struct cssParserDeclaration
+  obj: jsObject
+
+pub inline fun newCssParserDeclaration(name': string, body': jsArray)
+  newJsObject2("CssParserDeclaration", name', body')"
+
+pub inline fun name(obj: cssParserDeclaration): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun body(obj: cssParserDeclaration): web jsArray
+  getJsObjectField(obj.obj, "body")
+
+pub value struct cssParserValue
+  obj: jsObject
+
+
+pub value struct cssParserBlock
+  obj: jsObject
+
+pub inline fun newCssParserBlock(name': string, body': jsArray)
+  newJsObject2("CssParserBlock", name', body')"
+
+pub inline fun name(obj: cssParserBlock): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun body(obj: cssParserBlock): web jsArray
+  getJsObjectField(obj.obj, "body")
+
+pub value struct cssParserFunction
+  obj: jsObject
+
+pub inline fun newCssParserFunction(name': string, args': jsArray)
+  newJsObject2("CssParserFunction", name', args')"
+
+pub inline fun name(obj: cssParserFunction): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun args(obj: cssParserFunction): web jsArray
+  getJsObjectField(obj.obj, "args")
+

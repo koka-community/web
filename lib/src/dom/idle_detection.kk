@@ -1,40 +1,61 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias UserIdleState = String
-alias ScreenIdleState = String
-struct IdleOptions
-{  threshold: int,
-  signal: dom.kk/AbortSignal
-}
-pub extern newIdleOptions([threshold: maybe<int> = Nothing, signal: maybe<dom.kk/AbortSignal> = Nothing])
-()
+pub alias userIdleState = string;
 
-pub extern setthreshold(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getthreshold(this: js_object): web int
-	c inline "getObjectField(#1, \"threshold\")"
-pub extern setsignal(this: js_object, value: dom.kk/AbortSignal): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsignal(this: js_object): web dom.kk/AbortSignal
-	c inline "getObjectField(#1, \"signal\")"
-struct IdleDetector
-{,
-,
 
-}
-pub extern newIdleDetector([], [])
-(pub extern requestPermission( [], []))
+pub alias screenIdleState = string;
 
-pub extern start(this: js_object, [], [options: IdleOptions])
-pub extern getuserState(this: js_object): web maybe<UserIdleState>
-	c inline "getObjectField(#1, \"userState\")"
-pub extern getscreenState(this: js_object): web maybe<ScreenIdleState>
-	c inline "getObjectField(#1, \"screenState\")"
-pub extern setonchange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonchange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onchange\")"
+pub value struct idleOptions
+  obj: jsObject
+
+pub fun newIdleOptions(threshold: maybe<int> = Nothing, signal: maybe<dom/abortSignal> = Nothing)
+  val obj = newJsObject();
+  match threshold
+    Just(it) -> setJsObjectField(obj, "threshold", it)
+    Nothing -> ()
+  match signal
+    Just(it) -> setJsObjectField(obj, "signal", it)
+    Nothing -> ()
+
+  IdleOptions(obj);
+
+pub inline fun threshold(obj: idleOptions, value: int): web ()
+  setJsObjectField(obj.obj, "threshold", value.obj)
+
+pub inline fun threshold(obj: idleOptions): web int
+  getJsObjectField(obj.obj, "threshold")
+
+pub inline fun signal(obj: idleOptions, value: dom/abortSignal): web ()
+  setJsObjectField(obj.obj, "signal", value.obj)
+
+pub inline fun signal(obj: idleOptions): web dom/abortSignal
+  getJsObjectField(obj.obj, "signal")
+
+pub value struct idleDetector
+  obj: jsObject
+
+pub inline fun newIdleDetector()
+  newJsObject0("IdleDetector")"
+pub inline fun requestPermission(): web jsPromise
+  jsOperation1("requestPermission")
+
+pub inline fun start(obj: idleDetector, options': idleOptions): web jsPromise
+  jsOperation3(obj.obj, "start", options'.obj)
+
+pub inline fun userState(obj: idleDetector): web maybe<userIdleState>
+  getJsObjectField(obj.obj, "userState")
+
+pub inline fun screenState(obj: idleDetector): web maybe<screenIdleState>
+  getJsObjectField(obj.obj, "screenState")
+
+pub inline fun onchange(obj: idleDetector, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onchange", value.obj)
+
+pub inline fun onchange(obj: idleDetector): web html/eventHandler
+  getJsObjectField(obj.obj, "onchange")
+

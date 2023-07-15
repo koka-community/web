@@ -1,31 +1,33 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct LargestContentfulPaint
-{,
-,
-,
-,
-,
+pub value struct largestContentfulPaint
+  obj: jsObject
 
-}
 
-()
+pub inline fun toJSON(obj: largestContentfulPaint): web jsObject
+  jsOperation2(obj.obj, "toJSON")
 
-pub extern toJSON(this: js_object, [], [])
-pub extern getrenderTime(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"renderTime\")"
-pub extern getloadTime(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"loadTime\")"
-pub extern getsize(this: js_object): web int
-	c inline "getObjectField(#1, \"size\")"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
-pub extern getelement(this: js_object): web maybe<dom.kk/Element>
-	c inline "getObjectField(#1, \"element\")"
+pub inline fun renderTime(obj: largestContentfulPaint): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "renderTime")
+
+pub inline fun loadTime(obj: largestContentfulPaint): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "loadTime")
+
+pub inline fun size(obj: largestContentfulPaint): web int
+  getJsObjectField(obj.obj, "size")
+
+pub inline fun id(obj: largestContentfulPaint): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun url(obj: largestContentfulPaint): web string
+  getJsObjectField(obj.obj, "url")
+
+pub inline fun element(obj: largestContentfulPaint): web maybe<dom/element>
+  getJsObjectField(obj.obj, "element")
+

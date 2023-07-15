@@ -1,236 +1,365 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias IdentityCredentialRequestOptionsContext = String
-struct IdentityCredential
-{
-}
+pub alias identityCredentialRequestOptionsContext = string;
 
-()
+pub value struct identityCredential
+  obj: jsObject
 
-pub extern gettoken(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"token\")"
-struct IdentityCredentialRequestOptions
-{  providers: dart:js_interop/JSArray,
-  context: IdentityCredentialRequestOptionsContext
-}
-pub extern newIdentityCredentialRequestOptions([providers: maybe<dart:js_interop/JSArray> = Nothing, context: maybe<IdentityCredentialRequestOptionsContext> = Nothing])
-()
 
-pub extern setproviders(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getproviders(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"providers\")"
-pub extern setcontext(this: js_object, value: IdentityCredentialRequestOptionsContext): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcontext(this: js_object): web IdentityCredentialRequestOptionsContext
-	c inline "getObjectField(#1, \"context\")"
-struct IdentityProviderConfig
-{  configURL: String,
-  clientId: String,
-  nonce: String,
-  loginHint: String
-}
-pub extern newIdentityProviderConfig([configURL: String, clientId: String, nonce: maybe<String> = Nothing, loginHint: maybe<String> = Nothing])
-()
+pub inline fun token(obj: identityCredential): web maybe<string>
+  getJsObjectField(obj.obj, "token")
 
-pub extern setconfigURL(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getconfigURL(this: js_object): web String
-	c inline "getObjectField(#1, \"configURL\")"
-pub extern setclientId(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclientId(this: js_object): web String
-	c inline "getObjectField(#1, \"clientId\")"
-pub extern setnonce(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnonce(this: js_object): web String
-	c inline "getObjectField(#1, \"nonce\")"
-pub extern setloginHint(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getloginHint(this: js_object): web String
-	c inline "getObjectField(#1, \"loginHint\")"
-struct IdentityProviderWellKnown
-{  provider_urls: dart:js_interop/JSArray
-}
-pub extern newIdentityProviderWellKnown([provider_urls: dart:js_interop/JSArray])
-()
+pub value struct identityCredentialRequestOptions
+  obj: jsObject
 
-pub extern setproviderUrls(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getproviderUrls(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"provider_urls\")"
-struct IdentityProviderIcon
-{  url: String,
-  size: int
-}
-pub extern newIdentityProviderIcon([url: String, size: maybe<int> = Nothing])
-()
+pub fun newIdentityCredentialRequestOptions(providers: maybe<jsArray> = Nothing, context: maybe<identityCredentialRequestOptionsContext> = Nothing)
+  val obj = newJsObject();
+  match providers
+    Just(it) -> setJsObjectField(obj, "providers", it)
+    Nothing -> ()
+  match context
+    Just(it) -> setJsObjectField(obj, "context", it)
+    Nothing -> ()
 
-pub extern seturl(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
-pub extern setsize(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsize(this: js_object): web int
-	c inline "getObjectField(#1, \"size\")"
-struct IdentityProviderBranding
-{  background_color: String,
-  color: String,
-  icons: dart:js_interop/JSArray,
-  name: String
-}
-pub extern newIdentityProviderBranding([background_color: maybe<String> = Nothing, color: maybe<String> = Nothing, icons: maybe<dart:js_interop/JSArray> = Nothing, name: maybe<String> = Nothing])
-()
+  IdentityCredentialRequestOptions(obj);
 
-pub extern setbackgroundColor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbackgroundColor(this: js_object): web String
-	c inline "getObjectField(#1, \"background_color\")"
-pub extern setcolor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolor(this: js_object): web String
-	c inline "getObjectField(#1, \"color\")"
-pub extern seticons(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geticons(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"icons\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-struct IdentityProviderAPIConfig
-{  accounts_endpoint: String,
-  client_metadata_endpoint: String,
-  id_assertion_endpoint: String,
-  branding: IdentityProviderBranding
-}
-pub extern newIdentityProviderAPIConfig([accounts_endpoint: String, client_metadata_endpoint: String, id_assertion_endpoint: String, branding: maybe<IdentityProviderBranding> = Nothing])
-()
+pub inline fun providers(obj: identityCredentialRequestOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "providers", value.obj)
 
-pub extern setaccountsEndpoint(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaccountsEndpoint(this: js_object): web String
-	c inline "getObjectField(#1, \"accounts_endpoint\")"
-pub extern setclientMetadataEndpoint(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclientMetadataEndpoint(this: js_object): web String
-	c inline "getObjectField(#1, \"client_metadata_endpoint\")"
-pub extern setidAssertionEndpoint(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getidAssertionEndpoint(this: js_object): web String
-	c inline "getObjectField(#1, \"id_assertion_endpoint\")"
-pub extern setbranding(this: js_object, value: IdentityProviderBranding): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbranding(this: js_object): web IdentityProviderBranding
-	c inline "getObjectField(#1, \"branding\")"
-struct IdentityProviderAccount
-{  id: String,
-  name: String,
-  email: String,
-  given_name: String,
-  picture: String,
-  approved_clients: dart:js_interop/JSArray,
-  login_hints: dart:js_interop/JSArray
-}
-pub extern newIdentityProviderAccount([id: String, name: String, email: String, given_name: maybe<String> = Nothing, picture: maybe<String> = Nothing, approved_clients: maybe<dart:js_interop/JSArray> = Nothing, login_hints: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun providers(obj: identityCredentialRequestOptions): web jsArray
+  getJsObjectField(obj.obj, "providers")
 
-pub extern setid(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setemail(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getemail(this: js_object): web String
-	c inline "getObjectField(#1, \"email\")"
-pub extern setgivenName(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getgivenName(this: js_object): web String
-	c inline "getObjectField(#1, \"given_name\")"
-pub extern setpicture(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpicture(this: js_object): web String
-	c inline "getObjectField(#1, \"picture\")"
-pub extern setapprovedClients(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getapprovedClients(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"approved_clients\")"
-pub extern setloginHints(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getloginHints(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"login_hints\")"
-struct IdentityProviderAccountList
-{  accounts: dart:js_interop/JSArray
-}
-pub extern newIdentityProviderAccountList([accounts: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun context(obj: identityCredentialRequestOptions, value: identityCredentialRequestOptionsContext): web ()
+  setJsObjectField(obj.obj, "context", value.obj)
 
-pub extern setaccounts(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaccounts(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"accounts\")"
-struct IdentityProviderToken
-{  token: String
-}
-pub extern newIdentityProviderToken([token: String])
-()
+pub inline fun context(obj: identityCredentialRequestOptions): web identityCredentialRequestOptionsContext
+  getJsObjectField(obj.obj, "context")
 
-pub extern settoken(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettoken(this: js_object): web String
-	c inline "getObjectField(#1, \"token\")"
-struct IdentityProviderClientMetadata
-{  privacy_policy_url: String,
-  terms_of_service_url: String
-}
-pub extern newIdentityProviderClientMetadata([privacy_policy_url: maybe<String> = Nothing, terms_of_service_url: maybe<String> = Nothing])
-()
+pub value struct identityProviderConfig
+  obj: jsObject
 
-pub extern setprivacyPolicyUrl(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprivacyPolicyUrl(this: js_object): web String
-	c inline "getObjectField(#1, \"privacy_policy_url\")"
-pub extern settermsOfServiceUrl(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettermsOfServiceUrl(this: js_object): web String
-	c inline "getObjectField(#1, \"terms_of_service_url\")"
-struct IdentityUserInfo
-{  email: String,
-  name: String,
-  givenName: String,
-  picture: String
-}
-pub extern newIdentityUserInfo([email: maybe<String> = Nothing, name: maybe<String> = Nothing, givenName: maybe<String> = Nothing, picture: maybe<String> = Nothing])
-()
+pub fun newIdentityProviderConfig(configURL: string, clientId: string, nonce: maybe<string> = Nothing, loginHint: maybe<string> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "configURL", configURL);  setJsObjectField(obj, "clientId", clientId);  match nonce
+    Just(it) -> setJsObjectField(obj, "nonce", it)
+    Nothing -> ()
+  match loginHint
+    Just(it) -> setJsObjectField(obj, "loginHint", it)
+    Nothing -> ()
 
-pub extern setemail(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getemail(this: js_object): web String
-	c inline "getObjectField(#1, \"email\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setgivenName(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getgivenName(this: js_object): web String
-	c inline "getObjectField(#1, \"givenName\")"
-pub extern setpicture(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpicture(this: js_object): web String
-	c inline "getObjectField(#1, \"picture\")"
-struct IdentityProvider
-{
-}
+  IdentityProviderConfig(obj);
 
-(pub extern getUserInfo( [config: IdentityProviderConfig], []))
+pub inline fun configURL(obj: identityProviderConfig, value: string): web ()
+  setJsObjectField(obj.obj, "configURL", value.obj)
+
+pub inline fun configURL(obj: identityProviderConfig): web string
+  getJsObjectField(obj.obj, "configURL")
+
+pub inline fun clientId(obj: identityProviderConfig, value: string): web ()
+  setJsObjectField(obj.obj, "clientId", value.obj)
+
+pub inline fun clientId(obj: identityProviderConfig): web string
+  getJsObjectField(obj.obj, "clientId")
+
+pub inline fun nonce(obj: identityProviderConfig, value: string): web ()
+  setJsObjectField(obj.obj, "nonce", value.obj)
+
+pub inline fun nonce(obj: identityProviderConfig): web string
+  getJsObjectField(obj.obj, "nonce")
+
+pub inline fun loginHint(obj: identityProviderConfig, value: string): web ()
+  setJsObjectField(obj.obj, "loginHint", value.obj)
+
+pub inline fun loginHint(obj: identityProviderConfig): web string
+  getJsObjectField(obj.obj, "loginHint")
+
+pub value struct identityProviderWellKnown
+  obj: jsObject
+
+pub fun newIdentityProviderWellKnown(provider_urls: jsArray)
+  val obj = newJsObject();
+  setJsObjectField(obj, "provider_urls", provider_urls);
+  IdentityProviderWellKnown(obj);
+
+pub inline fun providerUrls(obj: identityProviderWellKnown, value: jsArray): web ()
+  setJsObjectField(obj.obj, "provider_urls", value.obj)
+
+pub inline fun providerUrls(obj: identityProviderWellKnown): web jsArray
+  getJsObjectField(obj.obj, "provider_urls")
+
+pub value struct identityProviderIcon
+  obj: jsObject
+
+pub fun newIdentityProviderIcon(url: string, size: maybe<int> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "url", url);  match size
+    Just(it) -> setJsObjectField(obj, "size", it)
+    Nothing -> ()
+
+  IdentityProviderIcon(obj);
+
+pub inline fun url(obj: identityProviderIcon, value: string): web ()
+  setJsObjectField(obj.obj, "url", value.obj)
+
+pub inline fun url(obj: identityProviderIcon): web string
+  getJsObjectField(obj.obj, "url")
+
+pub inline fun size(obj: identityProviderIcon, value: int): web ()
+  setJsObjectField(obj.obj, "size", value.obj)
+
+pub inline fun size(obj: identityProviderIcon): web int
+  getJsObjectField(obj.obj, "size")
+
+pub value struct identityProviderBranding
+  obj: jsObject
+
+pub fun newIdentityProviderBranding(background_color: maybe<string> = Nothing, color: maybe<string> = Nothing, icons: maybe<jsArray> = Nothing, name: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match background_color
+    Just(it) -> setJsObjectField(obj, "background_color", it)
+    Nothing -> ()
+  match color
+    Just(it) -> setJsObjectField(obj, "color", it)
+    Nothing -> ()
+  match icons
+    Just(it) -> setJsObjectField(obj, "icons", it)
+    Nothing -> ()
+  match name
+    Just(it) -> setJsObjectField(obj, "name", it)
+    Nothing -> ()
+
+  IdentityProviderBranding(obj);
+
+pub inline fun backgroundColor(obj: identityProviderBranding, value: string): web ()
+  setJsObjectField(obj.obj, "background_color", value.obj)
+
+pub inline fun backgroundColor(obj: identityProviderBranding): web string
+  getJsObjectField(obj.obj, "background_color")
+
+pub inline fun color(obj: identityProviderBranding, value: string): web ()
+  setJsObjectField(obj.obj, "color", value.obj)
+
+pub inline fun color(obj: identityProviderBranding): web string
+  getJsObjectField(obj.obj, "color")
+
+pub inline fun icons(obj: identityProviderBranding, value: jsArray): web ()
+  setJsObjectField(obj.obj, "icons", value.obj)
+
+pub inline fun icons(obj: identityProviderBranding): web jsArray
+  getJsObjectField(obj.obj, "icons")
+
+pub inline fun name(obj: identityProviderBranding, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: identityProviderBranding): web string
+  getJsObjectField(obj.obj, "name")
+
+pub value struct identityProviderAPIConfig
+  obj: jsObject
+
+pub fun newIdentityProviderAPIConfig(accounts_endpoint: string, client_metadata_endpoint: string, id_assertion_endpoint: string, branding: maybe<identityProviderBranding> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "accounts_endpoint", accounts_endpoint);  setJsObjectField(obj, "client_metadata_endpoint", client_metadata_endpoint);  setJsObjectField(obj, "id_assertion_endpoint", id_assertion_endpoint);  match branding
+    Just(it) -> setJsObjectField(obj, "branding", it)
+    Nothing -> ()
+
+  IdentityProviderAPIConfig(obj);
+
+pub inline fun accountsEndpoint(obj: identityProviderAPIConfig, value: string): web ()
+  setJsObjectField(obj.obj, "accounts_endpoint", value.obj)
+
+pub inline fun accountsEndpoint(obj: identityProviderAPIConfig): web string
+  getJsObjectField(obj.obj, "accounts_endpoint")
+
+pub inline fun clientMetadataEndpoint(obj: identityProviderAPIConfig, value: string): web ()
+  setJsObjectField(obj.obj, "client_metadata_endpoint", value.obj)
+
+pub inline fun clientMetadataEndpoint(obj: identityProviderAPIConfig): web string
+  getJsObjectField(obj.obj, "client_metadata_endpoint")
+
+pub inline fun idAssertionEndpoint(obj: identityProviderAPIConfig, value: string): web ()
+  setJsObjectField(obj.obj, "id_assertion_endpoint", value.obj)
+
+pub inline fun idAssertionEndpoint(obj: identityProviderAPIConfig): web string
+  getJsObjectField(obj.obj, "id_assertion_endpoint")
+
+pub inline fun branding(obj: identityProviderAPIConfig, value: identityProviderBranding): web ()
+  setJsObjectField(obj.obj, "branding", value.obj)
+
+pub inline fun branding(obj: identityProviderAPIConfig): web identityProviderBranding
+  getJsObjectField(obj.obj, "branding")
+
+pub value struct identityProviderAccount
+  obj: jsObject
+
+pub fun newIdentityProviderAccount(id: string, name: string, email: string, given_name: maybe<string> = Nothing, picture: maybe<string> = Nothing, approved_clients: maybe<jsArray> = Nothing, login_hints: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "id", id);  setJsObjectField(obj, "name", name);  setJsObjectField(obj, "email", email);  match given_name
+    Just(it) -> setJsObjectField(obj, "given_name", it)
+    Nothing -> ()
+  match picture
+    Just(it) -> setJsObjectField(obj, "picture", it)
+    Nothing -> ()
+  match approved_clients
+    Just(it) -> setJsObjectField(obj, "approved_clients", it)
+    Nothing -> ()
+  match login_hints
+    Just(it) -> setJsObjectField(obj, "login_hints", it)
+    Nothing -> ()
+
+  IdentityProviderAccount(obj);
+
+pub inline fun id(obj: identityProviderAccount, value: string): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: identityProviderAccount): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun name(obj: identityProviderAccount, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: identityProviderAccount): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun email(obj: identityProviderAccount, value: string): web ()
+  setJsObjectField(obj.obj, "email", value.obj)
+
+pub inline fun email(obj: identityProviderAccount): web string
+  getJsObjectField(obj.obj, "email")
+
+pub inline fun givenName(obj: identityProviderAccount, value: string): web ()
+  setJsObjectField(obj.obj, "given_name", value.obj)
+
+pub inline fun givenName(obj: identityProviderAccount): web string
+  getJsObjectField(obj.obj, "given_name")
+
+pub inline fun picture(obj: identityProviderAccount, value: string): web ()
+  setJsObjectField(obj.obj, "picture", value.obj)
+
+pub inline fun picture(obj: identityProviderAccount): web string
+  getJsObjectField(obj.obj, "picture")
+
+pub inline fun approvedClients(obj: identityProviderAccount, value: jsArray): web ()
+  setJsObjectField(obj.obj, "approved_clients", value.obj)
+
+pub inline fun approvedClients(obj: identityProviderAccount): web jsArray
+  getJsObjectField(obj.obj, "approved_clients")
+
+pub inline fun loginHints(obj: identityProviderAccount, value: jsArray): web ()
+  setJsObjectField(obj.obj, "login_hints", value.obj)
+
+pub inline fun loginHints(obj: identityProviderAccount): web jsArray
+  getJsObjectField(obj.obj, "login_hints")
+
+pub value struct identityProviderAccountList
+  obj: jsObject
+
+pub fun newIdentityProviderAccountList(accounts: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match accounts
+    Just(it) -> setJsObjectField(obj, "accounts", it)
+    Nothing -> ()
+
+  IdentityProviderAccountList(obj);
+
+pub inline fun accounts(obj: identityProviderAccountList, value: jsArray): web ()
+  setJsObjectField(obj.obj, "accounts", value.obj)
+
+pub inline fun accounts(obj: identityProviderAccountList): web jsArray
+  getJsObjectField(obj.obj, "accounts")
+
+pub value struct identityProviderToken
+  obj: jsObject
+
+pub fun newIdentityProviderToken(token: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "token", token);
+  IdentityProviderToken(obj);
+
+pub inline fun token(obj: identityProviderToken, value: string): web ()
+  setJsObjectField(obj.obj, "token", value.obj)
+
+pub inline fun token(obj: identityProviderToken): web string
+  getJsObjectField(obj.obj, "token")
+
+pub value struct identityProviderClientMetadata
+  obj: jsObject
+
+pub fun newIdentityProviderClientMetadata(privacy_policy_url: maybe<string> = Nothing, terms_of_service_url: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match privacy_policy_url
+    Just(it) -> setJsObjectField(obj, "privacy_policy_url", it)
+    Nothing -> ()
+  match terms_of_service_url
+    Just(it) -> setJsObjectField(obj, "terms_of_service_url", it)
+    Nothing -> ()
+
+  IdentityProviderClientMetadata(obj);
+
+pub inline fun privacyPolicyUrl(obj: identityProviderClientMetadata, value: string): web ()
+  setJsObjectField(obj.obj, "privacy_policy_url", value.obj)
+
+pub inline fun privacyPolicyUrl(obj: identityProviderClientMetadata): web string
+  getJsObjectField(obj.obj, "privacy_policy_url")
+
+pub inline fun termsOfServiceUrl(obj: identityProviderClientMetadata, value: string): web ()
+  setJsObjectField(obj.obj, "terms_of_service_url", value.obj)
+
+pub inline fun termsOfServiceUrl(obj: identityProviderClientMetadata): web string
+  getJsObjectField(obj.obj, "terms_of_service_url")
+
+pub value struct identityUserInfo
+  obj: jsObject
+
+pub fun newIdentityUserInfo(email: maybe<string> = Nothing, name: maybe<string> = Nothing, givenName: maybe<string> = Nothing, picture: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match email
+    Just(it) -> setJsObjectField(obj, "email", it)
+    Nothing -> ()
+  match name
+    Just(it) -> setJsObjectField(obj, "name", it)
+    Nothing -> ()
+  match givenName
+    Just(it) -> setJsObjectField(obj, "givenName", it)
+    Nothing -> ()
+  match picture
+    Just(it) -> setJsObjectField(obj, "picture", it)
+    Nothing -> ()
+
+  IdentityUserInfo(obj);
+
+pub inline fun email(obj: identityUserInfo, value: string): web ()
+  setJsObjectField(obj.obj, "email", value.obj)
+
+pub inline fun email(obj: identityUserInfo): web string
+  getJsObjectField(obj.obj, "email")
+
+pub inline fun name(obj: identityUserInfo, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: identityUserInfo): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun givenName(obj: identityUserInfo, value: string): web ()
+  setJsObjectField(obj.obj, "givenName", value.obj)
+
+pub inline fun givenName(obj: identityUserInfo): web string
+  getJsObjectField(obj.obj, "givenName")
+
+pub inline fun picture(obj: identityUserInfo, value: string): web ()
+  setJsObjectField(obj.obj, "picture", value.obj)
+
+pub inline fun picture(obj: identityUserInfo): web string
+  getJsObjectField(obj.obj, "picture")
+
+pub value struct identityProvider
+  obj: jsObject
+
+pub inline fun getUserInfo(config': identityProviderConfig): web jsPromise
+  jsOperation2("getUserInfo", config'.obj)
 

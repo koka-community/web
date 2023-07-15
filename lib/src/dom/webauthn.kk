@@ -1,828 +1,1309 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias Base64URLString = String
-alias PublicKeyCredentialJSON = JSAny
-alias COSEAlgorithmIdentifier = int
-alias UvmEntry = JSArray
-alias UvmEntries = JSArray
+import web/wasm
+pub alias base64URLString = String;
 
 
-alias AuthenticatorAttachment = String
-alias ResidentKeyRequirement = String
-alias AttestationConveyancePreference = String
-alias TokenBindingStatus = String
-alias PublicKeyCredentialType = String
-alias AuthenticatorTransport = String
-alias UserVerificationRequirement = String
-alias LargeBlobSupport = String
-struct PublicKeyCredential
-{,
-,
+pub alias publicKeyCredentialJSON = JSAny;
 
-}
 
-(pub extern isConditionalMediationAvailable( [], []), pub extern isUserVerifyingPlatformAuthenticatorAvailable( [], []), pub extern parseCreationOptionsFromJSON( [options: PublicKeyCredentialCreationOptionsJSON], []), pub extern parseRequestOptionsFromJSON( [options: PublicKeyCredentialRequestOptionsJSON], []))
+pub alias coseAlgorithmIdentifier = int;
 
-pub extern getClientExtensionResults(this: js_object, [], [])
-pub extern toJSON(this: js_object, [], [])
-pub extern getrawId(this: js_object): web dart:js_interop/JSArrayBuffer
-	c inline "getObjectField(#1, \"rawId\")"
-pub extern getresponse(this: js_object): web AuthenticatorResponse
-	c inline "getObjectField(#1, \"response\")"
-pub extern getauthenticatorAttachment(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"authenticatorAttachment\")"
-struct RegistrationResponseJSON
-{  id: Base64URLString,
-  rawId: Base64URLString,
-  response: AuthenticatorAttestationResponseJSON,
-  authenticatorAttachment: String,
-  clientExtensionResults: AuthenticationExtensionsClientOutputsJSON,
-  type: String
-}
-pub extern newRegistrationResponseJSON([id: Base64URLString, rawId: Base64URLString, response: AuthenticatorAttestationResponseJSON, authenticatorAttachment: maybe<String> = Nothing, clientExtensionResults: AuthenticationExtensionsClientOutputsJSON, type: String])
-()
 
-pub extern setid(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"id\")"
-pub extern setrawId(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrawId(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"rawId\")"
-pub extern setresponse(this: js_object, value: AuthenticatorAttestationResponseJSON): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getresponse(this: js_object): web AuthenticatorAttestationResponseJSON
-	c inline "getObjectField(#1, \"response\")"
-pub extern setauthenticatorAttachment(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getauthenticatorAttachment(this: js_object): web String
-	c inline "getObjectField(#1, \"authenticatorAttachment\")"
-pub extern setclientExtensionResults(this: js_object, value: AuthenticationExtensionsClientOutputsJSON): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclientExtensionResults(this: js_object): web AuthenticationExtensionsClientOutputsJSON
-	c inline "getObjectField(#1, \"clientExtensionResults\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-struct AuthenticatorAttestationResponseJSON
-{  clientDataJSON: Base64URLString,
-  authenticatorData: Base64URLString,
-  transports: dart:js_interop/JSArray,
-  publicKey: Base64URLString,
-  publicKeyAlgorithm: int,
-  attestationObject: Base64URLString
-}
-pub extern newAuthenticatorAttestationResponseJSON([clientDataJSON: Base64URLString, authenticatorData: Base64URLString, transports: dart:js_interop/JSArray, publicKey: maybe<Base64URLString> = Nothing, publicKeyAlgorithm: int, attestationObject: Base64URLString])
-()
+pub alias uvmEntry = JSArray;
 
-pub extern setclientDataJSON(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclientDataJSON(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"clientDataJSON\")"
-pub extern setauthenticatorData(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getauthenticatorData(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"authenticatorData\")"
-pub extern settransports(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransports(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"transports\")"
-pub extern setpublicKey(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpublicKey(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"publicKey\")"
-pub extern setpublicKeyAlgorithm(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpublicKeyAlgorithm(this: js_object): web int
-	c inline "getObjectField(#1, \"publicKeyAlgorithm\")"
-pub extern setattestationObject(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getattestationObject(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"attestationObject\")"
-struct AuthenticationResponseJSON
-{  id: Base64URLString,
-  rawId: Base64URLString,
-  response: AuthenticatorAssertionResponseJSON,
-  authenticatorAttachment: String,
-  clientExtensionResults: AuthenticationExtensionsClientOutputsJSON,
-  type: String
-}
-pub extern newAuthenticationResponseJSON([id: Base64URLString, rawId: Base64URLString, response: AuthenticatorAssertionResponseJSON, authenticatorAttachment: maybe<String> = Nothing, clientExtensionResults: AuthenticationExtensionsClientOutputsJSON, type: String])
-()
 
-pub extern setid(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"id\")"
-pub extern setrawId(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrawId(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"rawId\")"
-pub extern setresponse(this: js_object, value: AuthenticatorAssertionResponseJSON): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getresponse(this: js_object): web AuthenticatorAssertionResponseJSON
-	c inline "getObjectField(#1, \"response\")"
-pub extern setauthenticatorAttachment(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getauthenticatorAttachment(this: js_object): web String
-	c inline "getObjectField(#1, \"authenticatorAttachment\")"
-pub extern setclientExtensionResults(this: js_object, value: AuthenticationExtensionsClientOutputsJSON): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclientExtensionResults(this: js_object): web AuthenticationExtensionsClientOutputsJSON
-	c inline "getObjectField(#1, \"clientExtensionResults\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-struct AuthenticatorAssertionResponseJSON
-{  clientDataJSON: Base64URLString,
-  authenticatorData: Base64URLString,
-  signature: Base64URLString,
-  userHandle: Base64URLString
-}
-pub extern newAuthenticatorAssertionResponseJSON([clientDataJSON: Base64URLString, authenticatorData: Base64URLString, signature: Base64URLString, userHandle: maybe<Base64URLString> = Nothing])
-()
+pub alias uvmEntries = JSArray;
 
-pub extern setclientDataJSON(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclientDataJSON(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"clientDataJSON\")"
-pub extern setauthenticatorData(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getauthenticatorData(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"authenticatorData\")"
-pub extern setsignature(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsignature(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"signature\")"
-pub extern setuserHandle(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuserHandle(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"userHandle\")"
-struct AuthenticationExtensionsClientOutputsJSON
-{
-}
-pub extern newAuthenticationExtensionsClientOutputsJSON([])
-()
 
-struct PublicKeyCredentialCreationOptionsJSON
-{  rp: PublicKeyCredentialRpEntity,
-  user: PublicKeyCredentialUserEntityJSON,
-  challenge: Base64URLString,
-  pubKeyCredParams: dart:js_interop/JSArray,
-  timeout: int,
-  excludeCredentials: dart:js_interop/JSArray,
-  authenticatorSelection: AuthenticatorSelectionCriteria,
-  attestation: String,
-  extensions: AuthenticationExtensionsClientInputsJSON
-}
-pub extern newPublicKeyCredentialCreationOptionsJSON([rp: PublicKeyCredentialRpEntity, user: PublicKeyCredentialUserEntityJSON, challenge: Base64URLString, pubKeyCredParams: dart:js_interop/JSArray, timeout: maybe<int> = Nothing, excludeCredentials: maybe<dart:js_interop/JSArray> = Nothing, authenticatorSelection: maybe<AuthenticatorSelectionCriteria> = Nothing, attestation: maybe<String> = Nothing, extensions: maybe<AuthenticationExtensionsClientInputsJSON> = Nothing])
-()
 
-pub extern setrp(this: js_object, value: PublicKeyCredentialRpEntity): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrp(this: js_object): web PublicKeyCredentialRpEntity
-	c inline "getObjectField(#1, \"rp\")"
-pub extern setuser(this: js_object, value: PublicKeyCredentialUserEntityJSON): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuser(this: js_object): web PublicKeyCredentialUserEntityJSON
-	c inline "getObjectField(#1, \"user\")"
-pub extern setchallenge(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchallenge(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"challenge\")"
-pub extern setpubKeyCredParams(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpubKeyCredParams(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"pubKeyCredParams\")"
-pub extern settimeout(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimeout(this: js_object): web int
-	c inline "getObjectField(#1, \"timeout\")"
-pub extern setexcludeCredentials(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getexcludeCredentials(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"excludeCredentials\")"
-pub extern setauthenticatorSelection(this: js_object, value: AuthenticatorSelectionCriteria): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getauthenticatorSelection(this: js_object): web AuthenticatorSelectionCriteria
-	c inline "getObjectField(#1, \"authenticatorSelection\")"
-pub extern setattestation(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getattestation(this: js_object): web String
-	c inline "getObjectField(#1, \"attestation\")"
-pub extern setextensions(this: js_object, value: AuthenticationExtensionsClientInputsJSON): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getextensions(this: js_object): web AuthenticationExtensionsClientInputsJSON
-	c inline "getObjectField(#1, \"extensions\")"
-struct PublicKeyCredentialUserEntityJSON
-{  id: Base64URLString,
-  name: String,
-  displayName: String
-}
-pub extern newPublicKeyCredentialUserEntityJSON([id: Base64URLString, name: String, displayName: String])
-()
+pub alias authenticatorAttachment = string;
 
-pub extern setid(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"id\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setdisplayName(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisplayName(this: js_object): web String
-	c inline "getObjectField(#1, \"displayName\")"
-struct PublicKeyCredentialDescriptorJSON
-{  id: Base64URLString,
-  type: String,
-  transports: dart:js_interop/JSArray
-}
-pub extern newPublicKeyCredentialDescriptorJSON([id: Base64URLString, type: String, transports: maybe<dart:js_interop/JSArray> = Nothing])
-()
 
-pub extern setid(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"id\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern settransports(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransports(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"transports\")"
-struct AuthenticationExtensionsClientInputsJSON
-{
-}
-pub extern newAuthenticationExtensionsClientInputsJSON([])
-()
+pub alias residentKeyRequirement = string;
 
-struct PublicKeyCredentialRequestOptionsJSON
-{  challenge: Base64URLString,
-  timeout: int,
-  rpId: String,
-  allowCredentials: dart:js_interop/JSArray,
-  userVerification: String,
-  extensions: AuthenticationExtensionsClientInputsJSON
-}
-pub extern newPublicKeyCredentialRequestOptionsJSON([challenge: Base64URLString, timeout: maybe<int> = Nothing, rpId: maybe<String> = Nothing, allowCredentials: maybe<dart:js_interop/JSArray> = Nothing, userVerification: maybe<String> = Nothing, extensions: maybe<AuthenticationExtensionsClientInputsJSON> = Nothing])
-()
 
-pub extern setchallenge(this: js_object, value: Base64URLString): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchallenge(this: js_object): web Base64URLString
-	c inline "getObjectField(#1, \"challenge\")"
-pub extern settimeout(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimeout(this: js_object): web int
-	c inline "getObjectField(#1, \"timeout\")"
-pub extern setrpId(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrpId(this: js_object): web String
-	c inline "getObjectField(#1, \"rpId\")"
-pub extern setallowCredentials(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getallowCredentials(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"allowCredentials\")"
-pub extern setuserVerification(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuserVerification(this: js_object): web String
-	c inline "getObjectField(#1, \"userVerification\")"
-pub extern setextensions(this: js_object, value: AuthenticationExtensionsClientInputsJSON): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getextensions(this: js_object): web AuthenticationExtensionsClientInputsJSON
-	c inline "getObjectField(#1, \"extensions\")"
-struct AuthenticatorResponse
-{
-}
+pub alias attestationConveyancePreference = string;
 
-()
 
-pub extern getclientDataJSON(this: js_object): web dart:js_interop/JSArrayBuffer
-	c inline "getObjectField(#1, \"clientDataJSON\")"
-struct AuthenticatorAttestationResponse
-{
-}
+pub alias tokenBindingStatus = string;
 
-()
 
-pub extern getTransports(this: js_object, [], [])
-pub extern getAuthenticatorData(this: js_object, [], [])
-pub extern getPublicKey(this: js_object, [], [])
-pub extern getPublicKeyAlgorithm(this: js_object, [], [])
-pub extern getattestationObject(this: js_object): web dart:js_interop/JSArrayBuffer
-	c inline "getObjectField(#1, \"attestationObject\")"
-struct AuthenticatorAssertionResponse
-{,
-,
-,
+pub alias publicKeyCredentialType = string;
 
-}
 
-()
+pub alias authenticatorTransport = string;
 
-pub extern getauthenticatorData(this: js_object): web dart:js_interop/JSArrayBuffer
-	c inline "getObjectField(#1, \"authenticatorData\")"
-pub extern getsignature(this: js_object): web dart:js_interop/JSArrayBuffer
-	c inline "getObjectField(#1, \"signature\")"
-pub extern getuserHandle(this: js_object): web maybe<dart:js_interop/JSArrayBuffer>
-	c inline "getObjectField(#1, \"userHandle\")"
-pub extern getattestationObject(this: js_object): web maybe<dart:js_interop/JSArrayBuffer>
-	c inline "getObjectField(#1, \"attestationObject\")"
-struct PublicKeyCredentialParameters
-{  type: String,
-  alg: COSEAlgorithmIdentifier
-}
-pub extern newPublicKeyCredentialParameters([type: String, alg: COSEAlgorithmIdentifier])
-()
 
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setalg(this: js_object, value: COSEAlgorithmIdentifier): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalg(this: js_object): web COSEAlgorithmIdentifier
-	c inline "getObjectField(#1, \"alg\")"
-struct PublicKeyCredentialCreationOptions
-{  rp: PublicKeyCredentialRpEntity,
-  user: PublicKeyCredentialUserEntity,
-  challenge: webidl.kk/BufferSource,
-  pubKeyCredParams: dart:js_interop/JSArray,
-  timeout: int,
-  excludeCredentials: dart:js_interop/JSArray,
-  authenticatorSelection: AuthenticatorSelectionCriteria,
-  attestation: String,
-  attestationFormats: dart:js_interop/JSArray,
-  extensions: AuthenticationExtensionsClientInputs
-}
-pub extern newPublicKeyCredentialCreationOptions([rp: PublicKeyCredentialRpEntity, user: PublicKeyCredentialUserEntity, challenge: webidl.kk/BufferSource, pubKeyCredParams: dart:js_interop/JSArray, timeout: maybe<int> = Nothing, excludeCredentials: maybe<dart:js_interop/JSArray> = Nothing, authenticatorSelection: maybe<AuthenticatorSelectionCriteria> = Nothing, attestation: maybe<String> = Nothing, attestationFormats: maybe<dart:js_interop/JSArray> = Nothing, extensions: maybe<AuthenticationExtensionsClientInputs> = Nothing])
-()
+pub alias userVerificationRequirement = string;
 
-pub extern setrp(this: js_object, value: PublicKeyCredentialRpEntity): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrp(this: js_object): web PublicKeyCredentialRpEntity
-	c inline "getObjectField(#1, \"rp\")"
-pub extern setuser(this: js_object, value: PublicKeyCredentialUserEntity): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuser(this: js_object): web PublicKeyCredentialUserEntity
-	c inline "getObjectField(#1, \"user\")"
-pub extern setchallenge(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchallenge(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"challenge\")"
-pub extern setpubKeyCredParams(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpubKeyCredParams(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"pubKeyCredParams\")"
-pub extern settimeout(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimeout(this: js_object): web int
-	c inline "getObjectField(#1, \"timeout\")"
-pub extern setexcludeCredentials(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getexcludeCredentials(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"excludeCredentials\")"
-pub extern setauthenticatorSelection(this: js_object, value: AuthenticatorSelectionCriteria): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getauthenticatorSelection(this: js_object): web AuthenticatorSelectionCriteria
-	c inline "getObjectField(#1, \"authenticatorSelection\")"
-pub extern setattestation(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getattestation(this: js_object): web String
-	c inline "getObjectField(#1, \"attestation\")"
-pub extern setattestationFormats(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getattestationFormats(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"attestationFormats\")"
-pub extern setextensions(this: js_object, value: AuthenticationExtensionsClientInputs): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getextensions(this: js_object): web AuthenticationExtensionsClientInputs
-	c inline "getObjectField(#1, \"extensions\")"
-struct PublicKeyCredentialEntity
-{  name: String
-}
-pub extern newPublicKeyCredentialEntity([name: String])
-()
 
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-struct PublicKeyCredentialRpEntity
-{  id: String
-}
-pub extern newPublicKeyCredentialRpEntity([id: maybe<String> = Nothing])
-()
+pub alias largeBlobSupport = string;
 
-pub extern setid(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-struct PublicKeyCredentialUserEntity
-{  id: webidl.kk/BufferSource,
-  displayName: String
-}
-pub extern newPublicKeyCredentialUserEntity([id: webidl.kk/BufferSource, displayName: String])
-()
+pub value struct publicKeyCredential
+  obj: jsObject
 
-pub extern setid(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"id\")"
-pub extern setdisplayName(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisplayName(this: js_object): web String
-	c inline "getObjectField(#1, \"displayName\")"
-struct AuthenticatorSelectionCriteria
-{  authenticatorAttachment: String,
-  residentKey: String,
-  requireResidentKey: bool,
-  userVerification: String
-}
-pub extern newAuthenticatorSelectionCriteria([authenticatorAttachment: maybe<String> = Nothing, residentKey: maybe<String> = Nothing, requireResidentKey: maybe<bool> = Nothing, userVerification: maybe<String> = Nothing])
-()
+pub inline fun isConditionalMediationAvailable(): web jsPromise
+  jsOperation1("isConditionalMediationAvailable")
 
-pub extern setauthenticatorAttachment(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getauthenticatorAttachment(this: js_object): web String
-	c inline "getObjectField(#1, \"authenticatorAttachment\")"
-pub extern setresidentKey(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getresidentKey(this: js_object): web String
-	c inline "getObjectField(#1, \"residentKey\")"
-pub extern setrequireResidentKey(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequireResidentKey(this: js_object): web bool
-	c inline "getObjectField(#1, \"requireResidentKey\")"
-pub extern setuserVerification(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuserVerification(this: js_object): web String
-	c inline "getObjectField(#1, \"userVerification\")"
-struct PublicKeyCredentialRequestOptions
-{  challenge: webidl.kk/BufferSource,
-  timeout: int,
-  rpId: String,
-  allowCredentials: dart:js_interop/JSArray,
-  userVerification: String,
-  attestation: String,
-  attestationFormats: dart:js_interop/JSArray,
-  extensions: AuthenticationExtensionsClientInputs
-}
-pub extern newPublicKeyCredentialRequestOptions([challenge: webidl.kk/BufferSource, timeout: maybe<int> = Nothing, rpId: maybe<String> = Nothing, allowCredentials: maybe<dart:js_interop/JSArray> = Nothing, userVerification: maybe<String> = Nothing, attestation: maybe<String> = Nothing, attestationFormats: maybe<dart:js_interop/JSArray> = Nothing, extensions: maybe<AuthenticationExtensionsClientInputs> = Nothing])
-()
+pub inline fun isUserVerifyingPlatformAuthenticatorAvailable(): web jsPromise
+  jsOperation1("isUserVerifyingPlatformAuthenticatorAvailable")
 
-pub extern setchallenge(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchallenge(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"challenge\")"
-pub extern settimeout(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimeout(this: js_object): web int
-	c inline "getObjectField(#1, \"timeout\")"
-pub extern setrpId(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrpId(this: js_object): web String
-	c inline "getObjectField(#1, \"rpId\")"
-pub extern setallowCredentials(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getallowCredentials(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"allowCredentials\")"
-pub extern setuserVerification(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuserVerification(this: js_object): web String
-	c inline "getObjectField(#1, \"userVerification\")"
-pub extern setattestation(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getattestation(this: js_object): web String
-	c inline "getObjectField(#1, \"attestation\")"
-pub extern setattestationFormats(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getattestationFormats(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"attestationFormats\")"
-pub extern setextensions(this: js_object, value: AuthenticationExtensionsClientInputs): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getextensions(this: js_object): web AuthenticationExtensionsClientInputs
-	c inline "getObjectField(#1, \"extensions\")"
-struct AuthenticationExtensionsClientInputs
-{  credentialProtectionPolicy: String,
-  enforceCredentialProtectionPolicy: bool,
-  credBlob: dart:js_interop/JSArrayBuffer,
-  getCredBlob: bool,
-  minPinLength: bool,
-  hmacCreateSecret: bool,
-  hmacGetSecret: fido.kk/HMACGetSecretInput,
-  payment: secure_payment_confirmation.kk/AuthenticationExtensionsPaymentInputs,
-  appid: String,
-  appidExclude: String,
-  credProps: bool,
-  prf: AuthenticationExtensionsPRFInputs,
-  largeBlob: AuthenticationExtensionsLargeBlobInputs,
-  uvm: bool,
-  devicePubKey: AuthenticationExtensionsDevicePublicKeyInputs
-}
-pub extern newAuthenticationExtensionsClientInputs([credentialProtectionPolicy: maybe<String> = Nothing, enforceCredentialProtectionPolicy: maybe<bool> = Nothing, credBlob: maybe<dart:js_interop/JSArrayBuffer> = Nothing, getCredBlob: maybe<bool> = Nothing, minPinLength: maybe<bool> = Nothing, hmacCreateSecret: maybe<bool> = Nothing, hmacGetSecret: maybe<fido.kk/HMACGetSecretInput> = Nothing, payment: maybe<secure_payment_confirmation.kk/AuthenticationExtensionsPaymentInputs> = Nothing, appid: maybe<String> = Nothing, appidExclude: maybe<String> = Nothing, credProps: maybe<bool> = Nothing, prf: maybe<AuthenticationExtensionsPRFInputs> = Nothing, largeBlob: maybe<AuthenticationExtensionsLargeBlobInputs> = Nothing, uvm: maybe<bool> = Nothing, devicePubKey: maybe<AuthenticationExtensionsDevicePublicKeyInputs> = Nothing])
-()
+pub inline fun parseCreationOptionsFromJSON(options': publicKeyCredentialCreationOptionsJSON): web publicKeyCredentialCreationOptions
+  jsOperation2("parseCreationOptionsFromJSON", options'.obj)
 
-pub extern setcredentialProtectionPolicy(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcredentialProtectionPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"credentialProtectionPolicy\")"
-pub extern setenforceCredentialProtectionPolicy(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getenforceCredentialProtectionPolicy(this: js_object): web bool
-	c inline "getObjectField(#1, \"enforceCredentialProtectionPolicy\")"
-pub extern setcredBlob(this: js_object, value: dart:js_interop/JSArrayBuffer): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcredBlob(this: js_object): web dart:js_interop/JSArrayBuffer
-	c inline "getObjectField(#1, \"credBlob\")"
-pub extern setgetCredBlob(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getgetCredBlob(this: js_object): web bool
-	c inline "getObjectField(#1, \"getCredBlob\")"
-pub extern setminPinLength(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getminPinLength(this: js_object): web bool
-	c inline "getObjectField(#1, \"minPinLength\")"
-pub extern sethmacCreateSecret(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethmacCreateSecret(this: js_object): web bool
-	c inline "getObjectField(#1, \"hmacCreateSecret\")"
-pub extern sethmacGetSecret(this: js_object, value: fido.kk/HMACGetSecretInput): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethmacGetSecret(this: js_object): web fido.kk/HMACGetSecretInput
-	c inline "getObjectField(#1, \"hmacGetSecret\")"
-pub extern setpayment(this: js_object, value: secure_payment_confirmation.kk/AuthenticationExtensionsPaymentInputs): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpayment(this: js_object): web secure_payment_confirmation.kk/AuthenticationExtensionsPaymentInputs
-	c inline "getObjectField(#1, \"payment\")"
-pub extern setappid(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getappid(this: js_object): web String
-	c inline "getObjectField(#1, \"appid\")"
-pub extern setappidExclude(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getappidExclude(this: js_object): web String
-	c inline "getObjectField(#1, \"appidExclude\")"
-pub extern setcredProps(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcredProps(this: js_object): web bool
-	c inline "getObjectField(#1, \"credProps\")"
-pub extern setprf(this: js_object, value: AuthenticationExtensionsPRFInputs): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprf(this: js_object): web AuthenticationExtensionsPRFInputs
-	c inline "getObjectField(#1, \"prf\")"
-pub extern setlargeBlob(this: js_object, value: AuthenticationExtensionsLargeBlobInputs): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlargeBlob(this: js_object): web AuthenticationExtensionsLargeBlobInputs
-	c inline "getObjectField(#1, \"largeBlob\")"
-pub extern setuvm(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuvm(this: js_object): web bool
-	c inline "getObjectField(#1, \"uvm\")"
-pub extern setdevicePubKey(this: js_object, value: AuthenticationExtensionsDevicePublicKeyInputs): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdevicePubKey(this: js_object): web AuthenticationExtensionsDevicePublicKeyInputs
-	c inline "getObjectField(#1, \"devicePubKey\")"
-struct AuthenticationExtensionsClientOutputs
-{  hmacCreateSecret: bool,
-  hmacGetSecret: fido.kk/HMACGetSecretOutput,
-  appid: bool,
-  appidExclude: bool,
-  credProps: CredentialPropertiesOutput,
-  prf: AuthenticationExtensionsPRFOutputs,
-  largeBlob: AuthenticationExtensionsLargeBlobOutputs,
-  uvm: UvmEntries,
-  devicePubKey: AuthenticationExtensionsDevicePublicKeyOutputs
-}
-pub extern newAuthenticationExtensionsClientOutputs([hmacCreateSecret: maybe<bool> = Nothing, hmacGetSecret: maybe<fido.kk/HMACGetSecretOutput> = Nothing, appid: maybe<bool> = Nothing, appidExclude: maybe<bool> = Nothing, credProps: maybe<CredentialPropertiesOutput> = Nothing, prf: maybe<AuthenticationExtensionsPRFOutputs> = Nothing, largeBlob: maybe<AuthenticationExtensionsLargeBlobOutputs> = Nothing, uvm: maybe<UvmEntries> = Nothing, devicePubKey: maybe<AuthenticationExtensionsDevicePublicKeyOutputs> = Nothing])
-()
+pub inline fun parseRequestOptionsFromJSON(options': publicKeyCredentialRequestOptionsJSON): web publicKeyCredentialRequestOptions
+  jsOperation2("parseRequestOptionsFromJSON", options'.obj)
 
-pub extern sethmacCreateSecret(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethmacCreateSecret(this: js_object): web bool
-	c inline "getObjectField(#1, \"hmacCreateSecret\")"
-pub extern sethmacGetSecret(this: js_object, value: fido.kk/HMACGetSecretOutput): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethmacGetSecret(this: js_object): web fido.kk/HMACGetSecretOutput
-	c inline "getObjectField(#1, \"hmacGetSecret\")"
-pub extern setappid(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getappid(this: js_object): web bool
-	c inline "getObjectField(#1, \"appid\")"
-pub extern setappidExclude(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getappidExclude(this: js_object): web bool
-	c inline "getObjectField(#1, \"appidExclude\")"
-pub extern setcredProps(this: js_object, value: CredentialPropertiesOutput): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcredProps(this: js_object): web CredentialPropertiesOutput
-	c inline "getObjectField(#1, \"credProps\")"
-pub extern setprf(this: js_object, value: AuthenticationExtensionsPRFOutputs): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprf(this: js_object): web AuthenticationExtensionsPRFOutputs
-	c inline "getObjectField(#1, \"prf\")"
-pub extern setlargeBlob(this: js_object, value: AuthenticationExtensionsLargeBlobOutputs): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlargeBlob(this: js_object): web AuthenticationExtensionsLargeBlobOutputs
-	c inline "getObjectField(#1, \"largeBlob\")"
-pub extern setuvm(this: js_object, value: UvmEntries): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuvm(this: js_object): web UvmEntries
-	c inline "getObjectField(#1, \"uvm\")"
-pub extern setdevicePubKey(this: js_object, value: AuthenticationExtensionsDevicePublicKeyOutputs): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdevicePubKey(this: js_object): web AuthenticationExtensionsDevicePublicKeyOutputs
-	c inline "getObjectField(#1, \"devicePubKey\")"
-struct CollectedClientData
-{  type: String,
-  challenge: String,
-  origin: String,
-  topOrigin: String,
-  crossOrigin: bool
-}
-pub extern newCollectedClientData([type: String, challenge: String, origin: String, topOrigin: maybe<String> = Nothing, crossOrigin: maybe<bool> = Nothing])
-()
+pub inline fun getClientExtensionResults(obj: publicKeyCredential): web authenticationExtensionsClientOutputs
+  jsOperation2(obj.obj, "getClientExtensionResults")
 
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setchallenge(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchallenge(this: js_object): web String
-	c inline "getObjectField(#1, \"challenge\")"
-pub extern setorigin(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getorigin(this: js_object): web String
-	c inline "getObjectField(#1, \"origin\")"
-pub extern settopOrigin(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettopOrigin(this: js_object): web String
-	c inline "getObjectField(#1, \"topOrigin\")"
-pub extern setcrossOrigin(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcrossOrigin(this: js_object): web bool
-	c inline "getObjectField(#1, \"crossOrigin\")"
-struct TokenBinding
-{  status: String,
-  id: String
-}
-pub extern newTokenBinding([status: String, id: maybe<String> = Nothing])
-()
+pub inline fun toJSON(obj: publicKeyCredential): web publicKeyCredentialJSON
+  jsOperation2(obj.obj, "toJSON")
 
-pub extern setstatus(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstatus(this: js_object): web String
-	c inline "getObjectField(#1, \"status\")"
-pub extern setid(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-struct PublicKeyCredentialDescriptor
-{  type: String,
-  id: webidl.kk/BufferSource,
-  transports: dart:js_interop/JSArray
-}
-pub extern newPublicKeyCredentialDescriptor([type: String, id: webidl.kk/BufferSource, transports: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun rawId(obj: publicKeyCredential): web jsArrayBuffer
+  getJsObjectField(obj.obj, "rawId")
 
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setid(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"id\")"
-pub extern settransports(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransports(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"transports\")"
-struct CredentialPropertiesOutput
-{  rk: bool
-}
-pub extern newCredentialPropertiesOutput([rk: maybe<bool> = Nothing])
-()
+pub inline fun response(obj: publicKeyCredential): web authenticatorResponse
+  getJsObjectField(obj.obj, "response")
 
-pub extern setrk(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrk(this: js_object): web bool
-	c inline "getObjectField(#1, \"rk\")"
-struct AuthenticationExtensionsPRFValues
-{  first: webidl.kk/BufferSource,
-  second: webidl.kk/BufferSource
-}
-pub extern newAuthenticationExtensionsPRFValues([first: webidl.kk/BufferSource, second: maybe<webidl.kk/BufferSource> = Nothing])
-()
+pub inline fun authenticatorAttachment(obj: publicKeyCredential): web maybe<string>
+  getJsObjectField(obj.obj, "authenticatorAttachment")
 
-pub extern setfirst(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfirst(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"first\")"
-pub extern setsecond(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsecond(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"second\")"
-struct AuthenticationExtensionsPRFInputs
-{  eval: AuthenticationExtensionsPRFValues,
-  evalByCredential: maybe<dart:js_interop/JSAny>
-}
-pub extern newAuthenticationExtensionsPRFInputs([eval: maybe<AuthenticationExtensionsPRFValues> = Nothing, evalByCredential: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
+pub value struct registrationResponseJSON
+  obj: jsObject
 
-pub extern seteval(this: js_object, value: AuthenticationExtensionsPRFValues): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geteval(this: js_object): web AuthenticationExtensionsPRFValues
-	c inline "getObjectField(#1, \"eval\")"
-pub extern setevalByCredential(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getevalByCredential(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"evalByCredential\")"
-struct AuthenticationExtensionsPRFOutputs
-{  enabled: bool,
-  results: AuthenticationExtensionsPRFValues
-}
-pub extern newAuthenticationExtensionsPRFOutputs([enabled: maybe<bool> = Nothing, results: maybe<AuthenticationExtensionsPRFValues> = Nothing])
-()
+pub fun newRegistrationResponseJSON(id: base64URLString, rawId: base64URLString, response: authenticatorAttestationResponseJSON, authenticatorAttachment: maybe<string> = Nothing, clientExtensionResults: authenticationExtensionsClientOutputsJSON, type: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "id", id);  setJsObjectField(obj, "rawId", rawId);  setJsObjectField(obj, "response", response);  match authenticatorAttachment
+    Just(it) -> setJsObjectField(obj, "authenticatorAttachment", it)
+    Nothing -> ()
+  setJsObjectField(obj, "clientExtensionResults", clientExtensionResults);  setJsObjectField(obj, "type", type);
+  RegistrationResponseJSON(obj);
 
-pub extern setenabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getenabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"enabled\")"
-pub extern setresults(this: js_object, value: AuthenticationExtensionsPRFValues): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getresults(this: js_object): web AuthenticationExtensionsPRFValues
-	c inline "getObjectField(#1, \"results\")"
-struct AuthenticationExtensionsLargeBlobInputs
-{  support: String,
-  read: bool,
-  write: webidl.kk/BufferSource
-}
-pub extern newAuthenticationExtensionsLargeBlobInputs([support: maybe<String> = Nothing, read: maybe<bool> = Nothing, write: maybe<webidl.kk/BufferSource> = Nothing])
-()
+pub inline fun id(obj: registrationResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
 
-pub extern setsupport(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsupport(this: js_object): web String
-	c inline "getObjectField(#1, \"support\")"
-pub extern setread(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getread(this: js_object): web bool
-	c inline "getObjectField(#1, \"read\")"
-pub extern setwrite(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwrite(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"write\")"
-struct AuthenticationExtensionsLargeBlobOutputs
-{  supported: bool,
-  blob: dart:js_interop/JSArrayBuffer,
-  written: bool
-}
-pub extern newAuthenticationExtensionsLargeBlobOutputs([supported: maybe<bool> = Nothing, blob: maybe<dart:js_interop/JSArrayBuffer> = Nothing, written: maybe<bool> = Nothing])
-()
+pub inline fun id(obj: registrationResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "id")
 
-pub extern setsupported(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsupported(this: js_object): web bool
-	c inline "getObjectField(#1, \"supported\")"
-pub extern setblob(this: js_object, value: dart:js_interop/JSArrayBuffer): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getblob(this: js_object): web dart:js_interop/JSArrayBuffer
-	c inline "getObjectField(#1, \"blob\")"
-pub extern setwritten(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwritten(this: js_object): web bool
-	c inline "getObjectField(#1, \"written\")"
-struct AuthenticationExtensionsDevicePublicKeyInputs
-{  attestation: String,
-  attestationFormats: dart:js_interop/JSArray
-}
-pub extern newAuthenticationExtensionsDevicePublicKeyInputs([attestation: maybe<String> = Nothing, attestationFormats: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun rawId(obj: registrationResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "rawId", value.obj)
 
-pub extern setattestation(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getattestation(this: js_object): web String
-	c inline "getObjectField(#1, \"attestation\")"
-pub extern setattestationFormats(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getattestationFormats(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"attestationFormats\")"
-struct AuthenticationExtensionsDevicePublicKeyOutputs
-{  signature: dart:js_interop/JSArrayBuffer
-}
-pub extern newAuthenticationExtensionsDevicePublicKeyOutputs([signature: maybe<dart:js_interop/JSArrayBuffer> = Nothing])
-()
+pub inline fun rawId(obj: registrationResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "rawId")
 
-pub extern setsignature(this: js_object, value: dart:js_interop/JSArrayBuffer): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsignature(this: js_object): web dart:js_interop/JSArrayBuffer
-	c inline "getObjectField(#1, \"signature\")"
+pub inline fun response(obj: registrationResponseJSON, value: authenticatorAttestationResponseJSON): web ()
+  setJsObjectField(obj.obj, "response", value.obj)
+
+pub inline fun response(obj: registrationResponseJSON): web authenticatorAttestationResponseJSON
+  getJsObjectField(obj.obj, "response")
+
+pub inline fun authenticatorAttachment(obj: registrationResponseJSON, value: string): web ()
+  setJsObjectField(obj.obj, "authenticatorAttachment", value.obj)
+
+pub inline fun authenticatorAttachment(obj: registrationResponseJSON): web string
+  getJsObjectField(obj.obj, "authenticatorAttachment")
+
+pub inline fun clientExtensionResults(obj: registrationResponseJSON, value: authenticationExtensionsClientOutputsJSON): web ()
+  setJsObjectField(obj.obj, "clientExtensionResults", value.obj)
+
+pub inline fun clientExtensionResults(obj: registrationResponseJSON): web authenticationExtensionsClientOutputsJSON
+  getJsObjectField(obj.obj, "clientExtensionResults")
+
+pub inline fun type(obj: registrationResponseJSON, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: registrationResponseJSON): web string
+  getJsObjectField(obj.obj, "type")
+
+pub value struct authenticatorAttestationResponseJSON
+  obj: jsObject
+
+pub fun newAuthenticatorAttestationResponseJSON(clientDataJSON: base64URLString, authenticatorData: base64URLString, transports: jsArray, publicKey: maybe<base64URLString> = Nothing, publicKeyAlgorithm: int, attestationObject: base64URLString)
+  val obj = newJsObject();
+  setJsObjectField(obj, "clientDataJSON", clientDataJSON);  setJsObjectField(obj, "authenticatorData", authenticatorData);  setJsObjectField(obj, "transports", transports);  match publicKey
+    Just(it) -> setJsObjectField(obj, "publicKey", it)
+    Nothing -> ()
+  setJsObjectField(obj, "publicKeyAlgorithm", publicKeyAlgorithm);  setJsObjectField(obj, "attestationObject", attestationObject);
+  AuthenticatorAttestationResponseJSON(obj);
+
+pub inline fun clientDataJSON(obj: authenticatorAttestationResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "clientDataJSON", value.obj)
+
+pub inline fun clientDataJSON(obj: authenticatorAttestationResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "clientDataJSON")
+
+pub inline fun authenticatorData(obj: authenticatorAttestationResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "authenticatorData", value.obj)
+
+pub inline fun authenticatorData(obj: authenticatorAttestationResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "authenticatorData")
+
+pub inline fun transports(obj: authenticatorAttestationResponseJSON, value: jsArray): web ()
+  setJsObjectField(obj.obj, "transports", value.obj)
+
+pub inline fun transports(obj: authenticatorAttestationResponseJSON): web jsArray
+  getJsObjectField(obj.obj, "transports")
+
+pub inline fun publicKey(obj: authenticatorAttestationResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "publicKey", value.obj)
+
+pub inline fun publicKey(obj: authenticatorAttestationResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "publicKey")
+
+pub inline fun publicKeyAlgorithm(obj: authenticatorAttestationResponseJSON, value: int): web ()
+  setJsObjectField(obj.obj, "publicKeyAlgorithm", value.obj)
+
+pub inline fun publicKeyAlgorithm(obj: authenticatorAttestationResponseJSON): web int
+  getJsObjectField(obj.obj, "publicKeyAlgorithm")
+
+pub inline fun attestationObject(obj: authenticatorAttestationResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "attestationObject", value.obj)
+
+pub inline fun attestationObject(obj: authenticatorAttestationResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "attestationObject")
+
+pub value struct authenticationResponseJSON
+  obj: jsObject
+
+pub fun newAuthenticationResponseJSON(id: base64URLString, rawId: base64URLString, response: authenticatorAssertionResponseJSON, authenticatorAttachment: maybe<string> = Nothing, clientExtensionResults: authenticationExtensionsClientOutputsJSON, type: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "id", id);  setJsObjectField(obj, "rawId", rawId);  setJsObjectField(obj, "response", response);  match authenticatorAttachment
+    Just(it) -> setJsObjectField(obj, "authenticatorAttachment", it)
+    Nothing -> ()
+  setJsObjectField(obj, "clientExtensionResults", clientExtensionResults);  setJsObjectField(obj, "type", type);
+  AuthenticationResponseJSON(obj);
+
+pub inline fun id(obj: authenticationResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: authenticationResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun rawId(obj: authenticationResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "rawId", value.obj)
+
+pub inline fun rawId(obj: authenticationResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "rawId")
+
+pub inline fun response(obj: authenticationResponseJSON, value: authenticatorAssertionResponseJSON): web ()
+  setJsObjectField(obj.obj, "response", value.obj)
+
+pub inline fun response(obj: authenticationResponseJSON): web authenticatorAssertionResponseJSON
+  getJsObjectField(obj.obj, "response")
+
+pub inline fun authenticatorAttachment(obj: authenticationResponseJSON, value: string): web ()
+  setJsObjectField(obj.obj, "authenticatorAttachment", value.obj)
+
+pub inline fun authenticatorAttachment(obj: authenticationResponseJSON): web string
+  getJsObjectField(obj.obj, "authenticatorAttachment")
+
+pub inline fun clientExtensionResults(obj: authenticationResponseJSON, value: authenticationExtensionsClientOutputsJSON): web ()
+  setJsObjectField(obj.obj, "clientExtensionResults", value.obj)
+
+pub inline fun clientExtensionResults(obj: authenticationResponseJSON): web authenticationExtensionsClientOutputsJSON
+  getJsObjectField(obj.obj, "clientExtensionResults")
+
+pub inline fun type(obj: authenticationResponseJSON, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: authenticationResponseJSON): web string
+  getJsObjectField(obj.obj, "type")
+
+pub value struct authenticatorAssertionResponseJSON
+  obj: jsObject
+
+pub fun newAuthenticatorAssertionResponseJSON(clientDataJSON: base64URLString, authenticatorData: base64URLString, signature: base64URLString, userHandle: maybe<base64URLString> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "clientDataJSON", clientDataJSON);  setJsObjectField(obj, "authenticatorData", authenticatorData);  setJsObjectField(obj, "signature", signature);  match userHandle
+    Just(it) -> setJsObjectField(obj, "userHandle", it)
+    Nothing -> ()
+
+  AuthenticatorAssertionResponseJSON(obj);
+
+pub inline fun clientDataJSON(obj: authenticatorAssertionResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "clientDataJSON", value.obj)
+
+pub inline fun clientDataJSON(obj: authenticatorAssertionResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "clientDataJSON")
+
+pub inline fun authenticatorData(obj: authenticatorAssertionResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "authenticatorData", value.obj)
+
+pub inline fun authenticatorData(obj: authenticatorAssertionResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "authenticatorData")
+
+pub inline fun signature(obj: authenticatorAssertionResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "signature", value.obj)
+
+pub inline fun signature(obj: authenticatorAssertionResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "signature")
+
+pub inline fun userHandle(obj: authenticatorAssertionResponseJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "userHandle", value.obj)
+
+pub inline fun userHandle(obj: authenticatorAssertionResponseJSON): web base64URLString
+  getJsObjectField(obj.obj, "userHandle")
+
+pub value struct authenticationExtensionsClientOutputsJSON
+  obj: jsObject
+
+pub fun newAuthenticationExtensionsClientOutputsJSON()
+  val obj = newJsObject();
+
+  AuthenticationExtensionsClientOutputsJSON(obj);
+
+pub value struct publicKeyCredentialCreationOptionsJSON
+  obj: jsObject
+
+pub fun newPublicKeyCredentialCreationOptionsJSON(rp: publicKeyCredentialRpEntity, user: publicKeyCredentialUserEntityJSON, challenge: base64URLString, pubKeyCredParams: jsArray, timeout: maybe<int> = Nothing, excludeCredentials: maybe<jsArray> = Nothing, authenticatorSelection: maybe<authenticatorSelectionCriteria> = Nothing, attestation: maybe<string> = Nothing, extensions: maybe<authenticationExtensionsClientInputsJSON> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "rp", rp);  setJsObjectField(obj, "user", user);  setJsObjectField(obj, "challenge", challenge);  setJsObjectField(obj, "pubKeyCredParams", pubKeyCredParams);  match timeout
+    Just(it) -> setJsObjectField(obj, "timeout", it)
+    Nothing -> ()
+  match excludeCredentials
+    Just(it) -> setJsObjectField(obj, "excludeCredentials", it)
+    Nothing -> ()
+  match authenticatorSelection
+    Just(it) -> setJsObjectField(obj, "authenticatorSelection", it)
+    Nothing -> ()
+  match attestation
+    Just(it) -> setJsObjectField(obj, "attestation", it)
+    Nothing -> ()
+  match extensions
+    Just(it) -> setJsObjectField(obj, "extensions", it)
+    Nothing -> ()
+
+  PublicKeyCredentialCreationOptionsJSON(obj);
+
+pub inline fun rp(obj: publicKeyCredentialCreationOptionsJSON, value: publicKeyCredentialRpEntity): web ()
+  setJsObjectField(obj.obj, "rp", value.obj)
+
+pub inline fun rp(obj: publicKeyCredentialCreationOptionsJSON): web publicKeyCredentialRpEntity
+  getJsObjectField(obj.obj, "rp")
+
+pub inline fun user(obj: publicKeyCredentialCreationOptionsJSON, value: publicKeyCredentialUserEntityJSON): web ()
+  setJsObjectField(obj.obj, "user", value.obj)
+
+pub inline fun user(obj: publicKeyCredentialCreationOptionsJSON): web publicKeyCredentialUserEntityJSON
+  getJsObjectField(obj.obj, "user")
+
+pub inline fun challenge(obj: publicKeyCredentialCreationOptionsJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "challenge", value.obj)
+
+pub inline fun challenge(obj: publicKeyCredentialCreationOptionsJSON): web base64URLString
+  getJsObjectField(obj.obj, "challenge")
+
+pub inline fun pubKeyCredParams(obj: publicKeyCredentialCreationOptionsJSON, value: jsArray): web ()
+  setJsObjectField(obj.obj, "pubKeyCredParams", value.obj)
+
+pub inline fun pubKeyCredParams(obj: publicKeyCredentialCreationOptionsJSON): web jsArray
+  getJsObjectField(obj.obj, "pubKeyCredParams")
+
+pub inline fun timeout(obj: publicKeyCredentialCreationOptionsJSON, value: int): web ()
+  setJsObjectField(obj.obj, "timeout", value.obj)
+
+pub inline fun timeout(obj: publicKeyCredentialCreationOptionsJSON): web int
+  getJsObjectField(obj.obj, "timeout")
+
+pub inline fun excludeCredentials(obj: publicKeyCredentialCreationOptionsJSON, value: jsArray): web ()
+  setJsObjectField(obj.obj, "excludeCredentials", value.obj)
+
+pub inline fun excludeCredentials(obj: publicKeyCredentialCreationOptionsJSON): web jsArray
+  getJsObjectField(obj.obj, "excludeCredentials")
+
+pub inline fun authenticatorSelection(obj: publicKeyCredentialCreationOptionsJSON, value: authenticatorSelectionCriteria): web ()
+  setJsObjectField(obj.obj, "authenticatorSelection", value.obj)
+
+pub inline fun authenticatorSelection(obj: publicKeyCredentialCreationOptionsJSON): web authenticatorSelectionCriteria
+  getJsObjectField(obj.obj, "authenticatorSelection")
+
+pub inline fun attestation(obj: publicKeyCredentialCreationOptionsJSON, value: string): web ()
+  setJsObjectField(obj.obj, "attestation", value.obj)
+
+pub inline fun attestation(obj: publicKeyCredentialCreationOptionsJSON): web string
+  getJsObjectField(obj.obj, "attestation")
+
+pub inline fun extensions(obj: publicKeyCredentialCreationOptionsJSON, value: authenticationExtensionsClientInputsJSON): web ()
+  setJsObjectField(obj.obj, "extensions", value.obj)
+
+pub inline fun extensions(obj: publicKeyCredentialCreationOptionsJSON): web authenticationExtensionsClientInputsJSON
+  getJsObjectField(obj.obj, "extensions")
+
+pub value struct publicKeyCredentialUserEntityJSON
+  obj: jsObject
+
+pub fun newPublicKeyCredentialUserEntityJSON(id: base64URLString, name: string, displayName: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "id", id);  setJsObjectField(obj, "name", name);  setJsObjectField(obj, "displayName", displayName);
+  PublicKeyCredentialUserEntityJSON(obj);
+
+pub inline fun id(obj: publicKeyCredentialUserEntityJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: publicKeyCredentialUserEntityJSON): web base64URLString
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun name(obj: publicKeyCredentialUserEntityJSON, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: publicKeyCredentialUserEntityJSON): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun displayName(obj: publicKeyCredentialUserEntityJSON, value: string): web ()
+  setJsObjectField(obj.obj, "displayName", value.obj)
+
+pub inline fun displayName(obj: publicKeyCredentialUserEntityJSON): web string
+  getJsObjectField(obj.obj, "displayName")
+
+pub value struct publicKeyCredentialDescriptorJSON
+  obj: jsObject
+
+pub fun newPublicKeyCredentialDescriptorJSON(id: base64URLString, type: string, transports: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "id", id);  setJsObjectField(obj, "type", type);  match transports
+    Just(it) -> setJsObjectField(obj, "transports", it)
+    Nothing -> ()
+
+  PublicKeyCredentialDescriptorJSON(obj);
+
+pub inline fun id(obj: publicKeyCredentialDescriptorJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: publicKeyCredentialDescriptorJSON): web base64URLString
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun type(obj: publicKeyCredentialDescriptorJSON, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: publicKeyCredentialDescriptorJSON): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun transports(obj: publicKeyCredentialDescriptorJSON, value: jsArray): web ()
+  setJsObjectField(obj.obj, "transports", value.obj)
+
+pub inline fun transports(obj: publicKeyCredentialDescriptorJSON): web jsArray
+  getJsObjectField(obj.obj, "transports")
+
+pub value struct authenticationExtensionsClientInputsJSON
+  obj: jsObject
+
+pub fun newAuthenticationExtensionsClientInputsJSON()
+  val obj = newJsObject();
+
+  AuthenticationExtensionsClientInputsJSON(obj);
+
+pub value struct publicKeyCredentialRequestOptionsJSON
+  obj: jsObject
+
+pub fun newPublicKeyCredentialRequestOptionsJSON(challenge: base64URLString, timeout: maybe<int> = Nothing, rpId: maybe<string> = Nothing, allowCredentials: maybe<jsArray> = Nothing, userVerification: maybe<string> = Nothing, extensions: maybe<authenticationExtensionsClientInputsJSON> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "challenge", challenge);  match timeout
+    Just(it) -> setJsObjectField(obj, "timeout", it)
+    Nothing -> ()
+  match rpId
+    Just(it) -> setJsObjectField(obj, "rpId", it)
+    Nothing -> ()
+  match allowCredentials
+    Just(it) -> setJsObjectField(obj, "allowCredentials", it)
+    Nothing -> ()
+  match userVerification
+    Just(it) -> setJsObjectField(obj, "userVerification", it)
+    Nothing -> ()
+  match extensions
+    Just(it) -> setJsObjectField(obj, "extensions", it)
+    Nothing -> ()
+
+  PublicKeyCredentialRequestOptionsJSON(obj);
+
+pub inline fun challenge(obj: publicKeyCredentialRequestOptionsJSON, value: base64URLString): web ()
+  setJsObjectField(obj.obj, "challenge", value.obj)
+
+pub inline fun challenge(obj: publicKeyCredentialRequestOptionsJSON): web base64URLString
+  getJsObjectField(obj.obj, "challenge")
+
+pub inline fun timeout(obj: publicKeyCredentialRequestOptionsJSON, value: int): web ()
+  setJsObjectField(obj.obj, "timeout", value.obj)
+
+pub inline fun timeout(obj: publicKeyCredentialRequestOptionsJSON): web int
+  getJsObjectField(obj.obj, "timeout")
+
+pub inline fun rpId(obj: publicKeyCredentialRequestOptionsJSON, value: string): web ()
+  setJsObjectField(obj.obj, "rpId", value.obj)
+
+pub inline fun rpId(obj: publicKeyCredentialRequestOptionsJSON): web string
+  getJsObjectField(obj.obj, "rpId")
+
+pub inline fun allowCredentials(obj: publicKeyCredentialRequestOptionsJSON, value: jsArray): web ()
+  setJsObjectField(obj.obj, "allowCredentials", value.obj)
+
+pub inline fun allowCredentials(obj: publicKeyCredentialRequestOptionsJSON): web jsArray
+  getJsObjectField(obj.obj, "allowCredentials")
+
+pub inline fun userVerification(obj: publicKeyCredentialRequestOptionsJSON, value: string): web ()
+  setJsObjectField(obj.obj, "userVerification", value.obj)
+
+pub inline fun userVerification(obj: publicKeyCredentialRequestOptionsJSON): web string
+  getJsObjectField(obj.obj, "userVerification")
+
+pub inline fun extensions(obj: publicKeyCredentialRequestOptionsJSON, value: authenticationExtensionsClientInputsJSON): web ()
+  setJsObjectField(obj.obj, "extensions", value.obj)
+
+pub inline fun extensions(obj: publicKeyCredentialRequestOptionsJSON): web authenticationExtensionsClientInputsJSON
+  getJsObjectField(obj.obj, "extensions")
+
+pub value struct authenticatorResponse
+  obj: jsObject
+
+
+pub inline fun clientDataJSON(obj: authenticatorResponse): web jsArrayBuffer
+  getJsObjectField(obj.obj, "clientDataJSON")
+
+pub value struct authenticatorAttestationResponse
+  obj: jsObject
+
+
+pub inline fun getTransports(obj: authenticatorAttestationResponse): web jsArray
+  jsOperation2(obj.obj, "getTransports")
+
+pub inline fun getAuthenticatorData(obj: authenticatorAttestationResponse): web jsArrayBuffer
+  jsOperation2(obj.obj, "getAuthenticatorData")
+
+pub inline fun getPublicKey(obj: authenticatorAttestationResponse): web maybe<jsArrayBuffer>
+  jsOperation2(obj.obj, "getPublicKey")
+
+pub inline fun getPublicKeyAlgorithm(obj: authenticatorAttestationResponse): web coseAlgorithmIdentifier
+  jsOperation2(obj.obj, "getPublicKeyAlgorithm")
+
+pub inline fun attestationObject(obj: authenticatorAttestationResponse): web jsArrayBuffer
+  getJsObjectField(obj.obj, "attestationObject")
+
+pub value struct authenticatorAssertionResponse
+  obj: jsObject
+
+
+pub inline fun authenticatorData(obj: authenticatorAssertionResponse): web jsArrayBuffer
+  getJsObjectField(obj.obj, "authenticatorData")
+
+pub inline fun signature(obj: authenticatorAssertionResponse): web jsArrayBuffer
+  getJsObjectField(obj.obj, "signature")
+
+pub inline fun userHandle(obj: authenticatorAssertionResponse): web maybe<jsArrayBuffer>
+  getJsObjectField(obj.obj, "userHandle")
+
+pub inline fun attestationObject(obj: authenticatorAssertionResponse): web maybe<jsArrayBuffer>
+  getJsObjectField(obj.obj, "attestationObject")
+
+pub value struct publicKeyCredentialParameters
+  obj: jsObject
+
+pub fun newPublicKeyCredentialParameters(type: string, alg: coseAlgorithmIdentifier)
+  val obj = newJsObject();
+  setJsObjectField(obj, "type", type);  setJsObjectField(obj, "alg", alg);
+  PublicKeyCredentialParameters(obj);
+
+pub inline fun type(obj: publicKeyCredentialParameters, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: publicKeyCredentialParameters): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun alg(obj: publicKeyCredentialParameters, value: coseAlgorithmIdentifier): web ()
+  setJsObjectField(obj.obj, "alg", value.obj)
+
+pub inline fun alg(obj: publicKeyCredentialParameters): web coseAlgorithmIdentifier
+  getJsObjectField(obj.obj, "alg")
+
+pub value struct publicKeyCredentialCreationOptions
+  obj: jsObject
+
+pub fun newPublicKeyCredentialCreationOptions(rp: publicKeyCredentialRpEntity, user: publicKeyCredentialUserEntity, challenge: webidl/bufferSource, pubKeyCredParams: jsArray, timeout: maybe<int> = Nothing, excludeCredentials: maybe<jsArray> = Nothing, authenticatorSelection: maybe<authenticatorSelectionCriteria> = Nothing, attestation: maybe<string> = Nothing, attestationFormats: maybe<jsArray> = Nothing, extensions: maybe<authenticationExtensionsClientInputs> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "rp", rp);  setJsObjectField(obj, "user", user);  setJsObjectField(obj, "challenge", challenge);  setJsObjectField(obj, "pubKeyCredParams", pubKeyCredParams);  match timeout
+    Just(it) -> setJsObjectField(obj, "timeout", it)
+    Nothing -> ()
+  match excludeCredentials
+    Just(it) -> setJsObjectField(obj, "excludeCredentials", it)
+    Nothing -> ()
+  match authenticatorSelection
+    Just(it) -> setJsObjectField(obj, "authenticatorSelection", it)
+    Nothing -> ()
+  match attestation
+    Just(it) -> setJsObjectField(obj, "attestation", it)
+    Nothing -> ()
+  match attestationFormats
+    Just(it) -> setJsObjectField(obj, "attestationFormats", it)
+    Nothing -> ()
+  match extensions
+    Just(it) -> setJsObjectField(obj, "extensions", it)
+    Nothing -> ()
+
+  PublicKeyCredentialCreationOptions(obj);
+
+pub inline fun rp(obj: publicKeyCredentialCreationOptions, value: publicKeyCredentialRpEntity): web ()
+  setJsObjectField(obj.obj, "rp", value.obj)
+
+pub inline fun rp(obj: publicKeyCredentialCreationOptions): web publicKeyCredentialRpEntity
+  getJsObjectField(obj.obj, "rp")
+
+pub inline fun user(obj: publicKeyCredentialCreationOptions, value: publicKeyCredentialUserEntity): web ()
+  setJsObjectField(obj.obj, "user", value.obj)
+
+pub inline fun user(obj: publicKeyCredentialCreationOptions): web publicKeyCredentialUserEntity
+  getJsObjectField(obj.obj, "user")
+
+pub inline fun challenge(obj: publicKeyCredentialCreationOptions, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "challenge", value.obj)
+
+pub inline fun challenge(obj: publicKeyCredentialCreationOptions): web webidl/bufferSource
+  getJsObjectField(obj.obj, "challenge")
+
+pub inline fun pubKeyCredParams(obj: publicKeyCredentialCreationOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "pubKeyCredParams", value.obj)
+
+pub inline fun pubKeyCredParams(obj: publicKeyCredentialCreationOptions): web jsArray
+  getJsObjectField(obj.obj, "pubKeyCredParams")
+
+pub inline fun timeout(obj: publicKeyCredentialCreationOptions, value: int): web ()
+  setJsObjectField(obj.obj, "timeout", value.obj)
+
+pub inline fun timeout(obj: publicKeyCredentialCreationOptions): web int
+  getJsObjectField(obj.obj, "timeout")
+
+pub inline fun excludeCredentials(obj: publicKeyCredentialCreationOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "excludeCredentials", value.obj)
+
+pub inline fun excludeCredentials(obj: publicKeyCredentialCreationOptions): web jsArray
+  getJsObjectField(obj.obj, "excludeCredentials")
+
+pub inline fun authenticatorSelection(obj: publicKeyCredentialCreationOptions, value: authenticatorSelectionCriteria): web ()
+  setJsObjectField(obj.obj, "authenticatorSelection", value.obj)
+
+pub inline fun authenticatorSelection(obj: publicKeyCredentialCreationOptions): web authenticatorSelectionCriteria
+  getJsObjectField(obj.obj, "authenticatorSelection")
+
+pub inline fun attestation(obj: publicKeyCredentialCreationOptions, value: string): web ()
+  setJsObjectField(obj.obj, "attestation", value.obj)
+
+pub inline fun attestation(obj: publicKeyCredentialCreationOptions): web string
+  getJsObjectField(obj.obj, "attestation")
+
+pub inline fun attestationFormats(obj: publicKeyCredentialCreationOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "attestationFormats", value.obj)
+
+pub inline fun attestationFormats(obj: publicKeyCredentialCreationOptions): web jsArray
+  getJsObjectField(obj.obj, "attestationFormats")
+
+pub inline fun extensions(obj: publicKeyCredentialCreationOptions, value: authenticationExtensionsClientInputs): web ()
+  setJsObjectField(obj.obj, "extensions", value.obj)
+
+pub inline fun extensions(obj: publicKeyCredentialCreationOptions): web authenticationExtensionsClientInputs
+  getJsObjectField(obj.obj, "extensions")
+
+pub value struct publicKeyCredentialEntity
+  obj: jsObject
+
+pub fun newPublicKeyCredentialEntity(name: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "name", name);
+  PublicKeyCredentialEntity(obj);
+
+pub inline fun name(obj: publicKeyCredentialEntity, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: publicKeyCredentialEntity): web string
+  getJsObjectField(obj.obj, "name")
+
+pub value struct publicKeyCredentialRpEntity
+  obj: jsObject
+
+pub fun newPublicKeyCredentialRpEntity(id: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match id
+    Just(it) -> setJsObjectField(obj, "id", it)
+    Nothing -> ()
+
+  PublicKeyCredentialRpEntity(obj);
+
+pub inline fun id(obj: publicKeyCredentialRpEntity, value: string): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: publicKeyCredentialRpEntity): web string
+  getJsObjectField(obj.obj, "id")
+
+pub value struct publicKeyCredentialUserEntity
+  obj: jsObject
+
+pub fun newPublicKeyCredentialUserEntity(id: webidl/bufferSource, displayName: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "id", id);  setJsObjectField(obj, "displayName", displayName);
+  PublicKeyCredentialUserEntity(obj);
+
+pub inline fun id(obj: publicKeyCredentialUserEntity, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: publicKeyCredentialUserEntity): web webidl/bufferSource
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun displayName(obj: publicKeyCredentialUserEntity, value: string): web ()
+  setJsObjectField(obj.obj, "displayName", value.obj)
+
+pub inline fun displayName(obj: publicKeyCredentialUserEntity): web string
+  getJsObjectField(obj.obj, "displayName")
+
+pub value struct authenticatorSelectionCriteria
+  obj: jsObject
+
+pub fun newAuthenticatorSelectionCriteria(authenticatorAttachment: maybe<string> = Nothing, residentKey: maybe<string> = Nothing, requireResidentKey: maybe<bool> = Nothing, userVerification: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match authenticatorAttachment
+    Just(it) -> setJsObjectField(obj, "authenticatorAttachment", it)
+    Nothing -> ()
+  match residentKey
+    Just(it) -> setJsObjectField(obj, "residentKey", it)
+    Nothing -> ()
+  match requireResidentKey
+    Just(it) -> setJsObjectField(obj, "requireResidentKey", it)
+    Nothing -> ()
+  match userVerification
+    Just(it) -> setJsObjectField(obj, "userVerification", it)
+    Nothing -> ()
+
+  AuthenticatorSelectionCriteria(obj);
+
+pub inline fun authenticatorAttachment(obj: authenticatorSelectionCriteria, value: string): web ()
+  setJsObjectField(obj.obj, "authenticatorAttachment", value.obj)
+
+pub inline fun authenticatorAttachment(obj: authenticatorSelectionCriteria): web string
+  getJsObjectField(obj.obj, "authenticatorAttachment")
+
+pub inline fun residentKey(obj: authenticatorSelectionCriteria, value: string): web ()
+  setJsObjectField(obj.obj, "residentKey", value.obj)
+
+pub inline fun residentKey(obj: authenticatorSelectionCriteria): web string
+  getJsObjectField(obj.obj, "residentKey")
+
+pub inline fun requireResidentKey(obj: authenticatorSelectionCriteria, value: bool): web ()
+  setJsObjectField(obj.obj, "requireResidentKey", value.obj)
+
+pub inline fun requireResidentKey(obj: authenticatorSelectionCriteria): web bool
+  getJsObjectField(obj.obj, "requireResidentKey")
+
+pub inline fun userVerification(obj: authenticatorSelectionCriteria, value: string): web ()
+  setJsObjectField(obj.obj, "userVerification", value.obj)
+
+pub inline fun userVerification(obj: authenticatorSelectionCriteria): web string
+  getJsObjectField(obj.obj, "userVerification")
+
+pub value struct publicKeyCredentialRequestOptions
+  obj: jsObject
+
+pub fun newPublicKeyCredentialRequestOptions(challenge: webidl/bufferSource, timeout: maybe<int> = Nothing, rpId: maybe<string> = Nothing, allowCredentials: maybe<jsArray> = Nothing, userVerification: maybe<string> = Nothing, attestation: maybe<string> = Nothing, attestationFormats: maybe<jsArray> = Nothing, extensions: maybe<authenticationExtensionsClientInputs> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "challenge", challenge);  match timeout
+    Just(it) -> setJsObjectField(obj, "timeout", it)
+    Nothing -> ()
+  match rpId
+    Just(it) -> setJsObjectField(obj, "rpId", it)
+    Nothing -> ()
+  match allowCredentials
+    Just(it) -> setJsObjectField(obj, "allowCredentials", it)
+    Nothing -> ()
+  match userVerification
+    Just(it) -> setJsObjectField(obj, "userVerification", it)
+    Nothing -> ()
+  match attestation
+    Just(it) -> setJsObjectField(obj, "attestation", it)
+    Nothing -> ()
+  match attestationFormats
+    Just(it) -> setJsObjectField(obj, "attestationFormats", it)
+    Nothing -> ()
+  match extensions
+    Just(it) -> setJsObjectField(obj, "extensions", it)
+    Nothing -> ()
+
+  PublicKeyCredentialRequestOptions(obj);
+
+pub inline fun challenge(obj: publicKeyCredentialRequestOptions, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "challenge", value.obj)
+
+pub inline fun challenge(obj: publicKeyCredentialRequestOptions): web webidl/bufferSource
+  getJsObjectField(obj.obj, "challenge")
+
+pub inline fun timeout(obj: publicKeyCredentialRequestOptions, value: int): web ()
+  setJsObjectField(obj.obj, "timeout", value.obj)
+
+pub inline fun timeout(obj: publicKeyCredentialRequestOptions): web int
+  getJsObjectField(obj.obj, "timeout")
+
+pub inline fun rpId(obj: publicKeyCredentialRequestOptions, value: string): web ()
+  setJsObjectField(obj.obj, "rpId", value.obj)
+
+pub inline fun rpId(obj: publicKeyCredentialRequestOptions): web string
+  getJsObjectField(obj.obj, "rpId")
+
+pub inline fun allowCredentials(obj: publicKeyCredentialRequestOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "allowCredentials", value.obj)
+
+pub inline fun allowCredentials(obj: publicKeyCredentialRequestOptions): web jsArray
+  getJsObjectField(obj.obj, "allowCredentials")
+
+pub inline fun userVerification(obj: publicKeyCredentialRequestOptions, value: string): web ()
+  setJsObjectField(obj.obj, "userVerification", value.obj)
+
+pub inline fun userVerification(obj: publicKeyCredentialRequestOptions): web string
+  getJsObjectField(obj.obj, "userVerification")
+
+pub inline fun attestation(obj: publicKeyCredentialRequestOptions, value: string): web ()
+  setJsObjectField(obj.obj, "attestation", value.obj)
+
+pub inline fun attestation(obj: publicKeyCredentialRequestOptions): web string
+  getJsObjectField(obj.obj, "attestation")
+
+pub inline fun attestationFormats(obj: publicKeyCredentialRequestOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "attestationFormats", value.obj)
+
+pub inline fun attestationFormats(obj: publicKeyCredentialRequestOptions): web jsArray
+  getJsObjectField(obj.obj, "attestationFormats")
+
+pub inline fun extensions(obj: publicKeyCredentialRequestOptions, value: authenticationExtensionsClientInputs): web ()
+  setJsObjectField(obj.obj, "extensions", value.obj)
+
+pub inline fun extensions(obj: publicKeyCredentialRequestOptions): web authenticationExtensionsClientInputs
+  getJsObjectField(obj.obj, "extensions")
+
+pub value struct authenticationExtensionsClientInputs
+  obj: jsObject
+
+pub fun newAuthenticationExtensionsClientInputs(credentialProtectionPolicy: maybe<string> = Nothing, enforceCredentialProtectionPolicy: maybe<bool> = Nothing, credBlob: maybe<jsArrayBuffer> = Nothing, getCredBlob: maybe<bool> = Nothing, minPinLength: maybe<bool> = Nothing, hmacCreateSecret: maybe<bool> = Nothing, hmacGetSecret: maybe<fido/hmacGetSecretInput> = Nothing, payment: maybe<secure_payment_confirmation/authenticationExtensionsPaymentInputs> = Nothing, appid: maybe<string> = Nothing, appidExclude: maybe<string> = Nothing, credProps: maybe<bool> = Nothing, prf: maybe<authenticationExtensionsPRFInputs> = Nothing, largeBlob: maybe<authenticationExtensionsLargeBlobInputs> = Nothing, uvm: maybe<bool> = Nothing, devicePubKey: maybe<authenticationExtensionsDevicePublicKeyInputs> = Nothing)
+  val obj = newJsObject();
+  match credentialProtectionPolicy
+    Just(it) -> setJsObjectField(obj, "credentialProtectionPolicy", it)
+    Nothing -> ()
+  match enforceCredentialProtectionPolicy
+    Just(it) -> setJsObjectField(obj, "enforceCredentialProtectionPolicy", it)
+    Nothing -> ()
+  match credBlob
+    Just(it) -> setJsObjectField(obj, "credBlob", it)
+    Nothing -> ()
+  match getCredBlob
+    Just(it) -> setJsObjectField(obj, "getCredBlob", it)
+    Nothing -> ()
+  match minPinLength
+    Just(it) -> setJsObjectField(obj, "minPinLength", it)
+    Nothing -> ()
+  match hmacCreateSecret
+    Just(it) -> setJsObjectField(obj, "hmacCreateSecret", it)
+    Nothing -> ()
+  match hmacGetSecret
+    Just(it) -> setJsObjectField(obj, "hmacGetSecret", it)
+    Nothing -> ()
+  match payment
+    Just(it) -> setJsObjectField(obj, "payment", it)
+    Nothing -> ()
+  match appid
+    Just(it) -> setJsObjectField(obj, "appid", it)
+    Nothing -> ()
+  match appidExclude
+    Just(it) -> setJsObjectField(obj, "appidExclude", it)
+    Nothing -> ()
+  match credProps
+    Just(it) -> setJsObjectField(obj, "credProps", it)
+    Nothing -> ()
+  match prf
+    Just(it) -> setJsObjectField(obj, "prf", it)
+    Nothing -> ()
+  match largeBlob
+    Just(it) -> setJsObjectField(obj, "largeBlob", it)
+    Nothing -> ()
+  match uvm
+    Just(it) -> setJsObjectField(obj, "uvm", it)
+    Nothing -> ()
+  match devicePubKey
+    Just(it) -> setJsObjectField(obj, "devicePubKey", it)
+    Nothing -> ()
+
+  AuthenticationExtensionsClientInputs(obj);
+
+pub inline fun credentialProtectionPolicy(obj: authenticationExtensionsClientInputs, value: string): web ()
+  setJsObjectField(obj.obj, "credentialProtectionPolicy", value.obj)
+
+pub inline fun credentialProtectionPolicy(obj: authenticationExtensionsClientInputs): web string
+  getJsObjectField(obj.obj, "credentialProtectionPolicy")
+
+pub inline fun enforceCredentialProtectionPolicy(obj: authenticationExtensionsClientInputs, value: bool): web ()
+  setJsObjectField(obj.obj, "enforceCredentialProtectionPolicy", value.obj)
+
+pub inline fun enforceCredentialProtectionPolicy(obj: authenticationExtensionsClientInputs): web bool
+  getJsObjectField(obj.obj, "enforceCredentialProtectionPolicy")
+
+pub inline fun credBlob(obj: authenticationExtensionsClientInputs, value: jsArrayBuffer): web ()
+  setJsObjectField(obj.obj, "credBlob", value.obj)
+
+pub inline fun credBlob(obj: authenticationExtensionsClientInputs): web jsArrayBuffer
+  getJsObjectField(obj.obj, "credBlob")
+
+pub inline fun getCredBlob(obj: authenticationExtensionsClientInputs, value: bool): web ()
+  setJsObjectField(obj.obj, "getCredBlob", value.obj)
+
+pub inline fun getCredBlob(obj: authenticationExtensionsClientInputs): web bool
+  getJsObjectField(obj.obj, "getCredBlob")
+
+pub inline fun minPinLength(obj: authenticationExtensionsClientInputs, value: bool): web ()
+  setJsObjectField(obj.obj, "minPinLength", value.obj)
+
+pub inline fun minPinLength(obj: authenticationExtensionsClientInputs): web bool
+  getJsObjectField(obj.obj, "minPinLength")
+
+pub inline fun hmacCreateSecret(obj: authenticationExtensionsClientInputs, value: bool): web ()
+  setJsObjectField(obj.obj, "hmacCreateSecret", value.obj)
+
+pub inline fun hmacCreateSecret(obj: authenticationExtensionsClientInputs): web bool
+  getJsObjectField(obj.obj, "hmacCreateSecret")
+
+pub inline fun hmacGetSecret(obj: authenticationExtensionsClientInputs, value: fido/hmacGetSecretInput): web ()
+  setJsObjectField(obj.obj, "hmacGetSecret", value.obj)
+
+pub inline fun hmacGetSecret(obj: authenticationExtensionsClientInputs): web fido/hmacGetSecretInput
+  getJsObjectField(obj.obj, "hmacGetSecret")
+
+pub inline fun payment(obj: authenticationExtensionsClientInputs, value: secure_payment_confirmation/authenticationExtensionsPaymentInputs): web ()
+  setJsObjectField(obj.obj, "payment", value.obj)
+
+pub inline fun payment(obj: authenticationExtensionsClientInputs): web secure_payment_confirmation/authenticationExtensionsPaymentInputs
+  getJsObjectField(obj.obj, "payment")
+
+pub inline fun appid(obj: authenticationExtensionsClientInputs, value: string): web ()
+  setJsObjectField(obj.obj, "appid", value.obj)
+
+pub inline fun appid(obj: authenticationExtensionsClientInputs): web string
+  getJsObjectField(obj.obj, "appid")
+
+pub inline fun appidExclude(obj: authenticationExtensionsClientInputs, value: string): web ()
+  setJsObjectField(obj.obj, "appidExclude", value.obj)
+
+pub inline fun appidExclude(obj: authenticationExtensionsClientInputs): web string
+  getJsObjectField(obj.obj, "appidExclude")
+
+pub inline fun credProps(obj: authenticationExtensionsClientInputs, value: bool): web ()
+  setJsObjectField(obj.obj, "credProps", value.obj)
+
+pub inline fun credProps(obj: authenticationExtensionsClientInputs): web bool
+  getJsObjectField(obj.obj, "credProps")
+
+pub inline fun prf(obj: authenticationExtensionsClientInputs, value: authenticationExtensionsPRFInputs): web ()
+  setJsObjectField(obj.obj, "prf", value.obj)
+
+pub inline fun prf(obj: authenticationExtensionsClientInputs): web authenticationExtensionsPRFInputs
+  getJsObjectField(obj.obj, "prf")
+
+pub inline fun largeBlob(obj: authenticationExtensionsClientInputs, value: authenticationExtensionsLargeBlobInputs): web ()
+  setJsObjectField(obj.obj, "largeBlob", value.obj)
+
+pub inline fun largeBlob(obj: authenticationExtensionsClientInputs): web authenticationExtensionsLargeBlobInputs
+  getJsObjectField(obj.obj, "largeBlob")
+
+pub inline fun uvm(obj: authenticationExtensionsClientInputs, value: bool): web ()
+  setJsObjectField(obj.obj, "uvm", value.obj)
+
+pub inline fun uvm(obj: authenticationExtensionsClientInputs): web bool
+  getJsObjectField(obj.obj, "uvm")
+
+pub inline fun devicePubKey(obj: authenticationExtensionsClientInputs, value: authenticationExtensionsDevicePublicKeyInputs): web ()
+  setJsObjectField(obj.obj, "devicePubKey", value.obj)
+
+pub inline fun devicePubKey(obj: authenticationExtensionsClientInputs): web authenticationExtensionsDevicePublicKeyInputs
+  getJsObjectField(obj.obj, "devicePubKey")
+
+pub value struct authenticationExtensionsClientOutputs
+  obj: jsObject
+
+pub fun newAuthenticationExtensionsClientOutputs(hmacCreateSecret: maybe<bool> = Nothing, hmacGetSecret: maybe<fido/hmacGetSecretOutput> = Nothing, appid: maybe<bool> = Nothing, appidExclude: maybe<bool> = Nothing, credProps: maybe<credentialPropertiesOutput> = Nothing, prf: maybe<authenticationExtensionsPRFOutputs> = Nothing, largeBlob: maybe<authenticationExtensionsLargeBlobOutputs> = Nothing, uvm: maybe<uvmEntries> = Nothing, devicePubKey: maybe<authenticationExtensionsDevicePublicKeyOutputs> = Nothing)
+  val obj = newJsObject();
+  match hmacCreateSecret
+    Just(it) -> setJsObjectField(obj, "hmacCreateSecret", it)
+    Nothing -> ()
+  match hmacGetSecret
+    Just(it) -> setJsObjectField(obj, "hmacGetSecret", it)
+    Nothing -> ()
+  match appid
+    Just(it) -> setJsObjectField(obj, "appid", it)
+    Nothing -> ()
+  match appidExclude
+    Just(it) -> setJsObjectField(obj, "appidExclude", it)
+    Nothing -> ()
+  match credProps
+    Just(it) -> setJsObjectField(obj, "credProps", it)
+    Nothing -> ()
+  match prf
+    Just(it) -> setJsObjectField(obj, "prf", it)
+    Nothing -> ()
+  match largeBlob
+    Just(it) -> setJsObjectField(obj, "largeBlob", it)
+    Nothing -> ()
+  match uvm
+    Just(it) -> setJsObjectField(obj, "uvm", it)
+    Nothing -> ()
+  match devicePubKey
+    Just(it) -> setJsObjectField(obj, "devicePubKey", it)
+    Nothing -> ()
+
+  AuthenticationExtensionsClientOutputs(obj);
+
+pub inline fun hmacCreateSecret(obj: authenticationExtensionsClientOutputs, value: bool): web ()
+  setJsObjectField(obj.obj, "hmacCreateSecret", value.obj)
+
+pub inline fun hmacCreateSecret(obj: authenticationExtensionsClientOutputs): web bool
+  getJsObjectField(obj.obj, "hmacCreateSecret")
+
+pub inline fun hmacGetSecret(obj: authenticationExtensionsClientOutputs, value: fido/hmacGetSecretOutput): web ()
+  setJsObjectField(obj.obj, "hmacGetSecret", value.obj)
+
+pub inline fun hmacGetSecret(obj: authenticationExtensionsClientOutputs): web fido/hmacGetSecretOutput
+  getJsObjectField(obj.obj, "hmacGetSecret")
+
+pub inline fun appid(obj: authenticationExtensionsClientOutputs, value: bool): web ()
+  setJsObjectField(obj.obj, "appid", value.obj)
+
+pub inline fun appid(obj: authenticationExtensionsClientOutputs): web bool
+  getJsObjectField(obj.obj, "appid")
+
+pub inline fun appidExclude(obj: authenticationExtensionsClientOutputs, value: bool): web ()
+  setJsObjectField(obj.obj, "appidExclude", value.obj)
+
+pub inline fun appidExclude(obj: authenticationExtensionsClientOutputs): web bool
+  getJsObjectField(obj.obj, "appidExclude")
+
+pub inline fun credProps(obj: authenticationExtensionsClientOutputs, value: credentialPropertiesOutput): web ()
+  setJsObjectField(obj.obj, "credProps", value.obj)
+
+pub inline fun credProps(obj: authenticationExtensionsClientOutputs): web credentialPropertiesOutput
+  getJsObjectField(obj.obj, "credProps")
+
+pub inline fun prf(obj: authenticationExtensionsClientOutputs, value: authenticationExtensionsPRFOutputs): web ()
+  setJsObjectField(obj.obj, "prf", value.obj)
+
+pub inline fun prf(obj: authenticationExtensionsClientOutputs): web authenticationExtensionsPRFOutputs
+  getJsObjectField(obj.obj, "prf")
+
+pub inline fun largeBlob(obj: authenticationExtensionsClientOutputs, value: authenticationExtensionsLargeBlobOutputs): web ()
+  setJsObjectField(obj.obj, "largeBlob", value.obj)
+
+pub inline fun largeBlob(obj: authenticationExtensionsClientOutputs): web authenticationExtensionsLargeBlobOutputs
+  getJsObjectField(obj.obj, "largeBlob")
+
+pub inline fun uvm(obj: authenticationExtensionsClientOutputs, value: uvmEntries): web ()
+  setJsObjectField(obj.obj, "uvm", value.obj)
+
+pub inline fun uvm(obj: authenticationExtensionsClientOutputs): web uvmEntries
+  getJsObjectField(obj.obj, "uvm")
+
+pub inline fun devicePubKey(obj: authenticationExtensionsClientOutputs, value: authenticationExtensionsDevicePublicKeyOutputs): web ()
+  setJsObjectField(obj.obj, "devicePubKey", value.obj)
+
+pub inline fun devicePubKey(obj: authenticationExtensionsClientOutputs): web authenticationExtensionsDevicePublicKeyOutputs
+  getJsObjectField(obj.obj, "devicePubKey")
+
+pub value struct collectedClientData
+  obj: jsObject
+
+pub fun newCollectedClientData(type: string, challenge: string, origin: string, topOrigin: maybe<string> = Nothing, crossOrigin: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "type", type);  setJsObjectField(obj, "challenge", challenge);  setJsObjectField(obj, "origin", origin);  match topOrigin
+    Just(it) -> setJsObjectField(obj, "topOrigin", it)
+    Nothing -> ()
+  match crossOrigin
+    Just(it) -> setJsObjectField(obj, "crossOrigin", it)
+    Nothing -> ()
+
+  CollectedClientData(obj);
+
+pub inline fun type(obj: collectedClientData, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: collectedClientData): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun challenge(obj: collectedClientData, value: string): web ()
+  setJsObjectField(obj.obj, "challenge", value.obj)
+
+pub inline fun challenge(obj: collectedClientData): web string
+  getJsObjectField(obj.obj, "challenge")
+
+pub inline fun origin(obj: collectedClientData, value: string): web ()
+  setJsObjectField(obj.obj, "origin", value.obj)
+
+pub inline fun origin(obj: collectedClientData): web string
+  getJsObjectField(obj.obj, "origin")
+
+pub inline fun topOrigin(obj: collectedClientData, value: string): web ()
+  setJsObjectField(obj.obj, "topOrigin", value.obj)
+
+pub inline fun topOrigin(obj: collectedClientData): web string
+  getJsObjectField(obj.obj, "topOrigin")
+
+pub inline fun crossOrigin(obj: collectedClientData, value: bool): web ()
+  setJsObjectField(obj.obj, "crossOrigin", value.obj)
+
+pub inline fun crossOrigin(obj: collectedClientData): web bool
+  getJsObjectField(obj.obj, "crossOrigin")
+
+pub value struct tokenBinding
+  obj: jsObject
+
+pub fun newTokenBinding(status: string, id: maybe<string> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "status", status);  match id
+    Just(it) -> setJsObjectField(obj, "id", it)
+    Nothing -> ()
+
+  TokenBinding(obj);
+
+pub inline fun status(obj: tokenBinding, value: string): web ()
+  setJsObjectField(obj.obj, "status", value.obj)
+
+pub inline fun status(obj: tokenBinding): web string
+  getJsObjectField(obj.obj, "status")
+
+pub inline fun id(obj: tokenBinding, value: string): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: tokenBinding): web string
+  getJsObjectField(obj.obj, "id")
+
+pub value struct publicKeyCredentialDescriptor
+  obj: jsObject
+
+pub fun newPublicKeyCredentialDescriptor(type: string, id: webidl/bufferSource, transports: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "type", type);  setJsObjectField(obj, "id", id);  match transports
+    Just(it) -> setJsObjectField(obj, "transports", it)
+    Nothing -> ()
+
+  PublicKeyCredentialDescriptor(obj);
+
+pub inline fun type(obj: publicKeyCredentialDescriptor, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: publicKeyCredentialDescriptor): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun id(obj: publicKeyCredentialDescriptor, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: publicKeyCredentialDescriptor): web webidl/bufferSource
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun transports(obj: publicKeyCredentialDescriptor, value: jsArray): web ()
+  setJsObjectField(obj.obj, "transports", value.obj)
+
+pub inline fun transports(obj: publicKeyCredentialDescriptor): web jsArray
+  getJsObjectField(obj.obj, "transports")
+
+pub value struct credentialPropertiesOutput
+  obj: jsObject
+
+pub fun newCredentialPropertiesOutput(rk: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match rk
+    Just(it) -> setJsObjectField(obj, "rk", it)
+    Nothing -> ()
+
+  CredentialPropertiesOutput(obj);
+
+pub inline fun rk(obj: credentialPropertiesOutput, value: bool): web ()
+  setJsObjectField(obj.obj, "rk", value.obj)
+
+pub inline fun rk(obj: credentialPropertiesOutput): web bool
+  getJsObjectField(obj.obj, "rk")
+
+pub value struct authenticationExtensionsPRFValues
+  obj: jsObject
+
+pub fun newAuthenticationExtensionsPRFValues(first: webidl/bufferSource, second: maybe<webidl/bufferSource> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "first", first);  match second
+    Just(it) -> setJsObjectField(obj, "second", it)
+    Nothing -> ()
+
+  AuthenticationExtensionsPRFValues(obj);
+
+pub inline fun first(obj: authenticationExtensionsPRFValues, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "first", value.obj)
+
+pub inline fun first(obj: authenticationExtensionsPRFValues): web webidl/bufferSource
+  getJsObjectField(obj.obj, "first")
+
+pub inline fun second(obj: authenticationExtensionsPRFValues, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "second", value.obj)
+
+pub inline fun second(obj: authenticationExtensionsPRFValues): web webidl/bufferSource
+  getJsObjectField(obj.obj, "second")
+
+pub value struct authenticationExtensionsPRFInputs
+  obj: jsObject
+
+pub fun newAuthenticationExtensionsPRFInputs(eval: maybe<authenticationExtensionsPRFValues> = Nothing, evalByCredential: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match eval
+    Just(it) -> setJsObjectField(obj, "eval", it)
+    Nothing -> ()
+  match evalByCredential
+    Just(it) -> setJsObjectField(obj, "evalByCredential", it)
+    Nothing -> ()
+
+  AuthenticationExtensionsPRFInputs(obj);
+
+pub inline fun eval(obj: authenticationExtensionsPRFInputs, value: authenticationExtensionsPRFValues): web ()
+  setJsObjectField(obj.obj, "eval", value.obj)
+
+pub inline fun eval(obj: authenticationExtensionsPRFInputs): web authenticationExtensionsPRFValues
+  getJsObjectField(obj.obj, "eval")
+
+pub inline fun evalByCredential(obj: authenticationExtensionsPRFInputs, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "evalByCredential", value.obj)
+
+pub inline fun evalByCredential(obj: authenticationExtensionsPRFInputs): web maybe<jsObject>
+  getJsObjectField(obj.obj, "evalByCredential")
+
+pub value struct authenticationExtensionsPRFOutputs
+  obj: jsObject
+
+pub fun newAuthenticationExtensionsPRFOutputs(enabled: maybe<bool> = Nothing, results: maybe<authenticationExtensionsPRFValues> = Nothing)
+  val obj = newJsObject();
+  match enabled
+    Just(it) -> setJsObjectField(obj, "enabled", it)
+    Nothing -> ()
+  match results
+    Just(it) -> setJsObjectField(obj, "results", it)
+    Nothing -> ()
+
+  AuthenticationExtensionsPRFOutputs(obj);
+
+pub inline fun enabled(obj: authenticationExtensionsPRFOutputs, value: bool): web ()
+  setJsObjectField(obj.obj, "enabled", value.obj)
+
+pub inline fun enabled(obj: authenticationExtensionsPRFOutputs): web bool
+  getJsObjectField(obj.obj, "enabled")
+
+pub inline fun results(obj: authenticationExtensionsPRFOutputs, value: authenticationExtensionsPRFValues): web ()
+  setJsObjectField(obj.obj, "results", value.obj)
+
+pub inline fun results(obj: authenticationExtensionsPRFOutputs): web authenticationExtensionsPRFValues
+  getJsObjectField(obj.obj, "results")
+
+pub value struct authenticationExtensionsLargeBlobInputs
+  obj: jsObject
+
+pub fun newAuthenticationExtensionsLargeBlobInputs(support: maybe<string> = Nothing, read: maybe<bool> = Nothing, write: maybe<webidl/bufferSource> = Nothing)
+  val obj = newJsObject();
+  match support
+    Just(it) -> setJsObjectField(obj, "support", it)
+    Nothing -> ()
+  match read
+    Just(it) -> setJsObjectField(obj, "read", it)
+    Nothing -> ()
+  match write
+    Just(it) -> setJsObjectField(obj, "write", it)
+    Nothing -> ()
+
+  AuthenticationExtensionsLargeBlobInputs(obj);
+
+pub inline fun support(obj: authenticationExtensionsLargeBlobInputs, value: string): web ()
+  setJsObjectField(obj.obj, "support", value.obj)
+
+pub inline fun support(obj: authenticationExtensionsLargeBlobInputs): web string
+  getJsObjectField(obj.obj, "support")
+
+pub inline fun read(obj: authenticationExtensionsLargeBlobInputs, value: bool): web ()
+  setJsObjectField(obj.obj, "read", value.obj)
+
+pub inline fun read(obj: authenticationExtensionsLargeBlobInputs): web bool
+  getJsObjectField(obj.obj, "read")
+
+pub inline fun write(obj: authenticationExtensionsLargeBlobInputs, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "write", value.obj)
+
+pub inline fun write(obj: authenticationExtensionsLargeBlobInputs): web webidl/bufferSource
+  getJsObjectField(obj.obj, "write")
+
+pub value struct authenticationExtensionsLargeBlobOutputs
+  obj: jsObject
+
+pub fun newAuthenticationExtensionsLargeBlobOutputs(supported: maybe<bool> = Nothing, blob: maybe<jsArrayBuffer> = Nothing, written: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match supported
+    Just(it) -> setJsObjectField(obj, "supported", it)
+    Nothing -> ()
+  match blob
+    Just(it) -> setJsObjectField(obj, "blob", it)
+    Nothing -> ()
+  match written
+    Just(it) -> setJsObjectField(obj, "written", it)
+    Nothing -> ()
+
+  AuthenticationExtensionsLargeBlobOutputs(obj);
+
+pub inline fun supported(obj: authenticationExtensionsLargeBlobOutputs, value: bool): web ()
+  setJsObjectField(obj.obj, "supported", value.obj)
+
+pub inline fun supported(obj: authenticationExtensionsLargeBlobOutputs): web bool
+  getJsObjectField(obj.obj, "supported")
+
+pub inline fun blob(obj: authenticationExtensionsLargeBlobOutputs, value: jsArrayBuffer): web ()
+  setJsObjectField(obj.obj, "blob", value.obj)
+
+pub inline fun blob(obj: authenticationExtensionsLargeBlobOutputs): web jsArrayBuffer
+  getJsObjectField(obj.obj, "blob")
+
+pub inline fun written(obj: authenticationExtensionsLargeBlobOutputs, value: bool): web ()
+  setJsObjectField(obj.obj, "written", value.obj)
+
+pub inline fun written(obj: authenticationExtensionsLargeBlobOutputs): web bool
+  getJsObjectField(obj.obj, "written")
+
+pub value struct authenticationExtensionsDevicePublicKeyInputs
+  obj: jsObject
+
+pub fun newAuthenticationExtensionsDevicePublicKeyInputs(attestation: maybe<string> = Nothing, attestationFormats: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match attestation
+    Just(it) -> setJsObjectField(obj, "attestation", it)
+    Nothing -> ()
+  match attestationFormats
+    Just(it) -> setJsObjectField(obj, "attestationFormats", it)
+    Nothing -> ()
+
+  AuthenticationExtensionsDevicePublicKeyInputs(obj);
+
+pub inline fun attestation(obj: authenticationExtensionsDevicePublicKeyInputs, value: string): web ()
+  setJsObjectField(obj.obj, "attestation", value.obj)
+
+pub inline fun attestation(obj: authenticationExtensionsDevicePublicKeyInputs): web string
+  getJsObjectField(obj.obj, "attestation")
+
+pub inline fun attestationFormats(obj: authenticationExtensionsDevicePublicKeyInputs, value: jsArray): web ()
+  setJsObjectField(obj.obj, "attestationFormats", value.obj)
+
+pub inline fun attestationFormats(obj: authenticationExtensionsDevicePublicKeyInputs): web jsArray
+  getJsObjectField(obj.obj, "attestationFormats")
+
+pub value struct authenticationExtensionsDevicePublicKeyOutputs
+  obj: jsObject
+
+pub fun newAuthenticationExtensionsDevicePublicKeyOutputs(signature: maybe<jsArrayBuffer> = Nothing)
+  val obj = newJsObject();
+  match signature
+    Just(it) -> setJsObjectField(obj, "signature", it)
+    Nothing -> ()
+
+  AuthenticationExtensionsDevicePublicKeyOutputs(obj);
+
+pub inline fun signature(obj: authenticationExtensionsDevicePublicKeyOutputs, value: jsArrayBuffer): web ()
+  setJsObjectField(obj.obj, "signature", value.obj)
+
+pub inline fun signature(obj: authenticationExtensionsDevicePublicKeyOutputs): web jsArrayBuffer
+  getJsObjectField(obj.obj, "signature")
+

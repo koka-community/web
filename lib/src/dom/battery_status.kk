@@ -1,44 +1,48 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct BatteryManager
-{,
-,
-,
-,
-,
-,
-,
+pub value struct batteryManager
+  obj: jsObject
 
-}
 
-()
+pub inline fun charging(obj: batteryManager): web bool
+  getJsObjectField(obj.obj, "charging")
 
-pub extern getcharging(this: js_object): web bool
-	c inline "getObjectField(#1, \"charging\")"
-pub extern getchargingTime(this: js_object): web double
-	c inline "getObjectField(#1, \"chargingTime\")"
-pub extern getdischargingTime(this: js_object): web double
-	c inline "getObjectField(#1, \"dischargingTime\")"
-pub extern getlevel(this: js_object): web double
-	c inline "getObjectField(#1, \"level\")"
-pub extern setonchargingchange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonchargingchange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onchargingchange\")"
-pub extern setonchargingtimechange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonchargingtimechange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onchargingtimechange\")"
-pub extern setondischargingtimechange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondischargingtimechange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"ondischargingtimechange\")"
-pub extern setonlevelchange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonlevelchange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onlevelchange\")"
+pub inline fun chargingTime(obj: batteryManager): web double
+  getJsObjectField(obj.obj, "chargingTime")
+
+pub inline fun dischargingTime(obj: batteryManager): web double
+  getJsObjectField(obj.obj, "dischargingTime")
+
+pub inline fun level(obj: batteryManager): web double
+  getJsObjectField(obj.obj, "level")
+
+pub inline fun onchargingchange(obj: batteryManager, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onchargingchange", value.obj)
+
+pub inline fun onchargingchange(obj: batteryManager): web html/eventHandler
+  getJsObjectField(obj.obj, "onchargingchange")
+
+pub inline fun onchargingtimechange(obj: batteryManager, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onchargingtimechange", value.obj)
+
+pub inline fun onchargingtimechange(obj: batteryManager): web html/eventHandler
+  getJsObjectField(obj.obj, "onchargingtimechange")
+
+pub inline fun ondischargingtimechange(obj: batteryManager, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "ondischargingtimechange", value.obj)
+
+pub inline fun ondischargingtimechange(obj: batteryManager): web html/eventHandler
+  getJsObjectField(obj.obj, "ondischargingtimechange")
+
+pub inline fun onlevelchange(obj: batteryManager, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onlevelchange", value.obj)
+
+pub inline fun onlevelchange(obj: batteryManager): web html/eventHandler
+  getJsObjectField(obj.obj, "onlevelchange")
+

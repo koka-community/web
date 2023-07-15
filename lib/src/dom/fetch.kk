@@ -1,236 +1,380 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias HeadersInit = JSAny
-alias XMLHttpRequestBodyInit = JSAny
-alias BodyInit = JSAny
-alias RequestInfo = JSAny
+import web/wasm
+pub alias headersInit = JSAny;
 
 
-alias RequestDestination = String
-alias RequestMode = String
-alias RequestCredentials = String
-alias RequestCache = String
-alias RequestRedirect = String
-alias RequestDuplex = String
-alias RequestPriority = String
-alias ResponseType = String
-struct Headers
-{
-}
-pub extern newHeaders([], [init: HeadersInit])
-()
+pub alias xmlHttpRequestBodyInit = JSAny;
 
-pub extern append(this: js_object, [name: String, value: String], [])
-pub extern delete(this: js_object, [name: String], [])
-pub extern get(this: js_object, [name: String], [])
-pub extern getSetCookie(this: js_object, [], [])
-pub extern has(this: js_object, [name: String], [])
-pub extern set(this: js_object, [name: String, value: String], [])
-struct Body
-{,
 
-}
+pub alias bodyInit = JSAny;
 
-()
 
-pub extern arrayBuffer(this: js_object, [], [])
-pub extern blob(this: js_object, [], [])
-pub extern formData(this: js_object, [], [])
-pub extern json(this: js_object, [], [])
-pub extern text(this: js_object, [], [])
-pub extern getbody(this: js_object): web maybe<streams.kk/ReadableStream>
-	c inline "getObjectField(#1, \"body\")"
-pub extern getbodyUsed(this: js_object): web bool
-	c inline "getObjectField(#1, \"bodyUsed\")"
-struct Request
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub alias requestInfo = JSAny;
 
-}
-pub extern newRequest([input: RequestInfo], [init: RequestInit])
-()
 
-pub extern clone(this: js_object, [], [])
-pub extern getmethod(this: js_object): web String
-	c inline "getObjectField(#1, \"method\")"
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
-pub extern getheaders(this: js_object): web Headers
-	c inline "getObjectField(#1, \"headers\")"
-pub extern getdestination(this: js_object): web RequestDestination
-	c inline "getObjectField(#1, \"destination\")"
-pub extern getreferrer(this: js_object): web String
-	c inline "getObjectField(#1, \"referrer\")"
-pub extern getreferrerPolicy(this: js_object): web referrer_policy.kk/ReferrerPolicy
-	c inline "getObjectField(#1, \"referrerPolicy\")"
-pub extern getmode(this: js_object): web RequestMode
-	c inline "getObjectField(#1, \"mode\")"
-pub extern getcredentials(this: js_object): web RequestCredentials
-	c inline "getObjectField(#1, \"credentials\")"
-pub extern getcache(this: js_object): web RequestCache
-	c inline "getObjectField(#1, \"cache\")"
-pub extern getredirect(this: js_object): web RequestRedirect
-	c inline "getObjectField(#1, \"redirect\")"
-pub extern getintegrity(this: js_object): web String
-	c inline "getObjectField(#1, \"integrity\")"
-pub extern getkeepalive(this: js_object): web bool
-	c inline "getObjectField(#1, \"keepalive\")"
-pub extern getisReloadNavigation(this: js_object): web bool
-	c inline "getObjectField(#1, \"isReloadNavigation\")"
-pub extern getisHistoryNavigation(this: js_object): web bool
-	c inline "getObjectField(#1, \"isHistoryNavigation\")"
-pub extern getsignal(this: js_object): web dom.kk/AbortSignal
-	c inline "getObjectField(#1, \"signal\")"
-pub extern getduplex(this: js_object): web RequestDuplex
-	c inline "getObjectField(#1, \"duplex\")"
-struct RequestInit
-{  attributionReporting: attribution_reporting_api.kk/AttributionReportingRequestOptions,
-  method: String,
-  headers: HeadersInit,
-  body: maybe<BodyInit>,
-  referrer: String,
-  referrerPolicy: referrer_policy.kk/ReferrerPolicy,
-  mode: RequestMode,
-  credentials: RequestCredentials,
-  cache: RequestCache,
-  redirect: RequestRedirect,
-  integrity: String,
-  keepalive: bool,
-  signal: maybe<dom.kk/AbortSignal>,
-  duplex: RequestDuplex,
-  priority: RequestPriority,
-  window: maybe<dart:js_interop/JSAny>,
-  privateToken: trust_token_api.kk/PrivateToken
-}
-pub extern newRequestInit([attributionReporting: maybe<attribution_reporting_api.kk/AttributionReportingRequestOptions> = Nothing, method: maybe<String> = Nothing, headers: maybe<HeadersInit> = Nothing, body: maybe<maybe<BodyInit>> = Nothing, referrer: maybe<String> = Nothing, referrerPolicy: maybe<referrer_policy.kk/ReferrerPolicy> = Nothing, mode: maybe<RequestMode> = Nothing, credentials: maybe<RequestCredentials> = Nothing, cache: maybe<RequestCache> = Nothing, redirect: maybe<RequestRedirect> = Nothing, integrity: maybe<String> = Nothing, keepalive: maybe<bool> = Nothing, signal: maybe<maybe<dom.kk/AbortSignal>> = Nothing, duplex: maybe<RequestDuplex> = Nothing, priority: maybe<RequestPriority> = Nothing, window: maybe<maybe<dart:js_interop/JSAny>> = Nothing, privateToken: maybe<trust_token_api.kk/PrivateToken> = Nothing])
-()
 
-pub extern setattributionReporting(this: js_object, value: attribution_reporting_api.kk/AttributionReportingRequestOptions): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getattributionReporting(this: js_object): web attribution_reporting_api.kk/AttributionReportingRequestOptions
-	c inline "getObjectField(#1, \"attributionReporting\")"
-pub extern setmethod(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmethod(this: js_object): web String
-	c inline "getObjectField(#1, \"method\")"
-pub extern setheaders(this: js_object, value: HeadersInit): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheaders(this: js_object): web HeadersInit
-	c inline "getObjectField(#1, \"headers\")"
-pub extern setbody(this: js_object, value: maybe<BodyInit>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbody(this: js_object): web maybe<BodyInit>
-	c inline "getObjectField(#1, \"body\")"
-pub extern setreferrer(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreferrer(this: js_object): web String
-	c inline "getObjectField(#1, \"referrer\")"
-pub extern setreferrerPolicy(this: js_object, value: referrer_policy.kk/ReferrerPolicy): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreferrerPolicy(this: js_object): web referrer_policy.kk/ReferrerPolicy
-	c inline "getObjectField(#1, \"referrerPolicy\")"
-pub extern setmode(this: js_object, value: RequestMode): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmode(this: js_object): web RequestMode
-	c inline "getObjectField(#1, \"mode\")"
-pub extern setcredentials(this: js_object, value: RequestCredentials): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcredentials(this: js_object): web RequestCredentials
-	c inline "getObjectField(#1, \"credentials\")"
-pub extern setcache(this: js_object, value: RequestCache): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcache(this: js_object): web RequestCache
-	c inline "getObjectField(#1, \"cache\")"
-pub extern setredirect(this: js_object, value: RequestRedirect): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getredirect(this: js_object): web RequestRedirect
-	c inline "getObjectField(#1, \"redirect\")"
-pub extern setintegrity(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getintegrity(this: js_object): web String
-	c inline "getObjectField(#1, \"integrity\")"
-pub extern setkeepalive(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getkeepalive(this: js_object): web bool
-	c inline "getObjectField(#1, \"keepalive\")"
-pub extern setsignal(this: js_object, value: maybe<dom.kk/AbortSignal>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsignal(this: js_object): web maybe<dom.kk/AbortSignal>
-	c inline "getObjectField(#1, \"signal\")"
-pub extern setduplex(this: js_object, value: RequestDuplex): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getduplex(this: js_object): web RequestDuplex
-	c inline "getObjectField(#1, \"duplex\")"
-pub extern setpriority(this: js_object, value: RequestPriority): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpriority(this: js_object): web RequestPriority
-	c inline "getObjectField(#1, \"priority\")"
-pub extern setwindow(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwindow(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"window\")"
-pub extern setprivateToken(this: js_object, value: trust_token_api.kk/PrivateToken): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprivateToken(this: js_object): web trust_token_api.kk/PrivateToken
-	c inline "getObjectField(#1, \"privateToken\")"
-struct Response
-{,
-,
-,
-,
-,
-,
+pub alias requestDestination = string;
 
-}
-pub extern newResponse([], [body: maybe<BodyInit> =  Nothing, init: ResponseInit])
-(pub extern error( [], []), pub extern redirect( [url: String], [status: int]), pub extern json( [data: maybe<dart:js_interop/JSAny>], [init: ResponseInit]))
 
-pub extern clone(this: js_object, [], [])
-pub extern gettype(this: js_object): web ResponseType
-	c inline "getObjectField(#1, \"type\")"
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
-pub extern getredirected(this: js_object): web bool
-	c inline "getObjectField(#1, \"redirected\")"
-pub extern getstatus(this: js_object): web int
-	c inline "getObjectField(#1, \"status\")"
-pub extern getok(this: js_object): web bool
-	c inline "getObjectField(#1, \"ok\")"
-pub extern getstatusText(this: js_object): web String
-	c inline "getObjectField(#1, \"statusText\")"
-pub extern getheaders(this: js_object): web Headers
-	c inline "getObjectField(#1, \"headers\")"
-struct ResponseInit
-{  status: int,
-  statusText: String,
-  headers: HeadersInit
-}
-pub extern newResponseInit([status: maybe<int> = Nothing, statusText: maybe<String> = Nothing, headers: maybe<HeadersInit> = Nothing])
-()
+pub alias requestMode = string;
 
-pub extern setstatus(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstatus(this: js_object): web int
-	c inline "getObjectField(#1, \"status\")"
-pub extern setstatusText(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstatusText(this: js_object): web String
-	c inline "getObjectField(#1, \"statusText\")"
-pub extern setheaders(this: js_object, value: HeadersInit): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheaders(this: js_object): web HeadersInit
-	c inline "getObjectField(#1, \"headers\")"
+
+pub alias requestCredentials = string;
+
+
+pub alias requestCache = string;
+
+
+pub alias requestRedirect = string;
+
+
+pub alias requestDuplex = string;
+
+
+pub alias requestPriority = string;
+
+
+pub alias responseType = string;
+
+pub value struct headers
+  obj: jsObject
+
+pub inline fun newHeaders(init': headersInit)
+  newJsObject1("Headers", init')"
+
+pub inline fun append(obj: headers, name': string, value': string): web ()
+  jsOperation4(obj.obj, "append", name'.obj, value'.obj)
+
+pub inline fun delete(obj: headers, name': string): web ()
+  jsOperation3(obj.obj, "delete", name'.obj)
+
+pub inline fun get(obj: headers, name': string): web maybe<string>
+  jsOperation3(obj.obj, "get", name'.obj)
+
+pub inline fun getSetCookie(obj: headers): web jsArray
+  jsOperation2(obj.obj, "getSetCookie")
+
+pub inline fun has(obj: headers, name': string): web bool
+  jsOperation3(obj.obj, "has", name'.obj)
+
+pub inline fun set(obj: headers, name': string, value': string): web ()
+  jsOperation4(obj.obj, "set", name'.obj, value'.obj)
+
+pub value struct body
+  obj: jsObject
+
+
+pub inline fun arrayBuffer(obj: body): web jsPromise
+  jsOperation2(obj.obj, "arrayBuffer")
+
+pub inline fun blob(obj: body): web jsPromise
+  jsOperation2(obj.obj, "blob")
+
+pub inline fun formData(obj: body): web jsPromise
+  jsOperation2(obj.obj, "formData")
+
+pub inline fun json(obj: body): web jsPromise
+  jsOperation2(obj.obj, "json")
+
+pub inline fun text(obj: body): web jsPromise
+  jsOperation2(obj.obj, "text")
+
+pub inline fun body(obj: body): web maybe<streams/readableStream>
+  getJsObjectField(obj.obj, "body")
+
+pub inline fun bodyUsed(obj: body): web bool
+  getJsObjectField(obj.obj, "bodyUsed")
+
+pub value struct request
+  obj: jsObject
+
+pub inline fun newRequest(input': requestInfo, init': requestInit)
+  newJsObject2("Request", input', init')"
+
+pub inline fun clone(obj: request): web request
+  jsOperation2(obj.obj, "clone")
+
+pub inline fun method(obj: request): web string
+  getJsObjectField(obj.obj, "method")
+
+pub inline fun url(obj: request): web string
+  getJsObjectField(obj.obj, "url")
+
+pub inline fun headers(obj: request): web headers
+  getJsObjectField(obj.obj, "headers")
+
+pub inline fun destination(obj: request): web requestDestination
+  getJsObjectField(obj.obj, "destination")
+
+pub inline fun referrer(obj: request): web string
+  getJsObjectField(obj.obj, "referrer")
+
+pub inline fun referrerPolicy(obj: request): web referrer_policy/referrerPolicy
+  getJsObjectField(obj.obj, "referrerPolicy")
+
+pub inline fun mode(obj: request): web requestMode
+  getJsObjectField(obj.obj, "mode")
+
+pub inline fun credentials(obj: request): web requestCredentials
+  getJsObjectField(obj.obj, "credentials")
+
+pub inline fun cache(obj: request): web requestCache
+  getJsObjectField(obj.obj, "cache")
+
+pub inline fun redirect(obj: request): web requestRedirect
+  getJsObjectField(obj.obj, "redirect")
+
+pub inline fun integrity(obj: request): web string
+  getJsObjectField(obj.obj, "integrity")
+
+pub inline fun keepalive(obj: request): web bool
+  getJsObjectField(obj.obj, "keepalive")
+
+pub inline fun isReloadNavigation(obj: request): web bool
+  getJsObjectField(obj.obj, "isReloadNavigation")
+
+pub inline fun isHistoryNavigation(obj: request): web bool
+  getJsObjectField(obj.obj, "isHistoryNavigation")
+
+pub inline fun signal(obj: request): web dom/abortSignal
+  getJsObjectField(obj.obj, "signal")
+
+pub inline fun duplex(obj: request): web requestDuplex
+  getJsObjectField(obj.obj, "duplex")
+
+pub value struct requestInit
+  obj: jsObject
+
+pub fun newRequestInit(attributionReporting: maybe<attribution_reporting_api/attributionReportingRequestOptions> = Nothing, method: maybe<string> = Nothing, headers: maybe<headersInit> = Nothing, body: maybe<maybe<bodyInit>> = Nothing, referrer: maybe<string> = Nothing, referrerPolicy: maybe<referrer_policy/referrerPolicy> = Nothing, mode: maybe<requestMode> = Nothing, credentials: maybe<requestCredentials> = Nothing, cache: maybe<requestCache> = Nothing, redirect: maybe<requestRedirect> = Nothing, integrity: maybe<string> = Nothing, keepalive: maybe<bool> = Nothing, signal: maybe<maybe<dom/abortSignal>> = Nothing, duplex: maybe<requestDuplex> = Nothing, priority: maybe<requestPriority> = Nothing, window: maybe<maybe<jsObject>> = Nothing, privateToken: maybe<trust_token_api/privateToken> = Nothing)
+  val obj = newJsObject();
+  match attributionReporting
+    Just(it) -> setJsObjectField(obj, "attributionReporting", it)
+    Nothing -> ()
+  match method
+    Just(it) -> setJsObjectField(obj, "method", it)
+    Nothing -> ()
+  match headers
+    Just(it) -> setJsObjectField(obj, "headers", it)
+    Nothing -> ()
+  match body
+    Just(it) -> setJsObjectField(obj, "body", it)
+    Nothing -> ()
+  match referrer
+    Just(it) -> setJsObjectField(obj, "referrer", it)
+    Nothing -> ()
+  match referrerPolicy
+    Just(it) -> setJsObjectField(obj, "referrerPolicy", it)
+    Nothing -> ()
+  match mode
+    Just(it) -> setJsObjectField(obj, "mode", it)
+    Nothing -> ()
+  match credentials
+    Just(it) -> setJsObjectField(obj, "credentials", it)
+    Nothing -> ()
+  match cache
+    Just(it) -> setJsObjectField(obj, "cache", it)
+    Nothing -> ()
+  match redirect
+    Just(it) -> setJsObjectField(obj, "redirect", it)
+    Nothing -> ()
+  match integrity
+    Just(it) -> setJsObjectField(obj, "integrity", it)
+    Nothing -> ()
+  match keepalive
+    Just(it) -> setJsObjectField(obj, "keepalive", it)
+    Nothing -> ()
+  match signal
+    Just(it) -> setJsObjectField(obj, "signal", it)
+    Nothing -> ()
+  match duplex
+    Just(it) -> setJsObjectField(obj, "duplex", it)
+    Nothing -> ()
+  match priority
+    Just(it) -> setJsObjectField(obj, "priority", it)
+    Nothing -> ()
+  match window
+    Just(it) -> setJsObjectField(obj, "window", it)
+    Nothing -> ()
+  match privateToken
+    Just(it) -> setJsObjectField(obj, "privateToken", it)
+    Nothing -> ()
+
+  RequestInit(obj);
+
+pub inline fun attributionReporting(obj: requestInit, value: attribution_reporting_api/attributionReportingRequestOptions): web ()
+  setJsObjectField(obj.obj, "attributionReporting", value.obj)
+
+pub inline fun attributionReporting(obj: requestInit): web attribution_reporting_api/attributionReportingRequestOptions
+  getJsObjectField(obj.obj, "attributionReporting")
+
+pub inline fun method(obj: requestInit, value: string): web ()
+  setJsObjectField(obj.obj, "method", value.obj)
+
+pub inline fun method(obj: requestInit): web string
+  getJsObjectField(obj.obj, "method")
+
+pub inline fun headers(obj: requestInit, value: headersInit): web ()
+  setJsObjectField(obj.obj, "headers", value.obj)
+
+pub inline fun headers(obj: requestInit): web headersInit
+  getJsObjectField(obj.obj, "headers")
+
+pub inline fun body(obj: requestInit, value: maybe<bodyInit>): web ()
+  setJsObjectField(obj.obj, "body", value.obj)
+
+pub inline fun body(obj: requestInit): web maybe<bodyInit>
+  getJsObjectField(obj.obj, "body")
+
+pub inline fun referrer(obj: requestInit, value: string): web ()
+  setJsObjectField(obj.obj, "referrer", value.obj)
+
+pub inline fun referrer(obj: requestInit): web string
+  getJsObjectField(obj.obj, "referrer")
+
+pub inline fun referrerPolicy(obj: requestInit, value: referrer_policy/referrerPolicy): web ()
+  setJsObjectField(obj.obj, "referrerPolicy", value.obj)
+
+pub inline fun referrerPolicy(obj: requestInit): web referrer_policy/referrerPolicy
+  getJsObjectField(obj.obj, "referrerPolicy")
+
+pub inline fun mode(obj: requestInit, value: requestMode): web ()
+  setJsObjectField(obj.obj, "mode", value.obj)
+
+pub inline fun mode(obj: requestInit): web requestMode
+  getJsObjectField(obj.obj, "mode")
+
+pub inline fun credentials(obj: requestInit, value: requestCredentials): web ()
+  setJsObjectField(obj.obj, "credentials", value.obj)
+
+pub inline fun credentials(obj: requestInit): web requestCredentials
+  getJsObjectField(obj.obj, "credentials")
+
+pub inline fun cache(obj: requestInit, value: requestCache): web ()
+  setJsObjectField(obj.obj, "cache", value.obj)
+
+pub inline fun cache(obj: requestInit): web requestCache
+  getJsObjectField(obj.obj, "cache")
+
+pub inline fun redirect(obj: requestInit, value: requestRedirect): web ()
+  setJsObjectField(obj.obj, "redirect", value.obj)
+
+pub inline fun redirect(obj: requestInit): web requestRedirect
+  getJsObjectField(obj.obj, "redirect")
+
+pub inline fun integrity(obj: requestInit, value: string): web ()
+  setJsObjectField(obj.obj, "integrity", value.obj)
+
+pub inline fun integrity(obj: requestInit): web string
+  getJsObjectField(obj.obj, "integrity")
+
+pub inline fun keepalive(obj: requestInit, value: bool): web ()
+  setJsObjectField(obj.obj, "keepalive", value.obj)
+
+pub inline fun keepalive(obj: requestInit): web bool
+  getJsObjectField(obj.obj, "keepalive")
+
+pub inline fun signal(obj: requestInit, value: maybe<dom/abortSignal>): web ()
+  setJsObjectField(obj.obj, "signal", value.obj)
+
+pub inline fun signal(obj: requestInit): web maybe<dom/abortSignal>
+  getJsObjectField(obj.obj, "signal")
+
+pub inline fun duplex(obj: requestInit, value: requestDuplex): web ()
+  setJsObjectField(obj.obj, "duplex", value.obj)
+
+pub inline fun duplex(obj: requestInit): web requestDuplex
+  getJsObjectField(obj.obj, "duplex")
+
+pub inline fun priority(obj: requestInit, value: requestPriority): web ()
+  setJsObjectField(obj.obj, "priority", value.obj)
+
+pub inline fun priority(obj: requestInit): web requestPriority
+  getJsObjectField(obj.obj, "priority")
+
+pub inline fun window(obj: requestInit, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "window", value.obj)
+
+pub inline fun window(obj: requestInit): web maybe<jsObject>
+  getJsObjectField(obj.obj, "window")
+
+pub inline fun privateToken(obj: requestInit, value: trust_token_api/privateToken): web ()
+  setJsObjectField(obj.obj, "privateToken", value.obj)
+
+pub inline fun privateToken(obj: requestInit): web trust_token_api/privateToken
+  getJsObjectField(obj.obj, "privateToken")
+
+pub value struct response
+  obj: jsObject
+
+pub inline fun newResponse(body': maybe<bodyInit> =  Nothing, init': responseInit)
+  newJsObject2("Response", body', init')"
+pub inline fun error(): web response
+  jsOperation1("error")
+
+pub inline fun redirect(url': string, status': int): web response
+  jsOperation3("redirect", url'.obj, status'.obj)
+
+pub inline fun json(data': maybe<jsObject>, init': responseInit): web response
+  jsOperation3("json", data'.obj, init'.obj)
+
+pub inline fun clone(obj: response): web response
+  jsOperation2(obj.obj, "clone")
+
+pub inline fun type(obj: response): web responseType
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun url(obj: response): web string
+  getJsObjectField(obj.obj, "url")
+
+pub inline fun redirected(obj: response): web bool
+  getJsObjectField(obj.obj, "redirected")
+
+pub inline fun status(obj: response): web int
+  getJsObjectField(obj.obj, "status")
+
+pub inline fun ok(obj: response): web bool
+  getJsObjectField(obj.obj, "ok")
+
+pub inline fun statusText(obj: response): web string
+  getJsObjectField(obj.obj, "statusText")
+
+pub inline fun headers(obj: response): web headers
+  getJsObjectField(obj.obj, "headers")
+
+pub value struct responseInit
+  obj: jsObject
+
+pub fun newResponseInit(status: maybe<int> = Nothing, statusText: maybe<string> = Nothing, headers: maybe<headersInit> = Nothing)
+  val obj = newJsObject();
+  match status
+    Just(it) -> setJsObjectField(obj, "status", it)
+    Nothing -> ()
+  match statusText
+    Just(it) -> setJsObjectField(obj, "statusText", it)
+    Nothing -> ()
+  match headers
+    Just(it) -> setJsObjectField(obj, "headers", it)
+    Nothing -> ()
+
+  ResponseInit(obj);
+
+pub inline fun status(obj: responseInit, value: int): web ()
+  setJsObjectField(obj.obj, "status", value.obj)
+
+pub inline fun status(obj: responseInit): web int
+  getJsObjectField(obj.obj, "status")
+
+pub inline fun statusText(obj: responseInit, value: string): web ()
+  setJsObjectField(obj.obj, "statusText", value.obj)
+
+pub inline fun statusText(obj: responseInit): web string
+  getJsObjectField(obj.obj, "statusText")
+
+pub inline fun headers(obj: responseInit, value: headersInit): web ()
+  setJsObjectField(obj.obj, "headers", value.obj)
+
+pub inline fun headers(obj: responseInit): web headersInit
+  getJsObjectField(obj.obj, "headers")
+

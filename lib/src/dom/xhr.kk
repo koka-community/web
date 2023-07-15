@@ -1,161 +1,226 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias FormDataEntryValue = JSAny
+import web/wasm
+pub alias formDataEntryValue = JSAny;
 
 
-alias XMLHttpRequestResponseType = String
-struct XMLHttpRequestEventTarget
-{,
-,
-,
-,
-,
-,
 
-}
+pub alias xmlHttpRequestResponseType = string;
 
-()
+pub value struct xmlHttpRequestEventTarget
+  obj: jsObject
 
-pub extern setonloadstart(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonloadstart(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onloadstart\")"
-pub extern setonprogress(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonprogress(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onprogress\")"
-pub extern setonabort(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonabort(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onabort\")"
-pub extern setonerror(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonerror(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onerror\")"
-pub extern setonload(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonload(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onload\")"
-pub extern setontimeout(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontimeout(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"ontimeout\")"
-pub extern setonloadend(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonloadend(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onloadend\")"
-struct XMLHttpRequestUpload
-{
-}
 
-()
+pub inline fun onloadstart(obj: xmlHttpRequestEventTarget, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onloadstart", value.obj)
 
-struct XMLHttpRequest
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub inline fun onloadstart(obj: xmlHttpRequestEventTarget): web html/eventHandler
+  getJsObjectField(obj.obj, "onloadstart")
 
-}
-pub extern newXMLHttpRequest([], [])
-(pub extern UNSENT(): int
-	c inline "getConstant(\"UNSENT\")", pub extern OPENED(): int
-	c inline "getConstant(\"OPENED\")", pub extern HEADERS_RECEIVED(): int
-	c inline "getConstant(\"HEADERS_RECEIVED\")", pub extern LOADING(): int
-	c inline "getConstant(\"LOADING\")", pub extern DONE(): int
-	c inline "getConstant(\"DONE\")")
+pub inline fun onprogress(obj: xmlHttpRequestEventTarget, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onprogress", value.obj)
 
-pub extern setAttributionReporting(this: js_object, [options: attribution_reporting_api.kk/AttributionReportingRequestOptions], [])
-pub extern open(this: js_object, [method: String, url: String], [async: bool, username: maybe<String> =  Nothing, password: maybe<String> =  Nothing])
-pub extern setRequestHeader(this: js_object, [name: String, value: String], [])
-pub extern send(this: js_object, [], [body: maybe<dart:js_interop/JSAny> =  Nothing])
-pub extern abort(this: js_object, [], [])
-pub extern getResponseHeader(this: js_object, [name: String], [])
-pub extern getAllResponseHeaders(this: js_object, [], [])
-pub extern overrideMimeType(this: js_object, [mime: String], [])
-pub extern setonreadystatechange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonreadystatechange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onreadystatechange\")"
-pub extern getreadyState(this: js_object): web int
-	c inline "getObjectField(#1, \"readyState\")"
-pub extern settimeout(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimeout(this: js_object): web int
-	c inline "getObjectField(#1, \"timeout\")"
-pub extern setwithCredentials(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwithCredentials(this: js_object): web bool
-	c inline "getObjectField(#1, \"withCredentials\")"
-pub extern getupload(this: js_object): web XMLHttpRequestUpload
-	c inline "getObjectField(#1, \"upload\")"
-pub extern getresponseURL(this: js_object): web String
-	c inline "getObjectField(#1, \"responseURL\")"
-pub extern getstatus(this: js_object): web int
-	c inline "getObjectField(#1, \"status\")"
-pub extern getstatusText(this: js_object): web String
-	c inline "getObjectField(#1, \"statusText\")"
-pub extern setresponseType(this: js_object, value: XMLHttpRequestResponseType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getresponseType(this: js_object): web XMLHttpRequestResponseType
-	c inline "getObjectField(#1, \"responseType\")"
-pub extern getresponse(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"response\")"
-pub extern getresponseText(this: js_object): web String
-	c inline "getObjectField(#1, \"responseText\")"
-pub extern getresponseXML(this: js_object): web maybe<dom.kk/Document>
-	c inline "getObjectField(#1, \"responseXML\")"
-struct FormData
-{
-}
-pub extern newFormData([], [form: html.kk/HTMLFormElement, submitter: maybe<html.kk/HTMLElement> =  Nothing])
-()
+pub inline fun onprogress(obj: xmlHttpRequestEventTarget): web html/eventHandler
+  getJsObjectField(obj.obj, "onprogress")
 
-pub extern append(this: js_object, [name: String, blobValueOrValue: maybe<dart:js_interop/JSAny>], [filename: String])
-pub extern delete(this: js_object, [name: String], [])
-pub extern get(this: js_object, [name: String], [])
-pub extern getAll(this: js_object, [name: String], [])
-pub extern has(this: js_object, [name: String], [])
-pub extern set(this: js_object, [name: String, blobValueOrValue: maybe<dart:js_interop/JSAny>], [filename: String])
-struct ProgressEvent
-{,
-,
+pub inline fun onabort(obj: xmlHttpRequestEventTarget, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onabort", value.obj)
 
-}
-pub extern newProgressEvent([type: String], [eventInitDict: ProgressEventInit])
-()
+pub inline fun onabort(obj: xmlHttpRequestEventTarget): web html/eventHandler
+  getJsObjectField(obj.obj, "onabort")
 
-pub extern getlengthComputable(this: js_object): web bool
-	c inline "getObjectField(#1, \"lengthComputable\")"
-pub extern getloaded(this: js_object): web int
-	c inline "getObjectField(#1, \"loaded\")"
-pub extern gettotal(this: js_object): web int
-	c inline "getObjectField(#1, \"total\")"
-struct ProgressEventInit
-{  lengthComputable: bool,
-  loaded: int,
-  total: int
-}
-pub extern newProgressEventInit([lengthComputable: maybe<bool> = Nothing, loaded: maybe<int> = Nothing, total: maybe<int> = Nothing])
-()
+pub inline fun onerror(obj: xmlHttpRequestEventTarget, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onerror", value.obj)
 
-pub extern setlengthComputable(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlengthComputable(this: js_object): web bool
-	c inline "getObjectField(#1, \"lengthComputable\")"
-pub extern setloaded(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getloaded(this: js_object): web int
-	c inline "getObjectField(#1, \"loaded\")"
-pub extern settotal(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettotal(this: js_object): web int
-	c inline "getObjectField(#1, \"total\")"
+pub inline fun onerror(obj: xmlHttpRequestEventTarget): web html/eventHandler
+  getJsObjectField(obj.obj, "onerror")
+
+pub inline fun onload(obj: xmlHttpRequestEventTarget, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onload", value.obj)
+
+pub inline fun onload(obj: xmlHttpRequestEventTarget): web html/eventHandler
+  getJsObjectField(obj.obj, "onload")
+
+pub inline fun ontimeout(obj: xmlHttpRequestEventTarget, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "ontimeout", value.obj)
+
+pub inline fun ontimeout(obj: xmlHttpRequestEventTarget): web html/eventHandler
+  getJsObjectField(obj.obj, "ontimeout")
+
+pub inline fun onloadend(obj: xmlHttpRequestEventTarget, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onloadend", value.obj)
+
+pub inline fun onloadend(obj: xmlHttpRequestEventTarget): web html/eventHandler
+  getJsObjectField(obj.obj, "onloadend")
+
+pub value struct xmlHttpRequestUpload
+  obj: jsObject
+
+
+pub value struct xmlHttpRequest
+  obj: jsObject
+
+pub inline fun newXmlHttpRequest()
+  newJsObject0("XmlHttpRequest")"
+pub inline fun unsenT(): int
+  getConstant("UNSENT")
+
+pub inline fun openeD(): int
+  getConstant("OPENED")
+
+pub inline fun headersreceiveD(): int
+  getConstant("HEADERS_RECEIVED")
+
+pub inline fun loadinG(): int
+  getConstant("LOADING")
+
+pub inline fun donE(): int
+  getConstant("DONE")
+
+pub inline fun setAttributionReporting(obj: xmlHttpRequest, options': attribution_reporting_api/attributionReportingRequestOptions): web ()
+  jsOperation3(obj.obj, "setAttributionReporting", options'.obj)
+
+pub inline fun open(obj: xmlHttpRequest, method': string, url': string, async': bool, username': maybe<string> =  Nothing, password': maybe<string> =  Nothing): web ()
+  jsOperation7(obj.obj, "open", method'.obj, url'.obj, async'.obj, username'.obj, password'.obj)
+
+pub inline fun setRequestHeader(obj: xmlHttpRequest, name': string, value': string): web ()
+  jsOperation4(obj.obj, "setRequestHeader", name'.obj, value'.obj)
+
+pub inline fun send(obj: xmlHttpRequest, body': maybe<jsObject> =  Nothing): web ()
+  jsOperation3(obj.obj, "send", body'.obj)
+
+pub inline fun abort(obj: xmlHttpRequest): web ()
+  jsOperation2(obj.obj, "abort")
+
+pub inline fun getResponseHeader(obj: xmlHttpRequest, name': string): web maybe<string>
+  jsOperation3(obj.obj, "getResponseHeader", name'.obj)
+
+pub inline fun getAllResponseHeaders(obj: xmlHttpRequest): web string
+  jsOperation2(obj.obj, "getAllResponseHeaders")
+
+pub inline fun overrideMimeType(obj: xmlHttpRequest, mime': string): web ()
+  jsOperation3(obj.obj, "overrideMimeType", mime'.obj)
+
+pub inline fun onreadystatechange(obj: xmlHttpRequest, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onreadystatechange", value.obj)
+
+pub inline fun onreadystatechange(obj: xmlHttpRequest): web html/eventHandler
+  getJsObjectField(obj.obj, "onreadystatechange")
+
+pub inline fun readyState(obj: xmlHttpRequest): web int
+  getJsObjectField(obj.obj, "readyState")
+
+pub inline fun timeout(obj: xmlHttpRequest, value: int): web ()
+  setJsObjectField(obj.obj, "timeout", value.obj)
+
+pub inline fun timeout(obj: xmlHttpRequest): web int
+  getJsObjectField(obj.obj, "timeout")
+
+pub inline fun withCredentials(obj: xmlHttpRequest, value: bool): web ()
+  setJsObjectField(obj.obj, "withCredentials", value.obj)
+
+pub inline fun withCredentials(obj: xmlHttpRequest): web bool
+  getJsObjectField(obj.obj, "withCredentials")
+
+pub inline fun upload(obj: xmlHttpRequest): web xmlHttpRequestUpload
+  getJsObjectField(obj.obj, "upload")
+
+pub inline fun responseURL(obj: xmlHttpRequest): web string
+  getJsObjectField(obj.obj, "responseURL")
+
+pub inline fun status(obj: xmlHttpRequest): web int
+  getJsObjectField(obj.obj, "status")
+
+pub inline fun statusText(obj: xmlHttpRequest): web string
+  getJsObjectField(obj.obj, "statusText")
+
+pub inline fun responseType(obj: xmlHttpRequest, value: xmlHttpRequestResponseType): web ()
+  setJsObjectField(obj.obj, "responseType", value.obj)
+
+pub inline fun responseType(obj: xmlHttpRequest): web xmlHttpRequestResponseType
+  getJsObjectField(obj.obj, "responseType")
+
+pub inline fun response(obj: xmlHttpRequest): web maybe<jsObject>
+  getJsObjectField(obj.obj, "response")
+
+pub inline fun responseText(obj: xmlHttpRequest): web string
+  getJsObjectField(obj.obj, "responseText")
+
+pub inline fun responseXML(obj: xmlHttpRequest): web maybe<dom/document>
+  getJsObjectField(obj.obj, "responseXML")
+
+pub value struct formData
+  obj: jsObject
+
+pub inline fun newFormData(form': html/htmlFormElement, submitter': maybe<html/htmlElement> =  Nothing)
+  newJsObject2("FormData", form', submitter')"
+
+pub inline fun append(obj: formData, name': string, blobValueOrValue': maybe<jsObject>, filename': string): web ()
+  jsOperation5(obj.obj, "append", name'.obj, blobValueOrValue'.obj, filename'.obj)
+
+pub inline fun delete(obj: formData, name': string): web ()
+  jsOperation3(obj.obj, "delete", name'.obj)
+
+pub inline fun get(obj: formData, name': string): web maybe<formDataEntryValue>
+  jsOperation3(obj.obj, "get", name'.obj)
+
+pub inline fun getAll(obj: formData, name': string): web jsArray
+  jsOperation3(obj.obj, "getAll", name'.obj)
+
+pub inline fun has(obj: formData, name': string): web bool
+  jsOperation3(obj.obj, "has", name'.obj)
+
+pub inline fun set(obj: formData, name': string, blobValueOrValue': maybe<jsObject>, filename': string): web ()
+  jsOperation5(obj.obj, "set", name'.obj, blobValueOrValue'.obj, filename'.obj)
+
+pub value struct progressEvent
+  obj: jsObject
+
+pub inline fun newProgressEvent(type': string, eventInitDict': progressEventInit)
+  newJsObject2("ProgressEvent", type', eventInitDict')"
+
+pub inline fun lengthComputable(obj: progressEvent): web bool
+  getJsObjectField(obj.obj, "lengthComputable")
+
+pub inline fun loaded(obj: progressEvent): web int
+  getJsObjectField(obj.obj, "loaded")
+
+pub inline fun total(obj: progressEvent): web int
+  getJsObjectField(obj.obj, "total")
+
+pub value struct progressEventInit
+  obj: jsObject
+
+pub fun newProgressEventInit(lengthComputable: maybe<bool> = Nothing, loaded: maybe<int> = Nothing, total: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match lengthComputable
+    Just(it) -> setJsObjectField(obj, "lengthComputable", it)
+    Nothing -> ()
+  match loaded
+    Just(it) -> setJsObjectField(obj, "loaded", it)
+    Nothing -> ()
+  match total
+    Just(it) -> setJsObjectField(obj, "total", it)
+    Nothing -> ()
+
+  ProgressEventInit(obj);
+
+pub inline fun lengthComputable(obj: progressEventInit, value: bool): web ()
+  setJsObjectField(obj.obj, "lengthComputable", value.obj)
+
+pub inline fun lengthComputable(obj: progressEventInit): web bool
+  getJsObjectField(obj.obj, "lengthComputable")
+
+pub inline fun loaded(obj: progressEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "loaded", value.obj)
+
+pub inline fun loaded(obj: progressEventInit): web int
+  getJsObjectField(obj.obj, "loaded")
+
+pub inline fun total(obj: progressEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "total", value.obj)
+
+pub inline fun total(obj: progressEventInit): web int
+  getJsObjectField(obj.obj, "total")
+

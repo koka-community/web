@@ -1,76 +1,74 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct FontMetrics
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub value struct fontMetrics
+  obj: jsObject
 
-}
 
-()
+pub inline fun width(obj: fontMetrics): web double
+  getJsObjectField(obj.obj, "width")
 
-pub extern getwidth(this: js_object): web double
-	c inline "getObjectField(#1, \"width\")"
-pub extern getadvances(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"advances\")"
-pub extern getboundingBoxLeft(this: js_object): web double
-	c inline "getObjectField(#1, \"boundingBoxLeft\")"
-pub extern getboundingBoxRight(this: js_object): web double
-	c inline "getObjectField(#1, \"boundingBoxRight\")"
-pub extern getheight(this: js_object): web double
-	c inline "getObjectField(#1, \"height\")"
-pub extern getemHeightAscent(this: js_object): web double
-	c inline "getObjectField(#1, \"emHeightAscent\")"
-pub extern getemHeightDescent(this: js_object): web double
-	c inline "getObjectField(#1, \"emHeightDescent\")"
-pub extern getboundingBoxAscent(this: js_object): web double
-	c inline "getObjectField(#1, \"boundingBoxAscent\")"
-pub extern getboundingBoxDescent(this: js_object): web double
-	c inline "getObjectField(#1, \"boundingBoxDescent\")"
-pub extern getfontBoundingBoxAscent(this: js_object): web double
-	c inline "getObjectField(#1, \"fontBoundingBoxAscent\")"
-pub extern getfontBoundingBoxDescent(this: js_object): web double
-	c inline "getObjectField(#1, \"fontBoundingBoxDescent\")"
-pub extern getdominantBaseline(this: js_object): web Baseline
-	c inline "getObjectField(#1, \"dominantBaseline\")"
-pub extern getbaselines(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"baselines\")"
-pub extern getfonts(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"fonts\")"
-struct Baseline
-{,
+pub inline fun advances(obj: fontMetrics): web jsArray
+  getJsObjectField(obj.obj, "advances")
 
-}
+pub inline fun boundingBoxLeft(obj: fontMetrics): web double
+  getJsObjectField(obj.obj, "boundingBoxLeft")
 
-()
+pub inline fun boundingBoxRight(obj: fontMetrics): web double
+  getJsObjectField(obj.obj, "boundingBoxRight")
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getvalue(this: js_object): web double
-	c inline "getObjectField(#1, \"value\")"
-struct Font
-{,
+pub inline fun height(obj: fontMetrics): web double
+  getJsObjectField(obj.obj, "height")
 
-}
+pub inline fun emHeightAscent(obj: fontMetrics): web double
+  getJsObjectField(obj.obj, "emHeightAscent")
 
-()
+pub inline fun emHeightDescent(obj: fontMetrics): web double
+  getJsObjectField(obj.obj, "emHeightDescent")
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getglyphsRendered(this: js_object): web int
-	c inline "getObjectField(#1, \"glyphsRendered\")"
+pub inline fun boundingBoxAscent(obj: fontMetrics): web double
+  getJsObjectField(obj.obj, "boundingBoxAscent")
+
+pub inline fun boundingBoxDescent(obj: fontMetrics): web double
+  getJsObjectField(obj.obj, "boundingBoxDescent")
+
+pub inline fun fontBoundingBoxAscent(obj: fontMetrics): web double
+  getJsObjectField(obj.obj, "fontBoundingBoxAscent")
+
+pub inline fun fontBoundingBoxDescent(obj: fontMetrics): web double
+  getJsObjectField(obj.obj, "fontBoundingBoxDescent")
+
+pub inline fun dominantBaseline(obj: fontMetrics): web baseline
+  getJsObjectField(obj.obj, "dominantBaseline")
+
+pub inline fun baselines(obj: fontMetrics): web jsArray
+  getJsObjectField(obj.obj, "baselines")
+
+pub inline fun fonts(obj: fontMetrics): web jsArray
+  getJsObjectField(obj.obj, "fonts")
+
+pub value struct baseline
+  obj: jsObject
+
+
+pub inline fun name(obj: baseline): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun value(obj: baseline): web double
+  getJsObjectField(obj.obj, "value")
+
+pub value struct font
+  obj: jsObject
+
+
+pub inline fun name(obj: font): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun glyphsRendered(obj: font): web int
+  getJsObjectField(obj.obj, "glyphsRendered")
+

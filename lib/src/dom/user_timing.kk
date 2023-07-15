@@ -1,63 +1,94 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct PerformanceMarkOptions
-{  detail: maybe<dart:js_interop/JSAny>,
-  startTime: hr_time.kk/DOMHighResTimeStamp
-}
-pub extern newPerformanceMarkOptions([detail: maybe<maybe<dart:js_interop/JSAny>> = Nothing, startTime: maybe<hr_time.kk/DOMHighResTimeStamp> = Nothing])
-()
+pub value struct performanceMarkOptions
+  obj: jsObject
 
-pub extern setdetail(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdetail(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"detail\")"
-pub extern setstartTime(this: js_object, value: hr_time.kk/DOMHighResTimeStamp): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstartTime(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"startTime\")"
-struct PerformanceMeasureOptions
-{  detail: maybe<dart:js_interop/JSAny>,
-  start: maybe<dart:js_interop/JSAny>,
-  duration: hr_time.kk/DOMHighResTimeStamp,
-  end: maybe<dart:js_interop/JSAny>
-}
-pub extern newPerformanceMeasureOptions([detail: maybe<maybe<dart:js_interop/JSAny>> = Nothing, start: maybe<maybe<dart:js_interop/JSAny>> = Nothing, duration: maybe<hr_time.kk/DOMHighResTimeStamp> = Nothing, end: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
+pub fun newPerformanceMarkOptions(detail: maybe<maybe<jsObject>> = Nothing, startTime: maybe<hr_time/domHighResTimeStamp> = Nothing)
+  val obj = newJsObject();
+  match detail
+    Just(it) -> setJsObjectField(obj, "detail", it)
+    Nothing -> ()
+  match startTime
+    Just(it) -> setJsObjectField(obj, "startTime", it)
+    Nothing -> ()
 
-pub extern setdetail(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdetail(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"detail\")"
-pub extern setstart(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstart(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"start\")"
-pub extern setduration(this: js_object, value: hr_time.kk/DOMHighResTimeStamp): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getduration(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"duration\")"
-pub extern setend(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getend(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"end\")"
-struct PerformanceMark
-{
-}
-pub extern newPerformanceMark([markName: String], [markOptions: PerformanceMarkOptions])
-()
+  PerformanceMarkOptions(obj);
 
-pub extern getdetail(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"detail\")"
-struct PerformanceMeasure
-{
-}
+pub inline fun detail(obj: performanceMarkOptions, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "detail", value.obj)
 
-()
+pub inline fun detail(obj: performanceMarkOptions): web maybe<jsObject>
+  getJsObjectField(obj.obj, "detail")
 
-pub extern getdetail(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"detail\")"
+pub inline fun startTime(obj: performanceMarkOptions, value: hr_time/domHighResTimeStamp): web ()
+  setJsObjectField(obj.obj, "startTime", value.obj)
+
+pub inline fun startTime(obj: performanceMarkOptions): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "startTime")
+
+pub value struct performanceMeasureOptions
+  obj: jsObject
+
+pub fun newPerformanceMeasureOptions(detail: maybe<maybe<jsObject>> = Nothing, start: maybe<maybe<jsObject>> = Nothing, duration: maybe<hr_time/domHighResTimeStamp> = Nothing, end: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match detail
+    Just(it) -> setJsObjectField(obj, "detail", it)
+    Nothing -> ()
+  match start
+    Just(it) -> setJsObjectField(obj, "start", it)
+    Nothing -> ()
+  match duration
+    Just(it) -> setJsObjectField(obj, "duration", it)
+    Nothing -> ()
+  match end
+    Just(it) -> setJsObjectField(obj, "end", it)
+    Nothing -> ()
+
+  PerformanceMeasureOptions(obj);
+
+pub inline fun detail(obj: performanceMeasureOptions, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "detail", value.obj)
+
+pub inline fun detail(obj: performanceMeasureOptions): web maybe<jsObject>
+  getJsObjectField(obj.obj, "detail")
+
+pub inline fun start(obj: performanceMeasureOptions, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "start", value.obj)
+
+pub inline fun start(obj: performanceMeasureOptions): web maybe<jsObject>
+  getJsObjectField(obj.obj, "start")
+
+pub inline fun duration(obj: performanceMeasureOptions, value: hr_time/domHighResTimeStamp): web ()
+  setJsObjectField(obj.obj, "duration", value.obj)
+
+pub inline fun duration(obj: performanceMeasureOptions): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "duration")
+
+pub inline fun end(obj: performanceMeasureOptions, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "end", value.obj)
+
+pub inline fun end(obj: performanceMeasureOptions): web maybe<jsObject>
+  getJsObjectField(obj.obj, "end")
+
+pub value struct performanceMark
+  obj: jsObject
+
+pub inline fun newPerformanceMark(markName': string, markOptions': performanceMarkOptions)
+  newJsObject2("PerformanceMark", markName', markOptions')"
+
+pub inline fun detail(obj: performanceMark): web maybe<jsObject>
+  getJsObjectField(obj.obj, "detail")
+
+pub value struct performanceMeasure
+  obj: jsObject
+
+
+pub inline fun detail(obj: performanceMeasure): web maybe<jsObject>
+  getJsObjectField(obj.obj, "detail")
+

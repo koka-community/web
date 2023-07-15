@@ -1,145 +1,185 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias ReadyState = String
-alias EndOfStreamError = String
-alias AppendMode = String
-struct MediaSource
-{,
-,
-,
-,
-,
-,
-,
+pub alias readyState = string;
 
-}
-pub extern newMediaSource([], [])
-(pub extern isTypeSupported( [type: String], []), pub extern getcanConstructInDedicatedWorker(): web bool
-	c inline "getObjectField(\"canConstructInDedicatedWorker\")")
 
-pub extern addSourceBuffer(this: js_object, [type: String], [])
-pub extern removeSourceBuffer(this: js_object, [sourceBuffer: SourceBuffer], [])
-pub extern endOfStream(this: js_object, [], [error: EndOfStreamError])
-pub extern setLiveSeekableRange(this: js_object, [start: double, end: double], [])
-pub extern clearLiveSeekableRange(this: js_object, [], [])
-pub extern gethandle(this: js_object): web MediaSourceHandle
-	c inline "getObjectField(#1, \"handle\")"
-pub extern getsourceBuffers(this: js_object): web SourceBufferList
-	c inline "getObjectField(#1, \"sourceBuffers\")"
-pub extern getactiveSourceBuffers(this: js_object): web SourceBufferList
-	c inline "getObjectField(#1, \"activeSourceBuffers\")"
-pub extern getreadyState(this: js_object): web ReadyState
-	c inline "getObjectField(#1, \"readyState\")"
-pub extern setduration(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getduration(this: js_object): web double
-	c inline "getObjectField(#1, \"duration\")"
-pub extern setonsourceopen(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonsourceopen(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onsourceopen\")"
-pub extern setonsourceended(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonsourceended(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onsourceended\")"
-pub extern setonsourceclose(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonsourceclose(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onsourceclose\")"
-struct MediaSourceHandle
-{
-}
+pub alias endOfStreamError = string;
 
-()
 
-struct SourceBuffer
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub alias appendMode = string;
 
-}
+pub value struct mediaSource
+  obj: jsObject
 
-()
+pub inline fun newMediaSource()
+  newJsObject0("MediaSource")"
+pub inline fun isTypeSupported(type': string): web bool
+  jsOperation2("isTypeSupported", type'.obj)
 
-pub extern appendBuffer(this: js_object, [data: webidl.kk/BufferSource], [])
-pub extern abort(this: js_object, [], [])
-pub extern changeType(this: js_object, [type: String], [])
-pub extern remove(this: js_object, [start: double, end: double], [])
-pub extern setmode(this: js_object, value: AppendMode): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmode(this: js_object): web AppendMode
-	c inline "getObjectField(#1, \"mode\")"
-pub extern getupdating(this: js_object): web bool
-	c inline "getObjectField(#1, \"updating\")"
-pub extern getbuffered(this: js_object): web html.kk/TimeRanges
-	c inline "getObjectField(#1, \"buffered\")"
-pub extern settimestampOffset(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimestampOffset(this: js_object): web double
-	c inline "getObjectField(#1, \"timestampOffset\")"
-pub extern getaudioTracks(this: js_object): web html.kk/AudioTrackList
-	c inline "getObjectField(#1, \"audioTracks\")"
-pub extern getvideoTracks(this: js_object): web html.kk/VideoTrackList
-	c inline "getObjectField(#1, \"videoTracks\")"
-pub extern gettextTracks(this: js_object): web html.kk/TextTrackList
-	c inline "getObjectField(#1, \"textTracks\")"
-pub extern setappendWindowStart(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getappendWindowStart(this: js_object): web double
-	c inline "getObjectField(#1, \"appendWindowStart\")"
-pub extern setappendWindowEnd(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getappendWindowEnd(this: js_object): web double
-	c inline "getObjectField(#1, \"appendWindowEnd\")"
-pub extern setonupdatestart(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonupdatestart(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onupdatestart\")"
-pub extern setonupdate(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonupdate(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onupdate\")"
-pub extern setonupdateend(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonupdateend(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onupdateend\")"
-pub extern setonerror(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonerror(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onerror\")"
-pub extern setonabort(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonabort(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onabort\")"
-struct SourceBufferList
-{,
-,
+pub inline fun canConstructInDedicatedWorker(): web bool
+  getJsStatic Field(, "canConstructInDedicatedWorker")
 
-}
+pub inline fun addSourceBuffer(obj: mediaSource, type': string): web sourceBuffer
+  jsOperation3(obj.obj, "addSourceBuffer", type'.obj)
 
-()
+pub inline fun removeSourceBuffer(obj: mediaSource, sourceBuffer': sourceBuffer): web ()
+  jsOperation3(obj.obj, "removeSourceBuffer", sourceBuffer'.obj)
 
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-pub extern setonaddsourcebuffer(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonaddsourcebuffer(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onaddsourcebuffer\")"
-pub extern setonremovesourcebuffer(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonremovesourcebuffer(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onremovesourcebuffer\")"
+pub inline fun endOfStream(obj: mediaSource, error': endOfStreamError): web ()
+  jsOperation3(obj.obj, "endOfStream", error'.obj)
+
+pub inline fun setLiveSeekableRange(obj: mediaSource, start': double, end': double): web ()
+  jsOperation4(obj.obj, "setLiveSeekableRange", start'.obj, end'.obj)
+
+pub inline fun clearLiveSeekableRange(obj: mediaSource): web ()
+  jsOperation2(obj.obj, "clearLiveSeekableRange")
+
+pub inline fun handle(obj: mediaSource): web mediaSourceHandle
+  getJsObjectField(obj.obj, "handle")
+
+pub inline fun sourceBuffers(obj: mediaSource): web sourceBufferList
+  getJsObjectField(obj.obj, "sourceBuffers")
+
+pub inline fun activeSourceBuffers(obj: mediaSource): web sourceBufferList
+  getJsObjectField(obj.obj, "activeSourceBuffers")
+
+pub inline fun readyState(obj: mediaSource): web readyState
+  getJsObjectField(obj.obj, "readyState")
+
+pub inline fun duration(obj: mediaSource, value: double): web ()
+  setJsObjectField(obj.obj, "duration", value.obj)
+
+pub inline fun duration(obj: mediaSource): web double
+  getJsObjectField(obj.obj, "duration")
+
+pub inline fun onsourceopen(obj: mediaSource, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onsourceopen", value.obj)
+
+pub inline fun onsourceopen(obj: mediaSource): web html/eventHandler
+  getJsObjectField(obj.obj, "onsourceopen")
+
+pub inline fun onsourceended(obj: mediaSource, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onsourceended", value.obj)
+
+pub inline fun onsourceended(obj: mediaSource): web html/eventHandler
+  getJsObjectField(obj.obj, "onsourceended")
+
+pub inline fun onsourceclose(obj: mediaSource, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onsourceclose", value.obj)
+
+pub inline fun onsourceclose(obj: mediaSource): web html/eventHandler
+  getJsObjectField(obj.obj, "onsourceclose")
+
+pub value struct mediaSourceHandle
+  obj: jsObject
+
+
+pub value struct sourceBuffer
+  obj: jsObject
+
+
+pub inline fun appendBuffer(obj: sourceBuffer, data': webidl/bufferSource): web ()
+  jsOperation3(obj.obj, "appendBuffer", data'.obj)
+
+pub inline fun abort(obj: sourceBuffer): web ()
+  jsOperation2(obj.obj, "abort")
+
+pub inline fun changeType(obj: sourceBuffer, type': string): web ()
+  jsOperation3(obj.obj, "changeType", type'.obj)
+
+pub inline fun remove(obj: sourceBuffer, start': double, end': double): web ()
+  jsOperation4(obj.obj, "remove", start'.obj, end'.obj)
+
+pub inline fun mode(obj: sourceBuffer, value: appendMode): web ()
+  setJsObjectField(obj.obj, "mode", value.obj)
+
+pub inline fun mode(obj: sourceBuffer): web appendMode
+  getJsObjectField(obj.obj, "mode")
+
+pub inline fun updating(obj: sourceBuffer): web bool
+  getJsObjectField(obj.obj, "updating")
+
+pub inline fun buffered(obj: sourceBuffer): web html/timeRanges
+  getJsObjectField(obj.obj, "buffered")
+
+pub inline fun timestampOffset(obj: sourceBuffer, value: double): web ()
+  setJsObjectField(obj.obj, "timestampOffset", value.obj)
+
+pub inline fun timestampOffset(obj: sourceBuffer): web double
+  getJsObjectField(obj.obj, "timestampOffset")
+
+pub inline fun audioTracks(obj: sourceBuffer): web html/audioTrackList
+  getJsObjectField(obj.obj, "audioTracks")
+
+pub inline fun videoTracks(obj: sourceBuffer): web html/videoTrackList
+  getJsObjectField(obj.obj, "videoTracks")
+
+pub inline fun textTracks(obj: sourceBuffer): web html/textTrackList
+  getJsObjectField(obj.obj, "textTracks")
+
+pub inline fun appendWindowStart(obj: sourceBuffer, value: double): web ()
+  setJsObjectField(obj.obj, "appendWindowStart", value.obj)
+
+pub inline fun appendWindowStart(obj: sourceBuffer): web double
+  getJsObjectField(obj.obj, "appendWindowStart")
+
+pub inline fun appendWindowEnd(obj: sourceBuffer, value: double): web ()
+  setJsObjectField(obj.obj, "appendWindowEnd", value.obj)
+
+pub inline fun appendWindowEnd(obj: sourceBuffer): web double
+  getJsObjectField(obj.obj, "appendWindowEnd")
+
+pub inline fun onupdatestart(obj: sourceBuffer, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onupdatestart", value.obj)
+
+pub inline fun onupdatestart(obj: sourceBuffer): web html/eventHandler
+  getJsObjectField(obj.obj, "onupdatestart")
+
+pub inline fun onupdate(obj: sourceBuffer, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onupdate", value.obj)
+
+pub inline fun onupdate(obj: sourceBuffer): web html/eventHandler
+  getJsObjectField(obj.obj, "onupdate")
+
+pub inline fun onupdateend(obj: sourceBuffer, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onupdateend", value.obj)
+
+pub inline fun onupdateend(obj: sourceBuffer): web html/eventHandler
+  getJsObjectField(obj.obj, "onupdateend")
+
+pub inline fun onerror(obj: sourceBuffer, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onerror", value.obj)
+
+pub inline fun onerror(obj: sourceBuffer): web html/eventHandler
+  getJsObjectField(obj.obj, "onerror")
+
+pub inline fun onabort(obj: sourceBuffer, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onabort", value.obj)
+
+pub inline fun onabort(obj: sourceBuffer): web html/eventHandler
+  getJsObjectField(obj.obj, "onabort")
+
+pub value struct sourceBufferList
+  obj: jsObject
+
+
+pub inline fun length(obj: sourceBufferList): web int
+  getJsObjectField(obj.obj, "length")
+
+pub inline fun onaddsourcebuffer(obj: sourceBufferList, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onaddsourcebuffer", value.obj)
+
+pub inline fun onaddsourcebuffer(obj: sourceBufferList): web html/eventHandler
+  getJsObjectField(obj.obj, "onaddsourcebuffer")
+
+pub inline fun onremovesourcebuffer(obj: sourceBufferList, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onremovesourcebuffer", value.obj)
+
+pub inline fun onremovesourcebuffer(obj: sourceBufferList): web html/eventHandler
+  getJsObjectField(obj.obj, "onremovesourcebuffer")
+

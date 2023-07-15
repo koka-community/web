@@ -1,336 +1,523 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias WebTransportReliabilityMode = String
-alias WebTransportCongestionControl = String
-alias WebTransportErrorSource = String
-struct WebTransportDatagramDuplexStream
-{,
-,
-,
-,
-,
-,
+pub alias webTransportReliabilityMode = string;
 
-}
 
-()
+pub alias webTransportCongestionControl = string;
 
-pub extern getreadable(this: js_object): web streams.kk/ReadableStream
-	c inline "getObjectField(#1, \"readable\")"
-pub extern getwritable(this: js_object): web streams.kk/WritableStream
-	c inline "getObjectField(#1, \"writable\")"
-pub extern getmaxDatagramSize(this: js_object): web int
-	c inline "getObjectField(#1, \"maxDatagramSize\")"
-pub extern setincomingMaxAge(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getincomingMaxAge(this: js_object): web double
-	c inline "getObjectField(#1, \"incomingMaxAge\")"
-pub extern setoutgoingMaxAge(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoutgoingMaxAge(this: js_object): web double
-	c inline "getObjectField(#1, \"outgoingMaxAge\")"
-pub extern setincomingHighWaterMark(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getincomingHighWaterMark(this: js_object): web double
-	c inline "getObjectField(#1, \"incomingHighWaterMark\")"
-pub extern setoutgoingHighWaterMark(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoutgoingHighWaterMark(this: js_object): web double
-	c inline "getObjectField(#1, \"outgoingHighWaterMark\")"
-struct WebTransport
-{,
-,
-,
-,
-,
-,
-,
 
-}
-pub extern newWebTransport([url: String], [options: WebTransportOptions])
-()
+pub alias webTransportErrorSource = string;
 
-pub extern getStats(this: js_object, [], [])
-pub extern close(this: js_object, [], [closeInfo: WebTransportCloseInfo])
-pub extern createBidirectionalStream(this: js_object, [], [options: WebTransportSendStreamOptions])
-pub extern createUnidirectionalStream(this: js_object, [], [options: WebTransportSendStreamOptions])
-pub extern getready(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"ready\")"
-pub extern getreliability(this: js_object): web WebTransportReliabilityMode
-	c inline "getObjectField(#1, \"reliability\")"
-pub extern getcongestionControl(this: js_object): web WebTransportCongestionControl
-	c inline "getObjectField(#1, \"congestionControl\")"
-pub extern getclosed(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"closed\")"
-pub extern getdraining(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"draining\")"
-pub extern getdatagrams(this: js_object): web WebTransportDatagramDuplexStream
-	c inline "getObjectField(#1, \"datagrams\")"
-pub extern getincomingBidirectionalStreams(this: js_object): web streams.kk/ReadableStream
-	c inline "getObjectField(#1, \"incomingBidirectionalStreams\")"
-pub extern getincomingUnidirectionalStreams(this: js_object): web streams.kk/ReadableStream
-	c inline "getObjectField(#1, \"incomingUnidirectionalStreams\")"
-struct WebTransportHash
-{  algorithm: String,
-  value: webidl.kk/BufferSource
-}
-pub extern newWebTransportHash([algorithm: maybe<String> = Nothing, value: maybe<webidl.kk/BufferSource> = Nothing])
-()
+pub value struct webTransportDatagramDuplexStream
+  obj: jsObject
 
-pub extern setalgorithm(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalgorithm(this: js_object): web String
-	c inline "getObjectField(#1, \"algorithm\")"
-pub extern setvalue(this: js_object, value: webidl.kk/BufferSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web webidl.kk/BufferSource
-	c inline "getObjectField(#1, \"value\")"
-struct WebTransportOptions
-{  allowPooling: bool,
-  requireUnreliable: bool,
-  serverCertificateHashes: dart:js_interop/JSArray,
-  congestionControl: WebTransportCongestionControl
-}
-pub extern newWebTransportOptions([allowPooling: maybe<bool> = Nothing, requireUnreliable: maybe<bool> = Nothing, serverCertificateHashes: maybe<dart:js_interop/JSArray> = Nothing, congestionControl: maybe<WebTransportCongestionControl> = Nothing])
-()
 
-pub extern setallowPooling(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getallowPooling(this: js_object): web bool
-	c inline "getObjectField(#1, \"allowPooling\")"
-pub extern setrequireUnreliable(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequireUnreliable(this: js_object): web bool
-	c inline "getObjectField(#1, \"requireUnreliable\")"
-pub extern setserverCertificateHashes(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getserverCertificateHashes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"serverCertificateHashes\")"
-pub extern setcongestionControl(this: js_object, value: WebTransportCongestionControl): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcongestionControl(this: js_object): web WebTransportCongestionControl
-	c inline "getObjectField(#1, \"congestionControl\")"
-struct WebTransportCloseInfo
-{  closeCode: int,
-  reason: String
-}
-pub extern newWebTransportCloseInfo([closeCode: maybe<int> = Nothing, reason: maybe<String> = Nothing])
-()
+pub inline fun readable(obj: webTransportDatagramDuplexStream): web streams/readableStream
+  getJsObjectField(obj.obj, "readable")
 
-pub extern setcloseCode(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcloseCode(this: js_object): web int
-	c inline "getObjectField(#1, \"closeCode\")"
-pub extern setreason(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreason(this: js_object): web String
-	c inline "getObjectField(#1, \"reason\")"
-struct WebTransportSendStreamOptions
-{  sendOrder: maybe<int>
-}
-pub extern newWebTransportSendStreamOptions([sendOrder: maybe<maybe<int>> = Nothing])
-()
+pub inline fun writable(obj: webTransportDatagramDuplexStream): web streams/writableStream
+  getJsObjectField(obj.obj, "writable")
 
-pub extern setsendOrder(this: js_object, value: maybe<int>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsendOrder(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"sendOrder\")"
-struct WebTransportStats
-{  timestamp: hr_time.kk/DOMHighResTimeStamp,
-  bytesSent: int,
-  packetsSent: int,
-  packetsLost: int,
-  numOutgoingStreamsCreated: int,
-  numIncomingStreamsCreated: int,
-  bytesReceived: int,
-  packetsReceived: int,
-  smoothedRtt: hr_time.kk/DOMHighResTimeStamp,
-  rttVariation: hr_time.kk/DOMHighResTimeStamp,
-  minRtt: hr_time.kk/DOMHighResTimeStamp,
-  datagrams: WebTransportDatagramStats,
-  estimatedSendRate: maybe<int>
-}
-pub extern newWebTransportStats([timestamp: maybe<hr_time.kk/DOMHighResTimeStamp> = Nothing, bytesSent: maybe<int> = Nothing, packetsSent: maybe<int> = Nothing, packetsLost: maybe<int> = Nothing, numOutgoingStreamsCreated: maybe<int> = Nothing, numIncomingStreamsCreated: maybe<int> = Nothing, bytesReceived: maybe<int> = Nothing, packetsReceived: maybe<int> = Nothing, smoothedRtt: maybe<hr_time.kk/DOMHighResTimeStamp> = Nothing, rttVariation: maybe<hr_time.kk/DOMHighResTimeStamp> = Nothing, minRtt: maybe<hr_time.kk/DOMHighResTimeStamp> = Nothing, datagrams: maybe<WebTransportDatagramStats> = Nothing, estimatedSendRate: maybe<maybe<int>> = Nothing])
-()
+pub inline fun maxDatagramSize(obj: webTransportDatagramDuplexStream): web int
+  getJsObjectField(obj.obj, "maxDatagramSize")
 
-pub extern settimestamp(this: js_object, value: hr_time.kk/DOMHighResTimeStamp): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimestamp(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"timestamp\")"
-pub extern setbytesSent(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbytesSent(this: js_object): web int
-	c inline "getObjectField(#1, \"bytesSent\")"
-pub extern setpacketsSent(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpacketsSent(this: js_object): web int
-	c inline "getObjectField(#1, \"packetsSent\")"
-pub extern setpacketsLost(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpacketsLost(this: js_object): web int
-	c inline "getObjectField(#1, \"packetsLost\")"
-pub extern setnumOutgoingStreamsCreated(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnumOutgoingStreamsCreated(this: js_object): web int
-	c inline "getObjectField(#1, \"numOutgoingStreamsCreated\")"
-pub extern setnumIncomingStreamsCreated(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnumIncomingStreamsCreated(this: js_object): web int
-	c inline "getObjectField(#1, \"numIncomingStreamsCreated\")"
-pub extern setbytesReceived(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbytesReceived(this: js_object): web int
-	c inline "getObjectField(#1, \"bytesReceived\")"
-pub extern setpacketsReceived(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpacketsReceived(this: js_object): web int
-	c inline "getObjectField(#1, \"packetsReceived\")"
-pub extern setsmoothedRtt(this: js_object, value: hr_time.kk/DOMHighResTimeStamp): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsmoothedRtt(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"smoothedRtt\")"
-pub extern setrttVariation(this: js_object, value: hr_time.kk/DOMHighResTimeStamp): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrttVariation(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"rttVariation\")"
-pub extern setminRtt(this: js_object, value: hr_time.kk/DOMHighResTimeStamp): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getminRtt(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"minRtt\")"
-pub extern setdatagrams(this: js_object, value: WebTransportDatagramStats): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdatagrams(this: js_object): web WebTransportDatagramStats
-	c inline "getObjectField(#1, \"datagrams\")"
-pub extern setestimatedSendRate(this: js_object, value: maybe<int>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getestimatedSendRate(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"estimatedSendRate\")"
-struct WebTransportDatagramStats
-{  timestamp: hr_time.kk/DOMHighResTimeStamp,
-  expiredOutgoing: int,
-  droppedIncoming: int,
-  lostOutgoing: int
-}
-pub extern newWebTransportDatagramStats([timestamp: maybe<hr_time.kk/DOMHighResTimeStamp> = Nothing, expiredOutgoing: maybe<int> = Nothing, droppedIncoming: maybe<int> = Nothing, lostOutgoing: maybe<int> = Nothing])
-()
+pub inline fun incomingMaxAge(obj: webTransportDatagramDuplexStream, value: double): web ()
+  setJsObjectField(obj.obj, "incomingMaxAge", value.obj)
 
-pub extern settimestamp(this: js_object, value: hr_time.kk/DOMHighResTimeStamp): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimestamp(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"timestamp\")"
-pub extern setexpiredOutgoing(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getexpiredOutgoing(this: js_object): web int
-	c inline "getObjectField(#1, \"expiredOutgoing\")"
-pub extern setdroppedIncoming(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdroppedIncoming(this: js_object): web int
-	c inline "getObjectField(#1, \"droppedIncoming\")"
-pub extern setlostOutgoing(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlostOutgoing(this: js_object): web int
-	c inline "getObjectField(#1, \"lostOutgoing\")"
-struct WebTransportSendStream
-{
-}
+pub inline fun incomingMaxAge(obj: webTransportDatagramDuplexStream): web double
+  getJsObjectField(obj.obj, "incomingMaxAge")
 
-()
+pub inline fun outgoingMaxAge(obj: webTransportDatagramDuplexStream, value: double): web ()
+  setJsObjectField(obj.obj, "outgoingMaxAge", value.obj)
 
-pub extern getStats(this: js_object, [], [])
-pub extern setsendOrder(this: js_object, value: maybe<int>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsendOrder(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"sendOrder\")"
-struct WebTransportSendStreamStats
-{  timestamp: hr_time.kk/DOMHighResTimeStamp,
-  bytesWritten: int,
-  bytesSent: int,
-  bytesAcknowledged: int
-}
-pub extern newWebTransportSendStreamStats([timestamp: maybe<hr_time.kk/DOMHighResTimeStamp> = Nothing, bytesWritten: maybe<int> = Nothing, bytesSent: maybe<int> = Nothing, bytesAcknowledged: maybe<int> = Nothing])
-()
+pub inline fun outgoingMaxAge(obj: webTransportDatagramDuplexStream): web double
+  getJsObjectField(obj.obj, "outgoingMaxAge")
 
-pub extern settimestamp(this: js_object, value: hr_time.kk/DOMHighResTimeStamp): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimestamp(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"timestamp\")"
-pub extern setbytesWritten(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbytesWritten(this: js_object): web int
-	c inline "getObjectField(#1, \"bytesWritten\")"
-pub extern setbytesSent(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbytesSent(this: js_object): web int
-	c inline "getObjectField(#1, \"bytesSent\")"
-pub extern setbytesAcknowledged(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbytesAcknowledged(this: js_object): web int
-	c inline "getObjectField(#1, \"bytesAcknowledged\")"
-struct WebTransportReceiveStream
-{
-}
+pub inline fun incomingHighWaterMark(obj: webTransportDatagramDuplexStream, value: double): web ()
+  setJsObjectField(obj.obj, "incomingHighWaterMark", value.obj)
 
-()
+pub inline fun incomingHighWaterMark(obj: webTransportDatagramDuplexStream): web double
+  getJsObjectField(obj.obj, "incomingHighWaterMark")
 
-pub extern getStats(this: js_object, [], [])
-struct WebTransportReceiveStreamStats
-{  timestamp: hr_time.kk/DOMHighResTimeStamp,
-  bytesReceived: int,
-  bytesRead: int
-}
-pub extern newWebTransportReceiveStreamStats([timestamp: maybe<hr_time.kk/DOMHighResTimeStamp> = Nothing, bytesReceived: maybe<int> = Nothing, bytesRead: maybe<int> = Nothing])
-()
+pub inline fun outgoingHighWaterMark(obj: webTransportDatagramDuplexStream, value: double): web ()
+  setJsObjectField(obj.obj, "outgoingHighWaterMark", value.obj)
 
-pub extern settimestamp(this: js_object, value: hr_time.kk/DOMHighResTimeStamp): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimestamp(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"timestamp\")"
-pub extern setbytesReceived(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbytesReceived(this: js_object): web int
-	c inline "getObjectField(#1, \"bytesReceived\")"
-pub extern setbytesRead(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbytesRead(this: js_object): web int
-	c inline "getObjectField(#1, \"bytesRead\")"
-struct WebTransportBidirectionalStream
-{,
+pub inline fun outgoingHighWaterMark(obj: webTransportDatagramDuplexStream): web double
+  getJsObjectField(obj.obj, "outgoingHighWaterMark")
 
-}
+pub value struct webTransport
+  obj: jsObject
 
-()
+pub inline fun newWebTransport(url': string, options': webTransportOptions)
+  newJsObject2("WebTransport", url', options')"
 
-pub extern getreadable(this: js_object): web WebTransportReceiveStream
-	c inline "getObjectField(#1, \"readable\")"
-pub extern getwritable(this: js_object): web WebTransportSendStream
-	c inline "getObjectField(#1, \"writable\")"
-struct WebTransportError
-{,
+pub inline fun getStats(obj: webTransport): web jsPromise
+  jsOperation2(obj.obj, "getStats")
 
-}
-pub extern newWebTransportError([], [message: String, options: WebTransportErrorOptions])
-()
+pub inline fun close(obj: webTransport, closeInfo': webTransportCloseInfo): web ()
+  jsOperation3(obj.obj, "close", closeInfo'.obj)
 
-pub extern getsource(this: js_object): web WebTransportErrorSource
-	c inline "getObjectField(#1, \"source\")"
-pub extern getstreamErrorCode(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"streamErrorCode\")"
-struct WebTransportErrorOptions
-{  source: WebTransportErrorSource,
-  streamErrorCode: maybe<int>
-}
-pub extern newWebTransportErrorOptions([source: maybe<WebTransportErrorSource> = Nothing, streamErrorCode: maybe<maybe<int>> = Nothing])
-()
+pub inline fun createBidirectionalStream(obj: webTransport, options': webTransportSendStreamOptions): web jsPromise
+  jsOperation3(obj.obj, "createBidirectionalStream", options'.obj)
 
-pub extern setsource(this: js_object, value: WebTransportErrorSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsource(this: js_object): web WebTransportErrorSource
-	c inline "getObjectField(#1, \"source\")"
-pub extern setstreamErrorCode(this: js_object, value: maybe<int>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstreamErrorCode(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"streamErrorCode\")"
+pub inline fun createUnidirectionalStream(obj: webTransport, options': webTransportSendStreamOptions): web jsPromise
+  jsOperation3(obj.obj, "createUnidirectionalStream", options'.obj)
+
+pub inline fun ready(obj: webTransport): web jsPromise
+  getJsObjectField(obj.obj, "ready")
+
+pub inline fun reliability(obj: webTransport): web webTransportReliabilityMode
+  getJsObjectField(obj.obj, "reliability")
+
+pub inline fun congestionControl(obj: webTransport): web webTransportCongestionControl
+  getJsObjectField(obj.obj, "congestionControl")
+
+pub inline fun closed(obj: webTransport): web jsPromise
+  getJsObjectField(obj.obj, "closed")
+
+pub inline fun draining(obj: webTransport): web jsPromise
+  getJsObjectField(obj.obj, "draining")
+
+pub inline fun datagrams(obj: webTransport): web webTransportDatagramDuplexStream
+  getJsObjectField(obj.obj, "datagrams")
+
+pub inline fun incomingBidirectionalStreams(obj: webTransport): web streams/readableStream
+  getJsObjectField(obj.obj, "incomingBidirectionalStreams")
+
+pub inline fun incomingUnidirectionalStreams(obj: webTransport): web streams/readableStream
+  getJsObjectField(obj.obj, "incomingUnidirectionalStreams")
+
+pub value struct webTransportHash
+  obj: jsObject
+
+pub fun newWebTransportHash(algorithm: maybe<string> = Nothing, value: maybe<webidl/bufferSource> = Nothing)
+  val obj = newJsObject();
+  match algorithm
+    Just(it) -> setJsObjectField(obj, "algorithm", it)
+    Nothing -> ()
+  match value
+    Just(it) -> setJsObjectField(obj, "value", it)
+    Nothing -> ()
+
+  WebTransportHash(obj);
+
+pub inline fun algorithm(obj: webTransportHash, value: string): web ()
+  setJsObjectField(obj.obj, "algorithm", value.obj)
+
+pub inline fun algorithm(obj: webTransportHash): web string
+  getJsObjectField(obj.obj, "algorithm")
+
+pub inline fun value(obj: webTransportHash, value: webidl/bufferSource): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: webTransportHash): web webidl/bufferSource
+  getJsObjectField(obj.obj, "value")
+
+pub value struct webTransportOptions
+  obj: jsObject
+
+pub fun newWebTransportOptions(allowPooling: maybe<bool> = Nothing, requireUnreliable: maybe<bool> = Nothing, serverCertificateHashes: maybe<jsArray> = Nothing, congestionControl: maybe<webTransportCongestionControl> = Nothing)
+  val obj = newJsObject();
+  match allowPooling
+    Just(it) -> setJsObjectField(obj, "allowPooling", it)
+    Nothing -> ()
+  match requireUnreliable
+    Just(it) -> setJsObjectField(obj, "requireUnreliable", it)
+    Nothing -> ()
+  match serverCertificateHashes
+    Just(it) -> setJsObjectField(obj, "serverCertificateHashes", it)
+    Nothing -> ()
+  match congestionControl
+    Just(it) -> setJsObjectField(obj, "congestionControl", it)
+    Nothing -> ()
+
+  WebTransportOptions(obj);
+
+pub inline fun allowPooling(obj: webTransportOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "allowPooling", value.obj)
+
+pub inline fun allowPooling(obj: webTransportOptions): web bool
+  getJsObjectField(obj.obj, "allowPooling")
+
+pub inline fun requireUnreliable(obj: webTransportOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "requireUnreliable", value.obj)
+
+pub inline fun requireUnreliable(obj: webTransportOptions): web bool
+  getJsObjectField(obj.obj, "requireUnreliable")
+
+pub inline fun serverCertificateHashes(obj: webTransportOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "serverCertificateHashes", value.obj)
+
+pub inline fun serverCertificateHashes(obj: webTransportOptions): web jsArray
+  getJsObjectField(obj.obj, "serverCertificateHashes")
+
+pub inline fun congestionControl(obj: webTransportOptions, value: webTransportCongestionControl): web ()
+  setJsObjectField(obj.obj, "congestionControl", value.obj)
+
+pub inline fun congestionControl(obj: webTransportOptions): web webTransportCongestionControl
+  getJsObjectField(obj.obj, "congestionControl")
+
+pub value struct webTransportCloseInfo
+  obj: jsObject
+
+pub fun newWebTransportCloseInfo(closeCode: maybe<int> = Nothing, reason: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match closeCode
+    Just(it) -> setJsObjectField(obj, "closeCode", it)
+    Nothing -> ()
+  match reason
+    Just(it) -> setJsObjectField(obj, "reason", it)
+    Nothing -> ()
+
+  WebTransportCloseInfo(obj);
+
+pub inline fun closeCode(obj: webTransportCloseInfo, value: int): web ()
+  setJsObjectField(obj.obj, "closeCode", value.obj)
+
+pub inline fun closeCode(obj: webTransportCloseInfo): web int
+  getJsObjectField(obj.obj, "closeCode")
+
+pub inline fun reason(obj: webTransportCloseInfo, value: string): web ()
+  setJsObjectField(obj.obj, "reason", value.obj)
+
+pub inline fun reason(obj: webTransportCloseInfo): web string
+  getJsObjectField(obj.obj, "reason")
+
+pub value struct webTransportSendStreamOptions
+  obj: jsObject
+
+pub fun newWebTransportSendStreamOptions(sendOrder: maybe<maybe<int>> = Nothing)
+  val obj = newJsObject();
+  match sendOrder
+    Just(it) -> setJsObjectField(obj, "sendOrder", it)
+    Nothing -> ()
+
+  WebTransportSendStreamOptions(obj);
+
+pub inline fun sendOrder(obj: webTransportSendStreamOptions, value: maybe<int>): web ()
+  setJsObjectField(obj.obj, "sendOrder", value.obj)
+
+pub inline fun sendOrder(obj: webTransportSendStreamOptions): web maybe<int>
+  getJsObjectField(obj.obj, "sendOrder")
+
+pub value struct webTransportStats
+  obj: jsObject
+
+pub fun newWebTransportStats(timestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, bytesSent: maybe<int> = Nothing, packetsSent: maybe<int> = Nothing, packetsLost: maybe<int> = Nothing, numOutgoingStreamsCreated: maybe<int> = Nothing, numIncomingStreamsCreated: maybe<int> = Nothing, bytesReceived: maybe<int> = Nothing, packetsReceived: maybe<int> = Nothing, smoothedRtt: maybe<hr_time/domHighResTimeStamp> = Nothing, rttVariation: maybe<hr_time/domHighResTimeStamp> = Nothing, minRtt: maybe<hr_time/domHighResTimeStamp> = Nothing, datagrams: maybe<webTransportDatagramStats> = Nothing, estimatedSendRate: maybe<maybe<int>> = Nothing)
+  val obj = newJsObject();
+  match timestamp
+    Just(it) -> setJsObjectField(obj, "timestamp", it)
+    Nothing -> ()
+  match bytesSent
+    Just(it) -> setJsObjectField(obj, "bytesSent", it)
+    Nothing -> ()
+  match packetsSent
+    Just(it) -> setJsObjectField(obj, "packetsSent", it)
+    Nothing -> ()
+  match packetsLost
+    Just(it) -> setJsObjectField(obj, "packetsLost", it)
+    Nothing -> ()
+  match numOutgoingStreamsCreated
+    Just(it) -> setJsObjectField(obj, "numOutgoingStreamsCreated", it)
+    Nothing -> ()
+  match numIncomingStreamsCreated
+    Just(it) -> setJsObjectField(obj, "numIncomingStreamsCreated", it)
+    Nothing -> ()
+  match bytesReceived
+    Just(it) -> setJsObjectField(obj, "bytesReceived", it)
+    Nothing -> ()
+  match packetsReceived
+    Just(it) -> setJsObjectField(obj, "packetsReceived", it)
+    Nothing -> ()
+  match smoothedRtt
+    Just(it) -> setJsObjectField(obj, "smoothedRtt", it)
+    Nothing -> ()
+  match rttVariation
+    Just(it) -> setJsObjectField(obj, "rttVariation", it)
+    Nothing -> ()
+  match minRtt
+    Just(it) -> setJsObjectField(obj, "minRtt", it)
+    Nothing -> ()
+  match datagrams
+    Just(it) -> setJsObjectField(obj, "datagrams", it)
+    Nothing -> ()
+  match estimatedSendRate
+    Just(it) -> setJsObjectField(obj, "estimatedSendRate", it)
+    Nothing -> ()
+
+  WebTransportStats(obj);
+
+pub inline fun timestamp(obj: webTransportStats, value: hr_time/domHighResTimeStamp): web ()
+  setJsObjectField(obj.obj, "timestamp", value.obj)
+
+pub inline fun timestamp(obj: webTransportStats): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "timestamp")
+
+pub inline fun bytesSent(obj: webTransportStats, value: int): web ()
+  setJsObjectField(obj.obj, "bytesSent", value.obj)
+
+pub inline fun bytesSent(obj: webTransportStats): web int
+  getJsObjectField(obj.obj, "bytesSent")
+
+pub inline fun packetsSent(obj: webTransportStats, value: int): web ()
+  setJsObjectField(obj.obj, "packetsSent", value.obj)
+
+pub inline fun packetsSent(obj: webTransportStats): web int
+  getJsObjectField(obj.obj, "packetsSent")
+
+pub inline fun packetsLost(obj: webTransportStats, value: int): web ()
+  setJsObjectField(obj.obj, "packetsLost", value.obj)
+
+pub inline fun packetsLost(obj: webTransportStats): web int
+  getJsObjectField(obj.obj, "packetsLost")
+
+pub inline fun numOutgoingStreamsCreated(obj: webTransportStats, value: int): web ()
+  setJsObjectField(obj.obj, "numOutgoingStreamsCreated", value.obj)
+
+pub inline fun numOutgoingStreamsCreated(obj: webTransportStats): web int
+  getJsObjectField(obj.obj, "numOutgoingStreamsCreated")
+
+pub inline fun numIncomingStreamsCreated(obj: webTransportStats, value: int): web ()
+  setJsObjectField(obj.obj, "numIncomingStreamsCreated", value.obj)
+
+pub inline fun numIncomingStreamsCreated(obj: webTransportStats): web int
+  getJsObjectField(obj.obj, "numIncomingStreamsCreated")
+
+pub inline fun bytesReceived(obj: webTransportStats, value: int): web ()
+  setJsObjectField(obj.obj, "bytesReceived", value.obj)
+
+pub inline fun bytesReceived(obj: webTransportStats): web int
+  getJsObjectField(obj.obj, "bytesReceived")
+
+pub inline fun packetsReceived(obj: webTransportStats, value: int): web ()
+  setJsObjectField(obj.obj, "packetsReceived", value.obj)
+
+pub inline fun packetsReceived(obj: webTransportStats): web int
+  getJsObjectField(obj.obj, "packetsReceived")
+
+pub inline fun smoothedRtt(obj: webTransportStats, value: hr_time/domHighResTimeStamp): web ()
+  setJsObjectField(obj.obj, "smoothedRtt", value.obj)
+
+pub inline fun smoothedRtt(obj: webTransportStats): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "smoothedRtt")
+
+pub inline fun rttVariation(obj: webTransportStats, value: hr_time/domHighResTimeStamp): web ()
+  setJsObjectField(obj.obj, "rttVariation", value.obj)
+
+pub inline fun rttVariation(obj: webTransportStats): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "rttVariation")
+
+pub inline fun minRtt(obj: webTransportStats, value: hr_time/domHighResTimeStamp): web ()
+  setJsObjectField(obj.obj, "minRtt", value.obj)
+
+pub inline fun minRtt(obj: webTransportStats): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "minRtt")
+
+pub inline fun datagrams(obj: webTransportStats, value: webTransportDatagramStats): web ()
+  setJsObjectField(obj.obj, "datagrams", value.obj)
+
+pub inline fun datagrams(obj: webTransportStats): web webTransportDatagramStats
+  getJsObjectField(obj.obj, "datagrams")
+
+pub inline fun estimatedSendRate(obj: webTransportStats, value: maybe<int>): web ()
+  setJsObjectField(obj.obj, "estimatedSendRate", value.obj)
+
+pub inline fun estimatedSendRate(obj: webTransportStats): web maybe<int>
+  getJsObjectField(obj.obj, "estimatedSendRate")
+
+pub value struct webTransportDatagramStats
+  obj: jsObject
+
+pub fun newWebTransportDatagramStats(timestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, expiredOutgoing: maybe<int> = Nothing, droppedIncoming: maybe<int> = Nothing, lostOutgoing: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match timestamp
+    Just(it) -> setJsObjectField(obj, "timestamp", it)
+    Nothing -> ()
+  match expiredOutgoing
+    Just(it) -> setJsObjectField(obj, "expiredOutgoing", it)
+    Nothing -> ()
+  match droppedIncoming
+    Just(it) -> setJsObjectField(obj, "droppedIncoming", it)
+    Nothing -> ()
+  match lostOutgoing
+    Just(it) -> setJsObjectField(obj, "lostOutgoing", it)
+    Nothing -> ()
+
+  WebTransportDatagramStats(obj);
+
+pub inline fun timestamp(obj: webTransportDatagramStats, value: hr_time/domHighResTimeStamp): web ()
+  setJsObjectField(obj.obj, "timestamp", value.obj)
+
+pub inline fun timestamp(obj: webTransportDatagramStats): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "timestamp")
+
+pub inline fun expiredOutgoing(obj: webTransportDatagramStats, value: int): web ()
+  setJsObjectField(obj.obj, "expiredOutgoing", value.obj)
+
+pub inline fun expiredOutgoing(obj: webTransportDatagramStats): web int
+  getJsObjectField(obj.obj, "expiredOutgoing")
+
+pub inline fun droppedIncoming(obj: webTransportDatagramStats, value: int): web ()
+  setJsObjectField(obj.obj, "droppedIncoming", value.obj)
+
+pub inline fun droppedIncoming(obj: webTransportDatagramStats): web int
+  getJsObjectField(obj.obj, "droppedIncoming")
+
+pub inline fun lostOutgoing(obj: webTransportDatagramStats, value: int): web ()
+  setJsObjectField(obj.obj, "lostOutgoing", value.obj)
+
+pub inline fun lostOutgoing(obj: webTransportDatagramStats): web int
+  getJsObjectField(obj.obj, "lostOutgoing")
+
+pub value struct webTransportSendStream
+  obj: jsObject
+
+
+pub inline fun getStats(obj: webTransportSendStream): web jsPromise
+  jsOperation2(obj.obj, "getStats")
+
+pub inline fun sendOrder(obj: webTransportSendStream, value: maybe<int>): web ()
+  setJsObjectField(obj.obj, "sendOrder", value.obj)
+
+pub inline fun sendOrder(obj: webTransportSendStream): web maybe<int>
+  getJsObjectField(obj.obj, "sendOrder")
+
+pub value struct webTransportSendStreamStats
+  obj: jsObject
+
+pub fun newWebTransportSendStreamStats(timestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, bytesWritten: maybe<int> = Nothing, bytesSent: maybe<int> = Nothing, bytesAcknowledged: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match timestamp
+    Just(it) -> setJsObjectField(obj, "timestamp", it)
+    Nothing -> ()
+  match bytesWritten
+    Just(it) -> setJsObjectField(obj, "bytesWritten", it)
+    Nothing -> ()
+  match bytesSent
+    Just(it) -> setJsObjectField(obj, "bytesSent", it)
+    Nothing -> ()
+  match bytesAcknowledged
+    Just(it) -> setJsObjectField(obj, "bytesAcknowledged", it)
+    Nothing -> ()
+
+  WebTransportSendStreamStats(obj);
+
+pub inline fun timestamp(obj: webTransportSendStreamStats, value: hr_time/domHighResTimeStamp): web ()
+  setJsObjectField(obj.obj, "timestamp", value.obj)
+
+pub inline fun timestamp(obj: webTransportSendStreamStats): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "timestamp")
+
+pub inline fun bytesWritten(obj: webTransportSendStreamStats, value: int): web ()
+  setJsObjectField(obj.obj, "bytesWritten", value.obj)
+
+pub inline fun bytesWritten(obj: webTransportSendStreamStats): web int
+  getJsObjectField(obj.obj, "bytesWritten")
+
+pub inline fun bytesSent(obj: webTransportSendStreamStats, value: int): web ()
+  setJsObjectField(obj.obj, "bytesSent", value.obj)
+
+pub inline fun bytesSent(obj: webTransportSendStreamStats): web int
+  getJsObjectField(obj.obj, "bytesSent")
+
+pub inline fun bytesAcknowledged(obj: webTransportSendStreamStats, value: int): web ()
+  setJsObjectField(obj.obj, "bytesAcknowledged", value.obj)
+
+pub inline fun bytesAcknowledged(obj: webTransportSendStreamStats): web int
+  getJsObjectField(obj.obj, "bytesAcknowledged")
+
+pub value struct webTransportReceiveStream
+  obj: jsObject
+
+
+pub inline fun getStats(obj: webTransportReceiveStream): web jsPromise
+  jsOperation2(obj.obj, "getStats")
+
+pub value struct webTransportReceiveStreamStats
+  obj: jsObject
+
+pub fun newWebTransportReceiveStreamStats(timestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, bytesReceived: maybe<int> = Nothing, bytesRead: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match timestamp
+    Just(it) -> setJsObjectField(obj, "timestamp", it)
+    Nothing -> ()
+  match bytesReceived
+    Just(it) -> setJsObjectField(obj, "bytesReceived", it)
+    Nothing -> ()
+  match bytesRead
+    Just(it) -> setJsObjectField(obj, "bytesRead", it)
+    Nothing -> ()
+
+  WebTransportReceiveStreamStats(obj);
+
+pub inline fun timestamp(obj: webTransportReceiveStreamStats, value: hr_time/domHighResTimeStamp): web ()
+  setJsObjectField(obj.obj, "timestamp", value.obj)
+
+pub inline fun timestamp(obj: webTransportReceiveStreamStats): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "timestamp")
+
+pub inline fun bytesReceived(obj: webTransportReceiveStreamStats, value: int): web ()
+  setJsObjectField(obj.obj, "bytesReceived", value.obj)
+
+pub inline fun bytesReceived(obj: webTransportReceiveStreamStats): web int
+  getJsObjectField(obj.obj, "bytesReceived")
+
+pub inline fun bytesRead(obj: webTransportReceiveStreamStats, value: int): web ()
+  setJsObjectField(obj.obj, "bytesRead", value.obj)
+
+pub inline fun bytesRead(obj: webTransportReceiveStreamStats): web int
+  getJsObjectField(obj.obj, "bytesRead")
+
+pub value struct webTransportBidirectionalStream
+  obj: jsObject
+
+
+pub inline fun readable(obj: webTransportBidirectionalStream): web webTransportReceiveStream
+  getJsObjectField(obj.obj, "readable")
+
+pub inline fun writable(obj: webTransportBidirectionalStream): web webTransportSendStream
+  getJsObjectField(obj.obj, "writable")
+
+pub value struct webTransportError
+  obj: jsObject
+
+pub inline fun newWebTransportError(message': string, options': webTransportErrorOptions)
+  newJsObject2("WebTransportError", message', options')"
+
+pub inline fun source(obj: webTransportError): web webTransportErrorSource
+  getJsObjectField(obj.obj, "source")
+
+pub inline fun streamErrorCode(obj: webTransportError): web maybe<int>
+  getJsObjectField(obj.obj, "streamErrorCode")
+
+pub value struct webTransportErrorOptions
+  obj: jsObject
+
+pub fun newWebTransportErrorOptions(source: maybe<webTransportErrorSource> = Nothing, streamErrorCode: maybe<maybe<int>> = Nothing)
+  val obj = newJsObject();
+  match source
+    Just(it) -> setJsObjectField(obj, "source", it)
+    Nothing -> ()
+  match streamErrorCode
+    Just(it) -> setJsObjectField(obj, "streamErrorCode", it)
+    Nothing -> ()
+
+  WebTransportErrorOptions(obj);
+
+pub inline fun source(obj: webTransportErrorOptions, value: webTransportErrorSource): web ()
+  setJsObjectField(obj.obj, "source", value.obj)
+
+pub inline fun source(obj: webTransportErrorOptions): web webTransportErrorSource
+  getJsObjectField(obj.obj, "source")
+
+pub inline fun streamErrorCode(obj: webTransportErrorOptions, value: maybe<int>): web ()
+  setJsObjectField(obj.obj, "streamErrorCode", value.obj)
+
+pub inline fun streamErrorCode(obj: webTransportErrorOptions): web maybe<int>
+  getJsObjectField(obj.obj, "streamErrorCode")
+

@@ -1,134 +1,146 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias NavigationTimingType = String
-struct PerformanceNavigationTiming
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub alias navigationTimingType = string;
 
-}
+pub value struct performanceNavigationTiming
+  obj: jsObject
 
-()
 
-pub extern toJSON(this: js_object, [], [])
-pub extern getunloadEventStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"unloadEventStart\")"
-pub extern getunloadEventEnd(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"unloadEventEnd\")"
-pub extern getdomInteractive(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"domInteractive\")"
-pub extern getdomContentLoadedEventStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"domContentLoadedEventStart\")"
-pub extern getdomContentLoadedEventEnd(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"domContentLoadedEventEnd\")"
-pub extern getdomComplete(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"domComplete\")"
-pub extern getloadEventStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"loadEventStart\")"
-pub extern getloadEventEnd(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"loadEventEnd\")"
-pub extern gettype(this: js_object): web NavigationTimingType
-	c inline "getObjectField(#1, \"type\")"
-pub extern getredirectCount(this: js_object): web int
-	c inline "getObjectField(#1, \"redirectCount\")"
-pub extern getcriticalCHRestart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"criticalCHRestart\")"
-pub extern getactivationStart(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"activationStart\")"
-struct PerformanceTiming
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub inline fun toJSON(obj: performanceNavigationTiming): web jsObject
+  jsOperation2(obj.obj, "toJSON")
 
-}
+pub inline fun unloadEventStart(obj: performanceNavigationTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "unloadEventStart")
 
-()
+pub inline fun unloadEventEnd(obj: performanceNavigationTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "unloadEventEnd")
 
-pub extern toJSON(this: js_object, [], [])
-pub extern getnavigationStart(this: js_object): web int
-	c inline "getObjectField(#1, \"navigationStart\")"
-pub extern getunloadEventStart(this: js_object): web int
-	c inline "getObjectField(#1, \"unloadEventStart\")"
-pub extern getunloadEventEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"unloadEventEnd\")"
-pub extern getredirectStart(this: js_object): web int
-	c inline "getObjectField(#1, \"redirectStart\")"
-pub extern getredirectEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"redirectEnd\")"
-pub extern getfetchStart(this: js_object): web int
-	c inline "getObjectField(#1, \"fetchStart\")"
-pub extern getdomainLookupStart(this: js_object): web int
-	c inline "getObjectField(#1, \"domainLookupStart\")"
-pub extern getdomainLookupEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"domainLookupEnd\")"
-pub extern getconnectStart(this: js_object): web int
-	c inline "getObjectField(#1, \"connectStart\")"
-pub extern getconnectEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"connectEnd\")"
-pub extern getsecureConnectionStart(this: js_object): web int
-	c inline "getObjectField(#1, \"secureConnectionStart\")"
-pub extern getrequestStart(this: js_object): web int
-	c inline "getObjectField(#1, \"requestStart\")"
-pub extern getresponseStart(this: js_object): web int
-	c inline "getObjectField(#1, \"responseStart\")"
-pub extern getresponseEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"responseEnd\")"
-pub extern getdomLoading(this: js_object): web int
-	c inline "getObjectField(#1, \"domLoading\")"
-pub extern getdomInteractive(this: js_object): web int
-	c inline "getObjectField(#1, \"domInteractive\")"
-pub extern getdomContentLoadedEventStart(this: js_object): web int
-	c inline "getObjectField(#1, \"domContentLoadedEventStart\")"
-pub extern getdomContentLoadedEventEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"domContentLoadedEventEnd\")"
-pub extern getdomComplete(this: js_object): web int
-	c inline "getObjectField(#1, \"domComplete\")"
-pub extern getloadEventStart(this: js_object): web int
-	c inline "getObjectField(#1, \"loadEventStart\")"
-pub extern getloadEventEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"loadEventEnd\")"
-struct PerformanceNavigation
-{,
+pub inline fun domInteractive(obj: performanceNavigationTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "domInteractive")
 
-}
+pub inline fun domContentLoadedEventStart(obj: performanceNavigationTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "domContentLoadedEventStart")
 
-(pub extern TYPE_NAVIGATE(): int
-	c inline "getConstant(\"TYPE_NAVIGATE\")", pub extern TYPE_RELOAD(): int
-	c inline "getConstant(\"TYPE_RELOAD\")", pub extern TYPE_BACK_FORWARD(): int
-	c inline "getConstant(\"TYPE_BACK_FORWARD\")", pub extern TYPE_RESERVED(): int
-	c inline "getConstant(\"TYPE_RESERVED\")")
+pub inline fun domContentLoadedEventEnd(obj: performanceNavigationTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "domContentLoadedEventEnd")
 
-pub extern toJSON(this: js_object, [], [])
-pub extern gettype(this: js_object): web int
-	c inline "getObjectField(#1, \"type\")"
-pub extern getredirectCount(this: js_object): web int
-	c inline "getObjectField(#1, \"redirectCount\")"
+pub inline fun domComplete(obj: performanceNavigationTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "domComplete")
+
+pub inline fun loadEventStart(obj: performanceNavigationTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "loadEventStart")
+
+pub inline fun loadEventEnd(obj: performanceNavigationTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "loadEventEnd")
+
+pub inline fun type(obj: performanceNavigationTiming): web navigationTimingType
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun redirectCount(obj: performanceNavigationTiming): web int
+  getJsObjectField(obj.obj, "redirectCount")
+
+pub inline fun criticalCHRestart(obj: performanceNavigationTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "criticalCHRestart")
+
+pub inline fun activationStart(obj: performanceNavigationTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "activationStart")
+
+pub value struct performanceTiming
+  obj: jsObject
+
+
+pub inline fun toJSON(obj: performanceTiming): web jsObject
+  jsOperation2(obj.obj, "toJSON")
+
+pub inline fun navigationStart(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "navigationStart")
+
+pub inline fun unloadEventStart(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "unloadEventStart")
+
+pub inline fun unloadEventEnd(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "unloadEventEnd")
+
+pub inline fun redirectStart(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "redirectStart")
+
+pub inline fun redirectEnd(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "redirectEnd")
+
+pub inline fun fetchStart(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "fetchStart")
+
+pub inline fun domainLookupStart(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "domainLookupStart")
+
+pub inline fun domainLookupEnd(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "domainLookupEnd")
+
+pub inline fun connectStart(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "connectStart")
+
+pub inline fun connectEnd(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "connectEnd")
+
+pub inline fun secureConnectionStart(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "secureConnectionStart")
+
+pub inline fun requestStart(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "requestStart")
+
+pub inline fun responseStart(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "responseStart")
+
+pub inline fun responseEnd(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "responseEnd")
+
+pub inline fun domLoading(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "domLoading")
+
+pub inline fun domInteractive(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "domInteractive")
+
+pub inline fun domContentLoadedEventStart(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "domContentLoadedEventStart")
+
+pub inline fun domContentLoadedEventEnd(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "domContentLoadedEventEnd")
+
+pub inline fun domComplete(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "domComplete")
+
+pub inline fun loadEventStart(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "loadEventStart")
+
+pub inline fun loadEventEnd(obj: performanceTiming): web int
+  getJsObjectField(obj.obj, "loadEventEnd")
+
+pub value struct performanceNavigation
+  obj: jsObject
+
+pub inline fun typenavigatE(): int
+  getConstant("TYPE_NAVIGATE")
+
+pub inline fun typereloaD(): int
+  getConstant("TYPE_RELOAD")
+
+pub inline fun typebackforwarD(): int
+  getConstant("TYPE_BACK_FORWARD")
+
+pub inline fun typereserveD(): int
+  getConstant("TYPE_RESERVED")
+
+pub inline fun toJSON(obj: performanceNavigation): web jsObject
+  jsOperation2(obj.obj, "toJSON")
+
+pub inline fun type(obj: performanceNavigation): web int
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun redirectCount(obj: performanceNavigation): web int
+  getJsObjectField(obj.obj, "redirectCount")
+

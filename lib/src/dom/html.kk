@@ -1,6209 +1,7954 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias HTMLOrSVGScriptElement = JSAny
-alias MediaProvider = JSAny
-alias RenderingContext = JSAny
-alias HTMLOrSVGImageElement = JSAny
-alias CanvasImageSource = JSAny
-alias OffscreenRenderingContext = JSAny
-alias EventHandler = EventHandlerNonNull
-alias OnErrorEventHandler = OnErrorEventHandlerNonNull
-alias OnBeforeUnloadEventHandler = OnBeforeUnloadEventHandlerNonNull
-alias TimerHandler = JSAny
-alias ImageBitmapSource = JSAny
-alias MessageEventSource = JSAny
-alias BlobCallback = JSFunction
-alias CustomElementConstructor = JSFunction
-alias FunctionStringCallback = JSFunction
-alias NavigationInterceptHandler = JSFunction
-alias EventHandlerNonNull = JSFunction
-alias OnErrorEventHandlerNonNull = JSFunction
-alias OnBeforeUnloadEventHandlerNonNull = JSFunction
-alias FrameRequestCallback = JSFunction
-
-alias DocumentReadyState = String
-alias DocumentVisibilityState = String
-alias CanPlayTypeResult = String
-alias TextTrackMode = String
-alias TextTrackKind = String
-alias SelectionMode = String
-alias PredefinedColorSpace = String
-alias CanvasFillRule = String
-alias ImageSmoothingQuality = String
-alias CanvasLineCap = String
-alias CanvasLineJoin = String
-alias CanvasTextAlign = String
-alias CanvasTextBaseline = String
-alias CanvasDirection = String
-alias CanvasFontKerning = String
-alias CanvasFontStretch = String
-alias CanvasFontVariantCaps = String
-alias CanvasTextRendering = String
-alias OffscreenRenderingContextId = String
-alias ScrollRestoration = String
-alias NavigationHistoryBehavior = String
-alias NavigationType = String
-alias NavigationFocusReset = String
-alias NavigationScrollBehavior = String
-alias DOMParserSupportedType = String
-alias ImageOrientation = String
-alias PremultiplyAlpha = String
-alias ColorSpaceConversion = String
-alias ResizeQuality = String
-alias WorkerType = String
-struct HTMLAllCollection
-{
-}
-
-()
-
-pub extern namedItem(this: js_object, [name: String], [])
-pub extern item(this: js_object, [], [nameOrIndex: String])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct HTMLFormControlsCollection
-{
-}
-
-()
-
-pub extern namedItem(this: js_object, [name: String], [])
-struct RadioNodeList
-{
-}
-
-()
-
-pub extern setvalue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web String
-	c inline "getObjectField(#1, \"value\")"
-struct HTMLOptionsCollection
-{,
-
-}
-
-()
-
-pub extern add(this: js_object, [element: maybe<dart:js_interop/JSAny>], [before: maybe<dart:js_interop/JSAny> =  Nothing])
-pub extern remove(this: js_object, [index: int], [])
-pub extern setlength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-pub extern setselectedIndex(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectedIndex(this: js_object): web int
-	c inline "getObjectField(#1, \"selectedIndex\")"
-struct DOMStringList
-{
-}
-
-()
-
-pub extern item(this: js_object, [index: int], [])
-pub extern contains(this: js_object, [string: String], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct HTMLElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLElement([], [])
-()
-
-pub extern click(this: js_object, [], [])
-pub extern attachInternals(this: js_object, [], [])
-pub extern showPopover(this: js_object, [], [])
-pub extern hidePopover(this: js_object, [], [])
-pub extern togglePopover(this: js_object, [], [force: bool])
-pub extern getoffsetParent(this: js_object): web maybe<dom.kk/Element>
-	c inline "getObjectField(#1, \"offsetParent\")"
-pub extern getoffsetTop(this: js_object): web int
-	c inline "getObjectField(#1, \"offsetTop\")"
-pub extern getoffsetLeft(this: js_object): web int
-	c inline "getObjectField(#1, \"offsetLeft\")"
-pub extern getoffsetWidth(this: js_object): web int
-	c inline "getObjectField(#1, \"offsetWidth\")"
-pub extern getoffsetHeight(this: js_object): web int
-	c inline "getObjectField(#1, \"offsetHeight\")"
-pub extern seteditContext(this: js_object, value: maybe<edit_context.kk/EditContext>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geteditContext(this: js_object): web maybe<edit_context.kk/EditContext>
-	c inline "getObjectField(#1, \"editContext\")"
-pub extern settitle(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettitle(this: js_object): web String
-	c inline "getObjectField(#1, \"title\")"
-pub extern setlang(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlang(this: js_object): web String
-	c inline "getObjectField(#1, \"lang\")"
-pub extern settranslate(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettranslate(this: js_object): web bool
-	c inline "getObjectField(#1, \"translate\")"
-pub extern setdir(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdir(this: js_object): web String
-	c inline "getObjectField(#1, \"dir\")"
-pub extern sethidden(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethidden(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"hidden\")"
-pub extern setinert(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinert(this: js_object): web bool
-	c inline "getObjectField(#1, \"inert\")"
-pub extern setaccessKey(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaccessKey(this: js_object): web String
-	c inline "getObjectField(#1, \"accessKey\")"
-pub extern getaccessKeyLabel(this: js_object): web String
-	c inline "getObjectField(#1, \"accessKeyLabel\")"
-pub extern setdraggable(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdraggable(this: js_object): web bool
-	c inline "getObjectField(#1, \"draggable\")"
-pub extern setspellcheck(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getspellcheck(this: js_object): web bool
-	c inline "getObjectField(#1, \"spellcheck\")"
-pub extern setautocapitalize(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getautocapitalize(this: js_object): web String
-	c inline "getObjectField(#1, \"autocapitalize\")"
-pub extern setinnerText(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinnerText(this: js_object): web String
-	c inline "getObjectField(#1, \"innerText\")"
-pub extern setouterText(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getouterText(this: js_object): web String
-	c inline "getObjectField(#1, \"outerText\")"
-pub extern setpopover(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpopover(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"popover\")"
-struct HTMLUnknownElement
-{
-}
-
-()
-
-struct HTMLOrSVGElement
-{,
-,
-,
-
-}
-
-()
-
-pub extern focus(this: js_object, [], [options: FocusOptions])
-pub extern blur(this: js_object, [], [])
-pub extern getdataset(this: js_object): web DOMStringMap
-	c inline "getObjectField(#1, \"dataset\")"
-pub extern setnonce(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnonce(this: js_object): web String
-	c inline "getObjectField(#1, \"nonce\")"
-pub extern setautofocus(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getautofocus(this: js_object): web bool
-	c inline "getObjectField(#1, \"autofocus\")"
-pub extern settabIndex(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettabIndex(this: js_object): web int
-	c inline "getObjectField(#1, \"tabIndex\")"
-struct DOMStringMap
-{
-}
-
-()
-
-struct HTMLHtmlElement
-{
-}
-pub extern newHTMLHtmlElement([], [])
-()
-
-pub extern setversion(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getversion(this: js_object): web String
-	c inline "getObjectField(#1, \"version\")"
-struct HTMLHeadElement
-{
-}
-pub extern newHTMLHeadElement([], [])
-()
-
-struct HTMLTitleElement
-{
-}
-pub extern newHTMLTitleElement([], [])
-()
-
-pub extern settext(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettext(this: js_object): web String
-	c inline "getObjectField(#1, \"text\")"
-struct HTMLBaseElement
-{,
-
-}
-pub extern newHTMLBaseElement([], [])
-()
-
-pub extern sethref(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethref(this: js_object): web String
-	c inline "getObjectField(#1, \"href\")"
-pub extern settarget(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettarget(this: js_object): web String
-	c inline "getObjectField(#1, \"target\")"
-struct HTMLLinkElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLLinkElement([], [])
-()
-
-pub extern sethref(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethref(this: js_object): web String
-	c inline "getObjectField(#1, \"href\")"
-pub extern setcrossOrigin(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcrossOrigin(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"crossOrigin\")"
-pub extern setrel(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrel(this: js_object): web String
-	c inline "getObjectField(#1, \"rel\")"
-pub extern setas(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getas(this: js_object): web String
-	c inline "getObjectField(#1, \"as\")"
-pub extern getrelList(this: js_object): web dom.kk/DOMTokenList
-	c inline "getObjectField(#1, \"relList\")"
-pub extern setmedia(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmedia(this: js_object): web String
-	c inline "getObjectField(#1, \"media\")"
-pub extern setintegrity(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getintegrity(this: js_object): web String
-	c inline "getObjectField(#1, \"integrity\")"
-pub extern sethreflang(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethreflang(this: js_object): web String
-	c inline "getObjectField(#1, \"hreflang\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern getsizes(this: js_object): web dom.kk/DOMTokenList
-	c inline "getObjectField(#1, \"sizes\")"
-pub extern setimageSrcset(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getimageSrcset(this: js_object): web String
-	c inline "getObjectField(#1, \"imageSrcset\")"
-pub extern setimageSizes(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getimageSizes(this: js_object): web String
-	c inline "getObjectField(#1, \"imageSizes\")"
-pub extern setreferrerPolicy(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreferrerPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"referrerPolicy\")"
-pub extern getblocking(this: js_object): web dom.kk/DOMTokenList
-	c inline "getObjectField(#1, \"blocking\")"
-pub extern setdisabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"disabled\")"
-pub extern setfetchPriority(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfetchPriority(this: js_object): web String
-	c inline "getObjectField(#1, \"fetchPriority\")"
-pub extern setcharset(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcharset(this: js_object): web String
-	c inline "getObjectField(#1, \"charset\")"
-pub extern setrev(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrev(this: js_object): web String
-	c inline "getObjectField(#1, \"rev\")"
-pub extern settarget(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettarget(this: js_object): web String
-	c inline "getObjectField(#1, \"target\")"
-struct HTMLMetaElement
-{,
-,
-,
-,
-
-}
-pub extern newHTMLMetaElement([], [])
-()
-
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern sethttpEquiv(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethttpEquiv(this: js_object): web String
-	c inline "getObjectField(#1, \"httpEquiv\")"
-pub extern setcontent(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcontent(this: js_object): web String
-	c inline "getObjectField(#1, \"content\")"
-pub extern setmedia(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmedia(this: js_object): web String
-	c inline "getObjectField(#1, \"media\")"
-pub extern setscheme(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscheme(this: js_object): web String
-	c inline "getObjectField(#1, \"scheme\")"
-struct HTMLStyleElement
-{,
-,
-,
-
-}
-pub extern newHTMLStyleElement([], [])
-()
-
-pub extern setdisabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"disabled\")"
-pub extern setmedia(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmedia(this: js_object): web String
-	c inline "getObjectField(#1, \"media\")"
-pub extern getblocking(this: js_object): web dom.kk/DOMTokenList
-	c inline "getObjectField(#1, \"blocking\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-struct HTMLBodyElement
-{,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLBodyElement([], [])
-()
-
-pub extern setonorientationchange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonorientationchange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onorientationchange\")"
-pub extern settext(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettext(this: js_object): web String
-	c inline "getObjectField(#1, \"text\")"
-pub extern setlink(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlink(this: js_object): web String
-	c inline "getObjectField(#1, \"link\")"
-pub extern setvLink(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvLink(this: js_object): web String
-	c inline "getObjectField(#1, \"vLink\")"
-pub extern setaLink(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaLink(this: js_object): web String
-	c inline "getObjectField(#1, \"aLink\")"
-pub extern setbgColor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbgColor(this: js_object): web String
-	c inline "getObjectField(#1, \"bgColor\")"
-pub extern setbackground(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbackground(this: js_object): web String
-	c inline "getObjectField(#1, \"background\")"
-struct HTMLHeadingElement
-{
-}
-pub extern newHTMLHeadingElement([], [])
-()
-
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-struct HTMLParagraphElement
-{
-}
-pub extern newHTMLParagraphElement([], [])
-()
-
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-struct HTMLHRElement
-{,
-,
-,
-,
-
-}
-pub extern newHTMLHRElement([], [])
-()
-
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-pub extern setcolor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolor(this: js_object): web String
-	c inline "getObjectField(#1, \"color\")"
-pub extern setnoShade(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnoShade(this: js_object): web bool
-	c inline "getObjectField(#1, \"noShade\")"
-pub extern setsize(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsize(this: js_object): web String
-	c inline "getObjectField(#1, \"size\")"
-pub extern setwidth(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web String
-	c inline "getObjectField(#1, \"width\")"
-struct HTMLPreElement
-{
-}
-pub extern newHTMLPreElement([], [])
-()
-
-pub extern setwidth(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-struct HTMLQuoteElement
-{
-}
-pub extern newHTMLQuoteElement([], [])
-()
-
-pub extern setcite(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcite(this: js_object): web String
-	c inline "getObjectField(#1, \"cite\")"
-struct HTMLOListElement
-{,
-,
-,
-
-}
-pub extern newHTMLOListElement([], [])
-()
-
-pub extern setreversed(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreversed(this: js_object): web bool
-	c inline "getObjectField(#1, \"reversed\")"
-pub extern setstart(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstart(this: js_object): web int
-	c inline "getObjectField(#1, \"start\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setcompact(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcompact(this: js_object): web bool
-	c inline "getObjectField(#1, \"compact\")"
-struct HTMLUListElement
-{,
-
-}
-pub extern newHTMLUListElement([], [])
-()
-
-pub extern setcompact(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcompact(this: js_object): web bool
-	c inline "getObjectField(#1, \"compact\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-struct HTMLMenuElement
-{
-}
-pub extern newHTMLMenuElement([], [])
-()
-
-pub extern setcompact(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcompact(this: js_object): web bool
-	c inline "getObjectField(#1, \"compact\")"
-struct HTMLLIElement
-{,
-
-}
-pub extern newHTMLLIElement([], [])
-()
-
-pub extern setvalue(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web int
-	c inline "getObjectField(#1, \"value\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-struct HTMLDListElement
-{
-}
-pub extern newHTMLDListElement([], [])
-()
-
-pub extern setcompact(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcompact(this: js_object): web bool
-	c inline "getObjectField(#1, \"compact\")"
-struct HTMLDivElement
-{
-}
-pub extern newHTMLDivElement([], [])
-()
-
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-struct HTMLAnchorElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLAnchorElement([], [])
-()
-
-pub extern settarget(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettarget(this: js_object): web String
-	c inline "getObjectField(#1, \"target\")"
-pub extern setdownload(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdownload(this: js_object): web String
-	c inline "getObjectField(#1, \"download\")"
-pub extern setping(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getping(this: js_object): web String
-	c inline "getObjectField(#1, \"ping\")"
-pub extern setrel(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrel(this: js_object): web String
-	c inline "getObjectField(#1, \"rel\")"
-pub extern getrelList(this: js_object): web dom.kk/DOMTokenList
-	c inline "getObjectField(#1, \"relList\")"
-pub extern sethreflang(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethreflang(this: js_object): web String
-	c inline "getObjectField(#1, \"hreflang\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern settext(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettext(this: js_object): web String
-	c inline "getObjectField(#1, \"text\")"
-pub extern setreferrerPolicy(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreferrerPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"referrerPolicy\")"
-pub extern setcoords(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcoords(this: js_object): web String
-	c inline "getObjectField(#1, \"coords\")"
-pub extern setcharset(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcharset(this: js_object): web String
-	c inline "getObjectField(#1, \"charset\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setrev(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrev(this: js_object): web String
-	c inline "getObjectField(#1, \"rev\")"
-pub extern setshape(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshape(this: js_object): web String
-	c inline "getObjectField(#1, \"shape\")"
-pub extern setattributionSourceId(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getattributionSourceId(this: js_object): web int
-	c inline "getObjectField(#1, \"attributionSourceId\")"
-struct HTMLDataElement
-{
-}
-pub extern newHTMLDataElement([], [])
-()
-
-pub extern setvalue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web String
-	c inline "getObjectField(#1, \"value\")"
-struct HTMLTimeElement
-{
-}
-pub extern newHTMLTimeElement([], [])
-()
-
-pub extern setdateTime(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdateTime(this: js_object): web String
-	c inline "getObjectField(#1, \"dateTime\")"
-struct HTMLSpanElement
-{
-}
-pub extern newHTMLSpanElement([], [])
-()
-
-struct HTMLBRElement
-{
-}
-pub extern newHTMLBRElement([], [])
-()
-
-pub extern setclear(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclear(this: js_object): web String
-	c inline "getObjectField(#1, \"clear\")"
-struct HTMLHyperlinkElementUtils
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern sethref(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethref(this: js_object): web String
-	c inline "getObjectField(#1, \"href\")"
-pub extern getorigin(this: js_object): web String
-	c inline "getObjectField(#1, \"origin\")"
-pub extern setprotocol(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprotocol(this: js_object): web String
-	c inline "getObjectField(#1, \"protocol\")"
-pub extern setusername(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusername(this: js_object): web String
-	c inline "getObjectField(#1, \"username\")"
-pub extern setpassword(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpassword(this: js_object): web String
-	c inline "getObjectField(#1, \"password\")"
-pub extern sethost(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethost(this: js_object): web String
-	c inline "getObjectField(#1, \"host\")"
-pub extern sethostname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethostname(this: js_object): web String
-	c inline "getObjectField(#1, \"hostname\")"
-pub extern setport(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getport(this: js_object): web String
-	c inline "getObjectField(#1, \"port\")"
-pub extern setpathname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpathname(this: js_object): web String
-	c inline "getObjectField(#1, \"pathname\")"
-pub extern setsearch(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsearch(this: js_object): web String
-	c inline "getObjectField(#1, \"search\")"
-pub extern sethash(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethash(this: js_object): web String
-	c inline "getObjectField(#1, \"hash\")"
-struct HTMLModElement
-{,
-
-}
-pub extern newHTMLModElement([], [])
-()
-
-pub extern setcite(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcite(this: js_object): web String
-	c inline "getObjectField(#1, \"cite\")"
-pub extern setdateTime(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdateTime(this: js_object): web String
-	c inline "getObjectField(#1, \"dateTime\")"
-struct HTMLPictureElement
-{
-}
-pub extern newHTMLPictureElement([], [])
-()
-
-struct HTMLSourceElement
-{,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLSourceElement([], [])
-()
-
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setsrcset(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrcset(this: js_object): web String
-	c inline "getObjectField(#1, \"srcset\")"
-pub extern setsizes(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsizes(this: js_object): web String
-	c inline "getObjectField(#1, \"sizes\")"
-pub extern setmedia(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmedia(this: js_object): web String
-	c inline "getObjectField(#1, \"media\")"
-pub extern setwidth(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-struct HTMLImageElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLImageElement([], [])
-()
-
-pub extern decode(this: js_object, [], [])
-pub extern getx(this: js_object): web int
-	c inline "getObjectField(#1, \"x\")"
-pub extern gety(this: js_object): web int
-	c inline "getObjectField(#1, \"y\")"
-pub extern setalt(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalt(this: js_object): web String
-	c inline "getObjectField(#1, \"alt\")"
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern setsrcset(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrcset(this: js_object): web String
-	c inline "getObjectField(#1, \"srcset\")"
-pub extern setsizes(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsizes(this: js_object): web String
-	c inline "getObjectField(#1, \"sizes\")"
-pub extern setcrossOrigin(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcrossOrigin(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"crossOrigin\")"
-pub extern setuseMap(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuseMap(this: js_object): web String
-	c inline "getObjectField(#1, \"useMap\")"
-pub extern setisMap(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getisMap(this: js_object): web bool
-	c inline "getObjectField(#1, \"isMap\")"
-pub extern setwidth(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-pub extern getnaturalWidth(this: js_object): web int
-	c inline "getObjectField(#1, \"naturalWidth\")"
-pub extern getnaturalHeight(this: js_object): web int
-	c inline "getObjectField(#1, \"naturalHeight\")"
-pub extern getcomplete(this: js_object): web bool
-	c inline "getObjectField(#1, \"complete\")"
-pub extern getcurrentSrc(this: js_object): web String
-	c inline "getObjectField(#1, \"currentSrc\")"
-pub extern setreferrerPolicy(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreferrerPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"referrerPolicy\")"
-pub extern setdecoding(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdecoding(this: js_object): web String
-	c inline "getObjectField(#1, \"decoding\")"
-pub extern setloading(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getloading(this: js_object): web String
-	c inline "getObjectField(#1, \"loading\")"
-pub extern setfetchPriority(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfetchPriority(this: js_object): web String
-	c inline "getObjectField(#1, \"fetchPriority\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setlowsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlowsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"lowsrc\")"
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-pub extern sethspace(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethspace(this: js_object): web int
-	c inline "getObjectField(#1, \"hspace\")"
-pub extern setvspace(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvspace(this: js_object): web int
-	c inline "getObjectField(#1, \"vspace\")"
-pub extern setlongDesc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlongDesc(this: js_object): web String
-	c inline "getObjectField(#1, \"longDesc\")"
-pub extern setborder(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getborder(this: js_object): web String
-	c inline "getObjectField(#1, \"border\")"
-struct HTMLIFrameElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLIFrameElement([], [])
-()
-
-pub extern getSVGDocument(this: js_object, [], [])
-pub extern setcsp(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcsp(this: js_object): web String
-	c inline "getObjectField(#1, \"csp\")"
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern setsrcdoc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrcdoc(this: js_object): web String
-	c inline "getObjectField(#1, \"srcdoc\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getsandbox(this: js_object): web dom.kk/DOMTokenList
-	c inline "getObjectField(#1, \"sandbox\")"
-pub extern setallow(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getallow(this: js_object): web String
-	c inline "getObjectField(#1, \"allow\")"
-pub extern setallowFullscreen(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getallowFullscreen(this: js_object): web bool
-	c inline "getObjectField(#1, \"allowFullscreen\")"
-pub extern setwidth(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web String
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web String
-	c inline "getObjectField(#1, \"height\")"
-pub extern setreferrerPolicy(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreferrerPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"referrerPolicy\")"
-pub extern setloading(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getloading(this: js_object): web String
-	c inline "getObjectField(#1, \"loading\")"
-pub extern getcontentDocument(this: js_object): web maybe<dom.kk/Document>
-	c inline "getObjectField(#1, \"contentDocument\")"
-pub extern getcontentWindow(this: js_object): web maybe<Window>
-	c inline "getObjectField(#1, \"contentWindow\")"
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-pub extern setscrolling(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscrolling(this: js_object): web String
-	c inline "getObjectField(#1, \"scrolling\")"
-pub extern setframeBorder(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getframeBorder(this: js_object): web String
-	c inline "getObjectField(#1, \"frameBorder\")"
-pub extern setlongDesc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlongDesc(this: js_object): web String
-	c inline "getObjectField(#1, \"longDesc\")"
-pub extern setmarginHeight(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmarginHeight(this: js_object): web String
-	c inline "getObjectField(#1, \"marginHeight\")"
-pub extern setmarginWidth(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmarginWidth(this: js_object): web String
-	c inline "getObjectField(#1, \"marginWidth\")"
-pub extern getpermissionsPolicy(this: js_object): web permissions_policy.kk/PermissionsPolicy
-	c inline "getObjectField(#1, \"permissionsPolicy\")"
-struct HTMLEmbedElement
-{,
-,
-,
-,
-,
-
-}
-pub extern newHTMLEmbedElement([], [])
-()
-
-pub extern getSVGDocument(this: js_object, [], [])
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setwidth(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web String
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web String
-	c inline "getObjectField(#1, \"height\")"
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-struct HTMLObjectElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLObjectElement([], [])
-()
-
-pub extern getSVGDocument(this: js_object, [], [])
-pub extern checkValidity(this: js_object, [], [])
-pub extern reportValidity(this: js_object, [], [])
-pub extern setCustomValidity(this: js_object, [error: String], [])
-pub extern setdata(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdata(this: js_object): web String
-	c inline "getObjectField(#1, \"data\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getform(this: js_object): web maybe<HTMLFormElement>
-	c inline "getObjectField(#1, \"form\")"
-pub extern setwidth(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web String
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web String
-	c inline "getObjectField(#1, \"height\")"
-pub extern getcontentDocument(this: js_object): web maybe<dom.kk/Document>
-	c inline "getObjectField(#1, \"contentDocument\")"
-pub extern getcontentWindow(this: js_object): web maybe<Window>
-	c inline "getObjectField(#1, \"contentWindow\")"
-pub extern getwillValidate(this: js_object): web bool
-	c inline "getObjectField(#1, \"willValidate\")"
-pub extern getvalidity(this: js_object): web ValidityState
-	c inline "getObjectField(#1, \"validity\")"
-pub extern getvalidationMessage(this: js_object): web String
-	c inline "getObjectField(#1, \"validationMessage\")"
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-pub extern setarchive(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getarchive(this: js_object): web String
-	c inline "getObjectField(#1, \"archive\")"
-pub extern setcode(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcode(this: js_object): web String
-	c inline "getObjectField(#1, \"code\")"
-pub extern setdeclare(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdeclare(this: js_object): web bool
-	c inline "getObjectField(#1, \"declare\")"
-pub extern sethspace(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethspace(this: js_object): web int
-	c inline "getObjectField(#1, \"hspace\")"
-pub extern setstandby(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstandby(this: js_object): web String
-	c inline "getObjectField(#1, \"standby\")"
-pub extern setvspace(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvspace(this: js_object): web int
-	c inline "getObjectField(#1, \"vspace\")"
-pub extern setcodeBase(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcodeBase(this: js_object): web String
-	c inline "getObjectField(#1, \"codeBase\")"
-pub extern setcodeType(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcodeType(this: js_object): web String
-	c inline "getObjectField(#1, \"codeType\")"
-pub extern setuseMap(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuseMap(this: js_object): web String
-	c inline "getObjectField(#1, \"useMap\")"
-pub extern setborder(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getborder(this: js_object): web String
-	c inline "getObjectField(#1, \"border\")"
-struct HTMLVideoElement
-{,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLVideoElement([], [])
-()
-
-pub extern getVideoPlaybackQuality(this: js_object, [], [])
-pub extern requestPictureInPicture(this: js_object, [], [])
-pub extern requestVideoFrameCallback(this: js_object, [callback: video_rvfc.kk/VideoFrameRequestCallback], [])
-pub extern cancelVideoFrameCallback(this: js_object, [handle: int], [])
-pub extern setwidth(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-pub extern getvideoWidth(this: js_object): web int
-	c inline "getObjectField(#1, \"videoWidth\")"
-pub extern getvideoHeight(this: js_object): web int
-	c inline "getObjectField(#1, \"videoHeight\")"
-pub extern setposter(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getposter(this: js_object): web String
-	c inline "getObjectField(#1, \"poster\")"
-pub extern setplaysInline(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getplaysInline(this: js_object): web bool
-	c inline "getObjectField(#1, \"playsInline\")"
-pub extern setonenterpictureinpicture(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonenterpictureinpicture(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onenterpictureinpicture\")"
-pub extern setonleavepictureinpicture(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonleavepictureinpicture(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onleavepictureinpicture\")"
-pub extern setdisablePictureInPicture(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisablePictureInPicture(this: js_object): web bool
-	c inline "getObjectField(#1, \"disablePictureInPicture\")"
-struct HTMLAudioElement
-{
-}
-pub extern newHTMLAudioElement([], [])
-()
-
-struct HTMLTrackElement
-{,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLTrackElement([], [])
-(pub extern NONE(): int
-	c inline "getConstant(\"NONE\")", pub extern LOADING(): int
-	c inline "getConstant(\"LOADING\")", pub extern LOADED(): int
-	c inline "getConstant(\"LOADED\")", pub extern ERROR(): int
-	c inline "getConstant(\"ERROR\")")
-
-pub extern setkind(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getkind(this: js_object): web String
-	c inline "getObjectField(#1, \"kind\")"
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern setsrclang(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrclang(this: js_object): web String
-	c inline "getObjectField(#1, \"srclang\")"
-pub extern setlabel(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlabel(this: js_object): web String
-	c inline "getObjectField(#1, \"label\")"
-pub extern setdefault(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdefault(this: js_object): web bool
-	c inline "getObjectField(#1, \"default_\")"
-pub extern getreadyState(this: js_object): web int
-	c inline "getObjectField(#1, \"readyState\")"
-pub extern gettrack(this: js_object): web TextTrack
-	c inline "getObjectField(#1, \"track\")"
-struct HTMLMediaElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-(pub extern NETWORK_EMPTY(): int
-	c inline "getConstant(\"NETWORK_EMPTY\")", pub extern NETWORK_IDLE(): int
-	c inline "getConstant(\"NETWORK_IDLE\")", pub extern NETWORK_LOADING(): int
-	c inline "getConstant(\"NETWORK_LOADING\")", ..., pub extern HAVE_FUTURE_DATA(): int
-	c inline "getConstant(\"HAVE_FUTURE_DATA\")", pub extern HAVE_ENOUGH_DATA(): int
-	c inline "getConstant(\"HAVE_ENOUGH_DATA\")")
-
-pub extern setSinkId(this: js_object, [sinkId: String], [])
-pub extern setMediaKeys(this: js_object, [mediaKeys: maybe<encrypted_media.kk/MediaKeys> =  Nothing], [])
-pub extern load(this: js_object, [], [])
-pub extern canPlayType(this: js_object, [type: String], [])
-pub extern fastSeek(this: js_object, [time: double], [])
-pub extern getStartDate(this: js_object, [], [])
-pub extern play(this: js_object, [], [])
-pub extern pause(this: js_object, [], [])
-pub extern addTextTrack(this: js_object, [kind: TextTrackKind], [label: String, language: String])
-pub extern captureStream(this: js_object, [], [])
-pub extern getsinkId(this: js_object): web String
-	c inline "getObjectField(#1, \"sinkId\")"
-pub extern getmediaKeys(this: js_object): web maybe<encrypted_media.kk/MediaKeys>
-	c inline "getObjectField(#1, \"mediaKeys\")"
-pub extern setonencrypted(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonencrypted(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onencrypted\")"
-pub extern setonwaitingforkey(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonwaitingforkey(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onwaitingforkey\")"
-pub extern geterror(this: js_object): web maybe<MediaError>
-	c inline "getObjectField(#1, \"error\")"
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern setsrcObject(this: js_object, value: maybe<MediaProvider>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrcObject(this: js_object): web maybe<MediaProvider>
-	c inline "getObjectField(#1, \"srcObject\")"
-pub extern getcurrentSrc(this: js_object): web String
-	c inline "getObjectField(#1, \"currentSrc\")"
-pub extern setcrossOrigin(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcrossOrigin(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"crossOrigin\")"
-pub extern getnetworkState(this: js_object): web int
-	c inline "getObjectField(#1, \"networkState\")"
-pub extern setpreload(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpreload(this: js_object): web String
-	c inline "getObjectField(#1, \"preload\")"
-pub extern getbuffered(this: js_object): web TimeRanges
-	c inline "getObjectField(#1, \"buffered\")"
-pub extern getreadyState(this: js_object): web int
-	c inline "getObjectField(#1, \"readyState\")"
-pub extern getseeking(this: js_object): web bool
-	c inline "getObjectField(#1, \"seeking\")"
-pub extern setcurrentTime(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcurrentTime(this: js_object): web double
-	c inline "getObjectField(#1, \"currentTime\")"
-pub extern getduration(this: js_object): web double
-	c inline "getObjectField(#1, \"duration\")"
-pub extern getpaused(this: js_object): web bool
-	c inline "getObjectField(#1, \"paused\")"
-pub extern setdefaultPlaybackRate(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdefaultPlaybackRate(this: js_object): web double
-	c inline "getObjectField(#1, \"defaultPlaybackRate\")"
-pub extern setplaybackRate(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getplaybackRate(this: js_object): web double
-	c inline "getObjectField(#1, \"playbackRate\")"
-pub extern setpreservesPitch(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpreservesPitch(this: js_object): web bool
-	c inline "getObjectField(#1, \"preservesPitch\")"
-pub extern getplayed(this: js_object): web TimeRanges
-	c inline "getObjectField(#1, \"played\")"
-pub extern getseekable(this: js_object): web TimeRanges
-	c inline "getObjectField(#1, \"seekable\")"
-pub extern getended(this: js_object): web bool
-	c inline "getObjectField(#1, \"ended\")"
-pub extern setautoplay(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getautoplay(this: js_object): web bool
-	c inline "getObjectField(#1, \"autoplay\")"
-pub extern setloop(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getloop(this: js_object): web bool
-	c inline "getObjectField(#1, \"loop\")"
-pub extern setcontrols(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcontrols(this: js_object): web bool
-	c inline "getObjectField(#1, \"controls\")"
-pub extern setvolume(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvolume(this: js_object): web double
-	c inline "getObjectField(#1, \"volume\")"
-pub extern setmuted(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmuted(this: js_object): web bool
-	c inline "getObjectField(#1, \"muted\")"
-pub extern setdefaultMuted(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdefaultMuted(this: js_object): web bool
-	c inline "getObjectField(#1, \"defaultMuted\")"
-pub extern getaudioTracks(this: js_object): web AudioTrackList
-	c inline "getObjectField(#1, \"audioTracks\")"
-pub extern getvideoTracks(this: js_object): web VideoTrackList
-	c inline "getObjectField(#1, \"videoTracks\")"
-pub extern gettextTracks(this: js_object): web TextTrackList
-	c inline "getObjectField(#1, \"textTracks\")"
-pub extern getremote(this: js_object): web remote_playback.kk/RemotePlayback
-	c inline "getObjectField(#1, \"remote\")"
-pub extern setdisableRemotePlayback(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisableRemotePlayback(this: js_object): web bool
-	c inline "getObjectField(#1, \"disableRemotePlayback\")"
-struct MediaError
-{,
-
-}
-
-(pub extern MEDIA_ERR_ABORTED(): int
-	c inline "getConstant(\"MEDIA_ERR_ABORTED\")", pub extern MEDIA_ERR_NETWORK(): int
-	c inline "getConstant(\"MEDIA_ERR_NETWORK\")", pub extern MEDIA_ERR_DECODE(): int
-	c inline "getConstant(\"MEDIA_ERR_DECODE\")", pub extern MEDIA_ERR_SRC_NOT_SUPPORTED(): int
-	c inline "getConstant(\"MEDIA_ERR_SRC_NOT_SUPPORTED\")")
-
-pub extern getcode(this: js_object): web int
-	c inline "getObjectField(#1, \"code\")"
-pub extern getmessage(this: js_object): web String
-	c inline "getObjectField(#1, \"message\")"
-struct AudioTrackList
-{,
-,
-,
-
-}
-
-()
-
-pub extern getTrackById(this: js_object, [id: String], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-pub extern setonchange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonchange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onchange\")"
-pub extern setonaddtrack(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonaddtrack(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onaddtrack\")"
-pub extern setonremovetrack(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonremovetrack(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onremovetrack\")"
-struct AudioTrack
-{,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern getkind(this: js_object): web String
-	c inline "getObjectField(#1, \"kind\")"
-pub extern getlabel(this: js_object): web String
-	c inline "getObjectField(#1, \"label\")"
-pub extern getlanguage(this: js_object): web String
-	c inline "getObjectField(#1, \"language\")"
-pub extern setenabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getenabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"enabled\")"
-pub extern getsourceBuffer(this: js_object): web maybe<media_source.kk/SourceBuffer>
-	c inline "getObjectField(#1, \"sourceBuffer\")"
-struct VideoTrackList
-{,
-,
-,
-,
-
-}
-
-()
-
-pub extern getTrackById(this: js_object, [id: String], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-pub extern getselectedIndex(this: js_object): web int
-	c inline "getObjectField(#1, \"selectedIndex\")"
-pub extern setonchange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonchange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onchange\")"
-pub extern setonaddtrack(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonaddtrack(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onaddtrack\")"
-pub extern setonremovetrack(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonremovetrack(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onremovetrack\")"
-struct VideoTrack
-{,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern getkind(this: js_object): web String
-	c inline "getObjectField(#1, \"kind\")"
-pub extern getlabel(this: js_object): web String
-	c inline "getObjectField(#1, \"label\")"
-pub extern getlanguage(this: js_object): web String
-	c inline "getObjectField(#1, \"language\")"
-pub extern setselected(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselected(this: js_object): web bool
-	c inline "getObjectField(#1, \"selected\")"
-pub extern getsourceBuffer(this: js_object): web maybe<media_source.kk/SourceBuffer>
-	c inline "getObjectField(#1, \"sourceBuffer\")"
-struct TextTrackList
-{,
-,
-,
-
-}
-
-()
-
-pub extern getTrackById(this: js_object, [id: String], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-pub extern setonchange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonchange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onchange\")"
-pub extern setonaddtrack(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonaddtrack(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onaddtrack\")"
-pub extern setonremovetrack(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonremovetrack(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onremovetrack\")"
-struct TextTrack
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern addCue(this: js_object, [cue: TextTrackCue], [])
-pub extern removeCue(this: js_object, [cue: TextTrackCue], [])
-pub extern getkind(this: js_object): web TextTrackKind
-	c inline "getObjectField(#1, \"kind\")"
-pub extern getlabel(this: js_object): web String
-	c inline "getObjectField(#1, \"label\")"
-pub extern getlanguage(this: js_object): web String
-	c inline "getObjectField(#1, \"language\")"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern getinBandMetadataTrackDispatchType(this: js_object): web String
-	c inline "getObjectField(#1, \"inBandMetadataTrackDispatchType\")"
-pub extern setmode(this: js_object, value: TextTrackMode): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmode(this: js_object): web TextTrackMode
-	c inline "getObjectField(#1, \"mode\")"
-pub extern getcues(this: js_object): web maybe<TextTrackCueList>
-	c inline "getObjectField(#1, \"cues\")"
-pub extern getactiveCues(this: js_object): web maybe<TextTrackCueList>
-	c inline "getObjectField(#1, \"activeCues\")"
-pub extern setoncuechange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncuechange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncuechange\")"
-pub extern getsourceBuffer(this: js_object): web maybe<media_source.kk/SourceBuffer>
-	c inline "getObjectField(#1, \"sourceBuffer\")"
-struct TextTrackCueList
-{
-}
-
-()
-
-pub extern getCueById(this: js_object, [id: String], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct TextTrackCue
-{,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern gettrack(this: js_object): web maybe<TextTrack>
-	c inline "getObjectField(#1, \"track\")"
-pub extern setid(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern setstartTime(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstartTime(this: js_object): web double
-	c inline "getObjectField(#1, \"startTime\")"
-pub extern setendTime(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getendTime(this: js_object): web double
-	c inline "getObjectField(#1, \"endTime\")"
-pub extern setpauseOnExit(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpauseOnExit(this: js_object): web bool
-	c inline "getObjectField(#1, \"pauseOnExit\")"
-pub extern setonenter(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonenter(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onenter\")"
-pub extern setonexit(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonexit(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onexit\")"
-struct TimeRanges
-{
-}
-
-()
-
-pub extern start(this: js_object, [index: int], [])
-pub extern end(this: js_object, [index: int], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct TrackEvent
-{
-}
-pub extern newTrackEvent([type: String], [eventInitDict: TrackEventInit])
-()
-
-pub extern gettrack(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"track\")"
-struct TrackEventInit
-{  track: maybe<dart:js_interop/JSAny>
-}
-pub extern newTrackEventInit([track: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
-
-pub extern settrack(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettrack(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"track\")"
-struct HTMLMapElement
-{,
-
-}
-pub extern newHTMLMapElement([], [])
-()
-
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getareas(this: js_object): web dom.kk/HTMLCollection
-	c inline "getObjectField(#1, \"areas\")"
-struct HTMLAreaElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLAreaElement([], [])
-()
-
-pub extern setalt(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalt(this: js_object): web String
-	c inline "getObjectField(#1, \"alt\")"
-pub extern setcoords(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcoords(this: js_object): web String
-	c inline "getObjectField(#1, \"coords\")"
-pub extern setshape(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshape(this: js_object): web String
-	c inline "getObjectField(#1, \"shape\")"
-pub extern settarget(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettarget(this: js_object): web String
-	c inline "getObjectField(#1, \"target\")"
-pub extern setdownload(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdownload(this: js_object): web String
-	c inline "getObjectField(#1, \"download\")"
-pub extern setping(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getping(this: js_object): web String
-	c inline "getObjectField(#1, \"ping\")"
-pub extern setrel(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrel(this: js_object): web String
-	c inline "getObjectField(#1, \"rel\")"
-pub extern getrelList(this: js_object): web dom.kk/DOMTokenList
-	c inline "getObjectField(#1, \"relList\")"
-pub extern setreferrerPolicy(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreferrerPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"referrerPolicy\")"
-pub extern setnoHref(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnoHref(this: js_object): web bool
-	c inline "getObjectField(#1, \"noHref\")"
-struct HTMLTableElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLTableElement([], [])
-()
-
-pub extern createCaption(this: js_object, [], [])
-pub extern deleteCaption(this: js_object, [], [])
-pub extern createTHead(this: js_object, [], [])
-pub extern deleteTHead(this: js_object, [], [])
-pub extern createTFoot(this: js_object, [], [])
-pub extern deleteTFoot(this: js_object, [], [])
-pub extern createTBody(this: js_object, [], [])
-pub extern insertRow(this: js_object, [], [index: int])
-pub extern deleteRow(this: js_object, [index: int], [])
-pub extern setcaption(this: js_object, value: maybe<HTMLTableCaptionElement>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcaption(this: js_object): web maybe<HTMLTableCaptionElement>
-	c inline "getObjectField(#1, \"caption\")"
-pub extern settHead(this: js_object, value: maybe<HTMLTableSectionElement>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettHead(this: js_object): web maybe<HTMLTableSectionElement>
-	c inline "getObjectField(#1, \"tHead\")"
-pub extern settFoot(this: js_object, value: maybe<HTMLTableSectionElement>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettFoot(this: js_object): web maybe<HTMLTableSectionElement>
-	c inline "getObjectField(#1, \"tFoot\")"
-pub extern gettBodies(this: js_object): web dom.kk/HTMLCollection
-	c inline "getObjectField(#1, \"tBodies\")"
-pub extern getrows(this: js_object): web dom.kk/HTMLCollection
-	c inline "getObjectField(#1, \"rows\")"
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-pub extern setborder(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getborder(this: js_object): web String
-	c inline "getObjectField(#1, \"border\")"
-pub extern setframe(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getframe(this: js_object): web String
-	c inline "getObjectField(#1, \"frame\")"
-pub extern setrules(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrules(this: js_object): web String
-	c inline "getObjectField(#1, \"rules\")"
-pub extern setsummary(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsummary(this: js_object): web String
-	c inline "getObjectField(#1, \"summary\")"
-pub extern setwidth(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web String
-	c inline "getObjectField(#1, \"width\")"
-pub extern setbgColor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbgColor(this: js_object): web String
-	c inline "getObjectField(#1, \"bgColor\")"
-pub extern setcellPadding(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcellPadding(this: js_object): web String
-	c inline "getObjectField(#1, \"cellPadding\")"
-pub extern setcellSpacing(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcellSpacing(this: js_object): web String
-	c inline "getObjectField(#1, \"cellSpacing\")"
-struct HTMLTableCaptionElement
-{
-}
-pub extern newHTMLTableCaptionElement([], [])
-()
-
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-struct HTMLTableColElement
-{,
-,
-,
-,
-,
-
-}
-pub extern newHTMLTableColElement([], [])
-()
-
-pub extern setspan(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getspan(this: js_object): web int
-	c inline "getObjectField(#1, \"span\")"
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-pub extern setch(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getch(this: js_object): web String
-	c inline "getObjectField(#1, \"ch\")"
-pub extern setchOff(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchOff(this: js_object): web String
-	c inline "getObjectField(#1, \"chOff\")"
-pub extern setvAlign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvAlign(this: js_object): web String
-	c inline "getObjectField(#1, \"vAlign\")"
-pub extern setwidth(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web String
-	c inline "getObjectField(#1, \"width\")"
-struct HTMLTableSectionElement
-{,
-,
-,
-,
-
-}
-pub extern newHTMLTableSectionElement([], [])
-()
-
-pub extern insertRow(this: js_object, [], [index: int])
-pub extern deleteRow(this: js_object, [index: int], [])
-pub extern getrows(this: js_object): web dom.kk/HTMLCollection
-	c inline "getObjectField(#1, \"rows\")"
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-pub extern setch(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getch(this: js_object): web String
-	c inline "getObjectField(#1, \"ch\")"
-pub extern setchOff(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchOff(this: js_object): web String
-	c inline "getObjectField(#1, \"chOff\")"
-pub extern setvAlign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvAlign(this: js_object): web String
-	c inline "getObjectField(#1, \"vAlign\")"
-struct HTMLTableRowElement
-{,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLTableRowElement([], [])
-()
-
-pub extern insertCell(this: js_object, [], [index: int])
-pub extern deleteCell(this: js_object, [index: int], [])
-pub extern getrowIndex(this: js_object): web int
-	c inline "getObjectField(#1, \"rowIndex\")"
-pub extern getsectionRowIndex(this: js_object): web int
-	c inline "getObjectField(#1, \"sectionRowIndex\")"
-pub extern getcells(this: js_object): web dom.kk/HTMLCollection
-	c inline "getObjectField(#1, \"cells\")"
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-pub extern setch(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getch(this: js_object): web String
-	c inline "getObjectField(#1, \"ch\")"
-pub extern setchOff(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchOff(this: js_object): web String
-	c inline "getObjectField(#1, \"chOff\")"
-pub extern setvAlign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvAlign(this: js_object): web String
-	c inline "getObjectField(#1, \"vAlign\")"
-pub extern setbgColor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbgColor(this: js_object): web String
-	c inline "getObjectField(#1, \"bgColor\")"
-struct HTMLTableCellElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLTableCellElement([], [])
-()
-
-pub extern setcolSpan(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolSpan(this: js_object): web int
-	c inline "getObjectField(#1, \"colSpan\")"
-pub extern setrowSpan(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrowSpan(this: js_object): web int
-	c inline "getObjectField(#1, \"rowSpan\")"
-pub extern setheaders(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheaders(this: js_object): web String
-	c inline "getObjectField(#1, \"headers\")"
-pub extern getcellIndex(this: js_object): web int
-	c inline "getObjectField(#1, \"cellIndex\")"
-pub extern setscope(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscope(this: js_object): web String
-	c inline "getObjectField(#1, \"scope\")"
-pub extern setabbr(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getabbr(this: js_object): web String
-	c inline "getObjectField(#1, \"abbr\")"
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-pub extern setaxis(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaxis(this: js_object): web String
-	c inline "getObjectField(#1, \"axis\")"
-pub extern setheight(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web String
-	c inline "getObjectField(#1, \"height\")"
-pub extern setwidth(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web String
-	c inline "getObjectField(#1, \"width\")"
-pub extern setch(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getch(this: js_object): web String
-	c inline "getObjectField(#1, \"ch\")"
-pub extern setchOff(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchOff(this: js_object): web String
-	c inline "getObjectField(#1, \"chOff\")"
-pub extern setnoWrap(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnoWrap(this: js_object): web bool
-	c inline "getObjectField(#1, \"noWrap\")"
-pub extern setvAlign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvAlign(this: js_object): web String
-	c inline "getObjectField(#1, \"vAlign\")"
-pub extern setbgColor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbgColor(this: js_object): web String
-	c inline "getObjectField(#1, \"bgColor\")"
-struct HTMLFormElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLFormElement([], [])
-()
-
-pub extern submit(this: js_object, [], [])
-pub extern requestSubmit(this: js_object, [], [submitter: maybe<HTMLElement> =  Nothing])
-pub extern reset(this: js_object, [], [])
-pub extern checkValidity(this: js_object, [], [])
-pub extern reportValidity(this: js_object, [], [])
-pub extern setacceptCharset(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getacceptCharset(this: js_object): web String
-	c inline "getObjectField(#1, \"acceptCharset\")"
-pub extern setaction(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaction(this: js_object): web String
-	c inline "getObjectField(#1, \"action\")"
-pub extern setautocomplete(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getautocomplete(this: js_object): web String
-	c inline "getObjectField(#1, \"autocomplete\")"
-pub extern setenctype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getenctype(this: js_object): web String
-	c inline "getObjectField(#1, \"enctype\")"
-pub extern setencoding(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getencoding(this: js_object): web String
-	c inline "getObjectField(#1, \"encoding\")"
-pub extern setmethod(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmethod(this: js_object): web String
-	c inline "getObjectField(#1, \"method\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setnoValidate(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnoValidate(this: js_object): web bool
-	c inline "getObjectField(#1, \"noValidate\")"
-pub extern settarget(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettarget(this: js_object): web String
-	c inline "getObjectField(#1, \"target\")"
-pub extern setrel(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrel(this: js_object): web String
-	c inline "getObjectField(#1, \"rel\")"
-pub extern getrelList(this: js_object): web dom.kk/DOMTokenList
-	c inline "getObjectField(#1, \"relList\")"
-pub extern getelements(this: js_object): web HTMLFormControlsCollection
-	c inline "getObjectField(#1, \"elements\")"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct HTMLLabelElement
-{,
-,
-
-}
-pub extern newHTMLLabelElement([], [])
-()
-
-pub extern getform(this: js_object): web maybe<HTMLFormElement>
-	c inline "getObjectField(#1, \"form\")"
-pub extern sethtmlFor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethtmlFor(this: js_object): web String
-	c inline "getObjectField(#1, \"htmlFor\")"
-pub extern getcontrol(this: js_object): web maybe<HTMLElement>
-	c inline "getObjectField(#1, \"control\")"
-struct HTMLInputElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLInputElement([], [])
-()
-
-pub extern stepUp(this: js_object, [], [n: int])
-pub extern stepDown(this: js_object, [], [n: int])
-pub extern checkValidity(this: js_object, [], [])
-pub extern reportValidity(this: js_object, [], [])
-pub extern setCustomValidity(this: js_object, [error: String], [])
-pub extern select(this: js_object, [], [])
-pub extern setRangeText(this: js_object, [replacement: String], [start: int, end: int, selectionMode: SelectionMode])
-pub extern setSelectionRange(this: js_object, [start: int, end: int], [direction: String])
-pub extern showPicker(this: js_object, [], [])
-pub extern setwebkitdirectory(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwebkitdirectory(this: js_object): web bool
-	c inline "getObjectField(#1, \"webkitdirectory\")"
-pub extern getwebkitEntries(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"webkitEntries\")"
-pub extern setcapture(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcapture(this: js_object): web String
-	c inline "getObjectField(#1, \"capture\")"
-pub extern setaccept(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaccept(this: js_object): web String
-	c inline "getObjectField(#1, \"accept\")"
-pub extern setalt(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalt(this: js_object): web String
-	c inline "getObjectField(#1, \"alt\")"
-pub extern setautocomplete(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getautocomplete(this: js_object): web String
-	c inline "getObjectField(#1, \"autocomplete\")"
-pub extern setdefaultChecked(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdefaultChecked(this: js_object): web bool
-	c inline "getObjectField(#1, \"defaultChecked\")"
-pub extern setchecked(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchecked(this: js_object): web bool
-	c inline "getObjectField(#1, \"checked\")"
-pub extern setdirName(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdirName(this: js_object): web String
-	c inline "getObjectField(#1, \"dirName\")"
-pub extern setdisabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"disabled\")"
-pub extern getform(this: js_object): web maybe<HTMLFormElement>
-	c inline "getObjectField(#1, \"form\")"
-pub extern setfiles(this: js_object, value: maybe<fileapi.kk/FileList>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfiles(this: js_object): web maybe<fileapi.kk/FileList>
-	c inline "getObjectField(#1, \"files\")"
-pub extern setformAction(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformAction(this: js_object): web String
-	c inline "getObjectField(#1, \"formAction\")"
-pub extern setformEnctype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformEnctype(this: js_object): web String
-	c inline "getObjectField(#1, \"formEnctype\")"
-pub extern setformMethod(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformMethod(this: js_object): web String
-	c inline "getObjectField(#1, \"formMethod\")"
-pub extern setformNoValidate(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformNoValidate(this: js_object): web bool
-	c inline "getObjectField(#1, \"formNoValidate\")"
-pub extern setformTarget(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformTarget(this: js_object): web String
-	c inline "getObjectField(#1, \"formTarget\")"
-pub extern setheight(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-pub extern setindeterminate(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getindeterminate(this: js_object): web bool
-	c inline "getObjectField(#1, \"indeterminate\")"
-pub extern getlist(this: js_object): web maybe<HTMLDataListElement>
-	c inline "getObjectField(#1, \"list\")"
-pub extern setmax(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmax(this: js_object): web String
-	c inline "getObjectField(#1, \"max\")"
-pub extern setmaxLength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmaxLength(this: js_object): web int
-	c inline "getObjectField(#1, \"maxLength\")"
-pub extern setmin(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmin(this: js_object): web String
-	c inline "getObjectField(#1, \"min\")"
-pub extern setminLength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getminLength(this: js_object): web int
-	c inline "getObjectField(#1, \"minLength\")"
-pub extern setmultiple(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmultiple(this: js_object): web bool
-	c inline "getObjectField(#1, \"multiple\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setpattern(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpattern(this: js_object): web String
-	c inline "getObjectField(#1, \"pattern\")"
-pub extern setplaceholder(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getplaceholder(this: js_object): web String
-	c inline "getObjectField(#1, \"placeholder\")"
-pub extern setreadOnly(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreadOnly(this: js_object): web bool
-	c inline "getObjectField(#1, \"readOnly\")"
-pub extern setrequired(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequired(this: js_object): web bool
-	c inline "getObjectField(#1, \"required\")"
-pub extern setsize(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsize(this: js_object): web int
-	c inline "getObjectField(#1, \"size\")"
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern setstep(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstep(this: js_object): web String
-	c inline "getObjectField(#1, \"step\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setdefaultValue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdefaultValue(this: js_object): web String
-	c inline "getObjectField(#1, \"defaultValue\")"
-pub extern setvalue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web String
-	c inline "getObjectField(#1, \"value\")"
-pub extern setvalueAsDate(this: js_object, value: maybe<dart:js_interop/JSObject>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalueAsDate(this: js_object): web maybe<dart:js_interop/JSObject>
-	c inline "getObjectField(#1, \"valueAsDate\")"
-pub extern setvalueAsNumber(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalueAsNumber(this: js_object): web double
-	c inline "getObjectField(#1, \"valueAsNumber\")"
-pub extern setwidth(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern getwillValidate(this: js_object): web bool
-	c inline "getObjectField(#1, \"willValidate\")"
-pub extern getvalidity(this: js_object): web ValidityState
-	c inline "getObjectField(#1, \"validity\")"
-pub extern getvalidationMessage(this: js_object): web String
-	c inline "getObjectField(#1, \"validationMessage\")"
-pub extern getlabels(this: js_object): web maybe<dom.kk/NodeList>
-	c inline "getObjectField(#1, \"labels\")"
-pub extern setselectionStart(this: js_object, value: maybe<int>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectionStart(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"selectionStart\")"
-pub extern setselectionEnd(this: js_object, value: maybe<int>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectionEnd(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"selectionEnd\")"
-pub extern setselectionDirection(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectionDirection(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"selectionDirection\")"
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-pub extern setuseMap(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuseMap(this: js_object): web String
-	c inline "getObjectField(#1, \"useMap\")"
-struct HTMLButtonElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLButtonElement([], [])
-()
-
-pub extern checkValidity(this: js_object, [], [])
-pub extern reportValidity(this: js_object, [], [])
-pub extern setCustomValidity(this: js_object, [error: String], [])
-pub extern setdisabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"disabled\")"
-pub extern getform(this: js_object): web maybe<HTMLFormElement>
-	c inline "getObjectField(#1, \"form\")"
-pub extern setformAction(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformAction(this: js_object): web String
-	c inline "getObjectField(#1, \"formAction\")"
-pub extern setformEnctype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformEnctype(this: js_object): web String
-	c inline "getObjectField(#1, \"formEnctype\")"
-pub extern setformMethod(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformMethod(this: js_object): web String
-	c inline "getObjectField(#1, \"formMethod\")"
-pub extern setformNoValidate(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformNoValidate(this: js_object): web bool
-	c inline "getObjectField(#1, \"formNoValidate\")"
-pub extern setformTarget(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformTarget(this: js_object): web String
-	c inline "getObjectField(#1, \"formTarget\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setvalue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web String
-	c inline "getObjectField(#1, \"value\")"
-pub extern getwillValidate(this: js_object): web bool
-	c inline "getObjectField(#1, \"willValidate\")"
-pub extern getvalidity(this: js_object): web ValidityState
-	c inline "getObjectField(#1, \"validity\")"
-pub extern getvalidationMessage(this: js_object): web String
-	c inline "getObjectField(#1, \"validationMessage\")"
-pub extern getlabels(this: js_object): web dom.kk/NodeList
-	c inline "getObjectField(#1, \"labels\")"
-struct HTMLSelectElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLSelectElement([], [])
-()
-
-pub extern item(this: js_object, [index: int], [])
-pub extern namedItem(this: js_object, [name: String], [])
-pub extern add(this: js_object, [element: maybe<dart:js_interop/JSAny>], [before: maybe<dart:js_interop/JSAny> =  Nothing])
-pub extern remove(this: js_object, [], [index: int])
-pub extern checkValidity(this: js_object, [], [])
-pub extern reportValidity(this: js_object, [], [])
-pub extern setCustomValidity(this: js_object, [error: String], [])
-pub extern setautocomplete(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getautocomplete(this: js_object): web String
-	c inline "getObjectField(#1, \"autocomplete\")"
-pub extern setdisabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"disabled\")"
-pub extern getform(this: js_object): web maybe<HTMLFormElement>
-	c inline "getObjectField(#1, \"form\")"
-pub extern setmultiple(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmultiple(this: js_object): web bool
-	c inline "getObjectField(#1, \"multiple\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setrequired(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequired(this: js_object): web bool
-	c inline "getObjectField(#1, \"required\")"
-pub extern setsize(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsize(this: js_object): web int
-	c inline "getObjectField(#1, \"size\")"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern getoptions(this: js_object): web HTMLOptionsCollection
-	c inline "getObjectField(#1, \"options\")"
-pub extern setlength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-pub extern getselectedOptions(this: js_object): web dom.kk/HTMLCollection
-	c inline "getObjectField(#1, \"selectedOptions\")"
-pub extern setselectedIndex(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectedIndex(this: js_object): web int
-	c inline "getObjectField(#1, \"selectedIndex\")"
-pub extern setvalue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web String
-	c inline "getObjectField(#1, \"value\")"
-pub extern getwillValidate(this: js_object): web bool
-	c inline "getObjectField(#1, \"willValidate\")"
-pub extern getvalidity(this: js_object): web ValidityState
-	c inline "getObjectField(#1, \"validity\")"
-pub extern getvalidationMessage(this: js_object): web String
-	c inline "getObjectField(#1, \"validationMessage\")"
-pub extern getlabels(this: js_object): web dom.kk/NodeList
-	c inline "getObjectField(#1, \"labels\")"
-struct HTMLDataListElement
-{
-}
-pub extern newHTMLDataListElement([], [])
-()
-
-pub extern getoptions(this: js_object): web dom.kk/HTMLCollection
-	c inline "getObjectField(#1, \"options\")"
-struct HTMLOptGroupElement
-{,
-
-}
-pub extern newHTMLOptGroupElement([], [])
-()
-
-pub extern setdisabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"disabled\")"
-pub extern setlabel(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlabel(this: js_object): web String
-	c inline "getObjectField(#1, \"label\")"
-struct HTMLOptionElement
-{,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLOptionElement([], [])
-()
-
-pub extern setdisabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"disabled\")"
-pub extern getform(this: js_object): web maybe<HTMLFormElement>
-	c inline "getObjectField(#1, \"form\")"
-pub extern setlabel(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlabel(this: js_object): web String
-	c inline "getObjectField(#1, \"label\")"
-pub extern setdefaultSelected(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdefaultSelected(this: js_object): web bool
-	c inline "getObjectField(#1, \"defaultSelected\")"
-pub extern setselected(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselected(this: js_object): web bool
-	c inline "getObjectField(#1, \"selected\")"
-pub extern setvalue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web String
-	c inline "getObjectField(#1, \"value\")"
-pub extern settext(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettext(this: js_object): web String
-	c inline "getObjectField(#1, \"text\")"
-pub extern getindex(this: js_object): web int
-	c inline "getObjectField(#1, \"index\")"
-struct HTMLTextAreaElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLTextAreaElement([], [])
-()
-
-pub extern checkValidity(this: js_object, [], [])
-pub extern reportValidity(this: js_object, [], [])
-pub extern setCustomValidity(this: js_object, [error: String], [])
-pub extern select(this: js_object, [], [])
-pub extern setRangeText(this: js_object, [replacement: String], [start: int, end: int, selectionMode: SelectionMode])
-pub extern setSelectionRange(this: js_object, [start: int, end: int], [direction: String])
-pub extern setautocomplete(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getautocomplete(this: js_object): web String
-	c inline "getObjectField(#1, \"autocomplete\")"
-pub extern setcols(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcols(this: js_object): web int
-	c inline "getObjectField(#1, \"cols\")"
-pub extern setdirName(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdirName(this: js_object): web String
-	c inline "getObjectField(#1, \"dirName\")"
-pub extern setdisabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"disabled\")"
-pub extern getform(this: js_object): web maybe<HTMLFormElement>
-	c inline "getObjectField(#1, \"form\")"
-pub extern setmaxLength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmaxLength(this: js_object): web int
-	c inline "getObjectField(#1, \"maxLength\")"
-pub extern setminLength(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getminLength(this: js_object): web int
-	c inline "getObjectField(#1, \"minLength\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setplaceholder(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getplaceholder(this: js_object): web String
-	c inline "getObjectField(#1, \"placeholder\")"
-pub extern setreadOnly(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreadOnly(this: js_object): web bool
-	c inline "getObjectField(#1, \"readOnly\")"
-pub extern setrequired(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequired(this: js_object): web bool
-	c inline "getObjectField(#1, \"required\")"
-pub extern setrows(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrows(this: js_object): web int
-	c inline "getObjectField(#1, \"rows\")"
-pub extern setwrap(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwrap(this: js_object): web String
-	c inline "getObjectField(#1, \"wrap\")"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setdefaultValue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdefaultValue(this: js_object): web String
-	c inline "getObjectField(#1, \"defaultValue\")"
-pub extern setvalue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web String
-	c inline "getObjectField(#1, \"value\")"
-pub extern gettextLength(this: js_object): web int
-	c inline "getObjectField(#1, \"textLength\")"
-pub extern getwillValidate(this: js_object): web bool
-	c inline "getObjectField(#1, \"willValidate\")"
-pub extern getvalidity(this: js_object): web ValidityState
-	c inline "getObjectField(#1, \"validity\")"
-pub extern getvalidationMessage(this: js_object): web String
-	c inline "getObjectField(#1, \"validationMessage\")"
-pub extern getlabels(this: js_object): web dom.kk/NodeList
-	c inline "getObjectField(#1, \"labels\")"
-pub extern setselectionStart(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectionStart(this: js_object): web int
-	c inline "getObjectField(#1, \"selectionStart\")"
-pub extern setselectionEnd(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectionEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"selectionEnd\")"
-pub extern setselectionDirection(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectionDirection(this: js_object): web String
-	c inline "getObjectField(#1, \"selectionDirection\")"
-struct HTMLOutputElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLOutputElement([], [])
-()
-
-pub extern checkValidity(this: js_object, [], [])
-pub extern reportValidity(this: js_object, [], [])
-pub extern setCustomValidity(this: js_object, [error: String], [])
-pub extern gethtmlFor(this: js_object): web dom.kk/DOMTokenList
-	c inline "getObjectField(#1, \"htmlFor\")"
-pub extern getform(this: js_object): web maybe<HTMLFormElement>
-	c inline "getObjectField(#1, \"form\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setdefaultValue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdefaultValue(this: js_object): web String
-	c inline "getObjectField(#1, \"defaultValue\")"
-pub extern setvalue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web String
-	c inline "getObjectField(#1, \"value\")"
-pub extern getwillValidate(this: js_object): web bool
-	c inline "getObjectField(#1, \"willValidate\")"
-pub extern getvalidity(this: js_object): web ValidityState
-	c inline "getObjectField(#1, \"validity\")"
-pub extern getvalidationMessage(this: js_object): web String
-	c inline "getObjectField(#1, \"validationMessage\")"
-pub extern getlabels(this: js_object): web dom.kk/NodeList
-	c inline "getObjectField(#1, \"labels\")"
-struct HTMLProgressElement
-{,
-,
-,
-
-}
-pub extern newHTMLProgressElement([], [])
-()
-
-pub extern setvalue(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web double
-	c inline "getObjectField(#1, \"value\")"
-pub extern setmax(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmax(this: js_object): web double
-	c inline "getObjectField(#1, \"max\")"
-pub extern getposition(this: js_object): web double
-	c inline "getObjectField(#1, \"position\")"
-pub extern getlabels(this: js_object): web dom.kk/NodeList
-	c inline "getObjectField(#1, \"labels\")"
-struct HTMLMeterElement
-{,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLMeterElement([], [])
-()
-
-pub extern setvalue(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web double
-	c inline "getObjectField(#1, \"value\")"
-pub extern setmin(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmin(this: js_object): web double
-	c inline "getObjectField(#1, \"min\")"
-pub extern setmax(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmax(this: js_object): web double
-	c inline "getObjectField(#1, \"max\")"
-pub extern setlow(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlow(this: js_object): web double
-	c inline "getObjectField(#1, \"low\")"
-pub extern sethigh(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethigh(this: js_object): web double
-	c inline "getObjectField(#1, \"high\")"
-pub extern setoptimum(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoptimum(this: js_object): web double
-	c inline "getObjectField(#1, \"optimum\")"
-pub extern getlabels(this: js_object): web dom.kk/NodeList
-	c inline "getObjectField(#1, \"labels\")"
-struct HTMLFieldSetElement
-{,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLFieldSetElement([], [])
-()
-
-pub extern checkValidity(this: js_object, [], [])
-pub extern reportValidity(this: js_object, [], [])
-pub extern setCustomValidity(this: js_object, [error: String], [])
-pub extern setdisabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"disabled\")"
-pub extern getform(this: js_object): web maybe<HTMLFormElement>
-	c inline "getObjectField(#1, \"form\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern getelements(this: js_object): web dom.kk/HTMLCollection
-	c inline "getObjectField(#1, \"elements\")"
-pub extern getwillValidate(this: js_object): web bool
-	c inline "getObjectField(#1, \"willValidate\")"
-pub extern getvalidity(this: js_object): web ValidityState
-	c inline "getObjectField(#1, \"validity\")"
-pub extern getvalidationMessage(this: js_object): web String
-	c inline "getObjectField(#1, \"validationMessage\")"
-struct HTMLLegendElement
-{,
-
-}
-pub extern newHTMLLegendElement([], [])
-()
-
-pub extern getform(this: js_object): web maybe<HTMLFormElement>
-	c inline "getObjectField(#1, \"form\")"
-pub extern setalign(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalign(this: js_object): web String
-	c inline "getObjectField(#1, \"align\")"
-struct ValidityState
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern getvalueMissing(this: js_object): web bool
-	c inline "getObjectField(#1, \"valueMissing\")"
-pub extern gettypeMismatch(this: js_object): web bool
-	c inline "getObjectField(#1, \"typeMismatch\")"
-pub extern getpatternMismatch(this: js_object): web bool
-	c inline "getObjectField(#1, \"patternMismatch\")"
-pub extern gettooLong(this: js_object): web bool
-	c inline "getObjectField(#1, \"tooLong\")"
-pub extern gettooShort(this: js_object): web bool
-	c inline "getObjectField(#1, \"tooShort\")"
-pub extern getrangeUnderflow(this: js_object): web bool
-	c inline "getObjectField(#1, \"rangeUnderflow\")"
-pub extern getrangeOverflow(this: js_object): web bool
-	c inline "getObjectField(#1, \"rangeOverflow\")"
-pub extern getstepMismatch(this: js_object): web bool
-	c inline "getObjectField(#1, \"stepMismatch\")"
-pub extern getbadInput(this: js_object): web bool
-	c inline "getObjectField(#1, \"badInput\")"
-pub extern getcustomError(this: js_object): web bool
-	c inline "getObjectField(#1, \"customError\")"
-pub extern getvalid(this: js_object): web bool
-	c inline "getObjectField(#1, \"valid\")"
-struct SubmitEvent
-{
-}
-pub extern newSubmitEvent([type: String], [eventInitDict: SubmitEventInit])
-()
-
-pub extern getsubmitter(this: js_object): web maybe<HTMLElement>
-	c inline "getObjectField(#1, \"submitter\")"
-struct SubmitEventInit
-{  submitter: maybe<HTMLElement>
-}
-pub extern newSubmitEventInit([submitter: maybe<maybe<HTMLElement>> = Nothing])
-()
-
-pub extern setsubmitter(this: js_object, value: maybe<HTMLElement>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsubmitter(this: js_object): web maybe<HTMLElement>
-	c inline "getObjectField(#1, \"submitter\")"
-struct FormDataEvent
-{
-}
-pub extern newFormDataEvent([type: String, eventInitDict: FormDataEventInit], [])
-()
-
-pub extern getformData(this: js_object): web xhr.kk/FormData
-	c inline "getObjectField(#1, \"formData\")"
-struct FormDataEventInit
-{  formData: xhr.kk/FormData
-}
-pub extern newFormDataEventInit([formData: xhr.kk/FormData])
-()
-
-pub extern setformData(this: js_object, value: xhr.kk/FormData): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformData(this: js_object): web xhr.kk/FormData
-	c inline "getObjectField(#1, \"formData\")"
-struct HTMLDetailsElement
-{
-}
-pub extern newHTMLDetailsElement([], [])
-()
-
-pub extern setopen(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getopen(this: js_object): web bool
-	c inline "getObjectField(#1, \"open\")"
-struct HTMLDialogElement
-{,
-
-}
-pub extern newHTMLDialogElement([], [])
-()
-
-pub extern show(this: js_object, [], [])
-pub extern showModal(this: js_object, [], [])
-pub extern close(this: js_object, [], [returnValue: String])
-pub extern setopen(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getopen(this: js_object): web bool
-	c inline "getObjectField(#1, \"open\")"
-pub extern setreturnValue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreturnValue(this: js_object): web String
-	c inline "getObjectField(#1, \"returnValue\")"
-struct HTMLScriptElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLScriptElement([], [])
-(pub extern supports( [type: String], []))
-
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setnoModule(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnoModule(this: js_object): web bool
-	c inline "getObjectField(#1, \"noModule\")"
-pub extern setasync(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getasync(this: js_object): web bool
-	c inline "getObjectField(#1, \"async\")"
-pub extern setdefer(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdefer(this: js_object): web bool
-	c inline "getObjectField(#1, \"defer\")"
-pub extern setcrossOrigin(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcrossOrigin(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"crossOrigin\")"
-pub extern settext(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettext(this: js_object): web String
-	c inline "getObjectField(#1, \"text\")"
-pub extern setintegrity(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getintegrity(this: js_object): web String
-	c inline "getObjectField(#1, \"integrity\")"
-pub extern setreferrerPolicy(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreferrerPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"referrerPolicy\")"
-pub extern getblocking(this: js_object): web dom.kk/DOMTokenList
-	c inline "getObjectField(#1, \"blocking\")"
-pub extern setfetchPriority(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfetchPriority(this: js_object): web String
-	c inline "getObjectField(#1, \"fetchPriority\")"
-pub extern setcharset(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcharset(this: js_object): web String
-	c inline "getObjectField(#1, \"charset\")"
-pub extern setevent(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getevent(this: js_object): web String
-	c inline "getObjectField(#1, \"event\")"
-pub extern sethtmlFor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethtmlFor(this: js_object): web String
-	c inline "getObjectField(#1, \"htmlFor\")"
-struct HTMLTemplateElement
-{
-}
-pub extern newHTMLTemplateElement([], [])
-()
-
-pub extern getcontent(this: js_object): web dom.kk/DocumentFragment
-	c inline "getObjectField(#1, \"content\")"
-struct HTMLSlotElement
-{
-}
-pub extern newHTMLSlotElement([], [])
-()
-
-pub extern assignedNodes(this: js_object, [], [options: AssignedNodesOptions])
-pub extern assignedElements(this: js_object, [], [options: AssignedNodesOptions])
-pub extern assign(this: js_object, [nodes: maybe<dart:js_interop/JSAny>], [])
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-struct AssignedNodesOptions
-{  flatten: bool
-}
-pub extern newAssignedNodesOptions([flatten: maybe<bool> = Nothing])
-()
-
-pub extern setflatten(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getflatten(this: js_object): web bool
-	c inline "getObjectField(#1, \"flatten\")"
-struct HTMLCanvasElement
-{,
-
-}
-pub extern newHTMLCanvasElement([], [])
-()
-
-pub extern getContext(this: js_object, [contextId: String], [options: maybe<dart:js_interop/JSAny>])
-pub extern toDataURL(this: js_object, [], [type: String, quality: maybe<dart:js_interop/JSAny>])
-pub extern toBlob(this: js_object, [callback: BlobCallback], [type: String, quality: maybe<dart:js_interop/JSAny>])
-pub extern transferControlToOffscreen(this: js_object, [], [])
-pub extern captureStream(this: js_object, [], [frameRequestRate: double])
-pub extern setwidth(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-struct CanvasRenderingContext2DSettings
-{  alpha: bool,
-  desynchronized: bool,
-  colorSpace: PredefinedColorSpace,
-  willReadFrequently: bool
-}
-pub extern newCanvasRenderingContext2DSettings([alpha: maybe<bool> = Nothing, desynchronized: maybe<bool> = Nothing, colorSpace: maybe<PredefinedColorSpace> = Nothing, willReadFrequently: maybe<bool> = Nothing])
-()
-
-pub extern setalpha(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalpha(this: js_object): web bool
-	c inline "getObjectField(#1, \"alpha\")"
-pub extern setdesynchronized(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdesynchronized(this: js_object): web bool
-	c inline "getObjectField(#1, \"desynchronized\")"
-pub extern setcolorSpace(this: js_object, value: PredefinedColorSpace): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolorSpace(this: js_object): web PredefinedColorSpace
-	c inline "getObjectField(#1, \"colorSpace\")"
-pub extern setwillReadFrequently(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwillReadFrequently(this: js_object): web bool
-	c inline "getObjectField(#1, \"willReadFrequently\")"
-struct CanvasRenderingContext2D
-{
-}
-
-()
-
-pub extern getContextAttributes(this: js_object, [], [])
-pub extern getcanvas(this: js_object): web HTMLCanvasElement
-	c inline "getObjectField(#1, \"canvas\")"
-struct CanvasState
-{
-}
-
-()
-
-pub extern save(this: js_object, [], [])
-pub extern restore(this: js_object, [], [])
-pub extern reset(this: js_object, [], [])
-pub extern isContextLost(this: js_object, [], [])
-struct CanvasTransform
-{
-}
-
-()
-
-pub extern scale(this: js_object, [x: double, y: double], [])
-pub extern rotate(this: js_object, [angle: double], [])
-pub extern translate(this: js_object, [x: double, y: double], [])
-pub extern transform(this: js_object, [a: double, b: double, c: double, d: double, e: double, f: double], [])
-pub extern getTransform(this: js_object, [], [])
-pub extern setTransform(this: js_object, [], [aOrTransform: maybe<dart:js_interop/JSAny>, b: double, c: double, d: double, e: double, f: double])
-pub extern resetTransform(this: js_object, [], [])
-struct CanvasCompositing
-{,
-
-}
-
-()
-
-pub extern setglobalAlpha(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getglobalAlpha(this: js_object): web double
-	c inline "getObjectField(#1, \"globalAlpha\")"
-pub extern setglobalCompositeOperation(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getglobalCompositeOperation(this: js_object): web String
-	c inline "getObjectField(#1, \"globalCompositeOperation\")"
-struct CanvasImageSmoothing
-{,
-
-}
-
-()
-
-pub extern setimageSmoothingEnabled(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getimageSmoothingEnabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"imageSmoothingEnabled\")"
-pub extern setimageSmoothingQuality(this: js_object, value: ImageSmoothingQuality): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getimageSmoothingQuality(this: js_object): web ImageSmoothingQuality
-	c inline "getObjectField(#1, \"imageSmoothingQuality\")"
-struct CanvasFillStrokeStyles
-{,
-
-}
-
-()
-
-pub extern createLinearGradient(this: js_object, [x0: double, y0: double, x1: double, y1: double], [])
-pub extern createRadialGradient(this: js_object, [x0: double, y0: double, r0: double, x1: double, y1: double, r1: double], [])
-pub extern createConicGradient(this: js_object, [startAngle: double, x: double, y: double], [])
-pub extern createPattern(this: js_object, [image: CanvasImageSource, repetition: String], [])
-pub extern setstrokeStyle(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstrokeStyle(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"strokeStyle\")"
-pub extern setfillStyle(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfillStyle(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"fillStyle\")"
-struct CanvasShadowStyles
-{,
-,
-,
-
-}
-
-()
-
-pub extern setshadowOffsetX(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshadowOffsetX(this: js_object): web double
-	c inline "getObjectField(#1, \"shadowOffsetX\")"
-pub extern setshadowOffsetY(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshadowOffsetY(this: js_object): web double
-	c inline "getObjectField(#1, \"shadowOffsetY\")"
-pub extern setshadowBlur(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshadowBlur(this: js_object): web double
-	c inline "getObjectField(#1, \"shadowBlur\")"
-pub extern setshadowColor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getshadowColor(this: js_object): web String
-	c inline "getObjectField(#1, \"shadowColor\")"
-struct CanvasFilters
-{
-}
-
-()
-
-pub extern setfilter(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfilter(this: js_object): web String
-	c inline "getObjectField(#1, \"filter\")"
-struct CanvasRect
-{
-}
-
-()
-
-pub extern clearRect(this: js_object, [x: double, y: double, w: double, h: double], [])
-pub extern fillRect(this: js_object, [x: double, y: double, w: double, h: double], [])
-pub extern strokeRect(this: js_object, [x: double, y: double, w: double, h: double], [])
-struct CanvasDrawPath
-{
-}
-
-()
-
-pub extern beginPath(this: js_object, [], [])
-pub extern fill(this: js_object, [], [fillRuleOrPath: maybe<dart:js_interop/JSAny>, fillRule: CanvasFillRule])
-pub extern stroke(this: js_object, [], [path: Path2D])
-pub extern clip(this: js_object, [], [fillRuleOrPath: maybe<dart:js_interop/JSAny>, fillRule: CanvasFillRule])
-pub extern isPointInPath(this: js_object, [pathOrX: maybe<dart:js_interop/JSAny>, xOrY: double], [fillRuleOrY: maybe<dart:js_interop/JSAny>, fillRule: CanvasFillRule])
-pub extern isPointInStroke(this: js_object, [pathOrX: maybe<dart:js_interop/JSAny>, xOrY: double], [y: double])
-struct CanvasUserInterface
-{
-}
-
-()
-
-pub extern drawFocusIfNeeded(this: js_object, [elementOrPath: maybe<dart:js_interop/JSAny>], [element: dom.kk/Element])
-pub extern scrollPathIntoView(this: js_object, [], [path: Path2D])
-struct CanvasText
-{
-}
-
-()
-
-pub extern fillText(this: js_object, [text: String, x: double, y: double], [maxWidth: double])
-pub extern strokeText(this: js_object, [text: String, x: double, y: double], [maxWidth: double])
-pub extern measureText(this: js_object, [text: String], [])
-struct CanvasDrawImage
-{
-}
-
-()
-
-pub extern drawImage(this: js_object, [image: CanvasImageSource, dxOrSx: double, dyOrSy: double], [dwOrSw: double, dhOrSh: double, dx: double, dy: double, dw: double, dh: double])
-struct CanvasImageData
-{
-}
-
-()
-
-pub extern createImageData(this: js_object, [imagedataOrSw: maybe<dart:js_interop/JSAny>], [sh: int, settings: ImageDataSettings])
-pub extern getImageData(this: js_object, [sx: int, sy: int, sw: int, sh: int], [settings: ImageDataSettings])
-pub extern putImageData(this: js_object, [imagedata: ImageData, dx: int, dy: int], [dirtyX: int, dirtyY: int, dirtyWidth: int, dirtyHeight: int])
-struct CanvasPathDrawingStyles
-{,
-,
-,
-,
-
-}
-
-()
-
-pub extern setLineDash(this: js_object, [segments: dart:js_interop/JSArray], [])
-pub extern getLineDash(this: js_object, [], [])
-pub extern setlineWidth(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlineWidth(this: js_object): web double
-	c inline "getObjectField(#1, \"lineWidth\")"
-pub extern setlineCap(this: js_object, value: CanvasLineCap): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlineCap(this: js_object): web CanvasLineCap
-	c inline "getObjectField(#1, \"lineCap\")"
-pub extern setlineJoin(this: js_object, value: CanvasLineJoin): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlineJoin(this: js_object): web CanvasLineJoin
-	c inline "getObjectField(#1, \"lineJoin\")"
-pub extern setmiterLimit(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmiterLimit(this: js_object): web double
-	c inline "getObjectField(#1, \"miterLimit\")"
-pub extern setlineDashOffset(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlineDashOffset(this: js_object): web double
-	c inline "getObjectField(#1, \"lineDashOffset\")"
-struct CanvasTextDrawingStyles
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern setfont(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfont(this: js_object): web String
-	c inline "getObjectField(#1, \"font\")"
-pub extern settextAlign(this: js_object, value: CanvasTextAlign): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettextAlign(this: js_object): web CanvasTextAlign
-	c inline "getObjectField(#1, \"textAlign\")"
-pub extern settextBaseline(this: js_object, value: CanvasTextBaseline): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettextBaseline(this: js_object): web CanvasTextBaseline
-	c inline "getObjectField(#1, \"textBaseline\")"
-pub extern setdirection(this: js_object, value: CanvasDirection): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdirection(this: js_object): web CanvasDirection
-	c inline "getObjectField(#1, \"direction\")"
-pub extern setletterSpacing(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getletterSpacing(this: js_object): web String
-	c inline "getObjectField(#1, \"letterSpacing\")"
-pub extern setfontKerning(this: js_object, value: CanvasFontKerning): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfontKerning(this: js_object): web CanvasFontKerning
-	c inline "getObjectField(#1, \"fontKerning\")"
-pub extern setfontStretch(this: js_object, value: CanvasFontStretch): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfontStretch(this: js_object): web CanvasFontStretch
-	c inline "getObjectField(#1, \"fontStretch\")"
-pub extern setfontVariantCaps(this: js_object, value: CanvasFontVariantCaps): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfontVariantCaps(this: js_object): web CanvasFontVariantCaps
-	c inline "getObjectField(#1, \"fontVariantCaps\")"
-pub extern settextRendering(this: js_object, value: CanvasTextRendering): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettextRendering(this: js_object): web CanvasTextRendering
-	c inline "getObjectField(#1, \"textRendering\")"
-pub extern setwordSpacing(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwordSpacing(this: js_object): web String
-	c inline "getObjectField(#1, \"wordSpacing\")"
-struct CanvasPath
-{
-}
-
-()
-
-pub extern closePath(this: js_object, [], [])
-pub extern moveTo(this: js_object, [x: double, y: double], [])
-pub extern lineTo(this: js_object, [x: double, y: double], [])
-pub extern quadraticCurveTo(this: js_object, [cpx: double, cpy: double, x: double, y: double], [])
-pub extern bezierCurveTo(this: js_object, [cp1x: double, cp1y: double, cp2x: double, cp2y: double, x: double, y: double], [])
-pub extern arcTo(this: js_object, [x1: double, y1: double, x2: double, y2: double, radius: double], [])
-pub extern rect(this: js_object, [x: double, y: double, w: double, h: double], [])
-pub extern roundRect(this: js_object, [x: double, y: double, w: double, h: double], [radii: maybe<dart:js_interop/JSAny>])
-pub extern arc(this: js_object, [x: double, y: double, radius: double, startAngle: double, endAngle: double], [counterclockwise: bool])
-pub extern ellipse(this: js_object, [x: double, y: double, radiusX: double, radiusY: double, rotation: double, startAngle: double, endAngle: double], [counterclockwise: bool])
-struct CanvasGradient
-{
-}
-
-()
-
-pub extern addColorStop(this: js_object, [offset: double, color: String], [])
-struct CanvasPattern
-{
-}
-
-()
-
-pub extern setTransform(this: js_object, [], [transform: geometry.kk/DOMMatrix2DInit])
-struct TextMetrics
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern getwidth(this: js_object): web double
-	c inline "getObjectField(#1, \"width\")"
-pub extern getactualBoundingBoxLeft(this: js_object): web double
-	c inline "getObjectField(#1, \"actualBoundingBoxLeft\")"
-pub extern getactualBoundingBoxRight(this: js_object): web double
-	c inline "getObjectField(#1, \"actualBoundingBoxRight\")"
-pub extern getfontBoundingBoxAscent(this: js_object): web double
-	c inline "getObjectField(#1, \"fontBoundingBoxAscent\")"
-pub extern getfontBoundingBoxDescent(this: js_object): web double
-	c inline "getObjectField(#1, \"fontBoundingBoxDescent\")"
-pub extern getactualBoundingBoxAscent(this: js_object): web double
-	c inline "getObjectField(#1, \"actualBoundingBoxAscent\")"
-pub extern getactualBoundingBoxDescent(this: js_object): web double
-	c inline "getObjectField(#1, \"actualBoundingBoxDescent\")"
-pub extern getemHeightAscent(this: js_object): web double
-	c inline "getObjectField(#1, \"emHeightAscent\")"
-pub extern getemHeightDescent(this: js_object): web double
-	c inline "getObjectField(#1, \"emHeightDescent\")"
-pub extern gethangingBaseline(this: js_object): web double
-	c inline "getObjectField(#1, \"hangingBaseline\")"
-pub extern getalphabeticBaseline(this: js_object): web double
-	c inline "getObjectField(#1, \"alphabeticBaseline\")"
-pub extern getideographicBaseline(this: js_object): web double
-	c inline "getObjectField(#1, \"ideographicBaseline\")"
-struct ImageDataSettings
-{  colorSpace: PredefinedColorSpace
-}
-pub extern newImageDataSettings([colorSpace: maybe<PredefinedColorSpace> = Nothing])
-()
-
-pub extern setcolorSpace(this: js_object, value: PredefinedColorSpace): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolorSpace(this: js_object): web PredefinedColorSpace
-	c inline "getObjectField(#1, \"colorSpace\")"
-struct ImageData
-{,
-,
-,
-
-}
-pub extern newImageData([dataOrSw: maybe<dart:js_interop/JSAny>, shOrSw: int], [settingsOrSh: maybe<dart:js_interop/JSAny>, settings: ImageDataSettings])
-()
-
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-pub extern getdata(this: js_object): web dart:js_interop/JSUint8ClampedArray
-	c inline "getObjectField(#1, \"data\")"
-pub extern getcolorSpace(this: js_object): web PredefinedColorSpace
-	c inline "getObjectField(#1, \"colorSpace\")"
-struct Path2D
-{
-}
-pub extern newPath2D([], [path: maybe<dart:js_interop/JSAny>])
-()
-
-pub extern addPath(this: js_object, [path: Path2D], [transform: geometry.kk/DOMMatrix2DInit])
-struct ImageBitmapRenderingContext
-{
-}
-
-()
-
-pub extern transferFromImageBitmap(this: js_object, [bitmap: maybe<ImageBitmap> =  Nothing], [])
-pub extern getcanvas(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"canvas\")"
-struct ImageBitmapRenderingContextSettings
-{  alpha: bool
-}
-pub extern newImageBitmapRenderingContextSettings([alpha: maybe<bool> = Nothing])
-()
-
-pub extern setalpha(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalpha(this: js_object): web bool
-	c inline "getObjectField(#1, \"alpha\")"
-struct ImageEncodeOptions
-{  type: String,
-  quality: double
-}
-pub extern newImageEncodeOptions([type: maybe<String> = Nothing, quality: maybe<double> = Nothing])
-()
-
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setquality(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getquality(this: js_object): web double
-	c inline "getObjectField(#1, \"quality\")"
-struct OffscreenCanvas
-{,
-,
-,
-
-}
-pub extern newOffscreenCanvas([width: int, height: int], [])
-()
-
-pub extern getContext(this: js_object, [contextId: OffscreenRenderingContextId], [options: maybe<dart:js_interop/JSAny>])
-pub extern transferToImageBitmap(this: js_object, [], [])
-pub extern convertToBlob(this: js_object, [], [options: ImageEncodeOptions])
-pub extern setwidth(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-pub extern setoncontextlost(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncontextlost(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncontextlost\")"
-pub extern setoncontextrestored(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncontextrestored(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncontextrestored\")"
-struct OffscreenCanvasRenderingContext2D
-{
-}
-
-()
-
-pub extern commit(this: js_object, [], [])
-pub extern getcanvas(this: js_object): web OffscreenCanvas
-	c inline "getObjectField(#1, \"canvas\")"
-struct CustomElementRegistry
-{
-}
-
-()
-
-pub extern define(this: js_object, [name: String, constructor: CustomElementConstructor], [options: ElementDefinitionOptions])
-pub extern get(this: js_object, [name: String], [])
-pub extern getName(this: js_object, [constructor: CustomElementConstructor], [])
-pub extern whenDefined(this: js_object, [name: String], [])
-pub extern upgrade(this: js_object, [root: dom.kk/Node], [])
-struct ElementDefinitionOptions
-{  extends: String
-}
-pub extern newElementDefinitionOptions([extends_: maybe<String> = Nothing])
-()
-
-pub extern setextends(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getextends(this: js_object): web String
-	c inline "getObjectField(#1, \"extends_\")"
-struct ElementInternals
-{,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern setFormValue(this: js_object, [value: maybe<dart:js_interop/JSAny> =  Nothing], [state: maybe<dart:js_interop/JSAny> =  Nothing])
-pub extern setValidity(this: js_object, [], [flags: ValidityStateFlags, message: String, anchor: HTMLElement])
-pub extern checkValidity(this: js_object, [], [])
-pub extern reportValidity(this: js_object, [], [])
-pub extern getstates(this: js_object): web custom_state_pseudo_class.kk/CustomStateSet
-	c inline "getObjectField(#1, \"states\")"
-pub extern getshadowRoot(this: js_object): web maybe<dom.kk/ShadowRoot>
-	c inline "getObjectField(#1, \"shadowRoot\")"
-pub extern getform(this: js_object): web maybe<HTMLFormElement>
-	c inline "getObjectField(#1, \"form\")"
-pub extern getwillValidate(this: js_object): web bool
-	c inline "getObjectField(#1, \"willValidate\")"
-pub extern getvalidity(this: js_object): web ValidityState
-	c inline "getObjectField(#1, \"validity\")"
-pub extern getvalidationMessage(this: js_object): web String
-	c inline "getObjectField(#1, \"validationMessage\")"
-pub extern getlabels(this: js_object): web dom.kk/NodeList
-	c inline "getObjectField(#1, \"labels\")"
-struct ValidityStateFlags
-{  valueMissing: bool,
-  typeMismatch: bool,
-  patternMismatch: bool,
-  tooLong: bool,
-  tooShort: bool,
-  rangeUnderflow: bool,
-  rangeOverflow: bool,
-  stepMismatch: bool,
-  badInput: bool,
-  customError: bool
-}
-pub extern newValidityStateFlags([valueMissing: maybe<bool> = Nothing, typeMismatch: maybe<bool> = Nothing, patternMismatch: maybe<bool> = Nothing, tooLong: maybe<bool> = Nothing, tooShort: maybe<bool> = Nothing, rangeUnderflow: maybe<bool> = Nothing, rangeOverflow: maybe<bool> = Nothing, stepMismatch: maybe<bool> = Nothing, badInput: maybe<bool> = Nothing, customError: maybe<bool> = Nothing])
-()
-
-pub extern setvalueMissing(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalueMissing(this: js_object): web bool
-	c inline "getObjectField(#1, \"valueMissing\")"
-pub extern settypeMismatch(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettypeMismatch(this: js_object): web bool
-	c inline "getObjectField(#1, \"typeMismatch\")"
-pub extern setpatternMismatch(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpatternMismatch(this: js_object): web bool
-	c inline "getObjectField(#1, \"patternMismatch\")"
-pub extern settooLong(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettooLong(this: js_object): web bool
-	c inline "getObjectField(#1, \"tooLong\")"
-pub extern settooShort(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettooShort(this: js_object): web bool
-	c inline "getObjectField(#1, \"tooShort\")"
-pub extern setrangeUnderflow(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrangeUnderflow(this: js_object): web bool
-	c inline "getObjectField(#1, \"rangeUnderflow\")"
-pub extern setrangeOverflow(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrangeOverflow(this: js_object): web bool
-	c inline "getObjectField(#1, \"rangeOverflow\")"
-pub extern setstepMismatch(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstepMismatch(this: js_object): web bool
-	c inline "getObjectField(#1, \"stepMismatch\")"
-pub extern setbadInput(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbadInput(this: js_object): web bool
-	c inline "getObjectField(#1, \"badInput\")"
-pub extern setcustomError(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcustomError(this: js_object): web bool
-	c inline "getObjectField(#1, \"customError\")"
-struct VisibilityStateEntry
-{,
-,
-,
-
-}
-
-()
-
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getentryType(this: js_object): web String
-	c inline "getObjectField(#1, \"entryType\")"
-pub extern getstartTime(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"startTime\")"
-pub extern getduration(this: js_object): web int
-	c inline "getObjectField(#1, \"duration\")"
-struct UserActivation
-{,
-
-}
-
-()
-
-pub extern gethasBeenActive(this: js_object): web bool
-	c inline "getObjectField(#1, \"hasBeenActive\")"
-pub extern getisActive(this: js_object): web bool
-	c inline "getObjectField(#1, \"isActive\")"
-struct FocusOptions
-{  preventScroll: bool,
-  focusVisible: bool
-}
-pub extern newFocusOptions([preventScroll: maybe<bool> = Nothing, focusVisible: maybe<bool> = Nothing])
-()
-
-pub extern setpreventScroll(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpreventScroll(this: js_object): web bool
-	c inline "getObjectField(#1, \"preventScroll\")"
-pub extern setfocusVisible(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfocusVisible(this: js_object): web bool
-	c inline "getObjectField(#1, \"focusVisible\")"
-struct ElementContentEditable
-{,
-,
-,
-,
-
-}
-
-()
-
-pub extern setcontentEditable(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcontentEditable(this: js_object): web String
-	c inline "getObjectField(#1, \"contentEditable\")"
-pub extern setenterKeyHint(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getenterKeyHint(this: js_object): web String
-	c inline "getObjectField(#1, \"enterKeyHint\")"
-pub extern getisContentEditable(this: js_object): web bool
-	c inline "getObjectField(#1, \"isContentEditable\")"
-pub extern setinputMode(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinputMode(this: js_object): web String
-	c inline "getObjectField(#1, \"inputMode\")"
-pub extern setvirtualKeyboardPolicy(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvirtualKeyboardPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"virtualKeyboardPolicy\")"
-struct DataTransfer
-{,
-,
-,
-,
-
-}
-pub extern newDataTransfer([], [])
-()
-
-pub extern setDragImage(this: js_object, [image: dom.kk/Element, x: int, y: int], [])
-pub extern getData(this: js_object, [format: String], [])
-pub extern setData(this: js_object, [format: String, data: String], [])
-pub extern clearData(this: js_object, [], [format: String])
-pub extern setdropEffect(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdropEffect(this: js_object): web String
-	c inline "getObjectField(#1, \"dropEffect\")"
-pub extern seteffectAllowed(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geteffectAllowed(this: js_object): web String
-	c inline "getObjectField(#1, \"effectAllowed\")"
-pub extern getitems(this: js_object): web DataTransferItemList
-	c inline "getObjectField(#1, \"items\")"
-pub extern gettypes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"types\")"
-pub extern getfiles(this: js_object): web fileapi.kk/FileList
-	c inline "getObjectField(#1, \"files\")"
-struct DataTransferItemList
-{
-}
-
-()
-
-pub extern add(this: js_object, [data: maybe<dart:js_interop/JSAny>], [type: String])
-pub extern remove(this: js_object, [index: int], [])
-pub extern clear(this: js_object, [], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct DataTransferItem
-{,
-
-}
-
-()
-
-pub extern webkitGetAsEntry(this: js_object, [], [])
-pub extern getAsFileSystemHandle(this: js_object, [], [])
-pub extern getAsString(this: js_object, [callback: maybe<FunctionStringCallback> =  Nothing], [])
-pub extern getAsFile(this: js_object, [], [])
-pub extern getkind(this: js_object): web String
-	c inline "getObjectField(#1, \"kind\")"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-struct DragEvent
-{
-}
-pub extern newDragEvent([type: String], [eventInitDict: DragEventInit])
-()
-
-pub extern getdataTransfer(this: js_object): web maybe<DataTransfer>
-	c inline "getObjectField(#1, \"dataTransfer\")"
-struct DragEventInit
-{  dataTransfer: maybe<DataTransfer>
-}
-pub extern newDragEventInit([dataTransfer: maybe<maybe<DataTransfer>> = Nothing])
-()
-
-pub extern setdataTransfer(this: js_object, value: maybe<DataTransfer>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdataTransfer(this: js_object): web maybe<DataTransfer>
-	c inline "getObjectField(#1, \"dataTransfer\")"
-struct PopoverInvokerElement
-{,
-
-}
-
-()
-
-pub extern setpopoverTargetElement(this: js_object, value: maybe<dom.kk/Element>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpopoverTargetElement(this: js_object): web maybe<dom.kk/Element>
-	c inline "getObjectField(#1, \"popoverTargetElement\")"
-pub extern setpopoverTargetAction(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpopoverTargetAction(this: js_object): web String
-	c inline "getObjectField(#1, \"popoverTargetAction\")"
-struct ToggleEvent
-{,
-
-}
-pub extern newToggleEvent([type: String], [eventInitDict: ToggleEventInit])
-()
-
-pub extern getoldState(this: js_object): web String
-	c inline "getObjectField(#1, \"oldState\")"
-pub extern getnewState(this: js_object): web String
-	c inline "getObjectField(#1, \"newState\")"
-struct ToggleEventInit
-{  oldState: String,
-  newState: String
-}
-pub extern newToggleEventInit([oldState: maybe<String> = Nothing, newState: maybe<String> = Nothing])
-()
-
-pub extern setoldState(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoldState(this: js_object): web String
-	c inline "getObjectField(#1, \"oldState\")"
-pub extern setnewState(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnewState(this: js_object): web String
-	c inline "getObjectField(#1, \"newState\")"
-pub extern window(): Window
+import web/wasm
+pub alias htmlOrSVGScriptElement = JSAny;
+
+
+pub alias mediaProvider = JSAny;
+
+
+pub alias renderingContext = JSAny;
+
+
+pub alias htmlOrSVGImageElement = JSAny;
+
+
+pub alias canvasImageSource = JSAny;
+
+
+pub alias offscreenRenderingContext = JSAny;
+
+
+pub alias eventHandler = EventHandlerNonNull;
+
+
+pub alias onErrorEventHandler = OnErrorEventHandlerNonNull;
+
+
+pub alias onBeforeUnloadEventHandler = OnBeforeUnloadEventHandlerNonNull;
+
+
+pub alias timerHandler = JSAny;
+
+
+pub alias imageBitmapSource = JSAny;
+
+
+pub alias messageEventSource = JSAny;
+
+pub alias blobCallback = jsFunction;
+
+
+pub alias customElementConstructor = jsFunction;
+
+
+pub alias functionStringCallback = jsFunction;
+
+
+pub alias navigationInterceptHandler = jsFunction;
+
+
+pub alias eventHandlerNonNull = jsFunction;
+
+
+pub alias onErrorEventHandlerNonNull = jsFunction;
+
+
+pub alias onBeforeUnloadEventHandlerNonNull = jsFunction;
+
+
+pub alias frameRequestCallback = jsFunction;
+
+
+pub alias documentReadyState = string;
+
+
+pub alias documentVisibilityState = string;
+
+
+pub alias canPlayTypeResult = string;
+
+
+pub alias textTrackMode = string;
+
+
+pub alias textTrackKind = string;
+
+
+pub alias selectionMode = string;
+
+
+pub alias predefinedColorSpace = string;
+
+
+pub alias canvasFillRule = string;
+
+
+pub alias imageSmoothingQuality = string;
+
+
+pub alias canvasLineCap = string;
+
+
+pub alias canvasLineJoin = string;
+
+
+pub alias canvasTextAlign = string;
+
+
+pub alias canvasTextBaseline = string;
+
+
+pub alias canvasDirection = string;
+
+
+pub alias canvasFontKerning = string;
+
+
+pub alias canvasFontStretch = string;
+
+
+pub alias canvasFontVariantCaps = string;
+
+
+pub alias canvasTextRendering = string;
+
+
+pub alias offscreenRenderingContextId = string;
+
+
+pub alias scrollRestoration = string;
+
+
+pub alias navigationHistoryBehavior = string;
+
+
+pub alias navigationType = string;
+
+
+pub alias navigationFocusReset = string;
+
+
+pub alias navigationScrollBehavior = string;
+
+
+pub alias domParserSupportedType = string;
+
+
+pub alias imageOrientation = string;
+
+
+pub alias premultiplyAlpha = string;
+
+
+pub alias colorSpaceConversion = string;
+
+
+pub alias resizeQuality = string;
+
+
+pub alias workerType = string;
+
+pub value struct htmlAllCollection
+  obj: jsObject
+
+
+pub inline fun namedItem(obj: htmlAllCollection, name': string): web maybe<jsObject>
+  jsOperation3(obj.obj, "namedItem", name'.obj)
+
+pub inline fun item(obj: htmlAllCollection, nameOrIndex': string): web maybe<jsObject>
+  jsOperation3(obj.obj, "item", nameOrIndex'.obj)
+
+pub inline fun length(obj: htmlAllCollection): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct htmlFormControlsCollection
+  obj: jsObject
+
+
+pub inline fun namedItem(obj: htmlFormControlsCollection, name': string): web maybe<jsObject>
+  jsOperation3(obj.obj, "namedItem", name'.obj)
+
+pub value struct radioNodeList
+  obj: jsObject
+
+
+pub inline fun value(obj: radioNodeList, value: string): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: radioNodeList): web string
+  getJsObjectField(obj.obj, "value")
+
+pub value struct htmlOptionsCollection
+  obj: jsObject
+
+
+pub inline fun add(obj: htmlOptionsCollection, element': maybe<jsObject>, before': maybe<jsObject> =  Nothing): web ()
+  jsOperation4(obj.obj, "add", element'.obj, before'.obj)
+
+pub inline fun remove(obj: htmlOptionsCollection, index': int): web ()
+  jsOperation3(obj.obj, "remove", index'.obj)
+
+pub inline fun length(obj: htmlOptionsCollection, value: int): web ()
+  setJsObjectField(obj.obj, "length", value.obj)
+
+pub inline fun length(obj: htmlOptionsCollection): web int
+  getJsObjectField(obj.obj, "length")
+
+pub inline fun selectedIndex(obj: htmlOptionsCollection, value: int): web ()
+  setJsObjectField(obj.obj, "selectedIndex", value.obj)
+
+pub inline fun selectedIndex(obj: htmlOptionsCollection): web int
+  getJsObjectField(obj.obj, "selectedIndex")
+
+pub value struct domStringList
+  obj: jsObject
+
+
+pub inline fun item(obj: domStringList, index': int): web maybe<string>
+  jsOperation3(obj.obj, "item", index'.obj)
+
+pub inline fun contains(obj: domStringList, string': string): web bool
+  jsOperation3(obj.obj, "contains", string'.obj)
+
+pub inline fun length(obj: domStringList): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct htmlElement
+  obj: jsObject
+
+pub inline fun newHtmlElement()
+  newJsObject0("HtmlElement")"
+
+pub inline fun click(obj: htmlElement): web ()
+  jsOperation2(obj.obj, "click")
+
+pub inline fun attachInternals(obj: htmlElement): web elementInternals
+  jsOperation2(obj.obj, "attachInternals")
+
+pub inline fun showPopover(obj: htmlElement): web ()
+  jsOperation2(obj.obj, "showPopover")
+
+pub inline fun hidePopover(obj: htmlElement): web ()
+  jsOperation2(obj.obj, "hidePopover")
+
+pub inline fun togglePopover(obj: htmlElement, force': bool): web bool
+  jsOperation3(obj.obj, "togglePopover", force'.obj)
+
+pub inline fun offsetParent(obj: htmlElement): web maybe<dom/element>
+  getJsObjectField(obj.obj, "offsetParent")
+
+pub inline fun offsetTop(obj: htmlElement): web int
+  getJsObjectField(obj.obj, "offsetTop")
+
+pub inline fun offsetLeft(obj: htmlElement): web int
+  getJsObjectField(obj.obj, "offsetLeft")
+
+pub inline fun offsetWidth(obj: htmlElement): web int
+  getJsObjectField(obj.obj, "offsetWidth")
+
+pub inline fun offsetHeight(obj: htmlElement): web int
+  getJsObjectField(obj.obj, "offsetHeight")
+
+pub inline fun editContext(obj: htmlElement, value: maybe<edit_context/editContext>): web ()
+  setJsObjectField(obj.obj, "editContext", value.obj)
+
+pub inline fun editContext(obj: htmlElement): web maybe<edit_context/editContext>
+  getJsObjectField(obj.obj, "editContext")
+
+pub inline fun title(obj: htmlElement, value: string): web ()
+  setJsObjectField(obj.obj, "title", value.obj)
+
+pub inline fun title(obj: htmlElement): web string
+  getJsObjectField(obj.obj, "title")
+
+pub inline fun lang(obj: htmlElement, value: string): web ()
+  setJsObjectField(obj.obj, "lang", value.obj)
+
+pub inline fun lang(obj: htmlElement): web string
+  getJsObjectField(obj.obj, "lang")
+
+pub inline fun translate(obj: htmlElement, value: bool): web ()
+  setJsObjectField(obj.obj, "translate", value.obj)
+
+pub inline fun translate(obj: htmlElement): web bool
+  getJsObjectField(obj.obj, "translate")
+
+pub inline fun dir(obj: htmlElement, value: string): web ()
+  setJsObjectField(obj.obj, "dir", value.obj)
+
+pub inline fun dir(obj: htmlElement): web string
+  getJsObjectField(obj.obj, "dir")
+
+pub inline fun hidden(obj: htmlElement, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "hidden", value.obj)
+
+pub inline fun hidden(obj: htmlElement): web maybe<jsObject>
+  getJsObjectField(obj.obj, "hidden")
+
+pub inline fun inert(obj: htmlElement, value: bool): web ()
+  setJsObjectField(obj.obj, "inert", value.obj)
+
+pub inline fun inert(obj: htmlElement): web bool
+  getJsObjectField(obj.obj, "inert")
+
+pub inline fun accessKey(obj: htmlElement, value: string): web ()
+  setJsObjectField(obj.obj, "accessKey", value.obj)
+
+pub inline fun accessKey(obj: htmlElement): web string
+  getJsObjectField(obj.obj, "accessKey")
+
+pub inline fun accessKeyLabel(obj: htmlElement): web string
+  getJsObjectField(obj.obj, "accessKeyLabel")
+
+pub inline fun draggable(obj: htmlElement, value: bool): web ()
+  setJsObjectField(obj.obj, "draggable", value.obj)
+
+pub inline fun draggable(obj: htmlElement): web bool
+  getJsObjectField(obj.obj, "draggable")
+
+pub inline fun spellcheck(obj: htmlElement, value: bool): web ()
+  setJsObjectField(obj.obj, "spellcheck", value.obj)
+
+pub inline fun spellcheck(obj: htmlElement): web bool
+  getJsObjectField(obj.obj, "spellcheck")
+
+pub inline fun autocapitalize(obj: htmlElement, value: string): web ()
+  setJsObjectField(obj.obj, "autocapitalize", value.obj)
+
+pub inline fun autocapitalize(obj: htmlElement): web string
+  getJsObjectField(obj.obj, "autocapitalize")
+
+pub inline fun innerText(obj: htmlElement, value: string): web ()
+  setJsObjectField(obj.obj, "innerText", value.obj)
+
+pub inline fun innerText(obj: htmlElement): web string
+  getJsObjectField(obj.obj, "innerText")
+
+pub inline fun outerText(obj: htmlElement, value: string): web ()
+  setJsObjectField(obj.obj, "outerText", value.obj)
+
+pub inline fun outerText(obj: htmlElement): web string
+  getJsObjectField(obj.obj, "outerText")
+
+pub inline fun popover(obj: htmlElement, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "popover", value.obj)
+
+pub inline fun popover(obj: htmlElement): web maybe<string>
+  getJsObjectField(obj.obj, "popover")
+
+pub value struct htmlUnknownElement
+  obj: jsObject
+
+
+pub value struct htmlOrSVGElement
+  obj: jsObject
+
+
+pub inline fun focus(obj: htmlOrSVGElement, options': focusOptions): web ()
+  jsOperation3(obj.obj, "focus", options'.obj)
+
+pub inline fun blur(obj: htmlOrSVGElement): web ()
+  jsOperation2(obj.obj, "blur")
+
+pub inline fun dataset(obj: htmlOrSVGElement): web domStringMap
+  getJsObjectField(obj.obj, "dataset")
+
+pub inline fun nonce(obj: htmlOrSVGElement, value: string): web ()
+  setJsObjectField(obj.obj, "nonce", value.obj)
+
+pub inline fun nonce(obj: htmlOrSVGElement): web string
+  getJsObjectField(obj.obj, "nonce")
+
+pub inline fun autofocus(obj: htmlOrSVGElement, value: bool): web ()
+  setJsObjectField(obj.obj, "autofocus", value.obj)
+
+pub inline fun autofocus(obj: htmlOrSVGElement): web bool
+  getJsObjectField(obj.obj, "autofocus")
+
+pub inline fun tabIndex(obj: htmlOrSVGElement, value: int): web ()
+  setJsObjectField(obj.obj, "tabIndex", value.obj)
+
+pub inline fun tabIndex(obj: htmlOrSVGElement): web int
+  getJsObjectField(obj.obj, "tabIndex")
+
+pub value struct domStringMap
+  obj: jsObject
+
+
+pub value struct htmlHtmlElement
+  obj: jsObject
+
+pub inline fun newHtmlHtmlElement()
+  newJsObject0("HtmlHtmlElement")"
+
+pub inline fun version(obj: htmlHtmlElement, value: string): web ()
+  setJsObjectField(obj.obj, "version", value.obj)
+
+pub inline fun version(obj: htmlHtmlElement): web string
+  getJsObjectField(obj.obj, "version")
+
+pub value struct htmlHeadElement
+  obj: jsObject
+
+pub inline fun newHtmlHeadElement()
+  newJsObject0("HtmlHeadElement")"
+
+pub value struct htmlTitleElement
+  obj: jsObject
+
+pub inline fun newHtmlTitleElement()
+  newJsObject0("HtmlTitleElement")"
+
+pub inline fun text(obj: htmlTitleElement, value: string): web ()
+  setJsObjectField(obj.obj, "text", value.obj)
+
+pub inline fun text(obj: htmlTitleElement): web string
+  getJsObjectField(obj.obj, "text")
+
+pub value struct htmlBaseElement
+  obj: jsObject
+
+pub inline fun newHtmlBaseElement()
+  newJsObject0("HtmlBaseElement")"
+
+pub inline fun href(obj: htmlBaseElement, value: string): web ()
+  setJsObjectField(obj.obj, "href", value.obj)
+
+pub inline fun href(obj: htmlBaseElement): web string
+  getJsObjectField(obj.obj, "href")
+
+pub inline fun target(obj: htmlBaseElement, value: string): web ()
+  setJsObjectField(obj.obj, "target", value.obj)
+
+pub inline fun target(obj: htmlBaseElement): web string
+  getJsObjectField(obj.obj, "target")
+
+pub value struct htmlLinkElement
+  obj: jsObject
+
+pub inline fun newHtmlLinkElement()
+  newJsObject0("HtmlLinkElement")"
+
+pub inline fun href(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "href", value.obj)
+
+pub inline fun href(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "href")
+
+pub inline fun crossOrigin(obj: htmlLinkElement, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "crossOrigin", value.obj)
+
+pub inline fun crossOrigin(obj: htmlLinkElement): web maybe<string>
+  getJsObjectField(obj.obj, "crossOrigin")
+
+pub inline fun rel(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "rel", value.obj)
+
+pub inline fun rel(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "rel")
+
+pub inline fun as(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "as", value.obj)
+
+pub inline fun as(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "as")
+
+pub inline fun relList(obj: htmlLinkElement): web dom/domTokenList
+  getJsObjectField(obj.obj, "relList")
+
+pub inline fun media(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "media", value.obj)
+
+pub inline fun media(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "media")
+
+pub inline fun integrity(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "integrity", value.obj)
+
+pub inline fun integrity(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "integrity")
+
+pub inline fun hreflang(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "hreflang", value.obj)
+
+pub inline fun hreflang(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "hreflang")
+
+pub inline fun type(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun sizes(obj: htmlLinkElement): web dom/domTokenList
+  getJsObjectField(obj.obj, "sizes")
+
+pub inline fun imageSrcset(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "imageSrcset", value.obj)
+
+pub inline fun imageSrcset(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "imageSrcset")
+
+pub inline fun imageSizes(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "imageSizes", value.obj)
+
+pub inline fun imageSizes(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "imageSizes")
+
+pub inline fun referrerPolicy(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "referrerPolicy", value.obj)
+
+pub inline fun referrerPolicy(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "referrerPolicy")
+
+pub inline fun blocking(obj: htmlLinkElement): web dom/domTokenList
+  getJsObjectField(obj.obj, "blocking")
+
+pub inline fun disabled(obj: htmlLinkElement, value: bool): web ()
+  setJsObjectField(obj.obj, "disabled", value.obj)
+
+pub inline fun disabled(obj: htmlLinkElement): web bool
+  getJsObjectField(obj.obj, "disabled")
+
+pub inline fun fetchPriority(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "fetchPriority", value.obj)
+
+pub inline fun fetchPriority(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "fetchPriority")
+
+pub inline fun charset(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "charset", value.obj)
+
+pub inline fun charset(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "charset")
+
+pub inline fun rev(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "rev", value.obj)
+
+pub inline fun rev(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "rev")
+
+pub inline fun target(obj: htmlLinkElement, value: string): web ()
+  setJsObjectField(obj.obj, "target", value.obj)
+
+pub inline fun target(obj: htmlLinkElement): web string
+  getJsObjectField(obj.obj, "target")
+
+pub value struct htmlMetaElement
+  obj: jsObject
+
+pub inline fun newHtmlMetaElement()
+  newJsObject0("HtmlMetaElement")"
+
+pub inline fun name(obj: htmlMetaElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlMetaElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun httpEquiv(obj: htmlMetaElement, value: string): web ()
+  setJsObjectField(obj.obj, "httpEquiv", value.obj)
+
+pub inline fun httpEquiv(obj: htmlMetaElement): web string
+  getJsObjectField(obj.obj, "httpEquiv")
+
+pub inline fun content(obj: htmlMetaElement, value: string): web ()
+  setJsObjectField(obj.obj, "content", value.obj)
+
+pub inline fun content(obj: htmlMetaElement): web string
+  getJsObjectField(obj.obj, "content")
+
+pub inline fun media(obj: htmlMetaElement, value: string): web ()
+  setJsObjectField(obj.obj, "media", value.obj)
+
+pub inline fun media(obj: htmlMetaElement): web string
+  getJsObjectField(obj.obj, "media")
+
+pub inline fun scheme(obj: htmlMetaElement, value: string): web ()
+  setJsObjectField(obj.obj, "scheme", value.obj)
+
+pub inline fun scheme(obj: htmlMetaElement): web string
+  getJsObjectField(obj.obj, "scheme")
+
+pub value struct htmlStyleElement
+  obj: jsObject
+
+pub inline fun newHtmlStyleElement()
+  newJsObject0("HtmlStyleElement")"
+
+pub inline fun disabled(obj: htmlStyleElement, value: bool): web ()
+  setJsObjectField(obj.obj, "disabled", value.obj)
+
+pub inline fun disabled(obj: htmlStyleElement): web bool
+  getJsObjectField(obj.obj, "disabled")
+
+pub inline fun media(obj: htmlStyleElement, value: string): web ()
+  setJsObjectField(obj.obj, "media", value.obj)
+
+pub inline fun media(obj: htmlStyleElement): web string
+  getJsObjectField(obj.obj, "media")
+
+pub inline fun blocking(obj: htmlStyleElement): web dom/domTokenList
+  getJsObjectField(obj.obj, "blocking")
+
+pub inline fun type(obj: htmlStyleElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmlStyleElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub value struct htmlBodyElement
+  obj: jsObject
+
+pub inline fun newHtmlBodyElement()
+  newJsObject0("HtmlBodyElement")"
+
+pub inline fun onorientationchange(obj: htmlBodyElement, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onorientationchange", value.obj)
+
+pub inline fun onorientationchange(obj: htmlBodyElement): web eventHandler
+  getJsObjectField(obj.obj, "onorientationchange")
+
+pub inline fun text(obj: htmlBodyElement, value: string): web ()
+  setJsObjectField(obj.obj, "text", value.obj)
+
+pub inline fun text(obj: htmlBodyElement): web string
+  getJsObjectField(obj.obj, "text")
+
+pub inline fun link(obj: htmlBodyElement, value: string): web ()
+  setJsObjectField(obj.obj, "link", value.obj)
+
+pub inline fun link(obj: htmlBodyElement): web string
+  getJsObjectField(obj.obj, "link")
+
+pub inline fun vLink(obj: htmlBodyElement, value: string): web ()
+  setJsObjectField(obj.obj, "vLink", value.obj)
+
+pub inline fun vLink(obj: htmlBodyElement): web string
+  getJsObjectField(obj.obj, "vLink")
+
+pub inline fun aLink(obj: htmlBodyElement, value: string): web ()
+  setJsObjectField(obj.obj, "aLink", value.obj)
+
+pub inline fun aLink(obj: htmlBodyElement): web string
+  getJsObjectField(obj.obj, "aLink")
+
+pub inline fun bgColor(obj: htmlBodyElement, value: string): web ()
+  setJsObjectField(obj.obj, "bgColor", value.obj)
+
+pub inline fun bgColor(obj: htmlBodyElement): web string
+  getJsObjectField(obj.obj, "bgColor")
+
+pub inline fun background(obj: htmlBodyElement, value: string): web ()
+  setJsObjectField(obj.obj, "background", value.obj)
+
+pub inline fun background(obj: htmlBodyElement): web string
+  getJsObjectField(obj.obj, "background")
+
+pub value struct htmlHeadingElement
+  obj: jsObject
+
+pub inline fun newHtmlHeadingElement()
+  newJsObject0("HtmlHeadingElement")"
+
+pub inline fun align(obj: htmlHeadingElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlHeadingElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub value struct htmlParagraphElement
+  obj: jsObject
+
+pub inline fun newHtmlParagraphElement()
+  newJsObject0("HtmlParagraphElement")"
+
+pub inline fun align(obj: htmlParagraphElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlParagraphElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub value struct htmlhrElement
+  obj: jsObject
+
+pub inline fun newHtmlhrElement()
+  newJsObject0("HtmlhrElement")"
+
+pub inline fun align(obj: htmlhrElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlhrElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub inline fun color(obj: htmlhrElement, value: string): web ()
+  setJsObjectField(obj.obj, "color", value.obj)
+
+pub inline fun color(obj: htmlhrElement): web string
+  getJsObjectField(obj.obj, "color")
+
+pub inline fun noShade(obj: htmlhrElement, value: bool): web ()
+  setJsObjectField(obj.obj, "noShade", value.obj)
+
+pub inline fun noShade(obj: htmlhrElement): web bool
+  getJsObjectField(obj.obj, "noShade")
+
+pub inline fun size(obj: htmlhrElement, value: string): web ()
+  setJsObjectField(obj.obj, "size", value.obj)
+
+pub inline fun size(obj: htmlhrElement): web string
+  getJsObjectField(obj.obj, "size")
+
+pub inline fun width(obj: htmlhrElement, value: string): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlhrElement): web string
+  getJsObjectField(obj.obj, "width")
+
+pub value struct htmlPreElement
+  obj: jsObject
+
+pub inline fun newHtmlPreElement()
+  newJsObject0("HtmlPreElement")"
+
+pub inline fun width(obj: htmlPreElement, value: int): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlPreElement): web int
+  getJsObjectField(obj.obj, "width")
+
+pub value struct htmlQuoteElement
+  obj: jsObject
+
+pub inline fun newHtmlQuoteElement()
+  newJsObject0("HtmlQuoteElement")"
+
+pub inline fun cite(obj: htmlQuoteElement, value: string): web ()
+  setJsObjectField(obj.obj, "cite", value.obj)
+
+pub inline fun cite(obj: htmlQuoteElement): web string
+  getJsObjectField(obj.obj, "cite")
+
+pub value struct htmloListElement
+  obj: jsObject
+
+pub inline fun newHtmloListElement()
+  newJsObject0("HtmloListElement")"
+
+pub inline fun reversed(obj: htmloListElement, value: bool): web ()
+  setJsObjectField(obj.obj, "reversed", value.obj)
+
+pub inline fun reversed(obj: htmloListElement): web bool
+  getJsObjectField(obj.obj, "reversed")
+
+pub inline fun start(obj: htmloListElement, value: int): web ()
+  setJsObjectField(obj.obj, "start", value.obj)
+
+pub inline fun start(obj: htmloListElement): web int
+  getJsObjectField(obj.obj, "start")
+
+pub inline fun type(obj: htmloListElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmloListElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun compact(obj: htmloListElement, value: bool): web ()
+  setJsObjectField(obj.obj, "compact", value.obj)
+
+pub inline fun compact(obj: htmloListElement): web bool
+  getJsObjectField(obj.obj, "compact")
+
+pub value struct htmluListElement
+  obj: jsObject
+
+pub inline fun newHtmluListElement()
+  newJsObject0("HtmluListElement")"
+
+pub inline fun compact(obj: htmluListElement, value: bool): web ()
+  setJsObjectField(obj.obj, "compact", value.obj)
+
+pub inline fun compact(obj: htmluListElement): web bool
+  getJsObjectField(obj.obj, "compact")
+
+pub inline fun type(obj: htmluListElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmluListElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub value struct htmlMenuElement
+  obj: jsObject
+
+pub inline fun newHtmlMenuElement()
+  newJsObject0("HtmlMenuElement")"
+
+pub inline fun compact(obj: htmlMenuElement, value: bool): web ()
+  setJsObjectField(obj.obj, "compact", value.obj)
+
+pub inline fun compact(obj: htmlMenuElement): web bool
+  getJsObjectField(obj.obj, "compact")
+
+pub value struct htmlliElement
+  obj: jsObject
+
+pub inline fun newHtmlliElement()
+  newJsObject0("HtmlliElement")"
+
+pub inline fun value(obj: htmlliElement, value: int): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: htmlliElement): web int
+  getJsObjectField(obj.obj, "value")
+
+pub inline fun type(obj: htmlliElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmlliElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub value struct htmldListElement
+  obj: jsObject
+
+pub inline fun newHtmldListElement()
+  newJsObject0("HtmldListElement")"
+
+pub inline fun compact(obj: htmldListElement, value: bool): web ()
+  setJsObjectField(obj.obj, "compact", value.obj)
+
+pub inline fun compact(obj: htmldListElement): web bool
+  getJsObjectField(obj.obj, "compact")
+
+pub value struct htmlDivElement
+  obj: jsObject
+
+pub inline fun newHtmlDivElement()
+  newJsObject0("HtmlDivElement")"
+
+pub inline fun align(obj: htmlDivElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlDivElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub value struct htmlAnchorElement
+  obj: jsObject
+
+pub inline fun newHtmlAnchorElement()
+  newJsObject0("HtmlAnchorElement")"
+
+pub inline fun target(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "target", value.obj)
+
+pub inline fun target(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "target")
+
+pub inline fun download(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "download", value.obj)
+
+pub inline fun download(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "download")
+
+pub inline fun ping(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "ping", value.obj)
+
+pub inline fun ping(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "ping")
+
+pub inline fun rel(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "rel", value.obj)
+
+pub inline fun rel(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "rel")
+
+pub inline fun relList(obj: htmlAnchorElement): web dom/domTokenList
+  getJsObjectField(obj.obj, "relList")
+
+pub inline fun hreflang(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "hreflang", value.obj)
+
+pub inline fun hreflang(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "hreflang")
+
+pub inline fun type(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun text(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "text", value.obj)
+
+pub inline fun text(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "text")
+
+pub inline fun referrerPolicy(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "referrerPolicy", value.obj)
+
+pub inline fun referrerPolicy(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "referrerPolicy")
+
+pub inline fun coords(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "coords", value.obj)
+
+pub inline fun coords(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "coords")
+
+pub inline fun charset(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "charset", value.obj)
+
+pub inline fun charset(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "charset")
+
+pub inline fun name(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun rev(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "rev", value.obj)
+
+pub inline fun rev(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "rev")
+
+pub inline fun shape(obj: htmlAnchorElement, value: string): web ()
+  setJsObjectField(obj.obj, "shape", value.obj)
+
+pub inline fun shape(obj: htmlAnchorElement): web string
+  getJsObjectField(obj.obj, "shape")
+
+pub inline fun attributionSourceId(obj: htmlAnchorElement, value: int): web ()
+  setJsObjectField(obj.obj, "attributionSourceId", value.obj)
+
+pub inline fun attributionSourceId(obj: htmlAnchorElement): web int
+  getJsObjectField(obj.obj, "attributionSourceId")
+
+pub value struct htmlDataElement
+  obj: jsObject
+
+pub inline fun newHtmlDataElement()
+  newJsObject0("HtmlDataElement")"
+
+pub inline fun value(obj: htmlDataElement, value: string): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: htmlDataElement): web string
+  getJsObjectField(obj.obj, "value")
+
+pub value struct htmlTimeElement
+  obj: jsObject
+
+pub inline fun newHtmlTimeElement()
+  newJsObject0("HtmlTimeElement")"
+
+pub inline fun dateTime(obj: htmlTimeElement, value: string): web ()
+  setJsObjectField(obj.obj, "dateTime", value.obj)
+
+pub inline fun dateTime(obj: htmlTimeElement): web string
+  getJsObjectField(obj.obj, "dateTime")
+
+pub value struct htmlSpanElement
+  obj: jsObject
+
+pub inline fun newHtmlSpanElement()
+  newJsObject0("HtmlSpanElement")"
+
+pub value struct htmlbrElement
+  obj: jsObject
+
+pub inline fun newHtmlbrElement()
+  newJsObject0("HtmlbrElement")"
+
+pub inline fun clear(obj: htmlbrElement, value: string): web ()
+  setJsObjectField(obj.obj, "clear", value.obj)
+
+pub inline fun clear(obj: htmlbrElement): web string
+  getJsObjectField(obj.obj, "clear")
+
+pub value struct htmlHyperlinkElementUtils
+  obj: jsObject
+
+
+pub inline fun href(obj: htmlHyperlinkElementUtils, value: string): web ()
+  setJsObjectField(obj.obj, "href", value.obj)
+
+pub inline fun href(obj: htmlHyperlinkElementUtils): web string
+  getJsObjectField(obj.obj, "href")
+
+pub inline fun origin(obj: htmlHyperlinkElementUtils): web string
+  getJsObjectField(obj.obj, "origin")
+
+pub inline fun protocol(obj: htmlHyperlinkElementUtils, value: string): web ()
+  setJsObjectField(obj.obj, "protocol", value.obj)
+
+pub inline fun protocol(obj: htmlHyperlinkElementUtils): web string
+  getJsObjectField(obj.obj, "protocol")
+
+pub inline fun username(obj: htmlHyperlinkElementUtils, value: string): web ()
+  setJsObjectField(obj.obj, "username", value.obj)
+
+pub inline fun username(obj: htmlHyperlinkElementUtils): web string
+  getJsObjectField(obj.obj, "username")
+
+pub inline fun password(obj: htmlHyperlinkElementUtils, value: string): web ()
+  setJsObjectField(obj.obj, "password", value.obj)
+
+pub inline fun password(obj: htmlHyperlinkElementUtils): web string
+  getJsObjectField(obj.obj, "password")
+
+pub inline fun host(obj: htmlHyperlinkElementUtils, value: string): web ()
+  setJsObjectField(obj.obj, "host", value.obj)
+
+pub inline fun host(obj: htmlHyperlinkElementUtils): web string
+  getJsObjectField(obj.obj, "host")
+
+pub inline fun hostname(obj: htmlHyperlinkElementUtils, value: string): web ()
+  setJsObjectField(obj.obj, "hostname", value.obj)
+
+pub inline fun hostname(obj: htmlHyperlinkElementUtils): web string
+  getJsObjectField(obj.obj, "hostname")
+
+pub inline fun port(obj: htmlHyperlinkElementUtils, value: string): web ()
+  setJsObjectField(obj.obj, "port", value.obj)
+
+pub inline fun port(obj: htmlHyperlinkElementUtils): web string
+  getJsObjectField(obj.obj, "port")
+
+pub inline fun pathname(obj: htmlHyperlinkElementUtils, value: string): web ()
+  setJsObjectField(obj.obj, "pathname", value.obj)
+
+pub inline fun pathname(obj: htmlHyperlinkElementUtils): web string
+  getJsObjectField(obj.obj, "pathname")
+
+pub inline fun search(obj: htmlHyperlinkElementUtils, value: string): web ()
+  setJsObjectField(obj.obj, "search", value.obj)
+
+pub inline fun search(obj: htmlHyperlinkElementUtils): web string
+  getJsObjectField(obj.obj, "search")
+
+pub inline fun hash(obj: htmlHyperlinkElementUtils, value: string): web ()
+  setJsObjectField(obj.obj, "hash", value.obj)
+
+pub inline fun hash(obj: htmlHyperlinkElementUtils): web string
+  getJsObjectField(obj.obj, "hash")
+
+pub value struct htmlModElement
+  obj: jsObject
+
+pub inline fun newHtmlModElement()
+  newJsObject0("HtmlModElement")"
+
+pub inline fun cite(obj: htmlModElement, value: string): web ()
+  setJsObjectField(obj.obj, "cite", value.obj)
+
+pub inline fun cite(obj: htmlModElement): web string
+  getJsObjectField(obj.obj, "cite")
+
+pub inline fun dateTime(obj: htmlModElement, value: string): web ()
+  setJsObjectField(obj.obj, "dateTime", value.obj)
+
+pub inline fun dateTime(obj: htmlModElement): web string
+  getJsObjectField(obj.obj, "dateTime")
+
+pub value struct htmlPictureElement
+  obj: jsObject
+
+pub inline fun newHtmlPictureElement()
+  newJsObject0("HtmlPictureElement")"
+
+pub value struct htmlSourceElement
+  obj: jsObject
+
+pub inline fun newHtmlSourceElement()
+  newJsObject0("HtmlSourceElement")"
+
+pub inline fun src(obj: htmlSourceElement, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: htmlSourceElement): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun type(obj: htmlSourceElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmlSourceElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun srcset(obj: htmlSourceElement, value: string): web ()
+  setJsObjectField(obj.obj, "srcset", value.obj)
+
+pub inline fun srcset(obj: htmlSourceElement): web string
+  getJsObjectField(obj.obj, "srcset")
+
+pub inline fun sizes(obj: htmlSourceElement, value: string): web ()
+  setJsObjectField(obj.obj, "sizes", value.obj)
+
+pub inline fun sizes(obj: htmlSourceElement): web string
+  getJsObjectField(obj.obj, "sizes")
+
+pub inline fun media(obj: htmlSourceElement, value: string): web ()
+  setJsObjectField(obj.obj, "media", value.obj)
+
+pub inline fun media(obj: htmlSourceElement): web string
+  getJsObjectField(obj.obj, "media")
+
+pub inline fun width(obj: htmlSourceElement, value: int): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlSourceElement): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: htmlSourceElement, value: int): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: htmlSourceElement): web int
+  getJsObjectField(obj.obj, "height")
+
+pub value struct htmlImageElement
+  obj: jsObject
+
+pub inline fun newHtmlImageElement()
+  newJsObject0("HtmlImageElement")"
+
+pub inline fun decode(obj: htmlImageElement): web jsPromise
+  jsOperation2(obj.obj, "decode")
+
+pub inline fun x(obj: htmlImageElement): web int
+  getJsObjectField(obj.obj, "x")
+
+pub inline fun y(obj: htmlImageElement): web int
+  getJsObjectField(obj.obj, "y")
+
+pub inline fun alt(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "alt", value.obj)
+
+pub inline fun alt(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "alt")
+
+pub inline fun src(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun srcset(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "srcset", value.obj)
+
+pub inline fun srcset(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "srcset")
+
+pub inline fun sizes(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "sizes", value.obj)
+
+pub inline fun sizes(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "sizes")
+
+pub inline fun crossOrigin(obj: htmlImageElement, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "crossOrigin", value.obj)
+
+pub inline fun crossOrigin(obj: htmlImageElement): web maybe<string>
+  getJsObjectField(obj.obj, "crossOrigin")
+
+pub inline fun useMap(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "useMap", value.obj)
+
+pub inline fun useMap(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "useMap")
+
+pub inline fun isMap(obj: htmlImageElement, value: bool): web ()
+  setJsObjectField(obj.obj, "isMap", value.obj)
+
+pub inline fun isMap(obj: htmlImageElement): web bool
+  getJsObjectField(obj.obj, "isMap")
+
+pub inline fun width(obj: htmlImageElement, value: int): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlImageElement): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: htmlImageElement, value: int): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: htmlImageElement): web int
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun naturalWidth(obj: htmlImageElement): web int
+  getJsObjectField(obj.obj, "naturalWidth")
+
+pub inline fun naturalHeight(obj: htmlImageElement): web int
+  getJsObjectField(obj.obj, "naturalHeight")
+
+pub inline fun complete(obj: htmlImageElement): web bool
+  getJsObjectField(obj.obj, "complete")
+
+pub inline fun currentSrc(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "currentSrc")
+
+pub inline fun referrerPolicy(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "referrerPolicy", value.obj)
+
+pub inline fun referrerPolicy(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "referrerPolicy")
+
+pub inline fun decoding(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "decoding", value.obj)
+
+pub inline fun decoding(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "decoding")
+
+pub inline fun loading(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "loading", value.obj)
+
+pub inline fun loading(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "loading")
+
+pub inline fun fetchPriority(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "fetchPriority", value.obj)
+
+pub inline fun fetchPriority(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "fetchPriority")
+
+pub inline fun name(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun lowsrc(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "lowsrc", value.obj)
+
+pub inline fun lowsrc(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "lowsrc")
+
+pub inline fun align(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub inline fun hspace(obj: htmlImageElement, value: int): web ()
+  setJsObjectField(obj.obj, "hspace", value.obj)
+
+pub inline fun hspace(obj: htmlImageElement): web int
+  getJsObjectField(obj.obj, "hspace")
+
+pub inline fun vspace(obj: htmlImageElement, value: int): web ()
+  setJsObjectField(obj.obj, "vspace", value.obj)
+
+pub inline fun vspace(obj: htmlImageElement): web int
+  getJsObjectField(obj.obj, "vspace")
+
+pub inline fun longDesc(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "longDesc", value.obj)
+
+pub inline fun longDesc(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "longDesc")
+
+pub inline fun border(obj: htmlImageElement, value: string): web ()
+  setJsObjectField(obj.obj, "border", value.obj)
+
+pub inline fun border(obj: htmlImageElement): web string
+  getJsObjectField(obj.obj, "border")
+
+pub value struct htmliFrameElement
+  obj: jsObject
+
+pub inline fun newHtmliFrameElement()
+  newJsObject0("HtmliFrameElement")"
+
+pub inline fun getSVGDocument(obj: htmliFrameElement): web maybe<dom/document>
+  jsOperation2(obj.obj, "getSVGDocument")
+
+pub inline fun csp(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "csp", value.obj)
+
+pub inline fun csp(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "csp")
+
+pub inline fun src(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun srcdoc(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "srcdoc", value.obj)
+
+pub inline fun srcdoc(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "srcdoc")
+
+pub inline fun name(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun sandbox(obj: htmliFrameElement): web dom/domTokenList
+  getJsObjectField(obj.obj, "sandbox")
+
+pub inline fun allow(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "allow", value.obj)
+
+pub inline fun allow(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "allow")
+
+pub inline fun allowFullscreen(obj: htmliFrameElement, value: bool): web ()
+  setJsObjectField(obj.obj, "allowFullscreen", value.obj)
+
+pub inline fun allowFullscreen(obj: htmliFrameElement): web bool
+  getJsObjectField(obj.obj, "allowFullscreen")
+
+pub inline fun width(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun referrerPolicy(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "referrerPolicy", value.obj)
+
+pub inline fun referrerPolicy(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "referrerPolicy")
+
+pub inline fun loading(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "loading", value.obj)
+
+pub inline fun loading(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "loading")
+
+pub inline fun contentDocument(obj: htmliFrameElement): web maybe<dom/document>
+  getJsObjectField(obj.obj, "contentDocument")
+
+pub inline fun contentWindow(obj: htmliFrameElement): web maybe<window>
+  getJsObjectField(obj.obj, "contentWindow")
+
+pub inline fun align(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub inline fun scrolling(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "scrolling", value.obj)
+
+pub inline fun scrolling(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "scrolling")
+
+pub inline fun frameBorder(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "frameBorder", value.obj)
+
+pub inline fun frameBorder(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "frameBorder")
+
+pub inline fun longDesc(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "longDesc", value.obj)
+
+pub inline fun longDesc(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "longDesc")
+
+pub inline fun marginHeight(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "marginHeight", value.obj)
+
+pub inline fun marginHeight(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "marginHeight")
+
+pub inline fun marginWidth(obj: htmliFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "marginWidth", value.obj)
+
+pub inline fun marginWidth(obj: htmliFrameElement): web string
+  getJsObjectField(obj.obj, "marginWidth")
+
+pub inline fun permissionsPolicy(obj: htmliFrameElement): web permissions_policy/permissionsPolicy
+  getJsObjectField(obj.obj, "permissionsPolicy")
+
+pub value struct htmlEmbedElement
+  obj: jsObject
+
+pub inline fun newHtmlEmbedElement()
+  newJsObject0("HtmlEmbedElement")"
+
+pub inline fun getSVGDocument(obj: htmlEmbedElement): web maybe<dom/document>
+  jsOperation2(obj.obj, "getSVGDocument")
+
+pub inline fun src(obj: htmlEmbedElement, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: htmlEmbedElement): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun type(obj: htmlEmbedElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmlEmbedElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun width(obj: htmlEmbedElement, value: string): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlEmbedElement): web string
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: htmlEmbedElement, value: string): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: htmlEmbedElement): web string
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun align(obj: htmlEmbedElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlEmbedElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub inline fun name(obj: htmlEmbedElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlEmbedElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub value struct htmlObjectElement
+  obj: jsObject
+
+pub inline fun newHtmlObjectElement()
+  newJsObject0("HtmlObjectElement")"
+
+pub inline fun getSVGDocument(obj: htmlObjectElement): web maybe<dom/document>
+  jsOperation2(obj.obj, "getSVGDocument")
+
+pub inline fun checkValidity(obj: htmlObjectElement): web bool
+  jsOperation2(obj.obj, "checkValidity")
+
+pub inline fun reportValidity(obj: htmlObjectElement): web bool
+  jsOperation2(obj.obj, "reportValidity")
+
+pub inline fun setCustomValidity(obj: htmlObjectElement, error': string): web ()
+  jsOperation3(obj.obj, "setCustomValidity", error'.obj)
+
+pub inline fun data(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "data", value.obj)
+
+pub inline fun data(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "data")
+
+pub inline fun type(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun name(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun form(obj: htmlObjectElement): web maybe<htmlFormElement>
+  getJsObjectField(obj.obj, "form")
+
+pub inline fun width(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun contentDocument(obj: htmlObjectElement): web maybe<dom/document>
+  getJsObjectField(obj.obj, "contentDocument")
+
+pub inline fun contentWindow(obj: htmlObjectElement): web maybe<window>
+  getJsObjectField(obj.obj, "contentWindow")
+
+pub inline fun willValidate(obj: htmlObjectElement): web bool
+  getJsObjectField(obj.obj, "willValidate")
+
+pub inline fun validity(obj: htmlObjectElement): web validityState
+  getJsObjectField(obj.obj, "validity")
+
+pub inline fun validationMessage(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "validationMessage")
+
+pub inline fun align(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub inline fun archive(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "archive", value.obj)
+
+pub inline fun archive(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "archive")
+
+pub inline fun code(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "code", value.obj)
+
+pub inline fun code(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "code")
+
+pub inline fun declare(obj: htmlObjectElement, value: bool): web ()
+  setJsObjectField(obj.obj, "declare", value.obj)
+
+pub inline fun declare(obj: htmlObjectElement): web bool
+  getJsObjectField(obj.obj, "declare")
+
+pub inline fun hspace(obj: htmlObjectElement, value: int): web ()
+  setJsObjectField(obj.obj, "hspace", value.obj)
+
+pub inline fun hspace(obj: htmlObjectElement): web int
+  getJsObjectField(obj.obj, "hspace")
+
+pub inline fun standby(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "standby", value.obj)
+
+pub inline fun standby(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "standby")
+
+pub inline fun vspace(obj: htmlObjectElement, value: int): web ()
+  setJsObjectField(obj.obj, "vspace", value.obj)
+
+pub inline fun vspace(obj: htmlObjectElement): web int
+  getJsObjectField(obj.obj, "vspace")
+
+pub inline fun codeBase(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "codeBase", value.obj)
+
+pub inline fun codeBase(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "codeBase")
+
+pub inline fun codeType(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "codeType", value.obj)
+
+pub inline fun codeType(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "codeType")
+
+pub inline fun useMap(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "useMap", value.obj)
+
+pub inline fun useMap(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "useMap")
+
+pub inline fun border(obj: htmlObjectElement, value: string): web ()
+  setJsObjectField(obj.obj, "border", value.obj)
+
+pub inline fun border(obj: htmlObjectElement): web string
+  getJsObjectField(obj.obj, "border")
+
+pub value struct htmlVideoElement
+  obj: jsObject
+
+pub inline fun newHtmlVideoElement()
+  newJsObject0("HtmlVideoElement")"
+
+pub inline fun getVideoPlaybackQuality(obj: htmlVideoElement): web media_playback_quality/videoPlaybackQuality
+  jsOperation2(obj.obj, "getVideoPlaybackQuality")
+
+pub inline fun requestPictureInPicture(obj: htmlVideoElement): web jsPromise
+  jsOperation2(obj.obj, "requestPictureInPicture")
+
+pub inline fun requestVideoFrameCallback(obj: htmlVideoElement, callback': video_rvfc/videoFrameRequestCallback): web int
+  jsOperation3(obj.obj, "requestVideoFrameCallback", callback'.obj)
+
+pub inline fun cancelVideoFrameCallback(obj: htmlVideoElement, handle': int): web ()
+  jsOperation3(obj.obj, "cancelVideoFrameCallback", handle'.obj)
+
+pub inline fun width(obj: htmlVideoElement, value: int): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlVideoElement): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: htmlVideoElement, value: int): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: htmlVideoElement): web int
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun videoWidth(obj: htmlVideoElement): web int
+  getJsObjectField(obj.obj, "videoWidth")
+
+pub inline fun videoHeight(obj: htmlVideoElement): web int
+  getJsObjectField(obj.obj, "videoHeight")
+
+pub inline fun poster(obj: htmlVideoElement, value: string): web ()
+  setJsObjectField(obj.obj, "poster", value.obj)
+
+pub inline fun poster(obj: htmlVideoElement): web string
+  getJsObjectField(obj.obj, "poster")
+
+pub inline fun playsInline(obj: htmlVideoElement, value: bool): web ()
+  setJsObjectField(obj.obj, "playsInline", value.obj)
+
+pub inline fun playsInline(obj: htmlVideoElement): web bool
+  getJsObjectField(obj.obj, "playsInline")
+
+pub inline fun onenterpictureinpicture(obj: htmlVideoElement, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onenterpictureinpicture", value.obj)
+
+pub inline fun onenterpictureinpicture(obj: htmlVideoElement): web eventHandler
+  getJsObjectField(obj.obj, "onenterpictureinpicture")
+
+pub inline fun onleavepictureinpicture(obj: htmlVideoElement, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onleavepictureinpicture", value.obj)
+
+pub inline fun onleavepictureinpicture(obj: htmlVideoElement): web eventHandler
+  getJsObjectField(obj.obj, "onleavepictureinpicture")
+
+pub inline fun disablePictureInPicture(obj: htmlVideoElement, value: bool): web ()
+  setJsObjectField(obj.obj, "disablePictureInPicture", value.obj)
+
+pub inline fun disablePictureInPicture(obj: htmlVideoElement): web bool
+  getJsObjectField(obj.obj, "disablePictureInPicture")
+
+pub value struct htmlAudioElement
+  obj: jsObject
+
+pub inline fun newHtmlAudioElement()
+  newJsObject0("HtmlAudioElement")"
+
+pub value struct htmlTrackElement
+  obj: jsObject
+
+pub inline fun newHtmlTrackElement()
+  newJsObject0("HtmlTrackElement")"
+pub inline fun nonE(): int
+  getConstant("NONE")
+
+pub inline fun loadinG(): int
+  getConstant("LOADING")
+
+pub inline fun loadeD(): int
+  getConstant("LOADED")
+
+pub inline fun erroR(): int
+  getConstant("ERROR")
+
+pub inline fun kind(obj: htmlTrackElement, value: string): web ()
+  setJsObjectField(obj.obj, "kind", value.obj)
+
+pub inline fun kind(obj: htmlTrackElement): web string
+  getJsObjectField(obj.obj, "kind")
+
+pub inline fun src(obj: htmlTrackElement, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: htmlTrackElement): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun srclang(obj: htmlTrackElement, value: string): web ()
+  setJsObjectField(obj.obj, "srclang", value.obj)
+
+pub inline fun srclang(obj: htmlTrackElement): web string
+  getJsObjectField(obj.obj, "srclang")
+
+pub inline fun label(obj: htmlTrackElement, value: string): web ()
+  setJsObjectField(obj.obj, "label", value.obj)
+
+pub inline fun label(obj: htmlTrackElement): web string
+  getJsObjectField(obj.obj, "label")
+
+pub inline fun default(obj: htmlTrackElement, value: bool): web ()
+  setJsObjectField(obj.obj, "default_", value.obj)
+
+pub inline fun default(obj: htmlTrackElement): web bool
+  getJsObjectField(obj.obj, "default_")
+
+pub inline fun readyState(obj: htmlTrackElement): web int
+  getJsObjectField(obj.obj, "readyState")
+
+pub inline fun track(obj: htmlTrackElement): web textTrack
+  getJsObjectField(obj.obj, "track")
+
+pub value struct htmlMediaElement
+  obj: jsObject
+
+pub inline fun networkemptY(): int
+  getConstant("NETWORK_EMPTY")
+
+pub inline fun networkidlE(): int
+  getConstant("NETWORK_IDLE")
+
+pub inline fun networkloadinG(): int
+  getConstant("NETWORK_LOADING")
+
+pub inline fun networknosourcE(): int
+  getConstant("NETWORK_NO_SOURCE")
+
+pub inline fun havenothinG(): int
+  getConstant("HAVE_NOTHING")
+
+pub inline fun havemetadatA(): int
+  getConstant("HAVE_METADATA")
+
+pub inline fun havecurrentdatA(): int
+  getConstant("HAVE_CURRENT_DATA")
+
+pub inline fun havefuturedatA(): int
+  getConstant("HAVE_FUTURE_DATA")
+
+pub inline fun haveenoughdatA(): int
+  getConstant("HAVE_ENOUGH_DATA")
+
+pub inline fun setSinkId(obj: htmlMediaElement, sinkId': string): web jsPromise
+  jsOperation3(obj.obj, "setSinkId", sinkId'.obj)
+
+pub inline fun setMediaKeys(obj: htmlMediaElement, mediaKeys': maybe<encrypted_media/mediaKeys> =  Nothing): web jsPromise
+  jsOperation3(obj.obj, "setMediaKeys", mediaKeys'.obj)
+
+pub inline fun load(obj: htmlMediaElement): web ()
+  jsOperation2(obj.obj, "load")
+
+pub inline fun canPlayType(obj: htmlMediaElement, type': string): web canPlayTypeResult
+  jsOperation3(obj.obj, "canPlayType", type'.obj)
+
+pub inline fun fastSeek(obj: htmlMediaElement, time': double): web ()
+  jsOperation3(obj.obj, "fastSeek", time'.obj)
+
+pub inline fun getStartDate(obj: htmlMediaElement): web jsObject
+  jsOperation2(obj.obj, "getStartDate")
+
+pub inline fun play(obj: htmlMediaElement): web jsPromise
+  jsOperation2(obj.obj, "play")
+
+pub inline fun pause(obj: htmlMediaElement): web ()
+  jsOperation2(obj.obj, "pause")
+
+pub inline fun addTextTrack(obj: htmlMediaElement, kind': textTrackKind, label': string, language': string): web textTrack
+  jsOperation5(obj.obj, "addTextTrack", kind'.obj, label'.obj, language'.obj)
+
+pub inline fun captureStream(obj: htmlMediaElement): web mediacapture_streams/mediaStream
+  jsOperation2(obj.obj, "captureStream")
+
+pub inline fun sinkId(obj: htmlMediaElement): web string
+  getJsObjectField(obj.obj, "sinkId")
+
+pub inline fun mediaKeys(obj: htmlMediaElement): web maybe<encrypted_media/mediaKeys>
+  getJsObjectField(obj.obj, "mediaKeys")
+
+pub inline fun onencrypted(obj: htmlMediaElement, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onencrypted", value.obj)
+
+pub inline fun onencrypted(obj: htmlMediaElement): web eventHandler
+  getJsObjectField(obj.obj, "onencrypted")
+
+pub inline fun onwaitingforkey(obj: htmlMediaElement, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onwaitingforkey", value.obj)
+
+pub inline fun onwaitingforkey(obj: htmlMediaElement): web eventHandler
+  getJsObjectField(obj.obj, "onwaitingforkey")
+
+pub inline fun error(obj: htmlMediaElement): web maybe<mediaError>
+  getJsObjectField(obj.obj, "error")
+
+pub inline fun src(obj: htmlMediaElement, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: htmlMediaElement): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun srcObject(obj: htmlMediaElement, value: maybe<mediaProvider>): web ()
+  setJsObjectField(obj.obj, "srcObject", value.obj)
+
+pub inline fun srcObject(obj: htmlMediaElement): web maybe<mediaProvider>
+  getJsObjectField(obj.obj, "srcObject")
+
+pub inline fun currentSrc(obj: htmlMediaElement): web string
+  getJsObjectField(obj.obj, "currentSrc")
+
+pub inline fun crossOrigin(obj: htmlMediaElement, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "crossOrigin", value.obj)
+
+pub inline fun crossOrigin(obj: htmlMediaElement): web maybe<string>
+  getJsObjectField(obj.obj, "crossOrigin")
+
+pub inline fun networkState(obj: htmlMediaElement): web int
+  getJsObjectField(obj.obj, "networkState")
+
+pub inline fun preload(obj: htmlMediaElement, value: string): web ()
+  setJsObjectField(obj.obj, "preload", value.obj)
+
+pub inline fun preload(obj: htmlMediaElement): web string
+  getJsObjectField(obj.obj, "preload")
+
+pub inline fun buffered(obj: htmlMediaElement): web timeRanges
+  getJsObjectField(obj.obj, "buffered")
+
+pub inline fun readyState(obj: htmlMediaElement): web int
+  getJsObjectField(obj.obj, "readyState")
+
+pub inline fun seeking(obj: htmlMediaElement): web bool
+  getJsObjectField(obj.obj, "seeking")
+
+pub inline fun currentTime(obj: htmlMediaElement, value: double): web ()
+  setJsObjectField(obj.obj, "currentTime", value.obj)
+
+pub inline fun currentTime(obj: htmlMediaElement): web double
+  getJsObjectField(obj.obj, "currentTime")
+
+pub inline fun duration(obj: htmlMediaElement): web double
+  getJsObjectField(obj.obj, "duration")
+
+pub inline fun paused(obj: htmlMediaElement): web bool
+  getJsObjectField(obj.obj, "paused")
+
+pub inline fun defaultPlaybackRate(obj: htmlMediaElement, value: double): web ()
+  setJsObjectField(obj.obj, "defaultPlaybackRate", value.obj)
+
+pub inline fun defaultPlaybackRate(obj: htmlMediaElement): web double
+  getJsObjectField(obj.obj, "defaultPlaybackRate")
+
+pub inline fun playbackRate(obj: htmlMediaElement, value: double): web ()
+  setJsObjectField(obj.obj, "playbackRate", value.obj)
+
+pub inline fun playbackRate(obj: htmlMediaElement): web double
+  getJsObjectField(obj.obj, "playbackRate")
+
+pub inline fun preservesPitch(obj: htmlMediaElement, value: bool): web ()
+  setJsObjectField(obj.obj, "preservesPitch", value.obj)
+
+pub inline fun preservesPitch(obj: htmlMediaElement): web bool
+  getJsObjectField(obj.obj, "preservesPitch")
+
+pub inline fun played(obj: htmlMediaElement): web timeRanges
+  getJsObjectField(obj.obj, "played")
+
+pub inline fun seekable(obj: htmlMediaElement): web timeRanges
+  getJsObjectField(obj.obj, "seekable")
+
+pub inline fun ended(obj: htmlMediaElement): web bool
+  getJsObjectField(obj.obj, "ended")
+
+pub inline fun autoplay(obj: htmlMediaElement, value: bool): web ()
+  setJsObjectField(obj.obj, "autoplay", value.obj)
+
+pub inline fun autoplay(obj: htmlMediaElement): web bool
+  getJsObjectField(obj.obj, "autoplay")
+
+pub inline fun loop(obj: htmlMediaElement, value: bool): web ()
+  setJsObjectField(obj.obj, "loop", value.obj)
+
+pub inline fun loop(obj: htmlMediaElement): web bool
+  getJsObjectField(obj.obj, "loop")
+
+pub inline fun controls(obj: htmlMediaElement, value: bool): web ()
+  setJsObjectField(obj.obj, "controls", value.obj)
+
+pub inline fun controls(obj: htmlMediaElement): web bool
+  getJsObjectField(obj.obj, "controls")
+
+pub inline fun volume(obj: htmlMediaElement, value: double): web ()
+  setJsObjectField(obj.obj, "volume", value.obj)
+
+pub inline fun volume(obj: htmlMediaElement): web double
+  getJsObjectField(obj.obj, "volume")
+
+pub inline fun muted(obj: htmlMediaElement, value: bool): web ()
+  setJsObjectField(obj.obj, "muted", value.obj)
+
+pub inline fun muted(obj: htmlMediaElement): web bool
+  getJsObjectField(obj.obj, "muted")
+
+pub inline fun defaultMuted(obj: htmlMediaElement, value: bool): web ()
+  setJsObjectField(obj.obj, "defaultMuted", value.obj)
+
+pub inline fun defaultMuted(obj: htmlMediaElement): web bool
+  getJsObjectField(obj.obj, "defaultMuted")
+
+pub inline fun audioTracks(obj: htmlMediaElement): web audioTrackList
+  getJsObjectField(obj.obj, "audioTracks")
+
+pub inline fun videoTracks(obj: htmlMediaElement): web videoTrackList
+  getJsObjectField(obj.obj, "videoTracks")
+
+pub inline fun textTracks(obj: htmlMediaElement): web textTrackList
+  getJsObjectField(obj.obj, "textTracks")
+
+pub inline fun remote(obj: htmlMediaElement): web remote_playback/remotePlayback
+  getJsObjectField(obj.obj, "remote")
+
+pub inline fun disableRemotePlayback(obj: htmlMediaElement, value: bool): web ()
+  setJsObjectField(obj.obj, "disableRemotePlayback", value.obj)
+
+pub inline fun disableRemotePlayback(obj: htmlMediaElement): web bool
+  getJsObjectField(obj.obj, "disableRemotePlayback")
+
+pub value struct mediaError
+  obj: jsObject
+
+pub inline fun mediaerraborteD(): int
+  getConstant("MEDIA_ERR_ABORTED")
+
+pub inline fun mediaerrnetworK(): int
+  getConstant("MEDIA_ERR_NETWORK")
+
+pub inline fun mediaerrdecodE(): int
+  getConstant("MEDIA_ERR_DECODE")
+
+pub inline fun mediaerrsrcnotsupporteD(): int
+  getConstant("MEDIA_ERR_SRC_NOT_SUPPORTED")
+
+pub inline fun code(obj: mediaError): web int
+  getJsObjectField(obj.obj, "code")
+
+pub inline fun message(obj: mediaError): web string
+  getJsObjectField(obj.obj, "message")
+
+pub value struct audioTrackList
+  obj: jsObject
+
+
+pub inline fun getTrackById(obj: audioTrackList, id': string): web maybe<audioTrack>
+  jsOperation3(obj.obj, "getTrackById", id'.obj)
+
+pub inline fun length(obj: audioTrackList): web int
+  getJsObjectField(obj.obj, "length")
+
+pub inline fun onchange(obj: audioTrackList, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onchange", value.obj)
+
+pub inline fun onchange(obj: audioTrackList): web eventHandler
+  getJsObjectField(obj.obj, "onchange")
+
+pub inline fun onaddtrack(obj: audioTrackList, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onaddtrack", value.obj)
+
+pub inline fun onaddtrack(obj: audioTrackList): web eventHandler
+  getJsObjectField(obj.obj, "onaddtrack")
+
+pub inline fun onremovetrack(obj: audioTrackList, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onremovetrack", value.obj)
+
+pub inline fun onremovetrack(obj: audioTrackList): web eventHandler
+  getJsObjectField(obj.obj, "onremovetrack")
+
+pub value struct audioTrack
+  obj: jsObject
+
+
+pub inline fun id(obj: audioTrack): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun kind(obj: audioTrack): web string
+  getJsObjectField(obj.obj, "kind")
+
+pub inline fun label(obj: audioTrack): web string
+  getJsObjectField(obj.obj, "label")
+
+pub inline fun language(obj: audioTrack): web string
+  getJsObjectField(obj.obj, "language")
+
+pub inline fun enabled(obj: audioTrack, value: bool): web ()
+  setJsObjectField(obj.obj, "enabled", value.obj)
+
+pub inline fun enabled(obj: audioTrack): web bool
+  getJsObjectField(obj.obj, "enabled")
+
+pub inline fun sourceBuffer(obj: audioTrack): web maybe<media_source/sourceBuffer>
+  getJsObjectField(obj.obj, "sourceBuffer")
+
+pub value struct videoTrackList
+  obj: jsObject
+
+
+pub inline fun getTrackById(obj: videoTrackList, id': string): web maybe<videoTrack>
+  jsOperation3(obj.obj, "getTrackById", id'.obj)
+
+pub inline fun length(obj: videoTrackList): web int
+  getJsObjectField(obj.obj, "length")
+
+pub inline fun selectedIndex(obj: videoTrackList): web int
+  getJsObjectField(obj.obj, "selectedIndex")
+
+pub inline fun onchange(obj: videoTrackList, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onchange", value.obj)
+
+pub inline fun onchange(obj: videoTrackList): web eventHandler
+  getJsObjectField(obj.obj, "onchange")
+
+pub inline fun onaddtrack(obj: videoTrackList, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onaddtrack", value.obj)
+
+pub inline fun onaddtrack(obj: videoTrackList): web eventHandler
+  getJsObjectField(obj.obj, "onaddtrack")
+
+pub inline fun onremovetrack(obj: videoTrackList, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onremovetrack", value.obj)
+
+pub inline fun onremovetrack(obj: videoTrackList): web eventHandler
+  getJsObjectField(obj.obj, "onremovetrack")
+
+pub value struct videoTrack
+  obj: jsObject
+
+
+pub inline fun id(obj: videoTrack): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun kind(obj: videoTrack): web string
+  getJsObjectField(obj.obj, "kind")
+
+pub inline fun label(obj: videoTrack): web string
+  getJsObjectField(obj.obj, "label")
+
+pub inline fun language(obj: videoTrack): web string
+  getJsObjectField(obj.obj, "language")
+
+pub inline fun selected(obj: videoTrack, value: bool): web ()
+  setJsObjectField(obj.obj, "selected", value.obj)
+
+pub inline fun selected(obj: videoTrack): web bool
+  getJsObjectField(obj.obj, "selected")
+
+pub inline fun sourceBuffer(obj: videoTrack): web maybe<media_source/sourceBuffer>
+  getJsObjectField(obj.obj, "sourceBuffer")
+
+pub value struct textTrackList
+  obj: jsObject
+
+
+pub inline fun getTrackById(obj: textTrackList, id': string): web maybe<textTrack>
+  jsOperation3(obj.obj, "getTrackById", id'.obj)
+
+pub inline fun length(obj: textTrackList): web int
+  getJsObjectField(obj.obj, "length")
+
+pub inline fun onchange(obj: textTrackList, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onchange", value.obj)
+
+pub inline fun onchange(obj: textTrackList): web eventHandler
+  getJsObjectField(obj.obj, "onchange")
+
+pub inline fun onaddtrack(obj: textTrackList, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onaddtrack", value.obj)
+
+pub inline fun onaddtrack(obj: textTrackList): web eventHandler
+  getJsObjectField(obj.obj, "onaddtrack")
+
+pub inline fun onremovetrack(obj: textTrackList, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onremovetrack", value.obj)
+
+pub inline fun onremovetrack(obj: textTrackList): web eventHandler
+  getJsObjectField(obj.obj, "onremovetrack")
+
+pub value struct textTrack
+  obj: jsObject
+
+
+pub inline fun addCue(obj: textTrack, cue': textTrackCue): web ()
+  jsOperation3(obj.obj, "addCue", cue'.obj)
+
+pub inline fun removeCue(obj: textTrack, cue': textTrackCue): web ()
+  jsOperation3(obj.obj, "removeCue", cue'.obj)
+
+pub inline fun kind(obj: textTrack): web textTrackKind
+  getJsObjectField(obj.obj, "kind")
+
+pub inline fun label(obj: textTrack): web string
+  getJsObjectField(obj.obj, "label")
+
+pub inline fun language(obj: textTrack): web string
+  getJsObjectField(obj.obj, "language")
+
+pub inline fun id(obj: textTrack): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun inBandMetadataTrackDispatchType(obj: textTrack): web string
+  getJsObjectField(obj.obj, "inBandMetadataTrackDispatchType")
+
+pub inline fun mode(obj: textTrack, value: textTrackMode): web ()
+  setJsObjectField(obj.obj, "mode", value.obj)
+
+pub inline fun mode(obj: textTrack): web textTrackMode
+  getJsObjectField(obj.obj, "mode")
+
+pub inline fun cues(obj: textTrack): web maybe<textTrackCueList>
+  getJsObjectField(obj.obj, "cues")
+
+pub inline fun activeCues(obj: textTrack): web maybe<textTrackCueList>
+  getJsObjectField(obj.obj, "activeCues")
+
+pub inline fun oncuechange(obj: textTrack, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncuechange", value.obj)
+
+pub inline fun oncuechange(obj: textTrack): web eventHandler
+  getJsObjectField(obj.obj, "oncuechange")
+
+pub inline fun sourceBuffer(obj: textTrack): web maybe<media_source/sourceBuffer>
+  getJsObjectField(obj.obj, "sourceBuffer")
+
+pub value struct textTrackCueList
+  obj: jsObject
+
+
+pub inline fun getCueById(obj: textTrackCueList, id': string): web maybe<textTrackCue>
+  jsOperation3(obj.obj, "getCueById", id'.obj)
+
+pub inline fun length(obj: textTrackCueList): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct textTrackCue
+  obj: jsObject
+
+
+pub inline fun track(obj: textTrackCue): web maybe<textTrack>
+  getJsObjectField(obj.obj, "track")
+
+pub inline fun id(obj: textTrackCue, value: string): web ()
+  setJsObjectField(obj.obj, "id", value.obj)
+
+pub inline fun id(obj: textTrackCue): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun startTime(obj: textTrackCue, value: double): web ()
+  setJsObjectField(obj.obj, "startTime", value.obj)
+
+pub inline fun startTime(obj: textTrackCue): web double
+  getJsObjectField(obj.obj, "startTime")
+
+pub inline fun endTime(obj: textTrackCue, value: double): web ()
+  setJsObjectField(obj.obj, "endTime", value.obj)
+
+pub inline fun endTime(obj: textTrackCue): web double
+  getJsObjectField(obj.obj, "endTime")
+
+pub inline fun pauseOnExit(obj: textTrackCue, value: bool): web ()
+  setJsObjectField(obj.obj, "pauseOnExit", value.obj)
+
+pub inline fun pauseOnExit(obj: textTrackCue): web bool
+  getJsObjectField(obj.obj, "pauseOnExit")
+
+pub inline fun onenter(obj: textTrackCue, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onenter", value.obj)
+
+pub inline fun onenter(obj: textTrackCue): web eventHandler
+  getJsObjectField(obj.obj, "onenter")
+
+pub inline fun onexit(obj: textTrackCue, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onexit", value.obj)
+
+pub inline fun onexit(obj: textTrackCue): web eventHandler
+  getJsObjectField(obj.obj, "onexit")
+
+pub value struct timeRanges
+  obj: jsObject
+
+
+pub inline fun start(obj: timeRanges, index': int): web double
+  jsOperation3(obj.obj, "start", index'.obj)
+
+pub inline fun end(obj: timeRanges, index': int): web double
+  jsOperation3(obj.obj, "end", index'.obj)
+
+pub inline fun length(obj: timeRanges): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct trackEvent
+  obj: jsObject
+
+pub inline fun newTrackEvent(type': string, eventInitDict': trackEventInit)
+  newJsObject2("TrackEvent", type', eventInitDict')"
+
+pub inline fun track(obj: trackEvent): web maybe<jsObject>
+  getJsObjectField(obj.obj, "track")
+
+pub value struct trackEventInit
+  obj: jsObject
+
+pub fun newTrackEventInit(track: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match track
+    Just(it) -> setJsObjectField(obj, "track", it)
+    Nothing -> ()
+
+  TrackEventInit(obj);
+
+pub inline fun track(obj: trackEventInit, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "track", value.obj)
+
+pub inline fun track(obj: trackEventInit): web maybe<jsObject>
+  getJsObjectField(obj.obj, "track")
+
+pub value struct htmlMapElement
+  obj: jsObject
+
+pub inline fun newHtmlMapElement()
+  newJsObject0("HtmlMapElement")"
+
+pub inline fun name(obj: htmlMapElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlMapElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun areas(obj: htmlMapElement): web dom/htmlCollection
+  getJsObjectField(obj.obj, "areas")
+
+pub value struct htmlAreaElement
+  obj: jsObject
+
+pub inline fun newHtmlAreaElement()
+  newJsObject0("HtmlAreaElement")"
+
+pub inline fun alt(obj: htmlAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "alt", value.obj)
+
+pub inline fun alt(obj: htmlAreaElement): web string
+  getJsObjectField(obj.obj, "alt")
+
+pub inline fun coords(obj: htmlAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "coords", value.obj)
+
+pub inline fun coords(obj: htmlAreaElement): web string
+  getJsObjectField(obj.obj, "coords")
+
+pub inline fun shape(obj: htmlAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "shape", value.obj)
+
+pub inline fun shape(obj: htmlAreaElement): web string
+  getJsObjectField(obj.obj, "shape")
+
+pub inline fun target(obj: htmlAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "target", value.obj)
+
+pub inline fun target(obj: htmlAreaElement): web string
+  getJsObjectField(obj.obj, "target")
+
+pub inline fun download(obj: htmlAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "download", value.obj)
+
+pub inline fun download(obj: htmlAreaElement): web string
+  getJsObjectField(obj.obj, "download")
+
+pub inline fun ping(obj: htmlAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "ping", value.obj)
+
+pub inline fun ping(obj: htmlAreaElement): web string
+  getJsObjectField(obj.obj, "ping")
+
+pub inline fun rel(obj: htmlAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "rel", value.obj)
+
+pub inline fun rel(obj: htmlAreaElement): web string
+  getJsObjectField(obj.obj, "rel")
+
+pub inline fun relList(obj: htmlAreaElement): web dom/domTokenList
+  getJsObjectField(obj.obj, "relList")
+
+pub inline fun referrerPolicy(obj: htmlAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "referrerPolicy", value.obj)
+
+pub inline fun referrerPolicy(obj: htmlAreaElement): web string
+  getJsObjectField(obj.obj, "referrerPolicy")
+
+pub inline fun noHref(obj: htmlAreaElement, value: bool): web ()
+  setJsObjectField(obj.obj, "noHref", value.obj)
+
+pub inline fun noHref(obj: htmlAreaElement): web bool
+  getJsObjectField(obj.obj, "noHref")
+
+pub value struct htmlTableElement
+  obj: jsObject
+
+pub inline fun newHtmlTableElement()
+  newJsObject0("HtmlTableElement")"
+
+pub inline fun createCaption(obj: htmlTableElement): web htmlTableCaptionElement
+  jsOperation2(obj.obj, "createCaption")
+
+pub inline fun deleteCaption(obj: htmlTableElement): web ()
+  jsOperation2(obj.obj, "deleteCaption")
+
+pub inline fun createTHead(obj: htmlTableElement): web htmlTableSectionElement
+  jsOperation2(obj.obj, "createTHead")
+
+pub inline fun deleteTHead(obj: htmlTableElement): web ()
+  jsOperation2(obj.obj, "deleteTHead")
+
+pub inline fun createTFoot(obj: htmlTableElement): web htmlTableSectionElement
+  jsOperation2(obj.obj, "createTFoot")
+
+pub inline fun deleteTFoot(obj: htmlTableElement): web ()
+  jsOperation2(obj.obj, "deleteTFoot")
+
+pub inline fun createTBody(obj: htmlTableElement): web htmlTableSectionElement
+  jsOperation2(obj.obj, "createTBody")
+
+pub inline fun insertRow(obj: htmlTableElement, index': int): web htmlTableRowElement
+  jsOperation3(obj.obj, "insertRow", index'.obj)
+
+pub inline fun deleteRow(obj: htmlTableElement, index': int): web ()
+  jsOperation3(obj.obj, "deleteRow", index'.obj)
+
+pub inline fun caption(obj: htmlTableElement, value: maybe<htmlTableCaptionElement>): web ()
+  setJsObjectField(obj.obj, "caption", value.obj)
+
+pub inline fun caption(obj: htmlTableElement): web maybe<htmlTableCaptionElement>
+  getJsObjectField(obj.obj, "caption")
+
+pub inline fun tHead(obj: htmlTableElement, value: maybe<htmlTableSectionElement>): web ()
+  setJsObjectField(obj.obj, "tHead", value.obj)
+
+pub inline fun tHead(obj: htmlTableElement): web maybe<htmlTableSectionElement>
+  getJsObjectField(obj.obj, "tHead")
+
+pub inline fun tFoot(obj: htmlTableElement, value: maybe<htmlTableSectionElement>): web ()
+  setJsObjectField(obj.obj, "tFoot", value.obj)
+
+pub inline fun tFoot(obj: htmlTableElement): web maybe<htmlTableSectionElement>
+  getJsObjectField(obj.obj, "tFoot")
+
+pub inline fun tBodies(obj: htmlTableElement): web dom/htmlCollection
+  getJsObjectField(obj.obj, "tBodies")
+
+pub inline fun rows(obj: htmlTableElement): web dom/htmlCollection
+  getJsObjectField(obj.obj, "rows")
+
+pub inline fun align(obj: htmlTableElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlTableElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub inline fun border(obj: htmlTableElement, value: string): web ()
+  setJsObjectField(obj.obj, "border", value.obj)
+
+pub inline fun border(obj: htmlTableElement): web string
+  getJsObjectField(obj.obj, "border")
+
+pub inline fun frame(obj: htmlTableElement, value: string): web ()
+  setJsObjectField(obj.obj, "frame", value.obj)
+
+pub inline fun frame(obj: htmlTableElement): web string
+  getJsObjectField(obj.obj, "frame")
+
+pub inline fun rules(obj: htmlTableElement, value: string): web ()
+  setJsObjectField(obj.obj, "rules", value.obj)
+
+pub inline fun rules(obj: htmlTableElement): web string
+  getJsObjectField(obj.obj, "rules")
+
+pub inline fun summary(obj: htmlTableElement, value: string): web ()
+  setJsObjectField(obj.obj, "summary", value.obj)
+
+pub inline fun summary(obj: htmlTableElement): web string
+  getJsObjectField(obj.obj, "summary")
+
+pub inline fun width(obj: htmlTableElement, value: string): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlTableElement): web string
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun bgColor(obj: htmlTableElement, value: string): web ()
+  setJsObjectField(obj.obj, "bgColor", value.obj)
+
+pub inline fun bgColor(obj: htmlTableElement): web string
+  getJsObjectField(obj.obj, "bgColor")
+
+pub inline fun cellPadding(obj: htmlTableElement, value: string): web ()
+  setJsObjectField(obj.obj, "cellPadding", value.obj)
+
+pub inline fun cellPadding(obj: htmlTableElement): web string
+  getJsObjectField(obj.obj, "cellPadding")
+
+pub inline fun cellSpacing(obj: htmlTableElement, value: string): web ()
+  setJsObjectField(obj.obj, "cellSpacing", value.obj)
+
+pub inline fun cellSpacing(obj: htmlTableElement): web string
+  getJsObjectField(obj.obj, "cellSpacing")
+
+pub value struct htmlTableCaptionElement
+  obj: jsObject
+
+pub inline fun newHtmlTableCaptionElement()
+  newJsObject0("HtmlTableCaptionElement")"
+
+pub inline fun align(obj: htmlTableCaptionElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlTableCaptionElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub value struct htmlTableColElement
+  obj: jsObject
+
+pub inline fun newHtmlTableColElement()
+  newJsObject0("HtmlTableColElement")"
+
+pub inline fun span(obj: htmlTableColElement, value: int): web ()
+  setJsObjectField(obj.obj, "span", value.obj)
+
+pub inline fun span(obj: htmlTableColElement): web int
+  getJsObjectField(obj.obj, "span")
+
+pub inline fun align(obj: htmlTableColElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlTableColElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub inline fun ch(obj: htmlTableColElement, value: string): web ()
+  setJsObjectField(obj.obj, "ch", value.obj)
+
+pub inline fun ch(obj: htmlTableColElement): web string
+  getJsObjectField(obj.obj, "ch")
+
+pub inline fun chOff(obj: htmlTableColElement, value: string): web ()
+  setJsObjectField(obj.obj, "chOff", value.obj)
+
+pub inline fun chOff(obj: htmlTableColElement): web string
+  getJsObjectField(obj.obj, "chOff")
+
+pub inline fun vAlign(obj: htmlTableColElement, value: string): web ()
+  setJsObjectField(obj.obj, "vAlign", value.obj)
+
+pub inline fun vAlign(obj: htmlTableColElement): web string
+  getJsObjectField(obj.obj, "vAlign")
+
+pub inline fun width(obj: htmlTableColElement, value: string): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlTableColElement): web string
+  getJsObjectField(obj.obj, "width")
+
+pub value struct htmlTableSectionElement
+  obj: jsObject
+
+pub inline fun newHtmlTableSectionElement()
+  newJsObject0("HtmlTableSectionElement")"
+
+pub inline fun insertRow(obj: htmlTableSectionElement, index': int): web htmlTableRowElement
+  jsOperation3(obj.obj, "insertRow", index'.obj)
+
+pub inline fun deleteRow(obj: htmlTableSectionElement, index': int): web ()
+  jsOperation3(obj.obj, "deleteRow", index'.obj)
+
+pub inline fun rows(obj: htmlTableSectionElement): web dom/htmlCollection
+  getJsObjectField(obj.obj, "rows")
+
+pub inline fun align(obj: htmlTableSectionElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlTableSectionElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub inline fun ch(obj: htmlTableSectionElement, value: string): web ()
+  setJsObjectField(obj.obj, "ch", value.obj)
+
+pub inline fun ch(obj: htmlTableSectionElement): web string
+  getJsObjectField(obj.obj, "ch")
+
+pub inline fun chOff(obj: htmlTableSectionElement, value: string): web ()
+  setJsObjectField(obj.obj, "chOff", value.obj)
+
+pub inline fun chOff(obj: htmlTableSectionElement): web string
+  getJsObjectField(obj.obj, "chOff")
+
+pub inline fun vAlign(obj: htmlTableSectionElement, value: string): web ()
+  setJsObjectField(obj.obj, "vAlign", value.obj)
+
+pub inline fun vAlign(obj: htmlTableSectionElement): web string
+  getJsObjectField(obj.obj, "vAlign")
+
+pub value struct htmlTableRowElement
+  obj: jsObject
+
+pub inline fun newHtmlTableRowElement()
+  newJsObject0("HtmlTableRowElement")"
+
+pub inline fun insertCell(obj: htmlTableRowElement, index': int): web htmlTableCellElement
+  jsOperation3(obj.obj, "insertCell", index'.obj)
+
+pub inline fun deleteCell(obj: htmlTableRowElement, index': int): web ()
+  jsOperation3(obj.obj, "deleteCell", index'.obj)
+
+pub inline fun rowIndex(obj: htmlTableRowElement): web int
+  getJsObjectField(obj.obj, "rowIndex")
+
+pub inline fun sectionRowIndex(obj: htmlTableRowElement): web int
+  getJsObjectField(obj.obj, "sectionRowIndex")
+
+pub inline fun cells(obj: htmlTableRowElement): web dom/htmlCollection
+  getJsObjectField(obj.obj, "cells")
+
+pub inline fun align(obj: htmlTableRowElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlTableRowElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub inline fun ch(obj: htmlTableRowElement, value: string): web ()
+  setJsObjectField(obj.obj, "ch", value.obj)
+
+pub inline fun ch(obj: htmlTableRowElement): web string
+  getJsObjectField(obj.obj, "ch")
+
+pub inline fun chOff(obj: htmlTableRowElement, value: string): web ()
+  setJsObjectField(obj.obj, "chOff", value.obj)
+
+pub inline fun chOff(obj: htmlTableRowElement): web string
+  getJsObjectField(obj.obj, "chOff")
+
+pub inline fun vAlign(obj: htmlTableRowElement, value: string): web ()
+  setJsObjectField(obj.obj, "vAlign", value.obj)
+
+pub inline fun vAlign(obj: htmlTableRowElement): web string
+  getJsObjectField(obj.obj, "vAlign")
+
+pub inline fun bgColor(obj: htmlTableRowElement, value: string): web ()
+  setJsObjectField(obj.obj, "bgColor", value.obj)
+
+pub inline fun bgColor(obj: htmlTableRowElement): web string
+  getJsObjectField(obj.obj, "bgColor")
+
+pub value struct htmlTableCellElement
+  obj: jsObject
+
+pub inline fun newHtmlTableCellElement()
+  newJsObject0("HtmlTableCellElement")"
+
+pub inline fun colSpan(obj: htmlTableCellElement, value: int): web ()
+  setJsObjectField(obj.obj, "colSpan", value.obj)
+
+pub inline fun colSpan(obj: htmlTableCellElement): web int
+  getJsObjectField(obj.obj, "colSpan")
+
+pub inline fun rowSpan(obj: htmlTableCellElement, value: int): web ()
+  setJsObjectField(obj.obj, "rowSpan", value.obj)
+
+pub inline fun rowSpan(obj: htmlTableCellElement): web int
+  getJsObjectField(obj.obj, "rowSpan")
+
+pub inline fun headers(obj: htmlTableCellElement, value: string): web ()
+  setJsObjectField(obj.obj, "headers", value.obj)
+
+pub inline fun headers(obj: htmlTableCellElement): web string
+  getJsObjectField(obj.obj, "headers")
+
+pub inline fun cellIndex(obj: htmlTableCellElement): web int
+  getJsObjectField(obj.obj, "cellIndex")
+
+pub inline fun scope(obj: htmlTableCellElement, value: string): web ()
+  setJsObjectField(obj.obj, "scope", value.obj)
+
+pub inline fun scope(obj: htmlTableCellElement): web string
+  getJsObjectField(obj.obj, "scope")
+
+pub inline fun abbr(obj: htmlTableCellElement, value: string): web ()
+  setJsObjectField(obj.obj, "abbr", value.obj)
+
+pub inline fun abbr(obj: htmlTableCellElement): web string
+  getJsObjectField(obj.obj, "abbr")
+
+pub inline fun align(obj: htmlTableCellElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlTableCellElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub inline fun axis(obj: htmlTableCellElement, value: string): web ()
+  setJsObjectField(obj.obj, "axis", value.obj)
+
+pub inline fun axis(obj: htmlTableCellElement): web string
+  getJsObjectField(obj.obj, "axis")
+
+pub inline fun height(obj: htmlTableCellElement, value: string): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: htmlTableCellElement): web string
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun width(obj: htmlTableCellElement, value: string): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlTableCellElement): web string
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun ch(obj: htmlTableCellElement, value: string): web ()
+  setJsObjectField(obj.obj, "ch", value.obj)
+
+pub inline fun ch(obj: htmlTableCellElement): web string
+  getJsObjectField(obj.obj, "ch")
+
+pub inline fun chOff(obj: htmlTableCellElement, value: string): web ()
+  setJsObjectField(obj.obj, "chOff", value.obj)
+
+pub inline fun chOff(obj: htmlTableCellElement): web string
+  getJsObjectField(obj.obj, "chOff")
+
+pub inline fun noWrap(obj: htmlTableCellElement, value: bool): web ()
+  setJsObjectField(obj.obj, "noWrap", value.obj)
+
+pub inline fun noWrap(obj: htmlTableCellElement): web bool
+  getJsObjectField(obj.obj, "noWrap")
+
+pub inline fun vAlign(obj: htmlTableCellElement, value: string): web ()
+  setJsObjectField(obj.obj, "vAlign", value.obj)
+
+pub inline fun vAlign(obj: htmlTableCellElement): web string
+  getJsObjectField(obj.obj, "vAlign")
+
+pub inline fun bgColor(obj: htmlTableCellElement, value: string): web ()
+  setJsObjectField(obj.obj, "bgColor", value.obj)
+
+pub inline fun bgColor(obj: htmlTableCellElement): web string
+  getJsObjectField(obj.obj, "bgColor")
+
+pub value struct htmlFormElement
+  obj: jsObject
+
+pub inline fun newHtmlFormElement()
+  newJsObject0("HtmlFormElement")"
+
+pub inline fun submit(obj: htmlFormElement): web ()
+  jsOperation2(obj.obj, "submit")
+
+pub inline fun requestSubmit(obj: htmlFormElement, submitter': maybe<htmlElement> =  Nothing): web ()
+  jsOperation3(obj.obj, "requestSubmit", submitter'.obj)
+
+pub inline fun reset(obj: htmlFormElement): web ()
+  jsOperation2(obj.obj, "reset")
+
+pub inline fun checkValidity(obj: htmlFormElement): web bool
+  jsOperation2(obj.obj, "checkValidity")
+
+pub inline fun reportValidity(obj: htmlFormElement): web bool
+  jsOperation2(obj.obj, "reportValidity")
+
+pub inline fun acceptCharset(obj: htmlFormElement, value: string): web ()
+  setJsObjectField(obj.obj, "acceptCharset", value.obj)
+
+pub inline fun acceptCharset(obj: htmlFormElement): web string
+  getJsObjectField(obj.obj, "acceptCharset")
+
+pub inline fun action(obj: htmlFormElement, value: string): web ()
+  setJsObjectField(obj.obj, "action", value.obj)
+
+pub inline fun action(obj: htmlFormElement): web string
+  getJsObjectField(obj.obj, "action")
+
+pub inline fun autocomplete(obj: htmlFormElement, value: string): web ()
+  setJsObjectField(obj.obj, "autocomplete", value.obj)
+
+pub inline fun autocomplete(obj: htmlFormElement): web string
+  getJsObjectField(obj.obj, "autocomplete")
+
+pub inline fun enctype(obj: htmlFormElement, value: string): web ()
+  setJsObjectField(obj.obj, "enctype", value.obj)
+
+pub inline fun enctype(obj: htmlFormElement): web string
+  getJsObjectField(obj.obj, "enctype")
+
+pub inline fun encoding(obj: htmlFormElement, value: string): web ()
+  setJsObjectField(obj.obj, "encoding", value.obj)
+
+pub inline fun encoding(obj: htmlFormElement): web string
+  getJsObjectField(obj.obj, "encoding")
+
+pub inline fun method(obj: htmlFormElement, value: string): web ()
+  setJsObjectField(obj.obj, "method", value.obj)
+
+pub inline fun method(obj: htmlFormElement): web string
+  getJsObjectField(obj.obj, "method")
+
+pub inline fun name(obj: htmlFormElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlFormElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun noValidate(obj: htmlFormElement, value: bool): web ()
+  setJsObjectField(obj.obj, "noValidate", value.obj)
+
+pub inline fun noValidate(obj: htmlFormElement): web bool
+  getJsObjectField(obj.obj, "noValidate")
+
+pub inline fun target(obj: htmlFormElement, value: string): web ()
+  setJsObjectField(obj.obj, "target", value.obj)
+
+pub inline fun target(obj: htmlFormElement): web string
+  getJsObjectField(obj.obj, "target")
+
+pub inline fun rel(obj: htmlFormElement, value: string): web ()
+  setJsObjectField(obj.obj, "rel", value.obj)
+
+pub inline fun rel(obj: htmlFormElement): web string
+  getJsObjectField(obj.obj, "rel")
+
+pub inline fun relList(obj: htmlFormElement): web dom/domTokenList
+  getJsObjectField(obj.obj, "relList")
+
+pub inline fun elements(obj: htmlFormElement): web htmlFormControlsCollection
+  getJsObjectField(obj.obj, "elements")
+
+pub inline fun length(obj: htmlFormElement): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct htmlLabelElement
+  obj: jsObject
+
+pub inline fun newHtmlLabelElement()
+  newJsObject0("HtmlLabelElement")"
+
+pub inline fun form(obj: htmlLabelElement): web maybe<htmlFormElement>
+  getJsObjectField(obj.obj, "form")
+
+pub inline fun htmlFor(obj: htmlLabelElement, value: string): web ()
+  setJsObjectField(obj.obj, "htmlFor", value.obj)
+
+pub inline fun htmlFor(obj: htmlLabelElement): web string
+  getJsObjectField(obj.obj, "htmlFor")
+
+pub inline fun control(obj: htmlLabelElement): web maybe<htmlElement>
+  getJsObjectField(obj.obj, "control")
+
+pub value struct htmlInputElement
+  obj: jsObject
+
+pub inline fun newHtmlInputElement()
+  newJsObject0("HtmlInputElement")"
+
+pub inline fun stepUp(obj: htmlInputElement, n': int): web ()
+  jsOperation3(obj.obj, "stepUp", n'.obj)
+
+pub inline fun stepDown(obj: htmlInputElement, n': int): web ()
+  jsOperation3(obj.obj, "stepDown", n'.obj)
+
+pub inline fun checkValidity(obj: htmlInputElement): web bool
+  jsOperation2(obj.obj, "checkValidity")
+
+pub inline fun reportValidity(obj: htmlInputElement): web bool
+  jsOperation2(obj.obj, "reportValidity")
+
+pub inline fun setCustomValidity(obj: htmlInputElement, error': string): web ()
+  jsOperation3(obj.obj, "setCustomValidity", error'.obj)
+
+pub inline fun select(obj: htmlInputElement): web ()
+  jsOperation2(obj.obj, "select")
+
+pub inline fun setRangeText(obj: htmlInputElement, replacement': string, start': int, end': int, selectionMode': selectionMode): web ()
+  jsOperation6(obj.obj, "setRangeText", replacement'.obj, start'.obj, end'.obj, selectionMode'.obj)
+
+pub inline fun setSelectionRange(obj: htmlInputElement, start': int, end': int, direction': string): web ()
+  jsOperation5(obj.obj, "setSelectionRange", start'.obj, end'.obj, direction'.obj)
+
+pub inline fun showPicker(obj: htmlInputElement): web ()
+  jsOperation2(obj.obj, "showPicker")
+
+pub inline fun webkitdirectory(obj: htmlInputElement, value: bool): web ()
+  setJsObjectField(obj.obj, "webkitdirectory", value.obj)
+
+pub inline fun webkitdirectory(obj: htmlInputElement): web bool
+  getJsObjectField(obj.obj, "webkitdirectory")
+
+pub inline fun webkitEntries(obj: htmlInputElement): web jsArray
+  getJsObjectField(obj.obj, "webkitEntries")
+
+pub inline fun capture(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "capture", value.obj)
+
+pub inline fun capture(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "capture")
+
+pub inline fun accept(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "accept", value.obj)
+
+pub inline fun accept(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "accept")
+
+pub inline fun alt(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "alt", value.obj)
+
+pub inline fun alt(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "alt")
+
+pub inline fun autocomplete(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "autocomplete", value.obj)
+
+pub inline fun autocomplete(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "autocomplete")
+
+pub inline fun defaultChecked(obj: htmlInputElement, value: bool): web ()
+  setJsObjectField(obj.obj, "defaultChecked", value.obj)
+
+pub inline fun defaultChecked(obj: htmlInputElement): web bool
+  getJsObjectField(obj.obj, "defaultChecked")
+
+pub inline fun checked(obj: htmlInputElement, value: bool): web ()
+  setJsObjectField(obj.obj, "checked", value.obj)
+
+pub inline fun checked(obj: htmlInputElement): web bool
+  getJsObjectField(obj.obj, "checked")
+
+pub inline fun dirName(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "dirName", value.obj)
+
+pub inline fun dirName(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "dirName")
+
+pub inline fun disabled(obj: htmlInputElement, value: bool): web ()
+  setJsObjectField(obj.obj, "disabled", value.obj)
+
+pub inline fun disabled(obj: htmlInputElement): web bool
+  getJsObjectField(obj.obj, "disabled")
+
+pub inline fun form(obj: htmlInputElement): web maybe<htmlFormElement>
+  getJsObjectField(obj.obj, "form")
+
+pub inline fun files(obj: htmlInputElement, value: maybe<fileapi/fileList>): web ()
+  setJsObjectField(obj.obj, "files", value.obj)
+
+pub inline fun files(obj: htmlInputElement): web maybe<fileapi/fileList>
+  getJsObjectField(obj.obj, "files")
+
+pub inline fun formAction(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "formAction", value.obj)
+
+pub inline fun formAction(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "formAction")
+
+pub inline fun formEnctype(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "formEnctype", value.obj)
+
+pub inline fun formEnctype(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "formEnctype")
+
+pub inline fun formMethod(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "formMethod", value.obj)
+
+pub inline fun formMethod(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "formMethod")
+
+pub inline fun formNoValidate(obj: htmlInputElement, value: bool): web ()
+  setJsObjectField(obj.obj, "formNoValidate", value.obj)
+
+pub inline fun formNoValidate(obj: htmlInputElement): web bool
+  getJsObjectField(obj.obj, "formNoValidate")
+
+pub inline fun formTarget(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "formTarget", value.obj)
+
+pub inline fun formTarget(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "formTarget")
+
+pub inline fun height(obj: htmlInputElement, value: int): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: htmlInputElement): web int
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun indeterminate(obj: htmlInputElement, value: bool): web ()
+  setJsObjectField(obj.obj, "indeterminate", value.obj)
+
+pub inline fun indeterminate(obj: htmlInputElement): web bool
+  getJsObjectField(obj.obj, "indeterminate")
+
+pub inline fun list(obj: htmlInputElement): web maybe<htmlDataListElement>
+  getJsObjectField(obj.obj, "list")
+
+pub inline fun max(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "max", value.obj)
+
+pub inline fun max(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "max")
+
+pub inline fun maxLength(obj: htmlInputElement, value: int): web ()
+  setJsObjectField(obj.obj, "maxLength", value.obj)
+
+pub inline fun maxLength(obj: htmlInputElement): web int
+  getJsObjectField(obj.obj, "maxLength")
+
+pub inline fun min(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "min", value.obj)
+
+pub inline fun min(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "min")
+
+pub inline fun minLength(obj: htmlInputElement, value: int): web ()
+  setJsObjectField(obj.obj, "minLength", value.obj)
+
+pub inline fun minLength(obj: htmlInputElement): web int
+  getJsObjectField(obj.obj, "minLength")
+
+pub inline fun multiple(obj: htmlInputElement, value: bool): web ()
+  setJsObjectField(obj.obj, "multiple", value.obj)
+
+pub inline fun multiple(obj: htmlInputElement): web bool
+  getJsObjectField(obj.obj, "multiple")
+
+pub inline fun name(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun pattern(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "pattern", value.obj)
+
+pub inline fun pattern(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "pattern")
+
+pub inline fun placeholder(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "placeholder", value.obj)
+
+pub inline fun placeholder(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "placeholder")
+
+pub inline fun readOnly(obj: htmlInputElement, value: bool): web ()
+  setJsObjectField(obj.obj, "readOnly", value.obj)
+
+pub inline fun readOnly(obj: htmlInputElement): web bool
+  getJsObjectField(obj.obj, "readOnly")
+
+pub inline fun required(obj: htmlInputElement, value: bool): web ()
+  setJsObjectField(obj.obj, "required", value.obj)
+
+pub inline fun required(obj: htmlInputElement): web bool
+  getJsObjectField(obj.obj, "required")
+
+pub inline fun size(obj: htmlInputElement, value: int): web ()
+  setJsObjectField(obj.obj, "size", value.obj)
+
+pub inline fun size(obj: htmlInputElement): web int
+  getJsObjectField(obj.obj, "size")
+
+pub inline fun src(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun step(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "step", value.obj)
+
+pub inline fun step(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "step")
+
+pub inline fun type(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun defaultValue(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "defaultValue", value.obj)
+
+pub inline fun defaultValue(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "defaultValue")
+
+pub inline fun value(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "value")
+
+pub inline fun valueAsDate(obj: htmlInputElement, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "valueAsDate", value.obj)
+
+pub inline fun valueAsDate(obj: htmlInputElement): web maybe<jsObject>
+  getJsObjectField(obj.obj, "valueAsDate")
+
+pub inline fun valueAsNumber(obj: htmlInputElement, value: double): web ()
+  setJsObjectField(obj.obj, "valueAsNumber", value.obj)
+
+pub inline fun valueAsNumber(obj: htmlInputElement): web double
+  getJsObjectField(obj.obj, "valueAsNumber")
+
+pub inline fun width(obj: htmlInputElement, value: int): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlInputElement): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun willValidate(obj: htmlInputElement): web bool
+  getJsObjectField(obj.obj, "willValidate")
+
+pub inline fun validity(obj: htmlInputElement): web validityState
+  getJsObjectField(obj.obj, "validity")
+
+pub inline fun validationMessage(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "validationMessage")
+
+pub inline fun labels(obj: htmlInputElement): web maybe<dom/nodeList>
+  getJsObjectField(obj.obj, "labels")
+
+pub inline fun selectionStart(obj: htmlInputElement, value: maybe<int>): web ()
+  setJsObjectField(obj.obj, "selectionStart", value.obj)
+
+pub inline fun selectionStart(obj: htmlInputElement): web maybe<int>
+  getJsObjectField(obj.obj, "selectionStart")
+
+pub inline fun selectionEnd(obj: htmlInputElement, value: maybe<int>): web ()
+  setJsObjectField(obj.obj, "selectionEnd", value.obj)
+
+pub inline fun selectionEnd(obj: htmlInputElement): web maybe<int>
+  getJsObjectField(obj.obj, "selectionEnd")
+
+pub inline fun selectionDirection(obj: htmlInputElement, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "selectionDirection", value.obj)
+
+pub inline fun selectionDirection(obj: htmlInputElement): web maybe<string>
+  getJsObjectField(obj.obj, "selectionDirection")
+
+pub inline fun align(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub inline fun useMap(obj: htmlInputElement, value: string): web ()
+  setJsObjectField(obj.obj, "useMap", value.obj)
+
+pub inline fun useMap(obj: htmlInputElement): web string
+  getJsObjectField(obj.obj, "useMap")
+
+pub value struct htmlButtonElement
+  obj: jsObject
+
+pub inline fun newHtmlButtonElement()
+  newJsObject0("HtmlButtonElement")"
+
+pub inline fun checkValidity(obj: htmlButtonElement): web bool
+  jsOperation2(obj.obj, "checkValidity")
+
+pub inline fun reportValidity(obj: htmlButtonElement): web bool
+  jsOperation2(obj.obj, "reportValidity")
+
+pub inline fun setCustomValidity(obj: htmlButtonElement, error': string): web ()
+  jsOperation3(obj.obj, "setCustomValidity", error'.obj)
+
+pub inline fun disabled(obj: htmlButtonElement, value: bool): web ()
+  setJsObjectField(obj.obj, "disabled", value.obj)
+
+pub inline fun disabled(obj: htmlButtonElement): web bool
+  getJsObjectField(obj.obj, "disabled")
+
+pub inline fun form(obj: htmlButtonElement): web maybe<htmlFormElement>
+  getJsObjectField(obj.obj, "form")
+
+pub inline fun formAction(obj: htmlButtonElement, value: string): web ()
+  setJsObjectField(obj.obj, "formAction", value.obj)
+
+pub inline fun formAction(obj: htmlButtonElement): web string
+  getJsObjectField(obj.obj, "formAction")
+
+pub inline fun formEnctype(obj: htmlButtonElement, value: string): web ()
+  setJsObjectField(obj.obj, "formEnctype", value.obj)
+
+pub inline fun formEnctype(obj: htmlButtonElement): web string
+  getJsObjectField(obj.obj, "formEnctype")
+
+pub inline fun formMethod(obj: htmlButtonElement, value: string): web ()
+  setJsObjectField(obj.obj, "formMethod", value.obj)
+
+pub inline fun formMethod(obj: htmlButtonElement): web string
+  getJsObjectField(obj.obj, "formMethod")
+
+pub inline fun formNoValidate(obj: htmlButtonElement, value: bool): web ()
+  setJsObjectField(obj.obj, "formNoValidate", value.obj)
+
+pub inline fun formNoValidate(obj: htmlButtonElement): web bool
+  getJsObjectField(obj.obj, "formNoValidate")
+
+pub inline fun formTarget(obj: htmlButtonElement, value: string): web ()
+  setJsObjectField(obj.obj, "formTarget", value.obj)
+
+pub inline fun formTarget(obj: htmlButtonElement): web string
+  getJsObjectField(obj.obj, "formTarget")
+
+pub inline fun name(obj: htmlButtonElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlButtonElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun type(obj: htmlButtonElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmlButtonElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun value(obj: htmlButtonElement, value: string): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: htmlButtonElement): web string
+  getJsObjectField(obj.obj, "value")
+
+pub inline fun willValidate(obj: htmlButtonElement): web bool
+  getJsObjectField(obj.obj, "willValidate")
+
+pub inline fun validity(obj: htmlButtonElement): web validityState
+  getJsObjectField(obj.obj, "validity")
+
+pub inline fun validationMessage(obj: htmlButtonElement): web string
+  getJsObjectField(obj.obj, "validationMessage")
+
+pub inline fun labels(obj: htmlButtonElement): web dom/nodeList
+  getJsObjectField(obj.obj, "labels")
+
+pub value struct htmlSelectElement
+  obj: jsObject
+
+pub inline fun newHtmlSelectElement()
+  newJsObject0("HtmlSelectElement")"
+
+pub inline fun item(obj: htmlSelectElement, index': int): web maybe<htmlOptionElement>
+  jsOperation3(obj.obj, "item", index'.obj)
+
+pub inline fun namedItem(obj: htmlSelectElement, name': string): web maybe<htmlOptionElement>
+  jsOperation3(obj.obj, "namedItem", name'.obj)
+
+pub inline fun add(obj: htmlSelectElement, element': maybe<jsObject>, before': maybe<jsObject> =  Nothing): web ()
+  jsOperation4(obj.obj, "add", element'.obj, before'.obj)
+
+pub inline fun remove(obj: htmlSelectElement, index': int): web ()
+  jsOperation3(obj.obj, "remove", index'.obj)
+
+pub inline fun checkValidity(obj: htmlSelectElement): web bool
+  jsOperation2(obj.obj, "checkValidity")
+
+pub inline fun reportValidity(obj: htmlSelectElement): web bool
+  jsOperation2(obj.obj, "reportValidity")
+
+pub inline fun setCustomValidity(obj: htmlSelectElement, error': string): web ()
+  jsOperation3(obj.obj, "setCustomValidity", error'.obj)
+
+pub inline fun autocomplete(obj: htmlSelectElement, value: string): web ()
+  setJsObjectField(obj.obj, "autocomplete", value.obj)
+
+pub inline fun autocomplete(obj: htmlSelectElement): web string
+  getJsObjectField(obj.obj, "autocomplete")
+
+pub inline fun disabled(obj: htmlSelectElement, value: bool): web ()
+  setJsObjectField(obj.obj, "disabled", value.obj)
+
+pub inline fun disabled(obj: htmlSelectElement): web bool
+  getJsObjectField(obj.obj, "disabled")
+
+pub inline fun form(obj: htmlSelectElement): web maybe<htmlFormElement>
+  getJsObjectField(obj.obj, "form")
+
+pub inline fun multiple(obj: htmlSelectElement, value: bool): web ()
+  setJsObjectField(obj.obj, "multiple", value.obj)
+
+pub inline fun multiple(obj: htmlSelectElement): web bool
+  getJsObjectField(obj.obj, "multiple")
+
+pub inline fun name(obj: htmlSelectElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlSelectElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun required(obj: htmlSelectElement, value: bool): web ()
+  setJsObjectField(obj.obj, "required", value.obj)
+
+pub inline fun required(obj: htmlSelectElement): web bool
+  getJsObjectField(obj.obj, "required")
+
+pub inline fun size(obj: htmlSelectElement, value: int): web ()
+  setJsObjectField(obj.obj, "size", value.obj)
+
+pub inline fun size(obj: htmlSelectElement): web int
+  getJsObjectField(obj.obj, "size")
+
+pub inline fun type(obj: htmlSelectElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun options(obj: htmlSelectElement): web htmlOptionsCollection
+  getJsObjectField(obj.obj, "options")
+
+pub inline fun length(obj: htmlSelectElement, value: int): web ()
+  setJsObjectField(obj.obj, "length", value.obj)
+
+pub inline fun length(obj: htmlSelectElement): web int
+  getJsObjectField(obj.obj, "length")
+
+pub inline fun selectedOptions(obj: htmlSelectElement): web dom/htmlCollection
+  getJsObjectField(obj.obj, "selectedOptions")
+
+pub inline fun selectedIndex(obj: htmlSelectElement, value: int): web ()
+  setJsObjectField(obj.obj, "selectedIndex", value.obj)
+
+pub inline fun selectedIndex(obj: htmlSelectElement): web int
+  getJsObjectField(obj.obj, "selectedIndex")
+
+pub inline fun value(obj: htmlSelectElement, value: string): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: htmlSelectElement): web string
+  getJsObjectField(obj.obj, "value")
+
+pub inline fun willValidate(obj: htmlSelectElement): web bool
+  getJsObjectField(obj.obj, "willValidate")
+
+pub inline fun validity(obj: htmlSelectElement): web validityState
+  getJsObjectField(obj.obj, "validity")
+
+pub inline fun validationMessage(obj: htmlSelectElement): web string
+  getJsObjectField(obj.obj, "validationMessage")
+
+pub inline fun labels(obj: htmlSelectElement): web dom/nodeList
+  getJsObjectField(obj.obj, "labels")
+
+pub value struct htmlDataListElement
+  obj: jsObject
+
+pub inline fun newHtmlDataListElement()
+  newJsObject0("HtmlDataListElement")"
+
+pub inline fun options(obj: htmlDataListElement): web dom/htmlCollection
+  getJsObjectField(obj.obj, "options")
+
+pub value struct htmlOptGroupElement
+  obj: jsObject
+
+pub inline fun newHtmlOptGroupElement()
+  newJsObject0("HtmlOptGroupElement")"
+
+pub inline fun disabled(obj: htmlOptGroupElement, value: bool): web ()
+  setJsObjectField(obj.obj, "disabled", value.obj)
+
+pub inline fun disabled(obj: htmlOptGroupElement): web bool
+  getJsObjectField(obj.obj, "disabled")
+
+pub inline fun label(obj: htmlOptGroupElement, value: string): web ()
+  setJsObjectField(obj.obj, "label", value.obj)
+
+pub inline fun label(obj: htmlOptGroupElement): web string
+  getJsObjectField(obj.obj, "label")
+
+pub value struct htmlOptionElement
+  obj: jsObject
+
+pub inline fun newHtmlOptionElement()
+  newJsObject0("HtmlOptionElement")"
+
+pub inline fun disabled(obj: htmlOptionElement, value: bool): web ()
+  setJsObjectField(obj.obj, "disabled", value.obj)
+
+pub inline fun disabled(obj: htmlOptionElement): web bool
+  getJsObjectField(obj.obj, "disabled")
+
+pub inline fun form(obj: htmlOptionElement): web maybe<htmlFormElement>
+  getJsObjectField(obj.obj, "form")
+
+pub inline fun label(obj: htmlOptionElement, value: string): web ()
+  setJsObjectField(obj.obj, "label", value.obj)
+
+pub inline fun label(obj: htmlOptionElement): web string
+  getJsObjectField(obj.obj, "label")
+
+pub inline fun defaultSelected(obj: htmlOptionElement, value: bool): web ()
+  setJsObjectField(obj.obj, "defaultSelected", value.obj)
+
+pub inline fun defaultSelected(obj: htmlOptionElement): web bool
+  getJsObjectField(obj.obj, "defaultSelected")
+
+pub inline fun selected(obj: htmlOptionElement, value: bool): web ()
+  setJsObjectField(obj.obj, "selected", value.obj)
+
+pub inline fun selected(obj: htmlOptionElement): web bool
+  getJsObjectField(obj.obj, "selected")
+
+pub inline fun value(obj: htmlOptionElement, value: string): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: htmlOptionElement): web string
+  getJsObjectField(obj.obj, "value")
+
+pub inline fun text(obj: htmlOptionElement, value: string): web ()
+  setJsObjectField(obj.obj, "text", value.obj)
+
+pub inline fun text(obj: htmlOptionElement): web string
+  getJsObjectField(obj.obj, "text")
+
+pub inline fun index(obj: htmlOptionElement): web int
+  getJsObjectField(obj.obj, "index")
+
+pub value struct htmlTextAreaElement
+  obj: jsObject
+
+pub inline fun newHtmlTextAreaElement()
+  newJsObject0("HtmlTextAreaElement")"
+
+pub inline fun checkValidity(obj: htmlTextAreaElement): web bool
+  jsOperation2(obj.obj, "checkValidity")
+
+pub inline fun reportValidity(obj: htmlTextAreaElement): web bool
+  jsOperation2(obj.obj, "reportValidity")
+
+pub inline fun setCustomValidity(obj: htmlTextAreaElement, error': string): web ()
+  jsOperation3(obj.obj, "setCustomValidity", error'.obj)
+
+pub inline fun select(obj: htmlTextAreaElement): web ()
+  jsOperation2(obj.obj, "select")
+
+pub inline fun setRangeText(obj: htmlTextAreaElement, replacement': string, start': int, end': int, selectionMode': selectionMode): web ()
+  jsOperation6(obj.obj, "setRangeText", replacement'.obj, start'.obj, end'.obj, selectionMode'.obj)
+
+pub inline fun setSelectionRange(obj: htmlTextAreaElement, start': int, end': int, direction': string): web ()
+  jsOperation5(obj.obj, "setSelectionRange", start'.obj, end'.obj, direction'.obj)
+
+pub inline fun autocomplete(obj: htmlTextAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "autocomplete", value.obj)
+
+pub inline fun autocomplete(obj: htmlTextAreaElement): web string
+  getJsObjectField(obj.obj, "autocomplete")
+
+pub inline fun cols(obj: htmlTextAreaElement, value: int): web ()
+  setJsObjectField(obj.obj, "cols", value.obj)
+
+pub inline fun cols(obj: htmlTextAreaElement): web int
+  getJsObjectField(obj.obj, "cols")
+
+pub inline fun dirName(obj: htmlTextAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "dirName", value.obj)
+
+pub inline fun dirName(obj: htmlTextAreaElement): web string
+  getJsObjectField(obj.obj, "dirName")
+
+pub inline fun disabled(obj: htmlTextAreaElement, value: bool): web ()
+  setJsObjectField(obj.obj, "disabled", value.obj)
+
+pub inline fun disabled(obj: htmlTextAreaElement): web bool
+  getJsObjectField(obj.obj, "disabled")
+
+pub inline fun form(obj: htmlTextAreaElement): web maybe<htmlFormElement>
+  getJsObjectField(obj.obj, "form")
+
+pub inline fun maxLength(obj: htmlTextAreaElement, value: int): web ()
+  setJsObjectField(obj.obj, "maxLength", value.obj)
+
+pub inline fun maxLength(obj: htmlTextAreaElement): web int
+  getJsObjectField(obj.obj, "maxLength")
+
+pub inline fun minLength(obj: htmlTextAreaElement, value: int): web ()
+  setJsObjectField(obj.obj, "minLength", value.obj)
+
+pub inline fun minLength(obj: htmlTextAreaElement): web int
+  getJsObjectField(obj.obj, "minLength")
+
+pub inline fun name(obj: htmlTextAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlTextAreaElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun placeholder(obj: htmlTextAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "placeholder", value.obj)
+
+pub inline fun placeholder(obj: htmlTextAreaElement): web string
+  getJsObjectField(obj.obj, "placeholder")
+
+pub inline fun readOnly(obj: htmlTextAreaElement, value: bool): web ()
+  setJsObjectField(obj.obj, "readOnly", value.obj)
+
+pub inline fun readOnly(obj: htmlTextAreaElement): web bool
+  getJsObjectField(obj.obj, "readOnly")
+
+pub inline fun required(obj: htmlTextAreaElement, value: bool): web ()
+  setJsObjectField(obj.obj, "required", value.obj)
+
+pub inline fun required(obj: htmlTextAreaElement): web bool
+  getJsObjectField(obj.obj, "required")
+
+pub inline fun rows(obj: htmlTextAreaElement, value: int): web ()
+  setJsObjectField(obj.obj, "rows", value.obj)
+
+pub inline fun rows(obj: htmlTextAreaElement): web int
+  getJsObjectField(obj.obj, "rows")
+
+pub inline fun wrap(obj: htmlTextAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "wrap", value.obj)
+
+pub inline fun wrap(obj: htmlTextAreaElement): web string
+  getJsObjectField(obj.obj, "wrap")
+
+pub inline fun type(obj: htmlTextAreaElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun defaultValue(obj: htmlTextAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "defaultValue", value.obj)
+
+pub inline fun defaultValue(obj: htmlTextAreaElement): web string
+  getJsObjectField(obj.obj, "defaultValue")
+
+pub inline fun value(obj: htmlTextAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: htmlTextAreaElement): web string
+  getJsObjectField(obj.obj, "value")
+
+pub inline fun textLength(obj: htmlTextAreaElement): web int
+  getJsObjectField(obj.obj, "textLength")
+
+pub inline fun willValidate(obj: htmlTextAreaElement): web bool
+  getJsObjectField(obj.obj, "willValidate")
+
+pub inline fun validity(obj: htmlTextAreaElement): web validityState
+  getJsObjectField(obj.obj, "validity")
+
+pub inline fun validationMessage(obj: htmlTextAreaElement): web string
+  getJsObjectField(obj.obj, "validationMessage")
+
+pub inline fun labels(obj: htmlTextAreaElement): web dom/nodeList
+  getJsObjectField(obj.obj, "labels")
+
+pub inline fun selectionStart(obj: htmlTextAreaElement, value: int): web ()
+  setJsObjectField(obj.obj, "selectionStart", value.obj)
+
+pub inline fun selectionStart(obj: htmlTextAreaElement): web int
+  getJsObjectField(obj.obj, "selectionStart")
+
+pub inline fun selectionEnd(obj: htmlTextAreaElement, value: int): web ()
+  setJsObjectField(obj.obj, "selectionEnd", value.obj)
+
+pub inline fun selectionEnd(obj: htmlTextAreaElement): web int
+  getJsObjectField(obj.obj, "selectionEnd")
+
+pub inline fun selectionDirection(obj: htmlTextAreaElement, value: string): web ()
+  setJsObjectField(obj.obj, "selectionDirection", value.obj)
+
+pub inline fun selectionDirection(obj: htmlTextAreaElement): web string
+  getJsObjectField(obj.obj, "selectionDirection")
+
+pub value struct htmlOutputElement
+  obj: jsObject
+
+pub inline fun newHtmlOutputElement()
+  newJsObject0("HtmlOutputElement")"
+
+pub inline fun checkValidity(obj: htmlOutputElement): web bool
+  jsOperation2(obj.obj, "checkValidity")
+
+pub inline fun reportValidity(obj: htmlOutputElement): web bool
+  jsOperation2(obj.obj, "reportValidity")
+
+pub inline fun setCustomValidity(obj: htmlOutputElement, error': string): web ()
+  jsOperation3(obj.obj, "setCustomValidity", error'.obj)
+
+pub inline fun htmlFor(obj: htmlOutputElement): web dom/domTokenList
+  getJsObjectField(obj.obj, "htmlFor")
+
+pub inline fun form(obj: htmlOutputElement): web maybe<htmlFormElement>
+  getJsObjectField(obj.obj, "form")
+
+pub inline fun name(obj: htmlOutputElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlOutputElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun type(obj: htmlOutputElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun defaultValue(obj: htmlOutputElement, value: string): web ()
+  setJsObjectField(obj.obj, "defaultValue", value.obj)
+
+pub inline fun defaultValue(obj: htmlOutputElement): web string
+  getJsObjectField(obj.obj, "defaultValue")
+
+pub inline fun value(obj: htmlOutputElement, value: string): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: htmlOutputElement): web string
+  getJsObjectField(obj.obj, "value")
+
+pub inline fun willValidate(obj: htmlOutputElement): web bool
+  getJsObjectField(obj.obj, "willValidate")
+
+pub inline fun validity(obj: htmlOutputElement): web validityState
+  getJsObjectField(obj.obj, "validity")
+
+pub inline fun validationMessage(obj: htmlOutputElement): web string
+  getJsObjectField(obj.obj, "validationMessage")
+
+pub inline fun labels(obj: htmlOutputElement): web dom/nodeList
+  getJsObjectField(obj.obj, "labels")
+
+pub value struct htmlProgressElement
+  obj: jsObject
+
+pub inline fun newHtmlProgressElement()
+  newJsObject0("HtmlProgressElement")"
+
+pub inline fun value(obj: htmlProgressElement, value: double): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: htmlProgressElement): web double
+  getJsObjectField(obj.obj, "value")
+
+pub inline fun max(obj: htmlProgressElement, value: double): web ()
+  setJsObjectField(obj.obj, "max", value.obj)
+
+pub inline fun max(obj: htmlProgressElement): web double
+  getJsObjectField(obj.obj, "max")
+
+pub inline fun position(obj: htmlProgressElement): web double
+  getJsObjectField(obj.obj, "position")
+
+pub inline fun labels(obj: htmlProgressElement): web dom/nodeList
+  getJsObjectField(obj.obj, "labels")
+
+pub value struct htmlMeterElement
+  obj: jsObject
+
+pub inline fun newHtmlMeterElement()
+  newJsObject0("HtmlMeterElement")"
+
+pub inline fun value(obj: htmlMeterElement, value: double): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: htmlMeterElement): web double
+  getJsObjectField(obj.obj, "value")
+
+pub inline fun min(obj: htmlMeterElement, value: double): web ()
+  setJsObjectField(obj.obj, "min", value.obj)
+
+pub inline fun min(obj: htmlMeterElement): web double
+  getJsObjectField(obj.obj, "min")
+
+pub inline fun max(obj: htmlMeterElement, value: double): web ()
+  setJsObjectField(obj.obj, "max", value.obj)
+
+pub inline fun max(obj: htmlMeterElement): web double
+  getJsObjectField(obj.obj, "max")
+
+pub inline fun low(obj: htmlMeterElement, value: double): web ()
+  setJsObjectField(obj.obj, "low", value.obj)
+
+pub inline fun low(obj: htmlMeterElement): web double
+  getJsObjectField(obj.obj, "low")
+
+pub inline fun high(obj: htmlMeterElement, value: double): web ()
+  setJsObjectField(obj.obj, "high", value.obj)
+
+pub inline fun high(obj: htmlMeterElement): web double
+  getJsObjectField(obj.obj, "high")
+
+pub inline fun optimum(obj: htmlMeterElement, value: double): web ()
+  setJsObjectField(obj.obj, "optimum", value.obj)
+
+pub inline fun optimum(obj: htmlMeterElement): web double
+  getJsObjectField(obj.obj, "optimum")
+
+pub inline fun labels(obj: htmlMeterElement): web dom/nodeList
+  getJsObjectField(obj.obj, "labels")
+
+pub value struct htmlFieldSetElement
+  obj: jsObject
+
+pub inline fun newHtmlFieldSetElement()
+  newJsObject0("HtmlFieldSetElement")"
+
+pub inline fun checkValidity(obj: htmlFieldSetElement): web bool
+  jsOperation2(obj.obj, "checkValidity")
+
+pub inline fun reportValidity(obj: htmlFieldSetElement): web bool
+  jsOperation2(obj.obj, "reportValidity")
+
+pub inline fun setCustomValidity(obj: htmlFieldSetElement, error': string): web ()
+  jsOperation3(obj.obj, "setCustomValidity", error'.obj)
+
+pub inline fun disabled(obj: htmlFieldSetElement, value: bool): web ()
+  setJsObjectField(obj.obj, "disabled", value.obj)
+
+pub inline fun disabled(obj: htmlFieldSetElement): web bool
+  getJsObjectField(obj.obj, "disabled")
+
+pub inline fun form(obj: htmlFieldSetElement): web maybe<htmlFormElement>
+  getJsObjectField(obj.obj, "form")
+
+pub inline fun name(obj: htmlFieldSetElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlFieldSetElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun type(obj: htmlFieldSetElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun elements(obj: htmlFieldSetElement): web dom/htmlCollection
+  getJsObjectField(obj.obj, "elements")
+
+pub inline fun willValidate(obj: htmlFieldSetElement): web bool
+  getJsObjectField(obj.obj, "willValidate")
+
+pub inline fun validity(obj: htmlFieldSetElement): web validityState
+  getJsObjectField(obj.obj, "validity")
+
+pub inline fun validationMessage(obj: htmlFieldSetElement): web string
+  getJsObjectField(obj.obj, "validationMessage")
+
+pub value struct htmlLegendElement
+  obj: jsObject
+
+pub inline fun newHtmlLegendElement()
+  newJsObject0("HtmlLegendElement")"
+
+pub inline fun form(obj: htmlLegendElement): web maybe<htmlFormElement>
+  getJsObjectField(obj.obj, "form")
+
+pub inline fun align(obj: htmlLegendElement, value: string): web ()
+  setJsObjectField(obj.obj, "align", value.obj)
+
+pub inline fun align(obj: htmlLegendElement): web string
+  getJsObjectField(obj.obj, "align")
+
+pub value struct validityState
+  obj: jsObject
+
+
+pub inline fun valueMissing(obj: validityState): web bool
+  getJsObjectField(obj.obj, "valueMissing")
+
+pub inline fun typeMismatch(obj: validityState): web bool
+  getJsObjectField(obj.obj, "typeMismatch")
+
+pub inline fun patternMismatch(obj: validityState): web bool
+  getJsObjectField(obj.obj, "patternMismatch")
+
+pub inline fun tooLong(obj: validityState): web bool
+  getJsObjectField(obj.obj, "tooLong")
+
+pub inline fun tooShort(obj: validityState): web bool
+  getJsObjectField(obj.obj, "tooShort")
+
+pub inline fun rangeUnderflow(obj: validityState): web bool
+  getJsObjectField(obj.obj, "rangeUnderflow")
+
+pub inline fun rangeOverflow(obj: validityState): web bool
+  getJsObjectField(obj.obj, "rangeOverflow")
+
+pub inline fun stepMismatch(obj: validityState): web bool
+  getJsObjectField(obj.obj, "stepMismatch")
+
+pub inline fun badInput(obj: validityState): web bool
+  getJsObjectField(obj.obj, "badInput")
+
+pub inline fun customError(obj: validityState): web bool
+  getJsObjectField(obj.obj, "customError")
+
+pub inline fun valid(obj: validityState): web bool
+  getJsObjectField(obj.obj, "valid")
+
+pub value struct submitEvent
+  obj: jsObject
+
+pub inline fun newSubmitEvent(type': string, eventInitDict': submitEventInit)
+  newJsObject2("SubmitEvent", type', eventInitDict')"
+
+pub inline fun submitter(obj: submitEvent): web maybe<htmlElement>
+  getJsObjectField(obj.obj, "submitter")
+
+pub value struct submitEventInit
+  obj: jsObject
+
+pub fun newSubmitEventInit(submitter: maybe<maybe<htmlElement>> = Nothing)
+  val obj = newJsObject();
+  match submitter
+    Just(it) -> setJsObjectField(obj, "submitter", it)
+    Nothing -> ()
+
+  SubmitEventInit(obj);
+
+pub inline fun submitter(obj: submitEventInit, value: maybe<htmlElement>): web ()
+  setJsObjectField(obj.obj, "submitter", value.obj)
+
+pub inline fun submitter(obj: submitEventInit): web maybe<htmlElement>
+  getJsObjectField(obj.obj, "submitter")
+
+pub value struct formDataEvent
+  obj: jsObject
+
+pub inline fun newFormDataEvent(type': string, eventInitDict': formDataEventInit)
+  newJsObject2("FormDataEvent", type', eventInitDict')"
+
+pub inline fun formData(obj: formDataEvent): web xhr/formData
+  getJsObjectField(obj.obj, "formData")
+
+pub value struct formDataEventInit
+  obj: jsObject
+
+pub fun newFormDataEventInit(formData: xhr/formData)
+  val obj = newJsObject();
+  setJsObjectField(obj, "formData", formData);
+  FormDataEventInit(obj);
+
+pub inline fun formData(obj: formDataEventInit, value: xhr/formData): web ()
+  setJsObjectField(obj.obj, "formData", value.obj)
+
+pub inline fun formData(obj: formDataEventInit): web xhr/formData
+  getJsObjectField(obj.obj, "formData")
+
+pub value struct htmlDetailsElement
+  obj: jsObject
+
+pub inline fun newHtmlDetailsElement()
+  newJsObject0("HtmlDetailsElement")"
+
+pub inline fun open(obj: htmlDetailsElement, value: bool): web ()
+  setJsObjectField(obj.obj, "open", value.obj)
+
+pub inline fun open(obj: htmlDetailsElement): web bool
+  getJsObjectField(obj.obj, "open")
+
+pub value struct htmlDialogElement
+  obj: jsObject
+
+pub inline fun newHtmlDialogElement()
+  newJsObject0("HtmlDialogElement")"
+
+pub inline fun show(obj: htmlDialogElement): web ()
+  jsOperation2(obj.obj, "show")
+
+pub inline fun showModal(obj: htmlDialogElement): web ()
+  jsOperation2(obj.obj, "showModal")
+
+pub inline fun close(obj: htmlDialogElement, returnValue': string): web ()
+  jsOperation3(obj.obj, "close", returnValue'.obj)
+
+pub inline fun open(obj: htmlDialogElement, value: bool): web ()
+  setJsObjectField(obj.obj, "open", value.obj)
+
+pub inline fun open(obj: htmlDialogElement): web bool
+  getJsObjectField(obj.obj, "open")
+
+pub inline fun returnValue(obj: htmlDialogElement, value: string): web ()
+  setJsObjectField(obj.obj, "returnValue", value.obj)
+
+pub inline fun returnValue(obj: htmlDialogElement): web string
+  getJsObjectField(obj.obj, "returnValue")
+
+pub value struct htmlScriptElement
+  obj: jsObject
+
+pub inline fun newHtmlScriptElement()
+  newJsObject0("HtmlScriptElement")"
+pub inline fun supports(type': string): web bool
+  jsOperation2("supports", type'.obj)
+
+pub inline fun src(obj: htmlScriptElement, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: htmlScriptElement): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun type(obj: htmlScriptElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmlScriptElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun noModule(obj: htmlScriptElement, value: bool): web ()
+  setJsObjectField(obj.obj, "noModule", value.obj)
+
+pub inline fun noModule(obj: htmlScriptElement): web bool
+  getJsObjectField(obj.obj, "noModule")
+
+pub inline fun async(obj: htmlScriptElement, value: bool): web ()
+  setJsObjectField(obj.obj, "async", value.obj)
+
+pub inline fun async(obj: htmlScriptElement): web bool
+  getJsObjectField(obj.obj, "async")
+
+pub inline fun defer(obj: htmlScriptElement, value: bool): web ()
+  setJsObjectField(obj.obj, "defer", value.obj)
+
+pub inline fun defer(obj: htmlScriptElement): web bool
+  getJsObjectField(obj.obj, "defer")
+
+pub inline fun crossOrigin(obj: htmlScriptElement, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "crossOrigin", value.obj)
+
+pub inline fun crossOrigin(obj: htmlScriptElement): web maybe<string>
+  getJsObjectField(obj.obj, "crossOrigin")
+
+pub inline fun text(obj: htmlScriptElement, value: string): web ()
+  setJsObjectField(obj.obj, "text", value.obj)
+
+pub inline fun text(obj: htmlScriptElement): web string
+  getJsObjectField(obj.obj, "text")
+
+pub inline fun integrity(obj: htmlScriptElement, value: string): web ()
+  setJsObjectField(obj.obj, "integrity", value.obj)
+
+pub inline fun integrity(obj: htmlScriptElement): web string
+  getJsObjectField(obj.obj, "integrity")
+
+pub inline fun referrerPolicy(obj: htmlScriptElement, value: string): web ()
+  setJsObjectField(obj.obj, "referrerPolicy", value.obj)
+
+pub inline fun referrerPolicy(obj: htmlScriptElement): web string
+  getJsObjectField(obj.obj, "referrerPolicy")
+
+pub inline fun blocking(obj: htmlScriptElement): web dom/domTokenList
+  getJsObjectField(obj.obj, "blocking")
+
+pub inline fun fetchPriority(obj: htmlScriptElement, value: string): web ()
+  setJsObjectField(obj.obj, "fetchPriority", value.obj)
+
+pub inline fun fetchPriority(obj: htmlScriptElement): web string
+  getJsObjectField(obj.obj, "fetchPriority")
+
+pub inline fun charset(obj: htmlScriptElement, value: string): web ()
+  setJsObjectField(obj.obj, "charset", value.obj)
+
+pub inline fun charset(obj: htmlScriptElement): web string
+  getJsObjectField(obj.obj, "charset")
+
+pub inline fun event(obj: htmlScriptElement, value: string): web ()
+  setJsObjectField(obj.obj, "event", value.obj)
+
+pub inline fun event(obj: htmlScriptElement): web string
+  getJsObjectField(obj.obj, "event")
+
+pub inline fun htmlFor(obj: htmlScriptElement, value: string): web ()
+  setJsObjectField(obj.obj, "htmlFor", value.obj)
+
+pub inline fun htmlFor(obj: htmlScriptElement): web string
+  getJsObjectField(obj.obj, "htmlFor")
+
+pub value struct htmlTemplateElement
+  obj: jsObject
+
+pub inline fun newHtmlTemplateElement()
+  newJsObject0("HtmlTemplateElement")"
+
+pub inline fun content(obj: htmlTemplateElement): web dom/documentFragment
+  getJsObjectField(obj.obj, "content")
+
+pub value struct htmlSlotElement
+  obj: jsObject
+
+pub inline fun newHtmlSlotElement()
+  newJsObject0("HtmlSlotElement")"
+
+pub inline fun assignedNodes(obj: htmlSlotElement, options': assignedNodesOptions): web jsArray
+  jsOperation3(obj.obj, "assignedNodes", options'.obj)
+
+pub inline fun assignedElements(obj: htmlSlotElement, options': assignedNodesOptions): web jsArray
+  jsOperation3(obj.obj, "assignedElements", options'.obj)
+
+pub inline fun assign(obj: htmlSlotElement, nodes': maybe<jsObject>): web ()
+  jsOperation3(obj.obj, "assign", nodes'.obj)
+
+pub inline fun name(obj: htmlSlotElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlSlotElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub value struct assignedNodesOptions
+  obj: jsObject
+
+pub fun newAssignedNodesOptions(flatten: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match flatten
+    Just(it) -> setJsObjectField(obj, "flatten", it)
+    Nothing -> ()
+
+  AssignedNodesOptions(obj);
+
+pub inline fun flatten(obj: assignedNodesOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "flatten", value.obj)
+
+pub inline fun flatten(obj: assignedNodesOptions): web bool
+  getJsObjectField(obj.obj, "flatten")
+
+pub value struct htmlCanvasElement
+  obj: jsObject
+
+pub inline fun newHtmlCanvasElement()
+  newJsObject0("HtmlCanvasElement")"
+
+pub inline fun getContext(obj: htmlCanvasElement, contextId': string, options': maybe<jsObject>): web maybe<renderingContext>
+  jsOperation4(obj.obj, "getContext", contextId'.obj, options'.obj)
+
+pub inline fun toDataURL(obj: htmlCanvasElement, type': string, quality': maybe<jsObject>): web string
+  jsOperation4(obj.obj, "toDataURL", type'.obj, quality'.obj)
+
+pub inline fun toBlob(obj: htmlCanvasElement, callback': blobCallback, type': string, quality': maybe<jsObject>): web ()
+  jsOperation5(obj.obj, "toBlob", callback'.obj, type'.obj, quality'.obj)
+
+pub inline fun transferControlToOffscreen(obj: htmlCanvasElement): web offscreenCanvas
+  jsOperation2(obj.obj, "transferControlToOffscreen")
+
+pub inline fun captureStream(obj: htmlCanvasElement, frameRequestRate': double): web mediacapture_streams/mediaStream
+  jsOperation3(obj.obj, "captureStream", frameRequestRate'.obj)
+
+pub inline fun width(obj: htmlCanvasElement, value: int): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlCanvasElement): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: htmlCanvasElement, value: int): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: htmlCanvasElement): web int
+  getJsObjectField(obj.obj, "height")
+
+pub value struct canvasRenderingContext2DSettings
+  obj: jsObject
+
+pub fun newCanvasRenderingContext2DSettings(alpha: maybe<bool> = Nothing, desynchronized: maybe<bool> = Nothing, colorSpace: maybe<predefinedColorSpace> = Nothing, willReadFrequently: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match alpha
+    Just(it) -> setJsObjectField(obj, "alpha", it)
+    Nothing -> ()
+  match desynchronized
+    Just(it) -> setJsObjectField(obj, "desynchronized", it)
+    Nothing -> ()
+  match colorSpace
+    Just(it) -> setJsObjectField(obj, "colorSpace", it)
+    Nothing -> ()
+  match willReadFrequently
+    Just(it) -> setJsObjectField(obj, "willReadFrequently", it)
+    Nothing -> ()
+
+  CanvasRenderingContext2DSettings(obj);
+
+pub inline fun alpha(obj: canvasRenderingContext2DSettings, value: bool): web ()
+  setJsObjectField(obj.obj, "alpha", value.obj)
+
+pub inline fun alpha(obj: canvasRenderingContext2DSettings): web bool
+  getJsObjectField(obj.obj, "alpha")
+
+pub inline fun desynchronized(obj: canvasRenderingContext2DSettings, value: bool): web ()
+  setJsObjectField(obj.obj, "desynchronized", value.obj)
+
+pub inline fun desynchronized(obj: canvasRenderingContext2DSettings): web bool
+  getJsObjectField(obj.obj, "desynchronized")
+
+pub inline fun colorSpace(obj: canvasRenderingContext2DSettings, value: predefinedColorSpace): web ()
+  setJsObjectField(obj.obj, "colorSpace", value.obj)
+
+pub inline fun colorSpace(obj: canvasRenderingContext2DSettings): web predefinedColorSpace
+  getJsObjectField(obj.obj, "colorSpace")
+
+pub inline fun willReadFrequently(obj: canvasRenderingContext2DSettings, value: bool): web ()
+  setJsObjectField(obj.obj, "willReadFrequently", value.obj)
+
+pub inline fun willReadFrequently(obj: canvasRenderingContext2DSettings): web bool
+  getJsObjectField(obj.obj, "willReadFrequently")
+
+pub value struct canvasRenderingContext2D
+  obj: jsObject
+
+
+pub inline fun getContextAttributes(obj: canvasRenderingContext2D): web canvasRenderingContext2DSettings
+  jsOperation2(obj.obj, "getContextAttributes")
+
+pub inline fun canvas(obj: canvasRenderingContext2D): web htmlCanvasElement
+  getJsObjectField(obj.obj, "canvas")
+
+pub value struct canvasState
+  obj: jsObject
+
+
+pub inline fun save(obj: canvasState): web ()
+  jsOperation2(obj.obj, "save")
+
+pub inline fun restore(obj: canvasState): web ()
+  jsOperation2(obj.obj, "restore")
+
+pub inline fun reset(obj: canvasState): web ()
+  jsOperation2(obj.obj, "reset")
+
+pub inline fun isContextLost(obj: canvasState): web bool
+  jsOperation2(obj.obj, "isContextLost")
+
+pub value struct canvasTransform
+  obj: jsObject
+
+
+pub inline fun scale(obj: canvasTransform, x': double, y': double): web ()
+  jsOperation4(obj.obj, "scale", x'.obj, y'.obj)
+
+pub inline fun rotate(obj: canvasTransform, angle': double): web ()
+  jsOperation3(obj.obj, "rotate", angle'.obj)
+
+pub inline fun translate(obj: canvasTransform, x': double, y': double): web ()
+  jsOperation4(obj.obj, "translate", x'.obj, y'.obj)
+
+pub inline fun transform(obj: canvasTransform, a': double, b': double, c': double, d': double, e': double, f': double): web ()
+  jsOperation8(obj.obj, "transform", a'.obj, b'.obj, c'.obj, d'.obj, e'.obj, f'.obj)
+
+pub inline fun getTransform(obj: canvasTransform): web geometry/domMatrix
+  jsOperation2(obj.obj, "getTransform")
+
+pub inline fun setTransform(obj: canvasTransform, aOrTransform': maybe<jsObject>, b': double, c': double, d': double, e': double, f': double): web ()
+  jsOperation8(obj.obj, "setTransform", aOrTransform'.obj, b'.obj, c'.obj, d'.obj, e'.obj, f'.obj)
+
+pub inline fun resetTransform(obj: canvasTransform): web ()
+  jsOperation2(obj.obj, "resetTransform")
+
+pub value struct canvasCompositing
+  obj: jsObject
+
+
+pub inline fun globalAlpha(obj: canvasCompositing, value: double): web ()
+  setJsObjectField(obj.obj, "globalAlpha", value.obj)
+
+pub inline fun globalAlpha(obj: canvasCompositing): web double
+  getJsObjectField(obj.obj, "globalAlpha")
+
+pub inline fun globalCompositeOperation(obj: canvasCompositing, value: string): web ()
+  setJsObjectField(obj.obj, "globalCompositeOperation", value.obj)
+
+pub inline fun globalCompositeOperation(obj: canvasCompositing): web string
+  getJsObjectField(obj.obj, "globalCompositeOperation")
+
+pub value struct canvasImageSmoothing
+  obj: jsObject
+
+
+pub inline fun imageSmoothingEnabled(obj: canvasImageSmoothing, value: bool): web ()
+  setJsObjectField(obj.obj, "imageSmoothingEnabled", value.obj)
+
+pub inline fun imageSmoothingEnabled(obj: canvasImageSmoothing): web bool
+  getJsObjectField(obj.obj, "imageSmoothingEnabled")
+
+pub inline fun imageSmoothingQuality(obj: canvasImageSmoothing, value: imageSmoothingQuality): web ()
+  setJsObjectField(obj.obj, "imageSmoothingQuality", value.obj)
+
+pub inline fun imageSmoothingQuality(obj: canvasImageSmoothing): web imageSmoothingQuality
+  getJsObjectField(obj.obj, "imageSmoothingQuality")
+
+pub value struct canvasFillStrokeStyles
+  obj: jsObject
+
+
+pub inline fun createLinearGradient(obj: canvasFillStrokeStyles, x0': double, y0': double, x1': double, y1': double): web canvasGradient
+  jsOperation6(obj.obj, "createLinearGradient", x0'.obj, y0'.obj, x1'.obj, y1'.obj)
+
+pub inline fun createRadialGradient(obj: canvasFillStrokeStyles, x0': double, y0': double, r0': double, x1': double, y1': double, r1': double): web canvasGradient
+  jsOperation8(obj.obj, "createRadialGradient", x0'.obj, y0'.obj, r0'.obj, x1'.obj, y1'.obj, r1'.obj)
+
+pub inline fun createConicGradient(obj: canvasFillStrokeStyles, startAngle': double, x': double, y': double): web canvasGradient
+  jsOperation5(obj.obj, "createConicGradient", startAngle'.obj, x'.obj, y'.obj)
+
+pub inline fun createPattern(obj: canvasFillStrokeStyles, image': canvasImageSource, repetition': string): web maybe<canvasPattern>
+  jsOperation4(obj.obj, "createPattern", image'.obj, repetition'.obj)
+
+pub inline fun strokeStyle(obj: canvasFillStrokeStyles, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "strokeStyle", value.obj)
+
+pub inline fun strokeStyle(obj: canvasFillStrokeStyles): web maybe<jsObject>
+  getJsObjectField(obj.obj, "strokeStyle")
+
+pub inline fun fillStyle(obj: canvasFillStrokeStyles, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "fillStyle", value.obj)
+
+pub inline fun fillStyle(obj: canvasFillStrokeStyles): web maybe<jsObject>
+  getJsObjectField(obj.obj, "fillStyle")
+
+pub value struct canvasShadowStyles
+  obj: jsObject
+
+
+pub inline fun shadowOffsetX(obj: canvasShadowStyles, value: double): web ()
+  setJsObjectField(obj.obj, "shadowOffsetX", value.obj)
+
+pub inline fun shadowOffsetX(obj: canvasShadowStyles): web double
+  getJsObjectField(obj.obj, "shadowOffsetX")
+
+pub inline fun shadowOffsetY(obj: canvasShadowStyles, value: double): web ()
+  setJsObjectField(obj.obj, "shadowOffsetY", value.obj)
+
+pub inline fun shadowOffsetY(obj: canvasShadowStyles): web double
+  getJsObjectField(obj.obj, "shadowOffsetY")
+
+pub inline fun shadowBlur(obj: canvasShadowStyles, value: double): web ()
+  setJsObjectField(obj.obj, "shadowBlur", value.obj)
+
+pub inline fun shadowBlur(obj: canvasShadowStyles): web double
+  getJsObjectField(obj.obj, "shadowBlur")
+
+pub inline fun shadowColor(obj: canvasShadowStyles, value: string): web ()
+  setJsObjectField(obj.obj, "shadowColor", value.obj)
+
+pub inline fun shadowColor(obj: canvasShadowStyles): web string
+  getJsObjectField(obj.obj, "shadowColor")
+
+pub value struct canvasFilters
+  obj: jsObject
+
+
+pub inline fun filter(obj: canvasFilters, value: string): web ()
+  setJsObjectField(obj.obj, "filter", value.obj)
+
+pub inline fun filter(obj: canvasFilters): web string
+  getJsObjectField(obj.obj, "filter")
+
+pub value struct canvasRect
+  obj: jsObject
+
+
+pub inline fun clearRect(obj: canvasRect, x': double, y': double, w': double, h': double): web ()
+  jsOperation6(obj.obj, "clearRect", x'.obj, y'.obj, w'.obj, h'.obj)
+
+pub inline fun fillRect(obj: canvasRect, x': double, y': double, w': double, h': double): web ()
+  jsOperation6(obj.obj, "fillRect", x'.obj, y'.obj, w'.obj, h'.obj)
+
+pub inline fun strokeRect(obj: canvasRect, x': double, y': double, w': double, h': double): web ()
+  jsOperation6(obj.obj, "strokeRect", x'.obj, y'.obj, w'.obj, h'.obj)
+
+pub value struct canvasDrawPath
+  obj: jsObject
+
+
+pub inline fun beginPath(obj: canvasDrawPath): web ()
+  jsOperation2(obj.obj, "beginPath")
+
+pub inline fun fill(obj: canvasDrawPath, fillRuleOrPath': maybe<jsObject>, fillRule': canvasFillRule): web ()
+  jsOperation4(obj.obj, "fill", fillRuleOrPath'.obj, fillRule'.obj)
+
+pub inline fun stroke(obj: canvasDrawPath, path': path2D): web ()
+  jsOperation3(obj.obj, "stroke", path'.obj)
+
+pub inline fun clip(obj: canvasDrawPath, fillRuleOrPath': maybe<jsObject>, fillRule': canvasFillRule): web ()
+  jsOperation4(obj.obj, "clip", fillRuleOrPath'.obj, fillRule'.obj)
+
+pub inline fun isPointInPath(obj: canvasDrawPath, pathOrX': maybe<jsObject>, xOrY': double, fillRuleOrY': maybe<jsObject>, fillRule': canvasFillRule): web bool
+  jsOperation6(obj.obj, "isPointInPath", pathOrX'.obj, xOrY'.obj, fillRuleOrY'.obj, fillRule'.obj)
+
+pub inline fun isPointInStroke(obj: canvasDrawPath, pathOrX': maybe<jsObject>, xOrY': double, y': double): web bool
+  jsOperation5(obj.obj, "isPointInStroke", pathOrX'.obj, xOrY'.obj, y'.obj)
+
+pub value struct canvasUserInterface
+  obj: jsObject
+
+
+pub inline fun drawFocusIfNeeded(obj: canvasUserInterface, elementOrPath': maybe<jsObject>, element': dom/element): web ()
+  jsOperation4(obj.obj, "drawFocusIfNeeded", elementOrPath'.obj, element'.obj)
+
+pub inline fun scrollPathIntoView(obj: canvasUserInterface, path': path2D): web ()
+  jsOperation3(obj.obj, "scrollPathIntoView", path'.obj)
+
+pub value struct canvasText
+  obj: jsObject
+
+
+pub inline fun fillText(obj: canvasText, text': string, x': double, y': double, maxWidth': double): web ()
+  jsOperation6(obj.obj, "fillText", text'.obj, x'.obj, y'.obj, maxWidth'.obj)
+
+pub inline fun strokeText(obj: canvasText, text': string, x': double, y': double, maxWidth': double): web ()
+  jsOperation6(obj.obj, "strokeText", text'.obj, x'.obj, y'.obj, maxWidth'.obj)
+
+pub inline fun measureText(obj: canvasText, text': string): web textMetrics
+  jsOperation3(obj.obj, "measureText", text'.obj)
+
+pub value struct canvasDrawImage
+  obj: jsObject
+
+
+pub inline fun drawImage(obj: canvasDrawImage, image': canvasImageSource, dxOrSx': double, dyOrSy': double, dwOrSw': double, dhOrSh': double, dx': double, dy': double, dw': double, dh': double): web ()
+  jsOperation11(obj.obj, "drawImage", image'.obj, dxOrSx'.obj, dyOrSy'.obj, dwOrSw'.obj, dhOrSh'.obj, dx'.obj, dy'.obj, dw'.obj, dh'.obj)
+
+pub value struct canvasImageData
+  obj: jsObject
+
+
+pub inline fun createImageData(obj: canvasImageData, imagedataOrSw': maybe<jsObject>, sh': int, settings': imageDataSettings): web imageData
+  jsOperation5(obj.obj, "createImageData", imagedataOrSw'.obj, sh'.obj, settings'.obj)
+
+pub inline fun getImageData(obj: canvasImageData, sx': int, sy': int, sw': int, sh': int, settings': imageDataSettings): web imageData
+  jsOperation7(obj.obj, "getImageData", sx'.obj, sy'.obj, sw'.obj, sh'.obj, settings'.obj)
+
+pub inline fun putImageData(obj: canvasImageData, imagedata': imageData, dx': int, dy': int, dirtyX': int, dirtyY': int, dirtyWidth': int, dirtyHeight': int): web ()
+  jsOperation9(obj.obj, "putImageData", imagedata'.obj, dx'.obj, dy'.obj, dirtyX'.obj, dirtyY'.obj, dirtyWidth'.obj, dirtyHeight'.obj)
+
+pub value struct canvasPathDrawingStyles
+  obj: jsObject
+
+
+pub inline fun setLineDash(obj: canvasPathDrawingStyles, segments': jsArray): web ()
+  jsOperation3(obj.obj, "setLineDash", segments'.obj)
+
+pub inline fun getLineDash(obj: canvasPathDrawingStyles): web jsArray
+  jsOperation2(obj.obj, "getLineDash")
+
+pub inline fun lineWidth(obj: canvasPathDrawingStyles, value: double): web ()
+  setJsObjectField(obj.obj, "lineWidth", value.obj)
+
+pub inline fun lineWidth(obj: canvasPathDrawingStyles): web double
+  getJsObjectField(obj.obj, "lineWidth")
+
+pub inline fun lineCap(obj: canvasPathDrawingStyles, value: canvasLineCap): web ()
+  setJsObjectField(obj.obj, "lineCap", value.obj)
+
+pub inline fun lineCap(obj: canvasPathDrawingStyles): web canvasLineCap
+  getJsObjectField(obj.obj, "lineCap")
+
+pub inline fun lineJoin(obj: canvasPathDrawingStyles, value: canvasLineJoin): web ()
+  setJsObjectField(obj.obj, "lineJoin", value.obj)
+
+pub inline fun lineJoin(obj: canvasPathDrawingStyles): web canvasLineJoin
+  getJsObjectField(obj.obj, "lineJoin")
+
+pub inline fun miterLimit(obj: canvasPathDrawingStyles, value: double): web ()
+  setJsObjectField(obj.obj, "miterLimit", value.obj)
+
+pub inline fun miterLimit(obj: canvasPathDrawingStyles): web double
+  getJsObjectField(obj.obj, "miterLimit")
+
+pub inline fun lineDashOffset(obj: canvasPathDrawingStyles, value: double): web ()
+  setJsObjectField(obj.obj, "lineDashOffset", value.obj)
+
+pub inline fun lineDashOffset(obj: canvasPathDrawingStyles): web double
+  getJsObjectField(obj.obj, "lineDashOffset")
+
+pub value struct canvasTextDrawingStyles
+  obj: jsObject
+
+
+pub inline fun font(obj: canvasTextDrawingStyles, value: string): web ()
+  setJsObjectField(obj.obj, "font", value.obj)
+
+pub inline fun font(obj: canvasTextDrawingStyles): web string
+  getJsObjectField(obj.obj, "font")
+
+pub inline fun textAlign(obj: canvasTextDrawingStyles, value: canvasTextAlign): web ()
+  setJsObjectField(obj.obj, "textAlign", value.obj)
+
+pub inline fun textAlign(obj: canvasTextDrawingStyles): web canvasTextAlign
+  getJsObjectField(obj.obj, "textAlign")
+
+pub inline fun textBaseline(obj: canvasTextDrawingStyles, value: canvasTextBaseline): web ()
+  setJsObjectField(obj.obj, "textBaseline", value.obj)
+
+pub inline fun textBaseline(obj: canvasTextDrawingStyles): web canvasTextBaseline
+  getJsObjectField(obj.obj, "textBaseline")
+
+pub inline fun direction(obj: canvasTextDrawingStyles, value: canvasDirection): web ()
+  setJsObjectField(obj.obj, "direction", value.obj)
+
+pub inline fun direction(obj: canvasTextDrawingStyles): web canvasDirection
+  getJsObjectField(obj.obj, "direction")
+
+pub inline fun letterSpacing(obj: canvasTextDrawingStyles, value: string): web ()
+  setJsObjectField(obj.obj, "letterSpacing", value.obj)
+
+pub inline fun letterSpacing(obj: canvasTextDrawingStyles): web string
+  getJsObjectField(obj.obj, "letterSpacing")
+
+pub inline fun fontKerning(obj: canvasTextDrawingStyles, value: canvasFontKerning): web ()
+  setJsObjectField(obj.obj, "fontKerning", value.obj)
+
+pub inline fun fontKerning(obj: canvasTextDrawingStyles): web canvasFontKerning
+  getJsObjectField(obj.obj, "fontKerning")
+
+pub inline fun fontStretch(obj: canvasTextDrawingStyles, value: canvasFontStretch): web ()
+  setJsObjectField(obj.obj, "fontStretch", value.obj)
+
+pub inline fun fontStretch(obj: canvasTextDrawingStyles): web canvasFontStretch
+  getJsObjectField(obj.obj, "fontStretch")
+
+pub inline fun fontVariantCaps(obj: canvasTextDrawingStyles, value: canvasFontVariantCaps): web ()
+  setJsObjectField(obj.obj, "fontVariantCaps", value.obj)
+
+pub inline fun fontVariantCaps(obj: canvasTextDrawingStyles): web canvasFontVariantCaps
+  getJsObjectField(obj.obj, "fontVariantCaps")
+
+pub inline fun textRendering(obj: canvasTextDrawingStyles, value: canvasTextRendering): web ()
+  setJsObjectField(obj.obj, "textRendering", value.obj)
+
+pub inline fun textRendering(obj: canvasTextDrawingStyles): web canvasTextRendering
+  getJsObjectField(obj.obj, "textRendering")
+
+pub inline fun wordSpacing(obj: canvasTextDrawingStyles, value: string): web ()
+  setJsObjectField(obj.obj, "wordSpacing", value.obj)
+
+pub inline fun wordSpacing(obj: canvasTextDrawingStyles): web string
+  getJsObjectField(obj.obj, "wordSpacing")
+
+pub value struct canvasPath
+  obj: jsObject
+
+
+pub inline fun closePath(obj: canvasPath): web ()
+  jsOperation2(obj.obj, "closePath")
+
+pub inline fun moveTo(obj: canvasPath, x': double, y': double): web ()
+  jsOperation4(obj.obj, "moveTo", x'.obj, y'.obj)
+
+pub inline fun lineTo(obj: canvasPath, x': double, y': double): web ()
+  jsOperation4(obj.obj, "lineTo", x'.obj, y'.obj)
+
+pub inline fun quadraticCurveTo(obj: canvasPath, cpx': double, cpy': double, x': double, y': double): web ()
+  jsOperation6(obj.obj, "quadraticCurveTo", cpx'.obj, cpy'.obj, x'.obj, y'.obj)
+
+pub inline fun bezierCurveTo(obj: canvasPath, cp1x': double, cp1y': double, cp2x': double, cp2y': double, x': double, y': double): web ()
+  jsOperation8(obj.obj, "bezierCurveTo", cp1x'.obj, cp1y'.obj, cp2x'.obj, cp2y'.obj, x'.obj, y'.obj)
+
+pub inline fun arcTo(obj: canvasPath, x1': double, y1': double, x2': double, y2': double, radius': double): web ()
+  jsOperation7(obj.obj, "arcTo", x1'.obj, y1'.obj, x2'.obj, y2'.obj, radius'.obj)
+
+pub inline fun rect(obj: canvasPath, x': double, y': double, w': double, h': double): web ()
+  jsOperation6(obj.obj, "rect", x'.obj, y'.obj, w'.obj, h'.obj)
+
+pub inline fun roundRect(obj: canvasPath, x': double, y': double, w': double, h': double, radii': maybe<jsObject>): web ()
+  jsOperation7(obj.obj, "roundRect", x'.obj, y'.obj, w'.obj, h'.obj, radii'.obj)
+
+pub inline fun arc(obj: canvasPath, x': double, y': double, radius': double, startAngle': double, endAngle': double, counterclockwise': bool): web ()
+  jsOperation8(obj.obj, "arc", x'.obj, y'.obj, radius'.obj, startAngle'.obj, endAngle'.obj, counterclockwise'.obj)
+
+pub inline fun ellipse(obj: canvasPath, x': double, y': double, radiusX': double, radiusY': double, rotation': double, startAngle': double, endAngle': double, counterclockwise': bool): web ()
+  jsOperation10(obj.obj, "ellipse", x'.obj, y'.obj, radiusX'.obj, radiusY'.obj, rotation'.obj, startAngle'.obj, endAngle'.obj, counterclockwise'.obj)
+
+pub value struct canvasGradient
+  obj: jsObject
+
+
+pub inline fun addColorStop(obj: canvasGradient, offset': double, color': string): web ()
+  jsOperation4(obj.obj, "addColorStop", offset'.obj, color'.obj)
+
+pub value struct canvasPattern
+  obj: jsObject
+
+
+pub inline fun setTransform(obj: canvasPattern, transform': geometry/domMatrix2DInit): web ()
+  jsOperation3(obj.obj, "setTransform", transform'.obj)
+
+pub value struct textMetrics
+  obj: jsObject
+
+
+pub inline fun width(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun actualBoundingBoxLeft(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "actualBoundingBoxLeft")
+
+pub inline fun actualBoundingBoxRight(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "actualBoundingBoxRight")
+
+pub inline fun fontBoundingBoxAscent(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "fontBoundingBoxAscent")
+
+pub inline fun fontBoundingBoxDescent(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "fontBoundingBoxDescent")
+
+pub inline fun actualBoundingBoxAscent(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "actualBoundingBoxAscent")
+
+pub inline fun actualBoundingBoxDescent(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "actualBoundingBoxDescent")
+
+pub inline fun emHeightAscent(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "emHeightAscent")
+
+pub inline fun emHeightDescent(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "emHeightDescent")
+
+pub inline fun hangingBaseline(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "hangingBaseline")
+
+pub inline fun alphabeticBaseline(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "alphabeticBaseline")
+
+pub inline fun ideographicBaseline(obj: textMetrics): web double
+  getJsObjectField(obj.obj, "ideographicBaseline")
+
+pub value struct imageDataSettings
+  obj: jsObject
+
+pub fun newImageDataSettings(colorSpace: maybe<predefinedColorSpace> = Nothing)
+  val obj = newJsObject();
+  match colorSpace
+    Just(it) -> setJsObjectField(obj, "colorSpace", it)
+    Nothing -> ()
+
+  ImageDataSettings(obj);
+
+pub inline fun colorSpace(obj: imageDataSettings, value: predefinedColorSpace): web ()
+  setJsObjectField(obj.obj, "colorSpace", value.obj)
+
+pub inline fun colorSpace(obj: imageDataSettings): web predefinedColorSpace
+  getJsObjectField(obj.obj, "colorSpace")
+
+pub value struct imageData
+  obj: jsObject
+
+pub inline fun newImageData(dataOrSw': maybe<jsObject>, shOrSw': int, settingsOrSh': maybe<jsObject>, settings': imageDataSettings)
+  newJsObject4("ImageData", dataOrSw', shOrSw', settingsOrSh', settings')"
+
+pub inline fun width(obj: imageData): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: imageData): web int
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun data(obj: imageData): web jsUint8ClampedArray
+  getJsObjectField(obj.obj, "data")
+
+pub inline fun colorSpace(obj: imageData): web predefinedColorSpace
+  getJsObjectField(obj.obj, "colorSpace")
+
+pub value struct path2D
+  obj: jsObject
+
+pub inline fun newPath2D(path': maybe<jsObject>)
+  newJsObject1("Path2D", path')"
+
+pub inline fun addPath(obj: path2D, path': path2D, transform': geometry/domMatrix2DInit): web ()
+  jsOperation4(obj.obj, "addPath", path'.obj, transform'.obj)
+
+pub value struct imageBitmapRenderingContext
+  obj: jsObject
+
+
+pub inline fun transferFromImageBitmap(obj: imageBitmapRenderingContext, bitmap': maybe<imageBitmap> =  Nothing): web ()
+  jsOperation3(obj.obj, "transferFromImageBitmap", bitmap'.obj)
+
+pub inline fun canvas(obj: imageBitmapRenderingContext): web maybe<jsObject>
+  getJsObjectField(obj.obj, "canvas")
+
+pub value struct imageBitmapRenderingContextSettings
+  obj: jsObject
+
+pub fun newImageBitmapRenderingContextSettings(alpha: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match alpha
+    Just(it) -> setJsObjectField(obj, "alpha", it)
+    Nothing -> ()
+
+  ImageBitmapRenderingContextSettings(obj);
+
+pub inline fun alpha(obj: imageBitmapRenderingContextSettings, value: bool): web ()
+  setJsObjectField(obj.obj, "alpha", value.obj)
+
+pub inline fun alpha(obj: imageBitmapRenderingContextSettings): web bool
+  getJsObjectField(obj.obj, "alpha")
+
+pub value struct imageEncodeOptions
+  obj: jsObject
+
+pub fun newImageEncodeOptions(type: maybe<string> = Nothing, quality: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match type
+    Just(it) -> setJsObjectField(obj, "type", it)
+    Nothing -> ()
+  match quality
+    Just(it) -> setJsObjectField(obj, "quality", it)
+    Nothing -> ()
+
+  ImageEncodeOptions(obj);
+
+pub inline fun type(obj: imageEncodeOptions, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: imageEncodeOptions): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun quality(obj: imageEncodeOptions, value: double): web ()
+  setJsObjectField(obj.obj, "quality", value.obj)
+
+pub inline fun quality(obj: imageEncodeOptions): web double
+  getJsObjectField(obj.obj, "quality")
+
+pub value struct offscreenCanvas
+  obj: jsObject
+
+pub inline fun newOffscreenCanvas(width': int, height': int)
+  newJsObject2("OffscreenCanvas", width', height')"
+
+pub inline fun getContext(obj: offscreenCanvas, contextId': offscreenRenderingContextId, options': maybe<jsObject>): web maybe<offscreenRenderingContext>
+  jsOperation4(obj.obj, "getContext", contextId'.obj, options'.obj)
+
+pub inline fun transferToImageBitmap(obj: offscreenCanvas): web imageBitmap
+  jsOperation2(obj.obj, "transferToImageBitmap")
+
+pub inline fun convertToBlob(obj: offscreenCanvas, options': imageEncodeOptions): web jsPromise
+  jsOperation3(obj.obj, "convertToBlob", options'.obj)
+
+pub inline fun width(obj: offscreenCanvas, value: int): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: offscreenCanvas): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: offscreenCanvas, value: int): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: offscreenCanvas): web int
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun oncontextlost(obj: offscreenCanvas, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncontextlost", value.obj)
+
+pub inline fun oncontextlost(obj: offscreenCanvas): web eventHandler
+  getJsObjectField(obj.obj, "oncontextlost")
+
+pub inline fun oncontextrestored(obj: offscreenCanvas, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncontextrestored", value.obj)
+
+pub inline fun oncontextrestored(obj: offscreenCanvas): web eventHandler
+  getJsObjectField(obj.obj, "oncontextrestored")
+
+pub value struct offscreenCanvasRenderingContext2D
+  obj: jsObject
+
+
+pub inline fun commit(obj: offscreenCanvasRenderingContext2D): web ()
+  jsOperation2(obj.obj, "commit")
+
+pub inline fun canvas(obj: offscreenCanvasRenderingContext2D): web offscreenCanvas
+  getJsObjectField(obj.obj, "canvas")
+
+pub value struct customElementRegistry
+  obj: jsObject
+
+
+pub inline fun define(obj: customElementRegistry, name': string, constructor': customElementConstructor, options': elementDefinitionOptions): web ()
+  jsOperation5(obj.obj, "define", name'.obj, constructor'.obj, options'.obj)
+
+pub inline fun get(obj: customElementRegistry, name': string): web maybe<jsObject>
+  jsOperation3(obj.obj, "get", name'.obj)
+
+pub inline fun getName(obj: customElementRegistry, constructor': customElementConstructor): web maybe<string>
+  jsOperation3(obj.obj, "getName", constructor'.obj)
+
+pub inline fun whenDefined(obj: customElementRegistry, name': string): web jsPromise
+  jsOperation3(obj.obj, "whenDefined", name'.obj)
+
+pub inline fun upgrade(obj: customElementRegistry, root': dom/node): web ()
+  jsOperation3(obj.obj, "upgrade", root'.obj)
+
+pub value struct elementDefinitionOptions
+  obj: jsObject
+
+pub fun newElementDefinitionOptions(extends_: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match extends_
+    Just(it) -> setJsObjectField(obj, "extends_", it)
+    Nothing -> ()
+
+  ElementDefinitionOptions(obj);
+
+pub inline fun extends(obj: elementDefinitionOptions, value: string): web ()
+  setJsObjectField(obj.obj, "extends_", value.obj)
+
+pub inline fun extends(obj: elementDefinitionOptions): web string
+  getJsObjectField(obj.obj, "extends_")
+
+pub value struct elementInternals
+  obj: jsObject
+
+
+pub inline fun setFormValue(obj: elementInternals, value': maybe<jsObject> =  Nothing, state': maybe<jsObject> =  Nothing): web ()
+  jsOperation4(obj.obj, "setFormValue", value'.obj, state'.obj)
+
+pub inline fun setValidity(obj: elementInternals, flags': validityStateFlags, message': string, anchor': htmlElement): web ()
+  jsOperation5(obj.obj, "setValidity", flags'.obj, message'.obj, anchor'.obj)
+
+pub inline fun checkValidity(obj: elementInternals): web bool
+  jsOperation2(obj.obj, "checkValidity")
+
+pub inline fun reportValidity(obj: elementInternals): web bool
+  jsOperation2(obj.obj, "reportValidity")
+
+pub inline fun states(obj: elementInternals): web custom_state_pseudo_class/customStateSet
+  getJsObjectField(obj.obj, "states")
+
+pub inline fun shadowRoot(obj: elementInternals): web maybe<dom/shadowRoot>
+  getJsObjectField(obj.obj, "shadowRoot")
+
+pub inline fun form(obj: elementInternals): web maybe<htmlFormElement>
+  getJsObjectField(obj.obj, "form")
+
+pub inline fun willValidate(obj: elementInternals): web bool
+  getJsObjectField(obj.obj, "willValidate")
+
+pub inline fun validity(obj: elementInternals): web validityState
+  getJsObjectField(obj.obj, "validity")
+
+pub inline fun validationMessage(obj: elementInternals): web string
+  getJsObjectField(obj.obj, "validationMessage")
+
+pub inline fun labels(obj: elementInternals): web dom/nodeList
+  getJsObjectField(obj.obj, "labels")
+
+pub value struct validityStateFlags
+  obj: jsObject
+
+pub fun newValidityStateFlags(valueMissing: maybe<bool> = Nothing, typeMismatch: maybe<bool> = Nothing, patternMismatch: maybe<bool> = Nothing, tooLong: maybe<bool> = Nothing, tooShort: maybe<bool> = Nothing, rangeUnderflow: maybe<bool> = Nothing, rangeOverflow: maybe<bool> = Nothing, stepMismatch: maybe<bool> = Nothing, badInput: maybe<bool> = Nothing, customError: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match valueMissing
+    Just(it) -> setJsObjectField(obj, "valueMissing", it)
+    Nothing -> ()
+  match typeMismatch
+    Just(it) -> setJsObjectField(obj, "typeMismatch", it)
+    Nothing -> ()
+  match patternMismatch
+    Just(it) -> setJsObjectField(obj, "patternMismatch", it)
+    Nothing -> ()
+  match tooLong
+    Just(it) -> setJsObjectField(obj, "tooLong", it)
+    Nothing -> ()
+  match tooShort
+    Just(it) -> setJsObjectField(obj, "tooShort", it)
+    Nothing -> ()
+  match rangeUnderflow
+    Just(it) -> setJsObjectField(obj, "rangeUnderflow", it)
+    Nothing -> ()
+  match rangeOverflow
+    Just(it) -> setJsObjectField(obj, "rangeOverflow", it)
+    Nothing -> ()
+  match stepMismatch
+    Just(it) -> setJsObjectField(obj, "stepMismatch", it)
+    Nothing -> ()
+  match badInput
+    Just(it) -> setJsObjectField(obj, "badInput", it)
+    Nothing -> ()
+  match customError
+    Just(it) -> setJsObjectField(obj, "customError", it)
+    Nothing -> ()
+
+  ValidityStateFlags(obj);
+
+pub inline fun valueMissing(obj: validityStateFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "valueMissing", value.obj)
+
+pub inline fun valueMissing(obj: validityStateFlags): web bool
+  getJsObjectField(obj.obj, "valueMissing")
+
+pub inline fun typeMismatch(obj: validityStateFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "typeMismatch", value.obj)
+
+pub inline fun typeMismatch(obj: validityStateFlags): web bool
+  getJsObjectField(obj.obj, "typeMismatch")
+
+pub inline fun patternMismatch(obj: validityStateFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "patternMismatch", value.obj)
+
+pub inline fun patternMismatch(obj: validityStateFlags): web bool
+  getJsObjectField(obj.obj, "patternMismatch")
+
+pub inline fun tooLong(obj: validityStateFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "tooLong", value.obj)
+
+pub inline fun tooLong(obj: validityStateFlags): web bool
+  getJsObjectField(obj.obj, "tooLong")
+
+pub inline fun tooShort(obj: validityStateFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "tooShort", value.obj)
+
+pub inline fun tooShort(obj: validityStateFlags): web bool
+  getJsObjectField(obj.obj, "tooShort")
+
+pub inline fun rangeUnderflow(obj: validityStateFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "rangeUnderflow", value.obj)
+
+pub inline fun rangeUnderflow(obj: validityStateFlags): web bool
+  getJsObjectField(obj.obj, "rangeUnderflow")
+
+pub inline fun rangeOverflow(obj: validityStateFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "rangeOverflow", value.obj)
+
+pub inline fun rangeOverflow(obj: validityStateFlags): web bool
+  getJsObjectField(obj.obj, "rangeOverflow")
+
+pub inline fun stepMismatch(obj: validityStateFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "stepMismatch", value.obj)
+
+pub inline fun stepMismatch(obj: validityStateFlags): web bool
+  getJsObjectField(obj.obj, "stepMismatch")
+
+pub inline fun badInput(obj: validityStateFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "badInput", value.obj)
+
+pub inline fun badInput(obj: validityStateFlags): web bool
+  getJsObjectField(obj.obj, "badInput")
+
+pub inline fun customError(obj: validityStateFlags, value: bool): web ()
+  setJsObjectField(obj.obj, "customError", value.obj)
+
+pub inline fun customError(obj: validityStateFlags): web bool
+  getJsObjectField(obj.obj, "customError")
+
+pub value struct visibilityStateEntry
+  obj: jsObject
+
+
+pub inline fun name(obj: visibilityStateEntry): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun entryType(obj: visibilityStateEntry): web string
+  getJsObjectField(obj.obj, "entryType")
+
+pub inline fun startTime(obj: visibilityStateEntry): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "startTime")
+
+pub inline fun duration(obj: visibilityStateEntry): web int
+  getJsObjectField(obj.obj, "duration")
+
+pub value struct userActivation
+  obj: jsObject
+
+
+pub inline fun hasBeenActive(obj: userActivation): web bool
+  getJsObjectField(obj.obj, "hasBeenActive")
+
+pub inline fun isActive(obj: userActivation): web bool
+  getJsObjectField(obj.obj, "isActive")
+
+pub value struct focusOptions
+  obj: jsObject
+
+pub fun newFocusOptions(preventScroll: maybe<bool> = Nothing, focusVisible: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match preventScroll
+    Just(it) -> setJsObjectField(obj, "preventScroll", it)
+    Nothing -> ()
+  match focusVisible
+    Just(it) -> setJsObjectField(obj, "focusVisible", it)
+    Nothing -> ()
+
+  FocusOptions(obj);
+
+pub inline fun preventScroll(obj: focusOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "preventScroll", value.obj)
+
+pub inline fun preventScroll(obj: focusOptions): web bool
+  getJsObjectField(obj.obj, "preventScroll")
+
+pub inline fun focusVisible(obj: focusOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "focusVisible", value.obj)
+
+pub inline fun focusVisible(obj: focusOptions): web bool
+  getJsObjectField(obj.obj, "focusVisible")
+
+pub value struct elementContentEditable
+  obj: jsObject
+
+
+pub inline fun contentEditable(obj: elementContentEditable, value: string): web ()
+  setJsObjectField(obj.obj, "contentEditable", value.obj)
+
+pub inline fun contentEditable(obj: elementContentEditable): web string
+  getJsObjectField(obj.obj, "contentEditable")
+
+pub inline fun enterKeyHint(obj: elementContentEditable, value: string): web ()
+  setJsObjectField(obj.obj, "enterKeyHint", value.obj)
+
+pub inline fun enterKeyHint(obj: elementContentEditable): web string
+  getJsObjectField(obj.obj, "enterKeyHint")
+
+pub inline fun isContentEditable(obj: elementContentEditable): web bool
+  getJsObjectField(obj.obj, "isContentEditable")
+
+pub inline fun inputMode(obj: elementContentEditable, value: string): web ()
+  setJsObjectField(obj.obj, "inputMode", value.obj)
+
+pub inline fun inputMode(obj: elementContentEditable): web string
+  getJsObjectField(obj.obj, "inputMode")
+
+pub inline fun virtualKeyboardPolicy(obj: elementContentEditable, value: string): web ()
+  setJsObjectField(obj.obj, "virtualKeyboardPolicy", value.obj)
+
+pub inline fun virtualKeyboardPolicy(obj: elementContentEditable): web string
+  getJsObjectField(obj.obj, "virtualKeyboardPolicy")
+
+pub value struct dataTransfer
+  obj: jsObject
+
+pub inline fun newDataTransfer()
+  newJsObject0("DataTransfer")"
+
+pub inline fun setDragImage(obj: dataTransfer, image': dom/element, x': int, y': int): web ()
+  jsOperation5(obj.obj, "setDragImage", image'.obj, x'.obj, y'.obj)
+
+pub inline fun getData(obj: dataTransfer, format': string): web string
+  jsOperation3(obj.obj, "getData", format'.obj)
+
+pub inline fun setData(obj: dataTransfer, format': string, data': string): web ()
+  jsOperation4(obj.obj, "setData", format'.obj, data'.obj)
+
+pub inline fun clearData(obj: dataTransfer, format': string): web ()
+  jsOperation3(obj.obj, "clearData", format'.obj)
+
+pub inline fun dropEffect(obj: dataTransfer, value: string): web ()
+  setJsObjectField(obj.obj, "dropEffect", value.obj)
+
+pub inline fun dropEffect(obj: dataTransfer): web string
+  getJsObjectField(obj.obj, "dropEffect")
+
+pub inline fun effectAllowed(obj: dataTransfer, value: string): web ()
+  setJsObjectField(obj.obj, "effectAllowed", value.obj)
+
+pub inline fun effectAllowed(obj: dataTransfer): web string
+  getJsObjectField(obj.obj, "effectAllowed")
+
+pub inline fun items(obj: dataTransfer): web dataTransferItemList
+  getJsObjectField(obj.obj, "items")
+
+pub inline fun types(obj: dataTransfer): web jsArray
+  getJsObjectField(obj.obj, "types")
+
+pub inline fun files(obj: dataTransfer): web fileapi/fileList
+  getJsObjectField(obj.obj, "files")
+
+pub value struct dataTransferItemList
+  obj: jsObject
+
+
+pub inline fun add(obj: dataTransferItemList, data': maybe<jsObject>, type': string): web maybe<dataTransferItem>
+  jsOperation4(obj.obj, "add", data'.obj, type'.obj)
+
+pub inline fun remove(obj: dataTransferItemList, index': int): web ()
+  jsOperation3(obj.obj, "remove", index'.obj)
+
+pub inline fun clear(obj: dataTransferItemList): web ()
+  jsOperation2(obj.obj, "clear")
+
+pub inline fun length(obj: dataTransferItemList): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct dataTransferItem
+  obj: jsObject
+
+
+pub inline fun webkitGetAsEntry(obj: dataTransferItem): web maybe<entries_api/fileSystemEntry>
+  jsOperation2(obj.obj, "webkitGetAsEntry")
+
+pub inline fun getAsFileSystemHandle(obj: dataTransferItem): web jsPromise
+  jsOperation2(obj.obj, "getAsFileSystemHandle")
+
+pub inline fun getAsString(obj: dataTransferItem, callback': maybe<functionStringCallback> =  Nothing): web ()
+  jsOperation3(obj.obj, "getAsString", callback'.obj)
+
+pub inline fun getAsFile(obj: dataTransferItem): web maybe<fileapi/file>
+  jsOperation2(obj.obj, "getAsFile")
+
+pub inline fun kind(obj: dataTransferItem): web string
+  getJsObjectField(obj.obj, "kind")
+
+pub inline fun type(obj: dataTransferItem): web string
+  getJsObjectField(obj.obj, "type")
+
+pub value struct dragEvent
+  obj: jsObject
+
+pub inline fun newDragEvent(type': string, eventInitDict': dragEventInit)
+  newJsObject2("DragEvent", type', eventInitDict')"
+
+pub inline fun dataTransfer(obj: dragEvent): web maybe<dataTransfer>
+  getJsObjectField(obj.obj, "dataTransfer")
+
+pub value struct dragEventInit
+  obj: jsObject
+
+pub fun newDragEventInit(dataTransfer: maybe<maybe<dataTransfer>> = Nothing)
+  val obj = newJsObject();
+  match dataTransfer
+    Just(it) -> setJsObjectField(obj, "dataTransfer", it)
+    Nothing -> ()
+
+  DragEventInit(obj);
+
+pub inline fun dataTransfer(obj: dragEventInit, value: maybe<dataTransfer>): web ()
+  setJsObjectField(obj.obj, "dataTransfer", value.obj)
+
+pub inline fun dataTransfer(obj: dragEventInit): web maybe<dataTransfer>
+  getJsObjectField(obj.obj, "dataTransfer")
+
+pub value struct popoverInvokerElement
+  obj: jsObject
+
+
+pub inline fun popoverTargetElement(obj: popoverInvokerElement, value: maybe<dom/element>): web ()
+  setJsObjectField(obj.obj, "popoverTargetElement", value.obj)
+
+pub inline fun popoverTargetElement(obj: popoverInvokerElement): web maybe<dom/element>
+  getJsObjectField(obj.obj, "popoverTargetElement")
+
+pub inline fun popoverTargetAction(obj: popoverInvokerElement, value: string): web ()
+  setJsObjectField(obj.obj, "popoverTargetAction", value.obj)
+
+pub inline fun popoverTargetAction(obj: popoverInvokerElement): web string
+  getJsObjectField(obj.obj, "popoverTargetAction")
+
+pub value struct toggleEvent
+  obj: jsObject
+
+pub inline fun newToggleEvent(type': string, eventInitDict': toggleEventInit)
+  newJsObject2("ToggleEvent", type', eventInitDict')"
+
+pub inline fun oldState(obj: toggleEvent): web string
+  getJsObjectField(obj.obj, "oldState")
+
+pub inline fun newState(obj: toggleEvent): web string
+  getJsObjectField(obj.obj, "newState")
+
+pub value struct toggleEventInit
+  obj: jsObject
+
+pub fun newToggleEventInit(oldState: maybe<string> = Nothing, newState: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match oldState
+    Just(it) -> setJsObjectField(obj, "oldState", it)
+    Nothing -> ()
+  match newState
+    Just(it) -> setJsObjectField(obj, "newState", it)
+    Nothing -> ()
+
+  ToggleEventInit(obj);
+
+pub inline fun oldState(obj: toggleEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "oldState", value.obj)
+
+pub inline fun oldState(obj: toggleEventInit): web string
+  getJsObjectField(obj.obj, "oldState")
+
+pub inline fun newState(obj: toggleEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "newState", value.obj)
+
+pub inline fun newState(obj: toggleEventInit): web string
+  getJsObjectField(obj.obj, "newState")
+
+pub extern window(): window
 	c inline "(topLevelGet(window))"
-struct Window
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern navigate(this: js_object, [dir: css_nav.kk/SpatialNavigationDirection], [])
-pub extern matchMedia(this: js_object, [query: String], [])
-pub extern moveTo(this: js_object, [x: int, y: int], [])
-pub extern moveBy(this: js_object, [x: int, y: int], [])
-pub extern resizeTo(this: js_object, [width: int, height: int], [])
-pub extern resizeBy(this: js_object, [x: int, y: int], [])
-pub extern scroll(this: js_object, [], [optionsOrX: maybe<dart:js_interop/JSAny>, y: double])
-pub extern scrollTo(this: js_object, [], [optionsOrX: maybe<dart:js_interop/JSAny>, y: double])
-pub extern scrollBy(this: js_object, [], [optionsOrX: maybe<dart:js_interop/JSAny>, y: double])
-pub extern getComputedStyle(this: js_object, [elt: dom.kk/Element], [pseudoElt: maybe<String> =  Nothing])
-pub extern getDigitalGoodsService(this: js_object, [serviceProvider: String], [])
-pub extern showOpenFilePicker(this: js_object, [], [options: file_system_access.kk/OpenFilePickerOptions])
-pub extern showSaveFilePicker(this: js_object, [], [options: file_system_access.kk/SaveFilePickerOptions])
-pub extern showDirectoryPicker(this: js_object, [], [options: file_system_access.kk/DirectoryPickerOptions])
-pub extern close(this: js_object, [], [])
-pub extern stop(this: js_object, [], [])
-pub extern focus(this: js_object, [], [])
-pub extern blur(this: js_object, [], [])
-pub extern open(this: js_object, [], [url: String, target: String, features: String])
-pub extern alert(this: js_object, [], [message: String])
-pub extern confirm(this: js_object, [], [message: String])
-pub extern prompt(this: js_object, [], [message: String, default_: String])
-pub extern print(this: js_object, [], [])
-pub extern postMessage(this: js_object, [message: maybe<dart:js_interop/JSAny>], [optionsOrTargetOrigin: maybe<dart:js_interop/JSAny>, transfer: dart:js_interop/JSArray])
-pub extern captureEvents(this: js_object, [], [])
-pub extern releaseEvents(this: js_object, [], [])
-pub extern queryLocalFonts(this: js_object, [], [options: local_font_access.kk/QueryOptions])
-pub extern requestIdleCallback(this: js_object, [callback: requestidlecallback.kk/IdleRequestCallback], [options: requestidlecallback.kk/IdleRequestOptions])
-pub extern cancelIdleCallback(this: js_object, [handle: int], [])
-pub extern getSelection(this: js_object, [], [])
-pub extern getScreenDetails(this: js_object, [], [])
-pub extern getorientation(this: js_object): web int
-	c inline "getObjectField(#1, \"orientation\")"
-pub extern setonorientationchange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonorientationchange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onorientationchange\")"
-pub extern getcookieStore(this: js_object): web cookie_store.kk/CookieStore
-	c inline "getObjectField(#1, \"cookieStore\")"
-pub extern getscreen(this: js_object): web cssom_view.kk/Screen
-	c inline "getObjectField(#1, \"screen\")"
-pub extern getvisualViewport(this: js_object): web maybe<cssom_view.kk/VisualViewport>
-	c inline "getObjectField(#1, \"visualViewport\")"
-pub extern getinnerWidth(this: js_object): web int
-	c inline "getObjectField(#1, \"innerWidth\")"
-pub extern getinnerHeight(this: js_object): web int
-	c inline "getObjectField(#1, \"innerHeight\")"
-pub extern getscrollX(this: js_object): web double
-	c inline "getObjectField(#1, \"scrollX\")"
-pub extern getpageXOffset(this: js_object): web double
-	c inline "getObjectField(#1, \"pageXOffset\")"
-pub extern getscrollY(this: js_object): web double
-	c inline "getObjectField(#1, \"scrollY\")"
-pub extern getpageYOffset(this: js_object): web double
-	c inline "getObjectField(#1, \"pageYOffset\")"
-pub extern getscreenX(this: js_object): web int
-	c inline "getObjectField(#1, \"screenX\")"
-pub extern getscreenLeft(this: js_object): web int
-	c inline "getObjectField(#1, \"screenLeft\")"
-pub extern getscreenY(this: js_object): web int
-	c inline "getObjectField(#1, \"screenY\")"
-pub extern getscreenTop(this: js_object): web int
-	c inline "getObjectField(#1, \"screenTop\")"
-pub extern getouterWidth(this: js_object): web int
-	c inline "getObjectField(#1, \"outerWidth\")"
-pub extern getouterHeight(this: js_object): web int
-	c inline "getObjectField(#1, \"outerHeight\")"
-pub extern getdevicePixelRatio(this: js_object): web double
-	c inline "getObjectField(#1, \"devicePixelRatio\")"
-pub extern getdocumentPictureInPicture(this: js_object): web document_picture_in_picture.kk/DocumentPictureInPicture
-	c inline "getObjectField(#1, \"documentPictureInPicture\")"
-pub extern getevent(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"event\")"
-pub extern getfence(this: js_object): web maybe<fenced_frame.kk/Fence>
-	c inline "getObjectField(#1, \"fence\")"
-pub extern getwindow(this: js_object): web Window
-	c inline "getObjectField(#1, \"window\")"
-pub extern getself(this: js_object): web Window
-	c inline "getObjectField(#1, \"self\")"
-pub extern getdocument(this: js_object): web dom.kk/Document
-	c inline "getObjectField(#1, \"document\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getlocation(this: js_object): web Location
-	c inline "getObjectField(#1, \"location\")"
-pub extern gethistory(this: js_object): web History
-	c inline "getObjectField(#1, \"history\")"
-pub extern getnavigation(this: js_object): web Navigation
-	c inline "getObjectField(#1, \"navigation\")"
-pub extern getcustomElements(this: js_object): web CustomElementRegistry
-	c inline "getObjectField(#1, \"customElements\")"
-pub extern getlocationbar(this: js_object): web BarProp
-	c inline "getObjectField(#1, \"locationbar\")"
-pub extern getmenubar(this: js_object): web BarProp
-	c inline "getObjectField(#1, \"menubar\")"
-pub extern getpersonalbar(this: js_object): web BarProp
-	c inline "getObjectField(#1, \"personalbar\")"
-pub extern getscrollbars(this: js_object): web BarProp
-	c inline "getObjectField(#1, \"scrollbars\")"
-pub extern getstatusbar(this: js_object): web BarProp
-	c inline "getObjectField(#1, \"statusbar\")"
-pub extern gettoolbar(this: js_object): web BarProp
-	c inline "getObjectField(#1, \"toolbar\")"
-pub extern setstatus(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstatus(this: js_object): web String
-	c inline "getObjectField(#1, \"status\")"
-pub extern getclosed(this: js_object): web bool
-	c inline "getObjectField(#1, \"closed\")"
-pub extern getframes(this: js_object): web Window
-	c inline "getObjectField(#1, \"frames\")"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-pub extern gettop(this: js_object): web maybe<Window>
-	c inline "getObjectField(#1, \"top\")"
-pub extern setopener(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getopener(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"opener\")"
-pub extern getparent(this: js_object): web maybe<Window>
-	c inline "getObjectField(#1, \"parent\")"
-pub extern getframeElement(this: js_object): web maybe<dom.kk/Element>
-	c inline "getObjectField(#1, \"frameElement\")"
-pub extern getnavigator(this: js_object): web Navigator
-	c inline "getObjectField(#1, \"navigator\")"
-pub extern getclientInformation(this: js_object): web Navigator
-	c inline "getObjectField(#1, \"clientInformation\")"
-pub extern getoriginAgentCluster(this: js_object): web bool
-	c inline "getObjectField(#1, \"originAgentCluster\")"
-pub extern getexternal(this: js_object): web External
-	c inline "getObjectField(#1, \"external\")"
-pub extern setonappinstalled(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonappinstalled(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onappinstalled\")"
-pub extern setonbeforeinstallprompt(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonbeforeinstallprompt(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onbeforeinstallprompt\")"
-pub extern setondeviceorientation(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondeviceorientation(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondeviceorientation\")"
-pub extern setondeviceorientationabsolute(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondeviceorientationabsolute(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondeviceorientationabsolute\")"
-pub extern setondevicemotion(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondevicemotion(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondevicemotion\")"
-pub extern getportalHost(this: js_object): web maybe<portals.kk/PortalHost>
-	c inline "getObjectField(#1, \"portalHost\")"
-pub extern getspeechSynthesis(this: js_object): web speech_api.kk/SpeechSynthesis
-	c inline "getObjectField(#1, \"speechSynthesis\")"
-pub extern getlaunchQueue(this: js_object): web web_app_launch.kk/LaunchQueue
-	c inline "getObjectField(#1, \"launchQueue\")"
-struct WindowPostMessageOptions
-{  targetOrigin: String
-}
-pub extern newWindowPostMessageOptions([targetOrigin: maybe<String> = Nothing])
-()
-
-pub extern settargetOrigin(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettargetOrigin(this: js_object): web String
-	c inline "getObjectField(#1, \"targetOrigin\")"
-struct BarProp
-{
-}
-
-()
-
-pub extern getvisible(this: js_object): web bool
-	c inline "getObjectField(#1, \"visible\")"
-struct Location
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern assign(this: js_object, [url: String], [])
-pub extern replace(this: js_object, [url: String], [])
-pub extern reload(this: js_object, [], [])
-pub extern sethref(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethref(this: js_object): web String
-	c inline "getObjectField(#1, \"href\")"
-pub extern getorigin(this: js_object): web String
-	c inline "getObjectField(#1, \"origin\")"
-pub extern setprotocol(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getprotocol(this: js_object): web String
-	c inline "getObjectField(#1, \"protocol\")"
-pub extern sethost(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethost(this: js_object): web String
-	c inline "getObjectField(#1, \"host\")"
-pub extern sethostname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethostname(this: js_object): web String
-	c inline "getObjectField(#1, \"hostname\")"
-pub extern setport(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getport(this: js_object): web String
-	c inline "getObjectField(#1, \"port\")"
-pub extern setpathname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpathname(this: js_object): web String
-	c inline "getObjectField(#1, \"pathname\")"
-pub extern setsearch(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsearch(this: js_object): web String
-	c inline "getObjectField(#1, \"search\")"
-pub extern sethash(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethash(this: js_object): web String
-	c inline "getObjectField(#1, \"hash\")"
-pub extern getancestorOrigins(this: js_object): web DOMStringList
-	c inline "getObjectField(#1, \"ancestorOrigins\")"
-struct History
-{,
-,
-
-}
-
-()
-
-pub extern go(this: js_object, [], [delta: int])
-pub extern back(this: js_object, [], [])
-pub extern forward(this: js_object, [], [])
-pub extern pushState(this: js_object, [data: maybe<dart:js_interop/JSAny>, unused: String], [url: maybe<String> =  Nothing])
-pub extern replaceState(this: js_object, [data: maybe<dart:js_interop/JSAny>, unused: String], [url: maybe<String> =  Nothing])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-pub extern setscrollRestoration(this: js_object, value: ScrollRestoration): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscrollRestoration(this: js_object): web ScrollRestoration
-	c inline "getObjectField(#1, \"scrollRestoration\")"
-pub extern getstate(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"state\")"
-struct Navigation
-{,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern entries(this: js_object, [], [])
-pub extern updateCurrentEntry(this: js_object, [options: NavigationUpdateCurrentEntryOptions], [])
-pub extern navigate(this: js_object, [url: String], [options: NavigationNavigateOptions])
-pub extern reload(this: js_object, [], [options: NavigationReloadOptions])
-pub extern traverseTo(this: js_object, [key: String], [options: NavigationOptions])
-pub extern back(this: js_object, [], [options: NavigationOptions])
-pub extern forward(this: js_object, [], [options: NavigationOptions])
-pub extern getcurrentEntry(this: js_object): web maybe<NavigationHistoryEntry>
-	c inline "getObjectField(#1, \"currentEntry\")"
-pub extern gettransition(this: js_object): web maybe<NavigationTransition>
-	c inline "getObjectField(#1, \"transition\")"
-pub extern getcanGoBack(this: js_object): web bool
-	c inline "getObjectField(#1, \"canGoBack\")"
-pub extern getcanGoForward(this: js_object): web bool
-	c inline "getObjectField(#1, \"canGoForward\")"
-pub extern setonnavigate(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonnavigate(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onnavigate\")"
-pub extern setonnavigatesuccess(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonnavigatesuccess(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onnavigatesuccess\")"
-pub extern setonnavigateerror(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonnavigateerror(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onnavigateerror\")"
-pub extern setoncurrententrychange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncurrententrychange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncurrententrychange\")"
-struct NavigationUpdateCurrentEntryOptions
-{  state: maybe<dart:js_interop/JSAny>
-}
-pub extern newNavigationUpdateCurrentEntryOptions([state: maybe<dart:js_interop/JSAny>])
-()
-
-pub extern setstate(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstate(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"state\")"
-struct NavigationOptions
-{  info: maybe<dart:js_interop/JSAny>
-}
-pub extern newNavigationOptions([info: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
-
-pub extern setinfo(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinfo(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"info\")"
-struct NavigationNavigateOptions
-{  state: maybe<dart:js_interop/JSAny>,
-  history: NavigationHistoryBehavior
-}
-pub extern newNavigationNavigateOptions([state: maybe<maybe<dart:js_interop/JSAny>> = Nothing, history: maybe<NavigationHistoryBehavior> = Nothing])
-()
-
-pub extern setstate(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstate(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"state\")"
-pub extern sethistory(this: js_object, value: NavigationHistoryBehavior): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethistory(this: js_object): web NavigationHistoryBehavior
-	c inline "getObjectField(#1, \"history\")"
-struct NavigationReloadOptions
-{  state: maybe<dart:js_interop/JSAny>
-}
-pub extern newNavigationReloadOptions([state: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
-
-pub extern setstate(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstate(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"state\")"
-struct NavigationResult
-{  committed: dart:js_interop/JSPromise,
-  finished: dart:js_interop/JSPromise
-}
-pub extern newNavigationResult([committed: maybe<dart:js_interop/JSPromise> = Nothing, finished: maybe<dart:js_interop/JSPromise> = Nothing])
-()
-
-pub extern setcommitted(this: js_object, value: dart:js_interop/JSPromise): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcommitted(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"committed\")"
-pub extern setfinished(this: js_object, value: dart:js_interop/JSPromise): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfinished(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"finished\")"
-struct NavigationHistoryEntry
-{,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern getState(this: js_object, [], [])
-pub extern geturl(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"url\")"
-pub extern getkey(this: js_object): web String
-	c inline "getObjectField(#1, \"key\")"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern getindex(this: js_object): web int
-	c inline "getObjectField(#1, \"index\")"
-pub extern getsameDocument(this: js_object): web bool
-	c inline "getObjectField(#1, \"sameDocument\")"
-pub extern setondispose(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondispose(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondispose\")"
-struct NavigationTransition
-{,
-,
-
-}
-
-()
-
-pub extern getnavigationType(this: js_object): web NavigationType
-	c inline "getObjectField(#1, \"navigationType\")"
-pub extern getfrom(this: js_object): web NavigationHistoryEntry
-	c inline "getObjectField(#1, \"from\")"
-pub extern getfinished(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"finished\")"
-struct NavigateEvent
-{,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newNavigateEvent([type: String, eventInitDict: NavigateEventInit], [])
-()
-
-pub extern intercept(this: js_object, [], [options: NavigationInterceptOptions])
-pub extern scroll(this: js_object, [], [])
-pub extern getnavigationType(this: js_object): web NavigationType
-	c inline "getObjectField(#1, \"navigationType\")"
-pub extern getdestination(this: js_object): web NavigationDestination
-	c inline "getObjectField(#1, \"destination\")"
-pub extern getcanIntercept(this: js_object): web bool
-	c inline "getObjectField(#1, \"canIntercept\")"
-pub extern getuserInitiated(this: js_object): web bool
-	c inline "getObjectField(#1, \"userInitiated\")"
-pub extern gethashChange(this: js_object): web bool
-	c inline "getObjectField(#1, \"hashChange\")"
-pub extern getsignal(this: js_object): web dom.kk/AbortSignal
-	c inline "getObjectField(#1, \"signal\")"
-pub extern getformData(this: js_object): web maybe<xhr.kk/FormData>
-	c inline "getObjectField(#1, \"formData\")"
-pub extern getdownloadRequest(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"downloadRequest\")"
-pub extern getinfo(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"info\")"
-struct NavigateEventInit
-{  navigationType: NavigationType,
-  destination: NavigationDestination,
-  canIntercept: bool,
-  userInitiated: bool,
-  hashChange: bool,
-  signal: dom.kk/AbortSignal,
-  formData: maybe<xhr.kk/FormData>,
-  downloadRequest: maybe<String>,
-  info: maybe<dart:js_interop/JSAny>
-}
-pub extern newNavigateEventInit([navigationType: maybe<NavigationType> = Nothing, destination: NavigationDestination, canIntercept: maybe<bool> = Nothing, userInitiated: maybe<bool> = Nothing, hashChange: maybe<bool> = Nothing, signal: dom.kk/AbortSignal, formData: maybe<maybe<xhr.kk/FormData>> = Nothing, downloadRequest: maybe<maybe<String>> = Nothing, info: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
-
-pub extern setnavigationType(this: js_object, value: NavigationType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnavigationType(this: js_object): web NavigationType
-	c inline "getObjectField(#1, \"navigationType\")"
-pub extern setdestination(this: js_object, value: NavigationDestination): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdestination(this: js_object): web NavigationDestination
-	c inline "getObjectField(#1, \"destination\")"
-pub extern setcanIntercept(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcanIntercept(this: js_object): web bool
-	c inline "getObjectField(#1, \"canIntercept\")"
-pub extern setuserInitiated(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getuserInitiated(this: js_object): web bool
-	c inline "getObjectField(#1, \"userInitiated\")"
-pub extern sethashChange(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethashChange(this: js_object): web bool
-	c inline "getObjectField(#1, \"hashChange\")"
-pub extern setsignal(this: js_object, value: dom.kk/AbortSignal): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsignal(this: js_object): web dom.kk/AbortSignal
-	c inline "getObjectField(#1, \"signal\")"
-pub extern setformData(this: js_object, value: maybe<xhr.kk/FormData>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformData(this: js_object): web maybe<xhr.kk/FormData>
-	c inline "getObjectField(#1, \"formData\")"
-pub extern setdownloadRequest(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdownloadRequest(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"downloadRequest\")"
-pub extern setinfo(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinfo(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"info\")"
-struct NavigationInterceptOptions
-{  handler: NavigationInterceptHandler,
-  focusReset: NavigationFocusReset,
-  scroll: NavigationScrollBehavior
-}
-pub extern newNavigationInterceptOptions([handler: maybe<NavigationInterceptHandler> = Nothing, focusReset: maybe<NavigationFocusReset> = Nothing, scroll: maybe<NavigationScrollBehavior> = Nothing])
-()
-
-pub extern sethandler(this: js_object, value: NavigationInterceptHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethandler(this: js_object): web NavigationInterceptHandler
-	c inline "getObjectField(#1, \"handler\")"
-pub extern setfocusReset(this: js_object, value: NavigationFocusReset): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfocusReset(this: js_object): web NavigationFocusReset
-	c inline "getObjectField(#1, \"focusReset\")"
-pub extern setscroll(this: js_object, value: NavigationScrollBehavior): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscroll(this: js_object): web NavigationScrollBehavior
-	c inline "getObjectField(#1, \"scroll\")"
-struct NavigationDestination
-{,
-,
-,
-,
-
-}
-
-()
-
-pub extern getState(this: js_object, [], [])
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
-pub extern getkey(this: js_object): web String
-	c inline "getObjectField(#1, \"key\")"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern getindex(this: js_object): web int
-	c inline "getObjectField(#1, \"index\")"
-pub extern getsameDocument(this: js_object): web bool
-	c inline "getObjectField(#1, \"sameDocument\")"
-struct NavigationCurrentEntryChangeEvent
-{,
-
-}
-pub extern newNavigationCurrentEntryChangeEvent([type: String, eventInitDict: NavigationCurrentEntryChangeEventInit], [])
-()
-
-pub extern getnavigationType(this: js_object): web maybe<NavigationType>
-	c inline "getObjectField(#1, \"navigationType\")"
-pub extern getfrom(this: js_object): web NavigationHistoryEntry
-	c inline "getObjectField(#1, \"from\")"
-struct NavigationCurrentEntryChangeEventInit
-{  navigationType: maybe<NavigationType>,
-  from: NavigationHistoryEntry
-}
-pub extern newNavigationCurrentEntryChangeEventInit([navigationType: maybe<maybe<NavigationType>> = Nothing, from: NavigationHistoryEntry])
-()
-
-pub extern setnavigationType(this: js_object, value: maybe<NavigationType>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnavigationType(this: js_object): web maybe<NavigationType>
-	c inline "getObjectField(#1, \"navigationType\")"
-pub extern setfrom(this: js_object, value: NavigationHistoryEntry): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfrom(this: js_object): web NavigationHistoryEntry
-	c inline "getObjectField(#1, \"from\")"
-struct PopStateEvent
-{
-}
-pub extern newPopStateEvent([type: String], [eventInitDict: PopStateEventInit])
-()
-
-pub extern getstate(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"state\")"
-struct PopStateEventInit
-{  state: maybe<dart:js_interop/JSAny>
-}
-pub extern newPopStateEventInit([state: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
-
-pub extern setstate(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstate(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"state\")"
-struct HashChangeEvent
-{,
-
-}
-pub extern newHashChangeEvent([type: String], [eventInitDict: HashChangeEventInit])
-()
-
-pub extern getoldURL(this: js_object): web String
-	c inline "getObjectField(#1, \"oldURL\")"
-pub extern getnewURL(this: js_object): web String
-	c inline "getObjectField(#1, \"newURL\")"
-struct HashChangeEventInit
-{  oldURL: String,
-  newURL: String
-}
-pub extern newHashChangeEventInit([oldURL: maybe<String> = Nothing, newURL: maybe<String> = Nothing])
-()
-
-pub extern setoldURL(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoldURL(this: js_object): web String
-	c inline "getObjectField(#1, \"oldURL\")"
-pub extern setnewURL(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnewURL(this: js_object): web String
-	c inline "getObjectField(#1, \"newURL\")"
-struct PageTransitionEvent
-{
-}
-pub extern newPageTransitionEvent([type: String], [eventInitDict: PageTransitionEventInit])
-()
-
-pub extern getpersisted(this: js_object): web bool
-	c inline "getObjectField(#1, \"persisted\")"
-struct PageTransitionEventInit
-{  persisted: bool
-}
-pub extern newPageTransitionEventInit([persisted: maybe<bool> = Nothing])
-()
-
-pub extern setpersisted(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpersisted(this: js_object): web bool
-	c inline "getObjectField(#1, \"persisted\")"
-struct BeforeUnloadEvent
-{
-}
-
-()
-
-pub extern setreturnValue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreturnValue(this: js_object): web String
-	c inline "getObjectField(#1, \"returnValue\")"
-struct ErrorEvent
-{,
-,
-,
-,
-
-}
-pub extern newErrorEvent([type: String], [eventInitDict: ErrorEventInit])
-()
-
-pub extern getmessage(this: js_object): web String
-	c inline "getObjectField(#1, \"message\")"
-pub extern getfilename(this: js_object): web String
-	c inline "getObjectField(#1, \"filename\")"
-pub extern getlineno(this: js_object): web int
-	c inline "getObjectField(#1, \"lineno\")"
-pub extern getcolno(this: js_object): web int
-	c inline "getObjectField(#1, \"colno\")"
-pub extern geterror(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"error\")"
-struct ErrorEventInit
-{  message: String,
-  filename: String,
-  lineno: int,
-  colno: int,
-  error: maybe<dart:js_interop/JSAny>
-}
-pub extern newErrorEventInit([message: maybe<String> = Nothing, filename: maybe<String> = Nothing, lineno: maybe<int> = Nothing, colno: maybe<int> = Nothing, error: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
-
-pub extern setmessage(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmessage(this: js_object): web String
-	c inline "getObjectField(#1, \"message\")"
-pub extern setfilename(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfilename(this: js_object): web String
-	c inline "getObjectField(#1, \"filename\")"
-pub extern setlineno(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlineno(this: js_object): web int
-	c inline "getObjectField(#1, \"lineno\")"
-pub extern setcolno(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolno(this: js_object): web int
-	c inline "getObjectField(#1, \"colno\")"
-pub extern seterror(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geterror(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"error\")"
-struct PromiseRejectionEvent
-{,
-
-}
-pub extern newPromiseRejectionEvent([type: String, eventInitDict: PromiseRejectionEventInit], [])
-()
-
-pub extern getpromise(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"promise\")"
-pub extern getreason(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"reason\")"
-struct PromiseRejectionEventInit
-{  promise: dart:js_interop/JSPromise,
-  reason: maybe<dart:js_interop/JSAny>
-}
-pub extern newPromiseRejectionEventInit([promise: dart:js_interop/JSPromise, reason: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
-
-pub extern setpromise(this: js_object, value: dart:js_interop/JSPromise): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpromise(this: js_object): web dart:js_interop/JSPromise
-	c inline "getObjectField(#1, \"promise\")"
-pub extern setreason(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreason(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"reason\")"
-struct GlobalEventHandlers
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern setonanimationstart(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonanimationstart(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onanimationstart\")"
-pub extern setonanimationiteration(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonanimationiteration(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onanimationiteration\")"
-pub extern setonanimationend(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonanimationend(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onanimationend\")"
-pub extern setonanimationcancel(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonanimationcancel(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onanimationcancel\")"
-pub extern setontransitionrun(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontransitionrun(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ontransitionrun\")"
-pub extern setontransitionstart(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontransitionstart(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ontransitionstart\")"
-pub extern setontransitionend(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontransitionend(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ontransitionend\")"
-pub extern setontransitioncancel(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontransitioncancel(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ontransitioncancel\")"
-pub extern setonabort(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonabort(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onabort\")"
-pub extern setonauxclick(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonauxclick(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onauxclick\")"
-pub extern setonbeforeinput(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonbeforeinput(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onbeforeinput\")"
-pub extern setonbeforematch(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonbeforematch(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onbeforematch\")"
-pub extern setonbeforetoggle(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonbeforetoggle(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onbeforetoggle\")"
-pub extern setonblur(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonblur(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onblur\")"
-pub extern setoncancel(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncancel(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncancel\")"
-pub extern setoncanplay(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncanplay(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncanplay\")"
-pub extern setoncanplaythrough(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncanplaythrough(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncanplaythrough\")"
-pub extern setonchange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonchange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onchange\")"
-pub extern setonclick(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonclick(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onclick\")"
-pub extern setonclose(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonclose(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onclose\")"
-pub extern setoncontextlost(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncontextlost(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncontextlost\")"
-pub extern setoncontextmenu(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncontextmenu(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncontextmenu\")"
-pub extern setoncontextrestored(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncontextrestored(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncontextrestored\")"
-pub extern setoncopy(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncopy(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncopy\")"
-pub extern setoncuechange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncuechange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncuechange\")"
-pub extern setoncut(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncut(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oncut\")"
-pub extern setondblclick(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondblclick(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondblclick\")"
-pub extern setondrag(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondrag(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondrag\")"
-pub extern setondragend(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondragend(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondragend\")"
-pub extern setondragenter(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondragenter(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondragenter\")"
-pub extern setondragleave(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondragleave(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondragleave\")"
-pub extern setondragover(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondragover(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondragover\")"
-pub extern setondragstart(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondragstart(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondragstart\")"
-pub extern setondrop(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondrop(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondrop\")"
-pub extern setondurationchange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondurationchange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ondurationchange\")"
-pub extern setonemptied(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonemptied(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onemptied\")"
-pub extern setonended(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonended(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onended\")"
-pub extern setonerror(this: js_object, value: OnErrorEventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonerror(this: js_object): web OnErrorEventHandler
-	c inline "getObjectField(#1, \"onerror\")"
-pub extern setonfocus(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonfocus(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onfocus\")"
-pub extern setonformdata(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonformdata(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onformdata\")"
-pub extern setoninput(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoninput(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oninput\")"
-pub extern setoninvalid(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoninvalid(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"oninvalid\")"
-pub extern setonkeydown(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonkeydown(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onkeydown\")"
-pub extern setonkeypress(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonkeypress(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onkeypress\")"
-pub extern setonkeyup(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonkeyup(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onkeyup\")"
-pub extern setonload(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonload(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onload\")"
-pub extern setonloadeddata(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonloadeddata(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onloadeddata\")"
-pub extern setonloadedmetadata(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonloadedmetadata(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onloadedmetadata\")"
-pub extern setonloadstart(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonloadstart(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onloadstart\")"
-pub extern setonmousedown(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmousedown(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmousedown\")"
-pub extern setonmouseenter(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmouseenter(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmouseenter\")"
-pub extern setonmouseleave(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmouseleave(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmouseleave\")"
-pub extern setonmousemove(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmousemove(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmousemove\")"
-pub extern setonmouseout(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmouseout(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmouseout\")"
-pub extern setonmouseover(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmouseover(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmouseover\")"
-pub extern setonmouseup(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmouseup(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmouseup\")"
-pub extern setonpaste(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpaste(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpaste\")"
-pub extern setonpause(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpause(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpause\")"
-pub extern setonplay(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonplay(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onplay\")"
-pub extern setonplaying(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonplaying(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onplaying\")"
-pub extern setonprogress(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonprogress(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onprogress\")"
-pub extern setonratechange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonratechange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onratechange\")"
-pub extern setonreset(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonreset(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onreset\")"
-pub extern setonresize(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonresize(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onresize\")"
-pub extern setonscroll(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonscroll(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onscroll\")"
-pub extern setonscrollend(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonscrollend(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onscrollend\")"
-pub extern setonsecuritypolicyviolation(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonsecuritypolicyviolation(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onsecuritypolicyviolation\")"
-pub extern setonseeked(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonseeked(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onseeked\")"
-pub extern setonseeking(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonseeking(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onseeking\")"
-pub extern setonselect(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonselect(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onselect\")"
-pub extern setonslotchange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonslotchange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onslotchange\")"
-pub extern setonstalled(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonstalled(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onstalled\")"
-pub extern setonsubmit(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonsubmit(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onsubmit\")"
-pub extern setonsuspend(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonsuspend(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onsuspend\")"
-pub extern setontimeupdate(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontimeupdate(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ontimeupdate\")"
-pub extern setontoggle(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontoggle(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ontoggle\")"
-pub extern setonvolumechange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonvolumechange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onvolumechange\")"
-pub extern setonwaiting(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonwaiting(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onwaiting\")"
-pub extern setonwebkitanimationend(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonwebkitanimationend(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onwebkitanimationend\")"
-pub extern setonwebkitanimationiteration(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonwebkitanimationiteration(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onwebkitanimationiteration\")"
-pub extern setonwebkitanimationstart(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonwebkitanimationstart(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onwebkitanimationstart\")"
-pub extern setonwebkittransitionend(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonwebkittransitionend(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onwebkittransitionend\")"
-pub extern setonwheel(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonwheel(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onwheel\")"
-pub extern setonpointerover(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpointerover(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpointerover\")"
-pub extern setonpointerenter(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpointerenter(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpointerenter\")"
-pub extern setonpointerdown(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpointerdown(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpointerdown\")"
-pub extern setonpointermove(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpointermove(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpointermove\")"
-pub extern setonpointerrawupdate(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpointerrawupdate(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpointerrawupdate\")"
-pub extern setonpointerup(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpointerup(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpointerup\")"
-pub extern setonpointercancel(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpointercancel(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpointercancel\")"
-pub extern setonpointerout(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpointerout(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpointerout\")"
-pub extern setonpointerleave(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpointerleave(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpointerleave\")"
-pub extern setongotpointercapture(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getongotpointercapture(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ongotpointercapture\")"
-pub extern setonlostpointercapture(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonlostpointercapture(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onlostpointercapture\")"
-pub extern setonselectstart(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonselectstart(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onselectstart\")"
-pub extern setonselectionchange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonselectionchange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onselectionchange\")"
-pub extern setontouchstart(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontouchstart(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ontouchstart\")"
-pub extern setontouchend(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontouchend(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ontouchend\")"
-pub extern setontouchmove(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontouchmove(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ontouchmove\")"
-pub extern setontouchcancel(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontouchcancel(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ontouchcancel\")"
-pub extern setonbeforexrselect(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonbeforexrselect(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onbeforexrselect\")"
-struct WindowEventHandlers
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern setongamepadconnected(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getongamepadconnected(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ongamepadconnected\")"
-pub extern setongamepaddisconnected(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getongamepaddisconnected(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ongamepaddisconnected\")"
-pub extern setonafterprint(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonafterprint(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onafterprint\")"
-pub extern setonbeforeprint(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonbeforeprint(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onbeforeprint\")"
-pub extern setonbeforeunload(this: js_object, value: OnBeforeUnloadEventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonbeforeunload(this: js_object): web OnBeforeUnloadEventHandler
-	c inline "getObjectField(#1, \"onbeforeunload\")"
-pub extern setonhashchange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonhashchange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onhashchange\")"
-pub extern setonlanguagechange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonlanguagechange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onlanguagechange\")"
-pub extern setonmessage(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessage(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmessage\")"
-pub extern setonmessageerror(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessageerror(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmessageerror\")"
-pub extern setonoffline(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonoffline(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onoffline\")"
-pub extern setononline(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getononline(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ononline\")"
-pub extern setonpagehide(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpagehide(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpagehide\")"
-pub extern setonpageshow(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpageshow(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpageshow\")"
-pub extern setonpopstate(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonpopstate(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onpopstate\")"
-pub extern setonrejectionhandled(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonrejectionhandled(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onrejectionhandled\")"
-pub extern setonstorage(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonstorage(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onstorage\")"
-pub extern setonunhandledrejection(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonunhandledrejection(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onunhandledrejection\")"
-pub extern setonunload(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonunload(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onunload\")"
-pub extern setonportalactivate(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonportalactivate(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onportalactivate\")"
-struct WindowOrWorkerGlobalScope
-{,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern fetch(this: js_object, [input: fetch.kk/RequestInfo], [init: fetch.kk/RequestInit])
-pub extern reportError(this: js_object, [e: maybe<dart:js_interop/JSAny>], [])
-pub extern btoa(this: js_object, [data: String], [])
-pub extern atob(this: js_object, [data: String], [])
-pub extern setTimeout(this: js_object, [handler: TimerHandler, arguments: maybe<dart:js_interop/JSAny>], [timeout: int])
-pub extern clearTimeout(this: js_object, [], [id: int])
-pub extern setInterval(this: js_object, [handler: TimerHandler, arguments: maybe<dart:js_interop/JSAny>], [timeout: int])
-pub extern clearInterval(this: js_object, [], [id: int])
-pub extern queueMicrotask(this: js_object, [callback: webidl.kk/VoidFunction], [])
-pub extern createImageBitmap(this: js_object, [image: ImageBitmapSource], [optionsOrSx: maybe<dart:js_interop/JSAny>, sy: int, sw: int, sh: int, options: ImageBitmapOptions])
-pub extern structuredClone(this: js_object, [value: maybe<dart:js_interop/JSAny>], [options: StructuredSerializeOptions])
-pub extern getindexedDB(this: js_object): web indexeddb.kk/IDBFactory
-	c inline "getObjectField(#1, \"indexedDB\")"
-pub extern getcrypto(this: js_object): web webcryptoapi.kk/Crypto
-	c inline "getObjectField(#1, \"crypto\")"
-pub extern getperformance(this: js_object): web hr_time.kk/Performance
-	c inline "getObjectField(#1, \"performance\")"
-pub extern getorigin(this: js_object): web String
-	c inline "getObjectField(#1, \"origin\")"
-pub extern getisSecureContext(this: js_object): web bool
-	c inline "getObjectField(#1, \"isSecureContext\")"
-pub extern getcrossOriginIsolated(this: js_object): web bool
-	c inline "getObjectField(#1, \"crossOriginIsolated\")"
-pub extern getscheduler(this: js_object): web scheduling_apis.kk/Scheduler
-	c inline "getObjectField(#1, \"scheduler\")"
-pub extern getcaches(this: js_object): web service_workers.kk/CacheStorage
-	c inline "getObjectField(#1, \"caches\")"
-pub extern gettrustedTypes(this: js_object): web trusted_types.kk/TrustedTypePolicyFactory
-	c inline "getObjectField(#1, \"trustedTypes\")"
-struct DOMParser
-{
-}
-pub extern newDOMParser([], [])
-()
-
-pub extern parseFromString(this: js_object, [string: String, type: DOMParserSupportedType], [])
-struct Navigator
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern getAutoplayPolicy(this: js_object, [contextOrElementOrType: maybe<dart:js_interop/JSAny>], [])
-pub extern getBattery(this: js_object, [], [])
-pub extern sendBeacon(this: js_object, [url: String], [data: maybe<fetch.kk/BodyInit> =  Nothing])
-pub extern requestMediaKeySystemAccess(this: js_object, [keySystem: String, supportedConfigurations: dart:js_interop/JSArray], [])
-pub extern getGamepads(this: js_object, [], [])
-pub extern getInstalledRelatedApps(this: js_object, [], [])
-pub extern getUserMedia(this: js_object, [constraints: mediacapture_streams.kk/MediaStreamConstraints, successCallback: mediacapture_streams.kk/NavigatorUserMediaSuccessCallback, errorCallback: mediacapture_streams.kk/NavigatorUserMediaErrorCallback], [])
-pub extern joinAdInterestGroup(this: js_object, [group: turtledove.kk/AuctionAdInterestGroup], [])
-pub extern leaveAdInterestGroup(this: js_object, [], [group: turtledove.kk/AuctionAdInterestGroupKey])
-pub extern runAdAuction(this: js_object, [config: turtledove.kk/AuctionAdConfig], [])
-pub extern updateAdInterestGroups(this: js_object, [], [])
-pub extern vibrate(this: js_object, [pattern: vibration.kk/VibratePattern], [])
-pub extern share(this: js_object, [], [data: web_share.kk/ShareData])
-pub extern canShare(this: js_object, [], [data: web_share.kk/ShareData])
-pub extern requestMIDIAccess(this: js_object, [], [options: webmidi.kk/MIDIOptions])
-pub extern getclipboard(this: js_object): web clipboard_apis.kk/Clipboard
-	c inline "getObjectField(#1, \"clipboard\")"
-pub extern getcontacts(this: js_object): web contact_picker.kk/ContactsManager
-	c inline "getObjectField(#1, \"contacts\")"
-pub extern getcredentials(this: js_object): web credential_management.kk/CredentialsContainer
-	c inline "getObjectField(#1, \"credentials\")"
-pub extern getdevicePosture(this: js_object): web device_posture.kk/DevicePosture
-	c inline "getObjectField(#1, \"devicePosture\")"
-pub extern getgeolocation(this: js_object): web geolocation.kk/Geolocation
-	c inline "getObjectField(#1, \"geolocation\")"
-pub extern getuserActivation(this: js_object): web UserActivation
-	c inline "getObjectField(#1, \"userActivation\")"
-pub extern getink(this: js_object): web ink_enhancement.kk/Ink
-	c inline "getObjectField(#1, \"ink\")"
-pub extern getscheduling(this: js_object): web is_input_pending.kk/Scheduling
-	c inline "getObjectField(#1, \"scheduling\")"
-pub extern getkeyboard(this: js_object): web keyboard_lock.kk/Keyboard
-	c inline "getObjectField(#1, \"keyboard\")"
-pub extern getmediaCapabilities(this: js_object): web media_capabilities.kk/MediaCapabilities
-	c inline "getObjectField(#1, \"mediaCapabilities\")"
-pub extern getmediaDevices(this: js_object): web mediacapture_streams.kk/MediaDevices
-	c inline "getObjectField(#1, \"mediaDevices\")"
-pub extern getmediaSession(this: js_object): web mediasession.kk/MediaSession
-	c inline "getObjectField(#1, \"mediaSession\")"
-pub extern getpermissions(this: js_object): web permissions.kk/Permissions
-	c inline "getObjectField(#1, \"permissions\")"
-pub extern getmaxTouchPoints(this: js_object): web int
-	c inline "getObjectField(#1, \"maxTouchPoints\")"
-pub extern getpresentation(this: js_object): web presentation_api.kk/Presentation
-	c inline "getObjectField(#1, \"presentation\")"
-pub extern getwakeLock(this: js_object): web screen_wake_lock.kk/WakeLock
-	c inline "getObjectField(#1, \"wakeLock\")"
-pub extern getserial(this: js_object): web serial.kk/Serial
-	c inline "getObjectField(#1, \"serial\")"
-pub extern getserviceWorker(this: js_object): web service_workers.kk/ServiceWorkerContainer
-	c inline "getObjectField(#1, \"serviceWorker\")"
-pub extern getvirtualKeyboard(this: js_object): web virtual_keyboard.kk/VirtualKeyboard
-	c inline "getObjectField(#1, \"virtualKeyboard\")"
-pub extern getbluetooth(this: js_object): web web_bluetooth.kk/Bluetooth
-	c inline "getObjectField(#1, \"bluetooth\")"
-pub extern gethid(this: js_object): web webhid.kk/HID
-	c inline "getObjectField(#1, \"hid\")"
-pub extern getusb(this: js_object): web webusb.kk/USB
-	c inline "getObjectField(#1, \"usb\")"
-pub extern getxr(this: js_object): web webxr.kk/XRSystem
-	c inline "getObjectField(#1, \"xr\")"
-pub extern getwindowControlsOverlay(this: js_object): web window_controls_overlay.kk/WindowControlsOverlay
-	c inline "getObjectField(#1, \"windowControlsOverlay\")"
-struct NavigatorID
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern taintEnabled(this: js_object, [], [])
-pub extern getappCodeName(this: js_object): web String
-	c inline "getObjectField(#1, \"appCodeName\")"
-pub extern getappName(this: js_object): web String
-	c inline "getObjectField(#1, \"appName\")"
-pub extern getappVersion(this: js_object): web String
-	c inline "getObjectField(#1, \"appVersion\")"
-pub extern getplatform(this: js_object): web String
-	c inline "getObjectField(#1, \"platform\")"
-pub extern getproduct(this: js_object): web String
-	c inline "getObjectField(#1, \"product\")"
-pub extern getproductSub(this: js_object): web String
-	c inline "getObjectField(#1, \"productSub\")"
-pub extern getuserAgent(this: js_object): web String
-	c inline "getObjectField(#1, \"userAgent\")"
-pub extern getvendor(this: js_object): web String
-	c inline "getObjectField(#1, \"vendor\")"
-pub extern getvendorSub(this: js_object): web String
-	c inline "getObjectField(#1, \"vendorSub\")"
-pub extern getoscpu(this: js_object): web String
-	c inline "getObjectField(#1, \"oscpu\")"
-struct NavigatorLanguage
-{,
-
-}
-
-()
-
-pub extern getlanguage(this: js_object): web String
-	c inline "getObjectField(#1, \"language\")"
-pub extern getlanguages(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"languages\")"
-struct NavigatorOnLine
-{
-}
-
-()
-
-pub extern getonLine(this: js_object): web bool
-	c inline "getObjectField(#1, \"onLine\")"
-struct NavigatorContentUtils
-{
-}
-
-()
-
-pub extern registerProtocolHandler(this: js_object, [scheme: String, url: String], [])
-pub extern unregisterProtocolHandler(this: js_object, [scheme: String, url: String], [])
-struct NavigatorCookies
-{
-}
-
-()
-
-pub extern getcookieEnabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"cookieEnabled\")"
-struct NavigatorPlugins
-{,
-,
-
-}
-
-()
-
-pub extern javaEnabled(this: js_object, [], [])
-pub extern getplugins(this: js_object): web PluginArray
-	c inline "getObjectField(#1, \"plugins\")"
-pub extern getmimeTypes(this: js_object): web MimeTypeArray
-	c inline "getObjectField(#1, \"mimeTypes\")"
-pub extern getpdfViewerEnabled(this: js_object): web bool
-	c inline "getObjectField(#1, \"pdfViewerEnabled\")"
-struct PluginArray
-{
-}
-
-()
-
-pub extern refresh(this: js_object, [], [])
-pub extern item(this: js_object, [index: int], [])
-pub extern namedItem(this: js_object, [name: String], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct MimeTypeArray
-{
-}
-
-()
-
-pub extern item(this: js_object, [index: int], [])
-pub extern namedItem(this: js_object, [name: String], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct Plugin
-{,
-,
-,
-
-}
-
-()
-
-pub extern item(this: js_object, [index: int], [])
-pub extern namedItem(this: js_object, [name: String], [])
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getdescription(this: js_object): web String
-	c inline "getObjectField(#1, \"description\")"
-pub extern getfilename(this: js_object): web String
-	c inline "getObjectField(#1, \"filename\")"
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct MimeType
-{,
-,
-,
-
-}
-
-()
-
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern getdescription(this: js_object): web String
-	c inline "getObjectField(#1, \"description\")"
-pub extern getsuffixes(this: js_object): web String
-	c inline "getObjectField(#1, \"suffixes\")"
-pub extern getenabledPlugin(this: js_object): web Plugin
-	c inline "getObjectField(#1, \"enabledPlugin\")"
-struct ImageBitmap
-{,
-
-}
-
-()
-
-pub extern close(this: js_object, [], [])
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-struct ImageBitmapOptions
-{  imageOrientation: ImageOrientation,
-  premultiplyAlpha: PremultiplyAlpha,
-  colorSpaceConversion: ColorSpaceConversion,
-  resizeWidth: int,
-  resizeHeight: int,
-  resizeQuality: ResizeQuality
-}
-pub extern newImageBitmapOptions([imageOrientation: maybe<ImageOrientation> = Nothing, premultiplyAlpha: maybe<PremultiplyAlpha> = Nothing, colorSpaceConversion: maybe<ColorSpaceConversion> = Nothing, resizeWidth: maybe<int> = Nothing, resizeHeight: maybe<int> = Nothing, resizeQuality: maybe<ResizeQuality> = Nothing])
-()
-
-pub extern setimageOrientation(this: js_object, value: ImageOrientation): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getimageOrientation(this: js_object): web ImageOrientation
-	c inline "getObjectField(#1, \"imageOrientation\")"
-pub extern setpremultiplyAlpha(this: js_object, value: PremultiplyAlpha): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpremultiplyAlpha(this: js_object): web PremultiplyAlpha
-	c inline "getObjectField(#1, \"premultiplyAlpha\")"
-pub extern setcolorSpaceConversion(this: js_object, value: ColorSpaceConversion): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolorSpaceConversion(this: js_object): web ColorSpaceConversion
-	c inline "getObjectField(#1, \"colorSpaceConversion\")"
-pub extern setresizeWidth(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getresizeWidth(this: js_object): web int
-	c inline "getObjectField(#1, \"resizeWidth\")"
-pub extern setresizeHeight(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getresizeHeight(this: js_object): web int
-	c inline "getObjectField(#1, \"resizeHeight\")"
-pub extern setresizeQuality(this: js_object, value: ResizeQuality): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getresizeQuality(this: js_object): web ResizeQuality
-	c inline "getObjectField(#1, \"resizeQuality\")"
-struct AnimationFrameProvider
-{
-}
-
-()
-
-pub extern requestAnimationFrame(this: js_object, [callback: FrameRequestCallback], [])
-pub extern cancelAnimationFrame(this: js_object, [handle: int], [])
-struct MessageEvent
-{,
-,
-,
-,
-
-}
-pub extern newMessageEvent([type: String], [eventInitDict: MessageEventInit])
-()
-
-pub extern initMessageEvent(this: js_object, [type: String], [bubbles: bool, cancelable: bool, data: maybe<dart:js_interop/JSAny>, origin: String, lastEventId: String, source: maybe<MessageEventSource> =  Nothing, ports: dart:js_interop/JSArray])
-pub extern getdata(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"data\")"
-pub extern getorigin(this: js_object): web String
-	c inline "getObjectField(#1, \"origin\")"
-pub extern getlastEventId(this: js_object): web String
-	c inline "getObjectField(#1, \"lastEventId\")"
-pub extern getsource(this: js_object): web maybe<MessageEventSource>
-	c inline "getObjectField(#1, \"source\")"
-pub extern getports(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"ports\")"
-struct MessageEventInit
-{  data: maybe<dart:js_interop/JSAny>,
-  origin: String,
-  lastEventId: String,
-  source: maybe<MessageEventSource>,
-  ports: dart:js_interop/JSArray
-}
-pub extern newMessageEventInit([data: maybe<maybe<dart:js_interop/JSAny>> = Nothing, origin: maybe<String> = Nothing, lastEventId: maybe<String> = Nothing, source: maybe<maybe<MessageEventSource>> = Nothing, ports: maybe<dart:js_interop/JSArray> = Nothing])
-()
-
-pub extern setdata(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdata(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"data\")"
-pub extern setorigin(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getorigin(this: js_object): web String
-	c inline "getObjectField(#1, \"origin\")"
-pub extern setlastEventId(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlastEventId(this: js_object): web String
-	c inline "getObjectField(#1, \"lastEventId\")"
-pub extern setsource(this: js_object, value: maybe<MessageEventSource>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsource(this: js_object): web maybe<MessageEventSource>
-	c inline "getObjectField(#1, \"source\")"
-pub extern setports(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getports(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"ports\")"
-struct EventSource
-{,
-,
-,
-,
-,
-
-}
-pub extern newEventSource([url: String], [eventSourceInitDict: EventSourceInit])
-(pub extern CONNECTING(): int
-	c inline "getConstant(\"CONNECTING\")", pub extern OPEN(): int
-	c inline "getConstant(\"OPEN\")", pub extern CLOSED(): int
-	c inline "getConstant(\"CLOSED\")")
-
-pub extern close(this: js_object, [], [])
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
-pub extern getwithCredentials(this: js_object): web bool
-	c inline "getObjectField(#1, \"withCredentials\")"
-pub extern getreadyState(this: js_object): web int
-	c inline "getObjectField(#1, \"readyState\")"
-pub extern setonopen(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonopen(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onopen\")"
-pub extern setonmessage(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessage(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmessage\")"
-pub extern setonerror(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonerror(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onerror\")"
-struct EventSourceInit
-{  withCredentials: bool
-}
-pub extern newEventSourceInit([withCredentials: maybe<bool> = Nothing])
-()
-
-pub extern setwithCredentials(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwithCredentials(this: js_object): web bool
-	c inline "getObjectField(#1, \"withCredentials\")"
-struct MessageChannel
-{,
-
-}
-pub extern newMessageChannel([], [])
-()
-
-pub extern getport1(this: js_object): web MessagePort
-	c inline "getObjectField(#1, \"port1\")"
-pub extern getport2(this: js_object): web MessagePort
-	c inline "getObjectField(#1, \"port2\")"
-struct MessagePort
-{,
-
-}
-
-()
-
-pub extern postMessage(this: js_object, [message: maybe<dart:js_interop/JSAny>], [optionsOrTransfer: maybe<dart:js_interop/JSAny>])
-pub extern start(this: js_object, [], [])
-pub extern close(this: js_object, [], [])
-pub extern setonmessage(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessage(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmessage\")"
-pub extern setonmessageerror(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessageerror(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmessageerror\")"
-struct StructuredSerializeOptions
-{  transfer: dart:js_interop/JSArray
-}
-pub extern newStructuredSerializeOptions([transfer: maybe<dart:js_interop/JSArray> = Nothing])
-()
-
-pub extern settransfer(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransfer(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"transfer\")"
-struct BroadcastChannel
-{,
-,
-
-}
-pub extern newBroadcastChannel([name: String], [])
-()
-
-pub extern postMessage(this: js_object, [message: maybe<dart:js_interop/JSAny>], [])
-pub extern close(this: js_object, [], [])
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setonmessage(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessage(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmessage\")"
-pub extern setonmessageerror(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessageerror(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmessageerror\")"
-struct WorkerGlobalScope
-{,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern importScripts(this: js_object, [urls: String], [])
-pub extern getself(this: js_object): web WorkerGlobalScope
-	c inline "getObjectField(#1, \"self\")"
-pub extern getlocation(this: js_object): web WorkerLocation
-	c inline "getObjectField(#1, \"location\")"
-pub extern getnavigator(this: js_object): web WorkerNavigator
-	c inline "getObjectField(#1, \"navigator\")"
-pub extern setonerror(this: js_object, value: OnErrorEventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonerror(this: js_object): web OnErrorEventHandler
-	c inline "getObjectField(#1, \"onerror\")"
-pub extern setonlanguagechange(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonlanguagechange(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onlanguagechange\")"
-pub extern setonoffline(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonoffline(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onoffline\")"
-pub extern setononline(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getononline(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"ononline\")"
-pub extern setonrejectionhandled(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonrejectionhandled(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onrejectionhandled\")"
-pub extern setonunhandledrejection(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonunhandledrejection(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onunhandledrejection\")"
-struct DedicatedWorkerGlobalScope
-{,
-,
-,
-
-}
-
-()
-
-pub extern postMessage(this: js_object, [message: maybe<dart:js_interop/JSAny>], [optionsOrTransfer: maybe<dart:js_interop/JSAny>])
-pub extern close(this: js_object, [], [])
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setonmessage(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessage(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmessage\")"
-pub extern setonmessageerror(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessageerror(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmessageerror\")"
-pub extern setonrtctransform(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonrtctransform(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onrtctransform\")"
-struct SharedWorkerGlobalScope
-{,
-
-}
-
-()
-
-pub extern close(this: js_object, [], [])
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setonconnect(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonconnect(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onconnect\")"
-struct AbstractWorker
-{
-}
-
-()
-
-pub extern setonerror(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonerror(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onerror\")"
-struct Worker
-{,
-
-}
-pub extern newWorker([scriptURL: String], [options: WorkerOptions])
-()
-
-pub extern terminate(this: js_object, [], [])
-pub extern postMessage(this: js_object, [message: maybe<dart:js_interop/JSAny>], [optionsOrTransfer: maybe<dart:js_interop/JSAny>])
-pub extern setonmessage(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessage(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmessage\")"
-pub extern setonmessageerror(this: js_object, value: EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonmessageerror(this: js_object): web EventHandler
-	c inline "getObjectField(#1, \"onmessageerror\")"
-struct WorkerOptions
-{  type: WorkerType,
-  credentials: fetch.kk/RequestCredentials,
-  name: String
-}
-pub extern newWorkerOptions([type: maybe<WorkerType> = Nothing, credentials: maybe<fetch.kk/RequestCredentials> = Nothing, name: maybe<String> = Nothing])
-()
-
-pub extern settype(this: js_object, value: WorkerType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web WorkerType
-	c inline "getObjectField(#1, \"type\")"
-pub extern setcredentials(this: js_object, value: fetch.kk/RequestCredentials): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcredentials(this: js_object): web fetch.kk/RequestCredentials
-	c inline "getObjectField(#1, \"credentials\")"
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-struct SharedWorker
-{
-}
-pub extern newSharedWorker([scriptURL: String], [options: maybe<dart:js_interop/JSAny>])
-()
-
-pub extern getport(this: js_object): web MessagePort
-	c inline "getObjectField(#1, \"port\")"
-struct NavigatorConcurrentHardware
-{
-}
-
-()
-
-pub extern gethardwareConcurrency(this: js_object): web int
-	c inline "getObjectField(#1, \"hardwareConcurrency\")"
-struct WorkerNavigator
-{,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern getmediaCapabilities(this: js_object): web media_capabilities.kk/MediaCapabilities
-	c inline "getObjectField(#1, \"mediaCapabilities\")"
-pub extern getpermissions(this: js_object): web permissions.kk/Permissions
-	c inline "getObjectField(#1, \"permissions\")"
-pub extern getserial(this: js_object): web serial.kk/Serial
-	c inline "getObjectField(#1, \"serial\")"
-pub extern getserviceWorker(this: js_object): web service_workers.kk/ServiceWorkerContainer
-	c inline "getObjectField(#1, \"serviceWorker\")"
-pub extern gethid(this: js_object): web webhid.kk/HID
-	c inline "getObjectField(#1, \"hid\")"
-pub extern getusb(this: js_object): web webusb.kk/USB
-	c inline "getObjectField(#1, \"usb\")"
-struct WorkerLocation
-{,
-,
-,
-,
-,
-,
-,
-,
-
-}
-
-()
-
-pub extern gethref(this: js_object): web String
-	c inline "getObjectField(#1, \"href\")"
-pub extern getorigin(this: js_object): web String
-	c inline "getObjectField(#1, \"origin\")"
-pub extern getprotocol(this: js_object): web String
-	c inline "getObjectField(#1, \"protocol\")"
-pub extern gethost(this: js_object): web String
-	c inline "getObjectField(#1, \"host\")"
-pub extern gethostname(this: js_object): web String
-	c inline "getObjectField(#1, \"hostname\")"
-pub extern getport(this: js_object): web String
-	c inline "getObjectField(#1, \"port\")"
-pub extern getpathname(this: js_object): web String
-	c inline "getObjectField(#1, \"pathname\")"
-pub extern getsearch(this: js_object): web String
-	c inline "getObjectField(#1, \"search\")"
-pub extern gethash(this: js_object): web String
-	c inline "getObjectField(#1, \"hash\")"
-struct WorkletGlobalScope
-{
-}
-
-()
-
-struct Worklet
-{
-}
-
-()
-
-pub extern addModule(this: js_object, [moduleURL: String], [options: WorkletOptions])
-struct WorkletOptions
-{  credentials: fetch.kk/RequestCredentials
-}
-pub extern newWorkletOptions([credentials: maybe<fetch.kk/RequestCredentials> = Nothing])
-()
-
-pub extern setcredentials(this: js_object, value: fetch.kk/RequestCredentials): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcredentials(this: js_object): web fetch.kk/RequestCredentials
-	c inline "getObjectField(#1, \"credentials\")"
-struct Storage
-{
-}
-
-()
-
-pub extern key(this: js_object, [index: int], [])
-pub extern getItem(this: js_object, [key: String], [])
-pub extern setItem(this: js_object, [key: String, value: String], [])
-pub extern removeItem(this: js_object, [key: String], [])
-pub extern clear(this: js_object, [], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct WindowSessionStorage
-{
-}
-
-()
-
-pub extern getsessionStorage(this: js_object): web Storage
-	c inline "getObjectField(#1, \"sessionStorage\")"
-struct WindowLocalStorage
-{
-}
-
-()
-
-pub extern getlocalStorage(this: js_object): web Storage
-	c inline "getObjectField(#1, \"localStorage\")"
-struct StorageEvent
-{,
-,
-,
-,
-
-}
-pub extern newStorageEvent([type: String], [eventInitDict: StorageEventInit])
-()
-
-pub extern initStorageEvent(this: js_object, [type: String], [bubbles: bool, cancelable: bool, key: maybe<String> =  Nothing, oldValue: maybe<String> =  Nothing, newValue: maybe<String> =  Nothing, url: String, storageArea: maybe<Storage> =  Nothing])
-pub extern getkey(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"key\")"
-pub extern getoldValue(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"oldValue\")"
-pub extern getnewValue(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"newValue\")"
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
-pub extern getstorageArea(this: js_object): web maybe<Storage>
-	c inline "getObjectField(#1, \"storageArea\")"
-struct StorageEventInit
-{  key: maybe<String>,
-  oldValue: maybe<String>,
-  newValue: maybe<String>,
-  url: String,
-  storageArea: maybe<Storage>
-}
-pub extern newStorageEventInit([key: maybe<maybe<String>> = Nothing, oldValue: maybe<maybe<String>> = Nothing, newValue: maybe<maybe<String>> = Nothing, url: maybe<String> = Nothing, storageArea: maybe<maybe<Storage>> = Nothing])
-()
-
-pub extern setkey(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getkey(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"key\")"
-pub extern setoldValue(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoldValue(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"oldValue\")"
-pub extern setnewValue(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnewValue(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"newValue\")"
-pub extern seturl(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
-pub extern setstorageArea(this: js_object, value: maybe<Storage>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstorageArea(this: js_object): web maybe<Storage>
-	c inline "getObjectField(#1, \"storageArea\")"
-struct HTMLMarqueeElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLMarqueeElement([], [])
-()
-
-pub extern start(this: js_object, [], [])
-pub extern stop(this: js_object, [], [])
-pub extern setbehavior(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbehavior(this: js_object): web String
-	c inline "getObjectField(#1, \"behavior\")"
-pub extern setbgColor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbgColor(this: js_object): web String
-	c inline "getObjectField(#1, \"bgColor\")"
-pub extern setdirection(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdirection(this: js_object): web String
-	c inline "getObjectField(#1, \"direction\")"
-pub extern setheight(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web String
-	c inline "getObjectField(#1, \"height\")"
-pub extern sethspace(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethspace(this: js_object): web int
-	c inline "getObjectField(#1, \"hspace\")"
-pub extern setloop(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getloop(this: js_object): web int
-	c inline "getObjectField(#1, \"loop\")"
-pub extern setscrollAmount(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscrollAmount(this: js_object): web int
-	c inline "getObjectField(#1, \"scrollAmount\")"
-pub extern setscrollDelay(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscrollDelay(this: js_object): web int
-	c inline "getObjectField(#1, \"scrollDelay\")"
-pub extern settrueSpeed(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettrueSpeed(this: js_object): web bool
-	c inline "getObjectField(#1, \"trueSpeed\")"
-pub extern setvspace(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvspace(this: js_object): web int
-	c inline "getObjectField(#1, \"vspace\")"
-pub extern setwidth(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web String
-	c inline "getObjectField(#1, \"width\")"
-struct HTMLFrameSetElement
-{,
-
-}
-pub extern newHTMLFrameSetElement([], [])
-()
-
-pub extern setcols(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcols(this: js_object): web String
-	c inline "getObjectField(#1, \"cols\")"
-pub extern setrows(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrows(this: js_object): web String
-	c inline "getObjectField(#1, \"rows\")"
-struct HTMLFrameElement
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-
-}
-pub extern newHTMLFrameElement([], [])
-()
-
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setscrolling(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscrolling(this: js_object): web String
-	c inline "getObjectField(#1, \"scrolling\")"
-pub extern setsrc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsrc(this: js_object): web String
-	c inline "getObjectField(#1, \"src\")"
-pub extern setframeBorder(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getframeBorder(this: js_object): web String
-	c inline "getObjectField(#1, \"frameBorder\")"
-pub extern setlongDesc(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlongDesc(this: js_object): web String
-	c inline "getObjectField(#1, \"longDesc\")"
-pub extern setnoResize(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getnoResize(this: js_object): web bool
-	c inline "getObjectField(#1, \"noResize\")"
-pub extern getcontentDocument(this: js_object): web maybe<dom.kk/Document>
-	c inline "getObjectField(#1, \"contentDocument\")"
-pub extern getcontentWindow(this: js_object): web maybe<Window>
-	c inline "getObjectField(#1, \"contentWindow\")"
-pub extern setmarginHeight(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmarginHeight(this: js_object): web String
-	c inline "getObjectField(#1, \"marginHeight\")"
-pub extern setmarginWidth(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmarginWidth(this: js_object): web String
-	c inline "getObjectField(#1, \"marginWidth\")"
-struct HTMLDirectoryElement
-{
-}
-pub extern newHTMLDirectoryElement([], [])
-()
-
-pub extern setcompact(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcompact(this: js_object): web bool
-	c inline "getObjectField(#1, \"compact\")"
-struct HTMLFontElement
-{,
-,
-
-}
-pub extern newHTMLFontElement([], [])
-()
-
-pub extern setcolor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolor(this: js_object): web String
-	c inline "getObjectField(#1, \"color\")"
-pub extern setface(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getface(this: js_object): web String
-	c inline "getObjectField(#1, \"face\")"
-pub extern setsize(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsize(this: js_object): web String
-	c inline "getObjectField(#1, \"size\")"
-struct HTMLParamElement
-{,
-,
-,
-
-}
-pub extern newHTMLParamElement([], [])
-()
-
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setvalue(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalue(this: js_object): web String
-	c inline "getObjectField(#1, \"value\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setvalueType(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvalueType(this: js_object): web String
-	c inline "getObjectField(#1, \"valueType\")"
-struct External
-{
-}
-
-()
-
-pub extern AddSearchProvider(this: js_object, [], [])
-pub extern IsSearchProviderInstalled(this: js_object, [], [])
+pub value struct window
+  obj: jsObject
+
+
+pub inline fun navigate(obj: window, dir': css_nav/spatialNavigationDirection): web ()
+  jsOperation3(obj.obj, "navigate", dir'.obj)
+
+pub inline fun matchMedia(obj: window, query': string): web cssom_view/mediaQueryList
+  jsOperation3(obj.obj, "matchMedia", query'.obj)
+
+pub inline fun moveTo(obj: window, x': int, y': int): web ()
+  jsOperation4(obj.obj, "moveTo", x'.obj, y'.obj)
+
+pub inline fun moveBy(obj: window, x': int, y': int): web ()
+  jsOperation4(obj.obj, "moveBy", x'.obj, y'.obj)
+
+pub inline fun resizeTo(obj: window, width': int, height': int): web ()
+  jsOperation4(obj.obj, "resizeTo", width'.obj, height'.obj)
+
+pub inline fun resizeBy(obj: window, x': int, y': int): web ()
+  jsOperation4(obj.obj, "resizeBy", x'.obj, y'.obj)
+
+pub inline fun scroll(obj: window, optionsOrX': maybe<jsObject>, y': double): web ()
+  jsOperation4(obj.obj, "scroll", optionsOrX'.obj, y'.obj)
+
+pub inline fun scrollTo(obj: window, optionsOrX': maybe<jsObject>, y': double): web ()
+  jsOperation4(obj.obj, "scrollTo", optionsOrX'.obj, y'.obj)
+
+pub inline fun scrollBy(obj: window, optionsOrX': maybe<jsObject>, y': double): web ()
+  jsOperation4(obj.obj, "scrollBy", optionsOrX'.obj, y'.obj)
+
+pub inline fun getComputedStyle(obj: window, elt': dom/element, pseudoElt': maybe<string> =  Nothing): web cssom/cssStyleDeclaration
+  jsOperation4(obj.obj, "getComputedStyle", elt'.obj, pseudoElt'.obj)
+
+pub inline fun getDigitalGoodsService(obj: window, serviceProvider': string): web jsPromise
+  jsOperation3(obj.obj, "getDigitalGoodsService", serviceProvider'.obj)
+
+pub inline fun showOpenFilePicker(obj: window, options': file_system_access/openFilePickerOptions): web jsPromise
+  jsOperation3(obj.obj, "showOpenFilePicker", options'.obj)
+
+pub inline fun showSaveFilePicker(obj: window, options': file_system_access/saveFilePickerOptions): web jsPromise
+  jsOperation3(obj.obj, "showSaveFilePicker", options'.obj)
+
+pub inline fun showDirectoryPicker(obj: window, options': file_system_access/directoryPickerOptions): web jsPromise
+  jsOperation3(obj.obj, "showDirectoryPicker", options'.obj)
+
+pub inline fun close(obj: window): web ()
+  jsOperation2(obj.obj, "close")
+
+pub inline fun stop(obj: window): web ()
+  jsOperation2(obj.obj, "stop")
+
+pub inline fun focus(obj: window): web ()
+  jsOperation2(obj.obj, "focus")
+
+pub inline fun blur(obj: window): web ()
+  jsOperation2(obj.obj, "blur")
+
+pub inline fun open(obj: window, url': string, target': string, features': string): web maybe<window>
+  jsOperation5(obj.obj, "open", url'.obj, target'.obj, features'.obj)
+
+pub inline fun alert(obj: window, message': string): web ()
+  jsOperation3(obj.obj, "alert", message'.obj)
+
+pub inline fun confirm(obj: window, message': string): web bool
+  jsOperation3(obj.obj, "confirm", message'.obj)
+
+pub inline fun prompt(obj: window, message': string, default_': string): web maybe<string>
+  jsOperation4(obj.obj, "prompt", message'.obj, default_'.obj)
+
+pub inline fun print(obj: window): web ()
+  jsOperation2(obj.obj, "print")
+
+pub inline fun postMessage(obj: window, message': maybe<jsObject>, optionsOrTargetOrigin': maybe<jsObject>, transfer': jsArray): web ()
+  jsOperation5(obj.obj, "postMessage", message'.obj, optionsOrTargetOrigin'.obj, transfer'.obj)
+
+pub inline fun captureEvents(obj: window): web ()
+  jsOperation2(obj.obj, "captureEvents")
+
+pub inline fun releaseEvents(obj: window): web ()
+  jsOperation2(obj.obj, "releaseEvents")
+
+pub inline fun queryLocalFonts(obj: window, options': local_font_access/queryOptions): web jsPromise
+  jsOperation3(obj.obj, "queryLocalFonts", options'.obj)
+
+pub inline fun requestIdleCallback(obj: window, callback': requestidlecallback/idleRequestCallback, options': requestidlecallback/idleRequestOptions): web int
+  jsOperation4(obj.obj, "requestIdleCallback", callback'.obj, options'.obj)
+
+pub inline fun cancelIdleCallback(obj: window, handle': int): web ()
+  jsOperation3(obj.obj, "cancelIdleCallback", handle'.obj)
+
+pub inline fun getSelection(obj: window): web maybe<selection_api/selection>
+  jsOperation2(obj.obj, "getSelection")
+
+pub inline fun getScreenDetails(obj: window): web jsPromise
+  jsOperation2(obj.obj, "getScreenDetails")
+
+pub inline fun orientation(obj: window): web int
+  getJsObjectField(obj.obj, "orientation")
+
+pub inline fun onorientationchange(obj: window, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onorientationchange", value.obj)
+
+pub inline fun onorientationchange(obj: window): web eventHandler
+  getJsObjectField(obj.obj, "onorientationchange")
+
+pub inline fun cookieStore(obj: window): web cookie_store/cookieStore
+  getJsObjectField(obj.obj, "cookieStore")
+
+pub inline fun screen(obj: window): web cssom_view/screen
+  getJsObjectField(obj.obj, "screen")
+
+pub inline fun visualViewport(obj: window): web maybe<cssom_view/visualViewport>
+  getJsObjectField(obj.obj, "visualViewport")
+
+pub inline fun innerWidth(obj: window): web int
+  getJsObjectField(obj.obj, "innerWidth")
+
+pub inline fun innerHeight(obj: window): web int
+  getJsObjectField(obj.obj, "innerHeight")
+
+pub inline fun scrollX(obj: window): web double
+  getJsObjectField(obj.obj, "scrollX")
+
+pub inline fun pageXOffset(obj: window): web double
+  getJsObjectField(obj.obj, "pageXOffset")
+
+pub inline fun scrollY(obj: window): web double
+  getJsObjectField(obj.obj, "scrollY")
+
+pub inline fun pageYOffset(obj: window): web double
+  getJsObjectField(obj.obj, "pageYOffset")
+
+pub inline fun screenX(obj: window): web int
+  getJsObjectField(obj.obj, "screenX")
+
+pub inline fun screenLeft(obj: window): web int
+  getJsObjectField(obj.obj, "screenLeft")
+
+pub inline fun screenY(obj: window): web int
+  getJsObjectField(obj.obj, "screenY")
+
+pub inline fun screenTop(obj: window): web int
+  getJsObjectField(obj.obj, "screenTop")
+
+pub inline fun outerWidth(obj: window): web int
+  getJsObjectField(obj.obj, "outerWidth")
+
+pub inline fun outerHeight(obj: window): web int
+  getJsObjectField(obj.obj, "outerHeight")
+
+pub inline fun devicePixelRatio(obj: window): web double
+  getJsObjectField(obj.obj, "devicePixelRatio")
+
+pub inline fun documentPictureInPicture(obj: window): web document_picture_in_picture/documentPictureInPicture
+  getJsObjectField(obj.obj, "documentPictureInPicture")
+
+pub inline fun event(obj: window): web maybe<jsObject>
+  getJsObjectField(obj.obj, "event")
+
+pub inline fun fence(obj: window): web maybe<fenced_frame/fence>
+  getJsObjectField(obj.obj, "fence")
+
+pub inline fun window(obj: window): web window
+  getJsObjectField(obj.obj, "window")
+
+pub inline fun self(obj: window): web window
+  getJsObjectField(obj.obj, "self")
+
+pub inline fun document(obj: window): web dom/document
+  getJsObjectField(obj.obj, "document")
+
+pub inline fun name(obj: window, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: window): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun location(obj: window): web location
+  getJsObjectField(obj.obj, "location")
+
+pub inline fun history(obj: window): web history
+  getJsObjectField(obj.obj, "history")
+
+pub inline fun navigation(obj: window): web navigation
+  getJsObjectField(obj.obj, "navigation")
+
+pub inline fun customElements(obj: window): web customElementRegistry
+  getJsObjectField(obj.obj, "customElements")
+
+pub inline fun locationbar(obj: window): web barProp
+  getJsObjectField(obj.obj, "locationbar")
+
+pub inline fun menubar(obj: window): web barProp
+  getJsObjectField(obj.obj, "menubar")
+
+pub inline fun personalbar(obj: window): web barProp
+  getJsObjectField(obj.obj, "personalbar")
+
+pub inline fun scrollbars(obj: window): web barProp
+  getJsObjectField(obj.obj, "scrollbars")
+
+pub inline fun statusbar(obj: window): web barProp
+  getJsObjectField(obj.obj, "statusbar")
+
+pub inline fun toolbar(obj: window): web barProp
+  getJsObjectField(obj.obj, "toolbar")
+
+pub inline fun status(obj: window, value: string): web ()
+  setJsObjectField(obj.obj, "status", value.obj)
+
+pub inline fun status(obj: window): web string
+  getJsObjectField(obj.obj, "status")
+
+pub inline fun closed(obj: window): web bool
+  getJsObjectField(obj.obj, "closed")
+
+pub inline fun frames(obj: window): web window
+  getJsObjectField(obj.obj, "frames")
+
+pub inline fun length(obj: window): web int
+  getJsObjectField(obj.obj, "length")
+
+pub inline fun top(obj: window): web maybe<window>
+  getJsObjectField(obj.obj, "top")
+
+pub inline fun opener(obj: window, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "opener", value.obj)
+
+pub inline fun opener(obj: window): web maybe<jsObject>
+  getJsObjectField(obj.obj, "opener")
+
+pub inline fun parent(obj: window): web maybe<window>
+  getJsObjectField(obj.obj, "parent")
+
+pub inline fun frameElement(obj: window): web maybe<dom/element>
+  getJsObjectField(obj.obj, "frameElement")
+
+pub inline fun navigator(obj: window): web navigator
+  getJsObjectField(obj.obj, "navigator")
+
+pub inline fun clientInformation(obj: window): web navigator
+  getJsObjectField(obj.obj, "clientInformation")
+
+pub inline fun originAgentCluster(obj: window): web bool
+  getJsObjectField(obj.obj, "originAgentCluster")
+
+pub inline fun external(obj: window): web external
+  getJsObjectField(obj.obj, "external")
+
+pub inline fun onappinstalled(obj: window, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onappinstalled", value.obj)
+
+pub inline fun onappinstalled(obj: window): web eventHandler
+  getJsObjectField(obj.obj, "onappinstalled")
+
+pub inline fun onbeforeinstallprompt(obj: window, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onbeforeinstallprompt", value.obj)
+
+pub inline fun onbeforeinstallprompt(obj: window): web eventHandler
+  getJsObjectField(obj.obj, "onbeforeinstallprompt")
+
+pub inline fun ondeviceorientation(obj: window, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondeviceorientation", value.obj)
+
+pub inline fun ondeviceorientation(obj: window): web eventHandler
+  getJsObjectField(obj.obj, "ondeviceorientation")
+
+pub inline fun ondeviceorientationabsolute(obj: window, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondeviceorientationabsolute", value.obj)
+
+pub inline fun ondeviceorientationabsolute(obj: window): web eventHandler
+  getJsObjectField(obj.obj, "ondeviceorientationabsolute")
+
+pub inline fun ondevicemotion(obj: window, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondevicemotion", value.obj)
+
+pub inline fun ondevicemotion(obj: window): web eventHandler
+  getJsObjectField(obj.obj, "ondevicemotion")
+
+pub inline fun portalHost(obj: window): web maybe<portals/portalHost>
+  getJsObjectField(obj.obj, "portalHost")
+
+pub inline fun speechSynthesis(obj: window): web speech_api/speechSynthesis
+  getJsObjectField(obj.obj, "speechSynthesis")
+
+pub inline fun launchQueue(obj: window): web web_app_launch/launchQueue
+  getJsObjectField(obj.obj, "launchQueue")
+
+pub value struct windowPostMessageOptions
+  obj: jsObject
+
+pub fun newWindowPostMessageOptions(targetOrigin: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match targetOrigin
+    Just(it) -> setJsObjectField(obj, "targetOrigin", it)
+    Nothing -> ()
+
+  WindowPostMessageOptions(obj);
+
+pub inline fun targetOrigin(obj: windowPostMessageOptions, value: string): web ()
+  setJsObjectField(obj.obj, "targetOrigin", value.obj)
+
+pub inline fun targetOrigin(obj: windowPostMessageOptions): web string
+  getJsObjectField(obj.obj, "targetOrigin")
+
+pub value struct barProp
+  obj: jsObject
+
+
+pub inline fun visible(obj: barProp): web bool
+  getJsObjectField(obj.obj, "visible")
+
+pub value struct location
+  obj: jsObject
+
+
+pub inline fun assign(obj: location, url': string): web ()
+  jsOperation3(obj.obj, "assign", url'.obj)
+
+pub inline fun replace(obj: location, url': string): web ()
+  jsOperation3(obj.obj, "replace", url'.obj)
+
+pub inline fun reload(obj: location): web ()
+  jsOperation2(obj.obj, "reload")
+
+pub inline fun href(obj: location, value: string): web ()
+  setJsObjectField(obj.obj, "href", value.obj)
+
+pub inline fun href(obj: location): web string
+  getJsObjectField(obj.obj, "href")
+
+pub inline fun origin(obj: location): web string
+  getJsObjectField(obj.obj, "origin")
+
+pub inline fun protocol(obj: location, value: string): web ()
+  setJsObjectField(obj.obj, "protocol", value.obj)
+
+pub inline fun protocol(obj: location): web string
+  getJsObjectField(obj.obj, "protocol")
+
+pub inline fun host(obj: location, value: string): web ()
+  setJsObjectField(obj.obj, "host", value.obj)
+
+pub inline fun host(obj: location): web string
+  getJsObjectField(obj.obj, "host")
+
+pub inline fun hostname(obj: location, value: string): web ()
+  setJsObjectField(obj.obj, "hostname", value.obj)
+
+pub inline fun hostname(obj: location): web string
+  getJsObjectField(obj.obj, "hostname")
+
+pub inline fun port(obj: location, value: string): web ()
+  setJsObjectField(obj.obj, "port", value.obj)
+
+pub inline fun port(obj: location): web string
+  getJsObjectField(obj.obj, "port")
+
+pub inline fun pathname(obj: location, value: string): web ()
+  setJsObjectField(obj.obj, "pathname", value.obj)
+
+pub inline fun pathname(obj: location): web string
+  getJsObjectField(obj.obj, "pathname")
+
+pub inline fun search(obj: location, value: string): web ()
+  setJsObjectField(obj.obj, "search", value.obj)
+
+pub inline fun search(obj: location): web string
+  getJsObjectField(obj.obj, "search")
+
+pub inline fun hash(obj: location, value: string): web ()
+  setJsObjectField(obj.obj, "hash", value.obj)
+
+pub inline fun hash(obj: location): web string
+  getJsObjectField(obj.obj, "hash")
+
+pub inline fun ancestorOrigins(obj: location): web domStringList
+  getJsObjectField(obj.obj, "ancestorOrigins")
+
+pub value struct history
+  obj: jsObject
+
+
+pub inline fun go(obj: history, delta': int): web ()
+  jsOperation3(obj.obj, "go", delta'.obj)
+
+pub inline fun back(obj: history): web ()
+  jsOperation2(obj.obj, "back")
+
+pub inline fun forward(obj: history): web ()
+  jsOperation2(obj.obj, "forward")
+
+pub inline fun pushState(obj: history, data': maybe<jsObject>, unused': string, url': maybe<string> =  Nothing): web ()
+  jsOperation5(obj.obj, "pushState", data'.obj, unused'.obj, url'.obj)
+
+pub inline fun replaceState(obj: history, data': maybe<jsObject>, unused': string, url': maybe<string> =  Nothing): web ()
+  jsOperation5(obj.obj, "replaceState", data'.obj, unused'.obj, url'.obj)
+
+pub inline fun length(obj: history): web int
+  getJsObjectField(obj.obj, "length")
+
+pub inline fun scrollRestoration(obj: history, value: scrollRestoration): web ()
+  setJsObjectField(obj.obj, "scrollRestoration", value.obj)
+
+pub inline fun scrollRestoration(obj: history): web scrollRestoration
+  getJsObjectField(obj.obj, "scrollRestoration")
+
+pub inline fun state(obj: history): web maybe<jsObject>
+  getJsObjectField(obj.obj, "state")
+
+pub value struct navigation
+  obj: jsObject
+
+
+pub inline fun entries(obj: navigation): web jsArray
+  jsOperation2(obj.obj, "entries")
+
+pub inline fun updateCurrentEntry(obj: navigation, options': navigationUpdateCurrentEntryOptions): web ()
+  jsOperation3(obj.obj, "updateCurrentEntry", options'.obj)
+
+pub inline fun navigate(obj: navigation, url': string, options': navigationNavigateOptions): web navigationResult
+  jsOperation4(obj.obj, "navigate", url'.obj, options'.obj)
+
+pub inline fun reload(obj: navigation, options': navigationReloadOptions): web navigationResult
+  jsOperation3(obj.obj, "reload", options'.obj)
+
+pub inline fun traverseTo(obj: navigation, key': string, options': navigationOptions): web navigationResult
+  jsOperation4(obj.obj, "traverseTo", key'.obj, options'.obj)
+
+pub inline fun back(obj: navigation, options': navigationOptions): web navigationResult
+  jsOperation3(obj.obj, "back", options'.obj)
+
+pub inline fun forward(obj: navigation, options': navigationOptions): web navigationResult
+  jsOperation3(obj.obj, "forward", options'.obj)
+
+pub inline fun currentEntry(obj: navigation): web maybe<navigationHistoryEntry>
+  getJsObjectField(obj.obj, "currentEntry")
+
+pub inline fun transition(obj: navigation): web maybe<navigationTransition>
+  getJsObjectField(obj.obj, "transition")
+
+pub inline fun canGoBack(obj: navigation): web bool
+  getJsObjectField(obj.obj, "canGoBack")
+
+pub inline fun canGoForward(obj: navigation): web bool
+  getJsObjectField(obj.obj, "canGoForward")
+
+pub inline fun onnavigate(obj: navigation, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onnavigate", value.obj)
+
+pub inline fun onnavigate(obj: navigation): web eventHandler
+  getJsObjectField(obj.obj, "onnavigate")
+
+pub inline fun onnavigatesuccess(obj: navigation, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onnavigatesuccess", value.obj)
+
+pub inline fun onnavigatesuccess(obj: navigation): web eventHandler
+  getJsObjectField(obj.obj, "onnavigatesuccess")
+
+pub inline fun onnavigateerror(obj: navigation, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onnavigateerror", value.obj)
+
+pub inline fun onnavigateerror(obj: navigation): web eventHandler
+  getJsObjectField(obj.obj, "onnavigateerror")
+
+pub inline fun oncurrententrychange(obj: navigation, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncurrententrychange", value.obj)
+
+pub inline fun oncurrententrychange(obj: navigation): web eventHandler
+  getJsObjectField(obj.obj, "oncurrententrychange")
+
+pub value struct navigationUpdateCurrentEntryOptions
+  obj: jsObject
+
+pub fun newNavigationUpdateCurrentEntryOptions(state: maybe<jsObject>)
+  val obj = newJsObject();
+  setJsObjectField(obj, "state", state);
+  NavigationUpdateCurrentEntryOptions(obj);
+
+pub inline fun state(obj: navigationUpdateCurrentEntryOptions, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "state", value.obj)
+
+pub inline fun state(obj: navigationUpdateCurrentEntryOptions): web maybe<jsObject>
+  getJsObjectField(obj.obj, "state")
+
+pub value struct navigationOptions
+  obj: jsObject
+
+pub fun newNavigationOptions(info: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match info
+    Just(it) -> setJsObjectField(obj, "info", it)
+    Nothing -> ()
+
+  NavigationOptions(obj);
+
+pub inline fun info(obj: navigationOptions, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "info", value.obj)
+
+pub inline fun info(obj: navigationOptions): web maybe<jsObject>
+  getJsObjectField(obj.obj, "info")
+
+pub value struct navigationNavigateOptions
+  obj: jsObject
+
+pub fun newNavigationNavigateOptions(state: maybe<maybe<jsObject>> = Nothing, history: maybe<navigationHistoryBehavior> = Nothing)
+  val obj = newJsObject();
+  match state
+    Just(it) -> setJsObjectField(obj, "state", it)
+    Nothing -> ()
+  match history
+    Just(it) -> setJsObjectField(obj, "history", it)
+    Nothing -> ()
+
+  NavigationNavigateOptions(obj);
+
+pub inline fun state(obj: navigationNavigateOptions, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "state", value.obj)
+
+pub inline fun state(obj: navigationNavigateOptions): web maybe<jsObject>
+  getJsObjectField(obj.obj, "state")
+
+pub inline fun history(obj: navigationNavigateOptions, value: navigationHistoryBehavior): web ()
+  setJsObjectField(obj.obj, "history", value.obj)
+
+pub inline fun history(obj: navigationNavigateOptions): web navigationHistoryBehavior
+  getJsObjectField(obj.obj, "history")
+
+pub value struct navigationReloadOptions
+  obj: jsObject
+
+pub fun newNavigationReloadOptions(state: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match state
+    Just(it) -> setJsObjectField(obj, "state", it)
+    Nothing -> ()
+
+  NavigationReloadOptions(obj);
+
+pub inline fun state(obj: navigationReloadOptions, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "state", value.obj)
+
+pub inline fun state(obj: navigationReloadOptions): web maybe<jsObject>
+  getJsObjectField(obj.obj, "state")
+
+pub value struct navigationResult
+  obj: jsObject
+
+pub fun newNavigationResult(committed: maybe<jsPromise> = Nothing, finished: maybe<jsPromise> = Nothing)
+  val obj = newJsObject();
+  match committed
+    Just(it) -> setJsObjectField(obj, "committed", it)
+    Nothing -> ()
+  match finished
+    Just(it) -> setJsObjectField(obj, "finished", it)
+    Nothing -> ()
+
+  NavigationResult(obj);
+
+pub inline fun committed(obj: navigationResult, value: jsPromise): web ()
+  setJsObjectField(obj.obj, "committed", value.obj)
+
+pub inline fun committed(obj: navigationResult): web jsPromise
+  getJsObjectField(obj.obj, "committed")
+
+pub inline fun finished(obj: navigationResult, value: jsPromise): web ()
+  setJsObjectField(obj.obj, "finished", value.obj)
+
+pub inline fun finished(obj: navigationResult): web jsPromise
+  getJsObjectField(obj.obj, "finished")
+
+pub value struct navigationHistoryEntry
+  obj: jsObject
+
+
+pub inline fun getState(obj: navigationHistoryEntry): web maybe<jsObject>
+  jsOperation2(obj.obj, "getState")
+
+pub inline fun url(obj: navigationHistoryEntry): web maybe<string>
+  getJsObjectField(obj.obj, "url")
+
+pub inline fun key(obj: navigationHistoryEntry): web string
+  getJsObjectField(obj.obj, "key")
+
+pub inline fun id(obj: navigationHistoryEntry): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun index(obj: navigationHistoryEntry): web int
+  getJsObjectField(obj.obj, "index")
+
+pub inline fun sameDocument(obj: navigationHistoryEntry): web bool
+  getJsObjectField(obj.obj, "sameDocument")
+
+pub inline fun ondispose(obj: navigationHistoryEntry, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondispose", value.obj)
+
+pub inline fun ondispose(obj: navigationHistoryEntry): web eventHandler
+  getJsObjectField(obj.obj, "ondispose")
+
+pub value struct navigationTransition
+  obj: jsObject
+
+
+pub inline fun navigationType(obj: navigationTransition): web navigationType
+  getJsObjectField(obj.obj, "navigationType")
+
+pub inline fun from(obj: navigationTransition): web navigationHistoryEntry
+  getJsObjectField(obj.obj, "from")
+
+pub inline fun finished(obj: navigationTransition): web jsPromise
+  getJsObjectField(obj.obj, "finished")
+
+pub value struct navigateEvent
+  obj: jsObject
+
+pub inline fun newNavigateEvent(type': string, eventInitDict': navigateEventInit)
+  newJsObject2("NavigateEvent", type', eventInitDict')"
+
+pub inline fun intercept(obj: navigateEvent, options': navigationInterceptOptions): web ()
+  jsOperation3(obj.obj, "intercept", options'.obj)
+
+pub inline fun scroll(obj: navigateEvent): web ()
+  jsOperation2(obj.obj, "scroll")
+
+pub inline fun navigationType(obj: navigateEvent): web navigationType
+  getJsObjectField(obj.obj, "navigationType")
+
+pub inline fun destination(obj: navigateEvent): web navigationDestination
+  getJsObjectField(obj.obj, "destination")
+
+pub inline fun canIntercept(obj: navigateEvent): web bool
+  getJsObjectField(obj.obj, "canIntercept")
+
+pub inline fun userInitiated(obj: navigateEvent): web bool
+  getJsObjectField(obj.obj, "userInitiated")
+
+pub inline fun hashChange(obj: navigateEvent): web bool
+  getJsObjectField(obj.obj, "hashChange")
+
+pub inline fun signal(obj: navigateEvent): web dom/abortSignal
+  getJsObjectField(obj.obj, "signal")
+
+pub inline fun formData(obj: navigateEvent): web maybe<xhr/formData>
+  getJsObjectField(obj.obj, "formData")
+
+pub inline fun downloadRequest(obj: navigateEvent): web maybe<string>
+  getJsObjectField(obj.obj, "downloadRequest")
+
+pub inline fun info(obj: navigateEvent): web maybe<jsObject>
+  getJsObjectField(obj.obj, "info")
+
+pub value struct navigateEventInit
+  obj: jsObject
+
+pub fun newNavigateEventInit(navigationType: maybe<navigationType> = Nothing, destination: navigationDestination, canIntercept: maybe<bool> = Nothing, userInitiated: maybe<bool> = Nothing, hashChange: maybe<bool> = Nothing, signal: dom/abortSignal, formData: maybe<maybe<xhr/formData>> = Nothing, downloadRequest: maybe<maybe<string>> = Nothing, info: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match navigationType
+    Just(it) -> setJsObjectField(obj, "navigationType", it)
+    Nothing -> ()
+  setJsObjectField(obj, "destination", destination);  match canIntercept
+    Just(it) -> setJsObjectField(obj, "canIntercept", it)
+    Nothing -> ()
+  match userInitiated
+    Just(it) -> setJsObjectField(obj, "userInitiated", it)
+    Nothing -> ()
+  match hashChange
+    Just(it) -> setJsObjectField(obj, "hashChange", it)
+    Nothing -> ()
+  setJsObjectField(obj, "signal", signal);  match formData
+    Just(it) -> setJsObjectField(obj, "formData", it)
+    Nothing -> ()
+  match downloadRequest
+    Just(it) -> setJsObjectField(obj, "downloadRequest", it)
+    Nothing -> ()
+  match info
+    Just(it) -> setJsObjectField(obj, "info", it)
+    Nothing -> ()
+
+  NavigateEventInit(obj);
+
+pub inline fun navigationType(obj: navigateEventInit, value: navigationType): web ()
+  setJsObjectField(obj.obj, "navigationType", value.obj)
+
+pub inline fun navigationType(obj: navigateEventInit): web navigationType
+  getJsObjectField(obj.obj, "navigationType")
+
+pub inline fun destination(obj: navigateEventInit, value: navigationDestination): web ()
+  setJsObjectField(obj.obj, "destination", value.obj)
+
+pub inline fun destination(obj: navigateEventInit): web navigationDestination
+  getJsObjectField(obj.obj, "destination")
+
+pub inline fun canIntercept(obj: navigateEventInit, value: bool): web ()
+  setJsObjectField(obj.obj, "canIntercept", value.obj)
+
+pub inline fun canIntercept(obj: navigateEventInit): web bool
+  getJsObjectField(obj.obj, "canIntercept")
+
+pub inline fun userInitiated(obj: navigateEventInit, value: bool): web ()
+  setJsObjectField(obj.obj, "userInitiated", value.obj)
+
+pub inline fun userInitiated(obj: navigateEventInit): web bool
+  getJsObjectField(obj.obj, "userInitiated")
+
+pub inline fun hashChange(obj: navigateEventInit, value: bool): web ()
+  setJsObjectField(obj.obj, "hashChange", value.obj)
+
+pub inline fun hashChange(obj: navigateEventInit): web bool
+  getJsObjectField(obj.obj, "hashChange")
+
+pub inline fun signal(obj: navigateEventInit, value: dom/abortSignal): web ()
+  setJsObjectField(obj.obj, "signal", value.obj)
+
+pub inline fun signal(obj: navigateEventInit): web dom/abortSignal
+  getJsObjectField(obj.obj, "signal")
+
+pub inline fun formData(obj: navigateEventInit, value: maybe<xhr/formData>): web ()
+  setJsObjectField(obj.obj, "formData", value.obj)
+
+pub inline fun formData(obj: navigateEventInit): web maybe<xhr/formData>
+  getJsObjectField(obj.obj, "formData")
+
+pub inline fun downloadRequest(obj: navigateEventInit, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "downloadRequest", value.obj)
+
+pub inline fun downloadRequest(obj: navigateEventInit): web maybe<string>
+  getJsObjectField(obj.obj, "downloadRequest")
+
+pub inline fun info(obj: navigateEventInit, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "info", value.obj)
+
+pub inline fun info(obj: navigateEventInit): web maybe<jsObject>
+  getJsObjectField(obj.obj, "info")
+
+pub value struct navigationInterceptOptions
+  obj: jsObject
+
+pub fun newNavigationInterceptOptions(handler: maybe<navigationInterceptHandler> = Nothing, focusReset: maybe<navigationFocusReset> = Nothing, scroll: maybe<navigationScrollBehavior> = Nothing)
+  val obj = newJsObject();
+  match handler
+    Just(it) -> setJsObjectField(obj, "handler", it)
+    Nothing -> ()
+  match focusReset
+    Just(it) -> setJsObjectField(obj, "focusReset", it)
+    Nothing -> ()
+  match scroll
+    Just(it) -> setJsObjectField(obj, "scroll", it)
+    Nothing -> ()
+
+  NavigationInterceptOptions(obj);
+
+pub inline fun handler(obj: navigationInterceptOptions, value: navigationInterceptHandler): web ()
+  setJsObjectField(obj.obj, "handler", value.obj)
+
+pub inline fun handler(obj: navigationInterceptOptions): web navigationInterceptHandler
+  getJsObjectField(obj.obj, "handler")
+
+pub inline fun focusReset(obj: navigationInterceptOptions, value: navigationFocusReset): web ()
+  setJsObjectField(obj.obj, "focusReset", value.obj)
+
+pub inline fun focusReset(obj: navigationInterceptOptions): web navigationFocusReset
+  getJsObjectField(obj.obj, "focusReset")
+
+pub inline fun scroll(obj: navigationInterceptOptions, value: navigationScrollBehavior): web ()
+  setJsObjectField(obj.obj, "scroll", value.obj)
+
+pub inline fun scroll(obj: navigationInterceptOptions): web navigationScrollBehavior
+  getJsObjectField(obj.obj, "scroll")
+
+pub value struct navigationDestination
+  obj: jsObject
+
+
+pub inline fun getState(obj: navigationDestination): web maybe<jsObject>
+  jsOperation2(obj.obj, "getState")
+
+pub inline fun url(obj: navigationDestination): web string
+  getJsObjectField(obj.obj, "url")
+
+pub inline fun key(obj: navigationDestination): web string
+  getJsObjectField(obj.obj, "key")
+
+pub inline fun id(obj: navigationDestination): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun index(obj: navigationDestination): web int
+  getJsObjectField(obj.obj, "index")
+
+pub inline fun sameDocument(obj: navigationDestination): web bool
+  getJsObjectField(obj.obj, "sameDocument")
+
+pub value struct navigationCurrentEntryChangeEvent
+  obj: jsObject
+
+pub inline fun newNavigationCurrentEntryChangeEvent(type': string, eventInitDict': navigationCurrentEntryChangeEventInit)
+  newJsObject2("NavigationCurrentEntryChangeEvent", type', eventInitDict')"
+
+pub inline fun navigationType(obj: navigationCurrentEntryChangeEvent): web maybe<navigationType>
+  getJsObjectField(obj.obj, "navigationType")
+
+pub inline fun from(obj: navigationCurrentEntryChangeEvent): web navigationHistoryEntry
+  getJsObjectField(obj.obj, "from")
+
+pub value struct navigationCurrentEntryChangeEventInit
+  obj: jsObject
+
+pub fun newNavigationCurrentEntryChangeEventInit(navigationType: maybe<maybe<navigationType>> = Nothing, from: navigationHistoryEntry)
+  val obj = newJsObject();
+  match navigationType
+    Just(it) -> setJsObjectField(obj, "navigationType", it)
+    Nothing -> ()
+  setJsObjectField(obj, "from", from);
+  NavigationCurrentEntryChangeEventInit(obj);
+
+pub inline fun navigationType(obj: navigationCurrentEntryChangeEventInit, value: maybe<navigationType>): web ()
+  setJsObjectField(obj.obj, "navigationType", value.obj)
+
+pub inline fun navigationType(obj: navigationCurrentEntryChangeEventInit): web maybe<navigationType>
+  getJsObjectField(obj.obj, "navigationType")
+
+pub inline fun from(obj: navigationCurrentEntryChangeEventInit, value: navigationHistoryEntry): web ()
+  setJsObjectField(obj.obj, "from", value.obj)
+
+pub inline fun from(obj: navigationCurrentEntryChangeEventInit): web navigationHistoryEntry
+  getJsObjectField(obj.obj, "from")
+
+pub value struct popStateEvent
+  obj: jsObject
+
+pub inline fun newPopStateEvent(type': string, eventInitDict': popStateEventInit)
+  newJsObject2("PopStateEvent", type', eventInitDict')"
+
+pub inline fun state(obj: popStateEvent): web maybe<jsObject>
+  getJsObjectField(obj.obj, "state")
+
+pub value struct popStateEventInit
+  obj: jsObject
+
+pub fun newPopStateEventInit(state: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match state
+    Just(it) -> setJsObjectField(obj, "state", it)
+    Nothing -> ()
+
+  PopStateEventInit(obj);
+
+pub inline fun state(obj: popStateEventInit, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "state", value.obj)
+
+pub inline fun state(obj: popStateEventInit): web maybe<jsObject>
+  getJsObjectField(obj.obj, "state")
+
+pub value struct hashChangeEvent
+  obj: jsObject
+
+pub inline fun newHashChangeEvent(type': string, eventInitDict': hashChangeEventInit)
+  newJsObject2("HashChangeEvent", type', eventInitDict')"
+
+pub inline fun oldURL(obj: hashChangeEvent): web string
+  getJsObjectField(obj.obj, "oldURL")
+
+pub inline fun newURL(obj: hashChangeEvent): web string
+  getJsObjectField(obj.obj, "newURL")
+
+pub value struct hashChangeEventInit
+  obj: jsObject
+
+pub fun newHashChangeEventInit(oldURL: maybe<string> = Nothing, newURL: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match oldURL
+    Just(it) -> setJsObjectField(obj, "oldURL", it)
+    Nothing -> ()
+  match newURL
+    Just(it) -> setJsObjectField(obj, "newURL", it)
+    Nothing -> ()
+
+  HashChangeEventInit(obj);
+
+pub inline fun oldURL(obj: hashChangeEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "oldURL", value.obj)
+
+pub inline fun oldURL(obj: hashChangeEventInit): web string
+  getJsObjectField(obj.obj, "oldURL")
+
+pub inline fun newURL(obj: hashChangeEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "newURL", value.obj)
+
+pub inline fun newURL(obj: hashChangeEventInit): web string
+  getJsObjectField(obj.obj, "newURL")
+
+pub value struct pageTransitionEvent
+  obj: jsObject
+
+pub inline fun newPageTransitionEvent(type': string, eventInitDict': pageTransitionEventInit)
+  newJsObject2("PageTransitionEvent", type', eventInitDict')"
+
+pub inline fun persisted(obj: pageTransitionEvent): web bool
+  getJsObjectField(obj.obj, "persisted")
+
+pub value struct pageTransitionEventInit
+  obj: jsObject
+
+pub fun newPageTransitionEventInit(persisted: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match persisted
+    Just(it) -> setJsObjectField(obj, "persisted", it)
+    Nothing -> ()
+
+  PageTransitionEventInit(obj);
+
+pub inline fun persisted(obj: pageTransitionEventInit, value: bool): web ()
+  setJsObjectField(obj.obj, "persisted", value.obj)
+
+pub inline fun persisted(obj: pageTransitionEventInit): web bool
+  getJsObjectField(obj.obj, "persisted")
+
+pub value struct beforeUnloadEvent
+  obj: jsObject
+
+
+pub inline fun returnValue(obj: beforeUnloadEvent, value: string): web ()
+  setJsObjectField(obj.obj, "returnValue", value.obj)
+
+pub inline fun returnValue(obj: beforeUnloadEvent): web string
+  getJsObjectField(obj.obj, "returnValue")
+
+pub value struct errorEvent
+  obj: jsObject
+
+pub inline fun newErrorEvent(type': string, eventInitDict': errorEventInit)
+  newJsObject2("ErrorEvent", type', eventInitDict')"
+
+pub inline fun message(obj: errorEvent): web string
+  getJsObjectField(obj.obj, "message")
+
+pub inline fun filename(obj: errorEvent): web string
+  getJsObjectField(obj.obj, "filename")
+
+pub inline fun lineno(obj: errorEvent): web int
+  getJsObjectField(obj.obj, "lineno")
+
+pub inline fun colno(obj: errorEvent): web int
+  getJsObjectField(obj.obj, "colno")
+
+pub inline fun error(obj: errorEvent): web maybe<jsObject>
+  getJsObjectField(obj.obj, "error")
+
+pub value struct errorEventInit
+  obj: jsObject
+
+pub fun newErrorEventInit(message: maybe<string> = Nothing, filename: maybe<string> = Nothing, lineno: maybe<int> = Nothing, colno: maybe<int> = Nothing, error: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match message
+    Just(it) -> setJsObjectField(obj, "message", it)
+    Nothing -> ()
+  match filename
+    Just(it) -> setJsObjectField(obj, "filename", it)
+    Nothing -> ()
+  match lineno
+    Just(it) -> setJsObjectField(obj, "lineno", it)
+    Nothing -> ()
+  match colno
+    Just(it) -> setJsObjectField(obj, "colno", it)
+    Nothing -> ()
+  match error
+    Just(it) -> setJsObjectField(obj, "error", it)
+    Nothing -> ()
+
+  ErrorEventInit(obj);
+
+pub inline fun message(obj: errorEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "message", value.obj)
+
+pub inline fun message(obj: errorEventInit): web string
+  getJsObjectField(obj.obj, "message")
+
+pub inline fun filename(obj: errorEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "filename", value.obj)
+
+pub inline fun filename(obj: errorEventInit): web string
+  getJsObjectField(obj.obj, "filename")
+
+pub inline fun lineno(obj: errorEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "lineno", value.obj)
+
+pub inline fun lineno(obj: errorEventInit): web int
+  getJsObjectField(obj.obj, "lineno")
+
+pub inline fun colno(obj: errorEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "colno", value.obj)
+
+pub inline fun colno(obj: errorEventInit): web int
+  getJsObjectField(obj.obj, "colno")
+
+pub inline fun error(obj: errorEventInit, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "error", value.obj)
+
+pub inline fun error(obj: errorEventInit): web maybe<jsObject>
+  getJsObjectField(obj.obj, "error")
+
+pub value struct promiseRejectionEvent
+  obj: jsObject
+
+pub inline fun newPromiseRejectionEvent(type': string, eventInitDict': promiseRejectionEventInit)
+  newJsObject2("PromiseRejectionEvent", type', eventInitDict')"
+
+pub inline fun promise(obj: promiseRejectionEvent): web jsPromise
+  getJsObjectField(obj.obj, "promise")
+
+pub inline fun reason(obj: promiseRejectionEvent): web maybe<jsObject>
+  getJsObjectField(obj.obj, "reason")
+
+pub value struct promiseRejectionEventInit
+  obj: jsObject
+
+pub fun newPromiseRejectionEventInit(promise: jsPromise, reason: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "promise", promise);  match reason
+    Just(it) -> setJsObjectField(obj, "reason", it)
+    Nothing -> ()
+
+  PromiseRejectionEventInit(obj);
+
+pub inline fun promise(obj: promiseRejectionEventInit, value: jsPromise): web ()
+  setJsObjectField(obj.obj, "promise", value.obj)
+
+pub inline fun promise(obj: promiseRejectionEventInit): web jsPromise
+  getJsObjectField(obj.obj, "promise")
+
+pub inline fun reason(obj: promiseRejectionEventInit, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "reason", value.obj)
+
+pub inline fun reason(obj: promiseRejectionEventInit): web maybe<jsObject>
+  getJsObjectField(obj.obj, "reason")
+
+pub value struct globalEventHandlers
+  obj: jsObject
+
+
+pub inline fun onanimationstart(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onanimationstart", value.obj)
+
+pub inline fun onanimationstart(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onanimationstart")
+
+pub inline fun onanimationiteration(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onanimationiteration", value.obj)
+
+pub inline fun onanimationiteration(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onanimationiteration")
+
+pub inline fun onanimationend(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onanimationend", value.obj)
+
+pub inline fun onanimationend(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onanimationend")
+
+pub inline fun onanimationcancel(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onanimationcancel", value.obj)
+
+pub inline fun onanimationcancel(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onanimationcancel")
+
+pub inline fun ontransitionrun(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ontransitionrun", value.obj)
+
+pub inline fun ontransitionrun(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ontransitionrun")
+
+pub inline fun ontransitionstart(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ontransitionstart", value.obj)
+
+pub inline fun ontransitionstart(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ontransitionstart")
+
+pub inline fun ontransitionend(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ontransitionend", value.obj)
+
+pub inline fun ontransitionend(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ontransitionend")
+
+pub inline fun ontransitioncancel(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ontransitioncancel", value.obj)
+
+pub inline fun ontransitioncancel(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ontransitioncancel")
+
+pub inline fun onabort(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onabort", value.obj)
+
+pub inline fun onabort(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onabort")
+
+pub inline fun onauxclick(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onauxclick", value.obj)
+
+pub inline fun onauxclick(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onauxclick")
+
+pub inline fun onbeforeinput(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onbeforeinput", value.obj)
+
+pub inline fun onbeforeinput(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onbeforeinput")
+
+pub inline fun onbeforematch(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onbeforematch", value.obj)
+
+pub inline fun onbeforematch(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onbeforematch")
+
+pub inline fun onbeforetoggle(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onbeforetoggle", value.obj)
+
+pub inline fun onbeforetoggle(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onbeforetoggle")
+
+pub inline fun onblur(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onblur", value.obj)
+
+pub inline fun onblur(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onblur")
+
+pub inline fun oncancel(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncancel", value.obj)
+
+pub inline fun oncancel(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "oncancel")
+
+pub inline fun oncanplay(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncanplay", value.obj)
+
+pub inline fun oncanplay(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "oncanplay")
+
+pub inline fun oncanplaythrough(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncanplaythrough", value.obj)
+
+pub inline fun oncanplaythrough(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "oncanplaythrough")
+
+pub inline fun onchange(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onchange", value.obj)
+
+pub inline fun onchange(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onchange")
+
+pub inline fun onclick(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onclick", value.obj)
+
+pub inline fun onclick(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onclick")
+
+pub inline fun onclose(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onclose", value.obj)
+
+pub inline fun onclose(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onclose")
+
+pub inline fun oncontextlost(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncontextlost", value.obj)
+
+pub inline fun oncontextlost(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "oncontextlost")
+
+pub inline fun oncontextmenu(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncontextmenu", value.obj)
+
+pub inline fun oncontextmenu(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "oncontextmenu")
+
+pub inline fun oncontextrestored(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncontextrestored", value.obj)
+
+pub inline fun oncontextrestored(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "oncontextrestored")
+
+pub inline fun oncopy(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncopy", value.obj)
+
+pub inline fun oncopy(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "oncopy")
+
+pub inline fun oncuechange(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncuechange", value.obj)
+
+pub inline fun oncuechange(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "oncuechange")
+
+pub inline fun oncut(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oncut", value.obj)
+
+pub inline fun oncut(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "oncut")
+
+pub inline fun ondblclick(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondblclick", value.obj)
+
+pub inline fun ondblclick(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ondblclick")
+
+pub inline fun ondrag(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondrag", value.obj)
+
+pub inline fun ondrag(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ondrag")
+
+pub inline fun ondragend(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondragend", value.obj)
+
+pub inline fun ondragend(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ondragend")
+
+pub inline fun ondragenter(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondragenter", value.obj)
+
+pub inline fun ondragenter(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ondragenter")
+
+pub inline fun ondragleave(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondragleave", value.obj)
+
+pub inline fun ondragleave(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ondragleave")
+
+pub inline fun ondragover(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondragover", value.obj)
+
+pub inline fun ondragover(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ondragover")
+
+pub inline fun ondragstart(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondragstart", value.obj)
+
+pub inline fun ondragstart(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ondragstart")
+
+pub inline fun ondrop(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondrop", value.obj)
+
+pub inline fun ondrop(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ondrop")
+
+pub inline fun ondurationchange(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ondurationchange", value.obj)
+
+pub inline fun ondurationchange(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ondurationchange")
+
+pub inline fun onemptied(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onemptied", value.obj)
+
+pub inline fun onemptied(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onemptied")
+
+pub inline fun onended(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onended", value.obj)
+
+pub inline fun onended(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onended")
+
+pub inline fun onerror(obj: globalEventHandlers, value: onErrorEventHandler): web ()
+  setJsObjectField(obj.obj, "onerror", value.obj)
+
+pub inline fun onerror(obj: globalEventHandlers): web onErrorEventHandler
+  getJsObjectField(obj.obj, "onerror")
+
+pub inline fun onfocus(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onfocus", value.obj)
+
+pub inline fun onfocus(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onfocus")
+
+pub inline fun onformdata(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onformdata", value.obj)
+
+pub inline fun onformdata(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onformdata")
+
+pub inline fun oninput(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oninput", value.obj)
+
+pub inline fun oninput(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "oninput")
+
+pub inline fun oninvalid(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "oninvalid", value.obj)
+
+pub inline fun oninvalid(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "oninvalid")
+
+pub inline fun onkeydown(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onkeydown", value.obj)
+
+pub inline fun onkeydown(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onkeydown")
+
+pub inline fun onkeypress(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onkeypress", value.obj)
+
+pub inline fun onkeypress(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onkeypress")
+
+pub inline fun onkeyup(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onkeyup", value.obj)
+
+pub inline fun onkeyup(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onkeyup")
+
+pub inline fun onload(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onload", value.obj)
+
+pub inline fun onload(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onload")
+
+pub inline fun onloadeddata(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onloadeddata", value.obj)
+
+pub inline fun onloadeddata(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onloadeddata")
+
+pub inline fun onloadedmetadata(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onloadedmetadata", value.obj)
+
+pub inline fun onloadedmetadata(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onloadedmetadata")
+
+pub inline fun onloadstart(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onloadstart", value.obj)
+
+pub inline fun onloadstart(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onloadstart")
+
+pub inline fun onmousedown(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmousedown", value.obj)
+
+pub inline fun onmousedown(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onmousedown")
+
+pub inline fun onmouseenter(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmouseenter", value.obj)
+
+pub inline fun onmouseenter(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onmouseenter")
+
+pub inline fun onmouseleave(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmouseleave", value.obj)
+
+pub inline fun onmouseleave(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onmouseleave")
+
+pub inline fun onmousemove(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmousemove", value.obj)
+
+pub inline fun onmousemove(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onmousemove")
+
+pub inline fun onmouseout(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmouseout", value.obj)
+
+pub inline fun onmouseout(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onmouseout")
+
+pub inline fun onmouseover(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmouseover", value.obj)
+
+pub inline fun onmouseover(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onmouseover")
+
+pub inline fun onmouseup(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmouseup", value.obj)
+
+pub inline fun onmouseup(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onmouseup")
+
+pub inline fun onpaste(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpaste", value.obj)
+
+pub inline fun onpaste(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpaste")
+
+pub inline fun onpause(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpause", value.obj)
+
+pub inline fun onpause(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpause")
+
+pub inline fun onplay(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onplay", value.obj)
+
+pub inline fun onplay(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onplay")
+
+pub inline fun onplaying(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onplaying", value.obj)
+
+pub inline fun onplaying(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onplaying")
+
+pub inline fun onprogress(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onprogress", value.obj)
+
+pub inline fun onprogress(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onprogress")
+
+pub inline fun onratechange(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onratechange", value.obj)
+
+pub inline fun onratechange(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onratechange")
+
+pub inline fun onreset(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onreset", value.obj)
+
+pub inline fun onreset(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onreset")
+
+pub inline fun onresize(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onresize", value.obj)
+
+pub inline fun onresize(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onresize")
+
+pub inline fun onscroll(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onscroll", value.obj)
+
+pub inline fun onscroll(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onscroll")
+
+pub inline fun onscrollend(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onscrollend", value.obj)
+
+pub inline fun onscrollend(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onscrollend")
+
+pub inline fun onsecuritypolicyviolation(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onsecuritypolicyviolation", value.obj)
+
+pub inline fun onsecuritypolicyviolation(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onsecuritypolicyviolation")
+
+pub inline fun onseeked(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onseeked", value.obj)
+
+pub inline fun onseeked(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onseeked")
+
+pub inline fun onseeking(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onseeking", value.obj)
+
+pub inline fun onseeking(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onseeking")
+
+pub inline fun onselect(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onselect", value.obj)
+
+pub inline fun onselect(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onselect")
+
+pub inline fun onslotchange(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onslotchange", value.obj)
+
+pub inline fun onslotchange(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onslotchange")
+
+pub inline fun onstalled(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onstalled", value.obj)
+
+pub inline fun onstalled(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onstalled")
+
+pub inline fun onsubmit(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onsubmit", value.obj)
+
+pub inline fun onsubmit(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onsubmit")
+
+pub inline fun onsuspend(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onsuspend", value.obj)
+
+pub inline fun onsuspend(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onsuspend")
+
+pub inline fun ontimeupdate(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ontimeupdate", value.obj)
+
+pub inline fun ontimeupdate(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ontimeupdate")
+
+pub inline fun ontoggle(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ontoggle", value.obj)
+
+pub inline fun ontoggle(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ontoggle")
+
+pub inline fun onvolumechange(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onvolumechange", value.obj)
+
+pub inline fun onvolumechange(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onvolumechange")
+
+pub inline fun onwaiting(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onwaiting", value.obj)
+
+pub inline fun onwaiting(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onwaiting")
+
+pub inline fun onwebkitanimationend(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onwebkitanimationend", value.obj)
+
+pub inline fun onwebkitanimationend(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onwebkitanimationend")
+
+pub inline fun onwebkitanimationiteration(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onwebkitanimationiteration", value.obj)
+
+pub inline fun onwebkitanimationiteration(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onwebkitanimationiteration")
+
+pub inline fun onwebkitanimationstart(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onwebkitanimationstart", value.obj)
+
+pub inline fun onwebkitanimationstart(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onwebkitanimationstart")
+
+pub inline fun onwebkittransitionend(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onwebkittransitionend", value.obj)
+
+pub inline fun onwebkittransitionend(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onwebkittransitionend")
+
+pub inline fun onwheel(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onwheel", value.obj)
+
+pub inline fun onwheel(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onwheel")
+
+pub inline fun onpointerover(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpointerover", value.obj)
+
+pub inline fun onpointerover(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpointerover")
+
+pub inline fun onpointerenter(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpointerenter", value.obj)
+
+pub inline fun onpointerenter(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpointerenter")
+
+pub inline fun onpointerdown(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpointerdown", value.obj)
+
+pub inline fun onpointerdown(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpointerdown")
+
+pub inline fun onpointermove(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpointermove", value.obj)
+
+pub inline fun onpointermove(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpointermove")
+
+pub inline fun onpointerrawupdate(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpointerrawupdate", value.obj)
+
+pub inline fun onpointerrawupdate(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpointerrawupdate")
+
+pub inline fun onpointerup(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpointerup", value.obj)
+
+pub inline fun onpointerup(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpointerup")
+
+pub inline fun onpointercancel(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpointercancel", value.obj)
+
+pub inline fun onpointercancel(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpointercancel")
+
+pub inline fun onpointerout(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpointerout", value.obj)
+
+pub inline fun onpointerout(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpointerout")
+
+pub inline fun onpointerleave(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpointerleave", value.obj)
+
+pub inline fun onpointerleave(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpointerleave")
+
+pub inline fun ongotpointercapture(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ongotpointercapture", value.obj)
+
+pub inline fun ongotpointercapture(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ongotpointercapture")
+
+pub inline fun onlostpointercapture(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onlostpointercapture", value.obj)
+
+pub inline fun onlostpointercapture(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onlostpointercapture")
+
+pub inline fun onselectstart(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onselectstart", value.obj)
+
+pub inline fun onselectstart(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onselectstart")
+
+pub inline fun onselectionchange(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onselectionchange", value.obj)
+
+pub inline fun onselectionchange(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onselectionchange")
+
+pub inline fun ontouchstart(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ontouchstart", value.obj)
+
+pub inline fun ontouchstart(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ontouchstart")
+
+pub inline fun ontouchend(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ontouchend", value.obj)
+
+pub inline fun ontouchend(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ontouchend")
+
+pub inline fun ontouchmove(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ontouchmove", value.obj)
+
+pub inline fun ontouchmove(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ontouchmove")
+
+pub inline fun ontouchcancel(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ontouchcancel", value.obj)
+
+pub inline fun ontouchcancel(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ontouchcancel")
+
+pub inline fun onbeforexrselect(obj: globalEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onbeforexrselect", value.obj)
+
+pub inline fun onbeforexrselect(obj: globalEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onbeforexrselect")
+
+pub value struct windowEventHandlers
+  obj: jsObject
+
+
+pub inline fun ongamepadconnected(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ongamepadconnected", value.obj)
+
+pub inline fun ongamepadconnected(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ongamepadconnected")
+
+pub inline fun ongamepaddisconnected(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ongamepaddisconnected", value.obj)
+
+pub inline fun ongamepaddisconnected(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ongamepaddisconnected")
+
+pub inline fun onafterprint(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onafterprint", value.obj)
+
+pub inline fun onafterprint(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onafterprint")
+
+pub inline fun onbeforeprint(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onbeforeprint", value.obj)
+
+pub inline fun onbeforeprint(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onbeforeprint")
+
+pub inline fun onbeforeunload(obj: windowEventHandlers, value: onBeforeUnloadEventHandler): web ()
+  setJsObjectField(obj.obj, "onbeforeunload", value.obj)
+
+pub inline fun onbeforeunload(obj: windowEventHandlers): web onBeforeUnloadEventHandler
+  getJsObjectField(obj.obj, "onbeforeunload")
+
+pub inline fun onhashchange(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onhashchange", value.obj)
+
+pub inline fun onhashchange(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onhashchange")
+
+pub inline fun onlanguagechange(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onlanguagechange", value.obj)
+
+pub inline fun onlanguagechange(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onlanguagechange")
+
+pub inline fun onmessage(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessage", value.obj)
+
+pub inline fun onmessage(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onmessage")
+
+pub inline fun onmessageerror(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessageerror", value.obj)
+
+pub inline fun onmessageerror(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onmessageerror")
+
+pub inline fun onoffline(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onoffline", value.obj)
+
+pub inline fun onoffline(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onoffline")
+
+pub inline fun ononline(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ononline", value.obj)
+
+pub inline fun ononline(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "ononline")
+
+pub inline fun onpagehide(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpagehide", value.obj)
+
+pub inline fun onpagehide(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpagehide")
+
+pub inline fun onpageshow(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpageshow", value.obj)
+
+pub inline fun onpageshow(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpageshow")
+
+pub inline fun onpopstate(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onpopstate", value.obj)
+
+pub inline fun onpopstate(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onpopstate")
+
+pub inline fun onrejectionhandled(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onrejectionhandled", value.obj)
+
+pub inline fun onrejectionhandled(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onrejectionhandled")
+
+pub inline fun onstorage(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onstorage", value.obj)
+
+pub inline fun onstorage(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onstorage")
+
+pub inline fun onunhandledrejection(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onunhandledrejection", value.obj)
+
+pub inline fun onunhandledrejection(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onunhandledrejection")
+
+pub inline fun onunload(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onunload", value.obj)
+
+pub inline fun onunload(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onunload")
+
+pub inline fun onportalactivate(obj: windowEventHandlers, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onportalactivate", value.obj)
+
+pub inline fun onportalactivate(obj: windowEventHandlers): web eventHandler
+  getJsObjectField(obj.obj, "onportalactivate")
+
+pub value struct windowOrWorkerGlobalScope
+  obj: jsObject
+
+
+pub inline fun fetch(obj: windowOrWorkerGlobalScope, input': fetch/requestInfo, init': fetch/requestInit): web jsPromise
+  jsOperation4(obj.obj, "fetch", input'.obj, init'.obj)
+
+pub inline fun reportError(obj: windowOrWorkerGlobalScope, e': maybe<jsObject>): web ()
+  jsOperation3(obj.obj, "reportError", e'.obj)
+
+pub inline fun btoa(obj: windowOrWorkerGlobalScope, data': string): web string
+  jsOperation3(obj.obj, "btoa", data'.obj)
+
+pub inline fun atob(obj: windowOrWorkerGlobalScope, data': string): web string
+  jsOperation3(obj.obj, "atob", data'.obj)
+
+pub inline fun setTimeout(obj: windowOrWorkerGlobalScope, handler': timerHandler, arguments': maybe<jsObject>, timeout': int): web int
+  jsOperation5(obj.obj, "setTimeout", handler'.obj, arguments'.obj, timeout'.obj)
+
+pub inline fun clearTimeout(obj: windowOrWorkerGlobalScope, id': int): web ()
+  jsOperation3(obj.obj, "clearTimeout", id'.obj)
+
+pub inline fun setInterval(obj: windowOrWorkerGlobalScope, handler': timerHandler, arguments': maybe<jsObject>, timeout': int): web int
+  jsOperation5(obj.obj, "setInterval", handler'.obj, arguments'.obj, timeout'.obj)
+
+pub inline fun clearInterval(obj: windowOrWorkerGlobalScope, id': int): web ()
+  jsOperation3(obj.obj, "clearInterval", id'.obj)
+
+pub inline fun queueMicrotask(obj: windowOrWorkerGlobalScope, callback': webidl/voidFunction): web ()
+  jsOperation3(obj.obj, "queueMicrotask", callback'.obj)
+
+pub inline fun createImageBitmap(obj: windowOrWorkerGlobalScope, image': imageBitmapSource, optionsOrSx': maybe<jsObject>, sy': int, sw': int, sh': int, options': imageBitmapOptions): web jsPromise
+  jsOperation8(obj.obj, "createImageBitmap", image'.obj, optionsOrSx'.obj, sy'.obj, sw'.obj, sh'.obj, options'.obj)
+
+pub inline fun structuredClone(obj: windowOrWorkerGlobalScope, value': maybe<jsObject>, options': structuredSerializeOptions): web maybe<jsObject>
+  jsOperation4(obj.obj, "structuredClone", value'.obj, options'.obj)
+
+pub inline fun indexedDB(obj: windowOrWorkerGlobalScope): web indexeddb/idbFactory
+  getJsObjectField(obj.obj, "indexedDB")
+
+pub inline fun crypto(obj: windowOrWorkerGlobalScope): web webcryptoapi/crypto
+  getJsObjectField(obj.obj, "crypto")
+
+pub inline fun performance(obj: windowOrWorkerGlobalScope): web hr_time/performance
+  getJsObjectField(obj.obj, "performance")
+
+pub inline fun origin(obj: windowOrWorkerGlobalScope): web string
+  getJsObjectField(obj.obj, "origin")
+
+pub inline fun isSecureContext(obj: windowOrWorkerGlobalScope): web bool
+  getJsObjectField(obj.obj, "isSecureContext")
+
+pub inline fun crossOriginIsolated(obj: windowOrWorkerGlobalScope): web bool
+  getJsObjectField(obj.obj, "crossOriginIsolated")
+
+pub inline fun scheduler(obj: windowOrWorkerGlobalScope): web scheduling_apis/scheduler
+  getJsObjectField(obj.obj, "scheduler")
+
+pub inline fun caches(obj: windowOrWorkerGlobalScope): web service_workers/cacheStorage
+  getJsObjectField(obj.obj, "caches")
+
+pub inline fun trustedTypes(obj: windowOrWorkerGlobalScope): web trusted_types/trustedTypePolicyFactory
+  getJsObjectField(obj.obj, "trustedTypes")
+
+pub value struct domParser
+  obj: jsObject
+
+pub inline fun newDomParser()
+  newJsObject0("DomParser")"
+
+pub inline fun parseFromString(obj: domParser, string': string, type': domParserSupportedType): web dom/document
+  jsOperation4(obj.obj, "parseFromString", string'.obj, type'.obj)
+
+pub value struct navigator
+  obj: jsObject
+
+
+pub inline fun getAutoplayPolicy(obj: navigator, contextOrElementOrType': maybe<jsObject>): web autoplay_detection/autoplayPolicy
+  jsOperation3(obj.obj, "getAutoplayPolicy", contextOrElementOrType'.obj)
+
+pub inline fun getBattery(obj: navigator): web jsPromise
+  jsOperation2(obj.obj, "getBattery")
+
+pub inline fun sendBeacon(obj: navigator, url': string, data': maybe<fetch/bodyInit> =  Nothing): web bool
+  jsOperation4(obj.obj, "sendBeacon", url'.obj, data'.obj)
+
+pub inline fun requestMediaKeySystemAccess(obj: navigator, keySystem': string, supportedConfigurations': jsArray): web jsPromise
+  jsOperation4(obj.obj, "requestMediaKeySystemAccess", keySystem'.obj, supportedConfigurations'.obj)
+
+pub inline fun getGamepads(obj: navigator): web jsArray
+  jsOperation2(obj.obj, "getGamepads")
+
+pub inline fun getInstalledRelatedApps(obj: navigator): web jsPromise
+  jsOperation2(obj.obj, "getInstalledRelatedApps")
+
+pub inline fun getUserMedia(obj: navigator, constraints': mediacapture_streams/mediaStreamConstraints, successCallback': mediacapture_streams/navigatorUserMediaSuccessCallback, errorCallback': mediacapture_streams/navigatorUserMediaErrorCallback): web ()
+  jsOperation5(obj.obj, "getUserMedia", constraints'.obj, successCallback'.obj, errorCallback'.obj)
+
+pub inline fun joinAdInterestGroup(obj: navigator, group': turtledove/auctionAdInterestGroup): web jsPromise
+  jsOperation3(obj.obj, "joinAdInterestGroup", group'.obj)
+
+pub inline fun leaveAdInterestGroup(obj: navigator, group': turtledove/auctionAdInterestGroupKey): web jsPromise
+  jsOperation3(obj.obj, "leaveAdInterestGroup", group'.obj)
+
+pub inline fun runAdAuction(obj: navigator, config': turtledove/auctionAdConfig): web jsPromise
+  jsOperation3(obj.obj, "runAdAuction", config'.obj)
+
+pub inline fun updateAdInterestGroups(obj: navigator): web ()
+  jsOperation2(obj.obj, "updateAdInterestGroups")
+
+pub inline fun vibrate(obj: navigator, pattern': vibration/vibratePattern): web bool
+  jsOperation3(obj.obj, "vibrate", pattern'.obj)
+
+pub inline fun share(obj: navigator, data': web_share/shareData): web jsPromise
+  jsOperation3(obj.obj, "share", data'.obj)
+
+pub inline fun canShare(obj: navigator, data': web_share/shareData): web bool
+  jsOperation3(obj.obj, "canShare", data'.obj)
+
+pub inline fun requestMIDIAccess(obj: navigator, options': webmidi/midiOptions): web jsPromise
+  jsOperation3(obj.obj, "requestMIDIAccess", options'.obj)
+
+pub inline fun clipboard(obj: navigator): web clipboard_apis/clipboard
+  getJsObjectField(obj.obj, "clipboard")
+
+pub inline fun contacts(obj: navigator): web contact_picker/contactsManager
+  getJsObjectField(obj.obj, "contacts")
+
+pub inline fun credentials(obj: navigator): web credential_management/credentialsContainer
+  getJsObjectField(obj.obj, "credentials")
+
+pub inline fun devicePosture(obj: navigator): web device_posture/devicePosture
+  getJsObjectField(obj.obj, "devicePosture")
+
+pub inline fun geolocation(obj: navigator): web geolocation/geolocation
+  getJsObjectField(obj.obj, "geolocation")
+
+pub inline fun userActivation(obj: navigator): web userActivation
+  getJsObjectField(obj.obj, "userActivation")
+
+pub inline fun ink(obj: navigator): web ink_enhancement/ink
+  getJsObjectField(obj.obj, "ink")
+
+pub inline fun scheduling(obj: navigator): web is_input_pending/scheduling
+  getJsObjectField(obj.obj, "scheduling")
+
+pub inline fun keyboard(obj: navigator): web keyboard_lock/keyboard
+  getJsObjectField(obj.obj, "keyboard")
+
+pub inline fun mediaCapabilities(obj: navigator): web media_capabilities/mediaCapabilities
+  getJsObjectField(obj.obj, "mediaCapabilities")
+
+pub inline fun mediaDevices(obj: navigator): web mediacapture_streams/mediaDevices
+  getJsObjectField(obj.obj, "mediaDevices")
+
+pub inline fun mediaSession(obj: navigator): web mediasession/mediaSession
+  getJsObjectField(obj.obj, "mediaSession")
+
+pub inline fun permissions(obj: navigator): web permissions/permissions
+  getJsObjectField(obj.obj, "permissions")
+
+pub inline fun maxTouchPoints(obj: navigator): web int
+  getJsObjectField(obj.obj, "maxTouchPoints")
+
+pub inline fun presentation(obj: navigator): web presentation_api/presentation
+  getJsObjectField(obj.obj, "presentation")
+
+pub inline fun wakeLock(obj: navigator): web screen_wake_lock/wakeLock
+  getJsObjectField(obj.obj, "wakeLock")
+
+pub inline fun serial(obj: navigator): web serial/serial
+  getJsObjectField(obj.obj, "serial")
+
+pub inline fun serviceWorker(obj: navigator): web service_workers/serviceWorkerContainer
+  getJsObjectField(obj.obj, "serviceWorker")
+
+pub inline fun virtualKeyboard(obj: navigator): web virtual_keyboard/virtualKeyboard
+  getJsObjectField(obj.obj, "virtualKeyboard")
+
+pub inline fun bluetooth(obj: navigator): web web_bluetooth/bluetooth
+  getJsObjectField(obj.obj, "bluetooth")
+
+pub inline fun hid(obj: navigator): web webhid/hiD
+  getJsObjectField(obj.obj, "hid")
+
+pub inline fun usb(obj: navigator): web webusb/usB
+  getJsObjectField(obj.obj, "usb")
+
+pub inline fun xr(obj: navigator): web webxr/xrSystem
+  getJsObjectField(obj.obj, "xr")
+
+pub inline fun windowControlsOverlay(obj: navigator): web window_controls_overlay/windowControlsOverlay
+  getJsObjectField(obj.obj, "windowControlsOverlay")
+
+pub value struct navigatorID
+  obj: jsObject
+
+
+pub inline fun taintEnabled(obj: navigatorID): web bool
+  jsOperation2(obj.obj, "taintEnabled")
+
+pub inline fun appCodeName(obj: navigatorID): web string
+  getJsObjectField(obj.obj, "appCodeName")
+
+pub inline fun appName(obj: navigatorID): web string
+  getJsObjectField(obj.obj, "appName")
+
+pub inline fun appVersion(obj: navigatorID): web string
+  getJsObjectField(obj.obj, "appVersion")
+
+pub inline fun platform(obj: navigatorID): web string
+  getJsObjectField(obj.obj, "platform")
+
+pub inline fun product(obj: navigatorID): web string
+  getJsObjectField(obj.obj, "product")
+
+pub inline fun productSub(obj: navigatorID): web string
+  getJsObjectField(obj.obj, "productSub")
+
+pub inline fun userAgent(obj: navigatorID): web string
+  getJsObjectField(obj.obj, "userAgent")
+
+pub inline fun vendor(obj: navigatorID): web string
+  getJsObjectField(obj.obj, "vendor")
+
+pub inline fun vendorSub(obj: navigatorID): web string
+  getJsObjectField(obj.obj, "vendorSub")
+
+pub inline fun oscpu(obj: navigatorID): web string
+  getJsObjectField(obj.obj, "oscpu")
+
+pub value struct navigatorLanguage
+  obj: jsObject
+
+
+pub inline fun language(obj: navigatorLanguage): web string
+  getJsObjectField(obj.obj, "language")
+
+pub inline fun languages(obj: navigatorLanguage): web jsArray
+  getJsObjectField(obj.obj, "languages")
+
+pub value struct navigatorOnLine
+  obj: jsObject
+
+
+pub inline fun onLine(obj: navigatorOnLine): web bool
+  getJsObjectField(obj.obj, "onLine")
+
+pub value struct navigatorContentUtils
+  obj: jsObject
+
+
+pub inline fun registerProtocolHandler(obj: navigatorContentUtils, scheme': string, url': string): web ()
+  jsOperation4(obj.obj, "registerProtocolHandler", scheme'.obj, url'.obj)
+
+pub inline fun unregisterProtocolHandler(obj: navigatorContentUtils, scheme': string, url': string): web ()
+  jsOperation4(obj.obj, "unregisterProtocolHandler", scheme'.obj, url'.obj)
+
+pub value struct navigatorCookies
+  obj: jsObject
+
+
+pub inline fun cookieEnabled(obj: navigatorCookies): web bool
+  getJsObjectField(obj.obj, "cookieEnabled")
+
+pub value struct navigatorPlugins
+  obj: jsObject
+
+
+pub inline fun javaEnabled(obj: navigatorPlugins): web bool
+  jsOperation2(obj.obj, "javaEnabled")
+
+pub inline fun plugins(obj: navigatorPlugins): web pluginArray
+  getJsObjectField(obj.obj, "plugins")
+
+pub inline fun mimeTypes(obj: navigatorPlugins): web mimeTypeArray
+  getJsObjectField(obj.obj, "mimeTypes")
+
+pub inline fun pdfViewerEnabled(obj: navigatorPlugins): web bool
+  getJsObjectField(obj.obj, "pdfViewerEnabled")
+
+pub value struct pluginArray
+  obj: jsObject
+
+
+pub inline fun refresh(obj: pluginArray): web ()
+  jsOperation2(obj.obj, "refresh")
+
+pub inline fun item(obj: pluginArray, index': int): web maybe<plugin>
+  jsOperation3(obj.obj, "item", index'.obj)
+
+pub inline fun namedItem(obj: pluginArray, name': string): web maybe<plugin>
+  jsOperation3(obj.obj, "namedItem", name'.obj)
+
+pub inline fun length(obj: pluginArray): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct mimeTypeArray
+  obj: jsObject
+
+
+pub inline fun item(obj: mimeTypeArray, index': int): web maybe<mimeType>
+  jsOperation3(obj.obj, "item", index'.obj)
+
+pub inline fun namedItem(obj: mimeTypeArray, name': string): web maybe<mimeType>
+  jsOperation3(obj.obj, "namedItem", name'.obj)
+
+pub inline fun length(obj: mimeTypeArray): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct plugin
+  obj: jsObject
+
+
+pub inline fun item(obj: plugin, index': int): web maybe<mimeType>
+  jsOperation3(obj.obj, "item", index'.obj)
+
+pub inline fun namedItem(obj: plugin, name': string): web maybe<mimeType>
+  jsOperation3(obj.obj, "namedItem", name'.obj)
+
+pub inline fun name(obj: plugin): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun description(obj: plugin): web string
+  getJsObjectField(obj.obj, "description")
+
+pub inline fun filename(obj: plugin): web string
+  getJsObjectField(obj.obj, "filename")
+
+pub inline fun length(obj: plugin): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct mimeType
+  obj: jsObject
+
+
+pub inline fun type(obj: mimeType): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun description(obj: mimeType): web string
+  getJsObjectField(obj.obj, "description")
+
+pub inline fun suffixes(obj: mimeType): web string
+  getJsObjectField(obj.obj, "suffixes")
+
+pub inline fun enabledPlugin(obj: mimeType): web plugin
+  getJsObjectField(obj.obj, "enabledPlugin")
+
+pub value struct imageBitmap
+  obj: jsObject
+
+
+pub inline fun close(obj: imageBitmap): web ()
+  jsOperation2(obj.obj, "close")
+
+pub inline fun width(obj: imageBitmap): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: imageBitmap): web int
+  getJsObjectField(obj.obj, "height")
+
+pub value struct imageBitmapOptions
+  obj: jsObject
+
+pub fun newImageBitmapOptions(imageOrientation: maybe<imageOrientation> = Nothing, premultiplyAlpha: maybe<premultiplyAlpha> = Nothing, colorSpaceConversion: maybe<colorSpaceConversion> = Nothing, resizeWidth: maybe<int> = Nothing, resizeHeight: maybe<int> = Nothing, resizeQuality: maybe<resizeQuality> = Nothing)
+  val obj = newJsObject();
+  match imageOrientation
+    Just(it) -> setJsObjectField(obj, "imageOrientation", it)
+    Nothing -> ()
+  match premultiplyAlpha
+    Just(it) -> setJsObjectField(obj, "premultiplyAlpha", it)
+    Nothing -> ()
+  match colorSpaceConversion
+    Just(it) -> setJsObjectField(obj, "colorSpaceConversion", it)
+    Nothing -> ()
+  match resizeWidth
+    Just(it) -> setJsObjectField(obj, "resizeWidth", it)
+    Nothing -> ()
+  match resizeHeight
+    Just(it) -> setJsObjectField(obj, "resizeHeight", it)
+    Nothing -> ()
+  match resizeQuality
+    Just(it) -> setJsObjectField(obj, "resizeQuality", it)
+    Nothing -> ()
+
+  ImageBitmapOptions(obj);
+
+pub inline fun imageOrientation(obj: imageBitmapOptions, value: imageOrientation): web ()
+  setJsObjectField(obj.obj, "imageOrientation", value.obj)
+
+pub inline fun imageOrientation(obj: imageBitmapOptions): web imageOrientation
+  getJsObjectField(obj.obj, "imageOrientation")
+
+pub inline fun premultiplyAlpha(obj: imageBitmapOptions, value: premultiplyAlpha): web ()
+  setJsObjectField(obj.obj, "premultiplyAlpha", value.obj)
+
+pub inline fun premultiplyAlpha(obj: imageBitmapOptions): web premultiplyAlpha
+  getJsObjectField(obj.obj, "premultiplyAlpha")
+
+pub inline fun colorSpaceConversion(obj: imageBitmapOptions, value: colorSpaceConversion): web ()
+  setJsObjectField(obj.obj, "colorSpaceConversion", value.obj)
+
+pub inline fun colorSpaceConversion(obj: imageBitmapOptions): web colorSpaceConversion
+  getJsObjectField(obj.obj, "colorSpaceConversion")
+
+pub inline fun resizeWidth(obj: imageBitmapOptions, value: int): web ()
+  setJsObjectField(obj.obj, "resizeWidth", value.obj)
+
+pub inline fun resizeWidth(obj: imageBitmapOptions): web int
+  getJsObjectField(obj.obj, "resizeWidth")
+
+pub inline fun resizeHeight(obj: imageBitmapOptions, value: int): web ()
+  setJsObjectField(obj.obj, "resizeHeight", value.obj)
+
+pub inline fun resizeHeight(obj: imageBitmapOptions): web int
+  getJsObjectField(obj.obj, "resizeHeight")
+
+pub inline fun resizeQuality(obj: imageBitmapOptions, value: resizeQuality): web ()
+  setJsObjectField(obj.obj, "resizeQuality", value.obj)
+
+pub inline fun resizeQuality(obj: imageBitmapOptions): web resizeQuality
+  getJsObjectField(obj.obj, "resizeQuality")
+
+pub value struct animationFrameProvider
+  obj: jsObject
+
+
+pub inline fun requestAnimationFrame(obj: animationFrameProvider, callback': frameRequestCallback): web int
+  jsOperation3(obj.obj, "requestAnimationFrame", callback'.obj)
+
+pub inline fun cancelAnimationFrame(obj: animationFrameProvider, handle': int): web ()
+  jsOperation3(obj.obj, "cancelAnimationFrame", handle'.obj)
+
+pub value struct messageEvent
+  obj: jsObject
+
+pub inline fun newMessageEvent(type': string, eventInitDict': messageEventInit)
+  newJsObject2("MessageEvent", type', eventInitDict')"
+
+pub inline fun initMessageEvent(obj: messageEvent, type': string, bubbles': bool, cancelable': bool, data': maybe<jsObject>, origin': string, lastEventId': string, source': maybe<messageEventSource> =  Nothing, ports': jsArray): web ()
+  jsOperation10(obj.obj, "initMessageEvent", type'.obj, bubbles'.obj, cancelable'.obj, data'.obj, origin'.obj, lastEventId'.obj, source'.obj, ports'.obj)
+
+pub inline fun data(obj: messageEvent): web maybe<jsObject>
+  getJsObjectField(obj.obj, "data")
+
+pub inline fun origin(obj: messageEvent): web string
+  getJsObjectField(obj.obj, "origin")
+
+pub inline fun lastEventId(obj: messageEvent): web string
+  getJsObjectField(obj.obj, "lastEventId")
+
+pub inline fun source(obj: messageEvent): web maybe<messageEventSource>
+  getJsObjectField(obj.obj, "source")
+
+pub inline fun ports(obj: messageEvent): web jsArray
+  getJsObjectField(obj.obj, "ports")
+
+pub value struct messageEventInit
+  obj: jsObject
+
+pub fun newMessageEventInit(data: maybe<maybe<jsObject>> = Nothing, origin: maybe<string> = Nothing, lastEventId: maybe<string> = Nothing, source: maybe<maybe<messageEventSource>> = Nothing, ports: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match data
+    Just(it) -> setJsObjectField(obj, "data", it)
+    Nothing -> ()
+  match origin
+    Just(it) -> setJsObjectField(obj, "origin", it)
+    Nothing -> ()
+  match lastEventId
+    Just(it) -> setJsObjectField(obj, "lastEventId", it)
+    Nothing -> ()
+  match source
+    Just(it) -> setJsObjectField(obj, "source", it)
+    Nothing -> ()
+  match ports
+    Just(it) -> setJsObjectField(obj, "ports", it)
+    Nothing -> ()
+
+  MessageEventInit(obj);
+
+pub inline fun data(obj: messageEventInit, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "data", value.obj)
+
+pub inline fun data(obj: messageEventInit): web maybe<jsObject>
+  getJsObjectField(obj.obj, "data")
+
+pub inline fun origin(obj: messageEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "origin", value.obj)
+
+pub inline fun origin(obj: messageEventInit): web string
+  getJsObjectField(obj.obj, "origin")
+
+pub inline fun lastEventId(obj: messageEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "lastEventId", value.obj)
+
+pub inline fun lastEventId(obj: messageEventInit): web string
+  getJsObjectField(obj.obj, "lastEventId")
+
+pub inline fun source(obj: messageEventInit, value: maybe<messageEventSource>): web ()
+  setJsObjectField(obj.obj, "source", value.obj)
+
+pub inline fun source(obj: messageEventInit): web maybe<messageEventSource>
+  getJsObjectField(obj.obj, "source")
+
+pub inline fun ports(obj: messageEventInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "ports", value.obj)
+
+pub inline fun ports(obj: messageEventInit): web jsArray
+  getJsObjectField(obj.obj, "ports")
+
+pub value struct eventSource
+  obj: jsObject
+
+pub inline fun newEventSource(url': string, eventSourceInitDict': eventSourceInit)
+  newJsObject2("EventSource", url', eventSourceInitDict')"
+pub inline fun connectinG(): int
+  getConstant("CONNECTING")
+
+pub inline fun opeN(): int
+  getConstant("OPEN")
+
+pub inline fun closeD(): int
+  getConstant("CLOSED")
+
+pub inline fun close(obj: eventSource): web ()
+  jsOperation2(obj.obj, "close")
+
+pub inline fun url(obj: eventSource): web string
+  getJsObjectField(obj.obj, "url")
+
+pub inline fun withCredentials(obj: eventSource): web bool
+  getJsObjectField(obj.obj, "withCredentials")
+
+pub inline fun readyState(obj: eventSource): web int
+  getJsObjectField(obj.obj, "readyState")
+
+pub inline fun onopen(obj: eventSource, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onopen", value.obj)
+
+pub inline fun onopen(obj: eventSource): web eventHandler
+  getJsObjectField(obj.obj, "onopen")
+
+pub inline fun onmessage(obj: eventSource, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessage", value.obj)
+
+pub inline fun onmessage(obj: eventSource): web eventHandler
+  getJsObjectField(obj.obj, "onmessage")
+
+pub inline fun onerror(obj: eventSource, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onerror", value.obj)
+
+pub inline fun onerror(obj: eventSource): web eventHandler
+  getJsObjectField(obj.obj, "onerror")
+
+pub value struct eventSourceInit
+  obj: jsObject
+
+pub fun newEventSourceInit(withCredentials: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match withCredentials
+    Just(it) -> setJsObjectField(obj, "withCredentials", it)
+    Nothing -> ()
+
+  EventSourceInit(obj);
+
+pub inline fun withCredentials(obj: eventSourceInit, value: bool): web ()
+  setJsObjectField(obj.obj, "withCredentials", value.obj)
+
+pub inline fun withCredentials(obj: eventSourceInit): web bool
+  getJsObjectField(obj.obj, "withCredentials")
+
+pub value struct messageChannel
+  obj: jsObject
+
+pub inline fun newMessageChannel()
+  newJsObject0("MessageChannel")"
+
+pub inline fun port1(obj: messageChannel): web messagePort
+  getJsObjectField(obj.obj, "port1")
+
+pub inline fun port2(obj: messageChannel): web messagePort
+  getJsObjectField(obj.obj, "port2")
+
+pub value struct messagePort
+  obj: jsObject
+
+
+pub inline fun postMessage(obj: messagePort, message': maybe<jsObject>, optionsOrTransfer': maybe<jsObject>): web ()
+  jsOperation4(obj.obj, "postMessage", message'.obj, optionsOrTransfer'.obj)
+
+pub inline fun start(obj: messagePort): web ()
+  jsOperation2(obj.obj, "start")
+
+pub inline fun close(obj: messagePort): web ()
+  jsOperation2(obj.obj, "close")
+
+pub inline fun onmessage(obj: messagePort, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessage", value.obj)
+
+pub inline fun onmessage(obj: messagePort): web eventHandler
+  getJsObjectField(obj.obj, "onmessage")
+
+pub inline fun onmessageerror(obj: messagePort, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessageerror", value.obj)
+
+pub inline fun onmessageerror(obj: messagePort): web eventHandler
+  getJsObjectField(obj.obj, "onmessageerror")
+
+pub value struct structuredSerializeOptions
+  obj: jsObject
+
+pub fun newStructuredSerializeOptions(transfer: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match transfer
+    Just(it) -> setJsObjectField(obj, "transfer", it)
+    Nothing -> ()
+
+  StructuredSerializeOptions(obj);
+
+pub inline fun transfer(obj: structuredSerializeOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "transfer", value.obj)
+
+pub inline fun transfer(obj: structuredSerializeOptions): web jsArray
+  getJsObjectField(obj.obj, "transfer")
+
+pub value struct broadcastChannel
+  obj: jsObject
+
+pub inline fun newBroadcastChannel(name': string)
+  newJsObject1("BroadcastChannel", name')"
+
+pub inline fun postMessage(obj: broadcastChannel, message': maybe<jsObject>): web ()
+  jsOperation3(obj.obj, "postMessage", message'.obj)
+
+pub inline fun close(obj: broadcastChannel): web ()
+  jsOperation2(obj.obj, "close")
+
+pub inline fun name(obj: broadcastChannel): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun onmessage(obj: broadcastChannel, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessage", value.obj)
+
+pub inline fun onmessage(obj: broadcastChannel): web eventHandler
+  getJsObjectField(obj.obj, "onmessage")
+
+pub inline fun onmessageerror(obj: broadcastChannel, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessageerror", value.obj)
+
+pub inline fun onmessageerror(obj: broadcastChannel): web eventHandler
+  getJsObjectField(obj.obj, "onmessageerror")
+
+pub value struct workerGlobalScope
+  obj: jsObject
+
+
+pub inline fun importScripts(obj: workerGlobalScope, urls': string): web ()
+  jsOperation3(obj.obj, "importScripts", urls'.obj)
+
+pub inline fun self(obj: workerGlobalScope): web workerGlobalScope
+  getJsObjectField(obj.obj, "self")
+
+pub inline fun location(obj: workerGlobalScope): web workerLocation
+  getJsObjectField(obj.obj, "location")
+
+pub inline fun navigator(obj: workerGlobalScope): web workerNavigator
+  getJsObjectField(obj.obj, "navigator")
+
+pub inline fun onerror(obj: workerGlobalScope, value: onErrorEventHandler): web ()
+  setJsObjectField(obj.obj, "onerror", value.obj)
+
+pub inline fun onerror(obj: workerGlobalScope): web onErrorEventHandler
+  getJsObjectField(obj.obj, "onerror")
+
+pub inline fun onlanguagechange(obj: workerGlobalScope, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onlanguagechange", value.obj)
+
+pub inline fun onlanguagechange(obj: workerGlobalScope): web eventHandler
+  getJsObjectField(obj.obj, "onlanguagechange")
+
+pub inline fun onoffline(obj: workerGlobalScope, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onoffline", value.obj)
+
+pub inline fun onoffline(obj: workerGlobalScope): web eventHandler
+  getJsObjectField(obj.obj, "onoffline")
+
+pub inline fun ononline(obj: workerGlobalScope, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "ononline", value.obj)
+
+pub inline fun ononline(obj: workerGlobalScope): web eventHandler
+  getJsObjectField(obj.obj, "ononline")
+
+pub inline fun onrejectionhandled(obj: workerGlobalScope, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onrejectionhandled", value.obj)
+
+pub inline fun onrejectionhandled(obj: workerGlobalScope): web eventHandler
+  getJsObjectField(obj.obj, "onrejectionhandled")
+
+pub inline fun onunhandledrejection(obj: workerGlobalScope, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onunhandledrejection", value.obj)
+
+pub inline fun onunhandledrejection(obj: workerGlobalScope): web eventHandler
+  getJsObjectField(obj.obj, "onunhandledrejection")
+
+pub value struct dedicatedWorkerGlobalScope
+  obj: jsObject
+
+
+pub inline fun postMessage(obj: dedicatedWorkerGlobalScope, message': maybe<jsObject>, optionsOrTransfer': maybe<jsObject>): web ()
+  jsOperation4(obj.obj, "postMessage", message'.obj, optionsOrTransfer'.obj)
+
+pub inline fun close(obj: dedicatedWorkerGlobalScope): web ()
+  jsOperation2(obj.obj, "close")
+
+pub inline fun name(obj: dedicatedWorkerGlobalScope): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun onmessage(obj: dedicatedWorkerGlobalScope, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessage", value.obj)
+
+pub inline fun onmessage(obj: dedicatedWorkerGlobalScope): web eventHandler
+  getJsObjectField(obj.obj, "onmessage")
+
+pub inline fun onmessageerror(obj: dedicatedWorkerGlobalScope, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessageerror", value.obj)
+
+pub inline fun onmessageerror(obj: dedicatedWorkerGlobalScope): web eventHandler
+  getJsObjectField(obj.obj, "onmessageerror")
+
+pub inline fun onrtctransform(obj: dedicatedWorkerGlobalScope, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onrtctransform", value.obj)
+
+pub inline fun onrtctransform(obj: dedicatedWorkerGlobalScope): web eventHandler
+  getJsObjectField(obj.obj, "onrtctransform")
+
+pub value struct sharedWorkerGlobalScope
+  obj: jsObject
+
+
+pub inline fun close(obj: sharedWorkerGlobalScope): web ()
+  jsOperation2(obj.obj, "close")
+
+pub inline fun name(obj: sharedWorkerGlobalScope): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun onconnect(obj: sharedWorkerGlobalScope, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onconnect", value.obj)
+
+pub inline fun onconnect(obj: sharedWorkerGlobalScope): web eventHandler
+  getJsObjectField(obj.obj, "onconnect")
+
+pub value struct abstractWorker
+  obj: jsObject
+
+
+pub inline fun onerror(obj: abstractWorker, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onerror", value.obj)
+
+pub inline fun onerror(obj: abstractWorker): web eventHandler
+  getJsObjectField(obj.obj, "onerror")
+
+pub value struct worker
+  obj: jsObject
+
+pub inline fun newWorker(scriptURL': string, options': workerOptions)
+  newJsObject2("Worker", scriptURL', options')"
+
+pub inline fun terminate(obj: worker): web ()
+  jsOperation2(obj.obj, "terminate")
+
+pub inline fun postMessage(obj: worker, message': maybe<jsObject>, optionsOrTransfer': maybe<jsObject>): web ()
+  jsOperation4(obj.obj, "postMessage", message'.obj, optionsOrTransfer'.obj)
+
+pub inline fun onmessage(obj: worker, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessage", value.obj)
+
+pub inline fun onmessage(obj: worker): web eventHandler
+  getJsObjectField(obj.obj, "onmessage")
+
+pub inline fun onmessageerror(obj: worker, value: eventHandler): web ()
+  setJsObjectField(obj.obj, "onmessageerror", value.obj)
+
+pub inline fun onmessageerror(obj: worker): web eventHandler
+  getJsObjectField(obj.obj, "onmessageerror")
+
+pub value struct workerOptions
+  obj: jsObject
+
+pub fun newWorkerOptions(type: maybe<workerType> = Nothing, credentials: maybe<fetch/requestCredentials> = Nothing, name: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match type
+    Just(it) -> setJsObjectField(obj, "type", it)
+    Nothing -> ()
+  match credentials
+    Just(it) -> setJsObjectField(obj, "credentials", it)
+    Nothing -> ()
+  match name
+    Just(it) -> setJsObjectField(obj, "name", it)
+    Nothing -> ()
+
+  WorkerOptions(obj);
+
+pub inline fun type(obj: workerOptions, value: workerType): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: workerOptions): web workerType
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun credentials(obj: workerOptions, value: fetch/requestCredentials): web ()
+  setJsObjectField(obj.obj, "credentials", value.obj)
+
+pub inline fun credentials(obj: workerOptions): web fetch/requestCredentials
+  getJsObjectField(obj.obj, "credentials")
+
+pub inline fun name(obj: workerOptions, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: workerOptions): web string
+  getJsObjectField(obj.obj, "name")
+
+pub value struct sharedWorker
+  obj: jsObject
+
+pub inline fun newSharedWorker(scriptURL': string, options': maybe<jsObject>)
+  newJsObject2("SharedWorker", scriptURL', options')"
+
+pub inline fun port(obj: sharedWorker): web messagePort
+  getJsObjectField(obj.obj, "port")
+
+pub value struct navigatorConcurrentHardware
+  obj: jsObject
+
+
+pub inline fun hardwareConcurrency(obj: navigatorConcurrentHardware): web int
+  getJsObjectField(obj.obj, "hardwareConcurrency")
+
+pub value struct workerNavigator
+  obj: jsObject
+
+
+pub inline fun mediaCapabilities(obj: workerNavigator): web media_capabilities/mediaCapabilities
+  getJsObjectField(obj.obj, "mediaCapabilities")
+
+pub inline fun permissions(obj: workerNavigator): web permissions/permissions
+  getJsObjectField(obj.obj, "permissions")
+
+pub inline fun serial(obj: workerNavigator): web serial/serial
+  getJsObjectField(obj.obj, "serial")
+
+pub inline fun serviceWorker(obj: workerNavigator): web service_workers/serviceWorkerContainer
+  getJsObjectField(obj.obj, "serviceWorker")
+
+pub inline fun hid(obj: workerNavigator): web webhid/hiD
+  getJsObjectField(obj.obj, "hid")
+
+pub inline fun usb(obj: workerNavigator): web webusb/usB
+  getJsObjectField(obj.obj, "usb")
+
+pub value struct workerLocation
+  obj: jsObject
+
+
+pub inline fun href(obj: workerLocation): web string
+  getJsObjectField(obj.obj, "href")
+
+pub inline fun origin(obj: workerLocation): web string
+  getJsObjectField(obj.obj, "origin")
+
+pub inline fun protocol(obj: workerLocation): web string
+  getJsObjectField(obj.obj, "protocol")
+
+pub inline fun host(obj: workerLocation): web string
+  getJsObjectField(obj.obj, "host")
+
+pub inline fun hostname(obj: workerLocation): web string
+  getJsObjectField(obj.obj, "hostname")
+
+pub inline fun port(obj: workerLocation): web string
+  getJsObjectField(obj.obj, "port")
+
+pub inline fun pathname(obj: workerLocation): web string
+  getJsObjectField(obj.obj, "pathname")
+
+pub inline fun search(obj: workerLocation): web string
+  getJsObjectField(obj.obj, "search")
+
+pub inline fun hash(obj: workerLocation): web string
+  getJsObjectField(obj.obj, "hash")
+
+pub value struct workletGlobalScope
+  obj: jsObject
+
+
+pub value struct worklet
+  obj: jsObject
+
+
+pub inline fun addModule(obj: worklet, moduleURL': string, options': workletOptions): web jsPromise
+  jsOperation4(obj.obj, "addModule", moduleURL'.obj, options'.obj)
+
+pub value struct workletOptions
+  obj: jsObject
+
+pub fun newWorkletOptions(credentials: maybe<fetch/requestCredentials> = Nothing)
+  val obj = newJsObject();
+  match credentials
+    Just(it) -> setJsObjectField(obj, "credentials", it)
+    Nothing -> ()
+
+  WorkletOptions(obj);
+
+pub inline fun credentials(obj: workletOptions, value: fetch/requestCredentials): web ()
+  setJsObjectField(obj.obj, "credentials", value.obj)
+
+pub inline fun credentials(obj: workletOptions): web fetch/requestCredentials
+  getJsObjectField(obj.obj, "credentials")
+
+pub value struct storage
+  obj: jsObject
+
+
+pub inline fun key(obj: storage, index': int): web maybe<string>
+  jsOperation3(obj.obj, "key", index'.obj)
+
+pub inline fun getItem(obj: storage, key': string): web maybe<string>
+  jsOperation3(obj.obj, "getItem", key'.obj)
+
+pub inline fun setItem(obj: storage, key': string, value': string): web ()
+  jsOperation4(obj.obj, "setItem", key'.obj, value'.obj)
+
+pub inline fun removeItem(obj: storage, key': string): web ()
+  jsOperation3(obj.obj, "removeItem", key'.obj)
+
+pub inline fun clear(obj: storage): web ()
+  jsOperation2(obj.obj, "clear")
+
+pub inline fun length(obj: storage): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct windowSessionStorage
+  obj: jsObject
+
+
+pub inline fun sessionStorage(obj: windowSessionStorage): web storage
+  getJsObjectField(obj.obj, "sessionStorage")
+
+pub value struct windowLocalStorage
+  obj: jsObject
+
+
+pub inline fun localStorage(obj: windowLocalStorage): web storage
+  getJsObjectField(obj.obj, "localStorage")
+
+pub value struct storageEvent
+  obj: jsObject
+
+pub inline fun newStorageEvent(type': string, eventInitDict': storageEventInit)
+  newJsObject2("StorageEvent", type', eventInitDict')"
+
+pub inline fun initStorageEvent(obj: storageEvent, type': string, bubbles': bool, cancelable': bool, key': maybe<string> =  Nothing, oldValue': maybe<string> =  Nothing, newValue': maybe<string> =  Nothing, url': string, storageArea': maybe<storage> =  Nothing): web ()
+  jsOperation10(obj.obj, "initStorageEvent", type'.obj, bubbles'.obj, cancelable'.obj, key'.obj, oldValue'.obj, newValue'.obj, url'.obj, storageArea'.obj)
+
+pub inline fun key(obj: storageEvent): web maybe<string>
+  getJsObjectField(obj.obj, "key")
+
+pub inline fun oldValue(obj: storageEvent): web maybe<string>
+  getJsObjectField(obj.obj, "oldValue")
+
+pub inline fun newValue(obj: storageEvent): web maybe<string>
+  getJsObjectField(obj.obj, "newValue")
+
+pub inline fun url(obj: storageEvent): web string
+  getJsObjectField(obj.obj, "url")
+
+pub inline fun storageArea(obj: storageEvent): web maybe<storage>
+  getJsObjectField(obj.obj, "storageArea")
+
+pub value struct storageEventInit
+  obj: jsObject
+
+pub fun newStorageEventInit(key: maybe<maybe<string>> = Nothing, oldValue: maybe<maybe<string>> = Nothing, newValue: maybe<maybe<string>> = Nothing, url: maybe<string> = Nothing, storageArea: maybe<maybe<storage>> = Nothing)
+  val obj = newJsObject();
+  match key
+    Just(it) -> setJsObjectField(obj, "key", it)
+    Nothing -> ()
+  match oldValue
+    Just(it) -> setJsObjectField(obj, "oldValue", it)
+    Nothing -> ()
+  match newValue
+    Just(it) -> setJsObjectField(obj, "newValue", it)
+    Nothing -> ()
+  match url
+    Just(it) -> setJsObjectField(obj, "url", it)
+    Nothing -> ()
+  match storageArea
+    Just(it) -> setJsObjectField(obj, "storageArea", it)
+    Nothing -> ()
+
+  StorageEventInit(obj);
+
+pub inline fun key(obj: storageEventInit, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "key", value.obj)
+
+pub inline fun key(obj: storageEventInit): web maybe<string>
+  getJsObjectField(obj.obj, "key")
+
+pub inline fun oldValue(obj: storageEventInit, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "oldValue", value.obj)
+
+pub inline fun oldValue(obj: storageEventInit): web maybe<string>
+  getJsObjectField(obj.obj, "oldValue")
+
+pub inline fun newValue(obj: storageEventInit, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "newValue", value.obj)
+
+pub inline fun newValue(obj: storageEventInit): web maybe<string>
+  getJsObjectField(obj.obj, "newValue")
+
+pub inline fun url(obj: storageEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "url", value.obj)
+
+pub inline fun url(obj: storageEventInit): web string
+  getJsObjectField(obj.obj, "url")
+
+pub inline fun storageArea(obj: storageEventInit, value: maybe<storage>): web ()
+  setJsObjectField(obj.obj, "storageArea", value.obj)
+
+pub inline fun storageArea(obj: storageEventInit): web maybe<storage>
+  getJsObjectField(obj.obj, "storageArea")
+
+pub value struct htmlMarqueeElement
+  obj: jsObject
+
+pub inline fun newHtmlMarqueeElement()
+  newJsObject0("HtmlMarqueeElement")"
+
+pub inline fun start(obj: htmlMarqueeElement): web ()
+  jsOperation2(obj.obj, "start")
+
+pub inline fun stop(obj: htmlMarqueeElement): web ()
+  jsOperation2(obj.obj, "stop")
+
+pub inline fun behavior(obj: htmlMarqueeElement, value: string): web ()
+  setJsObjectField(obj.obj, "behavior", value.obj)
+
+pub inline fun behavior(obj: htmlMarqueeElement): web string
+  getJsObjectField(obj.obj, "behavior")
+
+pub inline fun bgColor(obj: htmlMarqueeElement, value: string): web ()
+  setJsObjectField(obj.obj, "bgColor", value.obj)
+
+pub inline fun bgColor(obj: htmlMarqueeElement): web string
+  getJsObjectField(obj.obj, "bgColor")
+
+pub inline fun direction(obj: htmlMarqueeElement, value: string): web ()
+  setJsObjectField(obj.obj, "direction", value.obj)
+
+pub inline fun direction(obj: htmlMarqueeElement): web string
+  getJsObjectField(obj.obj, "direction")
+
+pub inline fun height(obj: htmlMarqueeElement, value: string): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: htmlMarqueeElement): web string
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun hspace(obj: htmlMarqueeElement, value: int): web ()
+  setJsObjectField(obj.obj, "hspace", value.obj)
+
+pub inline fun hspace(obj: htmlMarqueeElement): web int
+  getJsObjectField(obj.obj, "hspace")
+
+pub inline fun loop(obj: htmlMarqueeElement, value: int): web ()
+  setJsObjectField(obj.obj, "loop", value.obj)
+
+pub inline fun loop(obj: htmlMarqueeElement): web int
+  getJsObjectField(obj.obj, "loop")
+
+pub inline fun scrollAmount(obj: htmlMarqueeElement, value: int): web ()
+  setJsObjectField(obj.obj, "scrollAmount", value.obj)
+
+pub inline fun scrollAmount(obj: htmlMarqueeElement): web int
+  getJsObjectField(obj.obj, "scrollAmount")
+
+pub inline fun scrollDelay(obj: htmlMarqueeElement, value: int): web ()
+  setJsObjectField(obj.obj, "scrollDelay", value.obj)
+
+pub inline fun scrollDelay(obj: htmlMarqueeElement): web int
+  getJsObjectField(obj.obj, "scrollDelay")
+
+pub inline fun trueSpeed(obj: htmlMarqueeElement, value: bool): web ()
+  setJsObjectField(obj.obj, "trueSpeed", value.obj)
+
+pub inline fun trueSpeed(obj: htmlMarqueeElement): web bool
+  getJsObjectField(obj.obj, "trueSpeed")
+
+pub inline fun vspace(obj: htmlMarqueeElement, value: int): web ()
+  setJsObjectField(obj.obj, "vspace", value.obj)
+
+pub inline fun vspace(obj: htmlMarqueeElement): web int
+  getJsObjectField(obj.obj, "vspace")
+
+pub inline fun width(obj: htmlMarqueeElement, value: string): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: htmlMarqueeElement): web string
+  getJsObjectField(obj.obj, "width")
+
+pub value struct htmlFrameSetElement
+  obj: jsObject
+
+pub inline fun newHtmlFrameSetElement()
+  newJsObject0("HtmlFrameSetElement")"
+
+pub inline fun cols(obj: htmlFrameSetElement, value: string): web ()
+  setJsObjectField(obj.obj, "cols", value.obj)
+
+pub inline fun cols(obj: htmlFrameSetElement): web string
+  getJsObjectField(obj.obj, "cols")
+
+pub inline fun rows(obj: htmlFrameSetElement, value: string): web ()
+  setJsObjectField(obj.obj, "rows", value.obj)
+
+pub inline fun rows(obj: htmlFrameSetElement): web string
+  getJsObjectField(obj.obj, "rows")
+
+pub value struct htmlFrameElement
+  obj: jsObject
+
+pub inline fun newHtmlFrameElement()
+  newJsObject0("HtmlFrameElement")"
+
+pub inline fun name(obj: htmlFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlFrameElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun scrolling(obj: htmlFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "scrolling", value.obj)
+
+pub inline fun scrolling(obj: htmlFrameElement): web string
+  getJsObjectField(obj.obj, "scrolling")
+
+pub inline fun src(obj: htmlFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "src", value.obj)
+
+pub inline fun src(obj: htmlFrameElement): web string
+  getJsObjectField(obj.obj, "src")
+
+pub inline fun frameBorder(obj: htmlFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "frameBorder", value.obj)
+
+pub inline fun frameBorder(obj: htmlFrameElement): web string
+  getJsObjectField(obj.obj, "frameBorder")
+
+pub inline fun longDesc(obj: htmlFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "longDesc", value.obj)
+
+pub inline fun longDesc(obj: htmlFrameElement): web string
+  getJsObjectField(obj.obj, "longDesc")
+
+pub inline fun noResize(obj: htmlFrameElement, value: bool): web ()
+  setJsObjectField(obj.obj, "noResize", value.obj)
+
+pub inline fun noResize(obj: htmlFrameElement): web bool
+  getJsObjectField(obj.obj, "noResize")
+
+pub inline fun contentDocument(obj: htmlFrameElement): web maybe<dom/document>
+  getJsObjectField(obj.obj, "contentDocument")
+
+pub inline fun contentWindow(obj: htmlFrameElement): web maybe<window>
+  getJsObjectField(obj.obj, "contentWindow")
+
+pub inline fun marginHeight(obj: htmlFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "marginHeight", value.obj)
+
+pub inline fun marginHeight(obj: htmlFrameElement): web string
+  getJsObjectField(obj.obj, "marginHeight")
+
+pub inline fun marginWidth(obj: htmlFrameElement, value: string): web ()
+  setJsObjectField(obj.obj, "marginWidth", value.obj)
+
+pub inline fun marginWidth(obj: htmlFrameElement): web string
+  getJsObjectField(obj.obj, "marginWidth")
+
+pub value struct htmlDirectoryElement
+  obj: jsObject
+
+pub inline fun newHtmlDirectoryElement()
+  newJsObject0("HtmlDirectoryElement")"
+
+pub inline fun compact(obj: htmlDirectoryElement, value: bool): web ()
+  setJsObjectField(obj.obj, "compact", value.obj)
+
+pub inline fun compact(obj: htmlDirectoryElement): web bool
+  getJsObjectField(obj.obj, "compact")
+
+pub value struct htmlFontElement
+  obj: jsObject
+
+pub inline fun newHtmlFontElement()
+  newJsObject0("HtmlFontElement")"
+
+pub inline fun color(obj: htmlFontElement, value: string): web ()
+  setJsObjectField(obj.obj, "color", value.obj)
+
+pub inline fun color(obj: htmlFontElement): web string
+  getJsObjectField(obj.obj, "color")
+
+pub inline fun face(obj: htmlFontElement, value: string): web ()
+  setJsObjectField(obj.obj, "face", value.obj)
+
+pub inline fun face(obj: htmlFontElement): web string
+  getJsObjectField(obj.obj, "face")
+
+pub inline fun size(obj: htmlFontElement, value: string): web ()
+  setJsObjectField(obj.obj, "size", value.obj)
+
+pub inline fun size(obj: htmlFontElement): web string
+  getJsObjectField(obj.obj, "size")
+
+pub value struct htmlParamElement
+  obj: jsObject
+
+pub inline fun newHtmlParamElement()
+  newJsObject0("HtmlParamElement")"
+
+pub inline fun name(obj: htmlParamElement, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: htmlParamElement): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun value(obj: htmlParamElement, value: string): web ()
+  setJsObjectField(obj.obj, "value", value.obj)
+
+pub inline fun value(obj: htmlParamElement): web string
+  getJsObjectField(obj.obj, "value")
+
+pub inline fun type(obj: htmlParamElement, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: htmlParamElement): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun valueType(obj: htmlParamElement, value: string): web ()
+  setJsObjectField(obj.obj, "valueType", value.obj)
+
+pub inline fun valueType(obj: htmlParamElement): web string
+  getJsObjectField(obj.obj, "valueType")
+
+pub value struct external
+  obj: jsObject
+
+
+pub inline fun AddSearchProvider(obj: external): web ()
+  jsOperation2(obj.obj, "AddSearchProvider")
+
+pub inline fun IsSearchProviderInstalled(obj: external): web ()
+  jsOperation2(obj.obj, "IsSearchProviderInstalled")
+

@@ -1,152 +1,189 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias SecurityPolicyViolationEventDisposition = String
-struct CSPViolationReportBody
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub alias securityPolicyViolationEventDisposition = string;
 
-}
+pub value struct cspViolationReportBody
+  obj: jsObject
 
-()
 
-pub extern toJSON(this: js_object, [], [])
-pub extern getdocumentURL(this: js_object): web String
-	c inline "getObjectField(#1, \"documentURL\")"
-pub extern getreferrer(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"referrer\")"
-pub extern getblockedURL(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"blockedURL\")"
-pub extern geteffectiveDirective(this: js_object): web String
-	c inline "getObjectField(#1, \"effectiveDirective\")"
-pub extern getoriginalPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"originalPolicy\")"
-pub extern getsourceFile(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"sourceFile\")"
-pub extern getsample(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"sample\")"
-pub extern getdisposition(this: js_object): web SecurityPolicyViolationEventDisposition
-	c inline "getObjectField(#1, \"disposition\")"
-pub extern getstatusCode(this: js_object): web int
-	c inline "getObjectField(#1, \"statusCode\")"
-pub extern getlineNumber(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"lineNumber\")"
-pub extern getcolumnNumber(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"columnNumber\")"
-struct SecurityPolicyViolationEvent
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub inline fun toJSON(obj: cspViolationReportBody): web jsObject
+  jsOperation2(obj.obj, "toJSON")
 
-}
-pub extern newSecurityPolicyViolationEvent([type: String], [eventInitDict: SecurityPolicyViolationEventInit])
-()
+pub inline fun documentURL(obj: cspViolationReportBody): web string
+  getJsObjectField(obj.obj, "documentURL")
 
-pub extern getdocumentURI(this: js_object): web String
-	c inline "getObjectField(#1, \"documentURI\")"
-pub extern getreferrer(this: js_object): web String
-	c inline "getObjectField(#1, \"referrer\")"
-pub extern getblockedURI(this: js_object): web String
-	c inline "getObjectField(#1, \"blockedURI\")"
-pub extern geteffectiveDirective(this: js_object): web String
-	c inline "getObjectField(#1, \"effectiveDirective\")"
-pub extern getviolatedDirective(this: js_object): web String
-	c inline "getObjectField(#1, \"violatedDirective\")"
-pub extern getoriginalPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"originalPolicy\")"
-pub extern getsourceFile(this: js_object): web String
-	c inline "getObjectField(#1, \"sourceFile\")"
-pub extern getsample(this: js_object): web String
-	c inline "getObjectField(#1, \"sample\")"
-pub extern getdisposition(this: js_object): web SecurityPolicyViolationEventDisposition
-	c inline "getObjectField(#1, \"disposition\")"
-pub extern getstatusCode(this: js_object): web int
-	c inline "getObjectField(#1, \"statusCode\")"
-pub extern getlineNumber(this: js_object): web int
-	c inline "getObjectField(#1, \"lineNumber\")"
-pub extern getcolumnNumber(this: js_object): web int
-	c inline "getObjectField(#1, \"columnNumber\")"
-struct SecurityPolicyViolationEventInit
-{  documentURI: String,
-  referrer: String,
-  blockedURI: String,
-  violatedDirective: String,
-  effectiveDirective: String,
-  originalPolicy: String,
-  sourceFile: String,
-  sample: String,
-  disposition: SecurityPolicyViolationEventDisposition,
-  statusCode: int,
-  lineNumber: int,
-  columnNumber: int
-}
-pub extern newSecurityPolicyViolationEventInit([documentURI: String, referrer: maybe<String> = Nothing, blockedURI: maybe<String> = Nothing, violatedDirective: String, effectiveDirective: String, originalPolicy: String, sourceFile: maybe<String> = Nothing, sample: maybe<String> = Nothing, disposition: SecurityPolicyViolationEventDisposition, statusCode: int, lineNumber: maybe<int> = Nothing, columnNumber: maybe<int> = Nothing])
-()
+pub inline fun referrer(obj: cspViolationReportBody): web maybe<string>
+  getJsObjectField(obj.obj, "referrer")
 
-pub extern setdocumentURI(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdocumentURI(this: js_object): web String
-	c inline "getObjectField(#1, \"documentURI\")"
-pub extern setreferrer(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreferrer(this: js_object): web String
-	c inline "getObjectField(#1, \"referrer\")"
-pub extern setblockedURI(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getblockedURI(this: js_object): web String
-	c inline "getObjectField(#1, \"blockedURI\")"
-pub extern setviolatedDirective(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getviolatedDirective(this: js_object): web String
-	c inline "getObjectField(#1, \"violatedDirective\")"
-pub extern seteffectiveDirective(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geteffectiveDirective(this: js_object): web String
-	c inline "getObjectField(#1, \"effectiveDirective\")"
-pub extern setoriginalPolicy(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoriginalPolicy(this: js_object): web String
-	c inline "getObjectField(#1, \"originalPolicy\")"
-pub extern setsourceFile(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsourceFile(this: js_object): web String
-	c inline "getObjectField(#1, \"sourceFile\")"
-pub extern setsample(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsample(this: js_object): web String
-	c inline "getObjectField(#1, \"sample\")"
-pub extern setdisposition(this: js_object, value: SecurityPolicyViolationEventDisposition): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdisposition(this: js_object): web SecurityPolicyViolationEventDisposition
-	c inline "getObjectField(#1, \"disposition\")"
-pub extern setstatusCode(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstatusCode(this: js_object): web int
-	c inline "getObjectField(#1, \"statusCode\")"
-pub extern setlineNumber(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlineNumber(this: js_object): web int
-	c inline "getObjectField(#1, \"lineNumber\")"
-pub extern setcolumnNumber(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolumnNumber(this: js_object): web int
-	c inline "getObjectField(#1, \"columnNumber\")"
+pub inline fun blockedURL(obj: cspViolationReportBody): web maybe<string>
+  getJsObjectField(obj.obj, "blockedURL")
+
+pub inline fun effectiveDirective(obj: cspViolationReportBody): web string
+  getJsObjectField(obj.obj, "effectiveDirective")
+
+pub inline fun originalPolicy(obj: cspViolationReportBody): web string
+  getJsObjectField(obj.obj, "originalPolicy")
+
+pub inline fun sourceFile(obj: cspViolationReportBody): web maybe<string>
+  getJsObjectField(obj.obj, "sourceFile")
+
+pub inline fun sample(obj: cspViolationReportBody): web maybe<string>
+  getJsObjectField(obj.obj, "sample")
+
+pub inline fun disposition(obj: cspViolationReportBody): web securityPolicyViolationEventDisposition
+  getJsObjectField(obj.obj, "disposition")
+
+pub inline fun statusCode(obj: cspViolationReportBody): web int
+  getJsObjectField(obj.obj, "statusCode")
+
+pub inline fun lineNumber(obj: cspViolationReportBody): web maybe<int>
+  getJsObjectField(obj.obj, "lineNumber")
+
+pub inline fun columnNumber(obj: cspViolationReportBody): web maybe<int>
+  getJsObjectField(obj.obj, "columnNumber")
+
+pub value struct securityPolicyViolationEvent
+  obj: jsObject
+
+pub inline fun newSecurityPolicyViolationEvent(type': string, eventInitDict': securityPolicyViolationEventInit)
+  newJsObject2("SecurityPolicyViolationEvent", type', eventInitDict')"
+
+pub inline fun documentURI(obj: securityPolicyViolationEvent): web string
+  getJsObjectField(obj.obj, "documentURI")
+
+pub inline fun referrer(obj: securityPolicyViolationEvent): web string
+  getJsObjectField(obj.obj, "referrer")
+
+pub inline fun blockedURI(obj: securityPolicyViolationEvent): web string
+  getJsObjectField(obj.obj, "blockedURI")
+
+pub inline fun effectiveDirective(obj: securityPolicyViolationEvent): web string
+  getJsObjectField(obj.obj, "effectiveDirective")
+
+pub inline fun violatedDirective(obj: securityPolicyViolationEvent): web string
+  getJsObjectField(obj.obj, "violatedDirective")
+
+pub inline fun originalPolicy(obj: securityPolicyViolationEvent): web string
+  getJsObjectField(obj.obj, "originalPolicy")
+
+pub inline fun sourceFile(obj: securityPolicyViolationEvent): web string
+  getJsObjectField(obj.obj, "sourceFile")
+
+pub inline fun sample(obj: securityPolicyViolationEvent): web string
+  getJsObjectField(obj.obj, "sample")
+
+pub inline fun disposition(obj: securityPolicyViolationEvent): web securityPolicyViolationEventDisposition
+  getJsObjectField(obj.obj, "disposition")
+
+pub inline fun statusCode(obj: securityPolicyViolationEvent): web int
+  getJsObjectField(obj.obj, "statusCode")
+
+pub inline fun lineNumber(obj: securityPolicyViolationEvent): web int
+  getJsObjectField(obj.obj, "lineNumber")
+
+pub inline fun columnNumber(obj: securityPolicyViolationEvent): web int
+  getJsObjectField(obj.obj, "columnNumber")
+
+pub value struct securityPolicyViolationEventInit
+  obj: jsObject
+
+pub fun newSecurityPolicyViolationEventInit(documentURI: string, referrer: maybe<string> = Nothing, blockedURI: maybe<string> = Nothing, violatedDirective: string, effectiveDirective: string, originalPolicy: string, sourceFile: maybe<string> = Nothing, sample: maybe<string> = Nothing, disposition: securityPolicyViolationEventDisposition, statusCode: int, lineNumber: maybe<int> = Nothing, columnNumber: maybe<int> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "documentURI", documentURI);  match referrer
+    Just(it) -> setJsObjectField(obj, "referrer", it)
+    Nothing -> ()
+  match blockedURI
+    Just(it) -> setJsObjectField(obj, "blockedURI", it)
+    Nothing -> ()
+  setJsObjectField(obj, "violatedDirective", violatedDirective);  setJsObjectField(obj, "effectiveDirective", effectiveDirective);  setJsObjectField(obj, "originalPolicy", originalPolicy);  match sourceFile
+    Just(it) -> setJsObjectField(obj, "sourceFile", it)
+    Nothing -> ()
+  match sample
+    Just(it) -> setJsObjectField(obj, "sample", it)
+    Nothing -> ()
+  setJsObjectField(obj, "disposition", disposition);  setJsObjectField(obj, "statusCode", statusCode);  match lineNumber
+    Just(it) -> setJsObjectField(obj, "lineNumber", it)
+    Nothing -> ()
+  match columnNumber
+    Just(it) -> setJsObjectField(obj, "columnNumber", it)
+    Nothing -> ()
+
+  SecurityPolicyViolationEventInit(obj);
+
+pub inline fun documentURI(obj: securityPolicyViolationEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "documentURI", value.obj)
+
+pub inline fun documentURI(obj: securityPolicyViolationEventInit): web string
+  getJsObjectField(obj.obj, "documentURI")
+
+pub inline fun referrer(obj: securityPolicyViolationEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "referrer", value.obj)
+
+pub inline fun referrer(obj: securityPolicyViolationEventInit): web string
+  getJsObjectField(obj.obj, "referrer")
+
+pub inline fun blockedURI(obj: securityPolicyViolationEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "blockedURI", value.obj)
+
+pub inline fun blockedURI(obj: securityPolicyViolationEventInit): web string
+  getJsObjectField(obj.obj, "blockedURI")
+
+pub inline fun violatedDirective(obj: securityPolicyViolationEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "violatedDirective", value.obj)
+
+pub inline fun violatedDirective(obj: securityPolicyViolationEventInit): web string
+  getJsObjectField(obj.obj, "violatedDirective")
+
+pub inline fun effectiveDirective(obj: securityPolicyViolationEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "effectiveDirective", value.obj)
+
+pub inline fun effectiveDirective(obj: securityPolicyViolationEventInit): web string
+  getJsObjectField(obj.obj, "effectiveDirective")
+
+pub inline fun originalPolicy(obj: securityPolicyViolationEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "originalPolicy", value.obj)
+
+pub inline fun originalPolicy(obj: securityPolicyViolationEventInit): web string
+  getJsObjectField(obj.obj, "originalPolicy")
+
+pub inline fun sourceFile(obj: securityPolicyViolationEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "sourceFile", value.obj)
+
+pub inline fun sourceFile(obj: securityPolicyViolationEventInit): web string
+  getJsObjectField(obj.obj, "sourceFile")
+
+pub inline fun sample(obj: securityPolicyViolationEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "sample", value.obj)
+
+pub inline fun sample(obj: securityPolicyViolationEventInit): web string
+  getJsObjectField(obj.obj, "sample")
+
+pub inline fun disposition(obj: securityPolicyViolationEventInit, value: securityPolicyViolationEventDisposition): web ()
+  setJsObjectField(obj.obj, "disposition", value.obj)
+
+pub inline fun disposition(obj: securityPolicyViolationEventInit): web securityPolicyViolationEventDisposition
+  getJsObjectField(obj.obj, "disposition")
+
+pub inline fun statusCode(obj: securityPolicyViolationEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "statusCode", value.obj)
+
+pub inline fun statusCode(obj: securityPolicyViolationEventInit): web int
+  getJsObjectField(obj.obj, "statusCode")
+
+pub inline fun lineNumber(obj: securityPolicyViolationEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "lineNumber", value.obj)
+
+pub inline fun lineNumber(obj: securityPolicyViolationEventInit): web int
+  getJsObjectField(obj.obj, "lineNumber")
+
+pub inline fun columnNumber(obj: securityPolicyViolationEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "columnNumber", value.obj)
+
+pub inline fun columnNumber(obj: securityPolicyViolationEventInit): web int
+  getJsObjectField(obj.obj, "columnNumber")
+

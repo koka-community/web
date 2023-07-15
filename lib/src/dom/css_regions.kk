@@ -1,40 +1,45 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct NamedFlowMap
-{
-}
-
-()
+pub value struct namedFlowMap
+  obj: jsObject
 
 
-struct NamedFlow
-{,
-,
 
-}
+pub value struct namedFlow
+  obj: jsObject
 
-()
 
-pub extern getRegions(this: js_object, [], [])
-pub extern getContent(this: js_object, [], [])
-pub extern getRegionsByContent(this: js_object, [node: dom.kk/Node], [])
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getoverset(this: js_object): web bool
-	c inline "getObjectField(#1, \"overset\")"
-pub extern getfirstEmptyRegionIndex(this: js_object): web int
-	c inline "getObjectField(#1, \"firstEmptyRegionIndex\")"
-struct Region
-{
-}
+pub inline fun getRegions(obj: namedFlow): web jsArray
+  jsOperation2(obj.obj, "getRegions")
 
-()
+pub inline fun getContent(obj: namedFlow): web jsArray
+  jsOperation2(obj.obj, "getContent")
 
-pub extern getRegionFlowRanges(this: js_object, [], [])
-pub extern getregionOverset(this: js_object): web String
-	c inline "getObjectField(#1, \"regionOverset\")"
+pub inline fun getRegionsByContent(obj: namedFlow, node': dom/node): web jsArray
+  jsOperation3(obj.obj, "getRegionsByContent", node'.obj)
+
+pub inline fun name(obj: namedFlow): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun overset(obj: namedFlow): web bool
+  getJsObjectField(obj.obj, "overset")
+
+pub inline fun firstEmptyRegionIndex(obj: namedFlow): web int
+  getJsObjectField(obj.obj, "firstEmptyRegionIndex")
+
+pub value struct region
+  obj: jsObject
+
+
+pub inline fun getRegionFlowRanges(obj: region): web maybe<jsArray>
+  jsOperation2(obj.obj, "getRegionFlowRanges")
+
+pub inline fun regionOverset(obj: region): web string
+  getJsObjectField(obj.obj, "regionOverset")
+

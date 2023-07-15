@@ -1,81 +1,117 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
-alias EffectCallback = JSFunction
+pub alias effectCallback = jsFunction;
 
-alias IterationCompositeOperation = String
-struct GroupEffect
-{,
-,
 
-}
-pub extern newGroupEffect([children: maybe<dart:js_interop/JSArray> =  Nothing], [timing: maybe<dart:js_interop/JSAny>])
-()
+pub alias iterationCompositeOperation = string;
 
-pub extern clone(this: js_object, [], [])
-pub extern prepend(this: js_object, [effects: web_animations.kk/AnimationEffect], [])
-pub extern append(this: js_object, [effects: web_animations.kk/AnimationEffect], [])
-pub extern getchildren(this: js_object): web AnimationNodeList
-	c inline "getObjectField(#1, \"children\")"
-pub extern getfirstChild(this: js_object): web maybe<web_animations.kk/AnimationEffect>
-	c inline "getObjectField(#1, \"firstChild\")"
-pub extern getlastChild(this: js_object): web maybe<web_animations.kk/AnimationEffect>
-	c inline "getObjectField(#1, \"lastChild\")"
-struct AnimationNodeList
-{
-}
+pub value struct groupEffect
+  obj: jsObject
 
-()
+pub inline fun newGroupEffect(children': maybe<jsArray> =  Nothing, timing': maybe<jsObject>)
+  newJsObject2("GroupEffect", children', timing')"
 
-pub extern item(this: js_object, [index: int], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct SequenceEffect
-{
-}
-pub extern newSequenceEffect([children: maybe<dart:js_interop/JSArray> =  Nothing], [timing: maybe<dart:js_interop/JSAny>])
-()
+pub inline fun clone(obj: groupEffect): web groupEffect
+  jsOperation2(obj.obj, "clone")
 
-pub extern clone(this: js_object, [], [])
-struct TimelineRangeOffset
-{  rangeName: maybe<String>,
-  offset: css_typed_om.kk/CSSNumericValue
-}
-pub extern newTimelineRangeOffset([rangeName: maybe<maybe<String>> = Nothing, offset: maybe<css_typed_om.kk/CSSNumericValue> = Nothing])
-()
+pub inline fun prepend(obj: groupEffect, effects': web_animations/animationEffect): web ()
+  jsOperation3(obj.obj, "prepend", effects'.obj)
 
-pub extern setrangeName(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrangeName(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"rangeName\")"
-pub extern setoffset(this: js_object, value: css_typed_om.kk/CSSNumericValue): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoffset(this: js_object): web css_typed_om.kk/CSSNumericValue
-	c inline "getObjectField(#1, \"offset\")"
-struct AnimationPlaybackEvent
-{,
+pub inline fun append(obj: groupEffect, effects': web_animations/animationEffect): web ()
+  jsOperation3(obj.obj, "append", effects'.obj)
 
-}
-pub extern newAnimationPlaybackEvent([type: String], [eventInitDict: AnimationPlaybackEventInit])
-()
+pub inline fun children(obj: groupEffect): web animationNodeList
+  getJsObjectField(obj.obj, "children")
 
-pub extern getcurrentTime(this: js_object): web maybe<css_typed_om.kk/CSSNumberish>
-	c inline "getObjectField(#1, \"currentTime\")"
-pub extern gettimelineTime(this: js_object): web maybe<css_typed_om.kk/CSSNumberish>
-	c inline "getObjectField(#1, \"timelineTime\")"
-struct AnimationPlaybackEventInit
-{  currentTime: maybe<css_typed_om.kk/CSSNumberish>,
-  timelineTime: maybe<css_typed_om.kk/CSSNumberish>
-}
-pub extern newAnimationPlaybackEventInit([currentTime: maybe<maybe<css_typed_om.kk/CSSNumberish>> = Nothing, timelineTime: maybe<maybe<css_typed_om.kk/CSSNumberish>> = Nothing])
-()
+pub inline fun firstChild(obj: groupEffect): web maybe<web_animations/animationEffect>
+  getJsObjectField(obj.obj, "firstChild")
 
-pub extern setcurrentTime(this: js_object, value: maybe<css_typed_om.kk/CSSNumberish>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcurrentTime(this: js_object): web maybe<css_typed_om.kk/CSSNumberish>
-	c inline "getObjectField(#1, \"currentTime\")"
-pub extern settimelineTime(this: js_object, value: maybe<css_typed_om.kk/CSSNumberish>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimelineTime(this: js_object): web maybe<css_typed_om.kk/CSSNumberish>
-	c inline "getObjectField(#1, \"timelineTime\")"
+pub inline fun lastChild(obj: groupEffect): web maybe<web_animations/animationEffect>
+  getJsObjectField(obj.obj, "lastChild")
+
+pub value struct animationNodeList
+  obj: jsObject
+
+
+pub inline fun item(obj: animationNodeList, index': int): web maybe<web_animations/animationEffect>
+  jsOperation3(obj.obj, "item", index'.obj)
+
+pub inline fun length(obj: animationNodeList): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct sequenceEffect
+  obj: jsObject
+
+pub inline fun newSequenceEffect(children': maybe<jsArray> =  Nothing, timing': maybe<jsObject>)
+  newJsObject2("SequenceEffect", children', timing')"
+
+pub inline fun clone(obj: sequenceEffect): web sequenceEffect
+  jsOperation2(obj.obj, "clone")
+
+pub value struct timelineRangeOffset
+  obj: jsObject
+
+pub fun newTimelineRangeOffset(rangeName: maybe<maybe<string>> = Nothing, offset: maybe<css_typed_om/cssNumericValue> = Nothing)
+  val obj = newJsObject();
+  match rangeName
+    Just(it) -> setJsObjectField(obj, "rangeName", it)
+    Nothing -> ()
+  match offset
+    Just(it) -> setJsObjectField(obj, "offset", it)
+    Nothing -> ()
+
+  TimelineRangeOffset(obj);
+
+pub inline fun rangeName(obj: timelineRangeOffset, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "rangeName", value.obj)
+
+pub inline fun rangeName(obj: timelineRangeOffset): web maybe<string>
+  getJsObjectField(obj.obj, "rangeName")
+
+pub inline fun offset(obj: timelineRangeOffset, value: css_typed_om/cssNumericValue): web ()
+  setJsObjectField(obj.obj, "offset", value.obj)
+
+pub inline fun offset(obj: timelineRangeOffset): web css_typed_om/cssNumericValue
+  getJsObjectField(obj.obj, "offset")
+
+pub value struct animationPlaybackEvent
+  obj: jsObject
+
+pub inline fun newAnimationPlaybackEvent(type': string, eventInitDict': animationPlaybackEventInit)
+  newJsObject2("AnimationPlaybackEvent", type', eventInitDict')"
+
+pub inline fun currentTime(obj: animationPlaybackEvent): web maybe<css_typed_om/cssNumberish>
+  getJsObjectField(obj.obj, "currentTime")
+
+pub inline fun timelineTime(obj: animationPlaybackEvent): web maybe<css_typed_om/cssNumberish>
+  getJsObjectField(obj.obj, "timelineTime")
+
+pub value struct animationPlaybackEventInit
+  obj: jsObject
+
+pub fun newAnimationPlaybackEventInit(currentTime: maybe<maybe<css_typed_om/cssNumberish>> = Nothing, timelineTime: maybe<maybe<css_typed_om/cssNumberish>> = Nothing)
+  val obj = newJsObject();
+  match currentTime
+    Just(it) -> setJsObjectField(obj, "currentTime", it)
+    Nothing -> ()
+  match timelineTime
+    Just(it) -> setJsObjectField(obj, "timelineTime", it)
+    Nothing -> ()
+
+  AnimationPlaybackEventInit(obj);
+
+pub inline fun currentTime(obj: animationPlaybackEventInit, value: maybe<css_typed_om/cssNumberish>): web ()
+  setJsObjectField(obj.obj, "currentTime", value.obj)
+
+pub inline fun currentTime(obj: animationPlaybackEventInit): web maybe<css_typed_om/cssNumberish>
+  getJsObjectField(obj.obj, "currentTime")
+
+pub inline fun timelineTime(obj: animationPlaybackEventInit, value: maybe<css_typed_om/cssNumberish>): web ()
+  setJsObjectField(obj.obj, "timelineTime", value.obj)
+
+pub inline fun timelineTime(obj: animationPlaybackEventInit): web maybe<css_typed_om/cssNumberish>
+  getJsObjectField(obj.obj, "timelineTime")
+

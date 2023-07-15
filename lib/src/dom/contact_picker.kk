@@ -1,91 +1,126 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias ContactProperty = String
-struct ContactAddress
-{,
-,
-,
-,
-,
-,
-,
-,
-,
+pub alias contactProperty = string;
 
-}
+pub value struct contactAddress
+  obj: jsObject
 
-()
 
-pub extern toJSON(this: js_object, [], [])
-pub extern getcity(this: js_object): web String
-	c inline "getObjectField(#1, \"city\")"
-pub extern getcountry(this: js_object): web String
-	c inline "getObjectField(#1, \"country\")"
-pub extern getdependentLocality(this: js_object): web String
-	c inline "getObjectField(#1, \"dependentLocality\")"
-pub extern getorganization(this: js_object): web String
-	c inline "getObjectField(#1, \"organization\")"
-pub extern getphone(this: js_object): web String
-	c inline "getObjectField(#1, \"phone\")"
-pub extern getpostalCode(this: js_object): web String
-	c inline "getObjectField(#1, \"postalCode\")"
-pub extern getrecipient(this: js_object): web String
-	c inline "getObjectField(#1, \"recipient\")"
-pub extern getregion(this: js_object): web String
-	c inline "getObjectField(#1, \"region\")"
-pub extern getsortingCode(this: js_object): web String
-	c inline "getObjectField(#1, \"sortingCode\")"
-pub extern getaddressLine(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"addressLine\")"
-struct ContactInfo
-{  address: dart:js_interop/JSArray,
-  email: dart:js_interop/JSArray,
-  icon: dart:js_interop/JSArray,
-  name: dart:js_interop/JSArray,
-  tel: dart:js_interop/JSArray
-}
-pub extern newContactInfo([address: maybe<dart:js_interop/JSArray> = Nothing, email: maybe<dart:js_interop/JSArray> = Nothing, icon: maybe<dart:js_interop/JSArray> = Nothing, name: maybe<dart:js_interop/JSArray> = Nothing, tel: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun toJSON(obj: contactAddress): web jsObject
+  jsOperation2(obj.obj, "toJSON")
 
-pub extern setaddress(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaddress(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"address\")"
-pub extern setemail(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getemail(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"email\")"
-pub extern seticon(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geticon(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"icon\")"
-pub extern setname(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"name\")"
-pub extern settel(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettel(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"tel\")"
-struct ContactsSelectOptions
-{  multiple: bool
-}
-pub extern newContactsSelectOptions([multiple: maybe<bool> = Nothing])
-()
+pub inline fun city(obj: contactAddress): web string
+  getJsObjectField(obj.obj, "city")
 
-pub extern setmultiple(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmultiple(this: js_object): web bool
-	c inline "getObjectField(#1, \"multiple\")"
-struct ContactsManager
-{
-}
+pub inline fun country(obj: contactAddress): web string
+  getJsObjectField(obj.obj, "country")
 
-()
+pub inline fun dependentLocality(obj: contactAddress): web string
+  getJsObjectField(obj.obj, "dependentLocality")
 
-pub extern getProperties(this: js_object, [], [])
-pub extern select(this: js_object, [properties: dart:js_interop/JSArray], [options: ContactsSelectOptions])
+pub inline fun organization(obj: contactAddress): web string
+  getJsObjectField(obj.obj, "organization")
+
+pub inline fun phone(obj: contactAddress): web string
+  getJsObjectField(obj.obj, "phone")
+
+pub inline fun postalCode(obj: contactAddress): web string
+  getJsObjectField(obj.obj, "postalCode")
+
+pub inline fun recipient(obj: contactAddress): web string
+  getJsObjectField(obj.obj, "recipient")
+
+pub inline fun region(obj: contactAddress): web string
+  getJsObjectField(obj.obj, "region")
+
+pub inline fun sortingCode(obj: contactAddress): web string
+  getJsObjectField(obj.obj, "sortingCode")
+
+pub inline fun addressLine(obj: contactAddress): web jsArray
+  getJsObjectField(obj.obj, "addressLine")
+
+pub value struct contactInfo
+  obj: jsObject
+
+pub fun newContactInfo(address: maybe<jsArray> = Nothing, email: maybe<jsArray> = Nothing, icon: maybe<jsArray> = Nothing, name: maybe<jsArray> = Nothing, tel: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match address
+    Just(it) -> setJsObjectField(obj, "address", it)
+    Nothing -> ()
+  match email
+    Just(it) -> setJsObjectField(obj, "email", it)
+    Nothing -> ()
+  match icon
+    Just(it) -> setJsObjectField(obj, "icon", it)
+    Nothing -> ()
+  match name
+    Just(it) -> setJsObjectField(obj, "name", it)
+    Nothing -> ()
+  match tel
+    Just(it) -> setJsObjectField(obj, "tel", it)
+    Nothing -> ()
+
+  ContactInfo(obj);
+
+pub inline fun address(obj: contactInfo, value: jsArray): web ()
+  setJsObjectField(obj.obj, "address", value.obj)
+
+pub inline fun address(obj: contactInfo): web jsArray
+  getJsObjectField(obj.obj, "address")
+
+pub inline fun email(obj: contactInfo, value: jsArray): web ()
+  setJsObjectField(obj.obj, "email", value.obj)
+
+pub inline fun email(obj: contactInfo): web jsArray
+  getJsObjectField(obj.obj, "email")
+
+pub inline fun icon(obj: contactInfo, value: jsArray): web ()
+  setJsObjectField(obj.obj, "icon", value.obj)
+
+pub inline fun icon(obj: contactInfo): web jsArray
+  getJsObjectField(obj.obj, "icon")
+
+pub inline fun name(obj: contactInfo, value: jsArray): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: contactInfo): web jsArray
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun tel(obj: contactInfo, value: jsArray): web ()
+  setJsObjectField(obj.obj, "tel", value.obj)
+
+pub inline fun tel(obj: contactInfo): web jsArray
+  getJsObjectField(obj.obj, "tel")
+
+pub value struct contactsSelectOptions
+  obj: jsObject
+
+pub fun newContactsSelectOptions(multiple: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match multiple
+    Just(it) -> setJsObjectField(obj, "multiple", it)
+    Nothing -> ()
+
+  ContactsSelectOptions(obj);
+
+pub inline fun multiple(obj: contactsSelectOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "multiple", value.obj)
+
+pub inline fun multiple(obj: contactsSelectOptions): web bool
+  getJsObjectField(obj.obj, "multiple")
+
+pub value struct contactsManager
+  obj: jsObject
+
+
+pub inline fun getProperties(obj: contactsManager): web jsPromise
+  jsOperation2(obj.obj, "getProperties")
+
+pub inline fun select(obj: contactsManager, properties': jsArray, options': contactsSelectOptions): web jsPromise
+  jsOperation4(obj.obj, "select", properties'.obj, options'.obj)
+

@@ -1,193 +1,272 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias TouchType = String
-struct TouchInit
-{  identifier: int,
-  target: dom.kk/EventTarget,
-  clientX: double,
-  clientY: double,
-  screenX: double,
-  screenY: double,
-  pageX: double,
-  pageY: double,
-  radiusX: double,
-  radiusY: double,
-  rotationAngle: double,
-  force: double,
-  altitudeAngle: double,
-  azimuthAngle: double,
-  touchType: TouchType
-}
-pub extern newTouchInit([identifier: int, target: dom.kk/EventTarget, clientX: maybe<double> = Nothing, clientY: maybe<double> = Nothing, screenX: maybe<double> = Nothing, screenY: maybe<double> = Nothing, pageX: maybe<double> = Nothing, pageY: maybe<double> = Nothing, radiusX: maybe<double> = Nothing, radiusY: maybe<double> = Nothing, rotationAngle: maybe<double> = Nothing, force: maybe<double> = Nothing, altitudeAngle: maybe<double> = Nothing, azimuthAngle: maybe<double> = Nothing, touchType: maybe<TouchType> = Nothing])
-()
+pub alias touchType = string;
 
-pub extern setidentifier(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getidentifier(this: js_object): web int
-	c inline "getObjectField(#1, \"identifier\")"
-pub extern settarget(this: js_object, value: dom.kk/EventTarget): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettarget(this: js_object): web dom.kk/EventTarget
-	c inline "getObjectField(#1, \"target\")"
-pub extern setclientX(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclientX(this: js_object): web double
-	c inline "getObjectField(#1, \"clientX\")"
-pub extern setclientY(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclientY(this: js_object): web double
-	c inline "getObjectField(#1, \"clientY\")"
-pub extern setscreenX(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscreenX(this: js_object): web double
-	c inline "getObjectField(#1, \"screenX\")"
-pub extern setscreenY(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscreenY(this: js_object): web double
-	c inline "getObjectField(#1, \"screenY\")"
-pub extern setpageX(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpageX(this: js_object): web double
-	c inline "getObjectField(#1, \"pageX\")"
-pub extern setpageY(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpageY(this: js_object): web double
-	c inline "getObjectField(#1, \"pageY\")"
-pub extern setradiusX(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getradiusX(this: js_object): web double
-	c inline "getObjectField(#1, \"radiusX\")"
-pub extern setradiusY(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getradiusY(this: js_object): web double
-	c inline "getObjectField(#1, \"radiusY\")"
-pub extern setrotationAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrotationAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"rotationAngle\")"
-pub extern setforce(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getforce(this: js_object): web double
-	c inline "getObjectField(#1, \"force\")"
-pub extern setaltitudeAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaltitudeAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"altitudeAngle\")"
-pub extern setazimuthAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getazimuthAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"azimuthAngle\")"
-pub extern settouchType(this: js_object, value: TouchType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettouchType(this: js_object): web TouchType
-	c inline "getObjectField(#1, \"touchType\")"
-struct Touch
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub value struct touchInit
+  obj: jsObject
 
-}
-pub extern newTouch([touchInitDict: TouchInit], [])
-()
+pub fun newTouchInit(identifier: int, target: dom/eventTarget, clientX: maybe<double> = Nothing, clientY: maybe<double> = Nothing, screenX: maybe<double> = Nothing, screenY: maybe<double> = Nothing, pageX: maybe<double> = Nothing, pageY: maybe<double> = Nothing, radiusX: maybe<double> = Nothing, radiusY: maybe<double> = Nothing, rotationAngle: maybe<double> = Nothing, force: maybe<double> = Nothing, altitudeAngle: maybe<double> = Nothing, azimuthAngle: maybe<double> = Nothing, touchType: maybe<touchType> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "identifier", identifier);  setJsObjectField(obj, "target", target);  match clientX
+    Just(it) -> setJsObjectField(obj, "clientX", it)
+    Nothing -> ()
+  match clientY
+    Just(it) -> setJsObjectField(obj, "clientY", it)
+    Nothing -> ()
+  match screenX
+    Just(it) -> setJsObjectField(obj, "screenX", it)
+    Nothing -> ()
+  match screenY
+    Just(it) -> setJsObjectField(obj, "screenY", it)
+    Nothing -> ()
+  match pageX
+    Just(it) -> setJsObjectField(obj, "pageX", it)
+    Nothing -> ()
+  match pageY
+    Just(it) -> setJsObjectField(obj, "pageY", it)
+    Nothing -> ()
+  match radiusX
+    Just(it) -> setJsObjectField(obj, "radiusX", it)
+    Nothing -> ()
+  match radiusY
+    Just(it) -> setJsObjectField(obj, "radiusY", it)
+    Nothing -> ()
+  match rotationAngle
+    Just(it) -> setJsObjectField(obj, "rotationAngle", it)
+    Nothing -> ()
+  match force
+    Just(it) -> setJsObjectField(obj, "force", it)
+    Nothing -> ()
+  match altitudeAngle
+    Just(it) -> setJsObjectField(obj, "altitudeAngle", it)
+    Nothing -> ()
+  match azimuthAngle
+    Just(it) -> setJsObjectField(obj, "azimuthAngle", it)
+    Nothing -> ()
+  match touchType
+    Just(it) -> setJsObjectField(obj, "touchType", it)
+    Nothing -> ()
 
-pub extern getidentifier(this: js_object): web int
-	c inline "getObjectField(#1, \"identifier\")"
-pub extern gettarget(this: js_object): web dom.kk/EventTarget
-	c inline "getObjectField(#1, \"target\")"
-pub extern getscreenX(this: js_object): web double
-	c inline "getObjectField(#1, \"screenX\")"
-pub extern getscreenY(this: js_object): web double
-	c inline "getObjectField(#1, \"screenY\")"
-pub extern getclientX(this: js_object): web double
-	c inline "getObjectField(#1, \"clientX\")"
-pub extern getclientY(this: js_object): web double
-	c inline "getObjectField(#1, \"clientY\")"
-pub extern getpageX(this: js_object): web double
-	c inline "getObjectField(#1, \"pageX\")"
-pub extern getpageY(this: js_object): web double
-	c inline "getObjectField(#1, \"pageY\")"
-pub extern getradiusX(this: js_object): web double
-	c inline "getObjectField(#1, \"radiusX\")"
-pub extern getradiusY(this: js_object): web double
-	c inline "getObjectField(#1, \"radiusY\")"
-pub extern getrotationAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"rotationAngle\")"
-pub extern getforce(this: js_object): web double
-	c inline "getObjectField(#1, \"force\")"
-pub extern getaltitudeAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"altitudeAngle\")"
-pub extern getazimuthAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"azimuthAngle\")"
-pub extern gettouchType(this: js_object): web TouchType
-	c inline "getObjectField(#1, \"touchType\")"
-struct TouchList
-{
-}
+  TouchInit(obj);
 
-()
+pub inline fun identifier(obj: touchInit, value: int): web ()
+  setJsObjectField(obj.obj, "identifier", value.obj)
 
-pub extern item(this: js_object, [index: int], [])
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct TouchEventInit
-{  touches: dart:js_interop/JSArray,
-  targetTouches: dart:js_interop/JSArray,
-  changedTouches: dart:js_interop/JSArray
-}
-pub extern newTouchEventInit([touches: maybe<dart:js_interop/JSArray> = Nothing, targetTouches: maybe<dart:js_interop/JSArray> = Nothing, changedTouches: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun identifier(obj: touchInit): web int
+  getJsObjectField(obj.obj, "identifier")
 
-pub extern settouches(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettouches(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"touches\")"
-pub extern settargetTouches(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettargetTouches(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"targetTouches\")"
-pub extern setchangedTouches(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchangedTouches(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"changedTouches\")"
-struct TouchEvent
-{,
-,
-,
-,
-,
-,
+pub inline fun target(obj: touchInit, value: dom/eventTarget): web ()
+  setJsObjectField(obj.obj, "target", value.obj)
 
-}
-pub extern newTouchEvent([type: String], [eventInitDict: TouchEventInit])
-()
+pub inline fun target(obj: touchInit): web dom/eventTarget
+  getJsObjectField(obj.obj, "target")
 
-pub extern getModifierState(this: js_object, [keyArg: String], [])
-pub extern gettouches(this: js_object): web TouchList
-	c inline "getObjectField(#1, \"touches\")"
-pub extern gettargetTouches(this: js_object): web TouchList
-	c inline "getObjectField(#1, \"targetTouches\")"
-pub extern getchangedTouches(this: js_object): web TouchList
-	c inline "getObjectField(#1, \"changedTouches\")"
-pub extern getaltKey(this: js_object): web bool
-	c inline "getObjectField(#1, \"altKey\")"
-pub extern getmetaKey(this: js_object): web bool
-	c inline "getObjectField(#1, \"metaKey\")"
-pub extern getctrlKey(this: js_object): web bool
-	c inline "getObjectField(#1, \"ctrlKey\")"
-pub extern getshiftKey(this: js_object): web bool
-	c inline "getObjectField(#1, \"shiftKey\")"
+pub inline fun clientX(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "clientX", value.obj)
+
+pub inline fun clientX(obj: touchInit): web double
+  getJsObjectField(obj.obj, "clientX")
+
+pub inline fun clientY(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "clientY", value.obj)
+
+pub inline fun clientY(obj: touchInit): web double
+  getJsObjectField(obj.obj, "clientY")
+
+pub inline fun screenX(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "screenX", value.obj)
+
+pub inline fun screenX(obj: touchInit): web double
+  getJsObjectField(obj.obj, "screenX")
+
+pub inline fun screenY(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "screenY", value.obj)
+
+pub inline fun screenY(obj: touchInit): web double
+  getJsObjectField(obj.obj, "screenY")
+
+pub inline fun pageX(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "pageX", value.obj)
+
+pub inline fun pageX(obj: touchInit): web double
+  getJsObjectField(obj.obj, "pageX")
+
+pub inline fun pageY(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "pageY", value.obj)
+
+pub inline fun pageY(obj: touchInit): web double
+  getJsObjectField(obj.obj, "pageY")
+
+pub inline fun radiusX(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "radiusX", value.obj)
+
+pub inline fun radiusX(obj: touchInit): web double
+  getJsObjectField(obj.obj, "radiusX")
+
+pub inline fun radiusY(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "radiusY", value.obj)
+
+pub inline fun radiusY(obj: touchInit): web double
+  getJsObjectField(obj.obj, "radiusY")
+
+pub inline fun rotationAngle(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "rotationAngle", value.obj)
+
+pub inline fun rotationAngle(obj: touchInit): web double
+  getJsObjectField(obj.obj, "rotationAngle")
+
+pub inline fun force(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "force", value.obj)
+
+pub inline fun force(obj: touchInit): web double
+  getJsObjectField(obj.obj, "force")
+
+pub inline fun altitudeAngle(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "altitudeAngle", value.obj)
+
+pub inline fun altitudeAngle(obj: touchInit): web double
+  getJsObjectField(obj.obj, "altitudeAngle")
+
+pub inline fun azimuthAngle(obj: touchInit, value: double): web ()
+  setJsObjectField(obj.obj, "azimuthAngle", value.obj)
+
+pub inline fun azimuthAngle(obj: touchInit): web double
+  getJsObjectField(obj.obj, "azimuthAngle")
+
+pub inline fun touchType(obj: touchInit, value: touchType): web ()
+  setJsObjectField(obj.obj, "touchType", value.obj)
+
+pub inline fun touchType(obj: touchInit): web touchType
+  getJsObjectField(obj.obj, "touchType")
+
+pub value struct touch
+  obj: jsObject
+
+pub inline fun newTouch(touchInitDict': touchInit)
+  newJsObject1("Touch", touchInitDict')"
+
+pub inline fun identifier(obj: touch): web int
+  getJsObjectField(obj.obj, "identifier")
+
+pub inline fun target(obj: touch): web dom/eventTarget
+  getJsObjectField(obj.obj, "target")
+
+pub inline fun screenX(obj: touch): web double
+  getJsObjectField(obj.obj, "screenX")
+
+pub inline fun screenY(obj: touch): web double
+  getJsObjectField(obj.obj, "screenY")
+
+pub inline fun clientX(obj: touch): web double
+  getJsObjectField(obj.obj, "clientX")
+
+pub inline fun clientY(obj: touch): web double
+  getJsObjectField(obj.obj, "clientY")
+
+pub inline fun pageX(obj: touch): web double
+  getJsObjectField(obj.obj, "pageX")
+
+pub inline fun pageY(obj: touch): web double
+  getJsObjectField(obj.obj, "pageY")
+
+pub inline fun radiusX(obj: touch): web double
+  getJsObjectField(obj.obj, "radiusX")
+
+pub inline fun radiusY(obj: touch): web double
+  getJsObjectField(obj.obj, "radiusY")
+
+pub inline fun rotationAngle(obj: touch): web double
+  getJsObjectField(obj.obj, "rotationAngle")
+
+pub inline fun force(obj: touch): web double
+  getJsObjectField(obj.obj, "force")
+
+pub inline fun altitudeAngle(obj: touch): web double
+  getJsObjectField(obj.obj, "altitudeAngle")
+
+pub inline fun azimuthAngle(obj: touch): web double
+  getJsObjectField(obj.obj, "azimuthAngle")
+
+pub inline fun touchType(obj: touch): web touchType
+  getJsObjectField(obj.obj, "touchType")
+
+pub value struct touchList
+  obj: jsObject
+
+
+pub inline fun item(obj: touchList, index': int): web maybe<touch>
+  jsOperation3(obj.obj, "item", index'.obj)
+
+pub inline fun length(obj: touchList): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct touchEventInit
+  obj: jsObject
+
+pub fun newTouchEventInit(touches: maybe<jsArray> = Nothing, targetTouches: maybe<jsArray> = Nothing, changedTouches: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match touches
+    Just(it) -> setJsObjectField(obj, "touches", it)
+    Nothing -> ()
+  match targetTouches
+    Just(it) -> setJsObjectField(obj, "targetTouches", it)
+    Nothing -> ()
+  match changedTouches
+    Just(it) -> setJsObjectField(obj, "changedTouches", it)
+    Nothing -> ()
+
+  TouchEventInit(obj);
+
+pub inline fun touches(obj: touchEventInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "touches", value.obj)
+
+pub inline fun touches(obj: touchEventInit): web jsArray
+  getJsObjectField(obj.obj, "touches")
+
+pub inline fun targetTouches(obj: touchEventInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "targetTouches", value.obj)
+
+pub inline fun targetTouches(obj: touchEventInit): web jsArray
+  getJsObjectField(obj.obj, "targetTouches")
+
+pub inline fun changedTouches(obj: touchEventInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "changedTouches", value.obj)
+
+pub inline fun changedTouches(obj: touchEventInit): web jsArray
+  getJsObjectField(obj.obj, "changedTouches")
+
+pub value struct touchEvent
+  obj: jsObject
+
+pub inline fun newTouchEvent(type': string, eventInitDict': touchEventInit)
+  newJsObject2("TouchEvent", type', eventInitDict')"
+
+pub inline fun getModifierState(obj: touchEvent, keyArg': string): web bool
+  jsOperation3(obj.obj, "getModifierState", keyArg'.obj)
+
+pub inline fun touches(obj: touchEvent): web touchList
+  getJsObjectField(obj.obj, "touches")
+
+pub inline fun targetTouches(obj: touchEvent): web touchList
+  getJsObjectField(obj.obj, "targetTouches")
+
+pub inline fun changedTouches(obj: touchEvent): web touchList
+  getJsObjectField(obj.obj, "changedTouches")
+
+pub inline fun altKey(obj: touchEvent): web bool
+  getJsObjectField(obj.obj, "altKey")
+
+pub inline fun metaKey(obj: touchEvent): web bool
+  getJsObjectField(obj.obj, "metaKey")
+
+pub inline fun ctrlKey(obj: touchEvent): web bool
+  getJsObjectField(obj.obj, "ctrlKey")
+
+pub inline fun shiftKey(obj: touchEvent): web bool
+  getJsObjectField(obj.obj, "shiftKey")
+

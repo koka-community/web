@@ -1,79 +1,120 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias PerformanceEntryList = JSArray
-alias PerformanceObserverCallback = JSFunction
+import web/wasm
+pub alias performanceEntryList = JSArray;
+
+pub alias performanceObserverCallback = jsFunction;
 
 
-struct PerformanceEntry
-{,
-,
-,
 
-}
+pub value struct performanceEntry
+  obj: jsObject
 
-()
 
-pub extern toJSON(this: js_object, [], [])
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getentryType(this: js_object): web String
-	c inline "getObjectField(#1, \"entryType\")"
-pub extern getstartTime(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"startTime\")"
-pub extern getduration(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"duration\")"
-struct PerformanceObserver
-{
-}
-pub extern newPerformanceObserver([callback: PerformanceObserverCallback], [])
-(pub extern getsupportedEntryTypes(): web dart:js_interop/JSArray
-	c inline "getObjectField(\"supportedEntryTypes\")")
+pub inline fun toJSON(obj: performanceEntry): web jsObject
+  jsOperation2(obj.obj, "toJSON")
 
-pub extern observe(this: js_object, [], [options: PerformanceObserverInit])
-pub extern disconnect(this: js_object, [], [])
-pub extern takeRecords(this: js_object, [], [])
-struct PerformanceObserverCallbackOptions
-{  droppedEntriesCount: int
-}
-pub extern newPerformanceObserverCallbackOptions([droppedEntriesCount: maybe<int> = Nothing])
-()
+pub inline fun name(obj: performanceEntry): web string
+  getJsObjectField(obj.obj, "name")
 
-pub extern setdroppedEntriesCount(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdroppedEntriesCount(this: js_object): web int
-	c inline "getObjectField(#1, \"droppedEntriesCount\")"
-struct PerformanceObserverInit
-{  durationThreshold: hr_time.kk/DOMHighResTimeStamp,
-  entryTypes: dart:js_interop/JSArray,
-  type: String,
-  buffered: bool
-}
-pub extern newPerformanceObserverInit([durationThreshold: maybe<hr_time.kk/DOMHighResTimeStamp> = Nothing, entryTypes: maybe<dart:js_interop/JSArray> = Nothing, type: maybe<String> = Nothing, buffered: maybe<bool> = Nothing])
-()
+pub inline fun entryType(obj: performanceEntry): web string
+  getJsObjectField(obj.obj, "entryType")
 
-pub extern setdurationThreshold(this: js_object, value: hr_time.kk/DOMHighResTimeStamp): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdurationThreshold(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"durationThreshold\")"
-pub extern setentryTypes(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getentryTypes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"entryTypes\")"
-pub extern settype(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web String
-	c inline "getObjectField(#1, \"type\")"
-pub extern setbuffered(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbuffered(this: js_object): web bool
-	c inline "getObjectField(#1, \"buffered\")"
-struct PerformanceObserverEntryList
-{
-}
+pub inline fun startTime(obj: performanceEntry): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "startTime")
 
-()
+pub inline fun duration(obj: performanceEntry): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "duration")
 
-pub extern getEntries(this: js_object, [], [])
-pub extern getEntriesByType(this: js_object, [type: String], [])
-pub extern getEntriesByName(this: js_object, [name: String], [type: String])
+pub value struct performanceObserver
+  obj: jsObject
+
+pub inline fun newPerformanceObserver(callback': performanceObserverCallback)
+  newJsObject1("PerformanceObserver", callback')"
+pub inline fun supportedEntryTypes(): web jsArray
+  getJsStatic Field(, "supportedEntryTypes")
+
+pub inline fun observe(obj: performanceObserver, options': performanceObserverInit): web ()
+  jsOperation3(obj.obj, "observe", options'.obj)
+
+pub inline fun disconnect(obj: performanceObserver): web ()
+  jsOperation2(obj.obj, "disconnect")
+
+pub inline fun takeRecords(obj: performanceObserver): web performanceEntryList
+  jsOperation2(obj.obj, "takeRecords")
+
+pub value struct performanceObserverCallbackOptions
+  obj: jsObject
+
+pub fun newPerformanceObserverCallbackOptions(droppedEntriesCount: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match droppedEntriesCount
+    Just(it) -> setJsObjectField(obj, "droppedEntriesCount", it)
+    Nothing -> ()
+
+  PerformanceObserverCallbackOptions(obj);
+
+pub inline fun droppedEntriesCount(obj: performanceObserverCallbackOptions, value: int): web ()
+  setJsObjectField(obj.obj, "droppedEntriesCount", value.obj)
+
+pub inline fun droppedEntriesCount(obj: performanceObserverCallbackOptions): web int
+  getJsObjectField(obj.obj, "droppedEntriesCount")
+
+pub value struct performanceObserverInit
+  obj: jsObject
+
+pub fun newPerformanceObserverInit(durationThreshold: maybe<hr_time/domHighResTimeStamp> = Nothing, entryTypes: maybe<jsArray> = Nothing, type: maybe<string> = Nothing, buffered: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match durationThreshold
+    Just(it) -> setJsObjectField(obj, "durationThreshold", it)
+    Nothing -> ()
+  match entryTypes
+    Just(it) -> setJsObjectField(obj, "entryTypes", it)
+    Nothing -> ()
+  match type
+    Just(it) -> setJsObjectField(obj, "type", it)
+    Nothing -> ()
+  match buffered
+    Just(it) -> setJsObjectField(obj, "buffered", it)
+    Nothing -> ()
+
+  PerformanceObserverInit(obj);
+
+pub inline fun durationThreshold(obj: performanceObserverInit, value: hr_time/domHighResTimeStamp): web ()
+  setJsObjectField(obj.obj, "durationThreshold", value.obj)
+
+pub inline fun durationThreshold(obj: performanceObserverInit): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "durationThreshold")
+
+pub inline fun entryTypes(obj: performanceObserverInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "entryTypes", value.obj)
+
+pub inline fun entryTypes(obj: performanceObserverInit): web jsArray
+  getJsObjectField(obj.obj, "entryTypes")
+
+pub inline fun type(obj: performanceObserverInit, value: string): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: performanceObserverInit): web string
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun buffered(obj: performanceObserverInit, value: bool): web ()
+  setJsObjectField(obj.obj, "buffered", value.obj)
+
+pub inline fun buffered(obj: performanceObserverInit): web bool
+  getJsObjectField(obj.obj, "buffered")
+
+pub value struct performanceObserverEntryList
+  obj: jsObject
+
+
+pub inline fun getEntries(obj: performanceObserverEntryList): web performanceEntryList
+  jsOperation2(obj.obj, "getEntries")
+
+pub inline fun getEntriesByType(obj: performanceObserverEntryList, type': string): web performanceEntryList
+  jsOperation3(obj.obj, "getEntriesByType", type'.obj)
+
+pub inline fun getEntriesByName(obj: performanceObserverEntryList, name': string, type': string): web performanceEntryList
+  jsOperation4(obj.obj, "getEntriesByName", name'.obj, type'.obj)
+

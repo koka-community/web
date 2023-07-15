@@ -1,57 +1,65 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias XRDepthUsage = String
-alias XRDepthDataFormat = String
-struct XRDepthStateInit
-{  usagePreference: dart:js_interop/JSArray,
-  dataFormatPreference: dart:js_interop/JSArray
-}
-pub extern newXRDepthStateInit([usagePreference: dart:js_interop/JSArray, dataFormatPreference: dart:js_interop/JSArray])
-()
+pub alias xrDepthUsage = string;
 
-pub extern setusagePreference(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getusagePreference(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"usagePreference\")"
-pub extern setdataFormatPreference(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdataFormatPreference(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"dataFormatPreference\")"
-struct XRDepthInformation
-{,
-,
-,
 
-}
+pub alias xrDepthDataFormat = string;
 
-()
+pub value struct xrDepthStateInit
+  obj: jsObject
 
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-pub extern getnormDepthBufferFromNormView(this: js_object): web webxr.kk/XRRigidTransform
-	c inline "getObjectField(#1, \"normDepthBufferFromNormView\")"
-pub extern getrawValueToMeters(this: js_object): web double
-	c inline "getObjectField(#1, \"rawValueToMeters\")"
-struct XRCPUDepthInformation
-{
-}
+pub fun newXrDepthStateInit(usagePreference: jsArray, dataFormatPreference: jsArray)
+  val obj = newJsObject();
+  setJsObjectField(obj, "usagePreference", usagePreference);  setJsObjectField(obj, "dataFormatPreference", dataFormatPreference);
+  XrDepthStateInit(obj);
 
-()
+pub inline fun usagePreference(obj: xrDepthStateInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "usagePreference", value.obj)
 
-pub extern getDepthInMeters(this: js_object, [x: double, y: double], [])
-pub extern getdata(this: js_object): web dart:js_interop/JSArrayBuffer
-	c inline "getObjectField(#1, \"data\")"
-struct XRWebGLDepthInformation
-{
-}
+pub inline fun usagePreference(obj: xrDepthStateInit): web jsArray
+  getJsObjectField(obj.obj, "usagePreference")
 
-()
+pub inline fun dataFormatPreference(obj: xrDepthStateInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "dataFormatPreference", value.obj)
 
-pub extern gettexture(this: js_object): web webgl1.kk/WebGLTexture
-	c inline "getObjectField(#1, \"texture\")"
+pub inline fun dataFormatPreference(obj: xrDepthStateInit): web jsArray
+  getJsObjectField(obj.obj, "dataFormatPreference")
+
+pub value struct xrDepthInformation
+  obj: jsObject
+
+
+pub inline fun width(obj: xrDepthInformation): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: xrDepthInformation): web int
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun normDepthBufferFromNormView(obj: xrDepthInformation): web webxr/xrRigidTransform
+  getJsObjectField(obj.obj, "normDepthBufferFromNormView")
+
+pub inline fun rawValueToMeters(obj: xrDepthInformation): web double
+  getJsObjectField(obj.obj, "rawValueToMeters")
+
+pub value struct xrcpuDepthInformation
+  obj: jsObject
+
+
+pub inline fun getDepthInMeters(obj: xrcpuDepthInformation, x': double, y': double): web double
+  jsOperation4(obj.obj, "getDepthInMeters", x'.obj, y'.obj)
+
+pub inline fun data(obj: xrcpuDepthInformation): web jsArrayBuffer
+  getJsObjectField(obj.obj, "data")
+
+pub value struct xrWebGLDepthInformation
+  obj: jsObject
+
+
+pub inline fun texture(obj: xrWebGLDepthInformation): web webgl1/webGLTexture
+  getJsObjectField(obj.obj, "texture")
+

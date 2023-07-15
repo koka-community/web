@@ -1,67 +1,66 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct CSSFontFaceRule
-{
-}
+pub value struct cssFontFaceRule
+  obj: jsObject
 
-()
 
-pub extern getstyle(this: js_object): web cssom.kk/CSSStyleDeclaration
-	c inline "getObjectField(#1, \"style\")"
-struct CSSFontFeatureValuesRule
-{,
-,
-,
-,
-,
-,
+pub inline fun style(obj: cssFontFaceRule): web cssom/cssStyleDeclaration
+  getJsObjectField(obj.obj, "style")
 
-}
+pub value struct cssFontFeatureValuesRule
+  obj: jsObject
 
-()
 
-pub extern setfontFamily(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfontFamily(this: js_object): web String
-	c inline "getObjectField(#1, \"fontFamily\")"
-pub extern getannotation(this: js_object): web CSSFontFeatureValuesMap
-	c inline "getObjectField(#1, \"annotation\")"
-pub extern getornaments(this: js_object): web CSSFontFeatureValuesMap
-	c inline "getObjectField(#1, \"ornaments\")"
-pub extern getstylistic(this: js_object): web CSSFontFeatureValuesMap
-	c inline "getObjectField(#1, \"stylistic\")"
-pub extern getswash(this: js_object): web CSSFontFeatureValuesMap
-	c inline "getObjectField(#1, \"swash\")"
-pub extern getcharacterVariant(this: js_object): web CSSFontFeatureValuesMap
-	c inline "getObjectField(#1, \"characterVariant\")"
-pub extern getstyleset(this: js_object): web CSSFontFeatureValuesMap
-	c inline "getObjectField(#1, \"styleset\")"
-struct CSSFontFeatureValuesMap
-{
-}
+pub inline fun fontFamily(obj: cssFontFeatureValuesRule, value: string): web ()
+  setJsObjectField(obj.obj, "fontFamily", value.obj)
 
-()
+pub inline fun fontFamily(obj: cssFontFeatureValuesRule): web string
+  getJsObjectField(obj.obj, "fontFamily")
 
-pub extern set(this: js_object, [featureValueName: String, values: maybe<dart:js_interop/JSAny>], [])
-struct CSSFontPaletteValuesRule
-{,
-,
-,
+pub inline fun annotation(obj: cssFontFeatureValuesRule): web cssFontFeatureValuesMap
+  getJsObjectField(obj.obj, "annotation")
 
-}
+pub inline fun ornaments(obj: cssFontFeatureValuesRule): web cssFontFeatureValuesMap
+  getJsObjectField(obj.obj, "ornaments")
 
-()
+pub inline fun stylistic(obj: cssFontFeatureValuesRule): web cssFontFeatureValuesMap
+  getJsObjectField(obj.obj, "stylistic")
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern getfontFamily(this: js_object): web String
-	c inline "getObjectField(#1, \"fontFamily\")"
-pub extern getbasePalette(this: js_object): web String
-	c inline "getObjectField(#1, \"basePalette\")"
-pub extern getoverrideColors(this: js_object): web String
-	c inline "getObjectField(#1, \"overrideColors\")"
+pub inline fun swash(obj: cssFontFeatureValuesRule): web cssFontFeatureValuesMap
+  getJsObjectField(obj.obj, "swash")
+
+pub inline fun characterVariant(obj: cssFontFeatureValuesRule): web cssFontFeatureValuesMap
+  getJsObjectField(obj.obj, "characterVariant")
+
+pub inline fun styleset(obj: cssFontFeatureValuesRule): web cssFontFeatureValuesMap
+  getJsObjectField(obj.obj, "styleset")
+
+pub value struct cssFontFeatureValuesMap
+  obj: jsObject
+
+
+pub inline fun set(obj: cssFontFeatureValuesMap, featureValueName': string, values': maybe<jsObject>): web ()
+  jsOperation4(obj.obj, "set", featureValueName'.obj, values'.obj)
+
+pub value struct cssFontPaletteValuesRule
+  obj: jsObject
+
+
+pub inline fun name(obj: cssFontPaletteValuesRule): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun fontFamily(obj: cssFontPaletteValuesRule): web string
+  getJsObjectField(obj.obj, "fontFamily")
+
+pub inline fun basePalette(obj: cssFontPaletteValuesRule): web string
+  getJsObjectField(obj.obj, "basePalette")
+
+pub inline fun overrideColors(obj: cssFontPaletteValuesRule): web string
+  getJsObjectField(obj.obj, "overrideColors")
+

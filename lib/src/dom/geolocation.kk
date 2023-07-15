@@ -1,88 +1,113 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
-alias PositionCallback = JSFunction
-alias PositionErrorCallback = JSFunction
+pub alias positionCallback = jsFunction;
 
 
-struct Geolocation
-{
-}
+pub alias positionErrorCallback = jsFunction;
 
-()
 
-pub extern getCurrentPosition(this: js_object, [successCallback: PositionCallback], [errorCallback: maybe<PositionErrorCallback> =  Nothing, options: PositionOptions])
-pub extern watchPosition(this: js_object, [successCallback: PositionCallback], [errorCallback: maybe<PositionErrorCallback> =  Nothing, options: PositionOptions])
-pub extern clearWatch(this: js_object, [watchId: int], [])
-struct PositionOptions
-{  enableHighAccuracy: bool,
-  timeout: int,
-  maximumAge: int
-}
-pub extern newPositionOptions([enableHighAccuracy: maybe<bool> = Nothing, timeout: maybe<int> = Nothing, maximumAge: maybe<int> = Nothing])
-()
 
-pub extern setenableHighAccuracy(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getenableHighAccuracy(this: js_object): web bool
-	c inline "getObjectField(#1, \"enableHighAccuracy\")"
-pub extern settimeout(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettimeout(this: js_object): web int
-	c inline "getObjectField(#1, \"timeout\")"
-pub extern setmaximumAge(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmaximumAge(this: js_object): web int
-	c inline "getObjectField(#1, \"maximumAge\")"
-struct GeolocationPosition
-{,
+pub value struct geolocation
+  obj: jsObject
 
-}
 
-()
+pub inline fun getCurrentPosition(obj: geolocation, successCallback': positionCallback, errorCallback': maybe<positionErrorCallback> =  Nothing, options': positionOptions): web ()
+  jsOperation5(obj.obj, "getCurrentPosition", successCallback'.obj, errorCallback'.obj, options'.obj)
 
-pub extern getcoords(this: js_object): web GeolocationCoordinates
-	c inline "getObjectField(#1, \"coords\")"
-pub extern gettimestamp(this: js_object): web hr_time.kk/EpochTimeStamp
-	c inline "getObjectField(#1, \"timestamp\")"
-struct GeolocationCoordinates
-{,
-,
-,
-,
-,
-,
+pub inline fun watchPosition(obj: geolocation, successCallback': positionCallback, errorCallback': maybe<positionErrorCallback> =  Nothing, options': positionOptions): web int
+  jsOperation5(obj.obj, "watchPosition", successCallback'.obj, errorCallback'.obj, options'.obj)
 
-}
+pub inline fun clearWatch(obj: geolocation, watchId': int): web ()
+  jsOperation3(obj.obj, "clearWatch", watchId'.obj)
 
-()
+pub value struct positionOptions
+  obj: jsObject
 
-pub extern getaccuracy(this: js_object): web double
-	c inline "getObjectField(#1, \"accuracy\")"
-pub extern getlatitude(this: js_object): web double
-	c inline "getObjectField(#1, \"latitude\")"
-pub extern getlongitude(this: js_object): web double
-	c inline "getObjectField(#1, \"longitude\")"
-pub extern getaltitude(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"altitude\")"
-pub extern getaltitudeAccuracy(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"altitudeAccuracy\")"
-pub extern getheading(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"heading\")"
-pub extern getspeed(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"speed\")"
-struct GeolocationPositionError
-{,
+pub fun newPositionOptions(enableHighAccuracy: maybe<bool> = Nothing, timeout: maybe<int> = Nothing, maximumAge: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match enableHighAccuracy
+    Just(it) -> setJsObjectField(obj, "enableHighAccuracy", it)
+    Nothing -> ()
+  match timeout
+    Just(it) -> setJsObjectField(obj, "timeout", it)
+    Nothing -> ()
+  match maximumAge
+    Just(it) -> setJsObjectField(obj, "maximumAge", it)
+    Nothing -> ()
 
-}
+  PositionOptions(obj);
 
-(pub extern PERMISSION_DENIED(): int
-	c inline "getConstant(\"PERMISSION_DENIED\")", pub extern POSITION_UNAVAILABLE(): int
-	c inline "getConstant(\"POSITION_UNAVAILABLE\")", pub extern TIMEOUT(): int
-	c inline "getConstant(\"TIMEOUT\")")
+pub inline fun enableHighAccuracy(obj: positionOptions, value: bool): web ()
+  setJsObjectField(obj.obj, "enableHighAccuracy", value.obj)
 
-pub extern getcode(this: js_object): web int
-	c inline "getObjectField(#1, \"code\")"
-pub extern getmessage(this: js_object): web String
-	c inline "getObjectField(#1, \"message\")"
+pub inline fun enableHighAccuracy(obj: positionOptions): web bool
+  getJsObjectField(obj.obj, "enableHighAccuracy")
+
+pub inline fun timeout(obj: positionOptions, value: int): web ()
+  setJsObjectField(obj.obj, "timeout", value.obj)
+
+pub inline fun timeout(obj: positionOptions): web int
+  getJsObjectField(obj.obj, "timeout")
+
+pub inline fun maximumAge(obj: positionOptions, value: int): web ()
+  setJsObjectField(obj.obj, "maximumAge", value.obj)
+
+pub inline fun maximumAge(obj: positionOptions): web int
+  getJsObjectField(obj.obj, "maximumAge")
+
+pub value struct geolocationPosition
+  obj: jsObject
+
+
+pub inline fun coords(obj: geolocationPosition): web geolocationCoordinates
+  getJsObjectField(obj.obj, "coords")
+
+pub inline fun timestamp(obj: geolocationPosition): web hr_time/epochTimeStamp
+  getJsObjectField(obj.obj, "timestamp")
+
+pub value struct geolocationCoordinates
+  obj: jsObject
+
+
+pub inline fun accuracy(obj: geolocationCoordinates): web double
+  getJsObjectField(obj.obj, "accuracy")
+
+pub inline fun latitude(obj: geolocationCoordinates): web double
+  getJsObjectField(obj.obj, "latitude")
+
+pub inline fun longitude(obj: geolocationCoordinates): web double
+  getJsObjectField(obj.obj, "longitude")
+
+pub inline fun altitude(obj: geolocationCoordinates): web maybe<double>
+  getJsObjectField(obj.obj, "altitude")
+
+pub inline fun altitudeAccuracy(obj: geolocationCoordinates): web maybe<double>
+  getJsObjectField(obj.obj, "altitudeAccuracy")
+
+pub inline fun heading(obj: geolocationCoordinates): web maybe<double>
+  getJsObjectField(obj.obj, "heading")
+
+pub inline fun speed(obj: geolocationCoordinates): web maybe<double>
+  getJsObjectField(obj.obj, "speed")
+
+pub value struct geolocationPositionError
+  obj: jsObject
+
+pub inline fun permissiondenieD(): int
+  getConstant("PERMISSION_DENIED")
+
+pub inline fun positionunavailablE(): int
+  getConstant("POSITION_UNAVAILABLE")
+
+pub inline fun timeouT(): int
+  getConstant("TIMEOUT")
+
+pub inline fun code(obj: geolocationPositionError): web int
+  getJsObjectField(obj.obj, "code")
+
+pub inline fun message(obj: geolocationPositionError): web string
+  getJsObjectField(obj.obj, "message")
+

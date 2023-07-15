@@ -1,121 +1,212 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias ConstrainPoint2D = JSAny
+import web/wasm
+pub alias constrainPoint2D = JSAny;
 
 
-alias RedEyeReduction = String
-alias FillLightMode = String
-alias MeteringMode = String
-struct ImageCapture
-{
-}
-pub extern newImageCapture([videoTrack: mediacapture_streams.kk/MediaStreamTrack], [])
-()
 
-pub extern takePhoto(this: js_object, [], [photoSettings: PhotoSettings])
-pub extern getPhotoCapabilities(this: js_object, [], [])
-pub extern getPhotoSettings(this: js_object, [], [])
-pub extern grabFrame(this: js_object, [], [])
-pub extern gettrack(this: js_object): web mediacapture_streams.kk/MediaStreamTrack
-	c inline "getObjectField(#1, \"track\")"
-struct PhotoCapabilities
-{  redEyeReduction: RedEyeReduction,
-  imageHeight: MediaSettingsRange,
-  imageWidth: MediaSettingsRange,
-  fillLightMode: dart:js_interop/JSArray
-}
-pub extern newPhotoCapabilities([redEyeReduction: maybe<RedEyeReduction> = Nothing, imageHeight: maybe<MediaSettingsRange> = Nothing, imageWidth: maybe<MediaSettingsRange> = Nothing, fillLightMode: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub alias redEyeReduction = string;
 
-pub extern setredEyeReduction(this: js_object, value: RedEyeReduction): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getredEyeReduction(this: js_object): web RedEyeReduction
-	c inline "getObjectField(#1, \"redEyeReduction\")"
-pub extern setimageHeight(this: js_object, value: MediaSettingsRange): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getimageHeight(this: js_object): web MediaSettingsRange
-	c inline "getObjectField(#1, \"imageHeight\")"
-pub extern setimageWidth(this: js_object, value: MediaSettingsRange): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getimageWidth(this: js_object): web MediaSettingsRange
-	c inline "getObjectField(#1, \"imageWidth\")"
-pub extern setfillLightMode(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfillLightMode(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"fillLightMode\")"
-struct PhotoSettings
-{  fillLightMode: FillLightMode,
-  imageHeight: double,
-  imageWidth: double,
-  redEyeReduction: bool
-}
-pub extern newPhotoSettings([fillLightMode: maybe<FillLightMode> = Nothing, imageHeight: maybe<double> = Nothing, imageWidth: maybe<double> = Nothing, redEyeReduction: maybe<bool> = Nothing])
-()
 
-pub extern setfillLightMode(this: js_object, value: FillLightMode): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfillLightMode(this: js_object): web FillLightMode
-	c inline "getObjectField(#1, \"fillLightMode\")"
-pub extern setimageHeight(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getimageHeight(this: js_object): web double
-	c inline "getObjectField(#1, \"imageHeight\")"
-pub extern setimageWidth(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getimageWidth(this: js_object): web double
-	c inline "getObjectField(#1, \"imageWidth\")"
-pub extern setredEyeReduction(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getredEyeReduction(this: js_object): web bool
-	c inline "getObjectField(#1, \"redEyeReduction\")"
-struct MediaSettingsRange
-{  max: double,
-  min: double,
-  step: double
-}
-pub extern newMediaSettingsRange([max: maybe<double> = Nothing, min: maybe<double> = Nothing, step: maybe<double> = Nothing])
-()
+pub alias fillLightMode = string;
 
-pub extern setmax(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmax(this: js_object): web double
-	c inline "getObjectField(#1, \"max\")"
-pub extern setmin(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmin(this: js_object): web double
-	c inline "getObjectField(#1, \"min\")"
-pub extern setstep(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstep(this: js_object): web double
-	c inline "getObjectField(#1, \"step\")"
-struct ConstrainPoint2DParameters
-{  exact: dart:js_interop/JSArray,
-  ideal: dart:js_interop/JSArray
-}
-pub extern newConstrainPoint2DParameters([exact: maybe<dart:js_interop/JSArray> = Nothing, ideal: maybe<dart:js_interop/JSArray> = Nothing])
-()
 
-pub extern setexact(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getexact(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"exact\")"
-pub extern setideal(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getideal(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"ideal\")"
-struct Point2D
-{  x: double,
-  y: double
-}
-pub extern newPoint2D([x: maybe<double> = Nothing, y: maybe<double> = Nothing])
-()
+pub alias meteringMode = string;
 
-pub extern setx(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getx(this: js_object): web double
-	c inline "getObjectField(#1, \"x\")"
-pub extern sety(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gety(this: js_object): web double
-	c inline "getObjectField(#1, \"y\")"
+pub value struct imageCapture
+  obj: jsObject
+
+pub inline fun newImageCapture(videoTrack': mediacapture_streams/mediaStreamTrack)
+  newJsObject1("ImageCapture", videoTrack')"
+
+pub inline fun takePhoto(obj: imageCapture, photoSettings': photoSettings): web jsPromise
+  jsOperation3(obj.obj, "takePhoto", photoSettings'.obj)
+
+pub inline fun getPhotoCapabilities(obj: imageCapture): web jsPromise
+  jsOperation2(obj.obj, "getPhotoCapabilities")
+
+pub inline fun getPhotoSettings(obj: imageCapture): web jsPromise
+  jsOperation2(obj.obj, "getPhotoSettings")
+
+pub inline fun grabFrame(obj: imageCapture): web jsPromise
+  jsOperation2(obj.obj, "grabFrame")
+
+pub inline fun track(obj: imageCapture): web mediacapture_streams/mediaStreamTrack
+  getJsObjectField(obj.obj, "track")
+
+pub value struct photoCapabilities
+  obj: jsObject
+
+pub fun newPhotoCapabilities(redEyeReduction: maybe<redEyeReduction> = Nothing, imageHeight: maybe<mediaSettingsRange> = Nothing, imageWidth: maybe<mediaSettingsRange> = Nothing, fillLightMode: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match redEyeReduction
+    Just(it) -> setJsObjectField(obj, "redEyeReduction", it)
+    Nothing -> ()
+  match imageHeight
+    Just(it) -> setJsObjectField(obj, "imageHeight", it)
+    Nothing -> ()
+  match imageWidth
+    Just(it) -> setJsObjectField(obj, "imageWidth", it)
+    Nothing -> ()
+  match fillLightMode
+    Just(it) -> setJsObjectField(obj, "fillLightMode", it)
+    Nothing -> ()
+
+  PhotoCapabilities(obj);
+
+pub inline fun redEyeReduction(obj: photoCapabilities, value: redEyeReduction): web ()
+  setJsObjectField(obj.obj, "redEyeReduction", value.obj)
+
+pub inline fun redEyeReduction(obj: photoCapabilities): web redEyeReduction
+  getJsObjectField(obj.obj, "redEyeReduction")
+
+pub inline fun imageHeight(obj: photoCapabilities, value: mediaSettingsRange): web ()
+  setJsObjectField(obj.obj, "imageHeight", value.obj)
+
+pub inline fun imageHeight(obj: photoCapabilities): web mediaSettingsRange
+  getJsObjectField(obj.obj, "imageHeight")
+
+pub inline fun imageWidth(obj: photoCapabilities, value: mediaSettingsRange): web ()
+  setJsObjectField(obj.obj, "imageWidth", value.obj)
+
+pub inline fun imageWidth(obj: photoCapabilities): web mediaSettingsRange
+  getJsObjectField(obj.obj, "imageWidth")
+
+pub inline fun fillLightMode(obj: photoCapabilities, value: jsArray): web ()
+  setJsObjectField(obj.obj, "fillLightMode", value.obj)
+
+pub inline fun fillLightMode(obj: photoCapabilities): web jsArray
+  getJsObjectField(obj.obj, "fillLightMode")
+
+pub value struct photoSettings
+  obj: jsObject
+
+pub fun newPhotoSettings(fillLightMode: maybe<fillLightMode> = Nothing, imageHeight: maybe<double> = Nothing, imageWidth: maybe<double> = Nothing, redEyeReduction: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match fillLightMode
+    Just(it) -> setJsObjectField(obj, "fillLightMode", it)
+    Nothing -> ()
+  match imageHeight
+    Just(it) -> setJsObjectField(obj, "imageHeight", it)
+    Nothing -> ()
+  match imageWidth
+    Just(it) -> setJsObjectField(obj, "imageWidth", it)
+    Nothing -> ()
+  match redEyeReduction
+    Just(it) -> setJsObjectField(obj, "redEyeReduction", it)
+    Nothing -> ()
+
+  PhotoSettings(obj);
+
+pub inline fun fillLightMode(obj: photoSettings, value: fillLightMode): web ()
+  setJsObjectField(obj.obj, "fillLightMode", value.obj)
+
+pub inline fun fillLightMode(obj: photoSettings): web fillLightMode
+  getJsObjectField(obj.obj, "fillLightMode")
+
+pub inline fun imageHeight(obj: photoSettings, value: double): web ()
+  setJsObjectField(obj.obj, "imageHeight", value.obj)
+
+pub inline fun imageHeight(obj: photoSettings): web double
+  getJsObjectField(obj.obj, "imageHeight")
+
+pub inline fun imageWidth(obj: photoSettings, value: double): web ()
+  setJsObjectField(obj.obj, "imageWidth", value.obj)
+
+pub inline fun imageWidth(obj: photoSettings): web double
+  getJsObjectField(obj.obj, "imageWidth")
+
+pub inline fun redEyeReduction(obj: photoSettings, value: bool): web ()
+  setJsObjectField(obj.obj, "redEyeReduction", value.obj)
+
+pub inline fun redEyeReduction(obj: photoSettings): web bool
+  getJsObjectField(obj.obj, "redEyeReduction")
+
+pub value struct mediaSettingsRange
+  obj: jsObject
+
+pub fun newMediaSettingsRange(max: maybe<double> = Nothing, min: maybe<double> = Nothing, step: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match max
+    Just(it) -> setJsObjectField(obj, "max", it)
+    Nothing -> ()
+  match min
+    Just(it) -> setJsObjectField(obj, "min", it)
+    Nothing -> ()
+  match step
+    Just(it) -> setJsObjectField(obj, "step", it)
+    Nothing -> ()
+
+  MediaSettingsRange(obj);
+
+pub inline fun max(obj: mediaSettingsRange, value: double): web ()
+  setJsObjectField(obj.obj, "max", value.obj)
+
+pub inline fun max(obj: mediaSettingsRange): web double
+  getJsObjectField(obj.obj, "max")
+
+pub inline fun min(obj: mediaSettingsRange, value: double): web ()
+  setJsObjectField(obj.obj, "min", value.obj)
+
+pub inline fun min(obj: mediaSettingsRange): web double
+  getJsObjectField(obj.obj, "min")
+
+pub inline fun step(obj: mediaSettingsRange, value: double): web ()
+  setJsObjectField(obj.obj, "step", value.obj)
+
+pub inline fun step(obj: mediaSettingsRange): web double
+  getJsObjectField(obj.obj, "step")
+
+pub value struct constrainPoint2DParameters
+  obj: jsObject
+
+pub fun newConstrainPoint2DParameters(exact: maybe<jsArray> = Nothing, ideal: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match exact
+    Just(it) -> setJsObjectField(obj, "exact", it)
+    Nothing -> ()
+  match ideal
+    Just(it) -> setJsObjectField(obj, "ideal", it)
+    Nothing -> ()
+
+  ConstrainPoint2DParameters(obj);
+
+pub inline fun exact(obj: constrainPoint2DParameters, value: jsArray): web ()
+  setJsObjectField(obj.obj, "exact", value.obj)
+
+pub inline fun exact(obj: constrainPoint2DParameters): web jsArray
+  getJsObjectField(obj.obj, "exact")
+
+pub inline fun ideal(obj: constrainPoint2DParameters, value: jsArray): web ()
+  setJsObjectField(obj.obj, "ideal", value.obj)
+
+pub inline fun ideal(obj: constrainPoint2DParameters): web jsArray
+  getJsObjectField(obj.obj, "ideal")
+
+pub value struct point2D
+  obj: jsObject
+
+pub fun newPoint2D(x: maybe<double> = Nothing, y: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match x
+    Just(it) -> setJsObjectField(obj, "x", it)
+    Nothing -> ()
+  match y
+    Just(it) -> setJsObjectField(obj, "y", it)
+    Nothing -> ()
+
+  Point2D(obj);
+
+pub inline fun x(obj: point2D, value: double): web ()
+  setJsObjectField(obj.obj, "x", value.obj)
+
+pub inline fun x(obj: point2D): web double
+  getJsObjectField(obj.obj, "x")
+
+pub inline fun y(obj: point2D, value: double): web ()
+  setJsObjectField(obj.obj, "y", value.obj)
+
+pub inline fun y(obj: point2D): web double
+  getJsObjectField(obj.obj, "y")
+

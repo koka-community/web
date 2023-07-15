@@ -1,57 +1,72 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias PermissionState = String
-struct Permissions
-{
-}
+pub alias permissionState = string;
 
-()
+pub value struct permissions
+  obj: jsObject
 
-pub extern request(this: js_object, [permissionDesc: dart:js_interop/JSObject], [])
-pub extern revoke(this: js_object, [permissionDesc: dart:js_interop/JSObject], [])
-pub extern query(this: js_object, [permissionDesc: dart:js_interop/JSObject], [])
-struct PermissionDescriptor
-{  name: String
-}
-pub extern newPermissionDescriptor([name: String])
-()
 
-pub extern setname(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-struct PermissionStatus
-{,
-,
+pub inline fun request(obj: permissions, permissionDesc': jsObject): web jsPromise
+  jsOperation3(obj.obj, "request", permissionDesc'.obj)
 
-}
+pub inline fun revoke(obj: permissions, permissionDesc': jsObject): web jsPromise
+  jsOperation3(obj.obj, "revoke", permissionDesc'.obj)
 
-()
+pub inline fun query(obj: permissions, permissionDesc': jsObject): web jsPromise
+  jsOperation3(obj.obj, "query", permissionDesc'.obj)
 
-pub extern getstate(this: js_object): web PermissionState
-	c inline "getObjectField(#1, \"state\")"
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-pub extern setonchange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonchange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onchange\")"
-struct PermissionSetParameters
-{  descriptor: PermissionDescriptor,
-  state: PermissionState
-}
-pub extern newPermissionSetParameters([descriptor: PermissionDescriptor, state: PermissionState])
-()
+pub value struct permissionDescriptor
+  obj: jsObject
 
-pub extern setdescriptor(this: js_object, value: PermissionDescriptor): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdescriptor(this: js_object): web PermissionDescriptor
-	c inline "getObjectField(#1, \"descriptor\")"
-pub extern setstate(this: js_object, value: PermissionState): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstate(this: js_object): web PermissionState
-	c inline "getObjectField(#1, \"state\")"
+pub fun newPermissionDescriptor(name: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "name", name);
+  PermissionDescriptor(obj);
+
+pub inline fun name(obj: permissionDescriptor, value: string): web ()
+  setJsObjectField(obj.obj, "name", value.obj)
+
+pub inline fun name(obj: permissionDescriptor): web string
+  getJsObjectField(obj.obj, "name")
+
+pub value struct permissionStatus
+  obj: jsObject
+
+
+pub inline fun state(obj: permissionStatus): web permissionState
+  getJsObjectField(obj.obj, "state")
+
+pub inline fun name(obj: permissionStatus): web string
+  getJsObjectField(obj.obj, "name")
+
+pub inline fun onchange(obj: permissionStatus, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onchange", value.obj)
+
+pub inline fun onchange(obj: permissionStatus): web html/eventHandler
+  getJsObjectField(obj.obj, "onchange")
+
+pub value struct permissionSetParameters
+  obj: jsObject
+
+pub fun newPermissionSetParameters(descriptor: permissionDescriptor, state: permissionState)
+  val obj = newJsObject();
+  setJsObjectField(obj, "descriptor", descriptor);  setJsObjectField(obj, "state", state);
+  PermissionSetParameters(obj);
+
+pub inline fun descriptor(obj: permissionSetParameters, value: permissionDescriptor): web ()
+  setJsObjectField(obj.obj, "descriptor", value.obj)
+
+pub inline fun descriptor(obj: permissionSetParameters): web permissionDescriptor
+  getJsObjectField(obj.obj, "descriptor")
+
+pub inline fun state(obj: permissionSetParameters, value: permissionState): web ()
+  setJsObjectField(obj.obj, "state", value.obj)
+
+pub inline fun state(obj: permissionSetParameters): web permissionState
+  getJsObjectField(obj.obj, "state")
+

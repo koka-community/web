@@ -1,22 +1,34 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct FlacEncoderConfig
-{  blockSize: int,
-  compressLevel: int
-}
-pub extern newFlacEncoderConfig([blockSize: maybe<int> = Nothing, compressLevel: maybe<int> = Nothing])
-()
+pub value struct flacEncoderConfig
+  obj: jsObject
 
-pub extern setblockSize(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getblockSize(this: js_object): web int
-	c inline "getObjectField(#1, \"blockSize\")"
-pub extern setcompressLevel(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcompressLevel(this: js_object): web int
-	c inline "getObjectField(#1, \"compressLevel\")"
+pub fun newFlacEncoderConfig(blockSize: maybe<int> = Nothing, compressLevel: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match blockSize
+    Just(it) -> setJsObjectField(obj, "blockSize", it)
+    Nothing -> ()
+  match compressLevel
+    Just(it) -> setJsObjectField(obj, "compressLevel", it)
+    Nothing -> ()
+
+  FlacEncoderConfig(obj);
+
+pub inline fun blockSize(obj: flacEncoderConfig, value: int): web ()
+  setJsObjectField(obj.obj, "blockSize", value.obj)
+
+pub inline fun blockSize(obj: flacEncoderConfig): web int
+  getJsObjectField(obj.obj, "blockSize")
+
+pub inline fun compressLevel(obj: flacEncoderConfig, value: int): web ()
+  setJsObjectField(obj.obj, "compressLevel", value.obj)
+
+pub inline fun compressLevel(obj: flacEncoderConfig): web int
+  getJsObjectField(obj.obj, "compressLevel")
+

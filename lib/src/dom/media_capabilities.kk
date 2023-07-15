@@ -1,249 +1,396 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias MediaDecodingType = String
-alias MediaEncodingType = String
-alias HdrMetadataType = String
-alias ColorGamut = String
-alias TransferFunction = String
-struct MediaConfiguration
-{  video: VideoConfiguration,
-  audio: AudioConfiguration
-}
-pub extern newMediaConfiguration([video: maybe<VideoConfiguration> = Nothing, audio: maybe<AudioConfiguration> = Nothing])
-()
+pub alias mediaDecodingType = string;
 
-pub extern setvideo(this: js_object, value: VideoConfiguration): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvideo(this: js_object): web VideoConfiguration
-	c inline "getObjectField(#1, \"video\")"
-pub extern setaudio(this: js_object, value: AudioConfiguration): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaudio(this: js_object): web AudioConfiguration
-	c inline "getObjectField(#1, \"audio\")"
-struct MediaDecodingConfiguration
-{  type: MediaDecodingType,
-  keySystemConfiguration: MediaCapabilitiesKeySystemConfiguration
-}
-pub extern newMediaDecodingConfiguration([type: MediaDecodingType, keySystemConfiguration: maybe<MediaCapabilitiesKeySystemConfiguration> = Nothing])
-()
 
-pub extern settype(this: js_object, value: MediaDecodingType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web MediaDecodingType
-	c inline "getObjectField(#1, \"type\")"
-pub extern setkeySystemConfiguration(this: js_object, value: MediaCapabilitiesKeySystemConfiguration): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getkeySystemConfiguration(this: js_object): web MediaCapabilitiesKeySystemConfiguration
-	c inline "getObjectField(#1, \"keySystemConfiguration\")"
-struct MediaEncodingConfiguration
-{  type: MediaEncodingType
-}
-pub extern newMediaEncodingConfiguration([type: MediaEncodingType])
-()
+pub alias mediaEncodingType = string;
 
-pub extern settype(this: js_object, value: MediaEncodingType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web MediaEncodingType
-	c inline "getObjectField(#1, \"type\")"
-struct VideoConfiguration
-{  contentType: String,
-  width: int,
-  height: int,
-  bitrate: int,
-  framerate: double,
-  hasAlphaChannel: bool,
-  hdrMetadataType: HdrMetadataType,
-  colorGamut: ColorGamut,
-  transferFunction: TransferFunction,
-  scalabilityMode: String,
-  spatialScalability: bool
-}
-pub extern newVideoConfiguration([contentType: String, width: int, height: int, bitrate: int, framerate: double, hasAlphaChannel: maybe<bool> = Nothing, hdrMetadataType: maybe<HdrMetadataType> = Nothing, colorGamut: maybe<ColorGamut> = Nothing, transferFunction: maybe<TransferFunction> = Nothing, scalabilityMode: maybe<String> = Nothing, spatialScalability: maybe<bool> = Nothing])
-()
 
-pub extern setcontentType(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcontentType(this: js_object): web String
-	c inline "getObjectField(#1, \"contentType\")"
-pub extern setwidth(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-pub extern setbitrate(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbitrate(this: js_object): web int
-	c inline "getObjectField(#1, \"bitrate\")"
-pub extern setframerate(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getframerate(this: js_object): web double
-	c inline "getObjectField(#1, \"framerate\")"
-pub extern sethasAlphaChannel(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethasAlphaChannel(this: js_object): web bool
-	c inline "getObjectField(#1, \"hasAlphaChannel\")"
-pub extern sethdrMetadataType(this: js_object, value: HdrMetadataType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gethdrMetadataType(this: js_object): web HdrMetadataType
-	c inline "getObjectField(#1, \"hdrMetadataType\")"
-pub extern setcolorGamut(this: js_object, value: ColorGamut): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolorGamut(this: js_object): web ColorGamut
-	c inline "getObjectField(#1, \"colorGamut\")"
-pub extern settransferFunction(this: js_object, value: TransferFunction): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransferFunction(this: js_object): web TransferFunction
-	c inline "getObjectField(#1, \"transferFunction\")"
-pub extern setscalabilityMode(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscalabilityMode(this: js_object): web String
-	c inline "getObjectField(#1, \"scalabilityMode\")"
-pub extern setspatialScalability(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getspatialScalability(this: js_object): web bool
-	c inline "getObjectField(#1, \"spatialScalability\")"
-struct AudioConfiguration
-{  contentType: String,
-  channels: String,
-  bitrate: int,
-  samplerate: int,
-  spatialRendering: bool
-}
-pub extern newAudioConfiguration([contentType: String, channels: maybe<String> = Nothing, bitrate: maybe<int> = Nothing, samplerate: maybe<int> = Nothing, spatialRendering: maybe<bool> = Nothing])
-()
+pub alias hdrMetadataType = string;
 
-pub extern setcontentType(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcontentType(this: js_object): web String
-	c inline "getObjectField(#1, \"contentType\")"
-pub extern setchannels(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getchannels(this: js_object): web String
-	c inline "getObjectField(#1, \"channels\")"
-pub extern setbitrate(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbitrate(this: js_object): web int
-	c inline "getObjectField(#1, \"bitrate\")"
-pub extern setsamplerate(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsamplerate(this: js_object): web int
-	c inline "getObjectField(#1, \"samplerate\")"
-pub extern setspatialRendering(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getspatialRendering(this: js_object): web bool
-	c inline "getObjectField(#1, \"spatialRendering\")"
-struct MediaCapabilitiesKeySystemConfiguration
-{  keySystem: String,
-  initDataType: String,
-  distinctiveIdentifier: encrypted_media.kk/MediaKeysRequirement,
-  persistentState: encrypted_media.kk/MediaKeysRequirement,
-  sessionTypes: dart:js_interop/JSArray,
-  audio: KeySystemTrackConfiguration,
-  video: KeySystemTrackConfiguration
-}
-pub extern newMediaCapabilitiesKeySystemConfiguration([keySystem: String, initDataType: maybe<String> = Nothing, distinctiveIdentifier: maybe<encrypted_media.kk/MediaKeysRequirement> = Nothing, persistentState: maybe<encrypted_media.kk/MediaKeysRequirement> = Nothing, sessionTypes: maybe<dart:js_interop/JSArray> = Nothing, audio: maybe<KeySystemTrackConfiguration> = Nothing, video: maybe<KeySystemTrackConfiguration> = Nothing])
-()
 
-pub extern setkeySystem(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getkeySystem(this: js_object): web String
-	c inline "getObjectField(#1, \"keySystem\")"
-pub extern setinitDataType(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinitDataType(this: js_object): web String
-	c inline "getObjectField(#1, \"initDataType\")"
-pub extern setdistinctiveIdentifier(this: js_object, value: encrypted_media.kk/MediaKeysRequirement): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdistinctiveIdentifier(this: js_object): web encrypted_media.kk/MediaKeysRequirement
-	c inline "getObjectField(#1, \"distinctiveIdentifier\")"
-pub extern setpersistentState(this: js_object, value: encrypted_media.kk/MediaKeysRequirement): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpersistentState(this: js_object): web encrypted_media.kk/MediaKeysRequirement
-	c inline "getObjectField(#1, \"persistentState\")"
-pub extern setsessionTypes(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsessionTypes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"sessionTypes\")"
-pub extern setaudio(this: js_object, value: KeySystemTrackConfiguration): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaudio(this: js_object): web KeySystemTrackConfiguration
-	c inline "getObjectField(#1, \"audio\")"
-pub extern setvideo(this: js_object, value: KeySystemTrackConfiguration): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getvideo(this: js_object): web KeySystemTrackConfiguration
-	c inline "getObjectField(#1, \"video\")"
-struct KeySystemTrackConfiguration
-{  robustness: String,
-  encryptionScheme: maybe<String>
-}
-pub extern newKeySystemTrackConfiguration([robustness: maybe<String> = Nothing, encryptionScheme: maybe<maybe<String>> = Nothing])
-()
+pub alias colorGamut = string;
 
-pub extern setrobustness(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrobustness(this: js_object): web String
-	c inline "getObjectField(#1, \"robustness\")"
-pub extern setencryptionScheme(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getencryptionScheme(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"encryptionScheme\")"
-struct MediaCapabilitiesInfo
-{  supported: bool,
-  smooth: bool,
-  powerEfficient: bool
-}
-pub extern newMediaCapabilitiesInfo([supported: bool, smooth: bool, powerEfficient: bool])
-()
 
-pub extern setsupported(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsupported(this: js_object): web bool
-	c inline "getObjectField(#1, \"supported\")"
-pub extern setsmooth(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsmooth(this: js_object): web bool
-	c inline "getObjectField(#1, \"smooth\")"
-pub extern setpowerEfficient(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpowerEfficient(this: js_object): web bool
-	c inline "getObjectField(#1, \"powerEfficient\")"
-struct MediaCapabilitiesDecodingInfo
-{  keySystemAccess: encrypted_media.kk/MediaKeySystemAccess,
-  configuration: MediaDecodingConfiguration
-}
-pub extern newMediaCapabilitiesDecodingInfo([keySystemAccess: encrypted_media.kk/MediaKeySystemAccess, configuration: maybe<MediaDecodingConfiguration> = Nothing])
-()
+pub alias transferFunction = string;
 
-pub extern setkeySystemAccess(this: js_object, value: encrypted_media.kk/MediaKeySystemAccess): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getkeySystemAccess(this: js_object): web encrypted_media.kk/MediaKeySystemAccess
-	c inline "getObjectField(#1, \"keySystemAccess\")"
-pub extern setconfiguration(this: js_object, value: MediaDecodingConfiguration): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getconfiguration(this: js_object): web MediaDecodingConfiguration
-	c inline "getObjectField(#1, \"configuration\")"
-struct MediaCapabilitiesEncodingInfo
-{  configuration: MediaEncodingConfiguration
-}
-pub extern newMediaCapabilitiesEncodingInfo([configuration: maybe<MediaEncodingConfiguration> = Nothing])
-()
+pub value struct mediaConfiguration
+  obj: jsObject
 
-pub extern setconfiguration(this: js_object, value: MediaEncodingConfiguration): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getconfiguration(this: js_object): web MediaEncodingConfiguration
-	c inline "getObjectField(#1, \"configuration\")"
-struct MediaCapabilities
-{
-}
+pub fun newMediaConfiguration(video: maybe<videoConfiguration> = Nothing, audio: maybe<audioConfiguration> = Nothing)
+  val obj = newJsObject();
+  match video
+    Just(it) -> setJsObjectField(obj, "video", it)
+    Nothing -> ()
+  match audio
+    Just(it) -> setJsObjectField(obj, "audio", it)
+    Nothing -> ()
 
-()
+  MediaConfiguration(obj);
 
-pub extern decodingInfo(this: js_object, [configuration: MediaDecodingConfiguration], [])
-pub extern encodingInfo(this: js_object, [configuration: MediaEncodingConfiguration], [])
+pub inline fun video(obj: mediaConfiguration, value: videoConfiguration): web ()
+  setJsObjectField(obj.obj, "video", value.obj)
+
+pub inline fun video(obj: mediaConfiguration): web videoConfiguration
+  getJsObjectField(obj.obj, "video")
+
+pub inline fun audio(obj: mediaConfiguration, value: audioConfiguration): web ()
+  setJsObjectField(obj.obj, "audio", value.obj)
+
+pub inline fun audio(obj: mediaConfiguration): web audioConfiguration
+  getJsObjectField(obj.obj, "audio")
+
+pub value struct mediaDecodingConfiguration
+  obj: jsObject
+
+pub fun newMediaDecodingConfiguration(type: mediaDecodingType, keySystemConfiguration: maybe<mediaCapabilitiesKeySystemConfiguration> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "type", type);  match keySystemConfiguration
+    Just(it) -> setJsObjectField(obj, "keySystemConfiguration", it)
+    Nothing -> ()
+
+  MediaDecodingConfiguration(obj);
+
+pub inline fun type(obj: mediaDecodingConfiguration, value: mediaDecodingType): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: mediaDecodingConfiguration): web mediaDecodingType
+  getJsObjectField(obj.obj, "type")
+
+pub inline fun keySystemConfiguration(obj: mediaDecodingConfiguration, value: mediaCapabilitiesKeySystemConfiguration): web ()
+  setJsObjectField(obj.obj, "keySystemConfiguration", value.obj)
+
+pub inline fun keySystemConfiguration(obj: mediaDecodingConfiguration): web mediaCapabilitiesKeySystemConfiguration
+  getJsObjectField(obj.obj, "keySystemConfiguration")
+
+pub value struct mediaEncodingConfiguration
+  obj: jsObject
+
+pub fun newMediaEncodingConfiguration(type: mediaEncodingType)
+  val obj = newJsObject();
+  setJsObjectField(obj, "type", type);
+  MediaEncodingConfiguration(obj);
+
+pub inline fun type(obj: mediaEncodingConfiguration, value: mediaEncodingType): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: mediaEncodingConfiguration): web mediaEncodingType
+  getJsObjectField(obj.obj, "type")
+
+pub value struct videoConfiguration
+  obj: jsObject
+
+pub fun newVideoConfiguration(contentType: string, width: int, height: int, bitrate: int, framerate: double, hasAlphaChannel: maybe<bool> = Nothing, hdrMetadataType: maybe<hdrMetadataType> = Nothing, colorGamut: maybe<colorGamut> = Nothing, transferFunction: maybe<transferFunction> = Nothing, scalabilityMode: maybe<string> = Nothing, spatialScalability: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "contentType", contentType);  setJsObjectField(obj, "width", width);  setJsObjectField(obj, "height", height);  setJsObjectField(obj, "bitrate", bitrate);  setJsObjectField(obj, "framerate", framerate);  match hasAlphaChannel
+    Just(it) -> setJsObjectField(obj, "hasAlphaChannel", it)
+    Nothing -> ()
+  match hdrMetadataType
+    Just(it) -> setJsObjectField(obj, "hdrMetadataType", it)
+    Nothing -> ()
+  match colorGamut
+    Just(it) -> setJsObjectField(obj, "colorGamut", it)
+    Nothing -> ()
+  match transferFunction
+    Just(it) -> setJsObjectField(obj, "transferFunction", it)
+    Nothing -> ()
+  match scalabilityMode
+    Just(it) -> setJsObjectField(obj, "scalabilityMode", it)
+    Nothing -> ()
+  match spatialScalability
+    Just(it) -> setJsObjectField(obj, "spatialScalability", it)
+    Nothing -> ()
+
+  VideoConfiguration(obj);
+
+pub inline fun contentType(obj: videoConfiguration, value: string): web ()
+  setJsObjectField(obj.obj, "contentType", value.obj)
+
+pub inline fun contentType(obj: videoConfiguration): web string
+  getJsObjectField(obj.obj, "contentType")
+
+pub inline fun width(obj: videoConfiguration, value: int): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: videoConfiguration): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: videoConfiguration, value: int): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: videoConfiguration): web int
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun bitrate(obj: videoConfiguration, value: int): web ()
+  setJsObjectField(obj.obj, "bitrate", value.obj)
+
+pub inline fun bitrate(obj: videoConfiguration): web int
+  getJsObjectField(obj.obj, "bitrate")
+
+pub inline fun framerate(obj: videoConfiguration, value: double): web ()
+  setJsObjectField(obj.obj, "framerate", value.obj)
+
+pub inline fun framerate(obj: videoConfiguration): web double
+  getJsObjectField(obj.obj, "framerate")
+
+pub inline fun hasAlphaChannel(obj: videoConfiguration, value: bool): web ()
+  setJsObjectField(obj.obj, "hasAlphaChannel", value.obj)
+
+pub inline fun hasAlphaChannel(obj: videoConfiguration): web bool
+  getJsObjectField(obj.obj, "hasAlphaChannel")
+
+pub inline fun hdrMetadataType(obj: videoConfiguration, value: hdrMetadataType): web ()
+  setJsObjectField(obj.obj, "hdrMetadataType", value.obj)
+
+pub inline fun hdrMetadataType(obj: videoConfiguration): web hdrMetadataType
+  getJsObjectField(obj.obj, "hdrMetadataType")
+
+pub inline fun colorGamut(obj: videoConfiguration, value: colorGamut): web ()
+  setJsObjectField(obj.obj, "colorGamut", value.obj)
+
+pub inline fun colorGamut(obj: videoConfiguration): web colorGamut
+  getJsObjectField(obj.obj, "colorGamut")
+
+pub inline fun transferFunction(obj: videoConfiguration, value: transferFunction): web ()
+  setJsObjectField(obj.obj, "transferFunction", value.obj)
+
+pub inline fun transferFunction(obj: videoConfiguration): web transferFunction
+  getJsObjectField(obj.obj, "transferFunction")
+
+pub inline fun scalabilityMode(obj: videoConfiguration, value: string): web ()
+  setJsObjectField(obj.obj, "scalabilityMode", value.obj)
+
+pub inline fun scalabilityMode(obj: videoConfiguration): web string
+  getJsObjectField(obj.obj, "scalabilityMode")
+
+pub inline fun spatialScalability(obj: videoConfiguration, value: bool): web ()
+  setJsObjectField(obj.obj, "spatialScalability", value.obj)
+
+pub inline fun spatialScalability(obj: videoConfiguration): web bool
+  getJsObjectField(obj.obj, "spatialScalability")
+
+pub value struct audioConfiguration
+  obj: jsObject
+
+pub fun newAudioConfiguration(contentType: string, channels: maybe<string> = Nothing, bitrate: maybe<int> = Nothing, samplerate: maybe<int> = Nothing, spatialRendering: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "contentType", contentType);  match channels
+    Just(it) -> setJsObjectField(obj, "channels", it)
+    Nothing -> ()
+  match bitrate
+    Just(it) -> setJsObjectField(obj, "bitrate", it)
+    Nothing -> ()
+  match samplerate
+    Just(it) -> setJsObjectField(obj, "samplerate", it)
+    Nothing -> ()
+  match spatialRendering
+    Just(it) -> setJsObjectField(obj, "spatialRendering", it)
+    Nothing -> ()
+
+  AudioConfiguration(obj);
+
+pub inline fun contentType(obj: audioConfiguration, value: string): web ()
+  setJsObjectField(obj.obj, "contentType", value.obj)
+
+pub inline fun contentType(obj: audioConfiguration): web string
+  getJsObjectField(obj.obj, "contentType")
+
+pub inline fun channels(obj: audioConfiguration, value: string): web ()
+  setJsObjectField(obj.obj, "channels", value.obj)
+
+pub inline fun channels(obj: audioConfiguration): web string
+  getJsObjectField(obj.obj, "channels")
+
+pub inline fun bitrate(obj: audioConfiguration, value: int): web ()
+  setJsObjectField(obj.obj, "bitrate", value.obj)
+
+pub inline fun bitrate(obj: audioConfiguration): web int
+  getJsObjectField(obj.obj, "bitrate")
+
+pub inline fun samplerate(obj: audioConfiguration, value: int): web ()
+  setJsObjectField(obj.obj, "samplerate", value.obj)
+
+pub inline fun samplerate(obj: audioConfiguration): web int
+  getJsObjectField(obj.obj, "samplerate")
+
+pub inline fun spatialRendering(obj: audioConfiguration, value: bool): web ()
+  setJsObjectField(obj.obj, "spatialRendering", value.obj)
+
+pub inline fun spatialRendering(obj: audioConfiguration): web bool
+  getJsObjectField(obj.obj, "spatialRendering")
+
+pub value struct mediaCapabilitiesKeySystemConfiguration
+  obj: jsObject
+
+pub fun newMediaCapabilitiesKeySystemConfiguration(keySystem: string, initDataType: maybe<string> = Nothing, distinctiveIdentifier: maybe<encrypted_media/mediaKeysRequirement> = Nothing, persistentState: maybe<encrypted_media/mediaKeysRequirement> = Nothing, sessionTypes: maybe<jsArray> = Nothing, audio: maybe<keySystemTrackConfiguration> = Nothing, video: maybe<keySystemTrackConfiguration> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "keySystem", keySystem);  match initDataType
+    Just(it) -> setJsObjectField(obj, "initDataType", it)
+    Nothing -> ()
+  match distinctiveIdentifier
+    Just(it) -> setJsObjectField(obj, "distinctiveIdentifier", it)
+    Nothing -> ()
+  match persistentState
+    Just(it) -> setJsObjectField(obj, "persistentState", it)
+    Nothing -> ()
+  match sessionTypes
+    Just(it) -> setJsObjectField(obj, "sessionTypes", it)
+    Nothing -> ()
+  match audio
+    Just(it) -> setJsObjectField(obj, "audio", it)
+    Nothing -> ()
+  match video
+    Just(it) -> setJsObjectField(obj, "video", it)
+    Nothing -> ()
+
+  MediaCapabilitiesKeySystemConfiguration(obj);
+
+pub inline fun keySystem(obj: mediaCapabilitiesKeySystemConfiguration, value: string): web ()
+  setJsObjectField(obj.obj, "keySystem", value.obj)
+
+pub inline fun keySystem(obj: mediaCapabilitiesKeySystemConfiguration): web string
+  getJsObjectField(obj.obj, "keySystem")
+
+pub inline fun initDataType(obj: mediaCapabilitiesKeySystemConfiguration, value: string): web ()
+  setJsObjectField(obj.obj, "initDataType", value.obj)
+
+pub inline fun initDataType(obj: mediaCapabilitiesKeySystemConfiguration): web string
+  getJsObjectField(obj.obj, "initDataType")
+
+pub inline fun distinctiveIdentifier(obj: mediaCapabilitiesKeySystemConfiguration, value: encrypted_media/mediaKeysRequirement): web ()
+  setJsObjectField(obj.obj, "distinctiveIdentifier", value.obj)
+
+pub inline fun distinctiveIdentifier(obj: mediaCapabilitiesKeySystemConfiguration): web encrypted_media/mediaKeysRequirement
+  getJsObjectField(obj.obj, "distinctiveIdentifier")
+
+pub inline fun persistentState(obj: mediaCapabilitiesKeySystemConfiguration, value: encrypted_media/mediaKeysRequirement): web ()
+  setJsObjectField(obj.obj, "persistentState", value.obj)
+
+pub inline fun persistentState(obj: mediaCapabilitiesKeySystemConfiguration): web encrypted_media/mediaKeysRequirement
+  getJsObjectField(obj.obj, "persistentState")
+
+pub inline fun sessionTypes(obj: mediaCapabilitiesKeySystemConfiguration, value: jsArray): web ()
+  setJsObjectField(obj.obj, "sessionTypes", value.obj)
+
+pub inline fun sessionTypes(obj: mediaCapabilitiesKeySystemConfiguration): web jsArray
+  getJsObjectField(obj.obj, "sessionTypes")
+
+pub inline fun audio(obj: mediaCapabilitiesKeySystemConfiguration, value: keySystemTrackConfiguration): web ()
+  setJsObjectField(obj.obj, "audio", value.obj)
+
+pub inline fun audio(obj: mediaCapabilitiesKeySystemConfiguration): web keySystemTrackConfiguration
+  getJsObjectField(obj.obj, "audio")
+
+pub inline fun video(obj: mediaCapabilitiesKeySystemConfiguration, value: keySystemTrackConfiguration): web ()
+  setJsObjectField(obj.obj, "video", value.obj)
+
+pub inline fun video(obj: mediaCapabilitiesKeySystemConfiguration): web keySystemTrackConfiguration
+  getJsObjectField(obj.obj, "video")
+
+pub value struct keySystemTrackConfiguration
+  obj: jsObject
+
+pub fun newKeySystemTrackConfiguration(robustness: maybe<string> = Nothing, encryptionScheme: maybe<maybe<string>> = Nothing)
+  val obj = newJsObject();
+  match robustness
+    Just(it) -> setJsObjectField(obj, "robustness", it)
+    Nothing -> ()
+  match encryptionScheme
+    Just(it) -> setJsObjectField(obj, "encryptionScheme", it)
+    Nothing -> ()
+
+  KeySystemTrackConfiguration(obj);
+
+pub inline fun robustness(obj: keySystemTrackConfiguration, value: string): web ()
+  setJsObjectField(obj.obj, "robustness", value.obj)
+
+pub inline fun robustness(obj: keySystemTrackConfiguration): web string
+  getJsObjectField(obj.obj, "robustness")
+
+pub inline fun encryptionScheme(obj: keySystemTrackConfiguration, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "encryptionScheme", value.obj)
+
+pub inline fun encryptionScheme(obj: keySystemTrackConfiguration): web maybe<string>
+  getJsObjectField(obj.obj, "encryptionScheme")
+
+pub value struct mediaCapabilitiesInfo
+  obj: jsObject
+
+pub fun newMediaCapabilitiesInfo(supported: bool, smooth: bool, powerEfficient: bool)
+  val obj = newJsObject();
+  setJsObjectField(obj, "supported", supported);  setJsObjectField(obj, "smooth", smooth);  setJsObjectField(obj, "powerEfficient", powerEfficient);
+  MediaCapabilitiesInfo(obj);
+
+pub inline fun supported(obj: mediaCapabilitiesInfo, value: bool): web ()
+  setJsObjectField(obj.obj, "supported", value.obj)
+
+pub inline fun supported(obj: mediaCapabilitiesInfo): web bool
+  getJsObjectField(obj.obj, "supported")
+
+pub inline fun smooth(obj: mediaCapabilitiesInfo, value: bool): web ()
+  setJsObjectField(obj.obj, "smooth", value.obj)
+
+pub inline fun smooth(obj: mediaCapabilitiesInfo): web bool
+  getJsObjectField(obj.obj, "smooth")
+
+pub inline fun powerEfficient(obj: mediaCapabilitiesInfo, value: bool): web ()
+  setJsObjectField(obj.obj, "powerEfficient", value.obj)
+
+pub inline fun powerEfficient(obj: mediaCapabilitiesInfo): web bool
+  getJsObjectField(obj.obj, "powerEfficient")
+
+pub value struct mediaCapabilitiesDecodingInfo
+  obj: jsObject
+
+pub fun newMediaCapabilitiesDecodingInfo(keySystemAccess: encrypted_media/mediaKeySystemAccess, configuration: maybe<mediaDecodingConfiguration> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "keySystemAccess", keySystemAccess);  match configuration
+    Just(it) -> setJsObjectField(obj, "configuration", it)
+    Nothing -> ()
+
+  MediaCapabilitiesDecodingInfo(obj);
+
+pub inline fun keySystemAccess(obj: mediaCapabilitiesDecodingInfo, value: encrypted_media/mediaKeySystemAccess): web ()
+  setJsObjectField(obj.obj, "keySystemAccess", value.obj)
+
+pub inline fun keySystemAccess(obj: mediaCapabilitiesDecodingInfo): web encrypted_media/mediaKeySystemAccess
+  getJsObjectField(obj.obj, "keySystemAccess")
+
+pub inline fun configuration(obj: mediaCapabilitiesDecodingInfo, value: mediaDecodingConfiguration): web ()
+  setJsObjectField(obj.obj, "configuration", value.obj)
+
+pub inline fun configuration(obj: mediaCapabilitiesDecodingInfo): web mediaDecodingConfiguration
+  getJsObjectField(obj.obj, "configuration")
+
+pub value struct mediaCapabilitiesEncodingInfo
+  obj: jsObject
+
+pub fun newMediaCapabilitiesEncodingInfo(configuration: maybe<mediaEncodingConfiguration> = Nothing)
+  val obj = newJsObject();
+  match configuration
+    Just(it) -> setJsObjectField(obj, "configuration", it)
+    Nothing -> ()
+
+  MediaCapabilitiesEncodingInfo(obj);
+
+pub inline fun configuration(obj: mediaCapabilitiesEncodingInfo, value: mediaEncodingConfiguration): web ()
+  setJsObjectField(obj.obj, "configuration", value.obj)
+
+pub inline fun configuration(obj: mediaCapabilitiesEncodingInfo): web mediaEncodingConfiguration
+  getJsObjectField(obj.obj, "configuration")
+
+pub value struct mediaCapabilities
+  obj: jsObject
+
+
+pub inline fun decodingInfo(obj: mediaCapabilities, configuration': mediaDecodingConfiguration): web jsPromise
+  jsOperation3(obj.obj, "decodingInfo", configuration'.obj)
+
+pub inline fun encodingInfo(obj: mediaCapabilities, configuration': mediaEncodingConfiguration): web jsPromise
+  jsOperation3(obj.obj, "encodingInfo", configuration'.obj)
+

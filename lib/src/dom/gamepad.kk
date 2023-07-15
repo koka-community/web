@@ -1,80 +1,85 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias GamepadMappingType = String
-struct Gamepad
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub alias gamepadMappingType = string;
 
-}
+pub value struct gamepad
+  obj: jsObject
 
-()
 
-pub extern gethand(this: js_object): web gamepad_extensions.kk/GamepadHand
-	c inline "getObjectField(#1, \"hand\")"
-pub extern gethapticActuators(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"hapticActuators\")"
-pub extern getpose(this: js_object): web maybe<gamepad_extensions.kk/GamepadPose>
-	c inline "getObjectField(#1, \"pose\")"
-pub extern gettouchEvents(this: js_object): web maybe<dart:js_interop/JSArray>
-	c inline "getObjectField(#1, \"touchEvents\")"
-pub extern getvibrationActuator(this: js_object): web maybe<gamepad_extensions.kk/GamepadHapticActuator>
-	c inline "getObjectField(#1, \"vibrationActuator\")"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern getindex(this: js_object): web int
-	c inline "getObjectField(#1, \"index\")"
-pub extern getconnected(this: js_object): web bool
-	c inline "getObjectField(#1, \"connected\")"
-pub extern gettimestamp(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"timestamp\")"
-pub extern getmapping(this: js_object): web GamepadMappingType
-	c inline "getObjectField(#1, \"mapping\")"
-pub extern getaxes(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"axes\")"
-pub extern getbuttons(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"buttons\")"
-struct GamepadButton
-{,
-,
+pub inline fun hand(obj: gamepad): web gamepad_extensions/gamepadHand
+  getJsObjectField(obj.obj, "hand")
 
-}
+pub inline fun hapticActuators(obj: gamepad): web jsArray
+  getJsObjectField(obj.obj, "hapticActuators")
 
-()
+pub inline fun pose(obj: gamepad): web maybe<gamepad_extensions/gamepadPose>
+  getJsObjectField(obj.obj, "pose")
 
-pub extern getpressed(this: js_object): web bool
-	c inline "getObjectField(#1, \"pressed\")"
-pub extern gettouched(this: js_object): web bool
-	c inline "getObjectField(#1, \"touched\")"
-pub extern getvalue(this: js_object): web double
-	c inline "getObjectField(#1, \"value\")"
-struct GamepadEvent
-{
-}
-pub extern newGamepadEvent([type: String, eventInitDict: GamepadEventInit], [])
-()
+pub inline fun touchEvents(obj: gamepad): web maybe<jsArray>
+  getJsObjectField(obj.obj, "touchEvents")
 
-pub extern getgamepad(this: js_object): web Gamepad
-	c inline "getObjectField(#1, \"gamepad\")"
-struct GamepadEventInit
-{  gamepad: Gamepad
-}
-pub extern newGamepadEventInit([gamepad: Gamepad])
-()
+pub inline fun vibrationActuator(obj: gamepad): web maybe<gamepad_extensions/gamepadHapticActuator>
+  getJsObjectField(obj.obj, "vibrationActuator")
 
-pub extern setgamepad(this: js_object, value: Gamepad): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getgamepad(this: js_object): web Gamepad
-	c inline "getObjectField(#1, \"gamepad\")"
+pub inline fun id(obj: gamepad): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun index(obj: gamepad): web int
+  getJsObjectField(obj.obj, "index")
+
+pub inline fun connected(obj: gamepad): web bool
+  getJsObjectField(obj.obj, "connected")
+
+pub inline fun timestamp(obj: gamepad): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "timestamp")
+
+pub inline fun mapping(obj: gamepad): web gamepadMappingType
+  getJsObjectField(obj.obj, "mapping")
+
+pub inline fun axes(obj: gamepad): web jsArray
+  getJsObjectField(obj.obj, "axes")
+
+pub inline fun buttons(obj: gamepad): web jsArray
+  getJsObjectField(obj.obj, "buttons")
+
+pub value struct gamepadButton
+  obj: jsObject
+
+
+pub inline fun pressed(obj: gamepadButton): web bool
+  getJsObjectField(obj.obj, "pressed")
+
+pub inline fun touched(obj: gamepadButton): web bool
+  getJsObjectField(obj.obj, "touched")
+
+pub inline fun value(obj: gamepadButton): web double
+  getJsObjectField(obj.obj, "value")
+
+pub value struct gamepadEvent
+  obj: jsObject
+
+pub inline fun newGamepadEvent(type': string, eventInitDict': gamepadEventInit)
+  newJsObject2("GamepadEvent", type', eventInitDict')"
+
+pub inline fun gamepad(obj: gamepadEvent): web gamepad
+  getJsObjectField(obj.obj, "gamepad")
+
+pub value struct gamepadEventInit
+  obj: jsObject
+
+pub fun newGamepadEventInit(gamepad: gamepad)
+  val obj = newJsObject();
+  setJsObjectField(obj, "gamepad", gamepad);
+  GamepadEventInit(obj);
+
+pub inline fun gamepad(obj: gamepadEventInit, value: gamepad): web ()
+  setJsObjectField(obj.obj, "gamepad", value.obj)
+
+pub inline fun gamepad(obj: gamepadEventInit): web gamepad
+  getJsObjectField(obj.obj, "gamepad")
+

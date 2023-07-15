@@ -1,48 +1,61 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct MediaStreamTrackProcessor
-{
-}
-pub extern newMediaStreamTrackProcessor([init: MediaStreamTrackProcessorInit], [])
-()
+pub value struct mediaStreamTrackProcessor
+  obj: jsObject
 
-pub extern setreadable(this: js_object, value: streams.kk/ReadableStream): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreadable(this: js_object): web streams.kk/ReadableStream
-	c inline "getObjectField(#1, \"readable\")"
-struct MediaStreamTrackProcessorInit
-{  track: mediacapture_streams.kk/MediaStreamTrack,
-  maxBufferSize: int
-}
-pub extern newMediaStreamTrackProcessorInit([track: mediacapture_streams.kk/MediaStreamTrack, maxBufferSize: maybe<int> = Nothing])
-()
+pub inline fun newMediaStreamTrackProcessor(init': mediaStreamTrackProcessorInit)
+  newJsObject1("MediaStreamTrackProcessor", init')"
 
-pub extern settrack(this: js_object, value: mediacapture_streams.kk/MediaStreamTrack): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettrack(this: js_object): web mediacapture_streams.kk/MediaStreamTrack
-	c inline "getObjectField(#1, \"track\")"
-pub extern setmaxBufferSize(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmaxBufferSize(this: js_object): web int
-	c inline "getObjectField(#1, \"maxBufferSize\")"
-struct VideoTrackGenerator
-{,
-,
+pub inline fun readable(obj: mediaStreamTrackProcessor, value: streams/readableStream): web ()
+  setJsObjectField(obj.obj, "readable", value.obj)
 
-}
-pub extern newVideoTrackGenerator([], [])
-()
+pub inline fun readable(obj: mediaStreamTrackProcessor): web streams/readableStream
+  getJsObjectField(obj.obj, "readable")
 
-pub extern getwritable(this: js_object): web streams.kk/WritableStream
-	c inline "getObjectField(#1, \"writable\")"
-pub extern setmuted(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmuted(this: js_object): web bool
-	c inline "getObjectField(#1, \"muted\")"
-pub extern gettrack(this: js_object): web mediacapture_streams.kk/MediaStreamTrack
-	c inline "getObjectField(#1, \"track\")"
+pub value struct mediaStreamTrackProcessorInit
+  obj: jsObject
+
+pub fun newMediaStreamTrackProcessorInit(track: mediacapture_streams/mediaStreamTrack, maxBufferSize: maybe<int> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "track", track);  match maxBufferSize
+    Just(it) -> setJsObjectField(obj, "maxBufferSize", it)
+    Nothing -> ()
+
+  MediaStreamTrackProcessorInit(obj);
+
+pub inline fun track(obj: mediaStreamTrackProcessorInit, value: mediacapture_streams/mediaStreamTrack): web ()
+  setJsObjectField(obj.obj, "track", value.obj)
+
+pub inline fun track(obj: mediaStreamTrackProcessorInit): web mediacapture_streams/mediaStreamTrack
+  getJsObjectField(obj.obj, "track")
+
+pub inline fun maxBufferSize(obj: mediaStreamTrackProcessorInit, value: int): web ()
+  setJsObjectField(obj.obj, "maxBufferSize", value.obj)
+
+pub inline fun maxBufferSize(obj: mediaStreamTrackProcessorInit): web int
+  getJsObjectField(obj.obj, "maxBufferSize")
+
+pub value struct videoTrackGenerator
+  obj: jsObject
+
+pub inline fun newVideoTrackGenerator()
+  newJsObject0("VideoTrackGenerator")"
+
+pub inline fun writable(obj: videoTrackGenerator): web streams/writableStream
+  getJsObjectField(obj.obj, "writable")
+
+pub inline fun muted(obj: videoTrackGenerator, value: bool): web ()
+  setJsObjectField(obj.obj, "muted", value.obj)
+
+pub inline fun muted(obj: videoTrackGenerator): web bool
+  getJsObjectField(obj.obj, "muted")
+
+pub inline fun track(obj: videoTrackGenerator): web mediacapture_streams/mediaStreamTrack
+  getJsObjectField(obj.obj, "track")
+

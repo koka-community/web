@@ -1,111 +1,148 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
-alias IntersectionObserverCallback = JSFunction
+pub alias intersectionObserverCallback = jsFunction;
 
 
-struct IntersectionObserver
-{,
-,
 
-}
-pub extern newIntersectionObserver([callback: IntersectionObserverCallback], [options: IntersectionObserverInit])
-()
+pub value struct intersectionObserver
+  obj: jsObject
 
-pub extern observe(this: js_object, [target: dom.kk/Element], [])
-pub extern unobserve(this: js_object, [target: dom.kk/Element], [])
-pub extern disconnect(this: js_object, [], [])
-pub extern takeRecords(this: js_object, [], [])
-pub extern getroot(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"root\")"
-pub extern getrootMargin(this: js_object): web String
-	c inline "getObjectField(#1, \"rootMargin\")"
-pub extern getthresholds(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"thresholds\")"
-struct IntersectionObserverEntry
-{,
-,
-,
-,
-,
-,
+pub inline fun newIntersectionObserver(callback': intersectionObserverCallback, options': intersectionObserverInit)
+  newJsObject2("IntersectionObserver", callback', options')"
 
-}
-pub extern newIntersectionObserverEntry([intersectionObserverEntryInit: IntersectionObserverEntryInit], [])
-()
+pub inline fun observe(obj: intersectionObserver, target': dom/element): web ()
+  jsOperation3(obj.obj, "observe", target'.obj)
 
-pub extern gettime(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"time\")"
-pub extern getrootBounds(this: js_object): web maybe<geometry.kk/DOMRectReadOnly>
-	c inline "getObjectField(#1, \"rootBounds\")"
-pub extern getboundingClientRect(this: js_object): web geometry.kk/DOMRectReadOnly
-	c inline "getObjectField(#1, \"boundingClientRect\")"
-pub extern getintersectionRect(this: js_object): web geometry.kk/DOMRectReadOnly
-	c inline "getObjectField(#1, \"intersectionRect\")"
-pub extern getisIntersecting(this: js_object): web bool
-	c inline "getObjectField(#1, \"isIntersecting\")"
-pub extern getintersectionRatio(this: js_object): web double
-	c inline "getObjectField(#1, \"intersectionRatio\")"
-pub extern gettarget(this: js_object): web dom.kk/Element
-	c inline "getObjectField(#1, \"target\")"
-struct IntersectionObserverEntryInit
-{  time: hr_time.kk/DOMHighResTimeStamp,
-  rootBounds: maybe<geometry.kk/DOMRectInit>,
-  boundingClientRect: geometry.kk/DOMRectInit,
-  intersectionRect: geometry.kk/DOMRectInit,
-  isIntersecting: bool,
-  intersectionRatio: double,
-  target: dom.kk/Element
-}
-pub extern newIntersectionObserverEntryInit([time: hr_time.kk/DOMHighResTimeStamp, rootBounds: maybe<geometry.kk/DOMRectInit>, boundingClientRect: geometry.kk/DOMRectInit, intersectionRect: geometry.kk/DOMRectInit, isIntersecting: bool, intersectionRatio: double, target: dom.kk/Element])
-()
+pub inline fun unobserve(obj: intersectionObserver, target': dom/element): web ()
+  jsOperation3(obj.obj, "unobserve", target'.obj)
 
-pub extern settime(this: js_object, value: hr_time.kk/DOMHighResTimeStamp): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettime(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"time\")"
-pub extern setrootBounds(this: js_object, value: maybe<geometry.kk/DOMRectInit>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrootBounds(this: js_object): web maybe<geometry.kk/DOMRectInit>
-	c inline "getObjectField(#1, \"rootBounds\")"
-pub extern setboundingClientRect(this: js_object, value: geometry.kk/DOMRectInit): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getboundingClientRect(this: js_object): web geometry.kk/DOMRectInit
-	c inline "getObjectField(#1, \"boundingClientRect\")"
-pub extern setintersectionRect(this: js_object, value: geometry.kk/DOMRectInit): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getintersectionRect(this: js_object): web geometry.kk/DOMRectInit
-	c inline "getObjectField(#1, \"intersectionRect\")"
-pub extern setisIntersecting(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getisIntersecting(this: js_object): web bool
-	c inline "getObjectField(#1, \"isIntersecting\")"
-pub extern setintersectionRatio(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getintersectionRatio(this: js_object): web double
-	c inline "getObjectField(#1, \"intersectionRatio\")"
-pub extern settarget(this: js_object, value: dom.kk/Element): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettarget(this: js_object): web dom.kk/Element
-	c inline "getObjectField(#1, \"target\")"
-struct IntersectionObserverInit
-{  root: maybe<dart:js_interop/JSAny>,
-  rootMargin: String,
-  threshold: maybe<dart:js_interop/JSAny>
-}
-pub extern newIntersectionObserverInit([root: maybe<maybe<dart:js_interop/JSAny>> = Nothing, rootMargin: maybe<String> = Nothing, threshold: maybe<maybe<dart:js_interop/JSAny>> = Nothing])
-()
+pub inline fun disconnect(obj: intersectionObserver): web ()
+  jsOperation2(obj.obj, "disconnect")
 
-pub extern setroot(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getroot(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"root\")"
-pub extern setrootMargin(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrootMargin(this: js_object): web String
-	c inline "getObjectField(#1, \"rootMargin\")"
-pub extern setthreshold(this: js_object, value: maybe<dart:js_interop/JSAny>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getthreshold(this: js_object): web maybe<dart:js_interop/JSAny>
-	c inline "getObjectField(#1, \"threshold\")"
+pub inline fun takeRecords(obj: intersectionObserver): web jsArray
+  jsOperation2(obj.obj, "takeRecords")
+
+pub inline fun root(obj: intersectionObserver): web maybe<jsObject>
+  getJsObjectField(obj.obj, "root")
+
+pub inline fun rootMargin(obj: intersectionObserver): web string
+  getJsObjectField(obj.obj, "rootMargin")
+
+pub inline fun thresholds(obj: intersectionObserver): web jsArray
+  getJsObjectField(obj.obj, "thresholds")
+
+pub value struct intersectionObserverEntry
+  obj: jsObject
+
+pub inline fun newIntersectionObserverEntry(intersectionObserverEntryInit': intersectionObserverEntryInit)
+  newJsObject1("IntersectionObserverEntry", intersectionObserverEntryInit')"
+
+pub inline fun time(obj: intersectionObserverEntry): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "time")
+
+pub inline fun rootBounds(obj: intersectionObserverEntry): web maybe<geometry/domRectReadOnly>
+  getJsObjectField(obj.obj, "rootBounds")
+
+pub inline fun boundingClientRect(obj: intersectionObserverEntry): web geometry/domRectReadOnly
+  getJsObjectField(obj.obj, "boundingClientRect")
+
+pub inline fun intersectionRect(obj: intersectionObserverEntry): web geometry/domRectReadOnly
+  getJsObjectField(obj.obj, "intersectionRect")
+
+pub inline fun isIntersecting(obj: intersectionObserverEntry): web bool
+  getJsObjectField(obj.obj, "isIntersecting")
+
+pub inline fun intersectionRatio(obj: intersectionObserverEntry): web double
+  getJsObjectField(obj.obj, "intersectionRatio")
+
+pub inline fun target(obj: intersectionObserverEntry): web dom/element
+  getJsObjectField(obj.obj, "target")
+
+pub value struct intersectionObserverEntryInit
+  obj: jsObject
+
+pub fun newIntersectionObserverEntryInit(time: hr_time/domHighResTimeStamp, rootBounds: maybe<geometry/domRectInit>, boundingClientRect: geometry/domRectInit, intersectionRect: geometry/domRectInit, isIntersecting: bool, intersectionRatio: double, target: dom/element)
+  val obj = newJsObject();
+  setJsObjectField(obj, "time", time);  setJsObjectField(obj, "rootBounds", rootBounds);  setJsObjectField(obj, "boundingClientRect", boundingClientRect);  setJsObjectField(obj, "intersectionRect", intersectionRect);  setJsObjectField(obj, "isIntersecting", isIntersecting);  setJsObjectField(obj, "intersectionRatio", intersectionRatio);  setJsObjectField(obj, "target", target);
+  IntersectionObserverEntryInit(obj);
+
+pub inline fun time(obj: intersectionObserverEntryInit, value: hr_time/domHighResTimeStamp): web ()
+  setJsObjectField(obj.obj, "time", value.obj)
+
+pub inline fun time(obj: intersectionObserverEntryInit): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "time")
+
+pub inline fun rootBounds(obj: intersectionObserverEntryInit, value: maybe<geometry/domRectInit>): web ()
+  setJsObjectField(obj.obj, "rootBounds", value.obj)
+
+pub inline fun rootBounds(obj: intersectionObserverEntryInit): web maybe<geometry/domRectInit>
+  getJsObjectField(obj.obj, "rootBounds")
+
+pub inline fun boundingClientRect(obj: intersectionObserverEntryInit, value: geometry/domRectInit): web ()
+  setJsObjectField(obj.obj, "boundingClientRect", value.obj)
+
+pub inline fun boundingClientRect(obj: intersectionObserverEntryInit): web geometry/domRectInit
+  getJsObjectField(obj.obj, "boundingClientRect")
+
+pub inline fun intersectionRect(obj: intersectionObserverEntryInit, value: geometry/domRectInit): web ()
+  setJsObjectField(obj.obj, "intersectionRect", value.obj)
+
+pub inline fun intersectionRect(obj: intersectionObserverEntryInit): web geometry/domRectInit
+  getJsObjectField(obj.obj, "intersectionRect")
+
+pub inline fun isIntersecting(obj: intersectionObserverEntryInit, value: bool): web ()
+  setJsObjectField(obj.obj, "isIntersecting", value.obj)
+
+pub inline fun isIntersecting(obj: intersectionObserverEntryInit): web bool
+  getJsObjectField(obj.obj, "isIntersecting")
+
+pub inline fun intersectionRatio(obj: intersectionObserverEntryInit, value: double): web ()
+  setJsObjectField(obj.obj, "intersectionRatio", value.obj)
+
+pub inline fun intersectionRatio(obj: intersectionObserverEntryInit): web double
+  getJsObjectField(obj.obj, "intersectionRatio")
+
+pub inline fun target(obj: intersectionObserverEntryInit, value: dom/element): web ()
+  setJsObjectField(obj.obj, "target", value.obj)
+
+pub inline fun target(obj: intersectionObserverEntryInit): web dom/element
+  getJsObjectField(obj.obj, "target")
+
+pub value struct intersectionObserverInit
+  obj: jsObject
+
+pub fun newIntersectionObserverInit(root: maybe<maybe<jsObject>> = Nothing, rootMargin: maybe<string> = Nothing, threshold: maybe<maybe<jsObject>> = Nothing)
+  val obj = newJsObject();
+  match root
+    Just(it) -> setJsObjectField(obj, "root", it)
+    Nothing -> ()
+  match rootMargin
+    Just(it) -> setJsObjectField(obj, "rootMargin", it)
+    Nothing -> ()
+  match threshold
+    Just(it) -> setJsObjectField(obj, "threshold", it)
+    Nothing -> ()
+
+  IntersectionObserverInit(obj);
+
+pub inline fun root(obj: intersectionObserverInit, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "root", value.obj)
+
+pub inline fun root(obj: intersectionObserverInit): web maybe<jsObject>
+  getJsObjectField(obj.obj, "root")
+
+pub inline fun rootMargin(obj: intersectionObserverInit, value: string): web ()
+  setJsObjectField(obj.obj, "rootMargin", value.obj)
+
+pub inline fun rootMargin(obj: intersectionObserverInit): web string
+  getJsObjectField(obj.obj, "rootMargin")
+
+pub inline fun threshold(obj: intersectionObserverInit, value: maybe<jsObject>): web ()
+  setJsObjectField(obj.obj, "threshold", value.obj)
+
+pub inline fun threshold(obj: intersectionObserverInit): web maybe<jsObject>
+  getJsObjectField(obj.obj, "threshold")
+

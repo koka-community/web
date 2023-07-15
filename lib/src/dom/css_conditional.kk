@@ -1,29 +1,26 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct CSSConditionRule
-{
-}
+pub value struct cssConditionRule
+  obj: jsObject
 
-()
 
-pub extern getconditionText(this: js_object): web String
-	c inline "getObjectField(#1, \"conditionText\")"
-struct CSSMediaRule
-{
-}
+pub inline fun conditionText(obj: cssConditionRule): web string
+  getJsObjectField(obj.obj, "conditionText")
 
-()
+pub value struct cssMediaRule
+  obj: jsObject
 
-pub extern getmedia(this: js_object): web cssom.kk/MediaList
-	c inline "getObjectField(#1, \"media\")"
-struct CSSSupportsRule
-{
-}
 
-()
+pub inline fun media(obj: cssMediaRule): web cssom/mediaList
+  getJsObjectField(obj.obj, "media")
+
+pub value struct cssSupportsRule
+  obj: jsObject
+
 

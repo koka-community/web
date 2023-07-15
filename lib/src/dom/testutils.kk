@@ -1,16 +1,17 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-pub extern TestUtils(): $TestUtils
+pub extern TestUtils(): $TestUtils}
 	c inline "(topLevelGet(TestUtils))"
-struct $TestUtils
-{
-}
+pub value struct $TestUtils}
+  obj: jsObject
 
-()
 
-pub extern gc(this: js_object, [], [])
+pub inline fun gc(obj: $TestUtils}): web jsPromise
+  jsOperation2(obj.obj, "gc")
+

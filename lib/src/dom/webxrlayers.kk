@@ -1,562 +1,819 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias XRLayerLayout = String
-alias XRLayerQuality = String
-alias XRTextureType = String
-struct XRCompositionLayer
-{,
-,
-,
-,
-,
-,
+pub alias xrLayerLayout = string;
 
-}
 
-()
+pub alias xrLayerQuality = string;
 
-pub extern destroy(this: js_object, [], [])
-pub extern getlayout(this: js_object): web XRLayerLayout
-	c inline "getObjectField(#1, \"layout\")"
-pub extern setblendTextureSourceAlpha(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getblendTextureSourceAlpha(this: js_object): web bool
-	c inline "getObjectField(#1, \"blendTextureSourceAlpha\")"
-pub extern setforceMonoPresentation(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getforceMonoPresentation(this: js_object): web bool
-	c inline "getObjectField(#1, \"forceMonoPresentation\")"
-pub extern setopacity(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getopacity(this: js_object): web double
-	c inline "getObjectField(#1, \"opacity\")"
-pub extern getmipLevels(this: js_object): web int
-	c inline "getObjectField(#1, \"mipLevels\")"
-pub extern setquality(this: js_object, value: XRLayerQuality): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getquality(this: js_object): web XRLayerQuality
-	c inline "getObjectField(#1, \"quality\")"
-pub extern getneedsRedraw(this: js_object): web bool
-	c inline "getObjectField(#1, \"needsRedraw\")"
-struct XRProjectionLayer
-{,
-,
-,
-,
-,
 
-}
+pub alias xrTextureType = string;
 
-()
+pub value struct xrCompositionLayer
+  obj: jsObject
 
-pub extern gettextureWidth(this: js_object): web int
-	c inline "getObjectField(#1, \"textureWidth\")"
-pub extern gettextureHeight(this: js_object): web int
-	c inline "getObjectField(#1, \"textureHeight\")"
-pub extern gettextureArrayLength(this: js_object): web int
-	c inline "getObjectField(#1, \"textureArrayLength\")"
-pub extern getignoreDepthValues(this: js_object): web bool
-	c inline "getObjectField(#1, \"ignoreDepthValues\")"
-pub extern setfixedFoveation(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfixedFoveation(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"fixedFoveation\")"
-pub extern setdeltaPose(this: js_object, value: maybe<webxr.kk/XRRigidTransform>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdeltaPose(this: js_object): web maybe<webxr.kk/XRRigidTransform>
-	c inline "getObjectField(#1, \"deltaPose\")"
-struct XRQuadLayer
-{,
-,
-,
-,
 
-}
+pub inline fun destroy(obj: xrCompositionLayer): web ()
+  jsOperation2(obj.obj, "destroy")
 
-()
+pub inline fun layout(obj: xrCompositionLayer): web xrLayerLayout
+  getJsObjectField(obj.obj, "layout")
 
-pub extern setspace(this: js_object, value: webxr.kk/XRSpace): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getspace(this: js_object): web webxr.kk/XRSpace
-	c inline "getObjectField(#1, \"space\")"
-pub extern settransform(this: js_object, value: webxr.kk/XRRigidTransform): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransform(this: js_object): web webxr.kk/XRRigidTransform
-	c inline "getObjectField(#1, \"transform\")"
-pub extern setwidth(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web double
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web double
-	c inline "getObjectField(#1, \"height\")"
-pub extern setonredraw(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonredraw(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onredraw\")"
-struct XRCylinderLayer
-{,
-,
-,
-,
-,
+pub inline fun blendTextureSourceAlpha(obj: xrCompositionLayer, value: bool): web ()
+  setJsObjectField(obj.obj, "blendTextureSourceAlpha", value.obj)
 
-}
+pub inline fun blendTextureSourceAlpha(obj: xrCompositionLayer): web bool
+  getJsObjectField(obj.obj, "blendTextureSourceAlpha")
 
-()
+pub inline fun forceMonoPresentation(obj: xrCompositionLayer, value: bool): web ()
+  setJsObjectField(obj.obj, "forceMonoPresentation", value.obj)
 
-pub extern setspace(this: js_object, value: webxr.kk/XRSpace): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getspace(this: js_object): web webxr.kk/XRSpace
-	c inline "getObjectField(#1, \"space\")"
-pub extern settransform(this: js_object, value: webxr.kk/XRRigidTransform): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransform(this: js_object): web webxr.kk/XRRigidTransform
-	c inline "getObjectField(#1, \"transform\")"
-pub extern setradius(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getradius(this: js_object): web double
-	c inline "getObjectField(#1, \"radius\")"
-pub extern setcentralAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcentralAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"centralAngle\")"
-pub extern setaspectRatio(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaspectRatio(this: js_object): web double
-	c inline "getObjectField(#1, \"aspectRatio\")"
-pub extern setonredraw(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonredraw(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onredraw\")"
-struct XREquirectLayer
-{,
-,
-,
-,
-,
-,
+pub inline fun forceMonoPresentation(obj: xrCompositionLayer): web bool
+  getJsObjectField(obj.obj, "forceMonoPresentation")
 
-}
+pub inline fun opacity(obj: xrCompositionLayer, value: double): web ()
+  setJsObjectField(obj.obj, "opacity", value.obj)
 
-()
+pub inline fun opacity(obj: xrCompositionLayer): web double
+  getJsObjectField(obj.obj, "opacity")
 
-pub extern setspace(this: js_object, value: webxr.kk/XRSpace): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getspace(this: js_object): web webxr.kk/XRSpace
-	c inline "getObjectField(#1, \"space\")"
-pub extern settransform(this: js_object, value: webxr.kk/XRRigidTransform): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransform(this: js_object): web webxr.kk/XRRigidTransform
-	c inline "getObjectField(#1, \"transform\")"
-pub extern setradius(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getradius(this: js_object): web double
-	c inline "getObjectField(#1, \"radius\")"
-pub extern setcentralHorizontalAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcentralHorizontalAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"centralHorizontalAngle\")"
-pub extern setupperVerticalAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getupperVerticalAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"upperVerticalAngle\")"
-pub extern setlowerVerticalAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlowerVerticalAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"lowerVerticalAngle\")"
-pub extern setonredraw(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonredraw(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onredraw\")"
-struct XRCubeLayer
-{,
-,
+pub inline fun mipLevels(obj: xrCompositionLayer): web int
+  getJsObjectField(obj.obj, "mipLevels")
 
-}
+pub inline fun quality(obj: xrCompositionLayer, value: xrLayerQuality): web ()
+  setJsObjectField(obj.obj, "quality", value.obj)
 
-()
+pub inline fun quality(obj: xrCompositionLayer): web xrLayerQuality
+  getJsObjectField(obj.obj, "quality")
 
-pub extern setspace(this: js_object, value: webxr.kk/XRSpace): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getspace(this: js_object): web webxr.kk/XRSpace
-	c inline "getObjectField(#1, \"space\")"
-pub extern setorientation(this: js_object, value: geometry.kk/DOMPointReadOnly): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getorientation(this: js_object): web geometry.kk/DOMPointReadOnly
-	c inline "getObjectField(#1, \"orientation\")"
-pub extern setonredraw(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonredraw(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onredraw\")"
-struct XRSubImage
-{
-}
+pub inline fun needsRedraw(obj: xrCompositionLayer): web bool
+  getJsObjectField(obj.obj, "needsRedraw")
 
-()
+pub value struct xrProjectionLayer
+  obj: jsObject
 
-pub extern getviewport(this: js_object): web webxr.kk/XRViewport
-	c inline "getObjectField(#1, \"viewport\")"
-struct XRWebGLSubImage
-{,
-,
-,
-,
-,
-,
-,
-,
-,
 
-}
+pub inline fun textureWidth(obj: xrProjectionLayer): web int
+  getJsObjectField(obj.obj, "textureWidth")
 
-()
+pub inline fun textureHeight(obj: xrProjectionLayer): web int
+  getJsObjectField(obj.obj, "textureHeight")
 
-pub extern getcolorTexture(this: js_object): web webgl1.kk/WebGLTexture
-	c inline "getObjectField(#1, \"colorTexture\")"
-pub extern getdepthStencilTexture(this: js_object): web maybe<webgl1.kk/WebGLTexture>
-	c inline "getObjectField(#1, \"depthStencilTexture\")"
-pub extern getmotionVectorTexture(this: js_object): web maybe<webgl1.kk/WebGLTexture>
-	c inline "getObjectField(#1, \"motionVectorTexture\")"
-pub extern getimageIndex(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"imageIndex\")"
-pub extern getcolorTextureWidth(this: js_object): web int
-	c inline "getObjectField(#1, \"colorTextureWidth\")"
-pub extern getcolorTextureHeight(this: js_object): web int
-	c inline "getObjectField(#1, \"colorTextureHeight\")"
-pub extern getdepthStencilTextureWidth(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"depthStencilTextureWidth\")"
-pub extern getdepthStencilTextureHeight(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"depthStencilTextureHeight\")"
-pub extern getmotionVectorTextureWidth(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"motionVectorTextureWidth\")"
-pub extern getmotionVectorTextureHeight(this: js_object): web maybe<int>
-	c inline "getObjectField(#1, \"motionVectorTextureHeight\")"
-struct XRProjectionLayerInit
-{  textureType: XRTextureType,
-  colorFormat: webgl1.kk/GLenum,
-  depthFormat: webgl1.kk/GLenum,
-  scaleFactor: double,
-  clearOnAccess: bool
-}
-pub extern newXRProjectionLayerInit([textureType: maybe<XRTextureType> = Nothing, colorFormat: maybe<webgl1.kk/GLenum> = Nothing, depthFormat: maybe<webgl1.kk/GLenum> = Nothing, scaleFactor: maybe<double> = Nothing, clearOnAccess: maybe<bool> = Nothing])
-()
+pub inline fun textureArrayLength(obj: xrProjectionLayer): web int
+  getJsObjectField(obj.obj, "textureArrayLength")
 
-pub extern settextureType(this: js_object, value: XRTextureType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettextureType(this: js_object): web XRTextureType
-	c inline "getObjectField(#1, \"textureType\")"
-pub extern setcolorFormat(this: js_object, value: webgl1.kk/GLenum): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolorFormat(this: js_object): web webgl1.kk/GLenum
-	c inline "getObjectField(#1, \"colorFormat\")"
-pub extern setdepthFormat(this: js_object, value: webgl1.kk/GLenum): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdepthFormat(this: js_object): web webgl1.kk/GLenum
-	c inline "getObjectField(#1, \"depthFormat\")"
-pub extern setscaleFactor(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getscaleFactor(this: js_object): web double
-	c inline "getObjectField(#1, \"scaleFactor\")"
-pub extern setclearOnAccess(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclearOnAccess(this: js_object): web bool
-	c inline "getObjectField(#1, \"clearOnAccess\")"
-struct XRLayerInit
-{  space: webxr.kk/XRSpace,
-  colorFormat: webgl1.kk/GLenum,
-  depthFormat: maybe<webgl1.kk/GLenum>,
-  mipLevels: int,
-  viewPixelWidth: int,
-  viewPixelHeight: int,
-  layout: XRLayerLayout,
-  isStatic: bool,
-  clearOnAccess: bool
-}
-pub extern newXRLayerInit([space: webxr.kk/XRSpace, colorFormat: maybe<webgl1.kk/GLenum> = Nothing, depthFormat: maybe<maybe<webgl1.kk/GLenum>> = Nothing, mipLevels: maybe<int> = Nothing, viewPixelWidth: int, viewPixelHeight: int, layout: maybe<XRLayerLayout> = Nothing, isStatic: maybe<bool> = Nothing, clearOnAccess: maybe<bool> = Nothing])
-()
+pub inline fun ignoreDepthValues(obj: xrProjectionLayer): web bool
+  getJsObjectField(obj.obj, "ignoreDepthValues")
 
-pub extern setspace(this: js_object, value: webxr.kk/XRSpace): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getspace(this: js_object): web webxr.kk/XRSpace
-	c inline "getObjectField(#1, \"space\")"
-pub extern setcolorFormat(this: js_object, value: webgl1.kk/GLenum): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcolorFormat(this: js_object): web webgl1.kk/GLenum
-	c inline "getObjectField(#1, \"colorFormat\")"
-pub extern setdepthFormat(this: js_object, value: maybe<webgl1.kk/GLenum>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdepthFormat(this: js_object): web maybe<webgl1.kk/GLenum>
-	c inline "getObjectField(#1, \"depthFormat\")"
-pub extern setmipLevels(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmipLevels(this: js_object): web int
-	c inline "getObjectField(#1, \"mipLevels\")"
-pub extern setviewPixelWidth(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getviewPixelWidth(this: js_object): web int
-	c inline "getObjectField(#1, \"viewPixelWidth\")"
-pub extern setviewPixelHeight(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getviewPixelHeight(this: js_object): web int
-	c inline "getObjectField(#1, \"viewPixelHeight\")"
-pub extern setlayout(this: js_object, value: XRLayerLayout): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlayout(this: js_object): web XRLayerLayout
-	c inline "getObjectField(#1, \"layout\")"
-pub extern setisStatic(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getisStatic(this: js_object): web bool
-	c inline "getObjectField(#1, \"isStatic\")"
-pub extern setclearOnAccess(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getclearOnAccess(this: js_object): web bool
-	c inline "getObjectField(#1, \"clearOnAccess\")"
-struct XRQuadLayerInit
-{  textureType: XRTextureType,
-  transform: maybe<webxr.kk/XRRigidTransform>,
-  width: double,
-  height: double
-}
-pub extern newXRQuadLayerInit([textureType: maybe<XRTextureType> = Nothing, transform: maybe<maybe<webxr.kk/XRRigidTransform>> = Nothing, width: maybe<double> = Nothing, height: maybe<double> = Nothing])
-()
+pub inline fun fixedFoveation(obj: xrProjectionLayer, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "fixedFoveation", value.obj)
 
-pub extern settextureType(this: js_object, value: XRTextureType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettextureType(this: js_object): web XRTextureType
-	c inline "getObjectField(#1, \"textureType\")"
-pub extern settransform(this: js_object, value: maybe<webxr.kk/XRRigidTransform>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransform(this: js_object): web maybe<webxr.kk/XRRigidTransform>
-	c inline "getObjectField(#1, \"transform\")"
-pub extern setwidth(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web double
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web double
-	c inline "getObjectField(#1, \"height\")"
-struct XRCylinderLayerInit
-{  textureType: XRTextureType,
-  transform: maybe<webxr.kk/XRRigidTransform>,
-  radius: double,
-  centralAngle: double,
-  aspectRatio: double
-}
-pub extern newXRCylinderLayerInit([textureType: maybe<XRTextureType> = Nothing, transform: maybe<maybe<webxr.kk/XRRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralAngle: maybe<double> = Nothing, aspectRatio: maybe<double> = Nothing])
-()
+pub inline fun fixedFoveation(obj: xrProjectionLayer): web maybe<double>
+  getJsObjectField(obj.obj, "fixedFoveation")
 
-pub extern settextureType(this: js_object, value: XRTextureType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettextureType(this: js_object): web XRTextureType
-	c inline "getObjectField(#1, \"textureType\")"
-pub extern settransform(this: js_object, value: maybe<webxr.kk/XRRigidTransform>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransform(this: js_object): web maybe<webxr.kk/XRRigidTransform>
-	c inline "getObjectField(#1, \"transform\")"
-pub extern setradius(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getradius(this: js_object): web double
-	c inline "getObjectField(#1, \"radius\")"
-pub extern setcentralAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcentralAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"centralAngle\")"
-pub extern setaspectRatio(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaspectRatio(this: js_object): web double
-	c inline "getObjectField(#1, \"aspectRatio\")"
-struct XREquirectLayerInit
-{  textureType: XRTextureType,
-  transform: maybe<webxr.kk/XRRigidTransform>,
-  radius: double,
-  centralHorizontalAngle: double,
-  upperVerticalAngle: double,
-  lowerVerticalAngle: double
-}
-pub extern newXREquirectLayerInit([textureType: maybe<XRTextureType> = Nothing, transform: maybe<maybe<webxr.kk/XRRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralHorizontalAngle: maybe<double> = Nothing, upperVerticalAngle: maybe<double> = Nothing, lowerVerticalAngle: maybe<double> = Nothing])
-()
+pub inline fun deltaPose(obj: xrProjectionLayer, value: maybe<webxr/xrRigidTransform>): web ()
+  setJsObjectField(obj.obj, "deltaPose", value.obj)
 
-pub extern settextureType(this: js_object, value: XRTextureType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettextureType(this: js_object): web XRTextureType
-	c inline "getObjectField(#1, \"textureType\")"
-pub extern settransform(this: js_object, value: maybe<webxr.kk/XRRigidTransform>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransform(this: js_object): web maybe<webxr.kk/XRRigidTransform>
-	c inline "getObjectField(#1, \"transform\")"
-pub extern setradius(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getradius(this: js_object): web double
-	c inline "getObjectField(#1, \"radius\")"
-pub extern setcentralHorizontalAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcentralHorizontalAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"centralHorizontalAngle\")"
-pub extern setupperVerticalAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getupperVerticalAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"upperVerticalAngle\")"
-pub extern setlowerVerticalAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlowerVerticalAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"lowerVerticalAngle\")"
-struct XRCubeLayerInit
-{  orientation: maybe<geometry.kk/DOMPointReadOnly>
-}
-pub extern newXRCubeLayerInit([orientation: maybe<maybe<geometry.kk/DOMPointReadOnly>> = Nothing])
-()
+pub inline fun deltaPose(obj: xrProjectionLayer): web maybe<webxr/xrRigidTransform>
+  getJsObjectField(obj.obj, "deltaPose")
 
-pub extern setorientation(this: js_object, value: maybe<geometry.kk/DOMPointReadOnly>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getorientation(this: js_object): web maybe<geometry.kk/DOMPointReadOnly>
-	c inline "getObjectField(#1, \"orientation\")"
-struct XRWebGLBinding
-{,
+pub value struct xrQuadLayer
+  obj: jsObject
 
-}
-pub extern newXRWebGLBinding([session: webxr.kk/XRSession, context: webxr.kk/XRWebGLRenderingContext], [])
-()
 
-pub extern getCameraImage(this: js_object, [camera: raw_camera_access.kk/XRCamera], [])
-pub extern getDepthInformation(this: js_object, [view: webxr.kk/XRView], [])
-pub extern getReflectionCubeMap(this: js_object, [lightProbe: webxr_lighting_estimation.kk/XRLightProbe], [])
-pub extern createProjectionLayer(this: js_object, [], [init: XRProjectionLayerInit])
-pub extern createQuadLayer(this: js_object, [], [init: XRQuadLayerInit])
-pub extern createCylinderLayer(this: js_object, [], [init: XRCylinderLayerInit])
-pub extern createEquirectLayer(this: js_object, [], [init: XREquirectLayerInit])
-pub extern createCubeLayer(this: js_object, [], [init: XRCubeLayerInit])
-pub extern getSubImage(this: js_object, [layer: XRCompositionLayer, frame: webxr.kk/XRFrame], [eye: webxr.kk/XREye])
-pub extern getViewSubImage(this: js_object, [layer: XRProjectionLayer, view: webxr.kk/XRView], [])
-pub extern getnativeProjectionScaleFactor(this: js_object): web double
-	c inline "getObjectField(#1, \"nativeProjectionScaleFactor\")"
-pub extern getusesDepthValues(this: js_object): web bool
-	c inline "getObjectField(#1, \"usesDepthValues\")"
-struct XRMediaLayerInit
-{  space: webxr.kk/XRSpace,
-  layout: XRLayerLayout,
-  invertStereo: bool
-}
-pub extern newXRMediaLayerInit([space: webxr.kk/XRSpace, layout: maybe<XRLayerLayout> = Nothing, invertStereo: maybe<bool> = Nothing])
-()
+pub inline fun space(obj: xrQuadLayer, value: webxr/xrSpace): web ()
+  setJsObjectField(obj.obj, "space", value.obj)
 
-pub extern setspace(this: js_object, value: webxr.kk/XRSpace): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getspace(this: js_object): web webxr.kk/XRSpace
-	c inline "getObjectField(#1, \"space\")"
-pub extern setlayout(this: js_object, value: XRLayerLayout): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlayout(this: js_object): web XRLayerLayout
-	c inline "getObjectField(#1, \"layout\")"
-pub extern setinvertStereo(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinvertStereo(this: js_object): web bool
-	c inline "getObjectField(#1, \"invertStereo\")"
-struct XRMediaQuadLayerInit
-{  transform: maybe<webxr.kk/XRRigidTransform>,
-  width: maybe<double>,
-  height: maybe<double>
-}
-pub extern newXRMediaQuadLayerInit([transform: maybe<maybe<webxr.kk/XRRigidTransform>> = Nothing, width: maybe<maybe<double>> = Nothing, height: maybe<maybe<double>> = Nothing])
-()
+pub inline fun space(obj: xrQuadLayer): web webxr/xrSpace
+  getJsObjectField(obj.obj, "space")
 
-pub extern settransform(this: js_object, value: maybe<webxr.kk/XRRigidTransform>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransform(this: js_object): web maybe<webxr.kk/XRRigidTransform>
-	c inline "getObjectField(#1, \"transform\")"
-pub extern setwidth(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"height\")"
-struct XRMediaCylinderLayerInit
-{  transform: maybe<webxr.kk/XRRigidTransform>,
-  radius: double,
-  centralAngle: double,
-  aspectRatio: maybe<double>
-}
-pub extern newXRMediaCylinderLayerInit([transform: maybe<maybe<webxr.kk/XRRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralAngle: maybe<double> = Nothing, aspectRatio: maybe<maybe<double>> = Nothing])
-()
+pub inline fun transform(obj: xrQuadLayer, value: webxr/xrRigidTransform): web ()
+  setJsObjectField(obj.obj, "transform", value.obj)
 
-pub extern settransform(this: js_object, value: maybe<webxr.kk/XRRigidTransform>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransform(this: js_object): web maybe<webxr.kk/XRRigidTransform>
-	c inline "getObjectField(#1, \"transform\")"
-pub extern setradius(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getradius(this: js_object): web double
-	c inline "getObjectField(#1, \"radius\")"
-pub extern setcentralAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcentralAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"centralAngle\")"
-pub extern setaspectRatio(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getaspectRatio(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"aspectRatio\")"
-struct XRMediaEquirectLayerInit
-{  transform: maybe<webxr.kk/XRRigidTransform>,
-  radius: double,
-  centralHorizontalAngle: double,
-  upperVerticalAngle: double,
-  lowerVerticalAngle: double
-}
-pub extern newXRMediaEquirectLayerInit([transform: maybe<maybe<webxr.kk/XRRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralHorizontalAngle: maybe<double> = Nothing, upperVerticalAngle: maybe<double> = Nothing, lowerVerticalAngle: maybe<double> = Nothing])
-()
+pub inline fun transform(obj: xrQuadLayer): web webxr/xrRigidTransform
+  getJsObjectField(obj.obj, "transform")
 
-pub extern settransform(this: js_object, value: maybe<webxr.kk/XRRigidTransform>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransform(this: js_object): web maybe<webxr.kk/XRRigidTransform>
-	c inline "getObjectField(#1, \"transform\")"
-pub extern setradius(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getradius(this: js_object): web double
-	c inline "getObjectField(#1, \"radius\")"
-pub extern setcentralHorizontalAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcentralHorizontalAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"centralHorizontalAngle\")"
-pub extern setupperVerticalAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getupperVerticalAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"upperVerticalAngle\")"
-pub extern setlowerVerticalAngle(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlowerVerticalAngle(this: js_object): web double
-	c inline "getObjectField(#1, \"lowerVerticalAngle\")"
-struct XRMediaBinding
-{
-}
-pub extern newXRMediaBinding([session: webxr.kk/XRSession], [])
-()
+pub inline fun width(obj: xrQuadLayer, value: double): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
 
-pub extern createQuadLayer(this: js_object, [video: html.kk/HTMLVideoElement], [init: XRMediaQuadLayerInit])
-pub extern createCylinderLayer(this: js_object, [video: html.kk/HTMLVideoElement], [init: XRMediaCylinderLayerInit])
-pub extern createEquirectLayer(this: js_object, [video: html.kk/HTMLVideoElement], [init: XRMediaEquirectLayerInit])
-struct XRLayerEvent
-{
-}
-pub extern newXRLayerEvent([type: String, eventInitDict: XRLayerEventInit], [])
-()
+pub inline fun width(obj: xrQuadLayer): web double
+  getJsObjectField(obj.obj, "width")
 
-pub extern getlayer(this: js_object): web webxr.kk/XRLayer
-	c inline "getObjectField(#1, \"layer\")"
-struct XRLayerEventInit
-{  layer: webxr.kk/XRLayer
-}
-pub extern newXRLayerEventInit([layer: webxr.kk/XRLayer])
-()
+pub inline fun height(obj: xrQuadLayer, value: double): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
 
-pub extern setlayer(this: js_object, value: webxr.kk/XRLayer): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlayer(this: js_object): web webxr.kk/XRLayer
-	c inline "getObjectField(#1, \"layer\")"
+pub inline fun height(obj: xrQuadLayer): web double
+  getJsObjectField(obj.obj, "height")
+
+pub inline fun onredraw(obj: xrQuadLayer, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onredraw", value.obj)
+
+pub inline fun onredraw(obj: xrQuadLayer): web html/eventHandler
+  getJsObjectField(obj.obj, "onredraw")
+
+pub value struct xrCylinderLayer
+  obj: jsObject
+
+
+pub inline fun space(obj: xrCylinderLayer, value: webxr/xrSpace): web ()
+  setJsObjectField(obj.obj, "space", value.obj)
+
+pub inline fun space(obj: xrCylinderLayer): web webxr/xrSpace
+  getJsObjectField(obj.obj, "space")
+
+pub inline fun transform(obj: xrCylinderLayer, value: webxr/xrRigidTransform): web ()
+  setJsObjectField(obj.obj, "transform", value.obj)
+
+pub inline fun transform(obj: xrCylinderLayer): web webxr/xrRigidTransform
+  getJsObjectField(obj.obj, "transform")
+
+pub inline fun radius(obj: xrCylinderLayer, value: double): web ()
+  setJsObjectField(obj.obj, "radius", value.obj)
+
+pub inline fun radius(obj: xrCylinderLayer): web double
+  getJsObjectField(obj.obj, "radius")
+
+pub inline fun centralAngle(obj: xrCylinderLayer, value: double): web ()
+  setJsObjectField(obj.obj, "centralAngle", value.obj)
+
+pub inline fun centralAngle(obj: xrCylinderLayer): web double
+  getJsObjectField(obj.obj, "centralAngle")
+
+pub inline fun aspectRatio(obj: xrCylinderLayer, value: double): web ()
+  setJsObjectField(obj.obj, "aspectRatio", value.obj)
+
+pub inline fun aspectRatio(obj: xrCylinderLayer): web double
+  getJsObjectField(obj.obj, "aspectRatio")
+
+pub inline fun onredraw(obj: xrCylinderLayer, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onredraw", value.obj)
+
+pub inline fun onredraw(obj: xrCylinderLayer): web html/eventHandler
+  getJsObjectField(obj.obj, "onredraw")
+
+pub value struct xrEquirectLayer
+  obj: jsObject
+
+
+pub inline fun space(obj: xrEquirectLayer, value: webxr/xrSpace): web ()
+  setJsObjectField(obj.obj, "space", value.obj)
+
+pub inline fun space(obj: xrEquirectLayer): web webxr/xrSpace
+  getJsObjectField(obj.obj, "space")
+
+pub inline fun transform(obj: xrEquirectLayer, value: webxr/xrRigidTransform): web ()
+  setJsObjectField(obj.obj, "transform", value.obj)
+
+pub inline fun transform(obj: xrEquirectLayer): web webxr/xrRigidTransform
+  getJsObjectField(obj.obj, "transform")
+
+pub inline fun radius(obj: xrEquirectLayer, value: double): web ()
+  setJsObjectField(obj.obj, "radius", value.obj)
+
+pub inline fun radius(obj: xrEquirectLayer): web double
+  getJsObjectField(obj.obj, "radius")
+
+pub inline fun centralHorizontalAngle(obj: xrEquirectLayer, value: double): web ()
+  setJsObjectField(obj.obj, "centralHorizontalAngle", value.obj)
+
+pub inline fun centralHorizontalAngle(obj: xrEquirectLayer): web double
+  getJsObjectField(obj.obj, "centralHorizontalAngle")
+
+pub inline fun upperVerticalAngle(obj: xrEquirectLayer, value: double): web ()
+  setJsObjectField(obj.obj, "upperVerticalAngle", value.obj)
+
+pub inline fun upperVerticalAngle(obj: xrEquirectLayer): web double
+  getJsObjectField(obj.obj, "upperVerticalAngle")
+
+pub inline fun lowerVerticalAngle(obj: xrEquirectLayer, value: double): web ()
+  setJsObjectField(obj.obj, "lowerVerticalAngle", value.obj)
+
+pub inline fun lowerVerticalAngle(obj: xrEquirectLayer): web double
+  getJsObjectField(obj.obj, "lowerVerticalAngle")
+
+pub inline fun onredraw(obj: xrEquirectLayer, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onredraw", value.obj)
+
+pub inline fun onredraw(obj: xrEquirectLayer): web html/eventHandler
+  getJsObjectField(obj.obj, "onredraw")
+
+pub value struct xrCubeLayer
+  obj: jsObject
+
+
+pub inline fun space(obj: xrCubeLayer, value: webxr/xrSpace): web ()
+  setJsObjectField(obj.obj, "space", value.obj)
+
+pub inline fun space(obj: xrCubeLayer): web webxr/xrSpace
+  getJsObjectField(obj.obj, "space")
+
+pub inline fun orientation(obj: xrCubeLayer, value: geometry/domPointReadOnly): web ()
+  setJsObjectField(obj.obj, "orientation", value.obj)
+
+pub inline fun orientation(obj: xrCubeLayer): web geometry/domPointReadOnly
+  getJsObjectField(obj.obj, "orientation")
+
+pub inline fun onredraw(obj: xrCubeLayer, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onredraw", value.obj)
+
+pub inline fun onredraw(obj: xrCubeLayer): web html/eventHandler
+  getJsObjectField(obj.obj, "onredraw")
+
+pub value struct xrSubImage
+  obj: jsObject
+
+
+pub inline fun viewport(obj: xrSubImage): web webxr/xrViewport
+  getJsObjectField(obj.obj, "viewport")
+
+pub value struct xrWebGLSubImage
+  obj: jsObject
+
+
+pub inline fun colorTexture(obj: xrWebGLSubImage): web webgl1/webGLTexture
+  getJsObjectField(obj.obj, "colorTexture")
+
+pub inline fun depthStencilTexture(obj: xrWebGLSubImage): web maybe<webgl1/webGLTexture>
+  getJsObjectField(obj.obj, "depthStencilTexture")
+
+pub inline fun motionVectorTexture(obj: xrWebGLSubImage): web maybe<webgl1/webGLTexture>
+  getJsObjectField(obj.obj, "motionVectorTexture")
+
+pub inline fun imageIndex(obj: xrWebGLSubImage): web maybe<int>
+  getJsObjectField(obj.obj, "imageIndex")
+
+pub inline fun colorTextureWidth(obj: xrWebGLSubImage): web int
+  getJsObjectField(obj.obj, "colorTextureWidth")
+
+pub inline fun colorTextureHeight(obj: xrWebGLSubImage): web int
+  getJsObjectField(obj.obj, "colorTextureHeight")
+
+pub inline fun depthStencilTextureWidth(obj: xrWebGLSubImage): web maybe<int>
+  getJsObjectField(obj.obj, "depthStencilTextureWidth")
+
+pub inline fun depthStencilTextureHeight(obj: xrWebGLSubImage): web maybe<int>
+  getJsObjectField(obj.obj, "depthStencilTextureHeight")
+
+pub inline fun motionVectorTextureWidth(obj: xrWebGLSubImage): web maybe<int>
+  getJsObjectField(obj.obj, "motionVectorTextureWidth")
+
+pub inline fun motionVectorTextureHeight(obj: xrWebGLSubImage): web maybe<int>
+  getJsObjectField(obj.obj, "motionVectorTextureHeight")
+
+pub value struct xrProjectionLayerInit
+  obj: jsObject
+
+pub fun newXrProjectionLayerInit(textureType: maybe<xrTextureType> = Nothing, colorFormat: maybe<webgl1/gLenum> = Nothing, depthFormat: maybe<webgl1/gLenum> = Nothing, scaleFactor: maybe<double> = Nothing, clearOnAccess: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  match textureType
+    Just(it) -> setJsObjectField(obj, "textureType", it)
+    Nothing -> ()
+  match colorFormat
+    Just(it) -> setJsObjectField(obj, "colorFormat", it)
+    Nothing -> ()
+  match depthFormat
+    Just(it) -> setJsObjectField(obj, "depthFormat", it)
+    Nothing -> ()
+  match scaleFactor
+    Just(it) -> setJsObjectField(obj, "scaleFactor", it)
+    Nothing -> ()
+  match clearOnAccess
+    Just(it) -> setJsObjectField(obj, "clearOnAccess", it)
+    Nothing -> ()
+
+  XrProjectionLayerInit(obj);
+
+pub inline fun textureType(obj: xrProjectionLayerInit, value: xrTextureType): web ()
+  setJsObjectField(obj.obj, "textureType", value.obj)
+
+pub inline fun textureType(obj: xrProjectionLayerInit): web xrTextureType
+  getJsObjectField(obj.obj, "textureType")
+
+pub inline fun colorFormat(obj: xrProjectionLayerInit, value: webgl1/gLenum): web ()
+  setJsObjectField(obj.obj, "colorFormat", value.obj)
+
+pub inline fun colorFormat(obj: xrProjectionLayerInit): web webgl1/gLenum
+  getJsObjectField(obj.obj, "colorFormat")
+
+pub inline fun depthFormat(obj: xrProjectionLayerInit, value: webgl1/gLenum): web ()
+  setJsObjectField(obj.obj, "depthFormat", value.obj)
+
+pub inline fun depthFormat(obj: xrProjectionLayerInit): web webgl1/gLenum
+  getJsObjectField(obj.obj, "depthFormat")
+
+pub inline fun scaleFactor(obj: xrProjectionLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "scaleFactor", value.obj)
+
+pub inline fun scaleFactor(obj: xrProjectionLayerInit): web double
+  getJsObjectField(obj.obj, "scaleFactor")
+
+pub inline fun clearOnAccess(obj: xrProjectionLayerInit, value: bool): web ()
+  setJsObjectField(obj.obj, "clearOnAccess", value.obj)
+
+pub inline fun clearOnAccess(obj: xrProjectionLayerInit): web bool
+  getJsObjectField(obj.obj, "clearOnAccess")
+
+pub value struct xrLayerInit
+  obj: jsObject
+
+pub fun newXrLayerInit(space: webxr/xrSpace, colorFormat: maybe<webgl1/gLenum> = Nothing, depthFormat: maybe<maybe<webgl1/gLenum>> = Nothing, mipLevels: maybe<int> = Nothing, viewPixelWidth: int, viewPixelHeight: int, layout: maybe<xrLayerLayout> = Nothing, isStatic: maybe<bool> = Nothing, clearOnAccess: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "space", space);  match colorFormat
+    Just(it) -> setJsObjectField(obj, "colorFormat", it)
+    Nothing -> ()
+  match depthFormat
+    Just(it) -> setJsObjectField(obj, "depthFormat", it)
+    Nothing -> ()
+  match mipLevels
+    Just(it) -> setJsObjectField(obj, "mipLevels", it)
+    Nothing -> ()
+  setJsObjectField(obj, "viewPixelWidth", viewPixelWidth);  setJsObjectField(obj, "viewPixelHeight", viewPixelHeight);  match layout
+    Just(it) -> setJsObjectField(obj, "layout", it)
+    Nothing -> ()
+  match isStatic
+    Just(it) -> setJsObjectField(obj, "isStatic", it)
+    Nothing -> ()
+  match clearOnAccess
+    Just(it) -> setJsObjectField(obj, "clearOnAccess", it)
+    Nothing -> ()
+
+  XrLayerInit(obj);
+
+pub inline fun space(obj: xrLayerInit, value: webxr/xrSpace): web ()
+  setJsObjectField(obj.obj, "space", value.obj)
+
+pub inline fun space(obj: xrLayerInit): web webxr/xrSpace
+  getJsObjectField(obj.obj, "space")
+
+pub inline fun colorFormat(obj: xrLayerInit, value: webgl1/gLenum): web ()
+  setJsObjectField(obj.obj, "colorFormat", value.obj)
+
+pub inline fun colorFormat(obj: xrLayerInit): web webgl1/gLenum
+  getJsObjectField(obj.obj, "colorFormat")
+
+pub inline fun depthFormat(obj: xrLayerInit, value: maybe<webgl1/gLenum>): web ()
+  setJsObjectField(obj.obj, "depthFormat", value.obj)
+
+pub inline fun depthFormat(obj: xrLayerInit): web maybe<webgl1/gLenum>
+  getJsObjectField(obj.obj, "depthFormat")
+
+pub inline fun mipLevels(obj: xrLayerInit, value: int): web ()
+  setJsObjectField(obj.obj, "mipLevels", value.obj)
+
+pub inline fun mipLevels(obj: xrLayerInit): web int
+  getJsObjectField(obj.obj, "mipLevels")
+
+pub inline fun viewPixelWidth(obj: xrLayerInit, value: int): web ()
+  setJsObjectField(obj.obj, "viewPixelWidth", value.obj)
+
+pub inline fun viewPixelWidth(obj: xrLayerInit): web int
+  getJsObjectField(obj.obj, "viewPixelWidth")
+
+pub inline fun viewPixelHeight(obj: xrLayerInit, value: int): web ()
+  setJsObjectField(obj.obj, "viewPixelHeight", value.obj)
+
+pub inline fun viewPixelHeight(obj: xrLayerInit): web int
+  getJsObjectField(obj.obj, "viewPixelHeight")
+
+pub inline fun layout(obj: xrLayerInit, value: xrLayerLayout): web ()
+  setJsObjectField(obj.obj, "layout", value.obj)
+
+pub inline fun layout(obj: xrLayerInit): web xrLayerLayout
+  getJsObjectField(obj.obj, "layout")
+
+pub inline fun isStatic(obj: xrLayerInit, value: bool): web ()
+  setJsObjectField(obj.obj, "isStatic", value.obj)
+
+pub inline fun isStatic(obj: xrLayerInit): web bool
+  getJsObjectField(obj.obj, "isStatic")
+
+pub inline fun clearOnAccess(obj: xrLayerInit, value: bool): web ()
+  setJsObjectField(obj.obj, "clearOnAccess", value.obj)
+
+pub inline fun clearOnAccess(obj: xrLayerInit): web bool
+  getJsObjectField(obj.obj, "clearOnAccess")
+
+pub value struct xrQuadLayerInit
+  obj: jsObject
+
+pub fun newXrQuadLayerInit(textureType: maybe<xrTextureType> = Nothing, transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, width: maybe<double> = Nothing, height: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match textureType
+    Just(it) -> setJsObjectField(obj, "textureType", it)
+    Nothing -> ()
+  match transform
+    Just(it) -> setJsObjectField(obj, "transform", it)
+    Nothing -> ()
+  match width
+    Just(it) -> setJsObjectField(obj, "width", it)
+    Nothing -> ()
+  match height
+    Just(it) -> setJsObjectField(obj, "height", it)
+    Nothing -> ()
+
+  XrQuadLayerInit(obj);
+
+pub inline fun textureType(obj: xrQuadLayerInit, value: xrTextureType): web ()
+  setJsObjectField(obj.obj, "textureType", value.obj)
+
+pub inline fun textureType(obj: xrQuadLayerInit): web xrTextureType
+  getJsObjectField(obj.obj, "textureType")
+
+pub inline fun transform(obj: xrQuadLayerInit, value: maybe<webxr/xrRigidTransform>): web ()
+  setJsObjectField(obj.obj, "transform", value.obj)
+
+pub inline fun transform(obj: xrQuadLayerInit): web maybe<webxr/xrRigidTransform>
+  getJsObjectField(obj.obj, "transform")
+
+pub inline fun width(obj: xrQuadLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: xrQuadLayerInit): web double
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: xrQuadLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: xrQuadLayerInit): web double
+  getJsObjectField(obj.obj, "height")
+
+pub value struct xrCylinderLayerInit
+  obj: jsObject
+
+pub fun newXrCylinderLayerInit(textureType: maybe<xrTextureType> = Nothing, transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralAngle: maybe<double> = Nothing, aspectRatio: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match textureType
+    Just(it) -> setJsObjectField(obj, "textureType", it)
+    Nothing -> ()
+  match transform
+    Just(it) -> setJsObjectField(obj, "transform", it)
+    Nothing -> ()
+  match radius
+    Just(it) -> setJsObjectField(obj, "radius", it)
+    Nothing -> ()
+  match centralAngle
+    Just(it) -> setJsObjectField(obj, "centralAngle", it)
+    Nothing -> ()
+  match aspectRatio
+    Just(it) -> setJsObjectField(obj, "aspectRatio", it)
+    Nothing -> ()
+
+  XrCylinderLayerInit(obj);
+
+pub inline fun textureType(obj: xrCylinderLayerInit, value: xrTextureType): web ()
+  setJsObjectField(obj.obj, "textureType", value.obj)
+
+pub inline fun textureType(obj: xrCylinderLayerInit): web xrTextureType
+  getJsObjectField(obj.obj, "textureType")
+
+pub inline fun transform(obj: xrCylinderLayerInit, value: maybe<webxr/xrRigidTransform>): web ()
+  setJsObjectField(obj.obj, "transform", value.obj)
+
+pub inline fun transform(obj: xrCylinderLayerInit): web maybe<webxr/xrRigidTransform>
+  getJsObjectField(obj.obj, "transform")
+
+pub inline fun radius(obj: xrCylinderLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "radius", value.obj)
+
+pub inline fun radius(obj: xrCylinderLayerInit): web double
+  getJsObjectField(obj.obj, "radius")
+
+pub inline fun centralAngle(obj: xrCylinderLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "centralAngle", value.obj)
+
+pub inline fun centralAngle(obj: xrCylinderLayerInit): web double
+  getJsObjectField(obj.obj, "centralAngle")
+
+pub inline fun aspectRatio(obj: xrCylinderLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "aspectRatio", value.obj)
+
+pub inline fun aspectRatio(obj: xrCylinderLayerInit): web double
+  getJsObjectField(obj.obj, "aspectRatio")
+
+pub value struct xrEquirectLayerInit
+  obj: jsObject
+
+pub fun newXrEquirectLayerInit(textureType: maybe<xrTextureType> = Nothing, transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralHorizontalAngle: maybe<double> = Nothing, upperVerticalAngle: maybe<double> = Nothing, lowerVerticalAngle: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match textureType
+    Just(it) -> setJsObjectField(obj, "textureType", it)
+    Nothing -> ()
+  match transform
+    Just(it) -> setJsObjectField(obj, "transform", it)
+    Nothing -> ()
+  match radius
+    Just(it) -> setJsObjectField(obj, "radius", it)
+    Nothing -> ()
+  match centralHorizontalAngle
+    Just(it) -> setJsObjectField(obj, "centralHorizontalAngle", it)
+    Nothing -> ()
+  match upperVerticalAngle
+    Just(it) -> setJsObjectField(obj, "upperVerticalAngle", it)
+    Nothing -> ()
+  match lowerVerticalAngle
+    Just(it) -> setJsObjectField(obj, "lowerVerticalAngle", it)
+    Nothing -> ()
+
+  XrEquirectLayerInit(obj);
+
+pub inline fun textureType(obj: xrEquirectLayerInit, value: xrTextureType): web ()
+  setJsObjectField(obj.obj, "textureType", value.obj)
+
+pub inline fun textureType(obj: xrEquirectLayerInit): web xrTextureType
+  getJsObjectField(obj.obj, "textureType")
+
+pub inline fun transform(obj: xrEquirectLayerInit, value: maybe<webxr/xrRigidTransform>): web ()
+  setJsObjectField(obj.obj, "transform", value.obj)
+
+pub inline fun transform(obj: xrEquirectLayerInit): web maybe<webxr/xrRigidTransform>
+  getJsObjectField(obj.obj, "transform")
+
+pub inline fun radius(obj: xrEquirectLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "radius", value.obj)
+
+pub inline fun radius(obj: xrEquirectLayerInit): web double
+  getJsObjectField(obj.obj, "radius")
+
+pub inline fun centralHorizontalAngle(obj: xrEquirectLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "centralHorizontalAngle", value.obj)
+
+pub inline fun centralHorizontalAngle(obj: xrEquirectLayerInit): web double
+  getJsObjectField(obj.obj, "centralHorizontalAngle")
+
+pub inline fun upperVerticalAngle(obj: xrEquirectLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "upperVerticalAngle", value.obj)
+
+pub inline fun upperVerticalAngle(obj: xrEquirectLayerInit): web double
+  getJsObjectField(obj.obj, "upperVerticalAngle")
+
+pub inline fun lowerVerticalAngle(obj: xrEquirectLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "lowerVerticalAngle", value.obj)
+
+pub inline fun lowerVerticalAngle(obj: xrEquirectLayerInit): web double
+  getJsObjectField(obj.obj, "lowerVerticalAngle")
+
+pub value struct xrCubeLayerInit
+  obj: jsObject
+
+pub fun newXrCubeLayerInit(orientation: maybe<maybe<geometry/domPointReadOnly>> = Nothing)
+  val obj = newJsObject();
+  match orientation
+    Just(it) -> setJsObjectField(obj, "orientation", it)
+    Nothing -> ()
+
+  XrCubeLayerInit(obj);
+
+pub inline fun orientation(obj: xrCubeLayerInit, value: maybe<geometry/domPointReadOnly>): web ()
+  setJsObjectField(obj.obj, "orientation", value.obj)
+
+pub inline fun orientation(obj: xrCubeLayerInit): web maybe<geometry/domPointReadOnly>
+  getJsObjectField(obj.obj, "orientation")
+
+pub value struct xrWebGLBinding
+  obj: jsObject
+
+pub inline fun newXrWebGLBinding(session': webxr/xrSession, context': webxr/xrWebGLRenderingContext)
+  newJsObject2("XrWebGLBinding", session', context')"
+
+pub inline fun getCameraImage(obj: xrWebGLBinding, camera': raw_camera_access/xrCamera): web maybe<webgl1/webGLTexture>
+  jsOperation3(obj.obj, "getCameraImage", camera'.obj)
+
+pub inline fun getDepthInformation(obj: xrWebGLBinding, view': webxr/xrView): web maybe<webxr_depth_sensing/xrWebGLDepthInformation>
+  jsOperation3(obj.obj, "getDepthInformation", view'.obj)
+
+pub inline fun getReflectionCubeMap(obj: xrWebGLBinding, lightProbe': webxr_lighting_estimation/xrLightProbe): web maybe<webgl1/webGLTexture>
+  jsOperation3(obj.obj, "getReflectionCubeMap", lightProbe'.obj)
+
+pub inline fun createProjectionLayer(obj: xrWebGLBinding, init': xrProjectionLayerInit): web xrProjectionLayer
+  jsOperation3(obj.obj, "createProjectionLayer", init'.obj)
+
+pub inline fun createQuadLayer(obj: xrWebGLBinding, init': xrQuadLayerInit): web xrQuadLayer
+  jsOperation3(obj.obj, "createQuadLayer", init'.obj)
+
+pub inline fun createCylinderLayer(obj: xrWebGLBinding, init': xrCylinderLayerInit): web xrCylinderLayer
+  jsOperation3(obj.obj, "createCylinderLayer", init'.obj)
+
+pub inline fun createEquirectLayer(obj: xrWebGLBinding, init': xrEquirectLayerInit): web xrEquirectLayer
+  jsOperation3(obj.obj, "createEquirectLayer", init'.obj)
+
+pub inline fun createCubeLayer(obj: xrWebGLBinding, init': xrCubeLayerInit): web xrCubeLayer
+  jsOperation3(obj.obj, "createCubeLayer", init'.obj)
+
+pub inline fun getSubImage(obj: xrWebGLBinding, layer': xrCompositionLayer, frame': webxr/xrFrame, eye': webxr/xrEye): web xrWebGLSubImage
+  jsOperation5(obj.obj, "getSubImage", layer'.obj, frame'.obj, eye'.obj)
+
+pub inline fun getViewSubImage(obj: xrWebGLBinding, layer': xrProjectionLayer, view': webxr/xrView): web xrWebGLSubImage
+  jsOperation4(obj.obj, "getViewSubImage", layer'.obj, view'.obj)
+
+pub inline fun nativeProjectionScaleFactor(obj: xrWebGLBinding): web double
+  getJsObjectField(obj.obj, "nativeProjectionScaleFactor")
+
+pub inline fun usesDepthValues(obj: xrWebGLBinding): web bool
+  getJsObjectField(obj.obj, "usesDepthValues")
+
+pub value struct xrMediaLayerInit
+  obj: jsObject
+
+pub fun newXrMediaLayerInit(space: webxr/xrSpace, layout: maybe<xrLayerLayout> = Nothing, invertStereo: maybe<bool> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "space", space);  match layout
+    Just(it) -> setJsObjectField(obj, "layout", it)
+    Nothing -> ()
+  match invertStereo
+    Just(it) -> setJsObjectField(obj, "invertStereo", it)
+    Nothing -> ()
+
+  XrMediaLayerInit(obj);
+
+pub inline fun space(obj: xrMediaLayerInit, value: webxr/xrSpace): web ()
+  setJsObjectField(obj.obj, "space", value.obj)
+
+pub inline fun space(obj: xrMediaLayerInit): web webxr/xrSpace
+  getJsObjectField(obj.obj, "space")
+
+pub inline fun layout(obj: xrMediaLayerInit, value: xrLayerLayout): web ()
+  setJsObjectField(obj.obj, "layout", value.obj)
+
+pub inline fun layout(obj: xrMediaLayerInit): web xrLayerLayout
+  getJsObjectField(obj.obj, "layout")
+
+pub inline fun invertStereo(obj: xrMediaLayerInit, value: bool): web ()
+  setJsObjectField(obj.obj, "invertStereo", value.obj)
+
+pub inline fun invertStereo(obj: xrMediaLayerInit): web bool
+  getJsObjectField(obj.obj, "invertStereo")
+
+pub value struct xrMediaQuadLayerInit
+  obj: jsObject
+
+pub fun newXrMediaQuadLayerInit(transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, width: maybe<maybe<double>> = Nothing, height: maybe<maybe<double>> = Nothing)
+  val obj = newJsObject();
+  match transform
+    Just(it) -> setJsObjectField(obj, "transform", it)
+    Nothing -> ()
+  match width
+    Just(it) -> setJsObjectField(obj, "width", it)
+    Nothing -> ()
+  match height
+    Just(it) -> setJsObjectField(obj, "height", it)
+    Nothing -> ()
+
+  XrMediaQuadLayerInit(obj);
+
+pub inline fun transform(obj: xrMediaQuadLayerInit, value: maybe<webxr/xrRigidTransform>): web ()
+  setJsObjectField(obj.obj, "transform", value.obj)
+
+pub inline fun transform(obj: xrMediaQuadLayerInit): web maybe<webxr/xrRigidTransform>
+  getJsObjectField(obj.obj, "transform")
+
+pub inline fun width(obj: xrMediaQuadLayerInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: xrMediaQuadLayerInit): web maybe<double>
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: xrMediaQuadLayerInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: xrMediaQuadLayerInit): web maybe<double>
+  getJsObjectField(obj.obj, "height")
+
+pub value struct xrMediaCylinderLayerInit
+  obj: jsObject
+
+pub fun newXrMediaCylinderLayerInit(transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralAngle: maybe<double> = Nothing, aspectRatio: maybe<maybe<double>> = Nothing)
+  val obj = newJsObject();
+  match transform
+    Just(it) -> setJsObjectField(obj, "transform", it)
+    Nothing -> ()
+  match radius
+    Just(it) -> setJsObjectField(obj, "radius", it)
+    Nothing -> ()
+  match centralAngle
+    Just(it) -> setJsObjectField(obj, "centralAngle", it)
+    Nothing -> ()
+  match aspectRatio
+    Just(it) -> setJsObjectField(obj, "aspectRatio", it)
+    Nothing -> ()
+
+  XrMediaCylinderLayerInit(obj);
+
+pub inline fun transform(obj: xrMediaCylinderLayerInit, value: maybe<webxr/xrRigidTransform>): web ()
+  setJsObjectField(obj.obj, "transform", value.obj)
+
+pub inline fun transform(obj: xrMediaCylinderLayerInit): web maybe<webxr/xrRigidTransform>
+  getJsObjectField(obj.obj, "transform")
+
+pub inline fun radius(obj: xrMediaCylinderLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "radius", value.obj)
+
+pub inline fun radius(obj: xrMediaCylinderLayerInit): web double
+  getJsObjectField(obj.obj, "radius")
+
+pub inline fun centralAngle(obj: xrMediaCylinderLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "centralAngle", value.obj)
+
+pub inline fun centralAngle(obj: xrMediaCylinderLayerInit): web double
+  getJsObjectField(obj.obj, "centralAngle")
+
+pub inline fun aspectRatio(obj: xrMediaCylinderLayerInit, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "aspectRatio", value.obj)
+
+pub inline fun aspectRatio(obj: xrMediaCylinderLayerInit): web maybe<double>
+  getJsObjectField(obj.obj, "aspectRatio")
+
+pub value struct xrMediaEquirectLayerInit
+  obj: jsObject
+
+pub fun newXrMediaEquirectLayerInit(transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralHorizontalAngle: maybe<double> = Nothing, upperVerticalAngle: maybe<double> = Nothing, lowerVerticalAngle: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match transform
+    Just(it) -> setJsObjectField(obj, "transform", it)
+    Nothing -> ()
+  match radius
+    Just(it) -> setJsObjectField(obj, "radius", it)
+    Nothing -> ()
+  match centralHorizontalAngle
+    Just(it) -> setJsObjectField(obj, "centralHorizontalAngle", it)
+    Nothing -> ()
+  match upperVerticalAngle
+    Just(it) -> setJsObjectField(obj, "upperVerticalAngle", it)
+    Nothing -> ()
+  match lowerVerticalAngle
+    Just(it) -> setJsObjectField(obj, "lowerVerticalAngle", it)
+    Nothing -> ()
+
+  XrMediaEquirectLayerInit(obj);
+
+pub inline fun transform(obj: xrMediaEquirectLayerInit, value: maybe<webxr/xrRigidTransform>): web ()
+  setJsObjectField(obj.obj, "transform", value.obj)
+
+pub inline fun transform(obj: xrMediaEquirectLayerInit): web maybe<webxr/xrRigidTransform>
+  getJsObjectField(obj.obj, "transform")
+
+pub inline fun radius(obj: xrMediaEquirectLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "radius", value.obj)
+
+pub inline fun radius(obj: xrMediaEquirectLayerInit): web double
+  getJsObjectField(obj.obj, "radius")
+
+pub inline fun centralHorizontalAngle(obj: xrMediaEquirectLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "centralHorizontalAngle", value.obj)
+
+pub inline fun centralHorizontalAngle(obj: xrMediaEquirectLayerInit): web double
+  getJsObjectField(obj.obj, "centralHorizontalAngle")
+
+pub inline fun upperVerticalAngle(obj: xrMediaEquirectLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "upperVerticalAngle", value.obj)
+
+pub inline fun upperVerticalAngle(obj: xrMediaEquirectLayerInit): web double
+  getJsObjectField(obj.obj, "upperVerticalAngle")
+
+pub inline fun lowerVerticalAngle(obj: xrMediaEquirectLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "lowerVerticalAngle", value.obj)
+
+pub inline fun lowerVerticalAngle(obj: xrMediaEquirectLayerInit): web double
+  getJsObjectField(obj.obj, "lowerVerticalAngle")
+
+pub value struct xrMediaBinding
+  obj: jsObject
+
+pub inline fun newXrMediaBinding(session': webxr/xrSession)
+  newJsObject1("XrMediaBinding", session')"
+
+pub inline fun createQuadLayer(obj: xrMediaBinding, video': html/htmlVideoElement, init': xrMediaQuadLayerInit): web xrQuadLayer
+  jsOperation4(obj.obj, "createQuadLayer", video'.obj, init'.obj)
+
+pub inline fun createCylinderLayer(obj: xrMediaBinding, video': html/htmlVideoElement, init': xrMediaCylinderLayerInit): web xrCylinderLayer
+  jsOperation4(obj.obj, "createCylinderLayer", video'.obj, init'.obj)
+
+pub inline fun createEquirectLayer(obj: xrMediaBinding, video': html/htmlVideoElement, init': xrMediaEquirectLayerInit): web xrEquirectLayer
+  jsOperation4(obj.obj, "createEquirectLayer", video'.obj, init'.obj)
+
+pub value struct xrLayerEvent
+  obj: jsObject
+
+pub inline fun newXrLayerEvent(type': string, eventInitDict': xrLayerEventInit)
+  newJsObject2("XrLayerEvent", type', eventInitDict')"
+
+pub inline fun layer(obj: xrLayerEvent): web webxr/xrLayer
+  getJsObjectField(obj.obj, "layer")
+
+pub value struct xrLayerEventInit
+  obj: jsObject
+
+pub fun newXrLayerEventInit(layer: webxr/xrLayer)
+  val obj = newJsObject();
+  setJsObjectField(obj, "layer", layer);
+  XrLayerEventInit(obj);
+
+pub inline fun layer(obj: xrLayerEventInit, value: webxr/xrLayer): web ()
+  setJsObjectField(obj.obj, "layer", value.obj)
+
+pub inline fun layer(obj: xrLayerEventInit): web webxr/xrLayer
+  getJsObjectField(obj.obj, "layer")
+

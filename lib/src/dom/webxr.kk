@@ -1,588 +1,772 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
-alias XRWebGLRenderingContext = JSAny
-alias XRFrameRequestCallback = JSFunction
+import web/wasm
+pub alias xrWebGLRenderingContext = JSAny;
 
-alias XRSessionMode = String
-alias XRVisibilityState = String
-alias XRReferenceSpaceType = String
-alias XREye = String
-alias XRHandedness = String
-alias XRTargetRayMode = String
-struct XRSystem
-{
-}
+pub alias xrFrameRequestCallback = jsFunction;
 
-()
 
-pub extern isSessionSupported(this: js_object, [mode: XRSessionMode], [])
-pub extern requestSession(this: js_object, [mode: XRSessionMode], [options: XRSessionInit])
-pub extern setondevicechange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getondevicechange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"ondevicechange\")"
-struct XRSessionInit
-{  depthSensing: webxr_depth_sensing.kk/XRDepthStateInit,
-  domOverlay: maybe<webxr_dom_overlays.kk/XRDOMOverlayInit>,
-  requiredFeatures: dart:js_interop/JSArray,
-  optionalFeatures: dart:js_interop/JSArray
-}
-pub extern newXRSessionInit([depthSensing: maybe<webxr_depth_sensing.kk/XRDepthStateInit> = Nothing, domOverlay: maybe<maybe<webxr_dom_overlays.kk/XRDOMOverlayInit>> = Nothing, requiredFeatures: maybe<dart:js_interop/JSArray> = Nothing, optionalFeatures: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub alias xrSessionMode = string;
 
-pub extern setdepthSensing(this: js_object, value: webxr_depth_sensing.kk/XRDepthStateInit): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdepthSensing(this: js_object): web webxr_depth_sensing.kk/XRDepthStateInit
-	c inline "getObjectField(#1, \"depthSensing\")"
-pub extern setdomOverlay(this: js_object, value: maybe<webxr_dom_overlays.kk/XRDOMOverlayInit>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdomOverlay(this: js_object): web maybe<webxr_dom_overlays.kk/XRDOMOverlayInit>
-	c inline "getObjectField(#1, \"domOverlay\")"
-pub extern setrequiredFeatures(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequiredFeatures(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"requiredFeatures\")"
-pub extern setoptionalFeatures(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoptionalFeatures(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"optionalFeatures\")"
-struct XRSession
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
 
-}
+pub alias xrVisibilityState = string;
 
-()
 
-pub extern restorePersistentAnchor(this: js_object, [uuid: String], [])
-pub extern deletePersistentAnchor(this: js_object, [uuid: String], [])
-pub extern requestHitTestSource(this: js_object, [options: webxr_hit_test.kk/XRHitTestOptionsInit], [])
-pub extern requestHitTestSourceForTransientInput(this: js_object, [options: webxr_hit_test.kk/XRTransientInputHitTestOptionsInit], [])
-pub extern requestLightProbe(this: js_object, [], [options: webxr_lighting_estimation.kk/XRLightProbeInit])
-pub extern updateRenderState(this: js_object, [], [state: XRRenderStateInit])
-pub extern updateTargetFrameRate(this: js_object, [rate: double], [])
-pub extern requestReferenceSpace(this: js_object, [type: XRReferenceSpaceType], [])
-pub extern requestAnimationFrame(this: js_object, [callback: XRFrameRequestCallback], [])
-pub extern cancelAnimationFrame(this: js_object, [handle: int], [])
-pub extern end(this: js_object, [], [])
-pub extern getpersistentAnchors(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"persistentAnchors\")"
-pub extern getenvironmentBlendMode(this: js_object): web webxr_ar_module.kk/XREnvironmentBlendMode
-	c inline "getObjectField(#1, \"environmentBlendMode\")"
-pub extern getinteractionMode(this: js_object): web webxr_ar_module.kk/XRInteractionMode
-	c inline "getObjectField(#1, \"interactionMode\")"
-pub extern getdepthUsage(this: js_object): web webxr_depth_sensing.kk/XRDepthUsage
-	c inline "getObjectField(#1, \"depthUsage\")"
-pub extern getdepthDataFormat(this: js_object): web webxr_depth_sensing.kk/XRDepthDataFormat
-	c inline "getObjectField(#1, \"depthDataFormat\")"
-pub extern getdomOverlayState(this: js_object): web maybe<webxr_dom_overlays.kk/XRDOMOverlayState>
-	c inline "getObjectField(#1, \"domOverlayState\")"
-pub extern getpreferredReflectionFormat(this: js_object): web webxr_lighting_estimation.kk/XRReflectionFormat
-	c inline "getObjectField(#1, \"preferredReflectionFormat\")"
-pub extern getvisibilityState(this: js_object): web XRVisibilityState
-	c inline "getObjectField(#1, \"visibilityState\")"
-pub extern getframeRate(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"frameRate\")"
-pub extern getsupportedFrameRates(this: js_object): web maybe<dart:js_interop/JSFloat32Array>
-	c inline "getObjectField(#1, \"supportedFrameRates\")"
-pub extern getrenderState(this: js_object): web XRRenderState
-	c inline "getObjectField(#1, \"renderState\")"
-pub extern getinputSources(this: js_object): web XRInputSourceArray
-	c inline "getObjectField(#1, \"inputSources\")"
-pub extern getenabledFeatures(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"enabledFeatures\")"
-pub extern getisSystemKeyboardSupported(this: js_object): web bool
-	c inline "getObjectField(#1, \"isSystemKeyboardSupported\")"
-pub extern setonend(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonend(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onend\")"
-pub extern setoninputsourceschange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoninputsourceschange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"oninputsourceschange\")"
-pub extern setonselect(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonselect(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onselect\")"
-pub extern setonselectstart(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonselectstart(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onselectstart\")"
-pub extern setonselectend(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonselectend(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onselectend\")"
-pub extern setonsqueeze(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonsqueeze(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onsqueeze\")"
-pub extern setonsqueezestart(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonsqueezestart(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onsqueezestart\")"
-pub extern setonsqueezeend(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonsqueezeend(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onsqueezeend\")"
-pub extern setonvisibilitychange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonvisibilitychange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onvisibilitychange\")"
-pub extern setonframeratechange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonframeratechange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onframeratechange\")"
-struct XRRenderStateInit
-{  depthNear: double,
-  depthFar: double,
-  inlineVerticalFieldOfView: double,
-  baseLayer: maybe<XRWebGLLayer>,
-  layers: maybe<dart:js_interop/JSArray>
-}
-pub extern newXRRenderStateInit([depthNear: maybe<double> = Nothing, depthFar: maybe<double> = Nothing, inlineVerticalFieldOfView: maybe<double> = Nothing, baseLayer: maybe<maybe<XRWebGLLayer>> = Nothing, layers: maybe<maybe<dart:js_interop/JSArray>> = Nothing])
-()
+pub alias xrReferenceSpaceType = string;
 
-pub extern setdepthNear(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdepthNear(this: js_object): web double
-	c inline "getObjectField(#1, \"depthNear\")"
-pub extern setdepthFar(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdepthFar(this: js_object): web double
-	c inline "getObjectField(#1, \"depthFar\")"
-pub extern setinlineVerticalFieldOfView(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinlineVerticalFieldOfView(this: js_object): web double
-	c inline "getObjectField(#1, \"inlineVerticalFieldOfView\")"
-pub extern setbaseLayer(this: js_object, value: maybe<XRWebGLLayer>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbaseLayer(this: js_object): web maybe<XRWebGLLayer>
-	c inline "getObjectField(#1, \"baseLayer\")"
-pub extern setlayers(this: js_object, value: maybe<dart:js_interop/JSArray>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getlayers(this: js_object): web maybe<dart:js_interop/JSArray>
-	c inline "getObjectField(#1, \"layers\")"
-struct XRRenderState
-{,
-,
-,
-,
 
-}
+pub alias xrEye = string;
 
-()
 
-pub extern getdepthNear(this: js_object): web double
-	c inline "getObjectField(#1, \"depthNear\")"
-pub extern getdepthFar(this: js_object): web double
-	c inline "getObjectField(#1, \"depthFar\")"
-pub extern getinlineVerticalFieldOfView(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"inlineVerticalFieldOfView\")"
-pub extern getbaseLayer(this: js_object): web maybe<XRWebGLLayer>
-	c inline "getObjectField(#1, \"baseLayer\")"
-pub extern getlayers(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"layers\")"
-struct XRFrame
-{,
-,
-,
+pub alias xrHandedness = string;
 
-}
 
-()
+pub alias xrTargetRayMode = string;
 
-pub extern createAnchor(this: js_object, [pose: XRRigidTransform, space: XRSpace], [])
-pub extern getDepthInformation(this: js_object, [view: XRView], [])
-pub extern getJointPose(this: js_object, [joint: webxr_hand_input.kk/XRJointSpace, baseSpace: XRSpace], [])
-pub extern fillJointRadii(this: js_object, [jointSpaces: dart:js_interop/JSArray, radii: dart:js_interop/JSFloat32Array], [])
-pub extern fillPoses(this: js_object, [spaces: dart:js_interop/JSArray, baseSpace: XRSpace, transforms: dart:js_interop/JSFloat32Array], [])
-pub extern getHitTestResults(this: js_object, [hitTestSource: webxr_hit_test.kk/XRHitTestSource], [])
-pub extern getHitTestResultsForTransientInput(this: js_object, [hitTestSource: webxr_hit_test.kk/XRTransientInputHitTestSource], [])
-pub extern getLightEstimate(this: js_object, [lightProbe: webxr_lighting_estimation.kk/XRLightProbe], [])
-pub extern getViewerPose(this: js_object, [referenceSpace: XRReferenceSpace], [])
-pub extern getPose(this: js_object, [space: XRSpace, baseSpace: XRSpace], [])
-pub extern gettrackedAnchors(this: js_object): web anchors.kk/XRAnchorSet
-	c inline "getObjectField(#1, \"trackedAnchors\")"
-pub extern getdetectedMeshs(this: js_object): web real_world_meshing.kk/XRMeshSet
-	c inline "getObjectField(#1, \"detectedMeshs\")"
-pub extern getsession(this: js_object): web XRSession
-	c inline "getObjectField(#1, \"session\")"
-pub extern getpredictedDisplayTime(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"predictedDisplayTime\")"
-struct XRSpace
-{
-}
+pub value struct xrSystem
+  obj: jsObject
 
-()
 
-struct XRReferenceSpace
-{
-}
+pub inline fun isSessionSupported(obj: xrSystem, mode': xrSessionMode): web jsPromise
+  jsOperation3(obj.obj, "isSessionSupported", mode'.obj)
 
-()
+pub inline fun requestSession(obj: xrSystem, mode': xrSessionMode, options': xrSessionInit): web jsPromise
+  jsOperation4(obj.obj, "requestSession", mode'.obj, options'.obj)
 
-pub extern getOffsetReferenceSpace(this: js_object, [originOffset: XRRigidTransform], [])
-pub extern setonreset(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonreset(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onreset\")"
-struct XRBoundedReferenceSpace
-{
-}
+pub inline fun ondevicechange(obj: xrSystem, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "ondevicechange", value.obj)
 
-()
+pub inline fun ondevicechange(obj: xrSystem): web html/eventHandler
+  getJsObjectField(obj.obj, "ondevicechange")
 
-pub extern getboundsGeometry(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"boundsGeometry\")"
-struct XRView
-{,
-,
-,
-,
-,
+pub value struct xrSessionInit
+  obj: jsObject
 
-}
+pub fun newXrSessionInit(depthSensing: maybe<webxr_depth_sensing/xrDepthStateInit> = Nothing, domOverlay: maybe<maybe<webxr_dom_overlays/xrdomOverlayInit>> = Nothing, requiredFeatures: maybe<jsArray> = Nothing, optionalFeatures: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match depthSensing
+    Just(it) -> setJsObjectField(obj, "depthSensing", it)
+    Nothing -> ()
+  match domOverlay
+    Just(it) -> setJsObjectField(obj, "domOverlay", it)
+    Nothing -> ()
+  match requiredFeatures
+    Just(it) -> setJsObjectField(obj, "requiredFeatures", it)
+    Nothing -> ()
+  match optionalFeatures
+    Just(it) -> setJsObjectField(obj, "optionalFeatures", it)
+    Nothing -> ()
 
-()
+  XrSessionInit(obj);
 
-pub extern requestViewportScale(this: js_object, [scale: maybe<double> =  Nothing], [])
-pub extern getcamera(this: js_object): web maybe<raw_camera_access.kk/XRCamera>
-	c inline "getObjectField(#1, \"camera\")"
-pub extern getisFirstPersonObserver(this: js_object): web bool
-	c inline "getObjectField(#1, \"isFirstPersonObserver\")"
-pub extern geteye(this: js_object): web XREye
-	c inline "getObjectField(#1, \"eye\")"
-pub extern getprojectionMatrix(this: js_object): web dart:js_interop/JSFloat32Array
-	c inline "getObjectField(#1, \"projectionMatrix\")"
-pub extern gettransform(this: js_object): web XRRigidTransform
-	c inline "getObjectField(#1, \"transform\")"
-pub extern getrecommendedViewportScale(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"recommendedViewportScale\")"
-struct XRViewport
-{,
-,
-,
+pub inline fun depthSensing(obj: xrSessionInit, value: webxr_depth_sensing/xrDepthStateInit): web ()
+  setJsObjectField(obj.obj, "depthSensing", value.obj)
 
-}
+pub inline fun depthSensing(obj: xrSessionInit): web webxr_depth_sensing/xrDepthStateInit
+  getJsObjectField(obj.obj, "depthSensing")
 
-()
+pub inline fun domOverlay(obj: xrSessionInit, value: maybe<webxr_dom_overlays/xrdomOverlayInit>): web ()
+  setJsObjectField(obj.obj, "domOverlay", value.obj)
 
-pub extern getx(this: js_object): web int
-	c inline "getObjectField(#1, \"x\")"
-pub extern gety(this: js_object): web int
-	c inline "getObjectField(#1, \"y\")"
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-struct XRRigidTransform
-{,
-,
-,
+pub inline fun domOverlay(obj: xrSessionInit): web maybe<webxr_dom_overlays/xrdomOverlayInit>
+  getJsObjectField(obj.obj, "domOverlay")
 
-}
-pub extern newXRRigidTransform([], [position: geometry.kk/DOMPointInit, orientation: geometry.kk/DOMPointInit])
-()
+pub inline fun requiredFeatures(obj: xrSessionInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "requiredFeatures", value.obj)
 
-pub extern getposition(this: js_object): web geometry.kk/DOMPointReadOnly
-	c inline "getObjectField(#1, \"position\")"
-pub extern getorientation(this: js_object): web geometry.kk/DOMPointReadOnly
-	c inline "getObjectField(#1, \"orientation\")"
-pub extern getmatrix(this: js_object): web dart:js_interop/JSFloat32Array
-	c inline "getObjectField(#1, \"matrix\")"
-pub extern getinverse(this: js_object): web XRRigidTransform
-	c inline "getObjectField(#1, \"inverse\")"
-struct XRPose
-{,
-,
-,
+pub inline fun requiredFeatures(obj: xrSessionInit): web jsArray
+  getJsObjectField(obj.obj, "requiredFeatures")
 
-}
+pub inline fun optionalFeatures(obj: xrSessionInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "optionalFeatures", value.obj)
 
-()
+pub inline fun optionalFeatures(obj: xrSessionInit): web jsArray
+  getJsObjectField(obj.obj, "optionalFeatures")
 
-pub extern gettransform(this: js_object): web XRRigidTransform
-	c inline "getObjectField(#1, \"transform\")"
-pub extern getlinearVelocity(this: js_object): web maybe<geometry.kk/DOMPointReadOnly>
-	c inline "getObjectField(#1, \"linearVelocity\")"
-pub extern getangularVelocity(this: js_object): web maybe<geometry.kk/DOMPointReadOnly>
-	c inline "getObjectField(#1, \"angularVelocity\")"
-pub extern getemulatedPosition(this: js_object): web bool
-	c inline "getObjectField(#1, \"emulatedPosition\")"
-struct XRViewerPose
-{
-}
+pub value struct xrSession
+  obj: jsObject
 
-()
 
-pub extern getviews(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"views\")"
-struct XRInputSource
-{,
-,
-,
-,
-,
-,
+pub inline fun restorePersistentAnchor(obj: xrSession, uuid': string): web jsPromise
+  jsOperation3(obj.obj, "restorePersistentAnchor", uuid'.obj)
 
-}
+pub inline fun deletePersistentAnchor(obj: xrSession, uuid': string): web jsPromise
+  jsOperation3(obj.obj, "deletePersistentAnchor", uuid'.obj)
 
-()
+pub inline fun requestHitTestSource(obj: xrSession, options': webxr_hit_test/xrHitTestOptionsInit): web jsPromise
+  jsOperation3(obj.obj, "requestHitTestSource", options'.obj)
 
-pub extern getgamepad(this: js_object): web maybe<gamepad.kk/Gamepad>
-	c inline "getObjectField(#1, \"gamepad\")"
-pub extern gethand(this: js_object): web maybe<webxr_hand_input.kk/XRHand>
-	c inline "getObjectField(#1, \"hand\")"
-pub extern gethandedness(this: js_object): web XRHandedness
-	c inline "getObjectField(#1, \"handedness\")"
-pub extern gettargetRayMode(this: js_object): web XRTargetRayMode
-	c inline "getObjectField(#1, \"targetRayMode\")"
-pub extern gettargetRaySpace(this: js_object): web XRSpace
-	c inline "getObjectField(#1, \"targetRaySpace\")"
-pub extern getgripSpace(this: js_object): web maybe<XRSpace>
-	c inline "getObjectField(#1, \"gripSpace\")"
-pub extern getprofiles(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"profiles\")"
-struct XRInputSourceArray
-{,
+pub inline fun requestHitTestSourceForTransientInput(obj: xrSession, options': webxr_hit_test/xrTransientInputHitTestOptionsInit): web jsPromise
+  jsOperation3(obj.obj, "requestHitTestSourceForTransientInput", options'.obj)
 
-}
+pub inline fun requestLightProbe(obj: xrSession, options': webxr_lighting_estimation/xrLightProbeInit): web jsPromise
+  jsOperation3(obj.obj, "requestLightProbe", options'.obj)
 
-()
+pub inline fun updateRenderState(obj: xrSession, state': xrRenderStateInit): web ()
+  jsOperation3(obj.obj, "updateRenderState", state'.obj)
 
-pub extern getlength(this: js_object): web int
-	c inline "getObjectField(#1, \"length\")"
-struct XRLayer
-{
-}
+pub inline fun updateTargetFrameRate(obj: xrSession, rate': double): web jsPromise
+  jsOperation3(obj.obj, "updateTargetFrameRate", rate'.obj)
 
-()
+pub inline fun requestReferenceSpace(obj: xrSession, type': xrReferenceSpaceType): web jsPromise
+  jsOperation3(obj.obj, "requestReferenceSpace", type'.obj)
 
-struct XRWebGLLayerInit
-{  antialias: bool,
-  depth: bool,
-  stencil: bool,
-  alpha: bool,
-  ignoreDepthValues: bool,
-  framebufferScaleFactor: double
-}
-pub extern newXRWebGLLayerInit([antialias: maybe<bool> = Nothing, depth: maybe<bool> = Nothing, stencil: maybe<bool> = Nothing, alpha: maybe<bool> = Nothing, ignoreDepthValues: maybe<bool> = Nothing, framebufferScaleFactor: maybe<double> = Nothing])
-()
+pub inline fun requestAnimationFrame(obj: xrSession, callback': xrFrameRequestCallback): web int
+  jsOperation3(obj.obj, "requestAnimationFrame", callback'.obj)
 
-pub extern setantialias(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getantialias(this: js_object): web bool
-	c inline "getObjectField(#1, \"antialias\")"
-pub extern setdepth(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getdepth(this: js_object): web bool
-	c inline "getObjectField(#1, \"depth\")"
-pub extern setstencil(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getstencil(this: js_object): web bool
-	c inline "getObjectField(#1, \"stencil\")"
-pub extern setalpha(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getalpha(this: js_object): web bool
-	c inline "getObjectField(#1, \"alpha\")"
-pub extern setignoreDepthValues(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getignoreDepthValues(this: js_object): web bool
-	c inline "getObjectField(#1, \"ignoreDepthValues\")"
-pub extern setframebufferScaleFactor(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getframebufferScaleFactor(this: js_object): web double
-	c inline "getObjectField(#1, \"framebufferScaleFactor\")"
-struct XRWebGLLayer
-{,
-,
-,
-,
-,
+pub inline fun cancelAnimationFrame(obj: xrSession, handle': int): web ()
+  jsOperation3(obj.obj, "cancelAnimationFrame", handle'.obj)
 
-}
-pub extern newXRWebGLLayer([session: XRSession, context: XRWebGLRenderingContext], [layerInit: XRWebGLLayerInit])
-(pub extern getNativeFramebufferScaleFactor( [session: XRSession], []))
+pub inline fun end(obj: xrSession): web jsPromise
+  jsOperation2(obj.obj, "end")
 
-pub extern getViewport(this: js_object, [view: XRView], [])
-pub extern getantialias(this: js_object): web bool
-	c inline "getObjectField(#1, \"antialias\")"
-pub extern getignoreDepthValues(this: js_object): web bool
-	c inline "getObjectField(#1, \"ignoreDepthValues\")"
-pub extern setfixedFoveation(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfixedFoveation(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"fixedFoveation\")"
-pub extern getframebuffer(this: js_object): web maybe<webgl1.kk/WebGLFramebuffer>
-	c inline "getObjectField(#1, \"framebuffer\")"
-pub extern getframebufferWidth(this: js_object): web int
-	c inline "getObjectField(#1, \"framebufferWidth\")"
-pub extern getframebufferHeight(this: js_object): web int
-	c inline "getObjectField(#1, \"framebufferHeight\")"
-struct XRSessionEvent
-{
-}
-pub extern newXRSessionEvent([type: String, eventInitDict: XRSessionEventInit], [])
-()
+pub inline fun persistentAnchors(obj: xrSession): web jsArray
+  getJsObjectField(obj.obj, "persistentAnchors")
 
-pub extern getsession(this: js_object): web XRSession
-	c inline "getObjectField(#1, \"session\")"
-struct XRSessionEventInit
-{  session: XRSession
-}
-pub extern newXRSessionEventInit([session: XRSession])
-()
+pub inline fun environmentBlendMode(obj: xrSession): web webxr_ar_module/xrEnvironmentBlendMode
+  getJsObjectField(obj.obj, "environmentBlendMode")
 
-pub extern setsession(this: js_object, value: XRSession): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsession(this: js_object): web XRSession
-	c inline "getObjectField(#1, \"session\")"
-struct XRInputSourceEvent
-{,
+pub inline fun interactionMode(obj: xrSession): web webxr_ar_module/xrInteractionMode
+  getJsObjectField(obj.obj, "interactionMode")
 
-}
-pub extern newXRInputSourceEvent([type: String, eventInitDict: XRInputSourceEventInit], [])
-()
+pub inline fun depthUsage(obj: xrSession): web webxr_depth_sensing/xrDepthUsage
+  getJsObjectField(obj.obj, "depthUsage")
 
-pub extern getframe(this: js_object): web XRFrame
-	c inline "getObjectField(#1, \"frame\")"
-pub extern getinputSource(this: js_object): web XRInputSource
-	c inline "getObjectField(#1, \"inputSource\")"
-struct XRInputSourceEventInit
-{  frame: XRFrame,
-  inputSource: XRInputSource
-}
-pub extern newXRInputSourceEventInit([frame: XRFrame, inputSource: XRInputSource])
-()
+pub inline fun depthDataFormat(obj: xrSession): web webxr_depth_sensing/xrDepthDataFormat
+  getJsObjectField(obj.obj, "depthDataFormat")
 
-pub extern setframe(this: js_object, value: XRFrame): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getframe(this: js_object): web XRFrame
-	c inline "getObjectField(#1, \"frame\")"
-pub extern setinputSource(this: js_object, value: XRInputSource): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinputSource(this: js_object): web XRInputSource
-	c inline "getObjectField(#1, \"inputSource\")"
-struct XRInputSourcesChangeEvent
-{,
-,
+pub inline fun domOverlayState(obj: xrSession): web maybe<webxr_dom_overlays/xrdomOverlayState>
+  getJsObjectField(obj.obj, "domOverlayState")
 
-}
-pub extern newXRInputSourcesChangeEvent([type: String, eventInitDict: XRInputSourcesChangeEventInit], [])
-()
+pub inline fun preferredReflectionFormat(obj: xrSession): web webxr_lighting_estimation/xrReflectionFormat
+  getJsObjectField(obj.obj, "preferredReflectionFormat")
 
-pub extern getsession(this: js_object): web XRSession
-	c inline "getObjectField(#1, \"session\")"
-pub extern getadded(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"added\")"
-pub extern getremoved(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"removed\")"
-struct XRInputSourcesChangeEventInit
-{  session: XRSession,
-  added: dart:js_interop/JSArray,
-  removed: dart:js_interop/JSArray
-}
-pub extern newXRInputSourcesChangeEventInit([session: XRSession, added: dart:js_interop/JSArray, removed: dart:js_interop/JSArray])
-()
+pub inline fun visibilityState(obj: xrSession): web xrVisibilityState
+  getJsObjectField(obj.obj, "visibilityState")
 
-pub extern setsession(this: js_object, value: XRSession): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getsession(this: js_object): web XRSession
-	c inline "getObjectField(#1, \"session\")"
-pub extern setadded(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getadded(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"added\")"
-pub extern setremoved(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getremoved(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"removed\")"
-struct XRReferenceSpaceEvent
-{,
+pub inline fun frameRate(obj: xrSession): web maybe<double>
+  getJsObjectField(obj.obj, "frameRate")
 
-}
-pub extern newXRReferenceSpaceEvent([type: String, eventInitDict: XRReferenceSpaceEventInit], [])
-()
+pub inline fun supportedFrameRates(obj: xrSession): web maybe<jsFloat32Array>
+  getJsObjectField(obj.obj, "supportedFrameRates")
 
-pub extern getreferenceSpace(this: js_object): web XRReferenceSpace
-	c inline "getObjectField(#1, \"referenceSpace\")"
-pub extern gettransform(this: js_object): web maybe<XRRigidTransform>
-	c inline "getObjectField(#1, \"transform\")"
-struct XRReferenceSpaceEventInit
-{  referenceSpace: XRReferenceSpace,
-  transform: maybe<XRRigidTransform>
-}
-pub extern newXRReferenceSpaceEventInit([referenceSpace: XRReferenceSpace, transform: maybe<maybe<XRRigidTransform>> = Nothing])
-()
+pub inline fun renderState(obj: xrSession): web xrRenderState
+  getJsObjectField(obj.obj, "renderState")
 
-pub extern setreferenceSpace(this: js_object, value: XRReferenceSpace): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getreferenceSpace(this: js_object): web XRReferenceSpace
-	c inline "getObjectField(#1, \"referenceSpace\")"
-pub extern settransform(this: js_object, value: maybe<XRRigidTransform>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransform(this: js_object): web maybe<XRRigidTransform>
-	c inline "getObjectField(#1, \"transform\")"
-struct XRSessionSupportedPermissionDescriptor
-{  mode: XRSessionMode
-}
-pub extern newXRSessionSupportedPermissionDescriptor([mode: maybe<XRSessionMode> = Nothing])
-()
+pub inline fun inputSources(obj: xrSession): web xrInputSourceArray
+  getJsObjectField(obj.obj, "inputSources")
 
-pub extern setmode(this: js_object, value: XRSessionMode): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmode(this: js_object): web XRSessionMode
-	c inline "getObjectField(#1, \"mode\")"
-struct XRPermissionDescriptor
-{  mode: XRSessionMode,
-  requiredFeatures: dart:js_interop/JSArray,
-  optionalFeatures: dart:js_interop/JSArray
-}
-pub extern newXRPermissionDescriptor([mode: maybe<XRSessionMode> = Nothing, requiredFeatures: maybe<dart:js_interop/JSArray> = Nothing, optionalFeatures: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub inline fun enabledFeatures(obj: xrSession): web jsArray
+  getJsObjectField(obj.obj, "enabledFeatures")
 
-pub extern setmode(this: js_object, value: XRSessionMode): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmode(this: js_object): web XRSessionMode
-	c inline "getObjectField(#1, \"mode\")"
-pub extern setrequiredFeatures(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequiredFeatures(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"requiredFeatures\")"
-pub extern setoptionalFeatures(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoptionalFeatures(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"optionalFeatures\")"
-struct XRPermissionStatus
-{
-}
+pub inline fun isSystemKeyboardSupported(obj: xrSession): web bool
+  getJsObjectField(obj.obj, "isSystemKeyboardSupported")
 
-()
+pub inline fun onend(obj: xrSession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onend", value.obj)
 
-pub extern setgranted(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getgranted(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"granted\")"
+pub inline fun onend(obj: xrSession): web html/eventHandler
+  getJsObjectField(obj.obj, "onend")
+
+pub inline fun oninputsourceschange(obj: xrSession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "oninputsourceschange", value.obj)
+
+pub inline fun oninputsourceschange(obj: xrSession): web html/eventHandler
+  getJsObjectField(obj.obj, "oninputsourceschange")
+
+pub inline fun onselect(obj: xrSession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onselect", value.obj)
+
+pub inline fun onselect(obj: xrSession): web html/eventHandler
+  getJsObjectField(obj.obj, "onselect")
+
+pub inline fun onselectstart(obj: xrSession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onselectstart", value.obj)
+
+pub inline fun onselectstart(obj: xrSession): web html/eventHandler
+  getJsObjectField(obj.obj, "onselectstart")
+
+pub inline fun onselectend(obj: xrSession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onselectend", value.obj)
+
+pub inline fun onselectend(obj: xrSession): web html/eventHandler
+  getJsObjectField(obj.obj, "onselectend")
+
+pub inline fun onsqueeze(obj: xrSession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onsqueeze", value.obj)
+
+pub inline fun onsqueeze(obj: xrSession): web html/eventHandler
+  getJsObjectField(obj.obj, "onsqueeze")
+
+pub inline fun onsqueezestart(obj: xrSession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onsqueezestart", value.obj)
+
+pub inline fun onsqueezestart(obj: xrSession): web html/eventHandler
+  getJsObjectField(obj.obj, "onsqueezestart")
+
+pub inline fun onsqueezeend(obj: xrSession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onsqueezeend", value.obj)
+
+pub inline fun onsqueezeend(obj: xrSession): web html/eventHandler
+  getJsObjectField(obj.obj, "onsqueezeend")
+
+pub inline fun onvisibilitychange(obj: xrSession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onvisibilitychange", value.obj)
+
+pub inline fun onvisibilitychange(obj: xrSession): web html/eventHandler
+  getJsObjectField(obj.obj, "onvisibilitychange")
+
+pub inline fun onframeratechange(obj: xrSession, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onframeratechange", value.obj)
+
+pub inline fun onframeratechange(obj: xrSession): web html/eventHandler
+  getJsObjectField(obj.obj, "onframeratechange")
+
+pub value struct xrRenderStateInit
+  obj: jsObject
+
+pub fun newXrRenderStateInit(depthNear: maybe<double> = Nothing, depthFar: maybe<double> = Nothing, inlineVerticalFieldOfView: maybe<double> = Nothing, baseLayer: maybe<maybe<xrWebGLLayer>> = Nothing, layers: maybe<maybe<jsArray>> = Nothing)
+  val obj = newJsObject();
+  match depthNear
+    Just(it) -> setJsObjectField(obj, "depthNear", it)
+    Nothing -> ()
+  match depthFar
+    Just(it) -> setJsObjectField(obj, "depthFar", it)
+    Nothing -> ()
+  match inlineVerticalFieldOfView
+    Just(it) -> setJsObjectField(obj, "inlineVerticalFieldOfView", it)
+    Nothing -> ()
+  match baseLayer
+    Just(it) -> setJsObjectField(obj, "baseLayer", it)
+    Nothing -> ()
+  match layers
+    Just(it) -> setJsObjectField(obj, "layers", it)
+    Nothing -> ()
+
+  XrRenderStateInit(obj);
+
+pub inline fun depthNear(obj: xrRenderStateInit, value: double): web ()
+  setJsObjectField(obj.obj, "depthNear", value.obj)
+
+pub inline fun depthNear(obj: xrRenderStateInit): web double
+  getJsObjectField(obj.obj, "depthNear")
+
+pub inline fun depthFar(obj: xrRenderStateInit, value: double): web ()
+  setJsObjectField(obj.obj, "depthFar", value.obj)
+
+pub inline fun depthFar(obj: xrRenderStateInit): web double
+  getJsObjectField(obj.obj, "depthFar")
+
+pub inline fun inlineVerticalFieldOfView(obj: xrRenderStateInit, value: double): web ()
+  setJsObjectField(obj.obj, "inlineVerticalFieldOfView", value.obj)
+
+pub inline fun inlineVerticalFieldOfView(obj: xrRenderStateInit): web double
+  getJsObjectField(obj.obj, "inlineVerticalFieldOfView")
+
+pub inline fun baseLayer(obj: xrRenderStateInit, value: maybe<xrWebGLLayer>): web ()
+  setJsObjectField(obj.obj, "baseLayer", value.obj)
+
+pub inline fun baseLayer(obj: xrRenderStateInit): web maybe<xrWebGLLayer>
+  getJsObjectField(obj.obj, "baseLayer")
+
+pub inline fun layers(obj: xrRenderStateInit, value: maybe<jsArray>): web ()
+  setJsObjectField(obj.obj, "layers", value.obj)
+
+pub inline fun layers(obj: xrRenderStateInit): web maybe<jsArray>
+  getJsObjectField(obj.obj, "layers")
+
+pub value struct xrRenderState
+  obj: jsObject
+
+
+pub inline fun depthNear(obj: xrRenderState): web double
+  getJsObjectField(obj.obj, "depthNear")
+
+pub inline fun depthFar(obj: xrRenderState): web double
+  getJsObjectField(obj.obj, "depthFar")
+
+pub inline fun inlineVerticalFieldOfView(obj: xrRenderState): web maybe<double>
+  getJsObjectField(obj.obj, "inlineVerticalFieldOfView")
+
+pub inline fun baseLayer(obj: xrRenderState): web maybe<xrWebGLLayer>
+  getJsObjectField(obj.obj, "baseLayer")
+
+pub inline fun layers(obj: xrRenderState): web jsArray
+  getJsObjectField(obj.obj, "layers")
+
+pub value struct xrFrame
+  obj: jsObject
+
+
+pub inline fun createAnchor(obj: xrFrame, pose': xrRigidTransform, space': xrSpace): web jsPromise
+  jsOperation4(obj.obj, "createAnchor", pose'.obj, space'.obj)
+
+pub inline fun getDepthInformation(obj: xrFrame, view': xrView): web maybe<webxr_depth_sensing/xrcpuDepthInformation>
+  jsOperation3(obj.obj, "getDepthInformation", view'.obj)
+
+pub inline fun getJointPose(obj: xrFrame, joint': webxr_hand_input/xrJointSpace, baseSpace': xrSpace): web maybe<webxr_hand_input/xrJointPose>
+  jsOperation4(obj.obj, "getJointPose", joint'.obj, baseSpace'.obj)
+
+pub inline fun fillJointRadii(obj: xrFrame, jointSpaces': jsArray, radii': jsFloat32Array): web bool
+  jsOperation4(obj.obj, "fillJointRadii", jointSpaces'.obj, radii'.obj)
+
+pub inline fun fillPoses(obj: xrFrame, spaces': jsArray, baseSpace': xrSpace, transforms': jsFloat32Array): web bool
+  jsOperation5(obj.obj, "fillPoses", spaces'.obj, baseSpace'.obj, transforms'.obj)
+
+pub inline fun getHitTestResults(obj: xrFrame, hitTestSource': webxr_hit_test/xrHitTestSource): web jsArray
+  jsOperation3(obj.obj, "getHitTestResults", hitTestSource'.obj)
+
+pub inline fun getHitTestResultsForTransientInput(obj: xrFrame, hitTestSource': webxr_hit_test/xrTransientInputHitTestSource): web jsArray
+  jsOperation3(obj.obj, "getHitTestResultsForTransientInput", hitTestSource'.obj)
+
+pub inline fun getLightEstimate(obj: xrFrame, lightProbe': webxr_lighting_estimation/xrLightProbe): web maybe<webxr_lighting_estimation/xrLightEstimate>
+  jsOperation3(obj.obj, "getLightEstimate", lightProbe'.obj)
+
+pub inline fun getViewerPose(obj: xrFrame, referenceSpace': xrReferenceSpace): web maybe<xrViewerPose>
+  jsOperation3(obj.obj, "getViewerPose", referenceSpace'.obj)
+
+pub inline fun getPose(obj: xrFrame, space': xrSpace, baseSpace': xrSpace): web maybe<xrPose>
+  jsOperation4(obj.obj, "getPose", space'.obj, baseSpace'.obj)
+
+pub inline fun trackedAnchors(obj: xrFrame): web anchors/xrAnchorSet
+  getJsObjectField(obj.obj, "trackedAnchors")
+
+pub inline fun detectedMeshs(obj: xrFrame): web real_world_meshing/xrMeshSet
+  getJsObjectField(obj.obj, "detectedMeshs")
+
+pub inline fun session(obj: xrFrame): web xrSession
+  getJsObjectField(obj.obj, "session")
+
+pub inline fun predictedDisplayTime(obj: xrFrame): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "predictedDisplayTime")
+
+pub value struct xrSpace
+  obj: jsObject
+
+
+pub value struct xrReferenceSpace
+  obj: jsObject
+
+
+pub inline fun getOffsetReferenceSpace(obj: xrReferenceSpace, originOffset': xrRigidTransform): web xrReferenceSpace
+  jsOperation3(obj.obj, "getOffsetReferenceSpace", originOffset'.obj)
+
+pub inline fun onreset(obj: xrReferenceSpace, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onreset", value.obj)
+
+pub inline fun onreset(obj: xrReferenceSpace): web html/eventHandler
+  getJsObjectField(obj.obj, "onreset")
+
+pub value struct xrBoundedReferenceSpace
+  obj: jsObject
+
+
+pub inline fun boundsGeometry(obj: xrBoundedReferenceSpace): web jsArray
+  getJsObjectField(obj.obj, "boundsGeometry")
+
+pub value struct xrView
+  obj: jsObject
+
+
+pub inline fun requestViewportScale(obj: xrView, scale': maybe<double> =  Nothing): web ()
+  jsOperation3(obj.obj, "requestViewportScale", scale'.obj)
+
+pub inline fun camera(obj: xrView): web maybe<raw_camera_access/xrCamera>
+  getJsObjectField(obj.obj, "camera")
+
+pub inline fun isFirstPersonObserver(obj: xrView): web bool
+  getJsObjectField(obj.obj, "isFirstPersonObserver")
+
+pub inline fun eye(obj: xrView): web xrEye
+  getJsObjectField(obj.obj, "eye")
+
+pub inline fun projectionMatrix(obj: xrView): web jsFloat32Array
+  getJsObjectField(obj.obj, "projectionMatrix")
+
+pub inline fun transform(obj: xrView): web xrRigidTransform
+  getJsObjectField(obj.obj, "transform")
+
+pub inline fun recommendedViewportScale(obj: xrView): web maybe<double>
+  getJsObjectField(obj.obj, "recommendedViewportScale")
+
+pub value struct xrViewport
+  obj: jsObject
+
+
+pub inline fun x(obj: xrViewport): web int
+  getJsObjectField(obj.obj, "x")
+
+pub inline fun y(obj: xrViewport): web int
+  getJsObjectField(obj.obj, "y")
+
+pub inline fun width(obj: xrViewport): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: xrViewport): web int
+  getJsObjectField(obj.obj, "height")
+
+pub value struct xrRigidTransform
+  obj: jsObject
+
+pub inline fun newXrRigidTransform(position': geometry/domPointInit, orientation': geometry/domPointInit)
+  newJsObject2("XrRigidTransform", position', orientation')"
+
+pub inline fun position(obj: xrRigidTransform): web geometry/domPointReadOnly
+  getJsObjectField(obj.obj, "position")
+
+pub inline fun orientation(obj: xrRigidTransform): web geometry/domPointReadOnly
+  getJsObjectField(obj.obj, "orientation")
+
+pub inline fun matrix(obj: xrRigidTransform): web jsFloat32Array
+  getJsObjectField(obj.obj, "matrix")
+
+pub inline fun inverse(obj: xrRigidTransform): web xrRigidTransform
+  getJsObjectField(obj.obj, "inverse")
+
+pub value struct xrPose
+  obj: jsObject
+
+
+pub inline fun transform(obj: xrPose): web xrRigidTransform
+  getJsObjectField(obj.obj, "transform")
+
+pub inline fun linearVelocity(obj: xrPose): web maybe<geometry/domPointReadOnly>
+  getJsObjectField(obj.obj, "linearVelocity")
+
+pub inline fun angularVelocity(obj: xrPose): web maybe<geometry/domPointReadOnly>
+  getJsObjectField(obj.obj, "angularVelocity")
+
+pub inline fun emulatedPosition(obj: xrPose): web bool
+  getJsObjectField(obj.obj, "emulatedPosition")
+
+pub value struct xrViewerPose
+  obj: jsObject
+
+
+pub inline fun views(obj: xrViewerPose): web jsArray
+  getJsObjectField(obj.obj, "views")
+
+pub value struct xrInputSource
+  obj: jsObject
+
+
+pub inline fun gamepad(obj: xrInputSource): web maybe<gamepad/gamepad>
+  getJsObjectField(obj.obj, "gamepad")
+
+pub inline fun hand(obj: xrInputSource): web maybe<webxr_hand_input/xrHand>
+  getJsObjectField(obj.obj, "hand")
+
+pub inline fun handedness(obj: xrInputSource): web xrHandedness
+  getJsObjectField(obj.obj, "handedness")
+
+pub inline fun targetRayMode(obj: xrInputSource): web xrTargetRayMode
+  getJsObjectField(obj.obj, "targetRayMode")
+
+pub inline fun targetRaySpace(obj: xrInputSource): web xrSpace
+  getJsObjectField(obj.obj, "targetRaySpace")
+
+pub inline fun gripSpace(obj: xrInputSource): web maybe<xrSpace>
+  getJsObjectField(obj.obj, "gripSpace")
+
+pub inline fun profiles(obj: xrInputSource): web jsArray
+  getJsObjectField(obj.obj, "profiles")
+
+pub value struct xrInputSourceArray
+  obj: jsObject
+
+
+pub inline fun length(obj: xrInputSourceArray): web int
+  getJsObjectField(obj.obj, "length")
+
+pub value struct xrLayer
+  obj: jsObject
+
+
+pub value struct xrWebGLLayerInit
+  obj: jsObject
+
+pub fun newXrWebGLLayerInit(antialias: maybe<bool> = Nothing, depth: maybe<bool> = Nothing, stencil: maybe<bool> = Nothing, alpha: maybe<bool> = Nothing, ignoreDepthValues: maybe<bool> = Nothing, framebufferScaleFactor: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match antialias
+    Just(it) -> setJsObjectField(obj, "antialias", it)
+    Nothing -> ()
+  match depth
+    Just(it) -> setJsObjectField(obj, "depth", it)
+    Nothing -> ()
+  match stencil
+    Just(it) -> setJsObjectField(obj, "stencil", it)
+    Nothing -> ()
+  match alpha
+    Just(it) -> setJsObjectField(obj, "alpha", it)
+    Nothing -> ()
+  match ignoreDepthValues
+    Just(it) -> setJsObjectField(obj, "ignoreDepthValues", it)
+    Nothing -> ()
+  match framebufferScaleFactor
+    Just(it) -> setJsObjectField(obj, "framebufferScaleFactor", it)
+    Nothing -> ()
+
+  XrWebGLLayerInit(obj);
+
+pub inline fun antialias(obj: xrWebGLLayerInit, value: bool): web ()
+  setJsObjectField(obj.obj, "antialias", value.obj)
+
+pub inline fun antialias(obj: xrWebGLLayerInit): web bool
+  getJsObjectField(obj.obj, "antialias")
+
+pub inline fun depth(obj: xrWebGLLayerInit, value: bool): web ()
+  setJsObjectField(obj.obj, "depth", value.obj)
+
+pub inline fun depth(obj: xrWebGLLayerInit): web bool
+  getJsObjectField(obj.obj, "depth")
+
+pub inline fun stencil(obj: xrWebGLLayerInit, value: bool): web ()
+  setJsObjectField(obj.obj, "stencil", value.obj)
+
+pub inline fun stencil(obj: xrWebGLLayerInit): web bool
+  getJsObjectField(obj.obj, "stencil")
+
+pub inline fun alpha(obj: xrWebGLLayerInit, value: bool): web ()
+  setJsObjectField(obj.obj, "alpha", value.obj)
+
+pub inline fun alpha(obj: xrWebGLLayerInit): web bool
+  getJsObjectField(obj.obj, "alpha")
+
+pub inline fun ignoreDepthValues(obj: xrWebGLLayerInit, value: bool): web ()
+  setJsObjectField(obj.obj, "ignoreDepthValues", value.obj)
+
+pub inline fun ignoreDepthValues(obj: xrWebGLLayerInit): web bool
+  getJsObjectField(obj.obj, "ignoreDepthValues")
+
+pub inline fun framebufferScaleFactor(obj: xrWebGLLayerInit, value: double): web ()
+  setJsObjectField(obj.obj, "framebufferScaleFactor", value.obj)
+
+pub inline fun framebufferScaleFactor(obj: xrWebGLLayerInit): web double
+  getJsObjectField(obj.obj, "framebufferScaleFactor")
+
+pub value struct xrWebGLLayer
+  obj: jsObject
+
+pub inline fun newXrWebGLLayer(session': xrSession, context': xrWebGLRenderingContext, layerInit': xrWebGLLayerInit)
+  newJsObject3("XrWebGLLayer", session', context', layerInit')"
+pub inline fun getNativeFramebufferScaleFactor(session': xrSession): web double
+  jsOperation2("getNativeFramebufferScaleFactor", session'.obj)
+
+pub inline fun getViewport(obj: xrWebGLLayer, view': xrView): web maybe<xrViewport>
+  jsOperation3(obj.obj, "getViewport", view'.obj)
+
+pub inline fun antialias(obj: xrWebGLLayer): web bool
+  getJsObjectField(obj.obj, "antialias")
+
+pub inline fun ignoreDepthValues(obj: xrWebGLLayer): web bool
+  getJsObjectField(obj.obj, "ignoreDepthValues")
+
+pub inline fun fixedFoveation(obj: xrWebGLLayer, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "fixedFoveation", value.obj)
+
+pub inline fun fixedFoveation(obj: xrWebGLLayer): web maybe<double>
+  getJsObjectField(obj.obj, "fixedFoveation")
+
+pub inline fun framebuffer(obj: xrWebGLLayer): web maybe<webgl1/webGLFramebuffer>
+  getJsObjectField(obj.obj, "framebuffer")
+
+pub inline fun framebufferWidth(obj: xrWebGLLayer): web int
+  getJsObjectField(obj.obj, "framebufferWidth")
+
+pub inline fun framebufferHeight(obj: xrWebGLLayer): web int
+  getJsObjectField(obj.obj, "framebufferHeight")
+
+pub value struct xrSessionEvent
+  obj: jsObject
+
+pub inline fun newXrSessionEvent(type': string, eventInitDict': xrSessionEventInit)
+  newJsObject2("XrSessionEvent", type', eventInitDict')"
+
+pub inline fun session(obj: xrSessionEvent): web xrSession
+  getJsObjectField(obj.obj, "session")
+
+pub value struct xrSessionEventInit
+  obj: jsObject
+
+pub fun newXrSessionEventInit(session: xrSession)
+  val obj = newJsObject();
+  setJsObjectField(obj, "session", session);
+  XrSessionEventInit(obj);
+
+pub inline fun session(obj: xrSessionEventInit, value: xrSession): web ()
+  setJsObjectField(obj.obj, "session", value.obj)
+
+pub inline fun session(obj: xrSessionEventInit): web xrSession
+  getJsObjectField(obj.obj, "session")
+
+pub value struct xrInputSourceEvent
+  obj: jsObject
+
+pub inline fun newXrInputSourceEvent(type': string, eventInitDict': xrInputSourceEventInit)
+  newJsObject2("XrInputSourceEvent", type', eventInitDict')"
+
+pub inline fun frame(obj: xrInputSourceEvent): web xrFrame
+  getJsObjectField(obj.obj, "frame")
+
+pub inline fun inputSource(obj: xrInputSourceEvent): web xrInputSource
+  getJsObjectField(obj.obj, "inputSource")
+
+pub value struct xrInputSourceEventInit
+  obj: jsObject
+
+pub fun newXrInputSourceEventInit(frame: xrFrame, inputSource: xrInputSource)
+  val obj = newJsObject();
+  setJsObjectField(obj, "frame", frame);  setJsObjectField(obj, "inputSource", inputSource);
+  XrInputSourceEventInit(obj);
+
+pub inline fun frame(obj: xrInputSourceEventInit, value: xrFrame): web ()
+  setJsObjectField(obj.obj, "frame", value.obj)
+
+pub inline fun frame(obj: xrInputSourceEventInit): web xrFrame
+  getJsObjectField(obj.obj, "frame")
+
+pub inline fun inputSource(obj: xrInputSourceEventInit, value: xrInputSource): web ()
+  setJsObjectField(obj.obj, "inputSource", value.obj)
+
+pub inline fun inputSource(obj: xrInputSourceEventInit): web xrInputSource
+  getJsObjectField(obj.obj, "inputSource")
+
+pub value struct xrInputSourcesChangeEvent
+  obj: jsObject
+
+pub inline fun newXrInputSourcesChangeEvent(type': string, eventInitDict': xrInputSourcesChangeEventInit)
+  newJsObject2("XrInputSourcesChangeEvent", type', eventInitDict')"
+
+pub inline fun session(obj: xrInputSourcesChangeEvent): web xrSession
+  getJsObjectField(obj.obj, "session")
+
+pub inline fun added(obj: xrInputSourcesChangeEvent): web jsArray
+  getJsObjectField(obj.obj, "added")
+
+pub inline fun removed(obj: xrInputSourcesChangeEvent): web jsArray
+  getJsObjectField(obj.obj, "removed")
+
+pub value struct xrInputSourcesChangeEventInit
+  obj: jsObject
+
+pub fun newXrInputSourcesChangeEventInit(session: xrSession, added: jsArray, removed: jsArray)
+  val obj = newJsObject();
+  setJsObjectField(obj, "session", session);  setJsObjectField(obj, "added", added);  setJsObjectField(obj, "removed", removed);
+  XrInputSourcesChangeEventInit(obj);
+
+pub inline fun session(obj: xrInputSourcesChangeEventInit, value: xrSession): web ()
+  setJsObjectField(obj.obj, "session", value.obj)
+
+pub inline fun session(obj: xrInputSourcesChangeEventInit): web xrSession
+  getJsObjectField(obj.obj, "session")
+
+pub inline fun added(obj: xrInputSourcesChangeEventInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "added", value.obj)
+
+pub inline fun added(obj: xrInputSourcesChangeEventInit): web jsArray
+  getJsObjectField(obj.obj, "added")
+
+pub inline fun removed(obj: xrInputSourcesChangeEventInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "removed", value.obj)
+
+pub inline fun removed(obj: xrInputSourcesChangeEventInit): web jsArray
+  getJsObjectField(obj.obj, "removed")
+
+pub value struct xrReferenceSpaceEvent
+  obj: jsObject
+
+pub inline fun newXrReferenceSpaceEvent(type': string, eventInitDict': xrReferenceSpaceEventInit)
+  newJsObject2("XrReferenceSpaceEvent", type', eventInitDict')"
+
+pub inline fun referenceSpace(obj: xrReferenceSpaceEvent): web xrReferenceSpace
+  getJsObjectField(obj.obj, "referenceSpace")
+
+pub inline fun transform(obj: xrReferenceSpaceEvent): web maybe<xrRigidTransform>
+  getJsObjectField(obj.obj, "transform")
+
+pub value struct xrReferenceSpaceEventInit
+  obj: jsObject
+
+pub fun newXrReferenceSpaceEventInit(referenceSpace: xrReferenceSpace, transform: maybe<maybe<xrRigidTransform>> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "referenceSpace", referenceSpace);  match transform
+    Just(it) -> setJsObjectField(obj, "transform", it)
+    Nothing -> ()
+
+  XrReferenceSpaceEventInit(obj);
+
+pub inline fun referenceSpace(obj: xrReferenceSpaceEventInit, value: xrReferenceSpace): web ()
+  setJsObjectField(obj.obj, "referenceSpace", value.obj)
+
+pub inline fun referenceSpace(obj: xrReferenceSpaceEventInit): web xrReferenceSpace
+  getJsObjectField(obj.obj, "referenceSpace")
+
+pub inline fun transform(obj: xrReferenceSpaceEventInit, value: maybe<xrRigidTransform>): web ()
+  setJsObjectField(obj.obj, "transform", value.obj)
+
+pub inline fun transform(obj: xrReferenceSpaceEventInit): web maybe<xrRigidTransform>
+  getJsObjectField(obj.obj, "transform")
+
+pub value struct xrSessionSupportedPermissionDescriptor
+  obj: jsObject
+
+pub fun newXrSessionSupportedPermissionDescriptor(mode: maybe<xrSessionMode> = Nothing)
+  val obj = newJsObject();
+  match mode
+    Just(it) -> setJsObjectField(obj, "mode", it)
+    Nothing -> ()
+
+  XrSessionSupportedPermissionDescriptor(obj);
+
+pub inline fun mode(obj: xrSessionSupportedPermissionDescriptor, value: xrSessionMode): web ()
+  setJsObjectField(obj.obj, "mode", value.obj)
+
+pub inline fun mode(obj: xrSessionSupportedPermissionDescriptor): web xrSessionMode
+  getJsObjectField(obj.obj, "mode")
+
+pub value struct xrPermissionDescriptor
+  obj: jsObject
+
+pub fun newXrPermissionDescriptor(mode: maybe<xrSessionMode> = Nothing, requiredFeatures: maybe<jsArray> = Nothing, optionalFeatures: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match mode
+    Just(it) -> setJsObjectField(obj, "mode", it)
+    Nothing -> ()
+  match requiredFeatures
+    Just(it) -> setJsObjectField(obj, "requiredFeatures", it)
+    Nothing -> ()
+  match optionalFeatures
+    Just(it) -> setJsObjectField(obj, "optionalFeatures", it)
+    Nothing -> ()
+
+  XrPermissionDescriptor(obj);
+
+pub inline fun mode(obj: xrPermissionDescriptor, value: xrSessionMode): web ()
+  setJsObjectField(obj.obj, "mode", value.obj)
+
+pub inline fun mode(obj: xrPermissionDescriptor): web xrSessionMode
+  getJsObjectField(obj.obj, "mode")
+
+pub inline fun requiredFeatures(obj: xrPermissionDescriptor, value: jsArray): web ()
+  setJsObjectField(obj.obj, "requiredFeatures", value.obj)
+
+pub inline fun requiredFeatures(obj: xrPermissionDescriptor): web jsArray
+  getJsObjectField(obj.obj, "requiredFeatures")
+
+pub inline fun optionalFeatures(obj: xrPermissionDescriptor, value: jsArray): web ()
+  setJsObjectField(obj.obj, "optionalFeatures", value.obj)
+
+pub inline fun optionalFeatures(obj: xrPermissionDescriptor): web jsArray
+  getJsObjectField(obj.obj, "optionalFeatures")
+
+pub value struct xrPermissionStatus
+  obj: jsObject
+
+
+pub inline fun granted(obj: xrPermissionStatus, value: jsArray): web ()
+  setJsObjectField(obj.obj, "granted", value.obj)
+
+pub inline fun granted(obj: xrPermissionStatus): web jsArray
+  getJsObjectField(obj.obj, "granted")
+

@@ -1,25 +1,33 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias OTPCredentialTransportType = String
-struct OTPCredential
-{
-}
+pub alias otpCredentialTransportType = string;
 
-()
+pub value struct otpCredential
+  obj: jsObject
 
-pub extern getcode(this: js_object): web String
-	c inline "getObjectField(#1, \"code\")"
-struct OTPCredentialRequestOptions
-{  transport: dart:js_interop/JSArray
-}
-pub extern newOTPCredentialRequestOptions([transport: maybe<dart:js_interop/JSArray> = Nothing])
-()
 
-pub extern settransport(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettransport(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"transport\")"
+pub inline fun code(obj: otpCredential): web string
+  getJsObjectField(obj.obj, "code")
+
+pub value struct otpCredentialRequestOptions
+  obj: jsObject
+
+pub fun newOtpCredentialRequestOptions(transport: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match transport
+    Just(it) -> setJsObjectField(obj, "transport", it)
+    Nothing -> ()
+
+  OtpCredentialRequestOptions(obj);
+
+pub inline fun transport(obj: otpCredentialRequestOptions, value: jsArray): web ()
+  setJsObjectField(obj.obj, "transport", value.obj)
+
+pub inline fun transport(obj: otpCredentialRequestOptions): web jsArray
+  getJsObjectField(obj.obj, "transport")
+

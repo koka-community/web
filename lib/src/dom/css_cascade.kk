@@ -1,23 +1,22 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct CSSLayerBlockRule
-{
-}
+pub value struct cssLayerBlockRule
+  obj: jsObject
 
-()
 
-pub extern getname(this: js_object): web String
-	c inline "getObjectField(#1, \"name\")"
-struct CSSLayerStatementRule
-{
-}
+pub inline fun name(obj: cssLayerBlockRule): web string
+  getJsObjectField(obj.obj, "name")
 
-()
+pub value struct cssLayerStatementRule
+  obj: jsObject
 
-pub extern getnameList(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"nameList\")"
+
+pub inline fun nameList(obj: cssLayerStatementRule): web jsArray
+  getJsObjectField(obj.obj, "nameList")
+

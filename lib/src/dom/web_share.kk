@@ -1,32 +1,52 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct ShareData
-{  files: dart:js_interop/JSArray,
-  title: String,
-  text: String,
-  url: String
-}
-pub extern newShareData([files: maybe<dart:js_interop/JSArray> = Nothing, title: maybe<String> = Nothing, text: maybe<String> = Nothing, url: maybe<String> = Nothing])
-()
+pub value struct shareData
+  obj: jsObject
 
-pub extern setfiles(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfiles(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"files\")"
-pub extern settitle(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettitle(this: js_object): web String
-	c inline "getObjectField(#1, \"title\")"
-pub extern settext(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettext(this: js_object): web String
-	c inline "getObjectField(#1, \"text\")"
-pub extern seturl(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
+pub fun newShareData(files: maybe<jsArray> = Nothing, title: maybe<string> = Nothing, text: maybe<string> = Nothing, url: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match files
+    Just(it) -> setJsObjectField(obj, "files", it)
+    Nothing -> ()
+  match title
+    Just(it) -> setJsObjectField(obj, "title", it)
+    Nothing -> ()
+  match text
+    Just(it) -> setJsObjectField(obj, "text", it)
+    Nothing -> ()
+  match url
+    Just(it) -> setJsObjectField(obj, "url", it)
+    Nothing -> ()
+
+  ShareData(obj);
+
+pub inline fun files(obj: shareData, value: jsArray): web ()
+  setJsObjectField(obj.obj, "files", value.obj)
+
+pub inline fun files(obj: shareData): web jsArray
+  getJsObjectField(obj.obj, "files")
+
+pub inline fun title(obj: shareData, value: string): web ()
+  setJsObjectField(obj.obj, "title", value.obj)
+
+pub inline fun title(obj: shareData): web string
+  getJsObjectField(obj.obj, "title")
+
+pub inline fun text(obj: shareData, value: string): web ()
+  setJsObjectField(obj.obj, "text", value.obj)
+
+pub inline fun text(obj: shareData): web string
+  getJsObjectField(obj.obj, "text")
+
+pub inline fun url(obj: shareData, value: string): web ()
+  setJsObjectField(obj.obj, "url", value.obj)
+
+pub inline fun url(obj: shareData): web string
+  getJsObjectField(obj.obj, "url")
+

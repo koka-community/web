@@ -1,257 +1,306 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct ARIAMixin
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub value struct ariaMixin
+  obj: jsObject
 
-}
 
-()
+pub inline fun role(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "role", value.obj)
 
-pub extern setrole(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrole(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"role\")"
-pub extern setariaActiveDescendantElement(this: js_object, value: maybe<dom.kk/Element>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaActiveDescendantElement(this: js_object): web maybe<dom.kk/Element>
-	c inline "getObjectField(#1, \"ariaActiveDescendantElement\")"
-pub extern setariaAtomic(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaAtomic(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaAtomic\")"
-pub extern setariaAutoComplete(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaAutoComplete(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaAutoComplete\")"
-pub extern setariaBusy(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaBusy(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaBusy\")"
-pub extern setariaChecked(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaChecked(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaChecked\")"
-pub extern setariaColCount(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaColCount(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaColCount\")"
-pub extern setariaColIndex(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaColIndex(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaColIndex\")"
-pub extern setariaColIndexText(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaColIndexText(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaColIndexText\")"
-pub extern setariaColSpan(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaColSpan(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaColSpan\")"
-pub extern setariaControlsElements(this: js_object, value: maybe<dart:js_interop/JSArray>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaControlsElements(this: js_object): web maybe<dart:js_interop/JSArray>
-	c inline "getObjectField(#1, \"ariaControlsElements\")"
-pub extern setariaCurrent(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaCurrent(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaCurrent\")"
-pub extern setariaDescribedByElements(this: js_object, value: maybe<dart:js_interop/JSArray>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaDescribedByElements(this: js_object): web maybe<dart:js_interop/JSArray>
-	c inline "getObjectField(#1, \"ariaDescribedByElements\")"
-pub extern setariaDescription(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaDescription(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaDescription\")"
-pub extern setariaDetailsElements(this: js_object, value: maybe<dart:js_interop/JSArray>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaDetailsElements(this: js_object): web maybe<dart:js_interop/JSArray>
-	c inline "getObjectField(#1, \"ariaDetailsElements\")"
-pub extern setariaDisabled(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaDisabled(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaDisabled\")"
-pub extern setariaErrorMessageElements(this: js_object, value: maybe<dart:js_interop/JSArray>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaErrorMessageElements(this: js_object): web maybe<dart:js_interop/JSArray>
-	c inline "getObjectField(#1, \"ariaErrorMessageElements\")"
-pub extern setariaExpanded(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaExpanded(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaExpanded\")"
-pub extern setariaFlowToElements(this: js_object, value: maybe<dart:js_interop/JSArray>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaFlowToElements(this: js_object): web maybe<dart:js_interop/JSArray>
-	c inline "getObjectField(#1, \"ariaFlowToElements\")"
-pub extern setariaHasPopup(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaHasPopup(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaHasPopup\")"
-pub extern setariaHidden(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaHidden(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaHidden\")"
-pub extern setariaInvalid(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaInvalid(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaInvalid\")"
-pub extern setariaKeyShortcuts(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaKeyShortcuts(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaKeyShortcuts\")"
-pub extern setariaLabel(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaLabel(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaLabel\")"
-pub extern setariaLabelledByElements(this: js_object, value: maybe<dart:js_interop/JSArray>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaLabelledByElements(this: js_object): web maybe<dart:js_interop/JSArray>
-	c inline "getObjectField(#1, \"ariaLabelledByElements\")"
-pub extern setariaLevel(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaLevel(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaLevel\")"
-pub extern setariaLive(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaLive(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaLive\")"
-pub extern setariaModal(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaModal(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaModal\")"
-pub extern setariaMultiLine(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaMultiLine(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaMultiLine\")"
-pub extern setariaMultiSelectable(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaMultiSelectable(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaMultiSelectable\")"
-pub extern setariaOrientation(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaOrientation(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaOrientation\")"
-pub extern setariaOwnsElements(this: js_object, value: maybe<dart:js_interop/JSArray>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaOwnsElements(this: js_object): web maybe<dart:js_interop/JSArray>
-	c inline "getObjectField(#1, \"ariaOwnsElements\")"
-pub extern setariaPlaceholder(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaPlaceholder(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaPlaceholder\")"
-pub extern setariaPosInSet(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaPosInSet(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaPosInSet\")"
-pub extern setariaPressed(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaPressed(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaPressed\")"
-pub extern setariaReadOnly(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaReadOnly(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaReadOnly\")"
-pub extern setariaRequired(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaRequired(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaRequired\")"
-pub extern setariaRoleDescription(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaRoleDescription(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaRoleDescription\")"
-pub extern setariaRowCount(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaRowCount(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaRowCount\")"
-pub extern setariaRowIndex(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaRowIndex(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaRowIndex\")"
-pub extern setariaRowIndexText(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaRowIndexText(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaRowIndexText\")"
-pub extern setariaRowSpan(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaRowSpan(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaRowSpan\")"
-pub extern setariaSelected(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaSelected(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaSelected\")"
-pub extern setariaSetSize(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaSetSize(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaSetSize\")"
-pub extern setariaSort(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaSort(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaSort\")"
-pub extern setariaValueMax(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaValueMax(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaValueMax\")"
-pub extern setariaValueMin(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaValueMin(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaValueMin\")"
-pub extern setariaValueNow(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaValueNow(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaValueNow\")"
-pub extern setariaValueText(this: js_object, value: maybe<String>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getariaValueText(this: js_object): web maybe<String>
-	c inline "getObjectField(#1, \"ariaValueText\")"
+pub inline fun role(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "role")
+
+pub inline fun ariaActiveDescendantElement(obj: ariaMixin, value: maybe<dom/element>): web ()
+  setJsObjectField(obj.obj, "ariaActiveDescendantElement", value.obj)
+
+pub inline fun ariaActiveDescendantElement(obj: ariaMixin): web maybe<dom/element>
+  getJsObjectField(obj.obj, "ariaActiveDescendantElement")
+
+pub inline fun ariaAtomic(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaAtomic", value.obj)
+
+pub inline fun ariaAtomic(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaAtomic")
+
+pub inline fun ariaAutoComplete(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaAutoComplete", value.obj)
+
+pub inline fun ariaAutoComplete(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaAutoComplete")
+
+pub inline fun ariaBusy(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaBusy", value.obj)
+
+pub inline fun ariaBusy(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaBusy")
+
+pub inline fun ariaChecked(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaChecked", value.obj)
+
+pub inline fun ariaChecked(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaChecked")
+
+pub inline fun ariaColCount(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaColCount", value.obj)
+
+pub inline fun ariaColCount(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaColCount")
+
+pub inline fun ariaColIndex(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaColIndex", value.obj)
+
+pub inline fun ariaColIndex(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaColIndex")
+
+pub inline fun ariaColIndexText(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaColIndexText", value.obj)
+
+pub inline fun ariaColIndexText(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaColIndexText")
+
+pub inline fun ariaColSpan(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaColSpan", value.obj)
+
+pub inline fun ariaColSpan(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaColSpan")
+
+pub inline fun ariaControlsElements(obj: ariaMixin, value: maybe<jsArray>): web ()
+  setJsObjectField(obj.obj, "ariaControlsElements", value.obj)
+
+pub inline fun ariaControlsElements(obj: ariaMixin): web maybe<jsArray>
+  getJsObjectField(obj.obj, "ariaControlsElements")
+
+pub inline fun ariaCurrent(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaCurrent", value.obj)
+
+pub inline fun ariaCurrent(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaCurrent")
+
+pub inline fun ariaDescribedByElements(obj: ariaMixin, value: maybe<jsArray>): web ()
+  setJsObjectField(obj.obj, "ariaDescribedByElements", value.obj)
+
+pub inline fun ariaDescribedByElements(obj: ariaMixin): web maybe<jsArray>
+  getJsObjectField(obj.obj, "ariaDescribedByElements")
+
+pub inline fun ariaDescription(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaDescription", value.obj)
+
+pub inline fun ariaDescription(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaDescription")
+
+pub inline fun ariaDetailsElements(obj: ariaMixin, value: maybe<jsArray>): web ()
+  setJsObjectField(obj.obj, "ariaDetailsElements", value.obj)
+
+pub inline fun ariaDetailsElements(obj: ariaMixin): web maybe<jsArray>
+  getJsObjectField(obj.obj, "ariaDetailsElements")
+
+pub inline fun ariaDisabled(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaDisabled", value.obj)
+
+pub inline fun ariaDisabled(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaDisabled")
+
+pub inline fun ariaErrorMessageElements(obj: ariaMixin, value: maybe<jsArray>): web ()
+  setJsObjectField(obj.obj, "ariaErrorMessageElements", value.obj)
+
+pub inline fun ariaErrorMessageElements(obj: ariaMixin): web maybe<jsArray>
+  getJsObjectField(obj.obj, "ariaErrorMessageElements")
+
+pub inline fun ariaExpanded(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaExpanded", value.obj)
+
+pub inline fun ariaExpanded(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaExpanded")
+
+pub inline fun ariaFlowToElements(obj: ariaMixin, value: maybe<jsArray>): web ()
+  setJsObjectField(obj.obj, "ariaFlowToElements", value.obj)
+
+pub inline fun ariaFlowToElements(obj: ariaMixin): web maybe<jsArray>
+  getJsObjectField(obj.obj, "ariaFlowToElements")
+
+pub inline fun ariaHasPopup(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaHasPopup", value.obj)
+
+pub inline fun ariaHasPopup(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaHasPopup")
+
+pub inline fun ariaHidden(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaHidden", value.obj)
+
+pub inline fun ariaHidden(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaHidden")
+
+pub inline fun ariaInvalid(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaInvalid", value.obj)
+
+pub inline fun ariaInvalid(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaInvalid")
+
+pub inline fun ariaKeyShortcuts(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaKeyShortcuts", value.obj)
+
+pub inline fun ariaKeyShortcuts(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaKeyShortcuts")
+
+pub inline fun ariaLabel(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaLabel", value.obj)
+
+pub inline fun ariaLabel(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaLabel")
+
+pub inline fun ariaLabelledByElements(obj: ariaMixin, value: maybe<jsArray>): web ()
+  setJsObjectField(obj.obj, "ariaLabelledByElements", value.obj)
+
+pub inline fun ariaLabelledByElements(obj: ariaMixin): web maybe<jsArray>
+  getJsObjectField(obj.obj, "ariaLabelledByElements")
+
+pub inline fun ariaLevel(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaLevel", value.obj)
+
+pub inline fun ariaLevel(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaLevel")
+
+pub inline fun ariaLive(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaLive", value.obj)
+
+pub inline fun ariaLive(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaLive")
+
+pub inline fun ariaModal(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaModal", value.obj)
+
+pub inline fun ariaModal(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaModal")
+
+pub inline fun ariaMultiLine(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaMultiLine", value.obj)
+
+pub inline fun ariaMultiLine(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaMultiLine")
+
+pub inline fun ariaMultiSelectable(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaMultiSelectable", value.obj)
+
+pub inline fun ariaMultiSelectable(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaMultiSelectable")
+
+pub inline fun ariaOrientation(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaOrientation", value.obj)
+
+pub inline fun ariaOrientation(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaOrientation")
+
+pub inline fun ariaOwnsElements(obj: ariaMixin, value: maybe<jsArray>): web ()
+  setJsObjectField(obj.obj, "ariaOwnsElements", value.obj)
+
+pub inline fun ariaOwnsElements(obj: ariaMixin): web maybe<jsArray>
+  getJsObjectField(obj.obj, "ariaOwnsElements")
+
+pub inline fun ariaPlaceholder(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaPlaceholder", value.obj)
+
+pub inline fun ariaPlaceholder(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaPlaceholder")
+
+pub inline fun ariaPosInSet(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaPosInSet", value.obj)
+
+pub inline fun ariaPosInSet(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaPosInSet")
+
+pub inline fun ariaPressed(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaPressed", value.obj)
+
+pub inline fun ariaPressed(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaPressed")
+
+pub inline fun ariaReadOnly(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaReadOnly", value.obj)
+
+pub inline fun ariaReadOnly(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaReadOnly")
+
+pub inline fun ariaRequired(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaRequired", value.obj)
+
+pub inline fun ariaRequired(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaRequired")
+
+pub inline fun ariaRoleDescription(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaRoleDescription", value.obj)
+
+pub inline fun ariaRoleDescription(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaRoleDescription")
+
+pub inline fun ariaRowCount(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaRowCount", value.obj)
+
+pub inline fun ariaRowCount(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaRowCount")
+
+pub inline fun ariaRowIndex(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaRowIndex", value.obj)
+
+pub inline fun ariaRowIndex(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaRowIndex")
+
+pub inline fun ariaRowIndexText(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaRowIndexText", value.obj)
+
+pub inline fun ariaRowIndexText(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaRowIndexText")
+
+pub inline fun ariaRowSpan(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaRowSpan", value.obj)
+
+pub inline fun ariaRowSpan(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaRowSpan")
+
+pub inline fun ariaSelected(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaSelected", value.obj)
+
+pub inline fun ariaSelected(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaSelected")
+
+pub inline fun ariaSetSize(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaSetSize", value.obj)
+
+pub inline fun ariaSetSize(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaSetSize")
+
+pub inline fun ariaSort(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaSort", value.obj)
+
+pub inline fun ariaSort(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaSort")
+
+pub inline fun ariaValueMax(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaValueMax", value.obj)
+
+pub inline fun ariaValueMax(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaValueMax")
+
+pub inline fun ariaValueMin(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaValueMin", value.obj)
+
+pub inline fun ariaValueMin(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaValueMin")
+
+pub inline fun ariaValueNow(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaValueNow", value.obj)
+
+pub inline fun ariaValueNow(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaValueNow")
+
+pub inline fun ariaValueText(obj: ariaMixin, value: maybe<string>): web ()
+  setJsObjectField(obj.obj, "ariaValueText", value.obj)
+
+pub inline fun ariaValueText(obj: ariaMixin): web maybe<string>
+  getJsObjectField(obj.obj, "ariaValueText")
+

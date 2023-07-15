@@ -1,17 +1,26 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias AacBitstreamFormat = String
-struct AacEncoderConfig
-{  format: AacBitstreamFormat
-}
-pub extern newAacEncoderConfig([format: maybe<AacBitstreamFormat> = Nothing])
-()
+pub alias aacBitstreamFormat = string;
 
-pub extern setformat(this: js_object, value: AacBitstreamFormat): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformat(this: js_object): web AacBitstreamFormat
-	c inline "getObjectField(#1, \"format\")"
+pub value struct aacEncoderConfig
+  obj: jsObject
+
+pub fun newAacEncoderConfig(format: maybe<aacBitstreamFormat> = Nothing)
+  val obj = newJsObject();
+  match format
+    Just(it) -> setJsObjectField(obj, "format", it)
+    Nothing -> ()
+
+  AacEncoderConfig(obj);
+
+pub inline fun format(obj: aacEncoderConfig, value: aacBitstreamFormat): web ()
+  setJsObjectField(obj.obj, "format", value.obj)
+
+pub inline fun format(obj: aacEncoderConfig): web aacBitstreamFormat
+  getJsObjectField(obj.obj, "format")
+

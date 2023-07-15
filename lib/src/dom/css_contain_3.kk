@@ -1,18 +1,18 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct CSSContainerRule
-{,
+pub value struct cssContainerRule
+  obj: jsObject
 
-}
 
-()
+pub inline fun containerName(obj: cssContainerRule): web string
+  getJsObjectField(obj.obj, "containerName")
 
-pub extern getcontainerName(this: js_object): web String
-	c inline "getObjectField(#1, \"containerName\")"
-pub extern getcontainerQuery(this: js_object): web String
-	c inline "getObjectField(#1, \"containerQuery\")"
+pub inline fun containerQuery(obj: cssContainerRule): web string
+  getJsObjectField(obj.obj, "containerQuery")
+

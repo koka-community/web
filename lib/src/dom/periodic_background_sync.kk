@@ -1,44 +1,61 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct PeriodicSyncManager
-{
-}
+pub value struct periodicSyncManager
+  obj: jsObject
 
-()
 
-pub extern register(this: js_object, [tag: String], [options: BackgroundSyncOptions])
-pub extern getTags(this: js_object, [], [])
-pub extern unregister(this: js_object, [tag: String], [])
-struct BackgroundSyncOptions
-{  minInterval: int
-}
-pub extern newBackgroundSyncOptions([minInterval: maybe<int> = Nothing])
-()
+pub inline fun register(obj: periodicSyncManager, tag': string, options': backgroundSyncOptions): web jsPromise
+  jsOperation4(obj.obj, "register", tag'.obj, options'.obj)
 
-pub extern setminInterval(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getminInterval(this: js_object): web int
-	c inline "getObjectField(#1, \"minInterval\")"
-struct PeriodicSyncEventInit
-{  tag: String
-}
-pub extern newPeriodicSyncEventInit([tag: String])
-()
+pub inline fun getTags(obj: periodicSyncManager): web jsPromise
+  jsOperation2(obj.obj, "getTags")
 
-pub extern settag(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettag(this: js_object): web String
-	c inline "getObjectField(#1, \"tag\")"
-struct PeriodicSyncEvent
-{
-}
-pub extern newPeriodicSyncEvent([type: String, init: PeriodicSyncEventInit], [])
-()
+pub inline fun unregister(obj: periodicSyncManager, tag': string): web jsPromise
+  jsOperation3(obj.obj, "unregister", tag'.obj)
 
-pub extern gettag(this: js_object): web String
-	c inline "getObjectField(#1, \"tag\")"
+pub value struct backgroundSyncOptions
+  obj: jsObject
+
+pub fun newBackgroundSyncOptions(minInterval: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match minInterval
+    Just(it) -> setJsObjectField(obj, "minInterval", it)
+    Nothing -> ()
+
+  BackgroundSyncOptions(obj);
+
+pub inline fun minInterval(obj: backgroundSyncOptions, value: int): web ()
+  setJsObjectField(obj.obj, "minInterval", value.obj)
+
+pub inline fun minInterval(obj: backgroundSyncOptions): web int
+  getJsObjectField(obj.obj, "minInterval")
+
+pub value struct periodicSyncEventInit
+  obj: jsObject
+
+pub fun newPeriodicSyncEventInit(tag: string)
+  val obj = newJsObject();
+  setJsObjectField(obj, "tag", tag);
+  PeriodicSyncEventInit(obj);
+
+pub inline fun tag(obj: periodicSyncEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "tag", value.obj)
+
+pub inline fun tag(obj: periodicSyncEventInit): web string
+  getJsObjectField(obj.obj, "tag")
+
+pub value struct periodicSyncEvent
+  obj: jsObject
+
+pub inline fun newPeriodicSyncEvent(type': string, init': periodicSyncEventInit)
+  newJsObject2("PeriodicSyncEvent", type', init')"
+
+pub inline fun tag(obj: periodicSyncEvent): web string
+  getJsObjectField(obj.obj, "tag")
+

@@ -1,40 +1,42 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct PerformanceElementTiming
-{,
-,
-,
-,
-,
-,
-,
-,
+pub value struct performanceElementTiming
+  obj: jsObject
 
-}
 
-()
+pub inline fun toJSON(obj: performanceElementTiming): web jsObject
+  jsOperation2(obj.obj, "toJSON")
 
-pub extern toJSON(this: js_object, [], [])
-pub extern getrenderTime(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"renderTime\")"
-pub extern getloadTime(this: js_object): web hr_time.kk/DOMHighResTimeStamp
-	c inline "getObjectField(#1, \"loadTime\")"
-pub extern getintersectionRect(this: js_object): web geometry.kk/DOMRectReadOnly
-	c inline "getObjectField(#1, \"intersectionRect\")"
-pub extern getidentifier(this: js_object): web String
-	c inline "getObjectField(#1, \"identifier\")"
-pub extern getnaturalWidth(this: js_object): web int
-	c inline "getObjectField(#1, \"naturalWidth\")"
-pub extern getnaturalHeight(this: js_object): web int
-	c inline "getObjectField(#1, \"naturalHeight\")"
-pub extern getid(this: js_object): web String
-	c inline "getObjectField(#1, \"id\")"
-pub extern getelement(this: js_object): web maybe<dom.kk/Element>
-	c inline "getObjectField(#1, \"element\")"
-pub extern geturl(this: js_object): web String
-	c inline "getObjectField(#1, \"url\")"
+pub inline fun renderTime(obj: performanceElementTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "renderTime")
+
+pub inline fun loadTime(obj: performanceElementTiming): web hr_time/domHighResTimeStamp
+  getJsObjectField(obj.obj, "loadTime")
+
+pub inline fun intersectionRect(obj: performanceElementTiming): web geometry/domRectReadOnly
+  getJsObjectField(obj.obj, "intersectionRect")
+
+pub inline fun identifier(obj: performanceElementTiming): web string
+  getJsObjectField(obj.obj, "identifier")
+
+pub inline fun naturalWidth(obj: performanceElementTiming): web int
+  getJsObjectField(obj.obj, "naturalWidth")
+
+pub inline fun naturalHeight(obj: performanceElementTiming): web int
+  getJsObjectField(obj.obj, "naturalHeight")
+
+pub inline fun id(obj: performanceElementTiming): web string
+  getJsObjectField(obj.obj, "id")
+
+pub inline fun element(obj: performanceElementTiming): web maybe<dom/element>
+  getJsObjectField(obj.obj, "element")
+
+pub inline fun url(obj: performanceElementTiming): web string
+  getJsObjectField(obj.obj, "url")
+

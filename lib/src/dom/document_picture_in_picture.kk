@@ -1,54 +1,73 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct DocumentPictureInPicture
-{,
+pub value struct documentPictureInPicture
+  obj: jsObject
 
-}
 
-()
+pub inline fun requestWindow(obj: documentPictureInPicture, options': documentPictureInPictureOptions): web jsPromise
+  jsOperation3(obj.obj, "requestWindow", options'.obj)
 
-pub extern requestWindow(this: js_object, [], [options: DocumentPictureInPictureOptions])
-pub extern getwindow(this: js_object): web html.kk/Window
-	c inline "getObjectField(#1, \"window\")"
-pub extern setonenter(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonenter(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onenter\")"
-struct DocumentPictureInPictureOptions
-{  width: int,
-  height: int
-}
-pub extern newDocumentPictureInPictureOptions([width: maybe<int> = Nothing, height: maybe<int> = Nothing])
-()
+pub inline fun window(obj: documentPictureInPicture): web html/window
+  getJsObjectField(obj.obj, "window")
 
-pub extern setwidth(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern setheight(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
-struct DocumentPictureInPictureEvent
-{
-}
-pub extern newDocumentPictureInPictureEvent([type: String, eventInitDict: DocumentPictureInPictureEventInit], [])
-()
+pub inline fun onenter(obj: documentPictureInPicture, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onenter", value.obj)
 
-pub extern getwindow(this: js_object): web html.kk/Window
-	c inline "getObjectField(#1, \"window\")"
-struct DocumentPictureInPictureEventInit
-{  window: html.kk/Window
-}
-pub extern newDocumentPictureInPictureEventInit([window: html.kk/Window])
-()
+pub inline fun onenter(obj: documentPictureInPicture): web html/eventHandler
+  getJsObjectField(obj.obj, "onenter")
 
-pub extern setwindow(this: js_object, value: html.kk/Window): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getwindow(this: js_object): web html.kk/Window
-	c inline "getObjectField(#1, \"window\")"
+pub value struct documentPictureInPictureOptions
+  obj: jsObject
+
+pub fun newDocumentPictureInPictureOptions(width: maybe<int> = Nothing, height: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match width
+    Just(it) -> setJsObjectField(obj, "width", it)
+    Nothing -> ()
+  match height
+    Just(it) -> setJsObjectField(obj, "height", it)
+    Nothing -> ()
+
+  DocumentPictureInPictureOptions(obj);
+
+pub inline fun width(obj: documentPictureInPictureOptions, value: int): web ()
+  setJsObjectField(obj.obj, "width", value.obj)
+
+pub inline fun width(obj: documentPictureInPictureOptions): web int
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: documentPictureInPictureOptions, value: int): web ()
+  setJsObjectField(obj.obj, "height", value.obj)
+
+pub inline fun height(obj: documentPictureInPictureOptions): web int
+  getJsObjectField(obj.obj, "height")
+
+pub value struct documentPictureInPictureEvent
+  obj: jsObject
+
+pub inline fun newDocumentPictureInPictureEvent(type': string, eventInitDict': documentPictureInPictureEventInit)
+  newJsObject2("DocumentPictureInPictureEvent", type', eventInitDict')"
+
+pub inline fun window(obj: documentPictureInPictureEvent): web html/window
+  getJsObjectField(obj.obj, "window")
+
+pub value struct documentPictureInPictureEventInit
+  obj: jsObject
+
+pub fun newDocumentPictureInPictureEventInit(window: html/window)
+  val obj = newJsObject();
+  setJsObjectField(obj, "window", window);
+  DocumentPictureInPictureEventInit(obj);
+
+pub inline fun window(obj: documentPictureInPictureEventInit, value: html/window): web ()
+  setJsObjectField(obj.obj, "window", value.obj)
+
+pub inline fun window(obj: documentPictureInPictureEventInit): web html/window
+  getJsObjectField(obj.obj, "window")
+

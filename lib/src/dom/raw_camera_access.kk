@@ -1,18 +1,18 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct XRCamera
-{,
+pub value struct xrCamera
+  obj: jsObject
 
-}
 
-()
+pub inline fun width(obj: xrCamera): web int
+  getJsObjectField(obj.obj, "width")
 
-pub extern getwidth(this: js_object): web int
-	c inline "getObjectField(#1, \"width\")"
-pub extern getheight(this: js_object): web int
-	c inline "getObjectField(#1, \"height\")"
+pub inline fun height(obj: xrCamera): web int
+  getJsObjectField(obj.obj, "height")
+

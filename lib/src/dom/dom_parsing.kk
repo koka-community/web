@@ -1,24 +1,27 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct XMLSerializer
-{
-}
-pub extern newXMLSerializer([], [])
-()
+pub value struct xmlSerializer
+  obj: jsObject
 
-pub extern serializeToString(this: js_object, [root: dom.kk/Node], [])
-struct InnerHTML
-{
-}
+pub inline fun newXmlSerializer()
+  newJsObject0("XmlSerializer")"
 
-()
+pub inline fun serializeToString(obj: xmlSerializer, root': dom/node): web string
+  jsOperation3(obj.obj, "serializeToString", root'.obj)
 
-pub extern setinnerHTML(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getinnerHTML(this: js_object): web String
-	c inline "getObjectField(#1, \"innerHTML\")"
+pub value struct innerHTML
+  obj: jsObject
+
+
+pub inline fun innerHTML(obj: innerHTML, value: string): web ()
+  setJsObjectField(obj.obj, "innerHTML", value.obj)
+
+pub inline fun innerHTML(obj: innerHTML): web string
+  getJsObjectField(obj.obj, "innerHTML")
+

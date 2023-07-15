@@ -1,41 +1,40 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct SVGClipPathElement
-{,
+pub value struct svgClipPathElement
+  obj: jsObject
 
-}
 
-()
+pub inline fun clipPathUnits(obj: svgClipPathElement): web svg/svgAnimatedEnumeration
+  getJsObjectField(obj.obj, "clipPathUnits")
 
-pub extern getclipPathUnits(this: js_object): web svg.kk/SVGAnimatedEnumeration
-	c inline "getObjectField(#1, \"clipPathUnits\")"
-pub extern gettransform(this: js_object): web svg.kk/SVGAnimatedTransformList
-	c inline "getObjectField(#1, \"transform\")"
-struct SVGMaskElement
-{,
-,
-,
-,
-,
+pub inline fun transform(obj: svgClipPathElement): web svg/svgAnimatedTransformList
+  getJsObjectField(obj.obj, "transform")
 
-}
+pub value struct svgMaskElement
+  obj: jsObject
 
-()
 
-pub extern getmaskUnits(this: js_object): web svg.kk/SVGAnimatedEnumeration
-	c inline "getObjectField(#1, \"maskUnits\")"
-pub extern getmaskContentUnits(this: js_object): web svg.kk/SVGAnimatedEnumeration
-	c inline "getObjectField(#1, \"maskContentUnits\")"
-pub extern getx(this: js_object): web svg.kk/SVGAnimatedLength
-	c inline "getObjectField(#1, \"x\")"
-pub extern gety(this: js_object): web svg.kk/SVGAnimatedLength
-	c inline "getObjectField(#1, \"y\")"
-pub extern getwidth(this: js_object): web svg.kk/SVGAnimatedLength
-	c inline "getObjectField(#1, \"width\")"
-pub extern getheight(this: js_object): web svg.kk/SVGAnimatedLength
-	c inline "getObjectField(#1, \"height\")"
+pub inline fun maskUnits(obj: svgMaskElement): web svg/svgAnimatedEnumeration
+  getJsObjectField(obj.obj, "maskUnits")
+
+pub inline fun maskContentUnits(obj: svgMaskElement): web svg/svgAnimatedEnumeration
+  getJsObjectField(obj.obj, "maskContentUnits")
+
+pub inline fun x(obj: svgMaskElement): web svg/svgAnimatedLength
+  getJsObjectField(obj.obj, "x")
+
+pub inline fun y(obj: svgMaskElement): web svg/svgAnimatedLength
+  getJsObjectField(obj.obj, "y")
+
+pub inline fun width(obj: svgMaskElement): web svg/svgAnimatedLength
+  getJsObjectField(obj.obj, "width")
+
+pub inline fun height(obj: svgMaskElement): web svg/svgAnimatedLength
+  getJsObjectField(obj.obj, "height")
+

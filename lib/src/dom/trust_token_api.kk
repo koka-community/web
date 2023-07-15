@@ -1,34 +1,53 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias RefreshPolicy = String
-alias TokenVersion = String
-alias OperationType = String
-struct PrivateToken
-{  version: TokenVersion,
-  operation: OperationType,
-  refreshPolicy: RefreshPolicy,
-  issuers: dart:js_interop/JSArray
-}
-pub extern newPrivateToken([version: TokenVersion, operation: OperationType, refreshPolicy: maybe<RefreshPolicy> = Nothing, issuers: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub alias refreshPolicy = string;
 
-pub extern setversion(this: js_object, value: TokenVersion): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getversion(this: js_object): web TokenVersion
-	c inline "getObjectField(#1, \"version\")"
-pub extern setoperation(this: js_object, value: OperationType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoperation(this: js_object): web OperationType
-	c inline "getObjectField(#1, \"operation\")"
-pub extern setrefreshPolicy(this: js_object, value: RefreshPolicy): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrefreshPolicy(this: js_object): web RefreshPolicy
-	c inline "getObjectField(#1, \"refreshPolicy\")"
-pub extern setissuers(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getissuers(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"issuers\")"
+
+pub alias tokenVersion = string;
+
+
+pub alias operationType = string;
+
+pub value struct privateToken
+  obj: jsObject
+
+pub fun newPrivateToken(version: tokenVersion, operation: operationType, refreshPolicy: maybe<refreshPolicy> = Nothing, issuers: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "version", version);  setJsObjectField(obj, "operation", operation);  match refreshPolicy
+    Just(it) -> setJsObjectField(obj, "refreshPolicy", it)
+    Nothing -> ()
+  match issuers
+    Just(it) -> setJsObjectField(obj, "issuers", it)
+    Nothing -> ()
+
+  PrivateToken(obj);
+
+pub inline fun version(obj: privateToken, value: tokenVersion): web ()
+  setJsObjectField(obj.obj, "version", value.obj)
+
+pub inline fun version(obj: privateToken): web tokenVersion
+  getJsObjectField(obj.obj, "version")
+
+pub inline fun operation(obj: privateToken, value: operationType): web ()
+  setJsObjectField(obj.obj, "operation", value.obj)
+
+pub inline fun operation(obj: privateToken): web operationType
+  getJsObjectField(obj.obj, "operation")
+
+pub inline fun refreshPolicy(obj: privateToken, value: refreshPolicy): web ()
+  setJsObjectField(obj.obj, "refreshPolicy", value.obj)
+
+pub inline fun refreshPolicy(obj: privateToken): web refreshPolicy
+  getJsObjectField(obj.obj, "refreshPolicy")
+
+pub inline fun issuers(obj: privateToken, value: jsArray): web ()
+  setJsObjectField(obj.obj, "issuers", value.obj)
+
+pub inline fun issuers(obj: privateToken): web jsArray
+  getJsObjectField(obj.obj, "issuers")
+

@@ -1,117 +1,170 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias MockSensorType = String
-struct Sensor
-{,
-,
-,
-,
-,
+pub alias mockSensorType = string;
 
-}
+pub value struct sensor
+  obj: jsObject
 
-()
 
-pub extern start(this: js_object, [], [])
-pub extern stop(this: js_object, [], [])
-pub extern getactivated(this: js_object): web bool
-	c inline "getObjectField(#1, \"activated\")"
-pub extern gethasReading(this: js_object): web bool
-	c inline "getObjectField(#1, \"hasReading\")"
-pub extern gettimestamp(this: js_object): web maybe<hr_time.kk/DOMHighResTimeStamp>
-	c inline "getObjectField(#1, \"timestamp\")"
-pub extern setonreading(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonreading(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onreading\")"
-pub extern setonactivate(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonactivate(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onactivate\")"
-pub extern setonerror(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonerror(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onerror\")"
-struct SensorOptions
-{  frequency: double
-}
-pub extern newSensorOptions([frequency: maybe<double> = Nothing])
-()
+pub inline fun start(obj: sensor): web ()
+  jsOperation2(obj.obj, "start")
 
-pub extern setfrequency(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getfrequency(this: js_object): web double
-	c inline "getObjectField(#1, \"frequency\")"
-struct SensorErrorEvent
-{
-}
-pub extern newSensorErrorEvent([type: String, errorEventInitDict: SensorErrorEventInit], [])
-()
+pub inline fun stop(obj: sensor): web ()
+  jsOperation2(obj.obj, "stop")
 
-pub extern geterror(this: js_object): web webidl.kk/DOMException
-	c inline "getObjectField(#1, \"error\")"
-struct SensorErrorEventInit
-{  error: webidl.kk/DOMException
-}
-pub extern newSensorErrorEventInit([error: webidl.kk/DOMException])
-()
+pub inline fun activated(obj: sensor): web bool
+  getJsObjectField(obj.obj, "activated")
 
-pub extern seterror(this: js_object, value: webidl.kk/DOMException): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern geterror(this: js_object): web webidl.kk/DOMException
-	c inline "getObjectField(#1, \"error\")"
-struct MockSensorConfiguration
-{  mockSensorType: MockSensorType,
-  connected: bool,
-  maxSamplingFrequency: maybe<double>,
-  minSamplingFrequency: maybe<double>
-}
-pub extern newMockSensorConfiguration([mockSensorType: MockSensorType, connected: maybe<bool> = Nothing, maxSamplingFrequency: maybe<maybe<double>> = Nothing, minSamplingFrequency: maybe<maybe<double>> = Nothing])
-()
+pub inline fun hasReading(obj: sensor): web bool
+  getJsObjectField(obj.obj, "hasReading")
 
-pub extern setmockSensorType(this: js_object, value: MockSensorType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmockSensorType(this: js_object): web MockSensorType
-	c inline "getObjectField(#1, \"mockSensorType\")"
-pub extern setconnected(this: js_object, value: bool): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getconnected(this: js_object): web bool
-	c inline "getObjectField(#1, \"connected\")"
-pub extern setmaxSamplingFrequency(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmaxSamplingFrequency(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"maxSamplingFrequency\")"
-pub extern setminSamplingFrequency(this: js_object, value: maybe<double>): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getminSamplingFrequency(this: js_object): web maybe<double>
-	c inline "getObjectField(#1, \"minSamplingFrequency\")"
-struct MockSensor
-{  maxSamplingFrequency: double,
-  minSamplingFrequency: double,
-  requestedSamplingFrequency: double
-}
-pub extern newMockSensor([maxSamplingFrequency: maybe<double> = Nothing, minSamplingFrequency: maybe<double> = Nothing, requestedSamplingFrequency: maybe<double> = Nothing])
-()
+pub inline fun timestamp(obj: sensor): web maybe<hr_time/domHighResTimeStamp>
+  getJsObjectField(obj.obj, "timestamp")
 
-pub extern setmaxSamplingFrequency(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getmaxSamplingFrequency(this: js_object): web double
-	c inline "getObjectField(#1, \"maxSamplingFrequency\")"
-pub extern setminSamplingFrequency(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getminSamplingFrequency(this: js_object): web double
-	c inline "getObjectField(#1, \"minSamplingFrequency\")"
-pub extern setrequestedSamplingFrequency(this: js_object, value: double): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrequestedSamplingFrequency(this: js_object): web double
-	c inline "getObjectField(#1, \"requestedSamplingFrequency\")"
-struct MockSensorReadingValues
-{
-}
-pub extern newMockSensorReadingValues([])
-()
+pub inline fun onreading(obj: sensor, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onreading", value.obj)
+
+pub inline fun onreading(obj: sensor): web html/eventHandler
+  getJsObjectField(obj.obj, "onreading")
+
+pub inline fun onactivate(obj: sensor, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onactivate", value.obj)
+
+pub inline fun onactivate(obj: sensor): web html/eventHandler
+  getJsObjectField(obj.obj, "onactivate")
+
+pub inline fun onerror(obj: sensor, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onerror", value.obj)
+
+pub inline fun onerror(obj: sensor): web html/eventHandler
+  getJsObjectField(obj.obj, "onerror")
+
+pub value struct sensorOptions
+  obj: jsObject
+
+pub fun newSensorOptions(frequency: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match frequency
+    Just(it) -> setJsObjectField(obj, "frequency", it)
+    Nothing -> ()
+
+  SensorOptions(obj);
+
+pub inline fun frequency(obj: sensorOptions, value: double): web ()
+  setJsObjectField(obj.obj, "frequency", value.obj)
+
+pub inline fun frequency(obj: sensorOptions): web double
+  getJsObjectField(obj.obj, "frequency")
+
+pub value struct sensorErrorEvent
+  obj: jsObject
+
+pub inline fun newSensorErrorEvent(type': string, errorEventInitDict': sensorErrorEventInit)
+  newJsObject2("SensorErrorEvent", type', errorEventInitDict')"
+
+pub inline fun error(obj: sensorErrorEvent): web webidl/domException
+  getJsObjectField(obj.obj, "error")
+
+pub value struct sensorErrorEventInit
+  obj: jsObject
+
+pub fun newSensorErrorEventInit(error: webidl/domException)
+  val obj = newJsObject();
+  setJsObjectField(obj, "error", error);
+  SensorErrorEventInit(obj);
+
+pub inline fun error(obj: sensorErrorEventInit, value: webidl/domException): web ()
+  setJsObjectField(obj.obj, "error", value.obj)
+
+pub inline fun error(obj: sensorErrorEventInit): web webidl/domException
+  getJsObjectField(obj.obj, "error")
+
+pub value struct mockSensorConfiguration
+  obj: jsObject
+
+pub fun newMockSensorConfiguration(mockSensorType: mockSensorType, connected: maybe<bool> = Nothing, maxSamplingFrequency: maybe<maybe<double>> = Nothing, minSamplingFrequency: maybe<maybe<double>> = Nothing)
+  val obj = newJsObject();
+  setJsObjectField(obj, "mockSensorType", mockSensorType);  match connected
+    Just(it) -> setJsObjectField(obj, "connected", it)
+    Nothing -> ()
+  match maxSamplingFrequency
+    Just(it) -> setJsObjectField(obj, "maxSamplingFrequency", it)
+    Nothing -> ()
+  match minSamplingFrequency
+    Just(it) -> setJsObjectField(obj, "minSamplingFrequency", it)
+    Nothing -> ()
+
+  MockSensorConfiguration(obj);
+
+pub inline fun mockSensorType(obj: mockSensorConfiguration, value: mockSensorType): web ()
+  setJsObjectField(obj.obj, "mockSensorType", value.obj)
+
+pub inline fun mockSensorType(obj: mockSensorConfiguration): web mockSensorType
+  getJsObjectField(obj.obj, "mockSensorType")
+
+pub inline fun connected(obj: mockSensorConfiguration, value: bool): web ()
+  setJsObjectField(obj.obj, "connected", value.obj)
+
+pub inline fun connected(obj: mockSensorConfiguration): web bool
+  getJsObjectField(obj.obj, "connected")
+
+pub inline fun maxSamplingFrequency(obj: mockSensorConfiguration, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "maxSamplingFrequency", value.obj)
+
+pub inline fun maxSamplingFrequency(obj: mockSensorConfiguration): web maybe<double>
+  getJsObjectField(obj.obj, "maxSamplingFrequency")
+
+pub inline fun minSamplingFrequency(obj: mockSensorConfiguration, value: maybe<double>): web ()
+  setJsObjectField(obj.obj, "minSamplingFrequency", value.obj)
+
+pub inline fun minSamplingFrequency(obj: mockSensorConfiguration): web maybe<double>
+  getJsObjectField(obj.obj, "minSamplingFrequency")
+
+pub value struct mockSensor
+  obj: jsObject
+
+pub fun newMockSensor(maxSamplingFrequency: maybe<double> = Nothing, minSamplingFrequency: maybe<double> = Nothing, requestedSamplingFrequency: maybe<double> = Nothing)
+  val obj = newJsObject();
+  match maxSamplingFrequency
+    Just(it) -> setJsObjectField(obj, "maxSamplingFrequency", it)
+    Nothing -> ()
+  match minSamplingFrequency
+    Just(it) -> setJsObjectField(obj, "minSamplingFrequency", it)
+    Nothing -> ()
+  match requestedSamplingFrequency
+    Just(it) -> setJsObjectField(obj, "requestedSamplingFrequency", it)
+    Nothing -> ()
+
+  MockSensor(obj);
+
+pub inline fun maxSamplingFrequency(obj: mockSensor, value: double): web ()
+  setJsObjectField(obj.obj, "maxSamplingFrequency", value.obj)
+
+pub inline fun maxSamplingFrequency(obj: mockSensor): web double
+  getJsObjectField(obj.obj, "maxSamplingFrequency")
+
+pub inline fun minSamplingFrequency(obj: mockSensor, value: double): web ()
+  setJsObjectField(obj.obj, "minSamplingFrequency", value.obj)
+
+pub inline fun minSamplingFrequency(obj: mockSensor): web double
+  getJsObjectField(obj.obj, "minSamplingFrequency")
+
+pub inline fun requestedSamplingFrequency(obj: mockSensor, value: double): web ()
+  setJsObjectField(obj.obj, "requestedSamplingFrequency", value.obj)
+
+pub inline fun requestedSamplingFrequency(obj: mockSensor): web double
+  getJsObjectField(obj.obj, "requestedSamplingFrequency")
+
+pub value struct mockSensorReadingValues
+  obj: jsObject
+
+pub fun newMockSensorReadingValues()
+  val obj = newJsObject();
+
+  MockSensorReadingValues(obj);
 

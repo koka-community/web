@@ -1,266 +1,387 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct EditContextInit
-{  text: String,
-  selectionStart: int,
-  selectionEnd: int
-}
-pub extern newEditContextInit([text: maybe<String> = Nothing, selectionStart: maybe<int> = Nothing, selectionEnd: maybe<int> = Nothing])
-()
+pub value struct editContextInit
+  obj: jsObject
 
-pub extern settext(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettext(this: js_object): web String
-	c inline "getObjectField(#1, \"text\")"
-pub extern setselectionStart(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectionStart(this: js_object): web int
-	c inline "getObjectField(#1, \"selectionStart\")"
-pub extern setselectionEnd(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectionEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"selectionEnd\")"
-struct EditContext
-{,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+pub fun newEditContextInit(text: maybe<string> = Nothing, selectionStart: maybe<int> = Nothing, selectionEnd: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match text
+    Just(it) -> setJsObjectField(obj, "text", it)
+    Nothing -> ()
+  match selectionStart
+    Just(it) -> setJsObjectField(obj, "selectionStart", it)
+    Nothing -> ()
+  match selectionEnd
+    Just(it) -> setJsObjectField(obj, "selectionEnd", it)
+    Nothing -> ()
 
-}
-pub extern newEditContext([], [options: EditContextInit])
-()
+  EditContextInit(obj);
 
-pub extern updateText(this: js_object, [rangeStart: int, rangeEnd: int, text: String], [])
-pub extern updateSelection(this: js_object, [start: int, end: int], [])
-pub extern updateControlBounds(this: js_object, [controlBounds: geometry.kk/DOMRect], [])
-pub extern updateSelectionBounds(this: js_object, [selectionBounds: geometry.kk/DOMRect], [])
-pub extern updateCharacterBounds(this: js_object, [rangeStart: int, characterBounds: dart:js_interop/JSArray], [])
-pub extern attachedElements(this: js_object, [], [])
-pub extern characterBounds(this: js_object, [], [])
-pub extern gettext(this: js_object): web String
-	c inline "getObjectField(#1, \"text\")"
-pub extern getselectionStart(this: js_object): web int
-	c inline "getObjectField(#1, \"selectionStart\")"
-pub extern getselectionEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"selectionEnd\")"
-pub extern getcompositionRangeStart(this: js_object): web int
-	c inline "getObjectField(#1, \"compositionRangeStart\")"
-pub extern getcompositionRangeEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"compositionRangeEnd\")"
-pub extern getisComposing(this: js_object): web bool
-	c inline "getObjectField(#1, \"isComposing\")"
-pub extern getcontrolBounds(this: js_object): web geometry.kk/DOMRect
-	c inline "getObjectField(#1, \"controlBounds\")"
-pub extern getselectionBounds(this: js_object): web geometry.kk/DOMRect
-	c inline "getObjectField(#1, \"selectionBounds\")"
-pub extern getcharacterBoundsRangeStart(this: js_object): web int
-	c inline "getObjectField(#1, \"characterBoundsRangeStart\")"
-pub extern setontextupdate(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontextupdate(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"ontextupdate\")"
-pub extern setontextformatupdate(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getontextformatupdate(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"ontextformatupdate\")"
-pub extern setoncharacterboundsupdate(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncharacterboundsupdate(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"oncharacterboundsupdate\")"
-pub extern setoncompositionstart(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncompositionstart(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"oncompositionstart\")"
-pub extern setoncompositionend(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getoncompositionend(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"oncompositionend\")"
-struct TextUpdateEventInit
-{  updateRangeStart: int,
-  updateRangeEnd: int,
-  text: String,
-  selectionStart: int,
-  selectionEnd: int,
-  compositionStart: int,
-  compositionEnd: int
-}
-pub extern newTextUpdateEventInit([updateRangeStart: maybe<int> = Nothing, updateRangeEnd: maybe<int> = Nothing, text: maybe<String> = Nothing, selectionStart: maybe<int> = Nothing, selectionEnd: maybe<int> = Nothing, compositionStart: maybe<int> = Nothing, compositionEnd: maybe<int> = Nothing])
-()
+pub inline fun text(obj: editContextInit, value: string): web ()
+  setJsObjectField(obj.obj, "text", value.obj)
 
-pub extern setupdateRangeStart(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getupdateRangeStart(this: js_object): web int
-	c inline "getObjectField(#1, \"updateRangeStart\")"
-pub extern setupdateRangeEnd(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getupdateRangeEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"updateRangeEnd\")"
-pub extern settext(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettext(this: js_object): web String
-	c inline "getObjectField(#1, \"text\")"
-pub extern setselectionStart(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectionStart(this: js_object): web int
-	c inline "getObjectField(#1, \"selectionStart\")"
-pub extern setselectionEnd(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getselectionEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"selectionEnd\")"
-pub extern setcompositionStart(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcompositionStart(this: js_object): web int
-	c inline "getObjectField(#1, \"compositionStart\")"
-pub extern setcompositionEnd(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getcompositionEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"compositionEnd\")"
-struct TextUpdateEvent
-{,
-,
-,
-,
-,
-,
+pub inline fun text(obj: editContextInit): web string
+  getJsObjectField(obj.obj, "text")
 
-}
-pub extern newTextUpdateEvent([type: String], [options: TextUpdateEventInit])
-()
+pub inline fun selectionStart(obj: editContextInit, value: int): web ()
+  setJsObjectField(obj.obj, "selectionStart", value.obj)
 
-pub extern getupdateRangeStart(this: js_object): web int
-	c inline "getObjectField(#1, \"updateRangeStart\")"
-pub extern getupdateRangeEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"updateRangeEnd\")"
-pub extern gettext(this: js_object): web String
-	c inline "getObjectField(#1, \"text\")"
-pub extern getselectionStart(this: js_object): web int
-	c inline "getObjectField(#1, \"selectionStart\")"
-pub extern getselectionEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"selectionEnd\")"
-pub extern getcompositionStart(this: js_object): web int
-	c inline "getObjectField(#1, \"compositionStart\")"
-pub extern getcompositionEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"compositionEnd\")"
-struct TextFormatInit
-{  rangeStart: int,
-  rangeEnd: int,
-  textColor: String,
-  backgroundColor: String,
-  underlineStyle: String,
-  underlineThickness: String,
-  underlineColor: String
-}
-pub extern newTextFormatInit([rangeStart: maybe<int> = Nothing, rangeEnd: maybe<int> = Nothing, textColor: maybe<String> = Nothing, backgroundColor: maybe<String> = Nothing, underlineStyle: maybe<String> = Nothing, underlineThickness: maybe<String> = Nothing, underlineColor: maybe<String> = Nothing])
-()
+pub inline fun selectionStart(obj: editContextInit): web int
+  getJsObjectField(obj.obj, "selectionStart")
 
-pub extern setrangeStart(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrangeStart(this: js_object): web int
-	c inline "getObjectField(#1, \"rangeStart\")"
-pub extern setrangeEnd(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrangeEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"rangeEnd\")"
-pub extern settextColor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettextColor(this: js_object): web String
-	c inline "getObjectField(#1, \"textColor\")"
-pub extern setbackgroundColor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getbackgroundColor(this: js_object): web String
-	c inline "getObjectField(#1, \"backgroundColor\")"
-pub extern setunderlineStyle(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getunderlineStyle(this: js_object): web String
-	c inline "getObjectField(#1, \"underlineStyle\")"
-pub extern setunderlineThickness(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getunderlineThickness(this: js_object): web String
-	c inline "getObjectField(#1, \"underlineThickness\")"
-pub extern setunderlineColor(this: js_object, value: String): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getunderlineColor(this: js_object): web String
-	c inline "getObjectField(#1, \"underlineColor\")"
-struct TextFormat
-{,
-,
-,
-,
-,
-,
+pub inline fun selectionEnd(obj: editContextInit, value: int): web ()
+  setJsObjectField(obj.obj, "selectionEnd", value.obj)
 
-}
-pub extern newTextFormat([], [options: TextFormatInit])
-()
+pub inline fun selectionEnd(obj: editContextInit): web int
+  getJsObjectField(obj.obj, "selectionEnd")
 
-pub extern getrangeStart(this: js_object): web int
-	c inline "getObjectField(#1, \"rangeStart\")"
-pub extern getrangeEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"rangeEnd\")"
-pub extern gettextColor(this: js_object): web String
-	c inline "getObjectField(#1, \"textColor\")"
-pub extern getbackgroundColor(this: js_object): web String
-	c inline "getObjectField(#1, \"backgroundColor\")"
-pub extern getunderlineStyle(this: js_object): web String
-	c inline "getObjectField(#1, \"underlineStyle\")"
-pub extern getunderlineThickness(this: js_object): web String
-	c inline "getObjectField(#1, \"underlineThickness\")"
-pub extern getunderlineColor(this: js_object): web String
-	c inline "getObjectField(#1, \"underlineColor\")"
-struct TextFormatUpdateEventInit
-{  textFormats: dart:js_interop/JSArray
-}
-pub extern newTextFormatUpdateEventInit([textFormats: maybe<dart:js_interop/JSArray> = Nothing])
-()
+pub value struct editContext
+  obj: jsObject
 
-pub extern settextFormats(this: js_object, value: dart:js_interop/JSArray): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettextFormats(this: js_object): web dart:js_interop/JSArray
-	c inline "getObjectField(#1, \"textFormats\")"
-struct TextFormatUpdateEvent
-{
-}
-pub extern newTextFormatUpdateEvent([type: String], [options: TextFormatUpdateEventInit])
-()
+pub inline fun newEditContext(options': editContextInit)
+  newJsObject1("EditContext", options')"
 
-pub extern getTextFormats(this: js_object, [], [])
-struct CharacterBoundsUpdateEventInit
-{  rangeStart: int,
-  rangeEnd: int
-}
-pub extern newCharacterBoundsUpdateEventInit([rangeStart: maybe<int> = Nothing, rangeEnd: maybe<int> = Nothing])
-()
+pub inline fun updateText(obj: editContext, rangeStart': int, rangeEnd': int, text': string): web ()
+  jsOperation5(obj.obj, "updateText", rangeStart'.obj, rangeEnd'.obj, text'.obj)
 
-pub extern setrangeStart(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrangeStart(this: js_object): web int
-	c inline "getObjectField(#1, \"rangeStart\")"
-pub extern setrangeEnd(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getrangeEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"rangeEnd\")"
-struct CharacterBoundsUpdateEvent
-{,
+pub inline fun updateSelection(obj: editContext, start': int, end': int): web ()
+  jsOperation4(obj.obj, "updateSelection", start'.obj, end'.obj)
 
-}
-pub extern newCharacterBoundsUpdateEvent([type: String], [options: CharacterBoundsUpdateEventInit])
-()
+pub inline fun updateControlBounds(obj: editContext, controlBounds': geometry/domRect): web ()
+  jsOperation3(obj.obj, "updateControlBounds", controlBounds'.obj)
 
-pub extern getrangeStart(this: js_object): web int
-	c inline "getObjectField(#1, \"rangeStart\")"
-pub extern getrangeEnd(this: js_object): web int
-	c inline "getObjectField(#1, \"rangeEnd\")"
+pub inline fun updateSelectionBounds(obj: editContext, selectionBounds': geometry/domRect): web ()
+  jsOperation3(obj.obj, "updateSelectionBounds", selectionBounds'.obj)
+
+pub inline fun updateCharacterBounds(obj: editContext, rangeStart': int, characterBounds': jsArray): web ()
+  jsOperation4(obj.obj, "updateCharacterBounds", rangeStart'.obj, characterBounds'.obj)
+
+pub inline fun attachedElements(obj: editContext): web jsArray
+  jsOperation2(obj.obj, "attachedElements")
+
+pub inline fun characterBounds(obj: editContext): web jsArray
+  jsOperation2(obj.obj, "characterBounds")
+
+pub inline fun text(obj: editContext): web string
+  getJsObjectField(obj.obj, "text")
+
+pub inline fun selectionStart(obj: editContext): web int
+  getJsObjectField(obj.obj, "selectionStart")
+
+pub inline fun selectionEnd(obj: editContext): web int
+  getJsObjectField(obj.obj, "selectionEnd")
+
+pub inline fun compositionRangeStart(obj: editContext): web int
+  getJsObjectField(obj.obj, "compositionRangeStart")
+
+pub inline fun compositionRangeEnd(obj: editContext): web int
+  getJsObjectField(obj.obj, "compositionRangeEnd")
+
+pub inline fun isComposing(obj: editContext): web bool
+  getJsObjectField(obj.obj, "isComposing")
+
+pub inline fun controlBounds(obj: editContext): web geometry/domRect
+  getJsObjectField(obj.obj, "controlBounds")
+
+pub inline fun selectionBounds(obj: editContext): web geometry/domRect
+  getJsObjectField(obj.obj, "selectionBounds")
+
+pub inline fun characterBoundsRangeStart(obj: editContext): web int
+  getJsObjectField(obj.obj, "characterBoundsRangeStart")
+
+pub inline fun ontextupdate(obj: editContext, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "ontextupdate", value.obj)
+
+pub inline fun ontextupdate(obj: editContext): web html/eventHandler
+  getJsObjectField(obj.obj, "ontextupdate")
+
+pub inline fun ontextformatupdate(obj: editContext, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "ontextformatupdate", value.obj)
+
+pub inline fun ontextformatupdate(obj: editContext): web html/eventHandler
+  getJsObjectField(obj.obj, "ontextformatupdate")
+
+pub inline fun oncharacterboundsupdate(obj: editContext, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "oncharacterboundsupdate", value.obj)
+
+pub inline fun oncharacterboundsupdate(obj: editContext): web html/eventHandler
+  getJsObjectField(obj.obj, "oncharacterboundsupdate")
+
+pub inline fun oncompositionstart(obj: editContext, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "oncompositionstart", value.obj)
+
+pub inline fun oncompositionstart(obj: editContext): web html/eventHandler
+  getJsObjectField(obj.obj, "oncompositionstart")
+
+pub inline fun oncompositionend(obj: editContext, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "oncompositionend", value.obj)
+
+pub inline fun oncompositionend(obj: editContext): web html/eventHandler
+  getJsObjectField(obj.obj, "oncompositionend")
+
+pub value struct textUpdateEventInit
+  obj: jsObject
+
+pub fun newTextUpdateEventInit(updateRangeStart: maybe<int> = Nothing, updateRangeEnd: maybe<int> = Nothing, text: maybe<string> = Nothing, selectionStart: maybe<int> = Nothing, selectionEnd: maybe<int> = Nothing, compositionStart: maybe<int> = Nothing, compositionEnd: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match updateRangeStart
+    Just(it) -> setJsObjectField(obj, "updateRangeStart", it)
+    Nothing -> ()
+  match updateRangeEnd
+    Just(it) -> setJsObjectField(obj, "updateRangeEnd", it)
+    Nothing -> ()
+  match text
+    Just(it) -> setJsObjectField(obj, "text", it)
+    Nothing -> ()
+  match selectionStart
+    Just(it) -> setJsObjectField(obj, "selectionStart", it)
+    Nothing -> ()
+  match selectionEnd
+    Just(it) -> setJsObjectField(obj, "selectionEnd", it)
+    Nothing -> ()
+  match compositionStart
+    Just(it) -> setJsObjectField(obj, "compositionStart", it)
+    Nothing -> ()
+  match compositionEnd
+    Just(it) -> setJsObjectField(obj, "compositionEnd", it)
+    Nothing -> ()
+
+  TextUpdateEventInit(obj);
+
+pub inline fun updateRangeStart(obj: textUpdateEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "updateRangeStart", value.obj)
+
+pub inline fun updateRangeStart(obj: textUpdateEventInit): web int
+  getJsObjectField(obj.obj, "updateRangeStart")
+
+pub inline fun updateRangeEnd(obj: textUpdateEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "updateRangeEnd", value.obj)
+
+pub inline fun updateRangeEnd(obj: textUpdateEventInit): web int
+  getJsObjectField(obj.obj, "updateRangeEnd")
+
+pub inline fun text(obj: textUpdateEventInit, value: string): web ()
+  setJsObjectField(obj.obj, "text", value.obj)
+
+pub inline fun text(obj: textUpdateEventInit): web string
+  getJsObjectField(obj.obj, "text")
+
+pub inline fun selectionStart(obj: textUpdateEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "selectionStart", value.obj)
+
+pub inline fun selectionStart(obj: textUpdateEventInit): web int
+  getJsObjectField(obj.obj, "selectionStart")
+
+pub inline fun selectionEnd(obj: textUpdateEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "selectionEnd", value.obj)
+
+pub inline fun selectionEnd(obj: textUpdateEventInit): web int
+  getJsObjectField(obj.obj, "selectionEnd")
+
+pub inline fun compositionStart(obj: textUpdateEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "compositionStart", value.obj)
+
+pub inline fun compositionStart(obj: textUpdateEventInit): web int
+  getJsObjectField(obj.obj, "compositionStart")
+
+pub inline fun compositionEnd(obj: textUpdateEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "compositionEnd", value.obj)
+
+pub inline fun compositionEnd(obj: textUpdateEventInit): web int
+  getJsObjectField(obj.obj, "compositionEnd")
+
+pub value struct textUpdateEvent
+  obj: jsObject
+
+pub inline fun newTextUpdateEvent(type': string, options': textUpdateEventInit)
+  newJsObject2("TextUpdateEvent", type', options')"
+
+pub inline fun updateRangeStart(obj: textUpdateEvent): web int
+  getJsObjectField(obj.obj, "updateRangeStart")
+
+pub inline fun updateRangeEnd(obj: textUpdateEvent): web int
+  getJsObjectField(obj.obj, "updateRangeEnd")
+
+pub inline fun text(obj: textUpdateEvent): web string
+  getJsObjectField(obj.obj, "text")
+
+pub inline fun selectionStart(obj: textUpdateEvent): web int
+  getJsObjectField(obj.obj, "selectionStart")
+
+pub inline fun selectionEnd(obj: textUpdateEvent): web int
+  getJsObjectField(obj.obj, "selectionEnd")
+
+pub inline fun compositionStart(obj: textUpdateEvent): web int
+  getJsObjectField(obj.obj, "compositionStart")
+
+pub inline fun compositionEnd(obj: textUpdateEvent): web int
+  getJsObjectField(obj.obj, "compositionEnd")
+
+pub value struct textFormatInit
+  obj: jsObject
+
+pub fun newTextFormatInit(rangeStart: maybe<int> = Nothing, rangeEnd: maybe<int> = Nothing, textColor: maybe<string> = Nothing, backgroundColor: maybe<string> = Nothing, underlineStyle: maybe<string> = Nothing, underlineThickness: maybe<string> = Nothing, underlineColor: maybe<string> = Nothing)
+  val obj = newJsObject();
+  match rangeStart
+    Just(it) -> setJsObjectField(obj, "rangeStart", it)
+    Nothing -> ()
+  match rangeEnd
+    Just(it) -> setJsObjectField(obj, "rangeEnd", it)
+    Nothing -> ()
+  match textColor
+    Just(it) -> setJsObjectField(obj, "textColor", it)
+    Nothing -> ()
+  match backgroundColor
+    Just(it) -> setJsObjectField(obj, "backgroundColor", it)
+    Nothing -> ()
+  match underlineStyle
+    Just(it) -> setJsObjectField(obj, "underlineStyle", it)
+    Nothing -> ()
+  match underlineThickness
+    Just(it) -> setJsObjectField(obj, "underlineThickness", it)
+    Nothing -> ()
+  match underlineColor
+    Just(it) -> setJsObjectField(obj, "underlineColor", it)
+    Nothing -> ()
+
+  TextFormatInit(obj);
+
+pub inline fun rangeStart(obj: textFormatInit, value: int): web ()
+  setJsObjectField(obj.obj, "rangeStart", value.obj)
+
+pub inline fun rangeStart(obj: textFormatInit): web int
+  getJsObjectField(obj.obj, "rangeStart")
+
+pub inline fun rangeEnd(obj: textFormatInit, value: int): web ()
+  setJsObjectField(obj.obj, "rangeEnd", value.obj)
+
+pub inline fun rangeEnd(obj: textFormatInit): web int
+  getJsObjectField(obj.obj, "rangeEnd")
+
+pub inline fun textColor(obj: textFormatInit, value: string): web ()
+  setJsObjectField(obj.obj, "textColor", value.obj)
+
+pub inline fun textColor(obj: textFormatInit): web string
+  getJsObjectField(obj.obj, "textColor")
+
+pub inline fun backgroundColor(obj: textFormatInit, value: string): web ()
+  setJsObjectField(obj.obj, "backgroundColor", value.obj)
+
+pub inline fun backgroundColor(obj: textFormatInit): web string
+  getJsObjectField(obj.obj, "backgroundColor")
+
+pub inline fun underlineStyle(obj: textFormatInit, value: string): web ()
+  setJsObjectField(obj.obj, "underlineStyle", value.obj)
+
+pub inline fun underlineStyle(obj: textFormatInit): web string
+  getJsObjectField(obj.obj, "underlineStyle")
+
+pub inline fun underlineThickness(obj: textFormatInit, value: string): web ()
+  setJsObjectField(obj.obj, "underlineThickness", value.obj)
+
+pub inline fun underlineThickness(obj: textFormatInit): web string
+  getJsObjectField(obj.obj, "underlineThickness")
+
+pub inline fun underlineColor(obj: textFormatInit, value: string): web ()
+  setJsObjectField(obj.obj, "underlineColor", value.obj)
+
+pub inline fun underlineColor(obj: textFormatInit): web string
+  getJsObjectField(obj.obj, "underlineColor")
+
+pub value struct textFormat
+  obj: jsObject
+
+pub inline fun newTextFormat(options': textFormatInit)
+  newJsObject1("TextFormat", options')"
+
+pub inline fun rangeStart(obj: textFormat): web int
+  getJsObjectField(obj.obj, "rangeStart")
+
+pub inline fun rangeEnd(obj: textFormat): web int
+  getJsObjectField(obj.obj, "rangeEnd")
+
+pub inline fun textColor(obj: textFormat): web string
+  getJsObjectField(obj.obj, "textColor")
+
+pub inline fun backgroundColor(obj: textFormat): web string
+  getJsObjectField(obj.obj, "backgroundColor")
+
+pub inline fun underlineStyle(obj: textFormat): web string
+  getJsObjectField(obj.obj, "underlineStyle")
+
+pub inline fun underlineThickness(obj: textFormat): web string
+  getJsObjectField(obj.obj, "underlineThickness")
+
+pub inline fun underlineColor(obj: textFormat): web string
+  getJsObjectField(obj.obj, "underlineColor")
+
+pub value struct textFormatUpdateEventInit
+  obj: jsObject
+
+pub fun newTextFormatUpdateEventInit(textFormats: maybe<jsArray> = Nothing)
+  val obj = newJsObject();
+  match textFormats
+    Just(it) -> setJsObjectField(obj, "textFormats", it)
+    Nothing -> ()
+
+  TextFormatUpdateEventInit(obj);
+
+pub inline fun textFormats(obj: textFormatUpdateEventInit, value: jsArray): web ()
+  setJsObjectField(obj.obj, "textFormats", value.obj)
+
+pub inline fun textFormats(obj: textFormatUpdateEventInit): web jsArray
+  getJsObjectField(obj.obj, "textFormats")
+
+pub value struct textFormatUpdateEvent
+  obj: jsObject
+
+pub inline fun newTextFormatUpdateEvent(type': string, options': textFormatUpdateEventInit)
+  newJsObject2("TextFormatUpdateEvent", type', options')"
+
+pub inline fun getTextFormats(obj: textFormatUpdateEvent): web jsArray
+  jsOperation2(obj.obj, "getTextFormats")
+
+pub value struct characterBoundsUpdateEventInit
+  obj: jsObject
+
+pub fun newCharacterBoundsUpdateEventInit(rangeStart: maybe<int> = Nothing, rangeEnd: maybe<int> = Nothing)
+  val obj = newJsObject();
+  match rangeStart
+    Just(it) -> setJsObjectField(obj, "rangeStart", it)
+    Nothing -> ()
+  match rangeEnd
+    Just(it) -> setJsObjectField(obj, "rangeEnd", it)
+    Nothing -> ()
+
+  CharacterBoundsUpdateEventInit(obj);
+
+pub inline fun rangeStart(obj: characterBoundsUpdateEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "rangeStart", value.obj)
+
+pub inline fun rangeStart(obj: characterBoundsUpdateEventInit): web int
+  getJsObjectField(obj.obj, "rangeStart")
+
+pub inline fun rangeEnd(obj: characterBoundsUpdateEventInit, value: int): web ()
+  setJsObjectField(obj.obj, "rangeEnd", value.obj)
+
+pub inline fun rangeEnd(obj: characterBoundsUpdateEventInit): web int
+  getJsObjectField(obj.obj, "rangeEnd")
+
+pub value struct characterBoundsUpdateEvent
+  obj: jsObject
+
+pub inline fun newCharacterBoundsUpdateEvent(type': string, options': characterBoundsUpdateEventInit)
+  newJsObject2("CharacterBoundsUpdateEvent", type', options')"
+
+pub inline fun rangeStart(obj: characterBoundsUpdateEvent): web int
+  getJsObjectField(obj.obj, "rangeStart")
+
+pub inline fun rangeEnd(obj: characterBoundsUpdateEvent): web int
+  getJsObjectField(obj.obj, "rangeEnd")
+

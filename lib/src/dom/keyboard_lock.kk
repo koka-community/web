@@ -1,20 +1,27 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
 
-struct Keyboard
-{
-}
+pub value struct keyboard
+  obj: jsObject
 
-()
 
-pub extern lock(this: js_object, [], [keyCodes: dart:js_interop/JSArray])
-pub extern unlock(this: js_object, [], [])
-pub extern getLayoutMap(this: js_object, [], [])
-pub extern setonlayoutchange(this: js_object, value: html.kk/EventHandler): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getonlayoutchange(this: js_object): web html.kk/EventHandler
-	c inline "getObjectField(#1, \"onlayoutchange\")"
+pub inline fun lock(obj: keyboard, keyCodes': jsArray): web jsPromise
+  jsOperation3(obj.obj, "lock", keyCodes'.obj)
+
+pub inline fun unlock(obj: keyboard): web ()
+  jsOperation2(obj.obj, "unlock")
+
+pub inline fun getLayoutMap(obj: keyboard): web jsPromise
+  jsOperation2(obj.obj, "getLayoutMap")
+
+pub inline fun onlayoutchange(obj: keyboard, value: html/eventHandler): web ()
+  setJsObjectField(obj.obj, "onlayoutchange", value.obj)
+
+pub inline fun onlayoutchange(obj: keyboard): web html/eventHandler
+  getJsObjectField(obj.obj, "onlayoutchange")
+

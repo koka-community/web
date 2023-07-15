@@ -1,17 +1,26 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias HevcBitstreamFormat = String
-struct HevcEncoderConfig
-{  format: HevcBitstreamFormat
-}
-pub extern newHevcEncoderConfig([format: maybe<HevcBitstreamFormat> = Nothing])
-()
+pub alias hevcBitstreamFormat = string;
 
-pub extern setformat(this: js_object, value: HevcBitstreamFormat): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getformat(this: js_object): web HevcBitstreamFormat
-	c inline "getObjectField(#1, \"format\")"
+pub value struct hevcEncoderConfig
+  obj: jsObject
+
+pub fun newHevcEncoderConfig(format: maybe<hevcBitstreamFormat> = Nothing)
+  val obj = newJsObject();
+  match format
+    Just(it) -> setJsObjectField(obj, "format", it)
+    Nothing -> ()
+
+  HevcEncoderConfig(obj);
+
+pub inline fun format(obj: hevcEncoderConfig, value: hevcBitstreamFormat): web ()
+  setJsObjectField(obj.obj, "format", value.obj)
+
+pub inline fun format(obj: hevcEncoderConfig): web hevcBitstreamFormat
+  getJsObjectField(obj.obj, "format")
+

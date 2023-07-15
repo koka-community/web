@@ -1,30 +1,32 @@
-//Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
+//Copyright (c) 2023, the Koka project authors.  Please see the AUTHORS file
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
+import web/wasm
 
 
 
-alias HighlightType = String
-struct Highlight
-{,
-,
+pub alias highlightType = string;
 
-}
-pub extern newHighlight([initialRanges: dom.kk/AbstractRange], [])
-()
+pub value struct highlight
+  obj: jsObject
 
-pub extern setpriority(this: js_object, value: int): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern getpriority(this: js_object): web int
-	c inline "getObjectField(#1, \"priority\")"
-pub extern settype(this: js_object, value: HighlightType): web ()
-	c inline "setObjectField(#1, #2)"
-pub extern gettype(this: js_object): web HighlightType
-	c inline "getObjectField(#1, \"type\")"
-struct HighlightRegistry
-{
-}
+pub inline fun newHighlight(initialRanges': dom/abstractRange)
+  newJsObject1("Highlight", initialRanges')"
 
-()
+pub inline fun priority(obj: highlight, value: int): web ()
+  setJsObjectField(obj.obj, "priority", value.obj)
+
+pub inline fun priority(obj: highlight): web int
+  getJsObjectField(obj.obj, "priority")
+
+pub inline fun type(obj: highlight, value: highlightType): web ()
+  setJsObjectField(obj.obj, "type", value.obj)
+
+pub inline fun type(obj: highlight): web highlightType
+  getJsObjectField(obj.obj, "type")
+
+pub value struct highlightRegistry
+  obj: jsObject
+
 
 
