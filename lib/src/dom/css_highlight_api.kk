@@ -11,7 +11,7 @@ pub value struct highlight
   obj: jsObject
 
 pub inline fun newHighlight(initialRanges': dom/abstractRange)
-  newJsObject1("Highlight", initialRanges')"
+  newJsObject1("Highlight", initialRanges')
 
 pub inline fun priority(obj: highlight, value: int): web ()
   setJsObjectField(obj.obj, "priority", value.obj)

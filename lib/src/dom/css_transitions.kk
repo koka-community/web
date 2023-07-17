@@ -10,7 +10,7 @@ pub value struct transitionEvent
   obj: jsObject
 
 pub inline fun newTransitionEvent(type': string, transitionEventInitDict': transitionEventInit)
-  newJsObject2("TransitionEvent", type', transitionEventInitDict')"
+  newJsObject2("TransitionEvent", type', transitionEventInitDict')
 
 pub inline fun propertyName(obj: transitionEvent): web string
   getJsObjectField(obj.obj, "propertyName")

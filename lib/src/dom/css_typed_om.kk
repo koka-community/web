@@ -77,7 +77,7 @@ pub value struct cssUnparsedValue
   obj: jsObject
 
 pub inline fun newCssUnparsedValue(members': jsArray)
-  newJsObject1("CssUnparsedValue", members')"
+  newJsObject1("CssUnparsedValue", members')
 
 pub inline fun length(obj: cssUnparsedValue): web int
   getJsObjectField(obj.obj, "length")
@@ -86,7 +86,7 @@ pub value struct cssVariableReferenceValue
   obj: jsObject
 
 pub inline fun newCssVariableReferenceValue(variable': string, fallback': maybe<cssUnparsedValue> =  Nothing)
-  newJsObject2("CssVariableReferenceValue", variable', fallback')"
+  newJsObject2("CssVariableReferenceValue", variable', fallback')
 
 pub inline fun variable(obj: cssVariableReferenceValue, value: string): web ()
   setJsObjectField(obj.obj, "variable", value.obj)
@@ -101,7 +101,7 @@ pub value struct cssKeywordValue
   obj: jsObject
 
 pub inline fun newCssKeywordValue(value': string)
-  newJsObject1("CssKeywordValue", value')"
+  newJsObject1("CssKeywordValue", value')
 
 pub inline fun value(obj: cssKeywordValue, value: string): web ()
   setJsObjectField(obj.obj, "value", value.obj)
@@ -229,7 +229,7 @@ pub value struct cssUnitValue
   obj: jsObject
 
 pub inline fun newCssUnitValue(value': double, unit': string)
-  newJsObject2("CssUnitValue", value', unit')"
+  newJsObject2("CssUnitValue", value', unit')
 
 pub inline fun value(obj: cssUnitValue, value: double): web ()
   setJsObjectField(obj.obj, "value", value.obj)
@@ -251,7 +251,7 @@ pub value struct cssMathSum
   obj: jsObject
 
 pub inline fun newCssMathSum(args': cssNumberish)
-  newJsObject1("CssMathSum", args')"
+  newJsObject1("CssMathSum", args')
 
 pub inline fun values(obj: cssMathSum): web cssNumericArray
   getJsObjectField(obj.obj, "values")
@@ -260,7 +260,7 @@ pub value struct cssMathProduct
   obj: jsObject
 
 pub inline fun newCssMathProduct(args': cssNumberish)
-  newJsObject1("CssMathProduct", args')"
+  newJsObject1("CssMathProduct", args')
 
 pub inline fun values(obj: cssMathProduct): web cssNumericArray
   getJsObjectField(obj.obj, "values")
@@ -269,7 +269,7 @@ pub value struct cssMathNegate
   obj: jsObject
 
 pub inline fun newCssMathNegate(arg': cssNumberish)
-  newJsObject1("CssMathNegate", arg')"
+  newJsObject1("CssMathNegate", arg')
 
 pub inline fun value(obj: cssMathNegate): web cssNumericValue
   getJsObjectField(obj.obj, "value")
@@ -278,7 +278,7 @@ pub value struct cssMathInvert
   obj: jsObject
 
 pub inline fun newCssMathInvert(arg': cssNumberish)
-  newJsObject1("CssMathInvert", arg')"
+  newJsObject1("CssMathInvert", arg')
 
 pub inline fun value(obj: cssMathInvert): web cssNumericValue
   getJsObjectField(obj.obj, "value")
@@ -287,7 +287,7 @@ pub value struct cssMathMin
   obj: jsObject
 
 pub inline fun newCssMathMin(args': cssNumberish)
-  newJsObject1("CssMathMin", args')"
+  newJsObject1("CssMathMin", args')
 
 pub inline fun values(obj: cssMathMin): web cssNumericArray
   getJsObjectField(obj.obj, "values")
@@ -296,7 +296,7 @@ pub value struct cssMathMax
   obj: jsObject
 
 pub inline fun newCssMathMax(args': cssNumberish)
-  newJsObject1("CssMathMax", args')"
+  newJsObject1("CssMathMax", args')
 
 pub inline fun values(obj: cssMathMax): web cssNumericArray
   getJsObjectField(obj.obj, "values")
@@ -305,7 +305,7 @@ pub value struct cssMathClamp
   obj: jsObject
 
 pub inline fun newCssMathClamp(lower': cssNumberish, value': cssNumberish, upper': cssNumberish)
-  newJsObject3("CssMathClamp", lower', value', upper')"
+  newJsObject3("CssMathClamp", lower', value', upper')
 
 pub inline fun lower(obj: cssMathClamp): web cssNumericValue
   getJsObjectField(obj.obj, "lower")
@@ -327,7 +327,7 @@ pub value struct cssTransformValue
   obj: jsObject
 
 pub inline fun newCssTransformValue(transforms': jsArray)
-  newJsObject1("CssTransformValue", transforms')"
+  newJsObject1("CssTransformValue", transforms')
 
 pub inline fun toMatrix(obj: cssTransformValue): web geometry/domMatrix
   jsOperation2(obj.obj, "toMatrix")
@@ -355,7 +355,7 @@ pub value struct cssTranslate
   obj: jsObject
 
 pub inline fun newCssTranslate(x': cssNumericValue, y': cssNumericValue, z': cssNumericValue)
-  newJsObject3("CssTranslate", x', y', z')"
+  newJsObject3("CssTranslate", x', y', z')
 
 pub inline fun x(obj: cssTranslate, value: cssNumericValue): web ()
   setJsObjectField(obj.obj, "x", value.obj)
@@ -379,7 +379,7 @@ pub value struct cssRotate
   obj: jsObject
 
 pub inline fun newCssRotate(angleOrX': maybe<jsObject>, y': cssNumberish, z': cssNumberish, angle': cssNumericValue)
-  newJsObject4("CssRotate", angleOrX', y', z', angle')"
+  newJsObject4("CssRotate", angleOrX', y', z', angle')
 
 pub inline fun x(obj: cssRotate, value: cssNumberish): web ()
   setJsObjectField(obj.obj, "x", value.obj)
@@ -409,7 +409,7 @@ pub value struct cssScale
   obj: jsObject
 
 pub inline fun newCssScale(x': cssNumberish, y': cssNumberish, z': cssNumberish)
-  newJsObject3("CssScale", x', y', z')"
+  newJsObject3("CssScale", x', y', z')
 
 pub inline fun x(obj: cssScale, value: cssNumberish): web ()
   setJsObjectField(obj.obj, "x", value.obj)
@@ -433,7 +433,7 @@ pub value struct cssSkew
   obj: jsObject
 
 pub inline fun newCssSkew(ax': cssNumericValue, ay': cssNumericValue)
-  newJsObject2("CssSkew", ax', ay')"
+  newJsObject2("CssSkew", ax', ay')
 
 pub inline fun ax(obj: cssSkew, value: cssNumericValue): web ()
   setJsObjectField(obj.obj, "ax", value.obj)
@@ -451,7 +451,7 @@ pub value struct cssSkewX
   obj: jsObject
 
 pub inline fun newCssSkewX(ax': cssNumericValue)
-  newJsObject1("CssSkewX", ax')"
+  newJsObject1("CssSkewX", ax')
 
 pub inline fun ax(obj: cssSkewX, value: cssNumericValue): web ()
   setJsObjectField(obj.obj, "ax", value.obj)
@@ -463,7 +463,7 @@ pub value struct cssSkewY
   obj: jsObject
 
 pub inline fun newCssSkewY(ay': cssNumericValue)
-  newJsObject1("CssSkewY", ay')"
+  newJsObject1("CssSkewY", ay')
 
 pub inline fun ay(obj: cssSkewY, value: cssNumericValue): web ()
   setJsObjectField(obj.obj, "ay", value.obj)
@@ -475,7 +475,7 @@ pub value struct cssPerspective
   obj: jsObject
 
 pub inline fun newCssPerspective(length': cssPerspectiveValue)
-  newJsObject1("CssPerspective", length')"
+  newJsObject1("CssPerspective", length')
 
 pub inline fun length(obj: cssPerspective, value: cssPerspectiveValue): web ()
   setJsObjectField(obj.obj, "length", value.obj)
@@ -487,7 +487,7 @@ pub value struct cssMatrixComponent
   obj: jsObject
 
 pub inline fun newCssMatrixComponent(matrix': geometry/domMatrixReadOnly, options': cssMatrixComponentOptions)
-  newJsObject2("CssMatrixComponent", matrix', options')"
+  newJsObject2("CssMatrixComponent", matrix', options')
 
 pub inline fun matrix(obj: cssMatrixComponent, value: geometry/domMatrix): web ()
   setJsObjectField(obj.obj, "matrix", value.obj)
@@ -526,7 +526,7 @@ pub value struct cssrgB
   obj: jsObject
 
 pub inline fun newCssrgB(r': cssColorRGBComp, g': cssColorRGBComp, b': cssColorRGBComp, alpha': cssColorPercent)
-  newJsObject4("CssrgB", r', g', b', alpha')"
+  newJsObject4("CssrgB", r', g', b', alpha')
 
 pub inline fun r(obj: cssrgB, value: cssColorRGBComp): web ()
   setJsObjectField(obj.obj, "r", value.obj)
@@ -556,7 +556,7 @@ pub value struct csshsL
   obj: jsObject
 
 pub inline fun newCsshsL(h': cssColorAngle, s': cssColorPercent, l': cssColorPercent, alpha': cssColorPercent)
-  newJsObject4("CsshsL", h', s', l', alpha')"
+  newJsObject4("CsshsL", h', s', l', alpha')
 
 pub inline fun h(obj: csshsL, value: cssColorAngle): web ()
   setJsObjectField(obj.obj, "h", value.obj)
@@ -586,7 +586,7 @@ pub value struct csshwB
   obj: jsObject
 
 pub inline fun newCsshwB(h': cssNumericValue, w': cssNumberish, b': cssNumberish, alpha': cssNumberish)
-  newJsObject4("CsshwB", h', w', b', alpha')"
+  newJsObject4("CsshwB", h', w', b', alpha')
 
 pub inline fun h(obj: csshwB, value: cssNumericValue): web ()
   setJsObjectField(obj.obj, "h", value.obj)
@@ -616,7 +616,7 @@ pub value struct cssLab
   obj: jsObject
 
 pub inline fun newCssLab(l': cssColorPercent, a': cssColorNumber, b': cssColorNumber, alpha': cssColorPercent)
-  newJsObject4("CssLab", l', a', b', alpha')"
+  newJsObject4("CssLab", l', a', b', alpha')
 
 pub inline fun l(obj: cssLab, value: cssColorPercent): web ()
   setJsObjectField(obj.obj, "l", value.obj)
@@ -646,7 +646,7 @@ pub value struct csslcH
   obj: jsObject
 
 pub inline fun newCsslcH(l': cssColorPercent, c': cssColorPercent, h': cssColorAngle, alpha': cssColorPercent)
-  newJsObject4("CsslcH", l', c', h', alpha')"
+  newJsObject4("CsslcH", l', c', h', alpha')
 
 pub inline fun l(obj: csslcH, value: cssColorPercent): web ()
   setJsObjectField(obj.obj, "l", value.obj)
@@ -676,7 +676,7 @@ pub value struct cssokLab
   obj: jsObject
 
 pub inline fun newCssokLab(l': cssColorPercent, a': cssColorNumber, b': cssColorNumber, alpha': cssColorPercent)
-  newJsObject4("CssokLab", l', a', b', alpha')"
+  newJsObject4("CssokLab", l', a', b', alpha')
 
 pub inline fun l(obj: cssokLab, value: cssColorPercent): web ()
   setJsObjectField(obj.obj, "l", value.obj)
@@ -706,7 +706,7 @@ pub value struct cssoklcH
   obj: jsObject
 
 pub inline fun newCssoklcH(l': cssColorPercent, c': cssColorPercent, h': cssColorAngle, alpha': cssColorPercent)
-  newJsObject4("CssoklcH", l', c', h', alpha')"
+  newJsObject4("CssoklcH", l', c', h', alpha')
 
 pub inline fun l(obj: cssoklcH, value: cssColorPercent): web ()
   setJsObjectField(obj.obj, "l", value.obj)
@@ -736,7 +736,7 @@ pub value struct cssColor
   obj: jsObject
 
 pub inline fun newCssColor(colorSpace': cssKeywordish, channels': jsArray, alpha': cssNumberish)
-  newJsObject3("CssColor", colorSpace', channels', alpha')"
+  newJsObject3("CssColor", colorSpace', channels', alpha')
 
 pub inline fun colorSpace(obj: cssColor, value: cssKeywordish): web ()
   setJsObjectField(obj.obj, "colorSpace", value.obj)

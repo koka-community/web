@@ -62,7 +62,7 @@ pub value struct xmlHttpRequest
   obj: jsObject
 
 pub inline fun newXmlHttpRequest()
-  newJsObject0("XmlHttpRequest")"
+  newJsObject0("XmlHttpRequest")
 pub inline fun unsenT(): int
   getConstant("UNSENT")
 
@@ -154,7 +154,7 @@ pub value struct formData
   obj: jsObject
 
 pub inline fun newFormData(form': html/htmlFormElement, submitter': maybe<html/htmlElement> =  Nothing)
-  newJsObject2("FormData", form', submitter')"
+  newJsObject2("FormData", form', submitter')
 
 pub inline fun append(obj: formData, name': string, blobValueOrValue': maybe<jsObject>, filename': string): web ()
   jsOperation5(obj.obj, "append", name'.obj, blobValueOrValue'.obj, filename'.obj)
@@ -178,7 +178,7 @@ pub value struct progressEvent
   obj: jsObject
 
 pub inline fun newProgressEvent(type': string, eventInitDict': progressEventInit)
-  newJsObject2("ProgressEvent", type', eventInitDict')"
+  newJsObject2("ProgressEvent", type', eventInitDict')
 
 pub inline fun lengthComputable(obj: progressEvent): web bool
   getJsObjectField(obj.obj, "lengthComputable")

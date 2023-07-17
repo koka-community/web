@@ -12,7 +12,7 @@ pub value struct groupEffect
   obj: jsObject
 
 pub inline fun newGroupEffect(children': maybe<jsArray> =  Nothing, timing': maybe<jsObject>)
-  newJsObject2("GroupEffect", children', timing')"
+  newJsObject2("GroupEffect", children', timing')
 
 pub inline fun clone(obj: groupEffect): web groupEffect
   jsOperation2(obj.obj, "clone")
@@ -46,7 +46,7 @@ pub value struct sequenceEffect
   obj: jsObject
 
 pub inline fun newSequenceEffect(children': maybe<jsArray> =  Nothing, timing': maybe<jsObject>)
-  newJsObject2("SequenceEffect", children', timing')"
+  newJsObject2("SequenceEffect", children', timing')
 
 pub inline fun clone(obj: sequenceEffect): web sequenceEffect
   jsOperation2(obj.obj, "clone")
@@ -81,7 +81,7 @@ pub value struct animationPlaybackEvent
   obj: jsObject
 
 pub inline fun newAnimationPlaybackEvent(type': string, eventInitDict': animationPlaybackEventInit)
-  newJsObject2("AnimationPlaybackEvent", type', eventInitDict')"
+  newJsObject2("AnimationPlaybackEvent", type', eventInitDict')
 
 pub inline fun currentTime(obj: animationPlaybackEvent): web maybe<css_typed_om/cssNumberish>
   getJsObjectField(obj.obj, "currentTime")

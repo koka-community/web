@@ -229,7 +229,7 @@ pub value struct rtcPeerConnection
   obj: jsObject
 
 pub inline fun newRtcPeerConnection(configuration': rtcConfiguration)
-  newJsObject1("RtcPeerConnection", configuration')"
+  newJsObject1("RtcPeerConnection", configuration')
 pub inline fun generateCertificate(keygenAlgorithm': webcryptoapi/algorithmIdentifier): web jsPromise
   jsOperation2("generateCertificate", keygenAlgorithm'.obj)
 
@@ -393,7 +393,7 @@ pub value struct rtcSessionDescription
   obj: jsObject
 
 pub inline fun newRtcSessionDescription(descriptionInitDict': rtcSessionDescriptionInit)
-  newJsObject1("RtcSessionDescription", descriptionInitDict')"
+  newJsObject1("RtcSessionDescription", descriptionInitDict')
 
 pub inline fun toJSON(obj: rtcSessionDescription): web jsObject
   jsOperation2(obj.obj, "toJSON")
@@ -457,7 +457,7 @@ pub value struct rtcIceCandidate
   obj: jsObject
 
 pub inline fun newRtcIceCandidate(candidateInitDict': rtcIceCandidateInit)
-  newJsObject1("RtcIceCandidate", candidateInitDict')"
+  newJsObject1("RtcIceCandidate", candidateInitDict')
 
 pub inline fun toJSON(obj: rtcIceCandidate): web rtcIceCandidateInit
   jsOperation2(obj.obj, "toJSON")
@@ -558,7 +558,7 @@ pub value struct rtcPeerConnectionIceEvent
   obj: jsObject
 
 pub inline fun newRtcPeerConnectionIceEvent(type': string, eventInitDict': rtcPeerConnectionIceEventInit)
-  newJsObject2("RtcPeerConnectionIceEvent", type', eventInitDict')"
+  newJsObject2("RtcPeerConnectionIceEvent", type', eventInitDict')
 
 pub inline fun candidate(obj: rtcPeerConnectionIceEvent): web maybe<rtcIceCandidate>
   getJsObjectField(obj.obj, "candidate")
@@ -596,7 +596,7 @@ pub value struct rtcPeerConnectionIceErrorEvent
   obj: jsObject
 
 pub inline fun newRtcPeerConnectionIceErrorEvent(type': string, eventInitDict': rtcPeerConnectionIceErrorEventInit)
-  newJsObject2("RtcPeerConnectionIceErrorEvent", type', eventInitDict')"
+  newJsObject2("RtcPeerConnectionIceErrorEvent", type', eventInitDict')
 
 pub inline fun address(obj: rtcPeerConnectionIceErrorEvent): web maybe<string>
   getJsObjectField(obj.obj, "address")
@@ -1220,7 +1220,7 @@ pub value struct rtcIceTransport
   obj: jsObject
 
 pub inline fun newRtcIceTransport()
-  newJsObject0("RtcIceTransport")"
+  newJsObject0("RtcIceTransport")
 
 pub inline fun gather(obj: rtcIceTransport, options': webrtc_ice/rtcIceGatherOptions): web ()
   jsOperation3(obj.obj, "gather", options'.obj)
@@ -1356,7 +1356,7 @@ pub value struct rtcTrackEvent
   obj: jsObject
 
 pub inline fun newRtcTrackEvent(type': string, eventInitDict': rtcTrackEventInit)
-  newJsObject2("RtcTrackEvent", type', eventInitDict')"
+  newJsObject2("RtcTrackEvent", type', eventInitDict')
 
 pub inline fun receiver(obj: rtcTrackEvent): web rtcRtpReceiver
   getJsObjectField(obj.obj, "receiver")
@@ -1590,7 +1590,7 @@ pub value struct rtcDataChannelEvent
   obj: jsObject
 
 pub inline fun newRtcDataChannelEvent(type': string, eventInitDict': rtcDataChannelEventInit)
-  newJsObject2("RtcDataChannelEvent", type', eventInitDict')"
+  newJsObject2("RtcDataChannelEvent", type', eventInitDict')
 
 pub inline fun channel(obj: rtcDataChannelEvent): web rtcDataChannel
   getJsObjectField(obj.obj, "channel")
@@ -1632,7 +1632,7 @@ pub value struct rtcdtmfToneChangeEvent
   obj: jsObject
 
 pub inline fun newRtcdtmfToneChangeEvent(type': string, eventInitDict': rtcdtmfToneChangeEventInit)
-  newJsObject2("RtcdtmfToneChangeEvent", type', eventInitDict')"
+  newJsObject2("RtcdtmfToneChangeEvent", type', eventInitDict')
 
 pub inline fun tone(obj: rtcdtmfToneChangeEvent): web string
   getJsObjectField(obj.obj, "tone")
@@ -1689,7 +1689,7 @@ pub value struct rtcError
   obj: jsObject
 
 pub inline fun newRtcError(init': rtcErrorInit, message': string)
-  newJsObject2("RtcError", init', message')"
+  newJsObject2("RtcError", init', message')
 
 pub inline fun httpRequestStatusCode(obj: rtcError): web maybe<int>
   getJsObjectField(obj.obj, "httpRequestStatusCode")
@@ -1772,7 +1772,7 @@ pub value struct rtcErrorEvent
   obj: jsObject
 
 pub inline fun newRtcErrorEvent(type': string, eventInitDict': rtcErrorEventInit)
-  newJsObject2("RtcErrorEvent", type', eventInitDict')"
+  newJsObject2("RtcErrorEvent", type', eventInitDict')
 
 pub inline fun error(obj: rtcErrorEvent): web rtcError
   getJsObjectField(obj.obj, "error")

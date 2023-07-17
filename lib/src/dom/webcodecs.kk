@@ -58,7 +58,7 @@ pub value struct audioDecoder
   obj: jsObject
 
 pub inline fun newAudioDecoder(init': audioDecoderInit)
-  newJsObject1("AudioDecoder", init')"
+  newJsObject1("AudioDecoder", init')
 pub inline fun isConfigSupported(config': audioDecoderConfig): web jsPromise
   jsOperation2("isConfigSupported", config'.obj)
 
@@ -113,7 +113,7 @@ pub value struct videoDecoder
   obj: jsObject
 
 pub inline fun newVideoDecoder(init': videoDecoderInit)
-  newJsObject1("VideoDecoder", init')"
+  newJsObject1("VideoDecoder", init')
 pub inline fun isConfigSupported(config': videoDecoderConfig): web jsPromise
   jsOperation2("isConfigSupported", config'.obj)
 
@@ -168,7 +168,7 @@ pub value struct audioEncoder
   obj: jsObject
 
 pub inline fun newAudioEncoder(init': audioEncoderInit)
-  newJsObject1("AudioEncoder", init')"
+  newJsObject1("AudioEncoder", init')
 pub inline fun isConfigSupported(config': audioEncoderConfig): web jsPromise
   jsOperation2("isConfigSupported", config'.obj)
 
@@ -240,7 +240,7 @@ pub value struct videoEncoder
   obj: jsObject
 
 pub inline fun newVideoEncoder(init': videoEncoderInit)
-  newJsObject1("VideoEncoder", init')"
+  newJsObject1("VideoEncoder", init')
 pub inline fun isConfigSupported(config': videoEncoderConfig): web jsPromise
   jsOperation2("isConfigSupported", config'.obj)
 
@@ -827,7 +827,7 @@ pub value struct encodedAudioChunk
   obj: jsObject
 
 pub inline fun newEncodedAudioChunk(init': encodedAudioChunkInit)
-  newJsObject1("EncodedAudioChunk", init')"
+  newJsObject1("EncodedAudioChunk", init')
 
 pub inline fun copyTo(obj: encodedAudioChunk, destination': webidl/allowSharedBufferSource): web ()
   jsOperation3(obj.obj, "copyTo", destination'.obj)
@@ -883,7 +883,7 @@ pub value struct encodedVideoChunk
   obj: jsObject
 
 pub inline fun newEncodedVideoChunk(init': encodedVideoChunkInit)
-  newJsObject1("EncodedVideoChunk", init')"
+  newJsObject1("EncodedVideoChunk", init')
 
 pub inline fun copyTo(obj: encodedVideoChunk, destination': webidl/allowSharedBufferSource): web ()
   jsOperation3(obj.obj, "copyTo", destination'.obj)
@@ -939,7 +939,7 @@ pub value struct audioData
   obj: jsObject
 
 pub inline fun newAudioData(init': audioDataInit)
-  newJsObject1("AudioData", init')"
+  newJsObject1("AudioData", init')
 
 pub inline fun allocationSize(obj: audioData, options': audioDataCopyToOptions): web int
   jsOperation3(obj.obj, "allocationSize", options'.obj)
@@ -1069,7 +1069,7 @@ pub value struct videoFrame
   obj: jsObject
 
 pub inline fun newVideoFrame(dataOrImage': maybe<jsObject>, init': maybe<jsObject>)
-  newJsObject2("VideoFrame", dataOrImage', init')"
+  newJsObject2("VideoFrame", dataOrImage', init')
 
 pub inline fun metadata(obj: videoFrame): web videoFrameMetadata
   jsOperation2(obj.obj, "metadata")
@@ -1340,7 +1340,7 @@ pub value struct videoColorSpace
   obj: jsObject
 
 pub inline fun newVideoColorSpace(init': videoColorSpaceInit)
-  newJsObject1("VideoColorSpace", init')"
+  newJsObject1("VideoColorSpace", init')
 
 pub inline fun toJSON(obj: videoColorSpace): web videoColorSpaceInit
   jsOperation2(obj.obj, "toJSON")
@@ -1405,7 +1405,7 @@ pub value struct imageDecoder
   obj: jsObject
 
 pub inline fun newImageDecoder(init': imageDecoderInit)
-  newJsObject1("ImageDecoder", init')"
+  newJsObject1("ImageDecoder", init')
 pub inline fun isTypeSupported(type': string): web jsPromise
   jsOperation2("isTypeSupported", type'.obj)
 

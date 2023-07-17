@@ -148,7 +148,7 @@ pub value struct touch
   obj: jsObject
 
 pub inline fun newTouch(touchInitDict': touchInit)
-  newJsObject1("Touch", touchInitDict')"
+  newJsObject1("Touch", touchInitDict')
 
 pub inline fun identifier(obj: touch): web int
   getJsObjectField(obj.obj, "identifier")
@@ -244,7 +244,7 @@ pub value struct touchEvent
   obj: jsObject
 
 pub inline fun newTouchEvent(type': string, eventInitDict': touchEventInit)
-  newJsObject2("TouchEvent", type', eventInitDict')"
+  newJsObject2("TouchEvent", type', eventInitDict')
 
 pub inline fun getModifierState(obj: touchEvent, keyArg': string): web bool
   jsOperation3(obj.obj, "getModifierState", keyArg'.obj)

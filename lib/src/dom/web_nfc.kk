@@ -11,7 +11,7 @@ pub value struct ndefMessage
   obj: jsObject
 
 pub inline fun newNdefMessage(messageInit': ndefMessageInit)
-  newJsObject1("NdefMessage", messageInit')"
+  newJsObject1("NdefMessage", messageInit')
 
 pub inline fun records(obj: ndefMessage): web jsArray
   getJsObjectField(obj.obj, "records")
@@ -34,7 +34,7 @@ pub value struct ndefRecord
   obj: jsObject
 
 pub inline fun newNdefRecord(recordInit': ndefRecordInit)
-  newJsObject1("NdefRecord", recordInit')"
+  newJsObject1("NdefRecord", recordInit')
 
 pub inline fun toRecords(obj: ndefRecord): web maybe<jsArray>
   jsOperation2(obj.obj, "toRecords")
@@ -120,7 +120,7 @@ pub value struct ndefReader
   obj: jsObject
 
 pub inline fun newNdefReader()
-  newJsObject0("NdefReader")"
+  newJsObject0("NdefReader")
 
 pub inline fun scan(obj: ndefReader, options': ndefScanOptions): web jsPromise
   jsOperation3(obj.obj, "scan", options'.obj)
@@ -147,7 +147,7 @@ pub value struct ndefReadingEvent
   obj: jsObject
 
 pub inline fun newNdefReadingEvent(type': string, readingEventInitDict': ndefReadingEventInit)
-  newJsObject2("NdefReadingEvent", type', readingEventInitDict')"
+  newJsObject2("NdefReadingEvent", type', readingEventInitDict')
 
 pub inline fun serialNumber(obj: ndefReadingEvent): web string
   getJsObjectField(obj.obj, "serialNumber")

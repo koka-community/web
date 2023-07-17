@@ -153,7 +153,7 @@ pub value struct pushEvent
   obj: jsObject
 
 pub inline fun newPushEvent(type': string, eventInitDict': pushEventInit)
-  newJsObject2("PushEvent", type', eventInitDict')"
+  newJsObject2("PushEvent", type', eventInitDict')
 
 pub inline fun data(obj: pushEvent): web maybe<pushMessageData>
   getJsObjectField(obj.obj, "data")
@@ -179,7 +179,7 @@ pub value struct pushSubscriptionChangeEvent
   obj: jsObject
 
 pub inline fun newPushSubscriptionChangeEvent(type': string, eventInitDict': pushSubscriptionChangeEventInit)
-  newJsObject2("PushSubscriptionChangeEvent", type', eventInitDict')"
+  newJsObject2("PushSubscriptionChangeEvent", type', eventInitDict')
 
 pub inline fun newSubscription(obj: pushSubscriptionChangeEvent): web maybe<pushSubscription>
   getJsObjectField(obj.obj, "newSubscription")

@@ -35,7 +35,7 @@ pub value struct cssParserAtRule
   obj: jsObject
 
 pub inline fun newCssParserAtRule(name': string, prelude': jsArray, body': maybe<jsArray> =  Nothing)
-  newJsObject3("CssParserAtRule", name', prelude', body')"
+  newJsObject3("CssParserAtRule", name', prelude', body')
 
 pub inline fun name(obj: cssParserAtRule): web string
   getJsObjectField(obj.obj, "name")
@@ -50,7 +50,7 @@ pub value struct cssParserQualifiedRule
   obj: jsObject
 
 pub inline fun newCssParserQualifiedRule(prelude': jsArray, body': maybe<jsArray> =  Nothing)
-  newJsObject2("CssParserQualifiedRule", prelude', body')"
+  newJsObject2("CssParserQualifiedRule", prelude', body')
 
 pub inline fun prelude(obj: cssParserQualifiedRule): web jsArray
   getJsObjectField(obj.obj, "prelude")
@@ -62,7 +62,7 @@ pub value struct cssParserDeclaration
   obj: jsObject
 
 pub inline fun newCssParserDeclaration(name': string, body': jsArray)
-  newJsObject2("CssParserDeclaration", name', body')"
+  newJsObject2("CssParserDeclaration", name', body')
 
 pub inline fun name(obj: cssParserDeclaration): web string
   getJsObjectField(obj.obj, "name")
@@ -78,7 +78,7 @@ pub value struct cssParserBlock
   obj: jsObject
 
 pub inline fun newCssParserBlock(name': string, body': jsArray)
-  newJsObject2("CssParserBlock", name', body')"
+  newJsObject2("CssParserBlock", name', body')
 
 pub inline fun name(obj: cssParserBlock): web string
   getJsObjectField(obj.obj, "name")
@@ -90,7 +90,7 @@ pub value struct cssParserFunction
   obj: jsObject
 
 pub inline fun newCssParserFunction(name': string, args': jsArray)
-  newJsObject2("CssParserFunction", name', args')"
+  newJsObject2("CssParserFunction", name', args')
 
 pub inline fun name(obj: cssParserFunction): web string
   getJsObjectField(obj.obj, "name")

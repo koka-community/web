@@ -1332,7 +1332,7 @@ pub value struct gpuPipelineError
   obj: jsObject
 
 pub inline fun newGpuPipelineError(options': gpuPipelineErrorInit, message': string)
-  newJsObject2("GpuPipelineError", options', message')"
+  newJsObject2("GpuPipelineError", options', message')
 
 pub inline fun reason(obj: gpuPipelineError): web gpuPipelineErrorReason
   getJsObjectField(obj.obj, "reason")
@@ -2673,25 +2673,25 @@ pub value struct gpuValidationError
   obj: jsObject
 
 pub inline fun newGpuValidationError(message': string)
-  newJsObject1("GpuValidationError", message')"
+  newJsObject1("GpuValidationError", message')
 
 pub value struct gpuOutOfMemoryError
   obj: jsObject
 
 pub inline fun newGpuOutOfMemoryError(message': string)
-  newJsObject1("GpuOutOfMemoryError", message')"
+  newJsObject1("GpuOutOfMemoryError", message')
 
 pub value struct gpuInternalError
   obj: jsObject
 
 pub inline fun newGpuInternalError(message': string)
-  newJsObject1("GpuInternalError", message')"
+  newJsObject1("GpuInternalError", message')
 
 pub value struct gpuUncapturedErrorEvent
   obj: jsObject
 
 pub inline fun newGpuUncapturedErrorEvent(type': string, gpuUncapturedErrorEventInitDict': gpuUncapturedErrorEventInit)
-  newJsObject2("GpuUncapturedErrorEvent", type', gpuUncapturedErrorEventInitDict')"
+  newJsObject2("GpuUncapturedErrorEvent", type', gpuUncapturedErrorEventInitDict')
 
 pub inline fun error(obj: gpuUncapturedErrorEvent): web gpuError
   getJsObjectField(obj.obj, "error")

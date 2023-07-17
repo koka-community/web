@@ -43,7 +43,7 @@ pub value struct mediaMetadata
   obj: jsObject
 
 pub inline fun newMediaMetadata(init': mediaMetadataInit)
-  newJsObject1("MediaMetadata", init')"
+  newJsObject1("MediaMetadata", init')
 
 pub inline fun title(obj: mediaMetadata, value: string): web ()
   setJsObjectField(obj.obj, "title", value.obj)

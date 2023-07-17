@@ -11,7 +11,7 @@ pub value struct profiler
   obj: jsObject
 
 pub inline fun newProfiler(options': profilerInitOptions)
-  newJsObject1("Profiler", options')"
+  newJsObject1("Profiler", options')
 
 pub inline fun stop(obj: profiler): web jsPromise
   jsOperation2(obj.obj, "stop")

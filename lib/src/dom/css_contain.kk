@@ -10,7 +10,7 @@ pub value struct contentVisibilityAutoStateChangeEvent
   obj: jsObject
 
 pub inline fun newContentVisibilityAutoStateChangeEvent(type': string, eventInitDict': contentVisibilityAutoStateChangeEventInit)
-  newJsObject2("ContentVisibilityAutoStateChangeEvent", type', eventInitDict')"
+  newJsObject2("ContentVisibilityAutoStateChangeEvent", type', eventInitDict')
 
 pub inline fun skipped(obj: contentVisibilityAutoStateChangeEvent): web bool
   getJsObjectField(obj.obj, "skipped")

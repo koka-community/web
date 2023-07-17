@@ -10,7 +10,7 @@ pub value struct proximitySensor
   obj: jsObject
 
 pub inline fun newProximitySensor(sensorOptions': generic_sensor/sensorOptions)
-  newJsObject1("ProximitySensor", sensorOptions')"
+  newJsObject1("ProximitySensor", sensorOptions')
 
 pub inline fun distance(obj: proximitySensor): web maybe<double>
   getJsObjectField(obj.obj, "distance")

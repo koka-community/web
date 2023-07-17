@@ -136,7 +136,7 @@ pub value struct audioContext
   obj: jsObject
 
 pub inline fun newAudioContext(contextOptions': audioContextOptions)
-  newJsObject1("AudioContext", contextOptions')"
+  newJsObject1("AudioContext", contextOptions')
 
 pub inline fun getOutputTimestamp(obj: audioContext): web audioTimestamp
   jsOperation2(obj.obj, "getOutputTimestamp")
@@ -302,7 +302,7 @@ pub value struct audioRenderCapacityEvent
   obj: jsObject
 
 pub inline fun newAudioRenderCapacityEvent(type': string, eventInitDict': audioRenderCapacityEventInit)
-  newJsObject2("AudioRenderCapacityEvent", type', eventInitDict')"
+  newJsObject2("AudioRenderCapacityEvent", type', eventInitDict')
 
 pub inline fun timestamp(obj: audioRenderCapacityEvent): web double
   getJsObjectField(obj.obj, "timestamp")
@@ -364,7 +364,7 @@ pub value struct offlineAudioContext
   obj: jsObject
 
 pub inline fun newOfflineAudioContext(contextOptionsOrNumberOfChannels': maybe<jsObject>, length': int, sampleRate': double)
-  newJsObject3("OfflineAudioContext", contextOptionsOrNumberOfChannels', length', sampleRate')"
+  newJsObject3("OfflineAudioContext", contextOptionsOrNumberOfChannels', length', sampleRate')
 
 pub inline fun startRendering(obj: offlineAudioContext): web jsPromise
   jsOperation2(obj.obj, "startRendering")
@@ -417,7 +417,7 @@ pub value struct offlineAudioCompletionEvent
   obj: jsObject
 
 pub inline fun newOfflineAudioCompletionEvent(type': string, eventInitDict': offlineAudioCompletionEventInit)
-  newJsObject2("OfflineAudioCompletionEvent", type', eventInitDict')"
+  newJsObject2("OfflineAudioCompletionEvent", type', eventInitDict')
 
 pub inline fun renderedBuffer(obj: offlineAudioCompletionEvent): web audioBuffer
   getJsObjectField(obj.obj, "renderedBuffer")
@@ -440,7 +440,7 @@ pub value struct audioBuffer
   obj: jsObject
 
 pub inline fun newAudioBuffer(options': audioBufferOptions)
-  newJsObject1("AudioBuffer", options')"
+  newJsObject1("AudioBuffer", options')
 
 pub inline fun getChannelData(obj: audioBuffer, channel': int): web jsFloat32Array
   jsOperation3(obj.obj, "getChannelData", channel'.obj)
@@ -630,7 +630,7 @@ pub value struct analyserNode
   obj: jsObject
 
 pub inline fun newAnalyserNode(context': baseAudioContext, options': analyserOptions)
-  newJsObject2("AnalyserNode", context', options')"
+  newJsObject2("AnalyserNode", context', options')
 
 pub inline fun getFloatFrequencyData(obj: analyserNode, array': jsFloat32Array): web ()
   jsOperation3(obj.obj, "getFloatFrequencyData", array'.obj)
@@ -719,7 +719,7 @@ pub value struct audioBufferSourceNode
   obj: jsObject
 
 pub inline fun newAudioBufferSourceNode(context': baseAudioContext, options': audioBufferSourceOptions)
-  newJsObject2("AudioBufferSourceNode", context', options')"
+  newJsObject2("AudioBufferSourceNode", context', options')
 
 pub inline fun start(obj: audioBufferSourceNode, when': double, offset': double, duration': double): web ()
   jsOperation5(obj.obj, "start", when'.obj, offset'.obj, duration'.obj)
@@ -864,7 +864,7 @@ pub value struct audioProcessingEvent
   obj: jsObject
 
 pub inline fun newAudioProcessingEvent(type': string, eventInitDict': audioProcessingEventInit)
-  newJsObject2("AudioProcessingEvent", type', eventInitDict')"
+  newJsObject2("AudioProcessingEvent", type', eventInitDict')
 
 pub inline fun playbackTime(obj: audioProcessingEvent): web double
   getJsObjectField(obj.obj, "playbackTime")
@@ -905,7 +905,7 @@ pub value struct biquadFilterNode
   obj: jsObject
 
 pub inline fun newBiquadFilterNode(context': baseAudioContext, options': biquadFilterOptions)
-  newJsObject2("BiquadFilterNode", context', options')"
+  newJsObject2("BiquadFilterNode", context', options')
 
 pub inline fun getFrequencyResponse(obj: biquadFilterNode, frequencyHz': jsFloat32Array, magResponse': jsFloat32Array, phaseResponse': jsFloat32Array): web ()
   jsOperation5(obj.obj, "getFrequencyResponse", frequencyHz'.obj, magResponse'.obj, phaseResponse'.obj)
@@ -985,7 +985,7 @@ pub value struct channelMergerNode
   obj: jsObject
 
 pub inline fun newChannelMergerNode(context': baseAudioContext, options': channelMergerOptions)
-  newJsObject2("ChannelMergerNode", context', options')"
+  newJsObject2("ChannelMergerNode", context', options')
 
 pub value struct channelMergerOptions
   obj: jsObject
@@ -1008,7 +1008,7 @@ pub value struct channelSplitterNode
   obj: jsObject
 
 pub inline fun newChannelSplitterNode(context': baseAudioContext, options': channelSplitterOptions)
-  newJsObject2("ChannelSplitterNode", context', options')"
+  newJsObject2("ChannelSplitterNode", context', options')
 
 pub value struct channelSplitterOptions
   obj: jsObject
@@ -1031,7 +1031,7 @@ pub value struct constantSourceNode
   obj: jsObject
 
 pub inline fun newConstantSourceNode(context': baseAudioContext, options': constantSourceOptions)
-  newJsObject2("ConstantSourceNode", context', options')"
+  newJsObject2("ConstantSourceNode", context', options')
 
 pub inline fun offset(obj: constantSourceNode): web audioParam
   getJsObjectField(obj.obj, "offset")
@@ -1057,7 +1057,7 @@ pub value struct convolverNode
   obj: jsObject
 
 pub inline fun newConvolverNode(context': baseAudioContext, options': convolverOptions)
-  newJsObject2("ConvolverNode", context', options')"
+  newJsObject2("ConvolverNode", context', options')
 
 pub inline fun buffer(obj: convolverNode, value: maybe<audioBuffer>): web ()
   setJsObjectField(obj.obj, "buffer", value.obj)
@@ -1101,7 +1101,7 @@ pub value struct delayNode
   obj: jsObject
 
 pub inline fun newDelayNode(context': baseAudioContext, options': delayOptions)
-  newJsObject2("DelayNode", context', options')"
+  newJsObject2("DelayNode", context', options')
 
 pub inline fun delayTime(obj: delayNode): web audioParam
   getJsObjectField(obj.obj, "delayTime")
@@ -1136,7 +1136,7 @@ pub value struct dynamicsCompressorNode
   obj: jsObject
 
 pub inline fun newDynamicsCompressorNode(context': baseAudioContext, options': dynamicsCompressorOptions)
-  newJsObject2("DynamicsCompressorNode", context', options')"
+  newJsObject2("DynamicsCompressorNode", context', options')
 
 pub inline fun threshold(obj: dynamicsCompressorNode): web audioParam
   getJsObjectField(obj.obj, "threshold")
@@ -1213,7 +1213,7 @@ pub value struct gainNode
   obj: jsObject
 
 pub inline fun newGainNode(context': baseAudioContext, options': gainOptions)
-  newJsObject2("GainNode", context', options')"
+  newJsObject2("GainNode", context', options')
 
 pub inline fun gain(obj: gainNode): web audioParam
   getJsObjectField(obj.obj, "gain")
@@ -1239,7 +1239,7 @@ pub value struct iirFilterNode
   obj: jsObject
 
 pub inline fun newIirFilterNode(context': baseAudioContext, options': iirFilterOptions)
-  newJsObject2("IirFilterNode", context', options')"
+  newJsObject2("IirFilterNode", context', options')
 
 pub inline fun getFrequencyResponse(obj: iirFilterNode, frequencyHz': jsFloat32Array, magResponse': jsFloat32Array, phaseResponse': jsFloat32Array): web ()
   jsOperation5(obj.obj, "getFrequencyResponse", frequencyHz'.obj, magResponse'.obj, phaseResponse'.obj)
@@ -1268,7 +1268,7 @@ pub value struct mediaElementAudioSourceNode
   obj: jsObject
 
 pub inline fun newMediaElementAudioSourceNode(context': audioContext, options': mediaElementAudioSourceOptions)
-  newJsObject2("MediaElementAudioSourceNode", context', options')"
+  newJsObject2("MediaElementAudioSourceNode", context', options')
 
 pub inline fun mediaElement(obj: mediaElementAudioSourceNode): web html/htmlMediaElement
   getJsObjectField(obj.obj, "mediaElement")
@@ -1291,7 +1291,7 @@ pub value struct mediaStreamAudioDestinationNode
   obj: jsObject
 
 pub inline fun newMediaStreamAudioDestinationNode(context': audioContext, options': audioNodeOptions)
-  newJsObject2("MediaStreamAudioDestinationNode", context', options')"
+  newJsObject2("MediaStreamAudioDestinationNode", context', options')
 
 pub inline fun stream(obj: mediaStreamAudioDestinationNode): web mediacapture_streams/mediaStream
   getJsObjectField(obj.obj, "stream")
@@ -1300,7 +1300,7 @@ pub value struct mediaStreamAudioSourceNode
   obj: jsObject
 
 pub inline fun newMediaStreamAudioSourceNode(context': audioContext, options': mediaStreamAudioSourceOptions)
-  newJsObject2("MediaStreamAudioSourceNode", context', options')"
+  newJsObject2("MediaStreamAudioSourceNode", context', options')
 
 pub inline fun mediaStream(obj: mediaStreamAudioSourceNode): web mediacapture_streams/mediaStream
   getJsObjectField(obj.obj, "mediaStream")
@@ -1323,7 +1323,7 @@ pub value struct mediaStreamTrackAudioSourceNode
   obj: jsObject
 
 pub inline fun newMediaStreamTrackAudioSourceNode(context': audioContext, options': mediaStreamTrackAudioSourceOptions)
-  newJsObject2("MediaStreamTrackAudioSourceNode", context', options')"
+  newJsObject2("MediaStreamTrackAudioSourceNode", context', options')
 
 pub value struct mediaStreamTrackAudioSourceOptions
   obj: jsObject
@@ -1343,7 +1343,7 @@ pub value struct oscillatorNode
   obj: jsObject
 
 pub inline fun newOscillatorNode(context': baseAudioContext, options': oscillatorOptions)
-  newJsObject2("OscillatorNode", context', options')"
+  newJsObject2("OscillatorNode", context', options')
 
 pub inline fun setPeriodicWave(obj: oscillatorNode, periodicWave': periodicWave): web ()
   jsOperation3(obj.obj, "setPeriodicWave", periodicWave'.obj)
@@ -1408,7 +1408,7 @@ pub value struct pannerNode
   obj: jsObject
 
 pub inline fun newPannerNode(context': baseAudioContext, options': pannerOptions)
-  newJsObject2("PannerNode", context', options')"
+  newJsObject2("PannerNode", context', options')
 
 pub inline fun setPosition(obj: pannerNode, x': double, y': double, z': double): web ()
   jsOperation5(obj.obj, "setPosition", x'.obj, y'.obj, z'.obj)
@@ -1620,7 +1620,7 @@ pub value struct periodicWave
   obj: jsObject
 
 pub inline fun newPeriodicWave(context': baseAudioContext, options': periodicWaveOptions)
-  newJsObject2("PeriodicWave", context', options')"
+  newJsObject2("PeriodicWave", context', options')
 
 pub value struct periodicWaveConstraints
   obj: jsObject
@@ -1682,7 +1682,7 @@ pub value struct stereoPannerNode
   obj: jsObject
 
 pub inline fun newStereoPannerNode(context': baseAudioContext, options': stereoPannerOptions)
-  newJsObject2("StereoPannerNode", context', options')"
+  newJsObject2("StereoPannerNode", context', options')
 
 pub inline fun pan(obj: stereoPannerNode): web audioParam
   getJsObjectField(obj.obj, "pan")
@@ -1708,7 +1708,7 @@ pub value struct waveShaperNode
   obj: jsObject
 
 pub inline fun newWaveShaperNode(context': baseAudioContext, options': waveShaperOptions)
-  newJsObject2("WaveShaperNode", context', options')"
+  newJsObject2("WaveShaperNode", context', options')
 
 pub inline fun curve(obj: waveShaperNode, value: maybe<jsFloat32Array>): web ()
   setJsObjectField(obj.obj, "curve", value.obj)
@@ -1783,7 +1783,7 @@ pub value struct audioWorkletNode
   obj: jsObject
 
 pub inline fun newAudioWorkletNode(context': baseAudioContext, name': string, options': audioWorkletNodeOptions)
-  newJsObject3("AudioWorkletNode", context', name', options')"
+  newJsObject3("AudioWorkletNode", context', name', options')
 
 pub inline fun parameters(obj: audioWorkletNode): web audioParamMap
   getJsObjectField(obj.obj, "parameters")
@@ -1854,7 +1854,7 @@ pub value struct audioWorkletProcessor
   obj: jsObject
 
 pub inline fun newAudioWorkletProcessor()
-  newJsObject0("AudioWorkletProcessor")"
+  newJsObject0("AudioWorkletProcessor")
 
 pub inline fun port(obj: audioWorkletProcessor): web html/messagePort
   getJsObjectField(obj.obj, "port")

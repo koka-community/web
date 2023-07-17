@@ -144,7 +144,7 @@ pub value struct usbConnectionEvent
   obj: jsObject
 
 pub inline fun newUsbConnectionEvent(type': string, eventInitDict': usbConnectionEventInit)
-  newJsObject2("UsbConnectionEvent", type', eventInitDict')"
+  newJsObject2("UsbConnectionEvent", type', eventInitDict')
 
 pub inline fun device(obj: usbConnectionEvent): web usbDevice
   getJsObjectField(obj.obj, "device")
@@ -153,7 +153,7 @@ pub value struct usbInTransferResult
   obj: jsObject
 
 pub inline fun newUsbInTransferResult(status': usbTransferStatus, data': maybe<jsDataView> =  Nothing)
-  newJsObject2("UsbInTransferResult", status', data')"
+  newJsObject2("UsbInTransferResult", status', data')
 
 pub inline fun data(obj: usbInTransferResult): web maybe<jsDataView>
   getJsObjectField(obj.obj, "data")
@@ -165,7 +165,7 @@ pub value struct usbOutTransferResult
   obj: jsObject
 
 pub inline fun newUsbOutTransferResult(status': usbTransferStatus, bytesWritten': int)
-  newJsObject2("UsbOutTransferResult", status', bytesWritten')"
+  newJsObject2("UsbOutTransferResult", status', bytesWritten')
 
 pub inline fun bytesWritten(obj: usbOutTransferResult): web int
   getJsObjectField(obj.obj, "bytesWritten")
@@ -177,7 +177,7 @@ pub value struct usbIsochronousInTransferPacket
   obj: jsObject
 
 pub inline fun newUsbIsochronousInTransferPacket(status': usbTransferStatus, data': maybe<jsDataView> =  Nothing)
-  newJsObject2("UsbIsochronousInTransferPacket", status', data')"
+  newJsObject2("UsbIsochronousInTransferPacket", status', data')
 
 pub inline fun data(obj: usbIsochronousInTransferPacket): web maybe<jsDataView>
   getJsObjectField(obj.obj, "data")
@@ -189,7 +189,7 @@ pub value struct usbIsochronousInTransferResult
   obj: jsObject
 
 pub inline fun newUsbIsochronousInTransferResult(packets': jsArray, data': maybe<jsDataView> =  Nothing)
-  newJsObject2("UsbIsochronousInTransferResult", packets', data')"
+  newJsObject2("UsbIsochronousInTransferResult", packets', data')
 
 pub inline fun data(obj: usbIsochronousInTransferResult): web maybe<jsDataView>
   getJsObjectField(obj.obj, "data")
@@ -201,7 +201,7 @@ pub value struct usbIsochronousOutTransferPacket
   obj: jsObject
 
 pub inline fun newUsbIsochronousOutTransferPacket(status': usbTransferStatus, bytesWritten': int)
-  newJsObject2("UsbIsochronousOutTransferPacket", status', bytesWritten')"
+  newJsObject2("UsbIsochronousOutTransferPacket", status', bytesWritten')
 
 pub inline fun bytesWritten(obj: usbIsochronousOutTransferPacket): web int
   getJsObjectField(obj.obj, "bytesWritten")
@@ -213,7 +213,7 @@ pub value struct usbIsochronousOutTransferResult
   obj: jsObject
 
 pub inline fun newUsbIsochronousOutTransferResult(packets': jsArray)
-  newJsObject1("UsbIsochronousOutTransferResult", packets')"
+  newJsObject1("UsbIsochronousOutTransferResult", packets')
 
 pub inline fun packets(obj: usbIsochronousOutTransferResult): web jsArray
   getJsObjectField(obj.obj, "packets")
@@ -360,7 +360,7 @@ pub value struct usbConfiguration
   obj: jsObject
 
 pub inline fun newUsbConfiguration(device': usbDevice, configurationValue': int)
-  newJsObject2("UsbConfiguration", device', configurationValue')"
+  newJsObject2("UsbConfiguration", device', configurationValue')
 
 pub inline fun configurationValue(obj: usbConfiguration): web int
   getJsObjectField(obj.obj, "configurationValue")
@@ -375,7 +375,7 @@ pub value struct usbInterface
   obj: jsObject
 
 pub inline fun newUsbInterface(configuration': usbConfiguration, interfaceNumber': int)
-  newJsObject2("UsbInterface", configuration', interfaceNumber')"
+  newJsObject2("UsbInterface", configuration', interfaceNumber')
 
 pub inline fun interfaceNumber(obj: usbInterface): web int
   getJsObjectField(obj.obj, "interfaceNumber")
@@ -393,7 +393,7 @@ pub value struct usbAlternateInterface
   obj: jsObject
 
 pub inline fun newUsbAlternateInterface(deviceInterface': usbInterface, alternateSetting': int)
-  newJsObject2("UsbAlternateInterface", deviceInterface', alternateSetting')"
+  newJsObject2("UsbAlternateInterface", deviceInterface', alternateSetting')
 
 pub inline fun alternateSetting(obj: usbAlternateInterface): web int
   getJsObjectField(obj.obj, "alternateSetting")
@@ -417,7 +417,7 @@ pub value struct usbEndpoint
   obj: jsObject
 
 pub inline fun newUsbEndpoint(alternate': usbAlternateInterface, endpointNumber': int, direction': usbDirection)
-  newJsObject3("UsbEndpoint", alternate', endpointNumber', direction')"
+  newJsObject3("UsbEndpoint", alternate', endpointNumber', direction')
 
 pub inline fun endpointNumber(obj: usbEndpoint): web int
   getJsObjectField(obj.obj, "endpointNumber")

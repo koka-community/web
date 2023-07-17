@@ -41,7 +41,7 @@ pub value struct sFrameTransform
   obj: jsObject
 
 pub inline fun newSFrameTransform(options': sFrameTransformOptions)
-  newJsObject1("SFrameTransform", options')"
+  newJsObject1("SFrameTransform", options')
 
 pub inline fun setEncryptionKey(obj: sFrameTransform, key': webcryptoapi/cryptoKey, keyID': cryptoKeyID): web jsPromise
   jsOperation4(obj.obj, "setEncryptionKey", key'.obj, keyID'.obj)
@@ -56,7 +56,7 @@ pub value struct sFrameTransformErrorEvent
   obj: jsObject
 
 pub inline fun newSFrameTransformErrorEvent(type': string, eventInitDict': sFrameTransformErrorEventInit)
-  newJsObject2("SFrameTransformErrorEvent", type', eventInitDict')"
+  newJsObject2("SFrameTransformErrorEvent", type', eventInitDict')
 
 pub inline fun errorType(obj: sFrameTransformErrorEvent): web sFrameTransformErrorEventType
   getJsObjectField(obj.obj, "errorType")
@@ -303,5 +303,5 @@ pub value struct rtcRtpScriptTransform
   obj: jsObject
 
 pub inline fun newRtcRtpScriptTransform(worker': html/worker, options': maybe<jsObject>, transfer': jsArray)
-  newJsObject3("RtcRtpScriptTransform", worker', options', transfer')"
+  newJsObject3("RtcRtpScriptTransform", worker', options', transfer')
 

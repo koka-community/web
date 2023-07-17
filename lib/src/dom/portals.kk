@@ -10,7 +10,7 @@ pub value struct htmlPortalElement
   obj: jsObject
 
 pub inline fun newHtmlPortalElement()
-  newJsObject0("HtmlPortalElement")"
+  newJsObject0("HtmlPortalElement")
 
 pub inline fun activate(obj: htmlPortalElement, options': portalActivateOptions): web jsPromise
   jsOperation3(obj.obj, "activate", options'.obj)
@@ -82,7 +82,7 @@ pub value struct portalActivateEvent
   obj: jsObject
 
 pub inline fun newPortalActivateEvent(type': string, eventInitDict': portalActivateEventInit)
-  newJsObject2("PortalActivateEvent", type', eventInitDict')"
+  newJsObject2("PortalActivateEvent", type', eventInitDict')
 
 pub inline fun adoptPredecessor(obj: portalActivateEvent): web htmlPortalElement
   jsOperation2(obj.obj, "adoptPredecessor")

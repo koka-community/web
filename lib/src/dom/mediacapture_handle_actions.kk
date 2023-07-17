@@ -11,7 +11,7 @@ pub value struct captureActionEvent
   obj: jsObject
 
 pub inline fun newCaptureActionEvent(init': captureActionEventInit)
-  newJsObject1("CaptureActionEvent", init')"
+  newJsObject1("CaptureActionEvent", init')
 
 pub inline fun action(obj: captureActionEvent): web captureAction
   getJsObjectField(obj.obj, "action")

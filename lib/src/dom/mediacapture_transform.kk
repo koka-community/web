@@ -10,7 +10,7 @@ pub value struct mediaStreamTrackProcessor
   obj: jsObject
 
 pub inline fun newMediaStreamTrackProcessor(init': mediaStreamTrackProcessorInit)
-  newJsObject1("MediaStreamTrackProcessor", init')"
+  newJsObject1("MediaStreamTrackProcessor", init')
 
 pub inline fun readable(obj: mediaStreamTrackProcessor, value: streams/readableStream): web ()
   setJsObjectField(obj.obj, "readable", value.obj)
@@ -45,7 +45,7 @@ pub value struct videoTrackGenerator
   obj: jsObject
 
 pub inline fun newVideoTrackGenerator()
-  newJsObject0("VideoTrackGenerator")"
+  newJsObject0("VideoTrackGenerator")
 
 pub inline fun writable(obj: videoTrackGenerator): web streams/writableStream
   getJsObjectField(obj.obj, "writable")

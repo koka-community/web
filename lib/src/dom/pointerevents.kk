@@ -144,7 +144,7 @@ pub value struct pointerEvent
   obj: jsObject
 
 pub inline fun newPointerEvent(type': string, eventInitDict': pointerEventInit)
-  newJsObject2("PointerEvent", type', eventInitDict')"
+  newJsObject2("PointerEvent", type', eventInitDict')
 
 pub inline fun getCoalescedEvents(obj: pointerEvent): web jsArray
   jsOperation2(obj.obj, "getCoalescedEvents")

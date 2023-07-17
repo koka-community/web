@@ -10,7 +10,7 @@ pub value struct textDetector
   obj: jsObject
 
 pub inline fun newTextDetector()
-  newJsObject0("TextDetector")"
+  newJsObject0("TextDetector")
 
 pub inline fun detect(obj: textDetector, image': html/imageBitmapSource): web jsPromise
   jsOperation3(obj.obj, "detect", image'.obj)

@@ -34,7 +34,7 @@ pub value struct mediaStream
   obj: jsObject
 
 pub inline fun newMediaStream(streamOrTracks': maybe<jsObject>)
-  newJsObject1("MediaStream", streamOrTracks')"
+  newJsObject1("MediaStream", streamOrTracks')
 
 pub inline fun getAudioTracks(obj: mediaStream): web jsArray
   jsOperation2(obj.obj, "getAudioTracks")
@@ -1524,7 +1524,7 @@ pub value struct mediaStreamTrackEvent
   obj: jsObject
 
 pub inline fun newMediaStreamTrackEvent(type': string, eventInitDict': mediaStreamTrackEventInit)
-  newJsObject2("MediaStreamTrackEvent", type', eventInitDict')"
+  newJsObject2("MediaStreamTrackEvent", type', eventInitDict')
 
 pub inline fun track(obj: mediaStreamTrackEvent): web mediaStreamTrack
   getJsObjectField(obj.obj, "track")
@@ -1547,7 +1547,7 @@ pub value struct overconstrainedError
   obj: jsObject
 
 pub inline fun newOverconstrainedError(constraint': string, message': string)
-  newJsObject2("OverconstrainedError", constraint', message')"
+  newJsObject2("OverconstrainedError", constraint', message')
 
 pub inline fun constraint(obj: overconstrainedError): web string
   getJsObjectField(obj.obj, "constraint")

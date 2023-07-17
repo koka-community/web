@@ -10,7 +10,7 @@ pub value struct inputDeviceCapabilities
   obj: jsObject
 
 pub inline fun newInputDeviceCapabilities(deviceInitDict': inputDeviceCapabilitiesInit)
-  newJsObject1("InputDeviceCapabilities", deviceInitDict')"
+  newJsObject1("InputDeviceCapabilities", deviceInitDict')
 
 pub inline fun firesTouchEvents(obj: inputDeviceCapabilities): web bool
   getJsObjectField(obj.obj, "firesTouchEvents")

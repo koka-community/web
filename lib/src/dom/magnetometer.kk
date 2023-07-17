@@ -11,7 +11,7 @@ pub value struct magnetometer
   obj: jsObject
 
 pub inline fun newMagnetometer(sensorOptions': magnetometerSensorOptions)
-  newJsObject1("Magnetometer", sensorOptions')"
+  newJsObject1("Magnetometer", sensorOptions')
 
 pub inline fun x(obj: magnetometer): web maybe<double>
   getJsObjectField(obj.obj, "x")
@@ -43,7 +43,7 @@ pub value struct uncalibratedMagnetometer
   obj: jsObject
 
 pub inline fun newUncalibratedMagnetometer(sensorOptions': magnetometerSensorOptions)
-  newJsObject1("UncalibratedMagnetometer", sensorOptions')"
+  newJsObject1("UncalibratedMagnetometer", sensorOptions')
 
 pub inline fun x(obj: uncalibratedMagnetometer): web maybe<double>
   getJsObjectField(obj.obj, "x")

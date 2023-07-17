@@ -18,7 +18,7 @@ pub value struct imageCapture
   obj: jsObject
 
 pub inline fun newImageCapture(videoTrack': mediacapture_streams/mediaStreamTrack)
-  newJsObject1("ImageCapture", videoTrack')"
+  newJsObject1("ImageCapture", videoTrack')
 
 pub inline fun takePhoto(obj: imageCapture, photoSettings': photoSettings): web jsPromise
   jsOperation3(obj.obj, "takePhoto", photoSettings'.obj)

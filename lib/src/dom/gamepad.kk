@@ -64,7 +64,7 @@ pub value struct gamepadEvent
   obj: jsObject
 
 pub inline fun newGamepadEvent(type': string, eventInitDict': gamepadEventInit)
-  newJsObject2("GamepadEvent", type', eventInitDict')"
+  newJsObject2("GamepadEvent", type', eventInitDict')
 
 pub inline fun gamepad(obj: gamepadEvent): web gamepad
   getJsObjectField(obj.obj, "gamepad")

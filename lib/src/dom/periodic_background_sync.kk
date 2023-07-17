@@ -54,7 +54,7 @@ pub value struct periodicSyncEvent
   obj: jsObject
 
 pub inline fun newPeriodicSyncEvent(type': string, init': periodicSyncEventInit)
-  newJsObject2("PeriodicSyncEvent", type', init')"
+  newJsObject2("PeriodicSyncEvent", type', init')
 
 pub inline fun tag(obj: periodicSyncEvent): web string
   getJsObjectField(obj.obj, "tag")

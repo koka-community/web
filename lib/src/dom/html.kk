@@ -219,7 +219,7 @@ pub value struct htmlElement
   obj: jsObject
 
 pub inline fun newHtmlElement()
-  newJsObject0("HtmlElement")"
+  newJsObject0("HtmlElement")
 
 pub inline fun click(obj: htmlElement): web ()
   jsOperation2(obj.obj, "click")
@@ -381,7 +381,7 @@ pub value struct htmlHtmlElement
   obj: jsObject
 
 pub inline fun newHtmlHtmlElement()
-  newJsObject0("HtmlHtmlElement")"
+  newJsObject0("HtmlHtmlElement")
 
 pub inline fun version(obj: htmlHtmlElement, value: string): web ()
   setJsObjectField(obj.obj, "version", value.obj)
@@ -393,13 +393,13 @@ pub value struct htmlHeadElement
   obj: jsObject
 
 pub inline fun newHtmlHeadElement()
-  newJsObject0("HtmlHeadElement")"
+  newJsObject0("HtmlHeadElement")
 
 pub value struct htmlTitleElement
   obj: jsObject
 
 pub inline fun newHtmlTitleElement()
-  newJsObject0("HtmlTitleElement")"
+  newJsObject0("HtmlTitleElement")
 
 pub inline fun text(obj: htmlTitleElement, value: string): web ()
   setJsObjectField(obj.obj, "text", value.obj)
@@ -411,7 +411,7 @@ pub value struct htmlBaseElement
   obj: jsObject
 
 pub inline fun newHtmlBaseElement()
-  newJsObject0("HtmlBaseElement")"
+  newJsObject0("HtmlBaseElement")
 
 pub inline fun href(obj: htmlBaseElement, value: string): web ()
   setJsObjectField(obj.obj, "href", value.obj)
@@ -429,7 +429,7 @@ pub value struct htmlLinkElement
   obj: jsObject
 
 pub inline fun newHtmlLinkElement()
-  newJsObject0("HtmlLinkElement")"
+  newJsObject0("HtmlLinkElement")
 
 pub inline fun href(obj: htmlLinkElement, value: string): web ()
   setJsObjectField(obj.obj, "href", value.obj)
@@ -540,7 +540,7 @@ pub value struct htmlMetaElement
   obj: jsObject
 
 pub inline fun newHtmlMetaElement()
-  newJsObject0("HtmlMetaElement")"
+  newJsObject0("HtmlMetaElement")
 
 pub inline fun name(obj: htmlMetaElement, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -576,7 +576,7 @@ pub value struct htmlStyleElement
   obj: jsObject
 
 pub inline fun newHtmlStyleElement()
-  newJsObject0("HtmlStyleElement")"
+  newJsObject0("HtmlStyleElement")
 
 pub inline fun disabled(obj: htmlStyleElement, value: bool): web ()
   setJsObjectField(obj.obj, "disabled", value.obj)
@@ -603,7 +603,7 @@ pub value struct htmlBodyElement
   obj: jsObject
 
 pub inline fun newHtmlBodyElement()
-  newJsObject0("HtmlBodyElement")"
+  newJsObject0("HtmlBodyElement")
 
 pub inline fun onorientationchange(obj: htmlBodyElement, value: eventHandler): web ()
   setJsObjectField(obj.obj, "onorientationchange", value.obj)
@@ -651,7 +651,7 @@ pub value struct htmlHeadingElement
   obj: jsObject
 
 pub inline fun newHtmlHeadingElement()
-  newJsObject0("HtmlHeadingElement")"
+  newJsObject0("HtmlHeadingElement")
 
 pub inline fun align(obj: htmlHeadingElement, value: string): web ()
   setJsObjectField(obj.obj, "align", value.obj)
@@ -663,7 +663,7 @@ pub value struct htmlParagraphElement
   obj: jsObject
 
 pub inline fun newHtmlParagraphElement()
-  newJsObject0("HtmlParagraphElement")"
+  newJsObject0("HtmlParagraphElement")
 
 pub inline fun align(obj: htmlParagraphElement, value: string): web ()
   setJsObjectField(obj.obj, "align", value.obj)
@@ -675,7 +675,7 @@ pub value struct htmlhrElement
   obj: jsObject
 
 pub inline fun newHtmlhrElement()
-  newJsObject0("HtmlhrElement")"
+  newJsObject0("HtmlhrElement")
 
 pub inline fun align(obj: htmlhrElement, value: string): web ()
   setJsObjectField(obj.obj, "align", value.obj)
@@ -711,7 +711,7 @@ pub value struct htmlPreElement
   obj: jsObject
 
 pub inline fun newHtmlPreElement()
-  newJsObject0("HtmlPreElement")"
+  newJsObject0("HtmlPreElement")
 
 pub inline fun width(obj: htmlPreElement, value: int): web ()
   setJsObjectField(obj.obj, "width", value.obj)
@@ -723,7 +723,7 @@ pub value struct htmlQuoteElement
   obj: jsObject
 
 pub inline fun newHtmlQuoteElement()
-  newJsObject0("HtmlQuoteElement")"
+  newJsObject0("HtmlQuoteElement")
 
 pub inline fun cite(obj: htmlQuoteElement, value: string): web ()
   setJsObjectField(obj.obj, "cite", value.obj)
@@ -735,7 +735,7 @@ pub value struct htmloListElement
   obj: jsObject
 
 pub inline fun newHtmloListElement()
-  newJsObject0("HtmloListElement")"
+  newJsObject0("HtmloListElement")
 
 pub inline fun reversed(obj: htmloListElement, value: bool): web ()
   setJsObjectField(obj.obj, "reversed", value.obj)
@@ -765,7 +765,7 @@ pub value struct htmluListElement
   obj: jsObject
 
 pub inline fun newHtmluListElement()
-  newJsObject0("HtmluListElement")"
+  newJsObject0("HtmluListElement")
 
 pub inline fun compact(obj: htmluListElement, value: bool): web ()
   setJsObjectField(obj.obj, "compact", value.obj)
@@ -783,7 +783,7 @@ pub value struct htmlMenuElement
   obj: jsObject
 
 pub inline fun newHtmlMenuElement()
-  newJsObject0("HtmlMenuElement")"
+  newJsObject0("HtmlMenuElement")
 
 pub inline fun compact(obj: htmlMenuElement, value: bool): web ()
   setJsObjectField(obj.obj, "compact", value.obj)
@@ -795,7 +795,7 @@ pub value struct htmlliElement
   obj: jsObject
 
 pub inline fun newHtmlliElement()
-  newJsObject0("HtmlliElement")"
+  newJsObject0("HtmlliElement")
 
 pub inline fun value(obj: htmlliElement, value: int): web ()
   setJsObjectField(obj.obj, "value", value.obj)
@@ -813,7 +813,7 @@ pub value struct htmldListElement
   obj: jsObject
 
 pub inline fun newHtmldListElement()
-  newJsObject0("HtmldListElement")"
+  newJsObject0("HtmldListElement")
 
 pub inline fun compact(obj: htmldListElement, value: bool): web ()
   setJsObjectField(obj.obj, "compact", value.obj)
@@ -825,7 +825,7 @@ pub value struct htmlDivElement
   obj: jsObject
 
 pub inline fun newHtmlDivElement()
-  newJsObject0("HtmlDivElement")"
+  newJsObject0("HtmlDivElement")
 
 pub inline fun align(obj: htmlDivElement, value: string): web ()
   setJsObjectField(obj.obj, "align", value.obj)
@@ -837,7 +837,7 @@ pub value struct htmlAnchorElement
   obj: jsObject
 
 pub inline fun newHtmlAnchorElement()
-  newJsObject0("HtmlAnchorElement")"
+  newJsObject0("HtmlAnchorElement")
 
 pub inline fun target(obj: htmlAnchorElement, value: string): web ()
   setJsObjectField(obj.obj, "target", value.obj)
@@ -930,7 +930,7 @@ pub value struct htmlDataElement
   obj: jsObject
 
 pub inline fun newHtmlDataElement()
-  newJsObject0("HtmlDataElement")"
+  newJsObject0("HtmlDataElement")
 
 pub inline fun value(obj: htmlDataElement, value: string): web ()
   setJsObjectField(obj.obj, "value", value.obj)
@@ -942,7 +942,7 @@ pub value struct htmlTimeElement
   obj: jsObject
 
 pub inline fun newHtmlTimeElement()
-  newJsObject0("HtmlTimeElement")"
+  newJsObject0("HtmlTimeElement")
 
 pub inline fun dateTime(obj: htmlTimeElement, value: string): web ()
   setJsObjectField(obj.obj, "dateTime", value.obj)
@@ -954,13 +954,13 @@ pub value struct htmlSpanElement
   obj: jsObject
 
 pub inline fun newHtmlSpanElement()
-  newJsObject0("HtmlSpanElement")"
+  newJsObject0("HtmlSpanElement")
 
 pub value struct htmlbrElement
   obj: jsObject
 
 pub inline fun newHtmlbrElement()
-  newJsObject0("HtmlbrElement")"
+  newJsObject0("HtmlbrElement")
 
 pub inline fun clear(obj: htmlbrElement, value: string): web ()
   setJsObjectField(obj.obj, "clear", value.obj)
@@ -1039,7 +1039,7 @@ pub value struct htmlModElement
   obj: jsObject
 
 pub inline fun newHtmlModElement()
-  newJsObject0("HtmlModElement")"
+  newJsObject0("HtmlModElement")
 
 pub inline fun cite(obj: htmlModElement, value: string): web ()
   setJsObjectField(obj.obj, "cite", value.obj)
@@ -1057,13 +1057,13 @@ pub value struct htmlPictureElement
   obj: jsObject
 
 pub inline fun newHtmlPictureElement()
-  newJsObject0("HtmlPictureElement")"
+  newJsObject0("HtmlPictureElement")
 
 pub value struct htmlSourceElement
   obj: jsObject
 
 pub inline fun newHtmlSourceElement()
-  newJsObject0("HtmlSourceElement")"
+  newJsObject0("HtmlSourceElement")
 
 pub inline fun src(obj: htmlSourceElement, value: string): web ()
   setJsObjectField(obj.obj, "src", value.obj)
@@ -1111,7 +1111,7 @@ pub value struct htmlImageElement
   obj: jsObject
 
 pub inline fun newHtmlImageElement()
-  newJsObject0("HtmlImageElement")"
+  newJsObject0("HtmlImageElement")
 
 pub inline fun decode(obj: htmlImageElement): web jsPromise
   jsOperation2(obj.obj, "decode")
@@ -1258,7 +1258,7 @@ pub value struct htmliFrameElement
   obj: jsObject
 
 pub inline fun newHtmliFrameElement()
-  newJsObject0("HtmliFrameElement")"
+  newJsObject0("HtmliFrameElement")
 
 pub inline fun getSVGDocument(obj: htmliFrameElement): web maybe<dom/document>
   jsOperation2(obj.obj, "getSVGDocument")
@@ -1375,7 +1375,7 @@ pub value struct htmlEmbedElement
   obj: jsObject
 
 pub inline fun newHtmlEmbedElement()
-  newJsObject0("HtmlEmbedElement")"
+  newJsObject0("HtmlEmbedElement")
 
 pub inline fun getSVGDocument(obj: htmlEmbedElement): web maybe<dom/document>
   jsOperation2(obj.obj, "getSVGDocument")
@@ -1420,7 +1420,7 @@ pub value struct htmlObjectElement
   obj: jsObject
 
 pub inline fun newHtmlObjectElement()
-  newJsObject0("HtmlObjectElement")"
+  newJsObject0("HtmlObjectElement")
 
 pub inline fun getSVGDocument(obj: htmlObjectElement): web maybe<dom/document>
   jsOperation2(obj.obj, "getSVGDocument")
@@ -1552,7 +1552,7 @@ pub value struct htmlVideoElement
   obj: jsObject
 
 pub inline fun newHtmlVideoElement()
-  newJsObject0("HtmlVideoElement")"
+  newJsObject0("HtmlVideoElement")
 
 pub inline fun getVideoPlaybackQuality(obj: htmlVideoElement): web media_playback_quality/videoPlaybackQuality
   jsOperation2(obj.obj, "getVideoPlaybackQuality")
@@ -1618,13 +1618,13 @@ pub value struct htmlAudioElement
   obj: jsObject
 
 pub inline fun newHtmlAudioElement()
-  newJsObject0("HtmlAudioElement")"
+  newJsObject0("HtmlAudioElement")
 
 pub value struct htmlTrackElement
   obj: jsObject
 
 pub inline fun newHtmlTrackElement()
-  newJsObject0("HtmlTrackElement")"
+  newJsObject0("HtmlTrackElement")
 pub inline fun nonE(): int
   getConstant("NONE")
 
@@ -2160,7 +2160,7 @@ pub value struct trackEvent
   obj: jsObject
 
 pub inline fun newTrackEvent(type': string, eventInitDict': trackEventInit)
-  newJsObject2("TrackEvent", type', eventInitDict')"
+  newJsObject2("TrackEvent", type', eventInitDict')
 
 pub inline fun track(obj: trackEvent): web maybe<jsObject>
   getJsObjectField(obj.obj, "track")
@@ -2186,7 +2186,7 @@ pub value struct htmlMapElement
   obj: jsObject
 
 pub inline fun newHtmlMapElement()
-  newJsObject0("HtmlMapElement")"
+  newJsObject0("HtmlMapElement")
 
 pub inline fun name(obj: htmlMapElement, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -2201,7 +2201,7 @@ pub value struct htmlAreaElement
   obj: jsObject
 
 pub inline fun newHtmlAreaElement()
-  newJsObject0("HtmlAreaElement")"
+  newJsObject0("HtmlAreaElement")
 
 pub inline fun alt(obj: htmlAreaElement, value: string): web ()
   setJsObjectField(obj.obj, "alt", value.obj)
@@ -2264,7 +2264,7 @@ pub value struct htmlTableElement
   obj: jsObject
 
 pub inline fun newHtmlTableElement()
-  newJsObject0("HtmlTableElement")"
+  newJsObject0("HtmlTableElement")
 
 pub inline fun createCaption(obj: htmlTableElement): web htmlTableCaptionElement
   jsOperation2(obj.obj, "createCaption")
@@ -2375,7 +2375,7 @@ pub value struct htmlTableCaptionElement
   obj: jsObject
 
 pub inline fun newHtmlTableCaptionElement()
-  newJsObject0("HtmlTableCaptionElement")"
+  newJsObject0("HtmlTableCaptionElement")
 
 pub inline fun align(obj: htmlTableCaptionElement, value: string): web ()
   setJsObjectField(obj.obj, "align", value.obj)
@@ -2387,7 +2387,7 @@ pub value struct htmlTableColElement
   obj: jsObject
 
 pub inline fun newHtmlTableColElement()
-  newJsObject0("HtmlTableColElement")"
+  newJsObject0("HtmlTableColElement")
 
 pub inline fun span(obj: htmlTableColElement, value: int): web ()
   setJsObjectField(obj.obj, "span", value.obj)
@@ -2429,7 +2429,7 @@ pub value struct htmlTableSectionElement
   obj: jsObject
 
 pub inline fun newHtmlTableSectionElement()
-  newJsObject0("HtmlTableSectionElement")"
+  newJsObject0("HtmlTableSectionElement")
 
 pub inline fun insertRow(obj: htmlTableSectionElement, index': int): web htmlTableRowElement
   jsOperation3(obj.obj, "insertRow", index'.obj)
@@ -2468,7 +2468,7 @@ pub value struct htmlTableRowElement
   obj: jsObject
 
 pub inline fun newHtmlTableRowElement()
-  newJsObject0("HtmlTableRowElement")"
+  newJsObject0("HtmlTableRowElement")
 
 pub inline fun insertCell(obj: htmlTableRowElement, index': int): web htmlTableCellElement
   jsOperation3(obj.obj, "insertCell", index'.obj)
@@ -2519,7 +2519,7 @@ pub value struct htmlTableCellElement
   obj: jsObject
 
 pub inline fun newHtmlTableCellElement()
-  newJsObject0("HtmlTableCellElement")"
+  newJsObject0("HtmlTableCellElement")
 
 pub inline fun colSpan(obj: htmlTableCellElement, value: int): web ()
   setJsObjectField(obj.obj, "colSpan", value.obj)
@@ -2612,7 +2612,7 @@ pub value struct htmlFormElement
   obj: jsObject
 
 pub inline fun newHtmlFormElement()
-  newJsObject0("HtmlFormElement")"
+  newJsObject0("HtmlFormElement")
 
 pub inline fun submit(obj: htmlFormElement): web ()
   jsOperation2(obj.obj, "submit")
@@ -2702,7 +2702,7 @@ pub value struct htmlLabelElement
   obj: jsObject
 
 pub inline fun newHtmlLabelElement()
-  newJsObject0("HtmlLabelElement")"
+  newJsObject0("HtmlLabelElement")
 
 pub inline fun form(obj: htmlLabelElement): web maybe<htmlFormElement>
   getJsObjectField(obj.obj, "form")
@@ -2720,7 +2720,7 @@ pub value struct htmlInputElement
   obj: jsObject
 
 pub inline fun newHtmlInputElement()
-  newJsObject0("HtmlInputElement")"
+  newJsObject0("HtmlInputElement")
 
 pub inline fun stepUp(obj: htmlInputElement, n': int): web ()
   jsOperation3(obj.obj, "stepUp", n'.obj)
@@ -3020,7 +3020,7 @@ pub value struct htmlButtonElement
   obj: jsObject
 
 pub inline fun newHtmlButtonElement()
-  newJsObject0("HtmlButtonElement")"
+  newJsObject0("HtmlButtonElement")
 
 pub inline fun checkValidity(obj: htmlButtonElement): web bool
   jsOperation2(obj.obj, "checkValidity")
@@ -3104,7 +3104,7 @@ pub value struct htmlSelectElement
   obj: jsObject
 
 pub inline fun newHtmlSelectElement()
-  newJsObject0("HtmlSelectElement")"
+  newJsObject0("HtmlSelectElement")
 
 pub inline fun item(obj: htmlSelectElement, index': int): web maybe<htmlOptionElement>
   jsOperation3(obj.obj, "item", index'.obj)
@@ -3209,7 +3209,7 @@ pub value struct htmlDataListElement
   obj: jsObject
 
 pub inline fun newHtmlDataListElement()
-  newJsObject0("HtmlDataListElement")"
+  newJsObject0("HtmlDataListElement")
 
 pub inline fun options(obj: htmlDataListElement): web dom/htmlCollection
   getJsObjectField(obj.obj, "options")
@@ -3218,7 +3218,7 @@ pub value struct htmlOptGroupElement
   obj: jsObject
 
 pub inline fun newHtmlOptGroupElement()
-  newJsObject0("HtmlOptGroupElement")"
+  newJsObject0("HtmlOptGroupElement")
 
 pub inline fun disabled(obj: htmlOptGroupElement, value: bool): web ()
   setJsObjectField(obj.obj, "disabled", value.obj)
@@ -3236,7 +3236,7 @@ pub value struct htmlOptionElement
   obj: jsObject
 
 pub inline fun newHtmlOptionElement()
-  newJsObject0("HtmlOptionElement")"
+  newJsObject0("HtmlOptionElement")
 
 pub inline fun disabled(obj: htmlOptionElement, value: bool): web ()
   setJsObjectField(obj.obj, "disabled", value.obj)
@@ -3284,7 +3284,7 @@ pub value struct htmlTextAreaElement
   obj: jsObject
 
 pub inline fun newHtmlTextAreaElement()
-  newJsObject0("HtmlTextAreaElement")"
+  newJsObject0("HtmlTextAreaElement")
 
 pub inline fun checkValidity(obj: htmlTextAreaElement): web bool
   jsOperation2(obj.obj, "checkValidity")
@@ -3431,7 +3431,7 @@ pub value struct htmlOutputElement
   obj: jsObject
 
 pub inline fun newHtmlOutputElement()
-  newJsObject0("HtmlOutputElement")"
+  newJsObject0("HtmlOutputElement")
 
 pub inline fun checkValidity(obj: htmlOutputElement): web bool
   jsOperation2(obj.obj, "checkValidity")
@@ -3485,7 +3485,7 @@ pub value struct htmlProgressElement
   obj: jsObject
 
 pub inline fun newHtmlProgressElement()
-  newJsObject0("HtmlProgressElement")"
+  newJsObject0("HtmlProgressElement")
 
 pub inline fun value(obj: htmlProgressElement, value: double): web ()
   setJsObjectField(obj.obj, "value", value.obj)
@@ -3509,7 +3509,7 @@ pub value struct htmlMeterElement
   obj: jsObject
 
 pub inline fun newHtmlMeterElement()
-  newJsObject0("HtmlMeterElement")"
+  newJsObject0("HtmlMeterElement")
 
 pub inline fun value(obj: htmlMeterElement, value: double): web ()
   setJsObjectField(obj.obj, "value", value.obj)
@@ -3554,7 +3554,7 @@ pub value struct htmlFieldSetElement
   obj: jsObject
 
 pub inline fun newHtmlFieldSetElement()
-  newJsObject0("HtmlFieldSetElement")"
+  newJsObject0("HtmlFieldSetElement")
 
 pub inline fun checkValidity(obj: htmlFieldSetElement): web bool
   jsOperation2(obj.obj, "checkValidity")
@@ -3599,7 +3599,7 @@ pub value struct htmlLegendElement
   obj: jsObject
 
 pub inline fun newHtmlLegendElement()
-  newJsObject0("HtmlLegendElement")"
+  newJsObject0("HtmlLegendElement")
 
 pub inline fun form(obj: htmlLegendElement): web maybe<htmlFormElement>
   getJsObjectField(obj.obj, "form")
@@ -3651,7 +3651,7 @@ pub value struct submitEvent
   obj: jsObject
 
 pub inline fun newSubmitEvent(type': string, eventInitDict': submitEventInit)
-  newJsObject2("SubmitEvent", type', eventInitDict')"
+  newJsObject2("SubmitEvent", type', eventInitDict')
 
 pub inline fun submitter(obj: submitEvent): web maybe<htmlElement>
   getJsObjectField(obj.obj, "submitter")
@@ -3677,7 +3677,7 @@ pub value struct formDataEvent
   obj: jsObject
 
 pub inline fun newFormDataEvent(type': string, eventInitDict': formDataEventInit)
-  newJsObject2("FormDataEvent", type', eventInitDict')"
+  newJsObject2("FormDataEvent", type', eventInitDict')
 
 pub inline fun formData(obj: formDataEvent): web xhr/formData
   getJsObjectField(obj.obj, "formData")
@@ -3700,7 +3700,7 @@ pub value struct htmlDetailsElement
   obj: jsObject
 
 pub inline fun newHtmlDetailsElement()
-  newJsObject0("HtmlDetailsElement")"
+  newJsObject0("HtmlDetailsElement")
 
 pub inline fun open(obj: htmlDetailsElement, value: bool): web ()
   setJsObjectField(obj.obj, "open", value.obj)
@@ -3712,7 +3712,7 @@ pub value struct htmlDialogElement
   obj: jsObject
 
 pub inline fun newHtmlDialogElement()
-  newJsObject0("HtmlDialogElement")"
+  newJsObject0("HtmlDialogElement")
 
 pub inline fun show(obj: htmlDialogElement): web ()
   jsOperation2(obj.obj, "show")
@@ -3739,7 +3739,7 @@ pub value struct htmlScriptElement
   obj: jsObject
 
 pub inline fun newHtmlScriptElement()
-  newJsObject0("HtmlScriptElement")"
+  newJsObject0("HtmlScriptElement")
 pub inline fun supports(type': string): web bool
   jsOperation2("supports", type'.obj)
 
@@ -3828,7 +3828,7 @@ pub value struct htmlTemplateElement
   obj: jsObject
 
 pub inline fun newHtmlTemplateElement()
-  newJsObject0("HtmlTemplateElement")"
+  newJsObject0("HtmlTemplateElement")
 
 pub inline fun content(obj: htmlTemplateElement): web dom/documentFragment
   getJsObjectField(obj.obj, "content")
@@ -3837,7 +3837,7 @@ pub value struct htmlSlotElement
   obj: jsObject
 
 pub inline fun newHtmlSlotElement()
-  newJsObject0("HtmlSlotElement")"
+  newJsObject0("HtmlSlotElement")
 
 pub inline fun assignedNodes(obj: htmlSlotElement, options': assignedNodesOptions): web jsArray
   jsOperation3(obj.obj, "assignedNodes", options'.obj)
@@ -3875,7 +3875,7 @@ pub value struct htmlCanvasElement
   obj: jsObject
 
 pub inline fun newHtmlCanvasElement()
-  newJsObject0("HtmlCanvasElement")"
+  newJsObject0("HtmlCanvasElement")
 
 pub inline fun getContext(obj: htmlCanvasElement, contextId': string, options': maybe<jsObject>): web maybe<renderingContext>
   jsOperation4(obj.obj, "getContext", contextId'.obj, options'.obj)
@@ -4388,7 +4388,7 @@ pub value struct imageData
   obj: jsObject
 
 pub inline fun newImageData(dataOrSw': maybe<jsObject>, shOrSw': int, settingsOrSh': maybe<jsObject>, settings': imageDataSettings)
-  newJsObject4("ImageData", dataOrSw', shOrSw', settingsOrSh', settings')"
+  newJsObject4("ImageData", dataOrSw', shOrSw', settingsOrSh', settings')
 
 pub inline fun width(obj: imageData): web int
   getJsObjectField(obj.obj, "width")
@@ -4406,7 +4406,7 @@ pub value struct path2D
   obj: jsObject
 
 pub inline fun newPath2D(path': maybe<jsObject>)
-  newJsObject1("Path2D", path')"
+  newJsObject1("Path2D", path')
 
 pub inline fun addPath(obj: path2D, path': path2D, transform': geometry/domMatrix2DInit): web ()
   jsOperation4(obj.obj, "addPath", path'.obj, transform'.obj)
@@ -4468,7 +4468,7 @@ pub value struct offscreenCanvas
   obj: jsObject
 
 pub inline fun newOffscreenCanvas(width': int, height': int)
-  newJsObject2("OffscreenCanvas", width', height')"
+  newJsObject2("OffscreenCanvas", width', height')
 
 pub inline fun getContext(obj: offscreenCanvas, contextId': offscreenRenderingContextId, options': maybe<jsObject>): web maybe<offscreenRenderingContext>
   jsOperation4(obj.obj, "getContext", contextId'.obj, options'.obj)
@@ -4771,7 +4771,7 @@ pub value struct dataTransfer
   obj: jsObject
 
 pub inline fun newDataTransfer()
-  newJsObject0("DataTransfer")"
+  newJsObject0("DataTransfer")
 
 pub inline fun setDragImage(obj: dataTransfer, image': dom/element, x': int, y': int): web ()
   jsOperation5(obj.obj, "setDragImage", image'.obj, x'.obj, y'.obj)
@@ -4848,7 +4848,7 @@ pub value struct dragEvent
   obj: jsObject
 
 pub inline fun newDragEvent(type': string, eventInitDict': dragEventInit)
-  newJsObject2("DragEvent", type', eventInitDict')"
+  newJsObject2("DragEvent", type', eventInitDict')
 
 pub inline fun dataTransfer(obj: dragEvent): web maybe<dataTransfer>
   getJsObjectField(obj.obj, "dataTransfer")
@@ -4890,7 +4890,7 @@ pub value struct toggleEvent
   obj: jsObject
 
 pub inline fun newToggleEvent(type': string, eventInitDict': toggleEventInit)
-  newJsObject2("ToggleEvent", type', eventInitDict')"
+  newJsObject2("ToggleEvent", type', eventInitDict')
 
 pub inline fun oldState(obj: toggleEvent): web string
   getJsObjectField(obj.obj, "oldState")
@@ -5543,7 +5543,7 @@ pub value struct navigateEvent
   obj: jsObject
 
 pub inline fun newNavigateEvent(type': string, eventInitDict': navigateEventInit)
-  newJsObject2("NavigateEvent", type', eventInitDict')"
+  newJsObject2("NavigateEvent", type', eventInitDict')
 
 pub inline fun intercept(obj: navigateEvent, options': navigationInterceptOptions): web ()
   jsOperation3(obj.obj, "intercept", options'.obj)
@@ -5722,7 +5722,7 @@ pub value struct navigationCurrentEntryChangeEvent
   obj: jsObject
 
 pub inline fun newNavigationCurrentEntryChangeEvent(type': string, eventInitDict': navigationCurrentEntryChangeEventInit)
-  newJsObject2("NavigationCurrentEntryChangeEvent", type', eventInitDict')"
+  newJsObject2("NavigationCurrentEntryChangeEvent", type', eventInitDict')
 
 pub inline fun navigationType(obj: navigationCurrentEntryChangeEvent): web maybe<navigationType>
   getJsObjectField(obj.obj, "navigationType")
@@ -5757,7 +5757,7 @@ pub value struct popStateEvent
   obj: jsObject
 
 pub inline fun newPopStateEvent(type': string, eventInitDict': popStateEventInit)
-  newJsObject2("PopStateEvent", type', eventInitDict')"
+  newJsObject2("PopStateEvent", type', eventInitDict')
 
 pub inline fun state(obj: popStateEvent): web maybe<jsObject>
   getJsObjectField(obj.obj, "state")
@@ -5783,7 +5783,7 @@ pub value struct hashChangeEvent
   obj: jsObject
 
 pub inline fun newHashChangeEvent(type': string, eventInitDict': hashChangeEventInit)
-  newJsObject2("HashChangeEvent", type', eventInitDict')"
+  newJsObject2("HashChangeEvent", type', eventInitDict')
 
 pub inline fun oldURL(obj: hashChangeEvent): web string
   getJsObjectField(obj.obj, "oldURL")
@@ -5821,7 +5821,7 @@ pub value struct pageTransitionEvent
   obj: jsObject
 
 pub inline fun newPageTransitionEvent(type': string, eventInitDict': pageTransitionEventInit)
-  newJsObject2("PageTransitionEvent", type', eventInitDict')"
+  newJsObject2("PageTransitionEvent", type', eventInitDict')
 
 pub inline fun persisted(obj: pageTransitionEvent): web bool
   getJsObjectField(obj.obj, "persisted")
@@ -5857,7 +5857,7 @@ pub value struct errorEvent
   obj: jsObject
 
 pub inline fun newErrorEvent(type': string, eventInitDict': errorEventInit)
-  newJsObject2("ErrorEvent", type', eventInitDict')"
+  newJsObject2("ErrorEvent", type', eventInitDict')
 
 pub inline fun message(obj: errorEvent): web string
   getJsObjectField(obj.obj, "message")
@@ -5931,7 +5931,7 @@ pub value struct promiseRejectionEvent
   obj: jsObject
 
 pub inline fun newPromiseRejectionEvent(type': string, eventInitDict': promiseRejectionEventInit)
-  newJsObject2("PromiseRejectionEvent", type', eventInitDict')"
+  newJsObject2("PromiseRejectionEvent", type', eventInitDict')
 
 pub inline fun promise(obj: promiseRejectionEvent): web jsPromise
   getJsObjectField(obj.obj, "promise")
@@ -6758,7 +6758,7 @@ pub value struct domParser
   obj: jsObject
 
 pub inline fun newDomParser()
-  newJsObject0("DomParser")"
+  newJsObject0("DomParser")
 
 pub inline fun parseFromString(obj: domParser, string': string, type': domParserSupportedType): web dom/document
   jsOperation4(obj.obj, "parseFromString", string'.obj, type'.obj)
@@ -7127,7 +7127,7 @@ pub value struct messageEvent
   obj: jsObject
 
 pub inline fun newMessageEvent(type': string, eventInitDict': messageEventInit)
-  newJsObject2("MessageEvent", type', eventInitDict')"
+  newJsObject2("MessageEvent", type', eventInitDict')
 
 pub inline fun initMessageEvent(obj: messageEvent, type': string, bubbles': bool, cancelable': bool, data': maybe<jsObject>, origin': string, lastEventId': string, source': maybe<messageEventSource> =  Nothing, ports': jsArray): web ()
   jsOperation10(obj.obj, "initMessageEvent", type'.obj, bubbles'.obj, cancelable'.obj, data'.obj, origin'.obj, lastEventId'.obj, source'.obj, ports'.obj)
@@ -7204,7 +7204,7 @@ pub value struct eventSource
   obj: jsObject
 
 pub inline fun newEventSource(url': string, eventSourceInitDict': eventSourceInit)
-  newJsObject2("EventSource", url', eventSourceInitDict')"
+  newJsObject2("EventSource", url', eventSourceInitDict')
 pub inline fun connectinG(): int
   getConstant("CONNECTING")
 
@@ -7265,7 +7265,7 @@ pub value struct messageChannel
   obj: jsObject
 
 pub inline fun newMessageChannel()
-  newJsObject0("MessageChannel")"
+  newJsObject0("MessageChannel")
 
 pub inline fun port1(obj: messageChannel): web messagePort
   getJsObjectField(obj.obj, "port1")
@@ -7319,7 +7319,7 @@ pub value struct broadcastChannel
   obj: jsObject
 
 pub inline fun newBroadcastChannel(name': string)
-  newJsObject1("BroadcastChannel", name')"
+  newJsObject1("BroadcastChannel", name')
 
 pub inline fun postMessage(obj: broadcastChannel, message': maybe<jsObject>): web ()
   jsOperation3(obj.obj, "postMessage", message'.obj)
@@ -7455,7 +7455,7 @@ pub value struct worker
   obj: jsObject
 
 pub inline fun newWorker(scriptURL': string, options': workerOptions)
-  newJsObject2("Worker", scriptURL', options')"
+  newJsObject2("Worker", scriptURL', options')
 
 pub inline fun terminate(obj: worker): web ()
   jsOperation2(obj.obj, "terminate")
@@ -7514,7 +7514,7 @@ pub value struct sharedWorker
   obj: jsObject
 
 pub inline fun newSharedWorker(scriptURL': string, options': maybe<jsObject>)
-  newJsObject2("SharedWorker", scriptURL', options')"
+  newJsObject2("SharedWorker", scriptURL', options')
 
 pub inline fun port(obj: sharedWorker): web messagePort
   getJsObjectField(obj.obj, "port")
@@ -7647,7 +7647,7 @@ pub value struct storageEvent
   obj: jsObject
 
 pub inline fun newStorageEvent(type': string, eventInitDict': storageEventInit)
-  newJsObject2("StorageEvent", type', eventInitDict')"
+  newJsObject2("StorageEvent", type', eventInitDict')
 
 pub inline fun initStorageEvent(obj: storageEvent, type': string, bubbles': bool, cancelable': bool, key': maybe<string> =  Nothing, oldValue': maybe<string> =  Nothing, newValue': maybe<string> =  Nothing, url': string, storageArea': maybe<storage> =  Nothing): web ()
   jsOperation10(obj.obj, "initStorageEvent", type'.obj, bubbles'.obj, cancelable'.obj, key'.obj, oldValue'.obj, newValue'.obj, url'.obj, storageArea'.obj)
@@ -7724,7 +7724,7 @@ pub value struct htmlMarqueeElement
   obj: jsObject
 
 pub inline fun newHtmlMarqueeElement()
-  newJsObject0("HtmlMarqueeElement")"
+  newJsObject0("HtmlMarqueeElement")
 
 pub inline fun start(obj: htmlMarqueeElement): web ()
   jsOperation2(obj.obj, "start")
@@ -7802,7 +7802,7 @@ pub value struct htmlFrameSetElement
   obj: jsObject
 
 pub inline fun newHtmlFrameSetElement()
-  newJsObject0("HtmlFrameSetElement")"
+  newJsObject0("HtmlFrameSetElement")
 
 pub inline fun cols(obj: htmlFrameSetElement, value: string): web ()
   setJsObjectField(obj.obj, "cols", value.obj)
@@ -7820,7 +7820,7 @@ pub value struct htmlFrameElement
   obj: jsObject
 
 pub inline fun newHtmlFrameElement()
-  newJsObject0("HtmlFrameElement")"
+  newJsObject0("HtmlFrameElement")
 
 pub inline fun name(obj: htmlFrameElement, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -7880,7 +7880,7 @@ pub value struct htmlDirectoryElement
   obj: jsObject
 
 pub inline fun newHtmlDirectoryElement()
-  newJsObject0("HtmlDirectoryElement")"
+  newJsObject0("HtmlDirectoryElement")
 
 pub inline fun compact(obj: htmlDirectoryElement, value: bool): web ()
   setJsObjectField(obj.obj, "compact", value.obj)
@@ -7892,7 +7892,7 @@ pub value struct htmlFontElement
   obj: jsObject
 
 pub inline fun newHtmlFontElement()
-  newJsObject0("HtmlFontElement")"
+  newJsObject0("HtmlFontElement")
 
 pub inline fun color(obj: htmlFontElement, value: string): web ()
   setJsObjectField(obj.obj, "color", value.obj)
@@ -7916,7 +7916,7 @@ pub value struct htmlParamElement
   obj: jsObject
 
 pub inline fun newHtmlParamElement()
-  newJsObject0("HtmlParamElement")"
+  newJsObject0("HtmlParamElement")
 
 pub inline fun name(obj: htmlParamElement, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)

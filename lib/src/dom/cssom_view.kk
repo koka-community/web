@@ -83,7 +83,7 @@ pub value struct mediaQueryListEvent
   obj: jsObject
 
 pub inline fun newMediaQueryListEvent(type': string, eventInitDict': mediaQueryListEventInit)
-  newJsObject2("MediaQueryListEvent", type', eventInitDict')"
+  newJsObject2("MediaQueryListEvent", type', eventInitDict')
 
 pub inline fun media(obj: mediaQueryListEvent): web string
   getJsObjectField(obj.obj, "media")

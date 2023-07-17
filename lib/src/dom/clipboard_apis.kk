@@ -32,7 +32,7 @@ pub value struct clipboardEvent
   obj: jsObject
 
 pub inline fun newClipboardEvent(type': string, eventInitDict': clipboardEventInit)
-  newJsObject2("ClipboardEvent", type', eventInitDict')"
+  newJsObject2("ClipboardEvent", type', eventInitDict')
 
 pub inline fun clipboardData(obj: clipboardEvent): web maybe<html/dataTransfer>
   getJsObjectField(obj.obj, "clipboardData")
@@ -41,7 +41,7 @@ pub value struct clipboardItem
   obj: jsObject
 
 pub inline fun newClipboardItem(items': maybe<jsObject>, options': clipboardItemOptions)
-  newJsObject2("ClipboardItem", items', options')"
+  newJsObject2("ClipboardItem", items', options')
 
 pub inline fun getType(obj: clipboardItem, type': string): web jsPromise
   jsOperation3(obj.obj, "getType", type'.obj)

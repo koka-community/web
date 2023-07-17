@@ -49,7 +49,7 @@ pub value struct readableStream
   obj: jsObject
 
 pub inline fun newReadableStream(underlyingSource': jsObject, strategy': queuingStrategy)
-  newJsObject2("ReadableStream", underlyingSource', strategy')"
+  newJsObject2("ReadableStream", underlyingSource', strategy')
 pub inline fun from(asyncIterable': maybe<jsObject>): web readableStream
   jsOperation2("from", asyncIterable'.obj)
 
@@ -236,7 +236,7 @@ pub value struct readableStreamDefaultReader
   obj: jsObject
 
 pub inline fun newReadableStreamDefaultReader(stream': readableStream)
-  newJsObject1("ReadableStreamDefaultReader", stream')"
+  newJsObject1("ReadableStreamDefaultReader", stream')
 
 pub inline fun read(obj: readableStreamDefaultReader): web jsPromise
   jsOperation2(obj.obj, "read")
@@ -274,7 +274,7 @@ pub value struct readableStreamBYOBReader
   obj: jsObject
 
 pub inline fun newReadableStreamBYOBReader(stream': readableStream)
-  newJsObject1("ReadableStreamBYOBReader", stream')"
+  newJsObject1("ReadableStreamBYOBReader", stream')
 
 pub inline fun read(obj: readableStreamBYOBReader, view': webidl/arrayBufferView): web jsPromise
   jsOperation3(obj.obj, "read", view'.obj)
@@ -334,7 +334,7 @@ pub value struct writableStream
   obj: jsObject
 
 pub inline fun newWritableStream(underlyingSink': jsObject, strategy': queuingStrategy)
-  newJsObject2("WritableStream", underlyingSink', strategy')"
+  newJsObject2("WritableStream", underlyingSink', strategy')
 
 pub inline fun abort(obj: writableStream, reason': maybe<jsObject>): web jsPromise
   jsOperation3(obj.obj, "abort", reason'.obj)
@@ -405,7 +405,7 @@ pub value struct writableStreamDefaultWriter
   obj: jsObject
 
 pub inline fun newWritableStreamDefaultWriter(stream': writableStream)
-  newJsObject1("WritableStreamDefaultWriter", stream')"
+  newJsObject1("WritableStreamDefaultWriter", stream')
 
 pub inline fun abort(obj: writableStreamDefaultWriter, reason': maybe<jsObject>): web jsPromise
   jsOperation3(obj.obj, "abort", reason'.obj)
@@ -442,7 +442,7 @@ pub value struct transformStream
   obj: jsObject
 
 pub inline fun newTransformStream(transformer': jsObject, writableStrategy': queuingStrategy, readableStrategy': queuingStrategy)
-  newJsObject3("TransformStream", transformer', writableStrategy', readableStrategy')"
+  newJsObject3("TransformStream", transformer', writableStrategy', readableStrategy')
 
 pub inline fun readable(obj: transformStream): web readableStream
   getJsObjectField(obj.obj, "readable")
@@ -563,7 +563,7 @@ pub value struct byteLengthQueuingStrategy
   obj: jsObject
 
 pub inline fun newByteLengthQueuingStrategy(init': queuingStrategyInit)
-  newJsObject1("ByteLengthQueuingStrategy", init')"
+  newJsObject1("ByteLengthQueuingStrategy", init')
 
 pub inline fun highWaterMark(obj: byteLengthQueuingStrategy): web double
   getJsObjectField(obj.obj, "highWaterMark")
@@ -575,7 +575,7 @@ pub value struct countQueuingStrategy
   obj: jsObject
 
 pub inline fun newCountQueuingStrategy(init': queuingStrategyInit)
-  newJsObject1("CountQueuingStrategy", init')"
+  newJsObject1("CountQueuingStrategy", init')
 
 pub inline fun highWaterMark(obj: countQueuingStrategy): web double
   getJsObjectField(obj.obj, "highWaterMark")

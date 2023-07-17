@@ -65,7 +65,7 @@ pub value struct sensorErrorEvent
   obj: jsObject
 
 pub inline fun newSensorErrorEvent(type': string, errorEventInitDict': sensorErrorEventInit)
-  newJsObject2("SensorErrorEvent", type', errorEventInitDict')"
+  newJsObject2("SensorErrorEvent", type', errorEventInitDict')
 
 pub inline fun error(obj: sensorErrorEvent): web webidl/domException
   getJsObjectField(obj.obj, "error")

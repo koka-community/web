@@ -14,7 +14,7 @@ pub value struct speechRecognition
   obj: jsObject
 
 pub inline fun newSpeechRecognition()
-  newJsObject0("SpeechRecognition")"
+  newJsObject0("SpeechRecognition")
 
 pub inline fun start(obj: speechRecognition): web ()
   jsOperation2(obj.obj, "start")
@@ -125,7 +125,7 @@ pub value struct speechRecognitionErrorEvent
   obj: jsObject
 
 pub inline fun newSpeechRecognitionErrorEvent(type': string, eventInitDict': speechRecognitionErrorEventInit)
-  newJsObject2("SpeechRecognitionErrorEvent", type', eventInitDict')"
+  newJsObject2("SpeechRecognitionErrorEvent", type', eventInitDict')
 
 pub inline fun error(obj: speechRecognitionErrorEvent): web speechRecognitionErrorCode
   getJsObjectField(obj.obj, "error")
@@ -193,7 +193,7 @@ pub value struct speechRecognitionEvent
   obj: jsObject
 
 pub inline fun newSpeechRecognitionEvent(type': string, eventInitDict': speechRecognitionEventInit)
-  newJsObject2("SpeechRecognitionEvent", type', eventInitDict')"
+  newJsObject2("SpeechRecognitionEvent", type', eventInitDict')
 
 pub inline fun resultIndex(obj: speechRecognitionEvent): web int
   getJsObjectField(obj.obj, "resultIndex")
@@ -244,7 +244,7 @@ pub value struct speechGrammarList
   obj: jsObject
 
 pub inline fun newSpeechGrammarList()
-  newJsObject0("SpeechGrammarList")"
+  newJsObject0("SpeechGrammarList")
 
 pub inline fun item(obj: speechGrammarList, index': int): web speechGrammar
   jsOperation3(obj.obj, "item", index'.obj)
@@ -296,7 +296,7 @@ pub value struct speechSynthesisUtterance
   obj: jsObject
 
 pub inline fun newSpeechSynthesisUtterance(text': string)
-  newJsObject1("SpeechSynthesisUtterance", text')"
+  newJsObject1("SpeechSynthesisUtterance", text')
 
 pub inline fun text(obj: speechSynthesisUtterance, value: string): web ()
   setJsObjectField(obj.obj, "text", value.obj)
@@ -380,7 +380,7 @@ pub value struct speechSynthesisEvent
   obj: jsObject
 
 pub inline fun newSpeechSynthesisEvent(type': string, eventInitDict': speechSynthesisEventInit)
-  newJsObject2("SpeechSynthesisEvent", type', eventInitDict')"
+  newJsObject2("SpeechSynthesisEvent", type', eventInitDict')
 
 pub inline fun utterance(obj: speechSynthesisEvent): web speechSynthesisUtterance
   getJsObjectField(obj.obj, "utterance")
@@ -451,7 +451,7 @@ pub value struct speechSynthesisErrorEvent
   obj: jsObject
 
 pub inline fun newSpeechSynthesisErrorEvent(type': string, eventInitDict': speechSynthesisErrorEventInit)
-  newJsObject2("SpeechSynthesisErrorEvent", type', eventInitDict')"
+  newJsObject2("SpeechSynthesisErrorEvent", type', eventInitDict')
 
 pub inline fun error(obj: speechSynthesisErrorEvent): web speechSynthesisErrorCode
   getJsObjectField(obj.obj, "error")

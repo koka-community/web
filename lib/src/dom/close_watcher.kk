@@ -10,7 +10,7 @@ pub value struct closeWatcher
   obj: jsObject
 
 pub inline fun newCloseWatcher(options': closeWatcherOptions)
-  newJsObject1("CloseWatcher", options')"
+  newJsObject1("CloseWatcher", options')
 
 pub inline fun destroy(obj: closeWatcher): web ()
   jsOperation2(obj.obj, "destroy")

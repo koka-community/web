@@ -10,7 +10,7 @@ pub value struct deviceOrientationEvent
   obj: jsObject
 
 pub inline fun newDeviceOrientationEvent(type': string, eventInitDict': deviceOrientationEventInit)
-  newJsObject2("DeviceOrientationEvent", type', eventInitDict')"
+  newJsObject2("DeviceOrientationEvent", type', eventInitDict')
 pub inline fun requestPermission(): web jsPromise
   jsOperation1("requestPermission")
 
@@ -100,7 +100,7 @@ pub value struct deviceMotionEvent
   obj: jsObject
 
 pub inline fun newDeviceMotionEvent(type': string, eventInitDict': deviceMotionEventInit)
-  newJsObject2("DeviceMotionEvent", type', eventInitDict')"
+  newJsObject2("DeviceMotionEvent", type', eventInitDict')
 pub inline fun requestPermission(): web jsPromise
   jsOperation1("requestPermission")
 

@@ -12,7 +12,7 @@ pub value struct blob
   obj: jsObject
 
 pub inline fun newBlob(blobParts': jsArray, options': blobPropertyBag)
-  newJsObject2("Blob", blobParts', options')"
+  newJsObject2("Blob", blobParts', options')
 
 pub inline fun slice(obj: blob, start': int, end': int, contentType': string): web blob
   jsOperation5(obj.obj, "slice", start'.obj, end'.obj, contentType'.obj)
@@ -62,7 +62,7 @@ pub value struct file
   obj: jsObject
 
 pub inline fun newFile(fileBits': jsArray, fileName': string, options': filePropertyBag)
-  newJsObject3("File", fileBits', fileName', options')"
+  newJsObject3("File", fileBits', fileName', options')
 
 pub inline fun name(obj: file): web string
   getJsObjectField(obj.obj, "name")
@@ -104,7 +104,7 @@ pub value struct fileReader
   obj: jsObject
 
 pub inline fun newFileReader()
-  newJsObject0("FileReader")"
+  newJsObject0("FileReader")
 pub inline fun emptY(): int
   getConstant("EMPTY")
 
@@ -178,7 +178,7 @@ pub value struct fileReaderSync
   obj: jsObject
 
 pub inline fun newFileReaderSync()
-  newJsObject0("FileReaderSync")"
+  newJsObject0("FileReaderSync")
 
 pub inline fun readAsArrayBuffer(obj: fileReaderSync, blob': blob): web jsArrayBuffer
   jsOperation3(obj.obj, "readAsArrayBuffer", blob'.obj)

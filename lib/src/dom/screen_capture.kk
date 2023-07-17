@@ -26,7 +26,7 @@ pub value struct captureController
   obj: jsObject
 
 pub inline fun newCaptureController()
-  newJsObject0("CaptureController")"
+  newJsObject0("CaptureController")
 
 pub inline fun setFocusBehavior(obj: captureController, focusBehavior': captureStartFocusBehavior): web ()
   jsOperation3(obj.obj, "setFocusBehavior", focusBehavior'.obj)

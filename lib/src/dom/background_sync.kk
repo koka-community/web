@@ -20,7 +20,7 @@ pub value struct syncEvent
   obj: jsObject
 
 pub inline fun newSyncEvent(type': string, init': syncEventInit)
-  newJsObject2("SyncEvent", type', init')"
+  newJsObject2("SyncEvent", type', init')
 
 pub inline fun tag(obj: syncEvent): web string
   getJsObjectField(obj.obj, "tag")

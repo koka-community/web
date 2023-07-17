@@ -52,7 +52,7 @@ pub value struct documentPictureInPictureEvent
   obj: jsObject
 
 pub inline fun newDocumentPictureInPictureEvent(type': string, eventInitDict': documentPictureInPictureEventInit)
-  newJsObject2("DocumentPictureInPictureEvent", type', eventInitDict')"
+  newJsObject2("DocumentPictureInPictureEvent", type', eventInitDict')
 
 pub inline fun window(obj: documentPictureInPictureEvent): web html/window
   getJsObjectField(obj.obj, "window")

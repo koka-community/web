@@ -11,7 +11,7 @@ pub value struct urlPattern
   obj: jsObject
 
 pub inline fun newUrlPattern(input': urlPatternInput, baseURLOrOptions': maybe<jsObject>, options': urlPatternOptions)
-  newJsObject3("UrlPattern", input', baseURLOrOptions', options')"
+  newJsObject3("UrlPattern", input', baseURLOrOptions', options')
 
 pub inline fun test(obj: urlPattern, input': urlPatternInput, baseURL': string): web bool
   jsOperation4(obj.obj, "test", input'.obj, baseURL'.obj)

@@ -45,7 +45,7 @@ pub value struct editContext
   obj: jsObject
 
 pub inline fun newEditContext(options': editContextInit)
-  newJsObject1("EditContext", options')"
+  newJsObject1("EditContext", options')
 
 pub inline fun updateText(obj: editContext, rangeStart': int, rangeEnd': int, text': string): web ()
   jsOperation5(obj.obj, "updateText", rangeStart'.obj, rangeEnd'.obj, text'.obj)
@@ -200,7 +200,7 @@ pub value struct textUpdateEvent
   obj: jsObject
 
 pub inline fun newTextUpdateEvent(type': string, options': textUpdateEventInit)
-  newJsObject2("TextUpdateEvent", type', options')"
+  newJsObject2("TextUpdateEvent", type', options')
 
 pub inline fun updateRangeStart(obj: textUpdateEvent): web int
   getJsObjectField(obj.obj, "updateRangeStart")
@@ -298,7 +298,7 @@ pub value struct textFormat
   obj: jsObject
 
 pub inline fun newTextFormat(options': textFormatInit)
-  newJsObject1("TextFormat", options')"
+  newJsObject1("TextFormat", options')
 
 pub inline fun rangeStart(obj: textFormat): web int
   getJsObjectField(obj.obj, "rangeStart")
@@ -342,7 +342,7 @@ pub value struct textFormatUpdateEvent
   obj: jsObject
 
 pub inline fun newTextFormatUpdateEvent(type': string, options': textFormatUpdateEventInit)
-  newJsObject2("TextFormatUpdateEvent", type', options')"
+  newJsObject2("TextFormatUpdateEvent", type', options')
 
 pub inline fun getTextFormats(obj: textFormatUpdateEvent): web jsArray
   jsOperation2(obj.obj, "getTextFormats")
@@ -377,7 +377,7 @@ pub value struct characterBoundsUpdateEvent
   obj: jsObject
 
 pub inline fun newCharacterBoundsUpdateEvent(type': string, options': characterBoundsUpdateEventInit)
-  newJsObject2("CharacterBoundsUpdateEvent", type', options')"
+  newJsObject2("CharacterBoundsUpdateEvent", type', options')
 
 pub inline fun rangeStart(obj: characterBoundsUpdateEvent): web int
   getJsObjectField(obj.obj, "rangeStart")

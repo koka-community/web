@@ -10,7 +10,7 @@ pub value struct capturedMouseEvent
   obj: jsObject
 
 pub inline fun newCapturedMouseEvent(type': string, eventInitDict': capturedMouseEventInit)
-  newJsObject2("CapturedMouseEvent", type', eventInitDict')"
+  newJsObject2("CapturedMouseEvent", type', eventInitDict')
 
 pub inline fun surfaceX(obj: capturedMouseEvent): web int
   getJsObjectField(obj.obj, "surfaceX")

@@ -11,7 +11,7 @@ pub value struct sanitizer
   obj: jsObject
 
 pub inline fun newSanitizer(config': sanitizerConfig)
-  newJsObject1("Sanitizer", config')"
+  newJsObject1("Sanitizer", config')
 pub inline fun getDefaultConfiguration(): web sanitizerConfig
   jsOperation1("getDefaultConfiguration")
 

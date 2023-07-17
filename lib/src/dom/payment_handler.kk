@@ -27,7 +27,7 @@ pub value struct canMakePaymentEvent
   obj: jsObject
 
 pub inline fun newCanMakePaymentEvent(type': string)
-  newJsObject1("CanMakePaymentEvent", type')"
+  newJsObject1("CanMakePaymentEvent", type')
 
 pub inline fun respondWith(obj: canMakePaymentEvent, canMakePaymentResponse': jsPromise): web ()
   jsOperation3(obj.obj, "respondWith", canMakePaymentResponse'.obj)
@@ -98,7 +98,7 @@ pub value struct paymentRequestEvent
   obj: jsObject
 
 pub inline fun newPaymentRequestEvent(type': string, eventInitDict': paymentRequestEventInit)
-  newJsObject2("PaymentRequestEvent", type', eventInitDict')"
+  newJsObject2("PaymentRequestEvent", type', eventInitDict')
 
 pub inline fun openWindow(obj: paymentRequestEvent, url': string): web jsPromise
   jsOperation3(obj.obj, "openWindow", url'.obj)

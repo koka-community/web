@@ -438,7 +438,7 @@ class Translator {
           ...optionalParameters.map((e) => e.$1)
         ];
         return 'pub inline fun new${typeName.snakeToPascal}(${parameters(total2)})\n'
-            '  newJsObject${total1.length}("${typeName.snakeToPascal}"${total1.isNotEmpty ? ', ' : ''}${total1.join(', ')})"\n';
+            '  newJsObject${total1.length}("${typeName.snakeToPascal}"${total1.isNotEmpty ? ', ' : ''}${total1.join(', ')})\n';
       });
 
   String _objectLiteral(List<idl.Member> members, String objectName) {

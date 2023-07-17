@@ -311,7 +311,7 @@ pub value struct valueEvent
   obj: jsObject
 
 pub inline fun newValueEvent(type': string, initDict': valueEventInit)
-  newJsObject2("ValueEvent", type', initDict')"
+  newJsObject2("ValueEvent", type', initDict')
 
 pub inline fun value(obj: valueEvent): web maybe<jsObject>
   getJsObjectField(obj.obj, "value")
@@ -386,7 +386,7 @@ pub value struct bluetoothAdvertisingEvent
   obj: jsObject
 
 pub inline fun newBluetoothAdvertisingEvent(type': string, init': bluetoothAdvertisingEventInit)
-  newJsObject2("BluetoothAdvertisingEvent", type', init')"
+  newJsObject2("BluetoothAdvertisingEvent", type', init')
 
 pub inline fun device(obj: bluetoothAdvertisingEvent): web bluetoothDevice
   getJsObjectField(obj.obj, "device")

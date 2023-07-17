@@ -51,7 +51,7 @@ pub value struct securityPolicyViolationEvent
   obj: jsObject
 
 pub inline fun newSecurityPolicyViolationEvent(type': string, eventInitDict': securityPolicyViolationEventInit)
-  newJsObject2("SecurityPolicyViolationEvent", type', eventInitDict')"
+  newJsObject2("SecurityPolicyViolationEvent", type', eventInitDict')
 
 pub inline fun documentURI(obj: securityPolicyViolationEvent): web string
   getJsObjectField(obj.obj, "documentURI")

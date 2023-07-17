@@ -104,7 +104,7 @@ pub value struct module
   obj: jsObject
 
 pub inline fun newModule(bytes': webidl/bufferSource)
-  newJsObject1("Module", bytes')"
+  newJsObject1("Module", bytes')
 pub inline fun exports(moduleObject': module): web jsArray
   jsOperation2("exports", moduleObject'.obj)
 
@@ -118,7 +118,7 @@ pub value struct instance
   obj: jsObject
 
 pub inline fun newInstance(module': module, importObject': jsObject)
-  newJsObject2("Instance", module', importObject')"
+  newJsObject2("Instance", module', importObject')
 
 pub inline fun exports(obj: instance): web jsObject
   getJsObjectField(obj.obj, "exports")
@@ -150,7 +150,7 @@ pub value struct memory
   obj: jsObject
 
 pub inline fun newMemory(descriptor': memoryDescriptor)
-  newJsObject1("Memory", descriptor')"
+  newJsObject1("Memory", descriptor')
 
 pub inline fun grow(obj: memory, delta': int): web int
   jsOperation3(obj.obj, "grow", delta'.obj)
@@ -191,7 +191,7 @@ pub value struct table
   obj: jsObject
 
 pub inline fun newTable(descriptor': tableDescriptor, value': maybe<jsObject>)
-  newJsObject2("Table", descriptor', value')"
+  newJsObject2("Table", descriptor', value')
 
 pub inline fun grow(obj: table, delta': int, value': maybe<jsObject>): web int
   jsOperation4(obj.obj, "grow", delta'.obj, value'.obj)
@@ -232,7 +232,7 @@ pub value struct global
   obj: jsObject
 
 pub inline fun newGlobal(descriptor': globalDescriptor, v': maybe<jsObject>)
-  newJsObject2("Global", descriptor', v')"
+  newJsObject2("Global", descriptor', v')
 
 pub inline fun valueOf(obj: global): web maybe<jsObject>
   jsOperation2(obj.obj, "valueOf")

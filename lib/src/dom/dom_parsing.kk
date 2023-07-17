@@ -10,7 +10,7 @@ pub value struct xmlSerializer
   obj: jsObject
 
 pub inline fun newXmlSerializer()
-  newJsObject0("XmlSerializer")"
+  newJsObject0("XmlSerializer")
 
 pub inline fun serializeToString(obj: xmlSerializer, root': dom/node): web string
   jsOperation3(obj.obj, "serializeToString", root'.obj)

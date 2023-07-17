@@ -147,7 +147,7 @@ pub value struct rtcIdentityAssertion
   obj: jsObject
 
 pub inline fun newRtcIdentityAssertion(idp': string, name': string)
-  newJsObject2("RtcIdentityAssertion", idp', name')"
+  newJsObject2("RtcIdentityAssertion", idp', name')
 
 pub inline fun idp(obj: rtcIdentityAssertion, value: string): web ()
   setJsObjectField(obj.obj, "idp", value.obj)

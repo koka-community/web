@@ -146,7 +146,7 @@ pub value struct midiMessageEvent
   obj: jsObject
 
 pub inline fun newMidiMessageEvent(type': string, eventInitDict': midiMessageEventInit)
-  newJsObject2("MidiMessageEvent", type', eventInitDict')"
+  newJsObject2("MidiMessageEvent", type', eventInitDict')
 
 pub inline fun data(obj: midiMessageEvent): web jsUint8Array
   getJsObjectField(obj.obj, "data")
@@ -172,7 +172,7 @@ pub value struct midiConnectionEvent
   obj: jsObject
 
 pub inline fun newMidiConnectionEvent(type': string, eventInitDict': midiConnectionEventInit)
-  newJsObject2("MidiConnectionEvent", type', eventInitDict')"
+  newJsObject2("MidiConnectionEvent", type', eventInitDict')
 
 pub inline fun port(obj: midiConnectionEvent): web midiPort
   getJsObjectField(obj.obj, "port")

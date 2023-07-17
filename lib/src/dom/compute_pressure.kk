@@ -15,7 +15,7 @@ pub value struct pressureObserver
   obj: jsObject
 
 pub inline fun newPressureObserver(callback': pressureUpdateCallback, options': pressureObserverOptions)
-  newJsObject2("PressureObserver", callback', options')"
+  newJsObject2("PressureObserver", callback', options')
 pub inline fun supportedSources(): web jsArray
   getJsStatic Field(, "supportedSources")
 

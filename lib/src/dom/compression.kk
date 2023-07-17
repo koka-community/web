@@ -11,11 +11,11 @@ pub value struct compressionStream
   obj: jsObject
 
 pub inline fun newCompressionStream(format': compressionFormat)
-  newJsObject1("CompressionStream", format')"
+  newJsObject1("CompressionStream", format')
 
 pub value struct decompressionStream
   obj: jsObject
 
 pub inline fun newDecompressionStream(format': compressionFormat)
-  newJsObject1("DecompressionStream", format')"
+  newJsObject1("DecompressionStream", format')
 

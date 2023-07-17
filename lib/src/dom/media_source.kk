@@ -17,7 +17,7 @@ pub value struct mediaSource
   obj: jsObject
 
 pub inline fun newMediaSource()
-  newJsObject0("MediaSource")"
+  newJsObject0("MediaSource")
 pub inline fun isTypeSupported(type': string): web bool
   jsOperation2("isTypeSupported", type'.obj)
 

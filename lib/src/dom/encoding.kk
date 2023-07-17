@@ -66,7 +66,7 @@ pub value struct textDecoder
   obj: jsObject
 
 pub inline fun newTextDecoder(label': string, options': textDecoderOptions)
-  newJsObject2("TextDecoder", label', options')"
+  newJsObject2("TextDecoder", label', options')
 
 pub inline fun decode(obj: textDecoder, input': webidl/allowSharedBufferSource, options': textDecodeOptions): web string
   jsOperation4(obj.obj, "decode", input'.obj, options'.obj)
@@ -108,7 +108,7 @@ pub value struct textEncoder
   obj: jsObject
 
 pub inline fun newTextEncoder()
-  newJsObject0("TextEncoder")"
+  newJsObject0("TextEncoder")
 
 pub inline fun encode(obj: textEncoder, input': string): web jsUint8Array
   jsOperation3(obj.obj, "encode", input'.obj)
@@ -120,11 +120,11 @@ pub value struct textDecoderStream
   obj: jsObject
 
 pub inline fun newTextDecoderStream(label': string, options': textDecoderOptions)
-  newJsObject2("TextDecoderStream", label', options')"
+  newJsObject2("TextDecoderStream", label', options')
 
 pub value struct textEncoderStream
   obj: jsObject
 
 pub inline fun newTextEncoderStream()
-  newJsObject0("TextEncoderStream")"
+  newJsObject0("TextEncoderStream")
 

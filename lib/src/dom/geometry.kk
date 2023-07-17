@@ -10,7 +10,7 @@ pub value struct domPointReadOnly
   obj: jsObject
 
 pub inline fun newDomPointReadOnly(x': double, y': double, z': double, w': double)
-  newJsObject4("DomPointReadOnly", x', y', z', w')"
+  newJsObject4("DomPointReadOnly", x', y', z', w')
 pub inline fun fromPoint(other': domPointInit): web domPointReadOnly
   jsOperation2("fromPoint", other'.obj)
 
@@ -36,7 +36,7 @@ pub value struct domPoint
   obj: jsObject
 
 pub inline fun newDomPoint(x': double, y': double, z': double, w': double)
-  newJsObject4("DomPoint", x', y', z', w')"
+  newJsObject4("DomPoint", x', y', z', w')
 pub inline fun fromPoint(other': domPointInit): web domPoint
   jsOperation2("fromPoint", other'.obj)
 
@@ -112,7 +112,7 @@ pub value struct domRectReadOnly
   obj: jsObject
 
 pub inline fun newDomRectReadOnly(x': double, y': double, width': double, height': double)
-  newJsObject4("DomRectReadOnly", x', y', width', height')"
+  newJsObject4("DomRectReadOnly", x', y', width', height')
 pub inline fun fromRect(other': domRectInit): web domRectReadOnly
   jsOperation2("fromRect", other'.obj)
 
@@ -147,7 +147,7 @@ pub value struct domRect
   obj: jsObject
 
 pub inline fun newDomRect(x': double, y': double, width': double, height': double)
-  newJsObject4("DomRect", x', y', width', height')"
+  newJsObject4("DomRect", x', y', width', height')
 pub inline fun fromRect(other': domRectInit): web domRect
   jsOperation2("fromRect", other'.obj)
 
@@ -233,7 +233,7 @@ pub value struct domQuad
   obj: jsObject
 
 pub inline fun newDomQuad(p1': domPointInit, p2': domPointInit, p3': domPointInit, p4': domPointInit)
-  newJsObject4("DomQuad", p1', p2', p3', p4')"
+  newJsObject4("DomQuad", p1', p2', p3', p4')
 pub inline fun fromRect(other': domRectInit): web domQuad
   jsOperation2("fromRect", other'.obj)
 
@@ -306,7 +306,7 @@ pub value struct domMatrixReadOnly
   obj: jsObject
 
 pub inline fun newDomMatrixReadOnly(init': maybe<jsObject>)
-  newJsObject1("DomMatrixReadOnly", init')"
+  newJsObject1("DomMatrixReadOnly", init')
 pub inline fun fromMatrix(other': domMatrixInit): web domMatrixReadOnly
   jsOperation2("fromMatrix", other'.obj)
 
@@ -443,7 +443,7 @@ pub value struct domMatrix
   obj: jsObject
 
 pub inline fun newDomMatrix(init': maybe<jsObject>)
-  newJsObject1("DomMatrix", init')"
+  newJsObject1("DomMatrix", init')
 pub inline fun fromMatrix(other': domMatrixInit): web domMatrix
   jsOperation2("fromMatrix", other'.obj)
 

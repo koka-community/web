@@ -11,7 +11,7 @@ pub value struct gyroscope
   obj: jsObject
 
 pub inline fun newGyroscope(sensorOptions': gyroscopeSensorOptions)
-  newJsObject1("Gyroscope", sensorOptions')"
+  newJsObject1("Gyroscope", sensorOptions')
 
 pub inline fun x(obj: gyroscope): web maybe<double>
   getJsObjectField(obj.obj, "x")

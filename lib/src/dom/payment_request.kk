@@ -11,7 +11,7 @@ pub value struct paymentRequest
   obj: jsObject
 
 pub inline fun newPaymentRequest(methodData': jsArray, details': paymentDetailsInit)
-  newJsObject2("PaymentRequest", methodData', details')"
+  newJsObject2("PaymentRequest", methodData', details')
 pub inline fun isSecurePaymentConfirmationAvailable(): web jsPromise
   jsOperation1("isSecurePaymentConfirmationAvailable")
 
@@ -290,7 +290,7 @@ pub value struct paymentMethodChangeEvent
   obj: jsObject
 
 pub inline fun newPaymentMethodChangeEvent(type': string, eventInitDict': paymentMethodChangeEventInit)
-  newJsObject2("PaymentMethodChangeEvent", type', eventInitDict')"
+  newJsObject2("PaymentMethodChangeEvent", type', eventInitDict')
 
 pub inline fun methodName(obj: paymentMethodChangeEvent): web string
   getJsObjectField(obj.obj, "methodName")
@@ -328,7 +328,7 @@ pub value struct paymentRequestUpdateEvent
   obj: jsObject
 
 pub inline fun newPaymentRequestUpdateEvent(type': string, eventInitDict': paymentRequestUpdateEventInit)
-  newJsObject2("PaymentRequestUpdateEvent", type', eventInitDict')"
+  newJsObject2("PaymentRequestUpdateEvent", type', eventInitDict')
 
 pub inline fun updateWith(obj: paymentRequestUpdateEvent, detailsPromise': jsPromise): web ()
   jsOperation3(obj.obj, "updateWith", detailsPromise'.obj)

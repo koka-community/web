@@ -143,7 +143,7 @@ pub value struct hidConnectionEvent
   obj: jsObject
 
 pub inline fun newHidConnectionEvent(type': string, eventInitDict': hidConnectionEventInit)
-  newJsObject2("HidConnectionEvent", type', eventInitDict')"
+  newJsObject2("HidConnectionEvent", type', eventInitDict')
 
 pub inline fun device(obj: hidConnectionEvent): web hidDevice
   getJsObjectField(obj.obj, "device")
@@ -166,7 +166,7 @@ pub value struct hidInputReportEvent
   obj: jsObject
 
 pub inline fun newHidInputReportEvent(type': string, eventInitDict': hidInputReportEventInit)
-  newJsObject2("HidInputReportEvent", type', eventInitDict')"
+  newJsObject2("HidInputReportEvent", type', eventInitDict')
 
 pub inline fun device(obj: hidInputReportEvent): web hidDevice
   getJsObjectField(obj.obj, "device")

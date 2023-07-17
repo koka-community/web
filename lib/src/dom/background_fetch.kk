@@ -123,7 +123,7 @@ pub value struct backgroundFetchEvent
   obj: jsObject
 
 pub inline fun newBackgroundFetchEvent(type': string, init': backgroundFetchEventInit)
-  newJsObject2("BackgroundFetchEvent", type', init')"
+  newJsObject2("BackgroundFetchEvent", type', init')
 
 pub inline fun registration(obj: backgroundFetchEvent): web backgroundFetchRegistration
   getJsObjectField(obj.obj, "registration")
@@ -146,7 +146,7 @@ pub value struct backgroundFetchUpdateUIEvent
   obj: jsObject
 
 pub inline fun newBackgroundFetchUpdateUIEvent(type': string, init': backgroundFetchEventInit)
-  newJsObject2("BackgroundFetchUpdateUIEvent", type', init')"
+  newJsObject2("BackgroundFetchUpdateUIEvent", type', init')
 
 pub inline fun updateUI(obj: backgroundFetchUpdateUIEvent, options': backgroundFetchUIOptions): web jsPromise
   jsOperation3(obj.obj, "updateUI", options'.obj)

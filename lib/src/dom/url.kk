@@ -10,7 +10,7 @@ pub value struct urL
   obj: jsObject
 
 pub inline fun newUrL(url': string, base': string)
-  newJsObject2("UrL", url', base')"
+  newJsObject2("UrL", url', base')
 pub inline fun createObjectURL(obj': maybe<jsObject>): web string
   jsOperation2("createObjectURL", obj'.obj)
 
@@ -93,7 +93,7 @@ pub value struct urlSearchParams
   obj: jsObject
 
 pub inline fun newUrlSearchParams(init': maybe<jsObject>)
-  newJsObject1("UrlSearchParams", init')"
+  newJsObject1("UrlSearchParams", init')
 
 pub inline fun append(obj: urlSearchParams, name': string, value': string): web ()
   jsOperation4(obj.obj, "append", name'.obj, value'.obj)

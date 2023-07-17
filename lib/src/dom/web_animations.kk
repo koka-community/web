@@ -56,13 +56,13 @@ pub value struct documentTimeline
   obj: jsObject
 
 pub inline fun newDocumentTimeline(options': documentTimelineOptions)
-  newJsObject1("DocumentTimeline", options')"
+  newJsObject1("DocumentTimeline", options')
 
 pub value struct animation
   obj: jsObject
 
 pub inline fun newAnimation(effect': maybe<animationEffect> =  Nothing, timeline': maybe<animationTimeline> =  Nothing)
-  newJsObject2("Animation", effect', timeline')"
+  newJsObject2("Animation", effect', timeline')
 
 pub inline fun cancel(obj: animation): web ()
   jsOperation2(obj.obj, "cancel")
@@ -435,7 +435,7 @@ pub value struct keyframeEffect
   obj: jsObject
 
 pub inline fun newKeyframeEffect(sourceOrTarget': maybe<jsObject> =  Nothing, keyframes': maybe<jsObject> =  Nothing, options': maybe<jsObject>)
-  newJsObject3("KeyframeEffect", sourceOrTarget', keyframes', options')"
+  newJsObject3("KeyframeEffect", sourceOrTarget', keyframes', options')
 
 pub inline fun getKeyframes(obj: keyframeEffect): web jsArray
   jsOperation2(obj.obj, "getKeyframes")

@@ -31,7 +31,7 @@ pub value struct performanceObserver
   obj: jsObject
 
 pub inline fun newPerformanceObserver(callback': performanceObserverCallback)
-  newJsObject1("PerformanceObserver", callback')"
+  newJsObject1("PerformanceObserver", callback')
 pub inline fun supportedEntryTypes(): web jsArray
   getJsStatic Field(, "supportedEntryTypes")
 

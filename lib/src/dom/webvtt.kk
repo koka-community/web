@@ -27,7 +27,7 @@ pub value struct vttCue
   obj: jsObject
 
 pub inline fun newVttCue(startTime': double, endTime': double, text': string)
-  newJsObject3("VttCue", startTime', endTime', text')"
+  newJsObject3("VttCue", startTime', endTime', text')
 
 pub inline fun getCueAsHTML(obj: vttCue): web dom/documentFragment
   jsOperation2(obj.obj, "getCueAsHTML")
@@ -96,7 +96,7 @@ pub value struct vttRegion
   obj: jsObject
 
 pub inline fun newVttRegion()
-  newJsObject0("VttRegion")"
+  newJsObject0("VttRegion")
 
 pub inline fun id(obj: vttRegion, value: string): web ()
   setJsObjectField(obj.obj, "id", value.obj)

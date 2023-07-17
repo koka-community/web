@@ -232,7 +232,7 @@ pub value struct cookieChangeEvent
   obj: jsObject
 
 pub inline fun newCookieChangeEvent(type': string, eventInitDict': cookieChangeEventInit)
-  newJsObject2("CookieChangeEvent", type', eventInitDict')"
+  newJsObject2("CookieChangeEvent", type', eventInitDict')
 
 pub inline fun changed(obj: cookieChangeEvent): web jsArray
   getJsObjectField(obj.obj, "changed")
@@ -270,7 +270,7 @@ pub value struct extendableCookieChangeEvent
   obj: jsObject
 
 pub inline fun newExtendableCookieChangeEvent(type': string, eventInitDict': extendableCookieChangeEventInit)
-  newJsObject2("ExtendableCookieChangeEvent", type', eventInitDict')"
+  newJsObject2("ExtendableCookieChangeEvent", type', eventInitDict')
 
 pub inline fun changed(obj: extendableCookieChangeEvent): web jsArray
   getJsObjectField(obj.obj, "changed")

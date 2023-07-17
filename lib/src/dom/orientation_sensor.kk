@@ -39,13 +39,13 @@ pub value struct absoluteOrientationSensor
   obj: jsObject
 
 pub inline fun newAbsoluteOrientationSensor(sensorOptions': orientationSensorOptions)
-  newJsObject1("AbsoluteOrientationSensor", sensorOptions')"
+  newJsObject1("AbsoluteOrientationSensor", sensorOptions')
 
 pub value struct relativeOrientationSensor
   obj: jsObject
 
 pub inline fun newRelativeOrientationSensor(sensorOptions': orientationSensorOptions)
-  newJsObject1("RelativeOrientationSensor", sensorOptions')"
+  newJsObject1("RelativeOrientationSensor", sensorOptions')
 
 pub value struct absoluteOrientationReadingValues
   obj: jsObject

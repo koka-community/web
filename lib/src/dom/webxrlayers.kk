@@ -577,7 +577,7 @@ pub value struct xrWebGLBinding
   obj: jsObject
 
 pub inline fun newXrWebGLBinding(session': webxr/xrSession, context': webxr/xrWebGLRenderingContext)
-  newJsObject2("XrWebGLBinding", session', context')"
+  newJsObject2("XrWebGLBinding", session', context')
 
 pub inline fun getCameraImage(obj: xrWebGLBinding, camera': raw_camera_access/xrCamera): web maybe<webgl1/webGLTexture>
   jsOperation3(obj.obj, "getCameraImage", camera'.obj)
@@ -783,7 +783,7 @@ pub value struct xrMediaBinding
   obj: jsObject
 
 pub inline fun newXrMediaBinding(session': webxr/xrSession)
-  newJsObject1("XrMediaBinding", session')"
+  newJsObject1("XrMediaBinding", session')
 
 pub inline fun createQuadLayer(obj: xrMediaBinding, video': html/htmlVideoElement, init': xrMediaQuadLayerInit): web xrQuadLayer
   jsOperation4(obj.obj, "createQuadLayer", video'.obj, init'.obj)
@@ -798,7 +798,7 @@ pub value struct xrLayerEvent
   obj: jsObject
 
 pub inline fun newXrLayerEvent(type': string, eventInitDict': xrLayerEventInit)
-  newJsObject2("XrLayerEvent", type', eventInitDict')"
+  newJsObject2("XrLayerEvent", type', eventInitDict')
 
 pub inline fun layer(obj: xrLayerEvent): web webxr/xrLayer
   getJsObjectField(obj.obj, "layer")

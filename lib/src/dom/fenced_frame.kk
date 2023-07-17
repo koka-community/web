@@ -21,7 +21,7 @@ pub value struct htmlFencedFrameElement
   obj: jsObject
 
 pub inline fun newHtmlFencedFrameElement()
-  newJsObject0("HtmlFencedFrameElement")"
+  newJsObject0("HtmlFencedFrameElement")
 
 pub inline fun config(obj: htmlFencedFrameElement, value: maybe<fencedFrameConfig>): web ()
   setJsObjectField(obj.obj, "config", value.obj)

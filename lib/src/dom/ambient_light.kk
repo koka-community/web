@@ -10,7 +10,7 @@ pub value struct ambientLightSensor
   obj: jsObject
 
 pub inline fun newAmbientLightSensor(sensorOptions': generic_sensor/sensorOptions)
-  newJsObject1("AmbientLightSensor", sensorOptions')"
+  newJsObject1("AmbientLightSensor", sensorOptions')
 
 pub inline fun illuminance(obj: ambientLightSensor): web maybe<double>
   getJsObjectField(obj.obj, "illuminance")

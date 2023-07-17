@@ -179,7 +179,7 @@ pub value struct passwordCredential
   obj: jsObject
 
 pub inline fun newPasswordCredential(dataOrForm': maybe<jsObject>)
-  newJsObject1("PasswordCredential", dataOrForm')"
+  newJsObject1("PasswordCredential", dataOrForm')
 
 pub inline fun password(obj: passwordCredential): web string
   getJsObjectField(obj.obj, "password")
@@ -226,7 +226,7 @@ pub value struct federatedCredential
   obj: jsObject
 
 pub inline fun newFederatedCredential(data': federatedCredentialInit)
-  newJsObject1("FederatedCredential", data')"
+  newJsObject1("FederatedCredential", data')
 
 pub inline fun provider(obj: federatedCredential): web string
   getJsObjectField(obj.obj, "provider")

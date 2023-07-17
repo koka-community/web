@@ -10,7 +10,7 @@ pub value struct dataCue
   obj: jsObject
 
 pub inline fun newDataCue(startTime': double, endTime': double, value': maybe<jsObject>, type': string)
-  newJsObject4("DataCue", startTime', endTime', value', type')"
+  newJsObject4("DataCue", startTime', endTime', value', type')
 
 pub inline fun value(obj: dataCue, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "value", value.obj)

@@ -122,7 +122,7 @@ pub value struct fontFace
   obj: jsObject
 
 pub inline fun newFontFace(family': string, source': maybe<jsObject>, descriptors': fontFaceDescriptors)
-  newJsObject3("FontFace", family', source', descriptors')"
+  newJsObject3("FontFace", family', source', descriptors')
 
 pub inline fun load(obj: fontFace): web jsPromise
   jsOperation2(obj.obj, "load")
@@ -283,7 +283,7 @@ pub value struct fontFaceSetLoadEvent
   obj: jsObject
 
 pub inline fun newFontFaceSetLoadEvent(type': string, eventInitDict': fontFaceSetLoadEventInit)
-  newJsObject2("FontFaceSetLoadEvent", type', eventInitDict')"
+  newJsObject2("FontFaceSetLoadEvent", type', eventInitDict')
 
 pub inline fun fontfaces(obj: fontFaceSetLoadEvent): web jsArray
   getJsObjectField(obj.obj, "fontfaces")
@@ -292,7 +292,7 @@ pub value struct fontFaceSet
   obj: jsObject
 
 pub inline fun newFontFaceSet(initialFaces': jsArray)
-  newJsObject1("FontFaceSet", initialFaces')"
+  newJsObject1("FontFaceSet", initialFaces')
 
 pub inline fun add(obj: fontFaceSet, font': fontFace): web fontFaceSet
   jsOperation3(obj.obj, "add", font'.obj)

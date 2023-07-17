@@ -354,7 +354,7 @@ pub value struct fragmentResult
   obj: jsObject
 
 pub inline fun newFragmentResult(options': fragmentResultOptions)
-  newJsObject1("FragmentResult", options')"
+  newJsObject1("FragmentResult", options')
 
 pub inline fun inlineSize(obj: fragmentResult): web double
   getJsObjectField(obj.obj, "inlineSize")

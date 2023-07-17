@@ -10,7 +10,7 @@ pub value struct animationEvent
   obj: jsObject
 
 pub inline fun newAnimationEvent(type': string, animationEventInitDict': animationEventInit)
-  newJsObject2("AnimationEvent", type', animationEventInitDict')"
+  newJsObject2("AnimationEvent", type', animationEventInitDict')
 
 pub inline fun animationName(obj: animationEvent): web string
   getJsObjectField(obj.obj, "animationName")

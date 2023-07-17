@@ -10,7 +10,7 @@ pub value struct uiEvent
   obj: jsObject
 
 pub inline fun newUiEvent(type': string, eventInitDict': uiEventInit)
-  newJsObject2("UiEvent", type', eventInitDict')"
+  newJsObject2("UiEvent", type', eventInitDict')
 
 pub inline fun initUIEvent(obj: uiEvent, typeArg': string, bubblesArg': bool, cancelableArg': bool, viewArg': maybe<html/window> =  Nothing, detailArg': int): web ()
   jsOperation7(obj.obj, "initUIEvent", typeArg'.obj, bubblesArg'.obj, cancelableArg'.obj, viewArg'.obj, detailArg'.obj)
@@ -75,7 +75,7 @@ pub value struct focusEvent
   obj: jsObject
 
 pub inline fun newFocusEvent(type': string, eventInitDict': focusEventInit)
-  newJsObject2("FocusEvent", type', eventInitDict')"
+  newJsObject2("FocusEvent", type', eventInitDict')
 
 pub inline fun relatedTarget(obj: focusEvent): web maybe<dom/eventTarget>
   getJsObjectField(obj.obj, "relatedTarget")
@@ -101,7 +101,7 @@ pub value struct mouseEvent
   obj: jsObject
 
 pub inline fun newMouseEvent(type': string, eventInitDict': mouseEventInit)
-  newJsObject2("MouseEvent", type', eventInitDict')"
+  newJsObject2("MouseEvent", type', eventInitDict')
 
 pub inline fun getModifierState(obj: mouseEvent, keyArg': string): web bool
   jsOperation3(obj.obj, "getModifierState", keyArg'.obj)
@@ -393,7 +393,7 @@ pub value struct wheelEvent
   obj: jsObject
 
 pub inline fun newWheelEvent(type': string, eventInitDict': wheelEventInit)
-  newJsObject2("WheelEvent", type', eventInitDict')"
+  newJsObject2("WheelEvent", type', eventInitDict')
 pub inline fun domdeltapixeL(): int
   getConstant("DOM_DELTA_PIXEL")
 
@@ -463,7 +463,7 @@ pub value struct inputEvent
   obj: jsObject
 
 pub inline fun newInputEvent(type': string, eventInitDict': inputEventInit)
-  newJsObject2("InputEvent", type', eventInitDict')"
+  newJsObject2("InputEvent", type', eventInitDict')
 
 pub inline fun getTargetRanges(obj: inputEvent): web jsArray
   jsOperation2(obj.obj, "getTargetRanges")
@@ -537,7 +537,7 @@ pub value struct keyboardEvent
   obj: jsObject
 
 pub inline fun newKeyboardEvent(type': string, eventInitDict': keyboardEventInit)
-  newJsObject2("KeyboardEvent", type', eventInitDict')"
+  newJsObject2("KeyboardEvent", type', eventInitDict')
 pub inline fun domkeylocationstandarD(): int
   getConstant("DOM_KEY_LOCATION_STANDARD")
 
@@ -664,7 +664,7 @@ pub value struct compositionEvent
   obj: jsObject
 
 pub inline fun newCompositionEvent(type': string, eventInitDict': compositionEventInit)
-  newJsObject2("CompositionEvent", type', eventInitDict')"
+  newJsObject2("CompositionEvent", type', eventInitDict')
 
 pub inline fun initCompositionEvent(obj: compositionEvent, typeArg': string, bubblesArg': bool, cancelableArg': bool, viewArg': maybe<html/window> =  Nothing, dataArg': string): web ()
   jsOperation7(obj.obj, "initCompositionEvent", typeArg'.obj, bubblesArg'.obj, cancelableArg'.obj, viewArg'.obj, dataArg'.obj)

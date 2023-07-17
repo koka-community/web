@@ -621,7 +621,7 @@ pub value struct shadowAnimation
   obj: jsObject
 
 pub inline fun newShadowAnimation(source': web_animations/animation, newTarget': maybe<jsObject>)
-  newJsObject2("ShadowAnimation", source', newTarget')"
+  newJsObject2("ShadowAnimation", source', newTarget')
 
 pub inline fun sourceAnimation(obj: shadowAnimation): web web_animations/animation
   getJsObjectField(obj.obj, "sourceAnimation")

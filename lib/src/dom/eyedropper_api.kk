@@ -44,7 +44,7 @@ pub value struct eyeDropper
   obj: jsObject
 
 pub inline fun newEyeDropper()
-  newJsObject0("EyeDropper")"
+  newJsObject0("EyeDropper")
 
 pub inline fun open(obj: eyeDropper, options': colorSelectionOptions): web jsPromise
   jsOperation3(obj.obj, "open", options'.obj)

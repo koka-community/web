@@ -11,7 +11,7 @@ pub value struct webSocket
   obj: jsObject
 
 pub inline fun newWebSocket(url': string, protocols': maybe<jsObject>)
-  newJsObject2("WebSocket", url', protocols')"
+  newJsObject2("WebSocket", url', protocols')
 pub inline fun connectinG(): int
   getConstant("CONNECTING")
 
@@ -79,7 +79,7 @@ pub value struct closeEvent
   obj: jsObject
 
 pub inline fun newCloseEvent(type': string, eventInitDict': closeEventInit)
-  newJsObject2("CloseEvent", type', eventInitDict')"
+  newJsObject2("CloseEvent", type', eventInitDict')
 
 pub inline fun wasClean(obj: closeEvent): web bool
   getJsObjectField(obj.obj, "wasClean")

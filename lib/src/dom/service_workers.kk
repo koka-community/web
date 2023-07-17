@@ -433,7 +433,7 @@ pub value struct extendableEvent
   obj: jsObject
 
 pub inline fun newExtendableEvent(type': string, eventInitDict': extendableEventInit)
-  newJsObject2("ExtendableEvent", type', eventInitDict')"
+  newJsObject2("ExtendableEvent", type', eventInitDict')
 
 pub inline fun waitUntil(obj: extendableEvent, f': jsPromise): web ()
   jsOperation3(obj.obj, "waitUntil", f'.obj)
@@ -450,7 +450,7 @@ pub value struct fetchEvent
   obj: jsObject
 
 pub inline fun newFetchEvent(type': string, eventInitDict': fetchEventInit)
-  newJsObject2("FetchEvent", type', eventInitDict')"
+  newJsObject2("FetchEvent", type', eventInitDict')
 
 pub inline fun respondWith(obj: fetchEvent, r': jsPromise): web ()
   jsOperation3(obj.obj, "respondWith", r'.obj)
@@ -536,7 +536,7 @@ pub value struct extendableMessageEvent
   obj: jsObject
 
 pub inline fun newExtendableMessageEvent(type': string, eventInitDict': extendableMessageEventInit)
-  newJsObject2("ExtendableMessageEvent", type', eventInitDict')"
+  newJsObject2("ExtendableMessageEvent", type', eventInitDict')
 
 pub inline fun data(obj: extendableMessageEvent): web maybe<jsObject>
   getJsObjectField(obj.obj, "data")

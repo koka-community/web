@@ -42,7 +42,7 @@ pub value struct headers
   obj: jsObject
 
 pub inline fun newHeaders(init': headersInit)
-  newJsObject1("Headers", init')"
+  newJsObject1("Headers", init')
 
 pub inline fun append(obj: headers, name': string, value': string): web ()
   jsOperation4(obj.obj, "append", name'.obj, value'.obj)
@@ -91,7 +91,7 @@ pub value struct request
   obj: jsObject
 
 pub inline fun newRequest(input': requestInfo, init': requestInit)
-  newJsObject2("Request", input', init')"
+  newJsObject2("Request", input', init')
 
 pub inline fun clone(obj: request): web request
   jsOperation2(obj.obj, "clone")
@@ -309,7 +309,7 @@ pub value struct response
   obj: jsObject
 
 pub inline fun newResponse(body': maybe<bodyInit> =  Nothing, init': responseInit)
-  newJsObject2("Response", body', init')"
+  newJsObject2("Response", body', init')
 pub inline fun error(): web response
   jsOperation1("error")
 

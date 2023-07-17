@@ -22,7 +22,7 @@ pub value struct event
   obj: jsObject
 
 pub inline fun newEvent(type': string, eventInitDict': eventInit)
-  newJsObject2("Event", type', eventInitDict')"
+  newJsObject2("Event", type', eventInitDict')
 pub inline fun nonE(): int
   getConstant("NONE")
 
@@ -134,7 +134,7 @@ pub value struct customEvent
   obj: jsObject
 
 pub inline fun newCustomEvent(type': string, eventInitDict': customEventInit)
-  newJsObject2("CustomEvent", type', eventInitDict')"
+  newJsObject2("CustomEvent", type', eventInitDict')
 
 pub inline fun initCustomEvent(obj: customEvent, type': string, bubbles': bool, cancelable': bool, detail': maybe<jsObject>): web ()
   jsOperation6(obj.obj, "initCustomEvent", type'.obj, bubbles'.obj, cancelable'.obj, detail'.obj)
@@ -163,7 +163,7 @@ pub value struct eventTarget
   obj: jsObject
 
 pub inline fun newEventTarget()
-  newJsObject0("EventTarget")"
+  newJsObject0("EventTarget")
 
 pub inline fun addEventListener(obj: eventTarget, type': string, callback': maybe<eventListener> =  Nothing, options': maybe<jsObject>): web ()
   jsOperation5(obj.obj, "addEventListener", type'.obj, callback'.obj, options'.obj)
@@ -230,7 +230,7 @@ pub value struct abortController
   obj: jsObject
 
 pub inline fun newAbortController()
-  newJsObject0("AbortController")"
+  newJsObject0("AbortController")
 
 pub inline fun abort(obj: abortController, reason': maybe<jsObject>): web ()
   jsOperation3(obj.obj, "abort", reason'.obj)
@@ -391,7 +391,7 @@ pub value struct mutationObserver
   obj: jsObject
 
 pub inline fun newMutationObserver(callback': mutationCallback)
-  newJsObject1("MutationObserver", callback')"
+  newJsObject1("MutationObserver", callback')
 
 pub inline fun observe(obj: mutationObserver, target': node, options': mutationObserverInit): web ()
   jsOperation4(obj.obj, "observe", target'.obj, options'.obj)
@@ -677,7 +677,7 @@ pub value struct document
   obj: jsObject
 
 pub inline fun newDocument()
-  newJsObject0("Document")"
+  newJsObject0("Document")
 
 pub inline fun startViewTransition(obj: document, updateCallback': maybe<css_view_transitions/updateCallback> =  Nothing): web css_view_transitions/viewTransition
   jsOperation3(obj.obj, "startViewTransition", updateCallback'.obj)
@@ -1114,7 +1114,7 @@ pub value struct documentFragment
   obj: jsObject
 
 pub inline fun newDocumentFragment()
-  newJsObject0("DocumentFragment")"
+  newJsObject0("DocumentFragment")
 
 pub value struct shadowRoot
   obj: jsObject
@@ -1490,7 +1490,7 @@ pub value struct text
   obj: jsObject
 
 pub inline fun newText(data': string)
-  newJsObject1("Text", data')"
+  newJsObject1("Text", data')
 
 pub inline fun splitText(obj: text, offset': int): web text
   jsOperation3(obj.obj, "splitText", offset'.obj)
@@ -1513,7 +1513,7 @@ pub value struct comment
   obj: jsObject
 
 pub inline fun newComment(data': string)
-  newJsObject1("Comment", data')"
+  newJsObject1("Comment", data')
 
 pub value struct abstractRange
   obj: jsObject
@@ -1570,13 +1570,13 @@ pub value struct staticRange
   obj: jsObject
 
 pub inline fun newStaticRange(init': staticRangeInit)
-  newJsObject1("StaticRange", init')"
+  newJsObject1("StaticRange", init')
 
 pub value struct range
   obj: jsObject
 
 pub inline fun newRange()
-  newJsObject0("Range")"
+  newJsObject0("Range")
 pub inline fun starttostarT(): int
   getConstant("START_TO_START")
 
@@ -1847,13 +1847,13 @@ pub value struct xPathEvaluator
   obj: jsObject
 
 pub inline fun newXPathEvaluator()
-  newJsObject0("XPathEvaluator")"
+  newJsObject0("XPathEvaluator")
 
 pub value struct xsltProcessor
   obj: jsObject
 
 pub inline fun newXsltProcessor()
-  newJsObject0("XsltProcessor")"
+  newJsObject0("XsltProcessor")
 
 pub inline fun importStylesheet(obj: xsltProcessor, style': node): web ()
   jsOperation3(obj.obj, "importStylesheet", style'.obj)

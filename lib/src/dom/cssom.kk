@@ -60,7 +60,7 @@ pub value struct cssStyleSheet
   obj: jsObject
 
 pub inline fun newCssStyleSheet(options': cssStyleSheetInit)
-  newJsObject1("CssStyleSheet", options')"
+  newJsObject1("CssStyleSheet", options')
 
 pub inline fun insertRule(obj: cssStyleSheet, rule': string, index': int): web int
   jsOperation4(obj.obj, "insertRule", rule'.obj, index'.obj)

@@ -11,7 +11,7 @@ pub value struct intersectionObserver
   obj: jsObject
 
 pub inline fun newIntersectionObserver(callback': intersectionObserverCallback, options': intersectionObserverInit)
-  newJsObject2("IntersectionObserver", callback', options')"
+  newJsObject2("IntersectionObserver", callback', options')
 
 pub inline fun observe(obj: intersectionObserver, target': dom/element): web ()
   jsOperation3(obj.obj, "observe", target'.obj)
@@ -38,7 +38,7 @@ pub value struct intersectionObserverEntry
   obj: jsObject
 
 pub inline fun newIntersectionObserverEntry(intersectionObserverEntryInit': intersectionObserverEntryInit)
-  newJsObject1("IntersectionObserverEntry", intersectionObserverEntryInit')"
+  newJsObject1("IntersectionObserverEntry", intersectionObserverEntryInit')
 
 pub inline fun time(obj: intersectionObserverEntry): web hr_time/domHighResTimeStamp
   getJsObjectField(obj.obj, "time")

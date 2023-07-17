@@ -15,7 +15,7 @@ pub value struct notification
   obj: jsObject
 
 pub inline fun newNotification(title': string, options': notificationOptions)
-  newJsObject2("Notification", title', options')"
+  newJsObject2("Notification", title', options')
 pub inline fun requestPermission(deprecatedCallback': notificationPermissionCallback): web jsPromise
   jsOperation2("requestPermission", deprecatedCallback'.obj)
 
@@ -281,7 +281,7 @@ pub value struct notificationEvent
   obj: jsObject
 
 pub inline fun newNotificationEvent(type': string, eventInitDict': notificationEventInit)
-  newJsObject2("NotificationEvent", type', eventInitDict')"
+  newJsObject2("NotificationEvent", type', eventInitDict')
 
 pub inline fun notification(obj: notificationEvent): web notification
   getJsObjectField(obj.obj, "notification")

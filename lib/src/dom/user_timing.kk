@@ -80,7 +80,7 @@ pub value struct performanceMark
   obj: jsObject
 
 pub inline fun newPerformanceMark(markName': string, markOptions': performanceMarkOptions)
-  newJsObject2("PerformanceMark", markName', markOptions')"
+  newJsObject2("PerformanceMark", markName', markOptions')
 
 pub inline fun detail(obj: performanceMark): web maybe<jsObject>
   getJsObjectField(obj.obj, "detail")

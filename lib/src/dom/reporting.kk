@@ -35,7 +35,7 @@ pub value struct reportingObserver
   obj: jsObject
 
 pub inline fun newReportingObserver(callback': reportingObserverCallback, options': reportingObserverOptions)
-  newJsObject2("ReportingObserver", callback', options')"
+  newJsObject2("ReportingObserver", callback', options')
 
 pub inline fun observe(obj: reportingObserver): web ()
   jsOperation2(obj.obj, "observe")

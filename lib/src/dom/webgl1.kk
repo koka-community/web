@@ -1547,7 +1547,7 @@ pub value struct webGLContextEvent
   obj: jsObject
 
 pub inline fun newWebGLContextEvent(type': string, eventInit': webGLContextEventInit)
-  newJsObject2("WebGLContextEvent", type', eventInit')"
+  newJsObject2("WebGLContextEvent", type', eventInit')
 
 pub inline fun statusMessage(obj: webGLContextEvent): web string
   getJsObjectField(obj.obj, "statusMessage")

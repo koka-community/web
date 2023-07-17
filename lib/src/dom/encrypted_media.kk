@@ -208,7 +208,7 @@ pub value struct mediaKeyMessageEvent
   obj: jsObject
 
 pub inline fun newMediaKeyMessageEvent(type': string, eventInitDict': mediaKeyMessageEventInit)
-  newJsObject2("MediaKeyMessageEvent", type', eventInitDict')"
+  newJsObject2("MediaKeyMessageEvent", type', eventInitDict')
 
 pub inline fun messageType(obj: mediaKeyMessageEvent): web mediaKeyMessageType
   getJsObjectField(obj.obj, "messageType")
@@ -240,7 +240,7 @@ pub value struct mediaEncryptedEvent
   obj: jsObject
 
 pub inline fun newMediaEncryptedEvent(type': string, eventInitDict': mediaEncryptedEventInit)
-  newJsObject2("MediaEncryptedEvent", type', eventInitDict')"
+  newJsObject2("MediaEncryptedEvent", type', eventInitDict')
 
 pub inline fun initDataType(obj: mediaEncryptedEvent): web string
   getJsObjectField(obj.obj, "initDataType")

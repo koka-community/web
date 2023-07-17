@@ -410,7 +410,7 @@ pub value struct xrRigidTransform
   obj: jsObject
 
 pub inline fun newXrRigidTransform(position': geometry/domPointInit, orientation': geometry/domPointInit)
-  newJsObject2("XrRigidTransform", position', orientation')"
+  newJsObject2("XrRigidTransform", position', orientation')
 
 pub inline fun position(obj: xrRigidTransform): web geometry/domPointReadOnly
   getJsObjectField(obj.obj, "position")
@@ -549,7 +549,7 @@ pub value struct xrWebGLLayer
   obj: jsObject
 
 pub inline fun newXrWebGLLayer(session': xrSession, context': xrWebGLRenderingContext, layerInit': xrWebGLLayerInit)
-  newJsObject3("XrWebGLLayer", session', context', layerInit')"
+  newJsObject3("XrWebGLLayer", session', context', layerInit')
 pub inline fun getNativeFramebufferScaleFactor(session': xrSession): web double
   jsOperation2("getNativeFramebufferScaleFactor", session'.obj)
 
@@ -581,7 +581,7 @@ pub value struct xrSessionEvent
   obj: jsObject
 
 pub inline fun newXrSessionEvent(type': string, eventInitDict': xrSessionEventInit)
-  newJsObject2("XrSessionEvent", type', eventInitDict')"
+  newJsObject2("XrSessionEvent", type', eventInitDict')
 
 pub inline fun session(obj: xrSessionEvent): web xrSession
   getJsObjectField(obj.obj, "session")
@@ -604,7 +604,7 @@ pub value struct xrInputSourceEvent
   obj: jsObject
 
 pub inline fun newXrInputSourceEvent(type': string, eventInitDict': xrInputSourceEventInit)
-  newJsObject2("XrInputSourceEvent", type', eventInitDict')"
+  newJsObject2("XrInputSourceEvent", type', eventInitDict')
 
 pub inline fun frame(obj: xrInputSourceEvent): web xrFrame
   getJsObjectField(obj.obj, "frame")
@@ -636,7 +636,7 @@ pub value struct xrInputSourcesChangeEvent
   obj: jsObject
 
 pub inline fun newXrInputSourcesChangeEvent(type': string, eventInitDict': xrInputSourcesChangeEventInit)
-  newJsObject2("XrInputSourcesChangeEvent", type', eventInitDict')"
+  newJsObject2("XrInputSourcesChangeEvent", type', eventInitDict')
 
 pub inline fun session(obj: xrInputSourcesChangeEvent): web xrSession
   getJsObjectField(obj.obj, "session")
@@ -677,7 +677,7 @@ pub value struct xrReferenceSpaceEvent
   obj: jsObject
 
 pub inline fun newXrReferenceSpaceEvent(type': string, eventInitDict': xrReferenceSpaceEventInit)
-  newJsObject2("XrReferenceSpaceEvent", type', eventInitDict')"
+  newJsObject2("XrReferenceSpaceEvent", type', eventInitDict')
 
 pub inline fun referenceSpace(obj: xrReferenceSpaceEvent): web xrReferenceSpace
   getJsObjectField(obj.obj, "referenceSpace")

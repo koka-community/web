@@ -14,7 +14,7 @@ pub value struct mediaRecorder
   obj: jsObject
 
 pub inline fun newMediaRecorder(stream': mediacapture_streams/mediaStream, options': mediaRecorderOptions)
-  newJsObject2("MediaRecorder", stream', options')"
+  newJsObject2("MediaRecorder", stream', options')
 pub inline fun isTypeSupported(type': string): web bool
   jsOperation2("isTypeSupported", type'.obj)
 
@@ -162,7 +162,7 @@ pub value struct blobEvent
   obj: jsObject
 
 pub inline fun newBlobEvent(type': string, eventInitDict': blobEventInit)
-  newJsObject2("BlobEvent", type', eventInitDict')"
+  newJsObject2("BlobEvent", type', eventInitDict')
 
 pub inline fun data(obj: blobEvent): web fileapi/blob
   getJsObjectField(obj.obj, "data")

@@ -14,7 +14,7 @@ pub value struct faceDetector
   obj: jsObject
 
 pub inline fun newFaceDetector(faceDetectorOptions': faceDetectorOptions)
-  newJsObject1("FaceDetector", faceDetectorOptions')"
+  newJsObject1("FaceDetector", faceDetectorOptions')
 
 pub inline fun detect(obj: faceDetector, image': html/imageBitmapSource): web jsPromise
   jsOperation3(obj.obj, "detect", image'.obj)
@@ -92,7 +92,7 @@ pub value struct barcodeDetector
   obj: jsObject
 
 pub inline fun newBarcodeDetector(barcodeDetectorOptions': barcodeDetectorOptions)
-  newJsObject1("BarcodeDetector", barcodeDetectorOptions')"
+  newJsObject1("BarcodeDetector", barcodeDetectorOptions')
 pub inline fun getSupportedFormats(): web jsPromise
   jsOperation1("getSupportedFormats")
 

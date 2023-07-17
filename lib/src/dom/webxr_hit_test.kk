@@ -153,7 +153,7 @@ pub value struct xrRay
   obj: jsObject
 
 pub inline fun newXrRay(originOrTransform': maybe<jsObject>, direction': xrRayDirectionInit)
-  newJsObject2("XrRay", originOrTransform', direction')"
+  newJsObject2("XrRay", originOrTransform', direction')
 
 pub inline fun origin(obj: xrRay): web geometry/domPointReadOnly
   getJsObjectField(obj.obj, "origin")

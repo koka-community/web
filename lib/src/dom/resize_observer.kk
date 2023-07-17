@@ -29,7 +29,7 @@ pub value struct resizeObserver
   obj: jsObject
 
 pub inline fun newResizeObserver(callback': resizeObserverCallback)
-  newJsObject1("ResizeObserver", callback')"
+  newJsObject1("ResizeObserver", callback')
 
 pub inline fun observe(obj: resizeObserver, target': dom/element, options': resizeObserverOptions): web ()
   jsOperation4(obj.obj, "observe", target'.obj, options'.obj)

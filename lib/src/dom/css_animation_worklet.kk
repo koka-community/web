@@ -34,7 +34,7 @@ pub value struct workletAnimation
   obj: jsObject
 
 pub inline fun newWorkletAnimation(animatorName': string, effects': maybe<jsObject> =  Nothing, timeline': maybe<web_animations/animationTimeline> =  Nothing, options': maybe<jsObject>)
-  newJsObject4("WorkletAnimation", animatorName', effects', timeline', options')"
+  newJsObject4("WorkletAnimation", animatorName', effects', timeline', options')
 
 pub inline fun animatorName(obj: workletAnimation): web string
   getJsObjectField(obj.obj, "animatorName")

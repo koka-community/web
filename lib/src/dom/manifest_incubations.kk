@@ -11,7 +11,7 @@ pub value struct beforeInstallPromptEvent
   obj: jsObject
 
 pub inline fun newBeforeInstallPromptEvent(type': string, eventInitDict': dom/eventInit)
-  newJsObject2("BeforeInstallPromptEvent", type', eventInitDict')"
+  newJsObject2("BeforeInstallPromptEvent", type', eventInitDict')
 
 pub inline fun prompt(obj: beforeInstallPromptEvent): web jsPromise
   jsOperation2(obj.obj, "prompt")

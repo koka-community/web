@@ -37,7 +37,7 @@ pub value struct scrollTimeline
   obj: jsObject
 
 pub inline fun newScrollTimeline(options': scrollTimelineOptions)
-  newJsObject1("ScrollTimeline", options')"
+  newJsObject1("ScrollTimeline", options')
 
 pub inline fun source(obj: scrollTimeline): web maybe<dom/element>
   getJsObjectField(obj.obj, "source")
@@ -84,7 +84,7 @@ pub value struct viewTimeline
   obj: jsObject
 
 pub inline fun newViewTimeline(options': viewTimelineOptions)
-  newJsObject1("ViewTimeline", options')"
+  newJsObject1("ViewTimeline", options')
 
 pub inline fun subject(obj: viewTimeline): web dom/element
   getJsObjectField(obj.obj, "subject")

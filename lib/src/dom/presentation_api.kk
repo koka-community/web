@@ -27,7 +27,7 @@ pub value struct presentationRequest
   obj: jsObject
 
 pub inline fun newPresentationRequest(urlOrUrls': maybe<jsObject>)
-  newJsObject1("PresentationRequest", urlOrUrls')"
+  newJsObject1("PresentationRequest", urlOrUrls')
 
 pub inline fun start(obj: presentationRequest): web jsPromise
   jsOperation2(obj.obj, "start")
@@ -61,7 +61,7 @@ pub value struct presentationConnectionAvailableEvent
   obj: jsObject
 
 pub inline fun newPresentationConnectionAvailableEvent(type': string, eventInitDict': presentationConnectionAvailableEventInit)
-  newJsObject2("PresentationConnectionAvailableEvent", type', eventInitDict')"
+  newJsObject2("PresentationConnectionAvailableEvent", type', eventInitDict')
 
 pub inline fun connection(obj: presentationConnectionAvailableEvent): web presentationConnection
   getJsObjectField(obj.obj, "connection")
@@ -136,7 +136,7 @@ pub value struct presentationConnectionCloseEvent
   obj: jsObject
 
 pub inline fun newPresentationConnectionCloseEvent(type': string, eventInitDict': presentationConnectionCloseEventInit)
-  newJsObject2("PresentationConnectionCloseEvent", type', eventInitDict')"
+  newJsObject2("PresentationConnectionCloseEvent", type', eventInitDict')
 
 pub inline fun reason(obj: presentationConnectionCloseEvent): web presentationConnectionCloseReason
   getJsObjectField(obj.obj, "reason")

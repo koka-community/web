@@ -57,7 +57,7 @@ pub value struct navigationEvent
   obj: jsObject
 
 pub inline fun newNavigationEvent(type': string, eventInitDict': navigationEventInit)
-  newJsObject2("NavigationEvent", type', eventInitDict')"
+  newJsObject2("NavigationEvent", type', eventInitDict')
 
 pub inline fun dir(obj: navigationEvent): web spatialNavigationDirection
   getJsObjectField(obj.obj, "dir")

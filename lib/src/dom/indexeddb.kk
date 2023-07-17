@@ -67,7 +67,7 @@ pub value struct idbVersionChangeEvent
   obj: jsObject
 
 pub inline fun newIdbVersionChangeEvent(type': string, eventInitDict': idbVersionChangeEventInit)
-  newJsObject2("IdbVersionChangeEvent", type', eventInitDict')"
+  newJsObject2("IdbVersionChangeEvent", type', eventInitDict')
 
 pub inline fun oldVersion(obj: idbVersionChangeEvent): web int
   getJsObjectField(obj.obj, "oldVersion")

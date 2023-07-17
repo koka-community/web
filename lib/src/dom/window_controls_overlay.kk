@@ -26,7 +26,7 @@ pub value struct windowControlsOverlayGeometryChangeEvent
   obj: jsObject
 
 pub inline fun newWindowControlsOverlayGeometryChangeEvent(type': string, eventInitDict': windowControlsOverlayGeometryChangeEventInit)
-  newJsObject2("WindowControlsOverlayGeometryChangeEvent", type', eventInitDict')"
+  newJsObject2("WindowControlsOverlayGeometryChangeEvent", type', eventInitDict')
 
 pub inline fun titlebarAreaRect(obj: windowControlsOverlayGeometryChangeEvent): web geometry/domRect
   getJsObjectField(obj.obj, "titlebarAreaRect")

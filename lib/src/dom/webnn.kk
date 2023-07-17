@@ -222,7 +222,7 @@ pub value struct mlGraphBuilder
   obj: jsObject
 
 pub inline fun newMlGraphBuilder(context': mlContext)
-  newJsObject1("MlGraphBuilder", context')"
+  newJsObject1("MlGraphBuilder", context')
 
 pub inline fun input(obj: mlGraphBuilder, name': string, descriptor': mlOperandDescriptor): web mlOperand
   jsOperation4(obj.obj, "input", name'.obj, descriptor'.obj)

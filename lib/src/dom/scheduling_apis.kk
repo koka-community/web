@@ -54,7 +54,7 @@ pub value struct taskPriorityChangeEvent
   obj: jsObject
 
 pub inline fun newTaskPriorityChangeEvent(type': string, priorityChangeEventInitDict': taskPriorityChangeEventInit)
-  newJsObject2("TaskPriorityChangeEvent", type', priorityChangeEventInitDict')"
+  newJsObject2("TaskPriorityChangeEvent", type', priorityChangeEventInitDict')
 
 pub inline fun previousPriority(obj: taskPriorityChangeEvent): web taskPriority
   getJsObjectField(obj.obj, "previousPriority")
@@ -94,7 +94,7 @@ pub value struct taskController
   obj: jsObject
 
 pub inline fun newTaskController(init': taskControllerInit)
-  newJsObject1("TaskController", init')"
+  newJsObject1("TaskController", init')
 
 pub inline fun setPriority(obj: taskController, priority': taskPriority): web ()
   jsOperation3(obj.obj, "setPriority", priority'.obj)

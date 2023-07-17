@@ -54,7 +54,7 @@ pub value struct webTransport
   obj: jsObject
 
 pub inline fun newWebTransport(url': string, options': webTransportOptions)
-  newJsObject2("WebTransport", url', options')"
+  newJsObject2("WebTransport", url', options')
 
 pub inline fun getStats(obj: webTransport): web jsPromise
   jsOperation2(obj.obj, "getStats")
@@ -487,7 +487,7 @@ pub value struct webTransportError
   obj: jsObject
 
 pub inline fun newWebTransportError(message': string, options': webTransportErrorOptions)
-  newJsObject2("WebTransportError", message', options')"
+  newJsObject2("WebTransportError", message', options')
 
 pub inline fun source(obj: webTransportError): web webTransportErrorSource
   getJsObjectField(obj.obj, "source")

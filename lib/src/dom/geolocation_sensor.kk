@@ -10,7 +10,7 @@ pub value struct geolocationSensor
   obj: jsObject
 
 pub inline fun newGeolocationSensor(options': geolocationSensorOptions)
-  newJsObject1("GeolocationSensor", options')"
+  newJsObject1("GeolocationSensor", options')
 pub inline fun read(readOptions': readOptions): web jsPromise
   jsOperation2("read", readOptions'.obj)
 

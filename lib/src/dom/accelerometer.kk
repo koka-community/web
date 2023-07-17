@@ -11,7 +11,7 @@ pub value struct accelerometer
   obj: jsObject
 
 pub inline fun newAccelerometer(options': accelerometerSensorOptions)
-  newJsObject1("Accelerometer", options')"
+  newJsObject1("Accelerometer", options')
 
 pub inline fun x(obj: accelerometer): web maybe<double>
   getJsObjectField(obj.obj, "x")
@@ -43,13 +43,13 @@ pub value struct linearAccelerationSensor
   obj: jsObject
 
 pub inline fun newLinearAccelerationSensor(options': accelerometerSensorOptions)
-  newJsObject1("LinearAccelerationSensor", options')"
+  newJsObject1("LinearAccelerationSensor", options')
 
 pub value struct gravitySensor
   obj: jsObject
 
 pub inline fun newGravitySensor(options': accelerometerSensorOptions)
-  newJsObject1("GravitySensor", options')"
+  newJsObject1("GravitySensor", options')
 
 pub value struct accelerometerReadingValues
   obj: jsObject

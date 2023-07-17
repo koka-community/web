@@ -40,7 +40,7 @@ pub value struct idleDetector
   obj: jsObject
 
 pub inline fun newIdleDetector()
-  newJsObject0("IdleDetector")"
+  newJsObject0("IdleDetector")
 pub inline fun requestPermission(): web jsPromise
   jsOperation1("requestPermission")
 

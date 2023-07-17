@@ -18,7 +18,7 @@ pub value struct domException
   obj: jsObject
 
 pub inline fun newDomException(message': string, name': string)
-  newJsObject2("DomException", message', name')"
+  newJsObject2("DomException", message', name')
 pub inline fun indexsizeerR(): int
   getConstant("INDEX_SIZE_ERR")
 

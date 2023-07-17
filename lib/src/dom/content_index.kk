@@ -88,7 +88,7 @@ pub value struct contentIndexEvent
   obj: jsObject
 
 pub inline fun newContentIndexEvent(type': string, init': contentIndexEventInit)
-  newJsObject2("ContentIndexEvent", type', init')"
+  newJsObject2("ContentIndexEvent", type', init')
 
 pub inline fun id(obj: contentIndexEvent): web string
   getJsObjectField(obj.obj, "id")
