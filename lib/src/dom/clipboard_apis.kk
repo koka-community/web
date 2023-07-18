@@ -2,25 +2,25 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias clipboardItemData = JSPromise;
+pub alias clipboardItemData = JSPromise
 
 
-pub alias clipboardItems = JSArray;
+pub alias clipboardItems = JSArray
 
 
 
-pub alias presentationStyle = string;
+pub alias presentationStyle = string
 
 pub value struct clipboardEventInit
   obj: jsObject
 
 pub fun newClipboardEventInit(clipboardData: maybe<maybe<html/dataTransfer>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match clipboardData
     Just(it) -> setJsObjectField(obj, "clipboardData", it)
     Nothing -> ()
 
-  ClipboardEventInit(obj);
+  ClipboardEventInit(obj)
 
 pub inline fun clipboardData(obj: clipboardEventInit, value: maybe<html/dataTransfer>): web ()
   setJsObjectField(obj.obj, "clipboardData", value.obj)
@@ -56,12 +56,12 @@ pub value struct clipboardItemOptions
   obj: jsObject
 
 pub fun newClipboardItemOptions(presentationStyle: maybe<presentationStyle> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match presentationStyle
     Just(it) -> setJsObjectField(obj, "presentationStyle", it)
     Nothing -> ()
 
-  ClipboardItemOptions(obj);
+  ClipboardItemOptions(obj)
 
 pub inline fun presentationStyle(obj: clipboardItemOptions, value: presentationStyle): web ()
   setJsObjectField(obj.obj, "presentationStyle", value.obj)
@@ -89,12 +89,12 @@ pub value struct clipboardPermissionDescriptor
   obj: jsObject
 
 pub fun newClipboardPermissionDescriptor(allowWithoutGesture: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match allowWithoutGesture
     Just(it) -> setJsObjectField(obj, "allowWithoutGesture", it)
     Nothing -> ()
 
-  ClipboardPermissionDescriptor(obj);
+  ClipboardPermissionDescriptor(obj)
 
 pub inline fun allowWithoutGesture(obj: clipboardPermissionDescriptor, value: bool): web ()
   setJsObjectField(obj.obj, "allowWithoutGesture", value.obj)

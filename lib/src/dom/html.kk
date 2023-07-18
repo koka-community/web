@@ -2,153 +2,153 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias htmlOrSVGScriptElement = JSAny;
+pub alias htmlOrSVGScriptElement = JSAny
 
 
-pub alias mediaProvider = JSAny;
+pub alias mediaProvider = JSAny
 
 
-pub alias renderingContext = JSAny;
+pub alias renderingContext = JSAny
 
 
-pub alias htmlOrSVGImageElement = JSAny;
+pub alias htmlOrSVGImageElement = JSAny
 
 
-pub alias canvasImageSource = JSAny;
+pub alias canvasImageSource = JSAny
 
 
-pub alias offscreenRenderingContext = JSAny;
+pub alias offscreenRenderingContext = JSAny
 
 
-pub alias eventHandler = EventHandlerNonNull;
+pub alias eventHandler = EventHandlerNonNull
 
 
-pub alias onErrorEventHandler = OnErrorEventHandlerNonNull;
+pub alias onErrorEventHandler = OnErrorEventHandlerNonNull
 
 
-pub alias onBeforeUnloadEventHandler = OnBeforeUnloadEventHandlerNonNull;
+pub alias onBeforeUnloadEventHandler = OnBeforeUnloadEventHandlerNonNull
 
 
-pub alias timerHandler = JSAny;
+pub alias timerHandler = JSAny
 
 
-pub alias imageBitmapSource = JSAny;
+pub alias imageBitmapSource = JSAny
 
 
-pub alias messageEventSource = JSAny;
+pub alias messageEventSource = JSAny
 
-pub alias blobCallback = jsFunction;
+pub alias blobCallback = jsFunction
 
 
-pub alias customElementConstructor = jsFunction;
+pub alias customElementConstructor = jsFunction
 
 
-pub alias functionStringCallback = jsFunction;
+pub alias functionStringCallback = jsFunction
 
 
-pub alias navigationInterceptHandler = jsFunction;
+pub alias navigationInterceptHandler = jsFunction
 
 
-pub alias eventHandlerNonNull = jsFunction;
+pub alias eventHandlerNonNull = jsFunction
 
 
-pub alias onErrorEventHandlerNonNull = jsFunction;
+pub alias onErrorEventHandlerNonNull = jsFunction
 
 
-pub alias onBeforeUnloadEventHandlerNonNull = jsFunction;
+pub alias onBeforeUnloadEventHandlerNonNull = jsFunction
 
 
-pub alias frameRequestCallback = jsFunction;
+pub alias frameRequestCallback = jsFunction
 
 
-pub alias documentReadyState = string;
+pub alias documentReadyState = string
 
 
-pub alias documentVisibilityState = string;
+pub alias documentVisibilityState = string
 
 
-pub alias canPlayTypeResult = string;
+pub alias canPlayTypeResult = string
 
 
-pub alias textTrackMode = string;
+pub alias textTrackMode = string
 
 
-pub alias textTrackKind = string;
+pub alias textTrackKind = string
 
 
-pub alias selectionMode = string;
+pub alias selectionMode = string
 
 
-pub alias predefinedColorSpace = string;
+pub alias predefinedColorSpace = string
 
 
-pub alias canvasFillRule = string;
+pub alias canvasFillRule = string
 
 
-pub alias imageSmoothingQuality = string;
+pub alias imageSmoothingQuality = string
 
 
-pub alias canvasLineCap = string;
+pub alias canvasLineCap = string
 
 
-pub alias canvasLineJoin = string;
+pub alias canvasLineJoin = string
 
 
-pub alias canvasTextAlign = string;
+pub alias canvasTextAlign = string
 
 
-pub alias canvasTextBaseline = string;
+pub alias canvasTextBaseline = string
 
 
-pub alias canvasDirection = string;
+pub alias canvasDirection = string
 
 
-pub alias canvasFontKerning = string;
+pub alias canvasFontKerning = string
 
 
-pub alias canvasFontStretch = string;
+pub alias canvasFontStretch = string
 
 
-pub alias canvasFontVariantCaps = string;
+pub alias canvasFontVariantCaps = string
 
 
-pub alias canvasTextRendering = string;
+pub alias canvasTextRendering = string
 
 
-pub alias offscreenRenderingContextId = string;
+pub alias offscreenRenderingContextId = string
 
 
-pub alias scrollRestoration = string;
+pub alias scrollRestoration = string
 
 
-pub alias navigationHistoryBehavior = string;
+pub alias navigationHistoryBehavior = string
 
 
-pub alias navigationType = string;
+pub alias navigationType = string
 
 
-pub alias navigationFocusReset = string;
+pub alias navigationFocusReset = string
 
 
-pub alias navigationScrollBehavior = string;
+pub alias navigationScrollBehavior = string
 
 
-pub alias domParserSupportedType = string;
+pub alias domParserSupportedType = string
 
 
-pub alias imageOrientation = string;
+pub alias imageOrientation = string
 
 
-pub alias premultiplyAlpha = string;
+pub alias premultiplyAlpha = string
 
 
-pub alias colorSpaceConversion = string;
+pub alias colorSpaceConversion = string
 
 
-pub alias resizeQuality = string;
+pub alias resizeQuality = string
 
 
-pub alias workerType = string;
+pub alias workerType = string
 
 pub value struct htmlAllCollection
   obj: jsObject
@@ -2169,12 +2169,12 @@ pub value struct trackEventInit
   obj: jsObject
 
 pub fun newTrackEventInit(track: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match track
     Just(it) -> setJsObjectField(obj, "track", it)
     Nothing -> ()
 
-  TrackEventInit(obj);
+  TrackEventInit(obj)
 
 pub inline fun track(obj: trackEventInit, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "track", value.obj)
@@ -3660,12 +3660,12 @@ pub value struct submitEventInit
   obj: jsObject
 
 pub fun newSubmitEventInit(submitter: maybe<maybe<htmlElement>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match submitter
     Just(it) -> setJsObjectField(obj, "submitter", it)
     Nothing -> ()
 
-  SubmitEventInit(obj);
+  SubmitEventInit(obj)
 
 pub inline fun submitter(obj: submitEventInit, value: maybe<htmlElement>): web ()
   setJsObjectField(obj.obj, "submitter", value.obj)
@@ -3686,9 +3686,9 @@ pub value struct formDataEventInit
   obj: jsObject
 
 pub fun newFormDataEventInit(formData: xhr/formData)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "formData", formData);
-  FormDataEventInit(obj);
+  FormDataEventInit(obj)
 
 pub inline fun formData(obj: formDataEventInit, value: xhr/formData): web ()
   setJsObjectField(obj.obj, "formData", value.obj)
@@ -3858,12 +3858,12 @@ pub value struct assignedNodesOptions
   obj: jsObject
 
 pub fun newAssignedNodesOptions(flatten: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match flatten
     Just(it) -> setJsObjectField(obj, "flatten", it)
     Nothing -> ()
 
-  AssignedNodesOptions(obj);
+  AssignedNodesOptions(obj)
 
 pub inline fun flatten(obj: assignedNodesOptions, value: bool): web ()
   setJsObjectField(obj.obj, "flatten", value.obj)
@@ -3908,7 +3908,7 @@ pub value struct canvasRenderingContext2DSettings
   obj: jsObject
 
 pub fun newCanvasRenderingContext2DSettings(alpha: maybe<bool> = Nothing, desynchronized: maybe<bool> = Nothing, colorSpace: maybe<predefinedColorSpace> = Nothing, willReadFrequently: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match alpha
     Just(it) -> setJsObjectField(obj, "alpha", it)
     Nothing -> ()
@@ -3922,7 +3922,7 @@ pub fun newCanvasRenderingContext2DSettings(alpha: maybe<bool> = Nothing, desync
     Just(it) -> setJsObjectField(obj, "willReadFrequently", it)
     Nothing -> ()
 
-  CanvasRenderingContext2DSettings(obj);
+  CanvasRenderingContext2DSettings(obj)
 
 pub inline fun alpha(obj: canvasRenderingContext2DSettings, value: bool): web ()
   setJsObjectField(obj.obj, "alpha", value.obj)
@@ -4371,12 +4371,12 @@ pub value struct imageDataSettings
   obj: jsObject
 
 pub fun newImageDataSettings(colorSpace: maybe<predefinedColorSpace> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match colorSpace
     Just(it) -> setJsObjectField(obj, "colorSpace", it)
     Nothing -> ()
 
-  ImageDataSettings(obj);
+  ImageDataSettings(obj)
 
 pub inline fun colorSpace(obj: imageDataSettings, value: predefinedColorSpace): web ()
   setJsObjectField(obj.obj, "colorSpace", value.obj)
@@ -4425,12 +4425,12 @@ pub value struct imageBitmapRenderingContextSettings
   obj: jsObject
 
 pub fun newImageBitmapRenderingContextSettings(alpha: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match alpha
     Just(it) -> setJsObjectField(obj, "alpha", it)
     Nothing -> ()
 
-  ImageBitmapRenderingContextSettings(obj);
+  ImageBitmapRenderingContextSettings(obj)
 
 pub inline fun alpha(obj: imageBitmapRenderingContextSettings, value: bool): web ()
   setJsObjectField(obj.obj, "alpha", value.obj)
@@ -4442,7 +4442,7 @@ pub value struct imageEncodeOptions
   obj: jsObject
 
 pub fun newImageEncodeOptions(type: maybe<string> = Nothing, quality: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match type
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
@@ -4450,7 +4450,7 @@ pub fun newImageEncodeOptions(type: maybe<string> = Nothing, quality: maybe<doub
     Just(it) -> setJsObjectField(obj, "quality", it)
     Nothing -> ()
 
-  ImageEncodeOptions(obj);
+  ImageEncodeOptions(obj)
 
 pub inline fun type(obj: imageEncodeOptions, value: string): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -4536,12 +4536,12 @@ pub value struct elementDefinitionOptions
   obj: jsObject
 
 pub fun newElementDefinitionOptions(extends_: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match extends_
     Just(it) -> setJsObjectField(obj, "extends_", it)
     Nothing -> ()
 
-  ElementDefinitionOptions(obj);
+  ElementDefinitionOptions(obj)
 
 pub inline fun extends(obj: elementDefinitionOptions, value: string): web ()
   setJsObjectField(obj.obj, "extends_", value.obj)
@@ -4590,7 +4590,7 @@ pub value struct validityStateFlags
   obj: jsObject
 
 pub fun newValidityStateFlags(valueMissing: maybe<bool> = Nothing, typeMismatch: maybe<bool> = Nothing, patternMismatch: maybe<bool> = Nothing, tooLong: maybe<bool> = Nothing, tooShort: maybe<bool> = Nothing, rangeUnderflow: maybe<bool> = Nothing, rangeOverflow: maybe<bool> = Nothing, stepMismatch: maybe<bool> = Nothing, badInput: maybe<bool> = Nothing, customError: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match valueMissing
     Just(it) -> setJsObjectField(obj, "valueMissing", it)
     Nothing -> ()
@@ -4622,7 +4622,7 @@ pub fun newValidityStateFlags(valueMissing: maybe<bool> = Nothing, typeMismatch:
     Just(it) -> setJsObjectField(obj, "customError", it)
     Nothing -> ()
 
-  ValidityStateFlags(obj);
+  ValidityStateFlags(obj)
 
 pub inline fun valueMissing(obj: validityStateFlags, value: bool): web ()
   setJsObjectField(obj.obj, "valueMissing", value.obj)
@@ -4714,7 +4714,7 @@ pub value struct focusOptions
   obj: jsObject
 
 pub fun newFocusOptions(preventScroll: maybe<bool> = Nothing, focusVisible: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match preventScroll
     Just(it) -> setJsObjectField(obj, "preventScroll", it)
     Nothing -> ()
@@ -4722,7 +4722,7 @@ pub fun newFocusOptions(preventScroll: maybe<bool> = Nothing, focusVisible: mayb
     Just(it) -> setJsObjectField(obj, "focusVisible", it)
     Nothing -> ()
 
-  FocusOptions(obj);
+  FocusOptions(obj)
 
 pub inline fun preventScroll(obj: focusOptions, value: bool): web ()
   setJsObjectField(obj.obj, "preventScroll", value.obj)
@@ -4857,12 +4857,12 @@ pub value struct dragEventInit
   obj: jsObject
 
 pub fun newDragEventInit(dataTransfer: maybe<maybe<dataTransfer>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match dataTransfer
     Just(it) -> setJsObjectField(obj, "dataTransfer", it)
     Nothing -> ()
 
-  DragEventInit(obj);
+  DragEventInit(obj)
 
 pub inline fun dataTransfer(obj: dragEventInit, value: maybe<dataTransfer>): web ()
   setJsObjectField(obj.obj, "dataTransfer", value.obj)
@@ -4902,7 +4902,7 @@ pub value struct toggleEventInit
   obj: jsObject
 
 pub fun newToggleEventInit(oldState: maybe<string> = Nothing, newState: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match oldState
     Just(it) -> setJsObjectField(obj, "oldState", it)
     Nothing -> ()
@@ -4910,7 +4910,7 @@ pub fun newToggleEventInit(oldState: maybe<string> = Nothing, newState: maybe<st
     Just(it) -> setJsObjectField(obj, "newState", it)
     Nothing -> ()
 
-  ToggleEventInit(obj);
+  ToggleEventInit(obj)
 
 pub inline fun oldState(obj: toggleEventInit, value: string): web ()
   setJsObjectField(obj.obj, "oldState", value.obj)
@@ -5219,12 +5219,12 @@ pub value struct windowPostMessageOptions
   obj: jsObject
 
 pub fun newWindowPostMessageOptions(targetOrigin: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match targetOrigin
     Just(it) -> setJsObjectField(obj, "targetOrigin", it)
     Nothing -> ()
 
-  WindowPostMessageOptions(obj);
+  WindowPostMessageOptions(obj)
 
 pub inline fun targetOrigin(obj: windowPostMessageOptions, value: string): web ()
   setJsObjectField(obj.obj, "targetOrigin", value.obj)
@@ -5402,9 +5402,9 @@ pub value struct navigationUpdateCurrentEntryOptions
   obj: jsObject
 
 pub fun newNavigationUpdateCurrentEntryOptions(state: maybe<jsObject>)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "state", state);
-  NavigationUpdateCurrentEntryOptions(obj);
+  NavigationUpdateCurrentEntryOptions(obj)
 
 pub inline fun state(obj: navigationUpdateCurrentEntryOptions, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "state", value.obj)
@@ -5416,12 +5416,12 @@ pub value struct navigationOptions
   obj: jsObject
 
 pub fun newNavigationOptions(info: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match info
     Just(it) -> setJsObjectField(obj, "info", it)
     Nothing -> ()
 
-  NavigationOptions(obj);
+  NavigationOptions(obj)
 
 pub inline fun info(obj: navigationOptions, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "info", value.obj)
@@ -5433,7 +5433,7 @@ pub value struct navigationNavigateOptions
   obj: jsObject
 
 pub fun newNavigationNavigateOptions(state: maybe<maybe<jsObject>> = Nothing, history: maybe<navigationHistoryBehavior> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match state
     Just(it) -> setJsObjectField(obj, "state", it)
     Nothing -> ()
@@ -5441,7 +5441,7 @@ pub fun newNavigationNavigateOptions(state: maybe<maybe<jsObject>> = Nothing, hi
     Just(it) -> setJsObjectField(obj, "history", it)
     Nothing -> ()
 
-  NavigationNavigateOptions(obj);
+  NavigationNavigateOptions(obj)
 
 pub inline fun state(obj: navigationNavigateOptions, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "state", value.obj)
@@ -5459,12 +5459,12 @@ pub value struct navigationReloadOptions
   obj: jsObject
 
 pub fun newNavigationReloadOptions(state: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match state
     Just(it) -> setJsObjectField(obj, "state", it)
     Nothing -> ()
 
-  NavigationReloadOptions(obj);
+  NavigationReloadOptions(obj)
 
 pub inline fun state(obj: navigationReloadOptions, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "state", value.obj)
@@ -5476,7 +5476,7 @@ pub value struct navigationResult
   obj: jsObject
 
 pub fun newNavigationResult(committed: maybe<jsPromise> = Nothing, finished: maybe<jsPromise> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match committed
     Just(it) -> setJsObjectField(obj, "committed", it)
     Nothing -> ()
@@ -5484,7 +5484,7 @@ pub fun newNavigationResult(committed: maybe<jsPromise> = Nothing, finished: may
     Just(it) -> setJsObjectField(obj, "finished", it)
     Nothing -> ()
 
-  NavigationResult(obj);
+  NavigationResult(obj)
 
 pub inline fun committed(obj: navigationResult, value: jsPromise): web ()
   setJsObjectField(obj.obj, "committed", value.obj)
@@ -5582,7 +5582,7 @@ pub value struct navigateEventInit
   obj: jsObject
 
 pub fun newNavigateEventInit(navigationType: maybe<navigationType> = Nothing, destination: navigationDestination, canIntercept: maybe<bool> = Nothing, userInitiated: maybe<bool> = Nothing, hashChange: maybe<bool> = Nothing, signal: dom/abortSignal, formData: maybe<maybe<xhr/formData>> = Nothing, downloadRequest: maybe<maybe<string>> = Nothing, info: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match navigationType
     Just(it) -> setJsObjectField(obj, "navigationType", it)
     Nothing -> ()
@@ -5605,7 +5605,7 @@ pub fun newNavigateEventInit(navigationType: maybe<navigationType> = Nothing, de
     Just(it) -> setJsObjectField(obj, "info", it)
     Nothing -> ()
 
-  NavigateEventInit(obj);
+  NavigateEventInit(obj)
 
 pub inline fun navigationType(obj: navigateEventInit, value: navigationType): web ()
   setJsObjectField(obj.obj, "navigationType", value.obj)
@@ -5665,7 +5665,7 @@ pub value struct navigationInterceptOptions
   obj: jsObject
 
 pub fun newNavigationInterceptOptions(handler: maybe<navigationInterceptHandler> = Nothing, focusReset: maybe<navigationFocusReset> = Nothing, scroll: maybe<navigationScrollBehavior> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match handler
     Just(it) -> setJsObjectField(obj, "handler", it)
     Nothing -> ()
@@ -5676,7 +5676,7 @@ pub fun newNavigationInterceptOptions(handler: maybe<navigationInterceptHandler>
     Just(it) -> setJsObjectField(obj, "scroll", it)
     Nothing -> ()
 
-  NavigationInterceptOptions(obj);
+  NavigationInterceptOptions(obj)
 
 pub inline fun handler(obj: navigationInterceptOptions, value: navigationInterceptHandler): web ()
   setJsObjectField(obj.obj, "handler", value.obj)
@@ -5734,12 +5734,12 @@ pub value struct navigationCurrentEntryChangeEventInit
   obj: jsObject
 
 pub fun newNavigationCurrentEntryChangeEventInit(navigationType: maybe<maybe<navigationType>> = Nothing, from: navigationHistoryEntry)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match navigationType
     Just(it) -> setJsObjectField(obj, "navigationType", it)
     Nothing -> ()
   setJsObjectField(obj, "from", from);
-  NavigationCurrentEntryChangeEventInit(obj);
+  NavigationCurrentEntryChangeEventInit(obj)
 
 pub inline fun navigationType(obj: navigationCurrentEntryChangeEventInit, value: maybe<navigationType>): web ()
   setJsObjectField(obj.obj, "navigationType", value.obj)
@@ -5766,12 +5766,12 @@ pub value struct popStateEventInit
   obj: jsObject
 
 pub fun newPopStateEventInit(state: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match state
     Just(it) -> setJsObjectField(obj, "state", it)
     Nothing -> ()
 
-  PopStateEventInit(obj);
+  PopStateEventInit(obj)
 
 pub inline fun state(obj: popStateEventInit, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "state", value.obj)
@@ -5795,7 +5795,7 @@ pub value struct hashChangeEventInit
   obj: jsObject
 
 pub fun newHashChangeEventInit(oldURL: maybe<string> = Nothing, newURL: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match oldURL
     Just(it) -> setJsObjectField(obj, "oldURL", it)
     Nothing -> ()
@@ -5803,7 +5803,7 @@ pub fun newHashChangeEventInit(oldURL: maybe<string> = Nothing, newURL: maybe<st
     Just(it) -> setJsObjectField(obj, "newURL", it)
     Nothing -> ()
 
-  HashChangeEventInit(obj);
+  HashChangeEventInit(obj)
 
 pub inline fun oldURL(obj: hashChangeEventInit, value: string): web ()
   setJsObjectField(obj.obj, "oldURL", value.obj)
@@ -5830,12 +5830,12 @@ pub value struct pageTransitionEventInit
   obj: jsObject
 
 pub fun newPageTransitionEventInit(persisted: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match persisted
     Just(it) -> setJsObjectField(obj, "persisted", it)
     Nothing -> ()
 
-  PageTransitionEventInit(obj);
+  PageTransitionEventInit(obj)
 
 pub inline fun persisted(obj: pageTransitionEventInit, value: bool): web ()
   setJsObjectField(obj.obj, "persisted", value.obj)
@@ -5878,7 +5878,7 @@ pub value struct errorEventInit
   obj: jsObject
 
 pub fun newErrorEventInit(message: maybe<string> = Nothing, filename: maybe<string> = Nothing, lineno: maybe<int> = Nothing, colno: maybe<int> = Nothing, error: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match message
     Just(it) -> setJsObjectField(obj, "message", it)
     Nothing -> ()
@@ -5895,7 +5895,7 @@ pub fun newErrorEventInit(message: maybe<string> = Nothing, filename: maybe<stri
     Just(it) -> setJsObjectField(obj, "error", it)
     Nothing -> ()
 
-  ErrorEventInit(obj);
+  ErrorEventInit(obj)
 
 pub inline fun message(obj: errorEventInit, value: string): web ()
   setJsObjectField(obj.obj, "message", value.obj)
@@ -5943,12 +5943,12 @@ pub value struct promiseRejectionEventInit
   obj: jsObject
 
 pub fun newPromiseRejectionEventInit(promise: jsPromise, reason: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "promise", promise);  match reason
     Just(it) -> setJsObjectField(obj, "reason", it)
     Nothing -> ()
 
-  PromiseRejectionEventInit(obj);
+  PromiseRejectionEventInit(obj)
 
 pub inline fun promise(obj: promiseRejectionEventInit, value: jsPromise): web ()
   setJsObjectField(obj.obj, "promise", value.obj)
@@ -7055,7 +7055,7 @@ pub value struct imageBitmapOptions
   obj: jsObject
 
 pub fun newImageBitmapOptions(imageOrientation: maybe<imageOrientation> = Nothing, premultiplyAlpha: maybe<premultiplyAlpha> = Nothing, colorSpaceConversion: maybe<colorSpaceConversion> = Nothing, resizeWidth: maybe<int> = Nothing, resizeHeight: maybe<int> = Nothing, resizeQuality: maybe<resizeQuality> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match imageOrientation
     Just(it) -> setJsObjectField(obj, "imageOrientation", it)
     Nothing -> ()
@@ -7075,7 +7075,7 @@ pub fun newImageBitmapOptions(imageOrientation: maybe<imageOrientation> = Nothin
     Just(it) -> setJsObjectField(obj, "resizeQuality", it)
     Nothing -> ()
 
-  ImageBitmapOptions(obj);
+  ImageBitmapOptions(obj)
 
 pub inline fun imageOrientation(obj: imageBitmapOptions, value: imageOrientation): web ()
   setJsObjectField(obj.obj, "imageOrientation", value.obj)
@@ -7151,7 +7151,7 @@ pub value struct messageEventInit
   obj: jsObject
 
 pub fun newMessageEventInit(data: maybe<maybe<jsObject>> = Nothing, origin: maybe<string> = Nothing, lastEventId: maybe<string> = Nothing, source: maybe<maybe<messageEventSource>> = Nothing, ports: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match data
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
@@ -7168,7 +7168,7 @@ pub fun newMessageEventInit(data: maybe<maybe<jsObject>> = Nothing, origin: mayb
     Just(it) -> setJsObjectField(obj, "ports", it)
     Nothing -> ()
 
-  MessageEventInit(obj);
+  MessageEventInit(obj)
 
 pub inline fun data(obj: messageEventInit, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "data", value.obj)
@@ -7248,12 +7248,12 @@ pub value struct eventSourceInit
   obj: jsObject
 
 pub fun newEventSourceInit(withCredentials: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match withCredentials
     Just(it) -> setJsObjectField(obj, "withCredentials", it)
     Nothing -> ()
 
-  EventSourceInit(obj);
+  EventSourceInit(obj)
 
 pub inline fun withCredentials(obj: eventSourceInit, value: bool): web ()
   setJsObjectField(obj.obj, "withCredentials", value.obj)
@@ -7302,12 +7302,12 @@ pub value struct structuredSerializeOptions
   obj: jsObject
 
 pub fun newStructuredSerializeOptions(transfer: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match transfer
     Just(it) -> setJsObjectField(obj, "transfer", it)
     Nothing -> ()
 
-  StructuredSerializeOptions(obj);
+  StructuredSerializeOptions(obj)
 
 pub inline fun transfer(obj: structuredSerializeOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "transfer", value.obj)
@@ -7479,7 +7479,7 @@ pub value struct workerOptions
   obj: jsObject
 
 pub fun newWorkerOptions(type: maybe<workerType> = Nothing, credentials: maybe<fetch/requestCredentials> = Nothing, name: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match type
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
@@ -7490,7 +7490,7 @@ pub fun newWorkerOptions(type: maybe<workerType> = Nothing, credentials: maybe<f
     Just(it) -> setJsObjectField(obj, "name", it)
     Nothing -> ()
 
-  WorkerOptions(obj);
+  WorkerOptions(obj)
 
 pub inline fun type(obj: workerOptions, value: workerType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -7594,12 +7594,12 @@ pub value struct workletOptions
   obj: jsObject
 
 pub fun newWorkletOptions(credentials: maybe<fetch/requestCredentials> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match credentials
     Just(it) -> setJsObjectField(obj, "credentials", it)
     Nothing -> ()
 
-  WorkletOptions(obj);
+  WorkletOptions(obj)
 
 pub inline fun credentials(obj: workletOptions, value: fetch/requestCredentials): web ()
   setJsObjectField(obj.obj, "credentials", value.obj)
@@ -7671,7 +7671,7 @@ pub value struct storageEventInit
   obj: jsObject
 
 pub fun newStorageEventInit(key: maybe<maybe<string>> = Nothing, oldValue: maybe<maybe<string>> = Nothing, newValue: maybe<maybe<string>> = Nothing, url: maybe<string> = Nothing, storageArea: maybe<maybe<storage>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match key
     Just(it) -> setJsObjectField(obj, "key", it)
     Nothing -> ()
@@ -7688,7 +7688,7 @@ pub fun newStorageEventInit(key: maybe<maybe<string>> = Nothing, oldValue: maybe
     Just(it) -> setJsObjectField(obj, "storageArea", it)
     Nothing -> ()
 
-  StorageEventInit(obj);
+  StorageEventInit(obj)
 
 pub inline fun key(obj: storageEventInit, value: maybe<string>): web ()
   setJsObjectField(obj.obj, "key", value.obj)

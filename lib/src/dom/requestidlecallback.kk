@@ -3,7 +3,7 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias idleRequestCallback = jsFunction;
+pub alias idleRequestCallback = jsFunction
 
 
 
@@ -11,12 +11,12 @@ pub value struct idleRequestOptions
   obj: jsObject
 
 pub fun newIdleRequestOptions(timeout: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match timeout
     Just(it) -> setJsObjectField(obj, "timeout", it)
     Nothing -> ()
 
-  IdleRequestOptions(obj);
+  IdleRequestOptions(obj)
 
 pub inline fun timeout(obj: idleRequestOptions, value: int): web ()
   setJsObjectField(obj.obj, "timeout", value.obj)

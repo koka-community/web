@@ -5,21 +5,21 @@ import web/wasm
 
 
 
-pub alias importExportKind = string;
+pub alias importExportKind = string
 
 
-pub alias tableKind = string;
+pub alias tableKind = string
 
 
-pub alias valueType = string;
+pub alias valueType = string
 
 pub value struct webAssemblyInstantiatedSource
   obj: jsObject
 
 pub fun newWebAssemblyInstantiatedSource(module: module, instance: instance)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "module", module);  setJsObjectField(obj, "instance", instance);
-  WebAssemblyInstantiatedSource(obj);
+  WebAssemblyInstantiatedSource(obj)
 
 pub inline fun module(obj: webAssemblyInstantiatedSource, value: module): web ()
   setJsObjectField(obj.obj, "module", value.obj)
@@ -58,9 +58,9 @@ pub value struct moduleExportDescriptor
   obj: jsObject
 
 pub fun newModuleExportDescriptor(name: string, kind: importExportKind)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "name", name);  setJsObjectField(obj, "kind", kind);
-  ModuleExportDescriptor(obj);
+  ModuleExportDescriptor(obj)
 
 pub inline fun name(obj: moduleExportDescriptor, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -78,9 +78,9 @@ pub value struct moduleImportDescriptor
   obj: jsObject
 
 pub fun newModuleImportDescriptor(module: string, name: string, kind: importExportKind)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "module", module);  setJsObjectField(obj, "name", name);  setJsObjectField(obj, "kind", kind);
-  ModuleImportDescriptor(obj);
+  ModuleImportDescriptor(obj)
 
 pub inline fun module(obj: moduleImportDescriptor, value: string): web ()
   setJsObjectField(obj.obj, "module", value.obj)
@@ -127,12 +127,12 @@ pub value struct memoryDescriptor
   obj: jsObject
 
 pub fun newMemoryDescriptor(initial: int, maximum: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "initial", initial);  match maximum
     Just(it) -> setJsObjectField(obj, "maximum", it)
     Nothing -> ()
 
-  MemoryDescriptor(obj);
+  MemoryDescriptor(obj)
 
 pub inline fun initial(obj: memoryDescriptor, value: int): web ()
   setJsObjectField(obj.obj, "initial", value.obj)
@@ -162,12 +162,12 @@ pub value struct tableDescriptor
   obj: jsObject
 
 pub fun newTableDescriptor(element: tableKind, initial: int, maximum: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "element", element);  setJsObjectField(obj, "initial", initial);  match maximum
     Just(it) -> setJsObjectField(obj, "maximum", it)
     Nothing -> ()
 
-  TableDescriptor(obj);
+  TableDescriptor(obj)
 
 pub inline fun element(obj: tableDescriptor, value: tableKind): web ()
   setJsObjectField(obj.obj, "element", value.obj)
@@ -209,12 +209,12 @@ pub value struct globalDescriptor
   obj: jsObject
 
 pub fun newGlobalDescriptor(value: valueType, mutable: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "value", value);  match mutable
     Just(it) -> setJsObjectField(obj, "mutable", it)
     Nothing -> ()
 
-  GlobalDescriptor(obj);
+  GlobalDescriptor(obj)
 
 pub inline fun value(obj: globalDescriptor, value: valueType): web ()
   setJsObjectField(obj.obj, "value", value.obj)

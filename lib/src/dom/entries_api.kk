@@ -3,16 +3,16 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias errorCallback = jsFunction;
+pub alias errorCallback = jsFunction
 
 
-pub alias fileSystemEntryCallback = jsFunction;
+pub alias fileSystemEntryCallback = jsFunction
 
 
-pub alias fileSystemEntriesCallback = jsFunction;
+pub alias fileSystemEntriesCallback = jsFunction
 
 
-pub alias fileCallback = jsFunction;
+pub alias fileCallback = jsFunction
 
 
 
@@ -55,7 +55,7 @@ pub value struct fileSystemFlags
   obj: jsObject
 
 pub fun newFileSystemFlags(create: maybe<bool> = Nothing, exclusive: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match create
     Just(it) -> setJsObjectField(obj, "create", it)
     Nothing -> ()
@@ -63,7 +63,7 @@ pub fun newFileSystemFlags(create: maybe<bool> = Nothing, exclusive: maybe<bool>
     Just(it) -> setJsObjectField(obj, "exclusive", it)
     Nothing -> ()
 
-  FileSystemFlags(obj);
+  FileSystemFlags(obj)
 
 pub inline fun create(obj: fileSystemFlags, value: bool): web ()
   setJsObjectField(obj.obj, "create", value.obj)

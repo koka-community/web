@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias gamepadMappingType = string;
+pub alias gamepadMappingType = string
 
 pub value struct gamepad
   obj: jsObject
@@ -73,9 +73,9 @@ pub value struct gamepadEventInit
   obj: jsObject
 
 pub fun newGamepadEventInit(gamepad: gamepad)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "gamepad", gamepad);
-  GamepadEventInit(obj);
+  GamepadEventInit(obj)
 
 pub inline fun gamepad(obj: gamepadEventInit, value: gamepad): web ()
   setJsObjectField(obj.obj, "gamepad", value.obj)

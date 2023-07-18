@@ -3,7 +3,7 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias intersectionObserverCallback = jsFunction;
+pub alias intersectionObserverCallback = jsFunction
 
 
 
@@ -65,9 +65,9 @@ pub value struct intersectionObserverEntryInit
   obj: jsObject
 
 pub fun newIntersectionObserverEntryInit(time: hr_time/domHighResTimeStamp, rootBounds: maybe<geometry/domRectInit>, boundingClientRect: geometry/domRectInit, intersectionRect: geometry/domRectInit, isIntersecting: bool, intersectionRatio: double, target: dom/element)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "time", time);  setJsObjectField(obj, "rootBounds", rootBounds);  setJsObjectField(obj, "boundingClientRect", boundingClientRect);  setJsObjectField(obj, "intersectionRect", intersectionRect);  setJsObjectField(obj, "isIntersecting", isIntersecting);  setJsObjectField(obj, "intersectionRatio", intersectionRatio);  setJsObjectField(obj, "target", target);
-  IntersectionObserverEntryInit(obj);
+  IntersectionObserverEntryInit(obj)
 
 pub inline fun time(obj: intersectionObserverEntryInit, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "time", value.obj)
@@ -115,7 +115,7 @@ pub value struct intersectionObserverInit
   obj: jsObject
 
 pub fun newIntersectionObserverInit(root: maybe<maybe<jsObject>> = Nothing, rootMargin: maybe<string> = Nothing, threshold: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match root
     Just(it) -> setJsObjectField(obj, "root", it)
     Nothing -> ()
@@ -126,7 +126,7 @@ pub fun newIntersectionObserverInit(root: maybe<maybe<jsObject>> = Nothing, root
     Just(it) -> setJsObjectField(obj, "threshold", it)
     Nothing -> ()
 
-  IntersectionObserverInit(obj);
+  IntersectionObserverInit(obj)
 
 pub inline fun root(obj: intersectionObserverInit, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "root", value.obj)

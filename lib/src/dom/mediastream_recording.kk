@@ -5,10 +5,10 @@ import web/wasm
 
 
 
-pub alias bitrateMode = string;
+pub alias bitrateMode = string
 
 
-pub alias recordingState = string;
+pub alias recordingState = string
 
 pub value struct mediaRecorder
   obj: jsObject
@@ -91,7 +91,7 @@ pub value struct mediaRecorderOptions
   obj: jsObject
 
 pub fun newMediaRecorderOptions(mimeType: maybe<string> = Nothing, audioBitsPerSecond: maybe<int> = Nothing, videoBitsPerSecond: maybe<int> = Nothing, bitsPerSecond: maybe<int> = Nothing, audioBitrateMode: maybe<bitrateMode> = Nothing, videoKeyFrameIntervalDuration: maybe<hr_time/domHighResTimeStamp> = Nothing, videoKeyFrameIntervalCount: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match mimeType
     Just(it) -> setJsObjectField(obj, "mimeType", it)
     Nothing -> ()
@@ -114,7 +114,7 @@ pub fun newMediaRecorderOptions(mimeType: maybe<string> = Nothing, audioBitsPerS
     Just(it) -> setJsObjectField(obj, "videoKeyFrameIntervalCount", it)
     Nothing -> ()
 
-  MediaRecorderOptions(obj);
+  MediaRecorderOptions(obj)
 
 pub inline fun mimeType(obj: mediaRecorderOptions, value: string): web ()
   setJsObjectField(obj.obj, "mimeType", value.obj)
@@ -174,12 +174,12 @@ pub value struct blobEventInit
   obj: jsObject
 
 pub fun newBlobEventInit(data: fileapi/blob, timecode: maybe<hr_time/domHighResTimeStamp> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "data", data);  match timecode
     Just(it) -> setJsObjectField(obj, "timecode", it)
     Nothing -> ()
 
-  BlobEventInit(obj);
+  BlobEventInit(obj)
 
 pub inline fun data(obj: blobEventInit, value: fileapi/blob): web ()
   setJsObjectField(obj.obj, "data", value.obj)

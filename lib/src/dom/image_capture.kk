@@ -2,17 +2,17 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias constrainPoint2D = JSAny;
+pub alias constrainPoint2D = JSAny
 
 
 
-pub alias redEyeReduction = string;
+pub alias redEyeReduction = string
 
 
-pub alias fillLightMode = string;
+pub alias fillLightMode = string
 
 
-pub alias meteringMode = string;
+pub alias meteringMode = string
 
 pub value struct imageCapture
   obj: jsObject
@@ -39,7 +39,7 @@ pub value struct photoCapabilities
   obj: jsObject
 
 pub fun newPhotoCapabilities(redEyeReduction: maybe<redEyeReduction> = Nothing, imageHeight: maybe<mediaSettingsRange> = Nothing, imageWidth: maybe<mediaSettingsRange> = Nothing, fillLightMode: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match redEyeReduction
     Just(it) -> setJsObjectField(obj, "redEyeReduction", it)
     Nothing -> ()
@@ -53,7 +53,7 @@ pub fun newPhotoCapabilities(redEyeReduction: maybe<redEyeReduction> = Nothing, 
     Just(it) -> setJsObjectField(obj, "fillLightMode", it)
     Nothing -> ()
 
-  PhotoCapabilities(obj);
+  PhotoCapabilities(obj)
 
 pub inline fun redEyeReduction(obj: photoCapabilities, value: redEyeReduction): web ()
   setJsObjectField(obj.obj, "redEyeReduction", value.obj)
@@ -83,7 +83,7 @@ pub value struct photoSettings
   obj: jsObject
 
 pub fun newPhotoSettings(fillLightMode: maybe<fillLightMode> = Nothing, imageHeight: maybe<double> = Nothing, imageWidth: maybe<double> = Nothing, redEyeReduction: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match fillLightMode
     Just(it) -> setJsObjectField(obj, "fillLightMode", it)
     Nothing -> ()
@@ -97,7 +97,7 @@ pub fun newPhotoSettings(fillLightMode: maybe<fillLightMode> = Nothing, imageHei
     Just(it) -> setJsObjectField(obj, "redEyeReduction", it)
     Nothing -> ()
 
-  PhotoSettings(obj);
+  PhotoSettings(obj)
 
 pub inline fun fillLightMode(obj: photoSettings, value: fillLightMode): web ()
   setJsObjectField(obj.obj, "fillLightMode", value.obj)
@@ -127,7 +127,7 @@ pub value struct mediaSettingsRange
   obj: jsObject
 
 pub fun newMediaSettingsRange(max: maybe<double> = Nothing, min: maybe<double> = Nothing, step: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match max
     Just(it) -> setJsObjectField(obj, "max", it)
     Nothing -> ()
@@ -138,7 +138,7 @@ pub fun newMediaSettingsRange(max: maybe<double> = Nothing, min: maybe<double> =
     Just(it) -> setJsObjectField(obj, "step", it)
     Nothing -> ()
 
-  MediaSettingsRange(obj);
+  MediaSettingsRange(obj)
 
 pub inline fun max(obj: mediaSettingsRange, value: double): web ()
   setJsObjectField(obj.obj, "max", value.obj)
@@ -162,7 +162,7 @@ pub value struct constrainPoint2DParameters
   obj: jsObject
 
 pub fun newConstrainPoint2DParameters(exact: maybe<jsArray> = Nothing, ideal: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match exact
     Just(it) -> setJsObjectField(obj, "exact", it)
     Nothing -> ()
@@ -170,7 +170,7 @@ pub fun newConstrainPoint2DParameters(exact: maybe<jsArray> = Nothing, ideal: ma
     Just(it) -> setJsObjectField(obj, "ideal", it)
     Nothing -> ()
 
-  ConstrainPoint2DParameters(obj);
+  ConstrainPoint2DParameters(obj)
 
 pub inline fun exact(obj: constrainPoint2DParameters, value: jsArray): web ()
   setJsObjectField(obj.obj, "exact", value.obj)
@@ -188,7 +188,7 @@ pub value struct point2D
   obj: jsObject
 
 pub fun newPoint2D(x: maybe<double> = Nothing, y: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match x
     Just(it) -> setJsObjectField(obj, "x", it)
     Nothing -> ()
@@ -196,7 +196,7 @@ pub fun newPoint2D(x: maybe<double> = Nothing, y: maybe<double> = Nothing)
     Just(it) -> setJsObjectField(obj, "y", it)
     Nothing -> ()
 
-  Point2D(obj);
+  Point2D(obj)
 
 pub inline fun x(obj: point2D, value: double): web ()
   setJsObjectField(obj.obj, "x", value.obj)

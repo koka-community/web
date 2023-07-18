@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias binaryType = string;
+pub alias binaryType = string
 
 pub value struct webSocket
   obj: jsObject
@@ -94,7 +94,7 @@ pub value struct closeEventInit
   obj: jsObject
 
 pub fun newCloseEventInit(wasClean: maybe<bool> = Nothing, code: maybe<int> = Nothing, reason: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match wasClean
     Just(it) -> setJsObjectField(obj, "wasClean", it)
     Nothing -> ()
@@ -105,7 +105,7 @@ pub fun newCloseEventInit(wasClean: maybe<bool> = Nothing, code: maybe<int> = No
     Just(it) -> setJsObjectField(obj, "reason", it)
     Nothing -> ()
 
-  CloseEventInit(obj);
+  CloseEventInit(obj)
 
 pub inline fun wasClean(obj: closeEventInit, value: bool): web ()
   setJsObjectField(obj.obj, "wasClean", value.obj)

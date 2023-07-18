@@ -5,13 +5,13 @@ import web/wasm
 
 
 
-pub alias fullscreenNavigationUI = string;
+pub alias fullscreenNavigationUI = string
 
 pub value struct fullscreenOptions
   obj: jsObject
 
 pub fun newFullscreenOptions(navigationUI: maybe<fullscreenNavigationUI> = Nothing, screen: maybe<window_management/screenDetailed> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match navigationUI
     Just(it) -> setJsObjectField(obj, "navigationUI", it)
     Nothing -> ()
@@ -19,7 +19,7 @@ pub fun newFullscreenOptions(navigationUI: maybe<fullscreenNavigationUI> = Nothi
     Just(it) -> setJsObjectField(obj, "screen", it)
     Nothing -> ()
 
-  FullscreenOptions(obj);
+  FullscreenOptions(obj)
 
 pub inline fun navigationUI(obj: fullscreenOptions, value: fullscreenNavigationUI): web ()
   setJsObjectField(obj.obj, "navigationUI", value.obj)

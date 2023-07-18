@@ -3,10 +3,10 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias positionCallback = jsFunction;
+pub alias positionCallback = jsFunction
 
 
-pub alias positionErrorCallback = jsFunction;
+pub alias positionErrorCallback = jsFunction
 
 
 
@@ -27,7 +27,7 @@ pub value struct positionOptions
   obj: jsObject
 
 pub fun newPositionOptions(enableHighAccuracy: maybe<bool> = Nothing, timeout: maybe<int> = Nothing, maximumAge: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match enableHighAccuracy
     Just(it) -> setJsObjectField(obj, "enableHighAccuracy", it)
     Nothing -> ()
@@ -38,7 +38,7 @@ pub fun newPositionOptions(enableHighAccuracy: maybe<bool> = Nothing, timeout: m
     Just(it) -> setJsObjectField(obj, "maximumAge", it)
     Nothing -> ()
 
-  PositionOptions(obj);
+  PositionOptions(obj)
 
 pub inline fun enableHighAccuracy(obj: positionOptions, value: bool): web ()
   setJsObjectField(obj.obj, "enableHighAccuracy", value.obj)

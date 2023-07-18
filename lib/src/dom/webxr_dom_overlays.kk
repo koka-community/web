@@ -5,15 +5,15 @@ import web/wasm
 
 
 
-pub alias xrdomOverlayType = string;
+pub alias xrdomOverlayType = string
 
 pub value struct xrdomOverlayInit
   obj: jsObject
 
 pub fun newXrdomOverlayInit(root: dom/element)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "root", root);
-  XrdomOverlayInit(obj);
+  XrdomOverlayInit(obj)
 
 pub inline fun root(obj: xrdomOverlayInit, value: dom/element): web ()
   setJsObjectField(obj.obj, "root", value.obj)
@@ -25,12 +25,12 @@ pub value struct xrdomOverlayState
   obj: jsObject
 
 pub fun newXrdomOverlayState(type: maybe<xrdomOverlayType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match type
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
 
-  XrdomOverlayState(obj);
+  XrdomOverlayState(obj)
 
 pub inline fun type(obj: xrdomOverlayState, value: xrdomOverlayType): web ()
   setJsObjectField(obj.obj, "type", value.obj)

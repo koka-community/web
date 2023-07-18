@@ -3,13 +3,13 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias mediaSessionActionHandler = jsFunction;
+pub alias mediaSessionActionHandler = jsFunction
 
 
-pub alias mediaSessionPlaybackState = string;
+pub alias mediaSessionPlaybackState = string
 
 
-pub alias mediaSessionAction = string;
+pub alias mediaSessionAction = string
 
 pub value struct mediaSession
   obj: jsObject
@@ -73,7 +73,7 @@ pub value struct mediaMetadataInit
   obj: jsObject
 
 pub fun newMediaMetadataInit(title: maybe<string> = Nothing, artist: maybe<string> = Nothing, album: maybe<string> = Nothing, artwork: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match title
     Just(it) -> setJsObjectField(obj, "title", it)
     Nothing -> ()
@@ -87,7 +87,7 @@ pub fun newMediaMetadataInit(title: maybe<string> = Nothing, artist: maybe<strin
     Just(it) -> setJsObjectField(obj, "artwork", it)
     Nothing -> ()
 
-  MediaMetadataInit(obj);
+  MediaMetadataInit(obj)
 
 pub inline fun title(obj: mediaMetadataInit, value: string): web ()
   setJsObjectField(obj.obj, "title", value.obj)
@@ -117,7 +117,7 @@ pub value struct mediaImage
   obj: jsObject
 
 pub fun newMediaImage(src: string, sizes: maybe<string> = Nothing, type: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "src", src);  match sizes
     Just(it) -> setJsObjectField(obj, "sizes", it)
     Nothing -> ()
@@ -125,7 +125,7 @@ pub fun newMediaImage(src: string, sizes: maybe<string> = Nothing, type: maybe<s
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
 
-  MediaImage(obj);
+  MediaImage(obj)
 
 pub inline fun src(obj: mediaImage, value: string): web ()
   setJsObjectField(obj.obj, "src", value.obj)
@@ -149,7 +149,7 @@ pub value struct mediaPositionState
   obj: jsObject
 
 pub fun newMediaPositionState(duration: maybe<double> = Nothing, playbackRate: maybe<double> = Nothing, position: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match duration
     Just(it) -> setJsObjectField(obj, "duration", it)
     Nothing -> ()
@@ -160,7 +160,7 @@ pub fun newMediaPositionState(duration: maybe<double> = Nothing, playbackRate: m
     Just(it) -> setJsObjectField(obj, "position", it)
     Nothing -> ()
 
-  MediaPositionState(obj);
+  MediaPositionState(obj)
 
 pub inline fun duration(obj: mediaPositionState, value: double): web ()
   setJsObjectField(obj.obj, "duration", value.obj)
@@ -184,7 +184,7 @@ pub value struct mediaSessionActionDetails
   obj: jsObject
 
 pub fun newMediaSessionActionDetails(action: mediaSessionAction, seekOffset: maybe<double> = Nothing, seekTime: maybe<double> = Nothing, fastSeek: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "action", action);  match seekOffset
     Just(it) -> setJsObjectField(obj, "seekOffset", it)
     Nothing -> ()
@@ -195,7 +195,7 @@ pub fun newMediaSessionActionDetails(action: mediaSessionAction, seekOffset: may
     Just(it) -> setJsObjectField(obj, "fastSeek", it)
     Nothing -> ()
 
-  MediaSessionActionDetails(obj);
+  MediaSessionActionDetails(obj)
 
 pub inline fun action(obj: mediaSessionActionDetails, value: mediaSessionAction): web ()
   setJsObjectField(obj.obj, "action", value.obj)

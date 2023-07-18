@@ -2,33 +2,33 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias constrainULong = JSAny;
+pub alias constrainULong = JSAny
 
 
-pub alias constrainDouble = JSAny;
+pub alias constrainDouble = JSAny
 
 
-pub alias constrainBoolean = JSAny;
+pub alias constrainBoolean = JSAny
 
 
-pub alias constrainDOMString = JSAny;
+pub alias constrainDOMString = JSAny
 
-pub alias navigatorUserMediaSuccessCallback = jsFunction;
-
-
-pub alias navigatorUserMediaErrorCallback = jsFunction;
+pub alias navigatorUserMediaSuccessCallback = jsFunction
 
 
-pub alias mediaStreamTrackState = string;
+pub alias navigatorUserMediaErrorCallback = jsFunction
 
 
-pub alias videoFacingModeEnum = string;
+pub alias mediaStreamTrackState = string
 
 
-pub alias videoResizeModeEnum = string;
+pub alias videoFacingModeEnum = string
 
 
-pub alias mediaDeviceKind = string;
+pub alias videoResizeModeEnum = string
+
+
+pub alias mediaDeviceKind = string
 
 pub value struct mediaStream
   obj: jsObject
@@ -170,7 +170,7 @@ pub value struct mediaTrackSupportedConstraints
   obj: jsObject
 
 pub fun newMediaTrackSupportedConstraints(whiteBalanceMode: maybe<bool> = Nothing, exposureMode: maybe<bool> = Nothing, focusMode: maybe<bool> = Nothing, pointsOfInterest: maybe<bool> = Nothing, exposureCompensation: maybe<bool> = Nothing, exposureTime: maybe<bool> = Nothing, colorTemperature: maybe<bool> = Nothing, iso: maybe<bool> = Nothing, brightness: maybe<bool> = Nothing, contrast: maybe<bool> = Nothing, pan: maybe<bool> = Nothing, saturation: maybe<bool> = Nothing, sharpness: maybe<bool> = Nothing, focusDistance: maybe<bool> = Nothing, tilt: maybe<bool> = Nothing, zoom: maybe<bool> = Nothing, torch: maybe<bool> = Nothing, width: maybe<bool> = Nothing, height: maybe<bool> = Nothing, aspectRatio: maybe<bool> = Nothing, frameRate: maybe<bool> = Nothing, facingMode: maybe<bool> = Nothing, resizeMode: maybe<bool> = Nothing, sampleRate: maybe<bool> = Nothing, sampleSize: maybe<bool> = Nothing, echoCancellation: maybe<bool> = Nothing, autoGainControl: maybe<bool> = Nothing, noiseSuppression: maybe<bool> = Nothing, latency: maybe<bool> = Nothing, channelCount: maybe<bool> = Nothing, deviceId: maybe<bool> = Nothing, groupId: maybe<bool> = Nothing, displaySurface: maybe<bool> = Nothing, logicalSurface: maybe<bool> = Nothing, cursor: maybe<bool> = Nothing, restrictOwnAudio: maybe<bool> = Nothing, suppressLocalAudioPlayback: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match whiteBalanceMode
     Just(it) -> setJsObjectField(obj, "whiteBalanceMode", it)
     Nothing -> ()
@@ -283,7 +283,7 @@ pub fun newMediaTrackSupportedConstraints(whiteBalanceMode: maybe<bool> = Nothin
     Just(it) -> setJsObjectField(obj, "suppressLocalAudioPlayback", it)
     Nothing -> ()
 
-  MediaTrackSupportedConstraints(obj);
+  MediaTrackSupportedConstraints(obj)
 
 pub inline fun whiteBalanceMode(obj: mediaTrackSupportedConstraints, value: bool): web ()
   setJsObjectField(obj.obj, "whiteBalanceMode", value.obj)
@@ -511,7 +511,7 @@ pub value struct mediaTrackCapabilities
   obj: jsObject
 
 pub fun newMediaTrackCapabilities(whiteBalanceMode: maybe<jsArray> = Nothing, exposureMode: maybe<jsArray> = Nothing, focusMode: maybe<jsArray> = Nothing, exposureCompensation: maybe<image_capture/mediaSettingsRange> = Nothing, exposureTime: maybe<image_capture/mediaSettingsRange> = Nothing, colorTemperature: maybe<image_capture/mediaSettingsRange> = Nothing, iso: maybe<image_capture/mediaSettingsRange> = Nothing, brightness: maybe<image_capture/mediaSettingsRange> = Nothing, contrast: maybe<image_capture/mediaSettingsRange> = Nothing, saturation: maybe<image_capture/mediaSettingsRange> = Nothing, sharpness: maybe<image_capture/mediaSettingsRange> = Nothing, focusDistance: maybe<image_capture/mediaSettingsRange> = Nothing, pan: maybe<image_capture/mediaSettingsRange> = Nothing, tilt: maybe<image_capture/mediaSettingsRange> = Nothing, zoom: maybe<image_capture/mediaSettingsRange> = Nothing, torch: maybe<bool> = Nothing, width: maybe<uLongRange> = Nothing, height: maybe<uLongRange> = Nothing, aspectRatio: maybe<doubleRange> = Nothing, frameRate: maybe<doubleRange> = Nothing, facingMode: maybe<jsArray> = Nothing, resizeMode: maybe<jsArray> = Nothing, sampleRate: maybe<uLongRange> = Nothing, sampleSize: maybe<uLongRange> = Nothing, echoCancellation: maybe<jsArray> = Nothing, autoGainControl: maybe<jsArray> = Nothing, noiseSuppression: maybe<jsArray> = Nothing, latency: maybe<doubleRange> = Nothing, channelCount: maybe<uLongRange> = Nothing, deviceId: maybe<string> = Nothing, groupId: maybe<string> = Nothing, displaySurface: maybe<string> = Nothing, logicalSurface: maybe<bool> = Nothing, cursor: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match whiteBalanceMode
     Just(it) -> setJsObjectField(obj, "whiteBalanceMode", it)
     Nothing -> ()
@@ -615,7 +615,7 @@ pub fun newMediaTrackCapabilities(whiteBalanceMode: maybe<jsArray> = Nothing, ex
     Just(it) -> setJsObjectField(obj, "cursor", it)
     Nothing -> ()
 
-  MediaTrackCapabilities(obj);
+  MediaTrackCapabilities(obj)
 
 pub inline fun whiteBalanceMode(obj: mediaTrackCapabilities, value: jsArray): web ()
   setJsObjectField(obj.obj, "whiteBalanceMode", value.obj)
@@ -825,12 +825,12 @@ pub value struct mediaTrackConstraints
   obj: jsObject
 
 pub fun newMediaTrackConstraints(advanced: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match advanced
     Just(it) -> setJsObjectField(obj, "advanced", it)
     Nothing -> ()
 
-  MediaTrackConstraints(obj);
+  MediaTrackConstraints(obj)
 
 pub inline fun advanced(obj: mediaTrackConstraints, value: jsArray): web ()
   setJsObjectField(obj.obj, "advanced", value.obj)
@@ -842,7 +842,7 @@ pub value struct mediaTrackConstraintSet
   obj: jsObject
 
 pub fun newMediaTrackConstraintSet(whiteBalanceMode: maybe<constrainDOMString> = Nothing, exposureMode: maybe<constrainDOMString> = Nothing, focusMode: maybe<constrainDOMString> = Nothing, pointsOfInterest: maybe<image_capture/constrainPoint2D> = Nothing, exposureCompensation: maybe<constrainDouble> = Nothing, exposureTime: maybe<constrainDouble> = Nothing, colorTemperature: maybe<constrainDouble> = Nothing, iso: maybe<constrainDouble> = Nothing, brightness: maybe<constrainDouble> = Nothing, contrast: maybe<constrainDouble> = Nothing, saturation: maybe<constrainDouble> = Nothing, sharpness: maybe<constrainDouble> = Nothing, focusDistance: maybe<constrainDouble> = Nothing, pan: maybe<maybe<jsObject>> = Nothing, tilt: maybe<maybe<jsObject>> = Nothing, zoom: maybe<maybe<jsObject>> = Nothing, torch: maybe<constrainBoolean> = Nothing, width: maybe<constrainULong> = Nothing, height: maybe<constrainULong> = Nothing, aspectRatio: maybe<constrainDouble> = Nothing, frameRate: maybe<constrainDouble> = Nothing, facingMode: maybe<constrainDOMString> = Nothing, resizeMode: maybe<constrainDOMString> = Nothing, sampleRate: maybe<constrainULong> = Nothing, sampleSize: maybe<constrainULong> = Nothing, echoCancellation: maybe<constrainBoolean> = Nothing, autoGainControl: maybe<constrainBoolean> = Nothing, noiseSuppression: maybe<constrainBoolean> = Nothing, latency: maybe<constrainDouble> = Nothing, channelCount: maybe<constrainULong> = Nothing, deviceId: maybe<constrainDOMString> = Nothing, groupId: maybe<constrainDOMString> = Nothing, displaySurface: maybe<constrainDOMString> = Nothing, logicalSurface: maybe<constrainBoolean> = Nothing, cursor: maybe<constrainDOMString> = Nothing, restrictOwnAudio: maybe<constrainBoolean> = Nothing, suppressLocalAudioPlayback: maybe<constrainBoolean> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match whiteBalanceMode
     Just(it) -> setJsObjectField(obj, "whiteBalanceMode", it)
     Nothing -> ()
@@ -955,7 +955,7 @@ pub fun newMediaTrackConstraintSet(whiteBalanceMode: maybe<constrainDOMString> =
     Just(it) -> setJsObjectField(obj, "suppressLocalAudioPlayback", it)
     Nothing -> ()
 
-  MediaTrackConstraintSet(obj);
+  MediaTrackConstraintSet(obj)
 
 pub inline fun whiteBalanceMode(obj: mediaTrackConstraintSet, value: constrainDOMString): web ()
   setJsObjectField(obj.obj, "whiteBalanceMode", value.obj)
@@ -1183,7 +1183,7 @@ pub value struct mediaTrackSettings
   obj: jsObject
 
 pub fun newMediaTrackSettings(whiteBalanceMode: maybe<string> = Nothing, exposureMode: maybe<string> = Nothing, focusMode: maybe<string> = Nothing, pointsOfInterest: maybe<jsArray> = Nothing, exposureCompensation: maybe<double> = Nothing, exposureTime: maybe<double> = Nothing, colorTemperature: maybe<double> = Nothing, iso: maybe<double> = Nothing, brightness: maybe<double> = Nothing, contrast: maybe<double> = Nothing, saturation: maybe<double> = Nothing, sharpness: maybe<double> = Nothing, focusDistance: maybe<double> = Nothing, pan: maybe<double> = Nothing, tilt: maybe<double> = Nothing, zoom: maybe<double> = Nothing, torch: maybe<bool> = Nothing, width: maybe<int> = Nothing, height: maybe<int> = Nothing, aspectRatio: maybe<double> = Nothing, frameRate: maybe<double> = Nothing, facingMode: maybe<string> = Nothing, resizeMode: maybe<string> = Nothing, sampleRate: maybe<int> = Nothing, sampleSize: maybe<int> = Nothing, echoCancellation: maybe<bool> = Nothing, autoGainControl: maybe<bool> = Nothing, noiseSuppression: maybe<bool> = Nothing, latency: maybe<double> = Nothing, channelCount: maybe<int> = Nothing, deviceId: maybe<string> = Nothing, groupId: maybe<string> = Nothing, displaySurface: maybe<string> = Nothing, logicalSurface: maybe<bool> = Nothing, cursor: maybe<string> = Nothing, restrictOwnAudio: maybe<bool> = Nothing, suppressLocalAudioPlayback: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match whiteBalanceMode
     Just(it) -> setJsObjectField(obj, "whiteBalanceMode", it)
     Nothing -> ()
@@ -1296,7 +1296,7 @@ pub fun newMediaTrackSettings(whiteBalanceMode: maybe<string> = Nothing, exposur
     Just(it) -> setJsObjectField(obj, "suppressLocalAudioPlayback", it)
     Nothing -> ()
 
-  MediaTrackSettings(obj);
+  MediaTrackSettings(obj)
 
 pub inline fun whiteBalanceMode(obj: mediaTrackSettings, value: string): web ()
   setJsObjectField(obj.obj, "whiteBalanceMode", value.obj)
@@ -1533,9 +1533,9 @@ pub value struct mediaStreamTrackEventInit
   obj: jsObject
 
 pub fun newMediaStreamTrackEventInit(track: mediaStreamTrack)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "track", track);
-  MediaStreamTrackEventInit(obj);
+  MediaStreamTrackEventInit(obj)
 
 pub inline fun track(obj: mediaStreamTrackEventInit, value: mediaStreamTrack): web ()
   setJsObjectField(obj.obj, "track", value.obj)
@@ -1622,7 +1622,7 @@ pub value struct mediaStreamConstraints
   obj: jsObject
 
 pub fun newMediaStreamConstraints(video: maybe<maybe<jsObject>> = Nothing, audio: maybe<maybe<jsObject>> = Nothing, preferCurrentTab: maybe<bool> = Nothing, peerIdentity: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match video
     Just(it) -> setJsObjectField(obj, "video", it)
     Nothing -> ()
@@ -1636,7 +1636,7 @@ pub fun newMediaStreamConstraints(video: maybe<maybe<jsObject>> = Nothing, audio
     Just(it) -> setJsObjectField(obj, "peerIdentity", it)
     Nothing -> ()
 
-  MediaStreamConstraints(obj);
+  MediaStreamConstraints(obj)
 
 pub inline fun video(obj: mediaStreamConstraints, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "video", value.obj)
@@ -1666,7 +1666,7 @@ pub value struct doubleRange
   obj: jsObject
 
 pub fun newDoubleRange(max: maybe<double> = Nothing, min: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match max
     Just(it) -> setJsObjectField(obj, "max", it)
     Nothing -> ()
@@ -1674,7 +1674,7 @@ pub fun newDoubleRange(max: maybe<double> = Nothing, min: maybe<double> = Nothin
     Just(it) -> setJsObjectField(obj, "min", it)
     Nothing -> ()
 
-  DoubleRange(obj);
+  DoubleRange(obj)
 
 pub inline fun max(obj: doubleRange, value: double): web ()
   setJsObjectField(obj.obj, "max", value.obj)
@@ -1692,7 +1692,7 @@ pub value struct constrainDoubleRange
   obj: jsObject
 
 pub fun newConstrainDoubleRange(exact: maybe<double> = Nothing, ideal: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match exact
     Just(it) -> setJsObjectField(obj, "exact", it)
     Nothing -> ()
@@ -1700,7 +1700,7 @@ pub fun newConstrainDoubleRange(exact: maybe<double> = Nothing, ideal: maybe<dou
     Just(it) -> setJsObjectField(obj, "ideal", it)
     Nothing -> ()
 
-  ConstrainDoubleRange(obj);
+  ConstrainDoubleRange(obj)
 
 pub inline fun exact(obj: constrainDoubleRange, value: double): web ()
   setJsObjectField(obj.obj, "exact", value.obj)
@@ -1718,7 +1718,7 @@ pub value struct uLongRange
   obj: jsObject
 
 pub fun newULongRange(max: maybe<int> = Nothing, min: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match max
     Just(it) -> setJsObjectField(obj, "max", it)
     Nothing -> ()
@@ -1726,7 +1726,7 @@ pub fun newULongRange(max: maybe<int> = Nothing, min: maybe<int> = Nothing)
     Just(it) -> setJsObjectField(obj, "min", it)
     Nothing -> ()
 
-  ULongRange(obj);
+  ULongRange(obj)
 
 pub inline fun max(obj: uLongRange, value: int): web ()
   setJsObjectField(obj.obj, "max", value.obj)
@@ -1744,7 +1744,7 @@ pub value struct constrainULongRange
   obj: jsObject
 
 pub fun newConstrainULongRange(exact: maybe<int> = Nothing, ideal: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match exact
     Just(it) -> setJsObjectField(obj, "exact", it)
     Nothing -> ()
@@ -1752,7 +1752,7 @@ pub fun newConstrainULongRange(exact: maybe<int> = Nothing, ideal: maybe<int> = 
     Just(it) -> setJsObjectField(obj, "ideal", it)
     Nothing -> ()
 
-  ConstrainULongRange(obj);
+  ConstrainULongRange(obj)
 
 pub inline fun exact(obj: constrainULongRange, value: int): web ()
   setJsObjectField(obj.obj, "exact", value.obj)
@@ -1770,7 +1770,7 @@ pub value struct constrainBooleanParameters
   obj: jsObject
 
 pub fun newConstrainBooleanParameters(exact: maybe<bool> = Nothing, ideal: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match exact
     Just(it) -> setJsObjectField(obj, "exact", it)
     Nothing -> ()
@@ -1778,7 +1778,7 @@ pub fun newConstrainBooleanParameters(exact: maybe<bool> = Nothing, ideal: maybe
     Just(it) -> setJsObjectField(obj, "ideal", it)
     Nothing -> ()
 
-  ConstrainBooleanParameters(obj);
+  ConstrainBooleanParameters(obj)
 
 pub inline fun exact(obj: constrainBooleanParameters, value: bool): web ()
   setJsObjectField(obj.obj, "exact", value.obj)
@@ -1796,7 +1796,7 @@ pub value struct constrainDOMStringParameters
   obj: jsObject
 
 pub fun newConstrainDOMStringParameters(exact: maybe<maybe<jsObject>> = Nothing, ideal: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match exact
     Just(it) -> setJsObjectField(obj, "exact", it)
     Nothing -> ()
@@ -1804,7 +1804,7 @@ pub fun newConstrainDOMStringParameters(exact: maybe<maybe<jsObject>> = Nothing,
     Just(it) -> setJsObjectField(obj, "ideal", it)
     Nothing -> ()
 
-  ConstrainDOMStringParameters(obj);
+  ConstrainDOMStringParameters(obj)
 
 pub inline fun exact(obj: constrainDOMStringParameters, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "exact", value.obj)
@@ -1822,12 +1822,12 @@ pub value struct devicePermissionDescriptor
   obj: jsObject
 
 pub fun newDevicePermissionDescriptor(deviceId: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match deviceId
     Just(it) -> setJsObjectField(obj, "deviceId", it)
     Nothing -> ()
 
-  DevicePermissionDescriptor(obj);
+  DevicePermissionDescriptor(obj)
 
 pub inline fun deviceId(obj: devicePermissionDescriptor, value: string): web ()
   setJsObjectField(obj.obj, "deviceId", value.obj)
@@ -1839,12 +1839,12 @@ pub value struct cameraDevicePermissionDescriptor
   obj: jsObject
 
 pub fun newCameraDevicePermissionDescriptor(panTiltZoom: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match panTiltZoom
     Just(it) -> setJsObjectField(obj, "panTiltZoom", it)
     Nothing -> ()
 
-  CameraDevicePermissionDescriptor(obj);
+  CameraDevicePermissionDescriptor(obj)
 
 pub inline fun panTiltZoom(obj: cameraDevicePermissionDescriptor, value: bool): web ()
   setJsObjectField(obj.obj, "panTiltZoom", value.obj)

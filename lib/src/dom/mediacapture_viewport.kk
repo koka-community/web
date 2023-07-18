@@ -10,7 +10,7 @@ pub value struct viewportMediaStreamConstraints
   obj: jsObject
 
 pub fun newViewportMediaStreamConstraints(video: maybe<maybe<jsObject>> = Nothing, audio: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match video
     Just(it) -> setJsObjectField(obj, "video", it)
     Nothing -> ()
@@ -18,7 +18,7 @@ pub fun newViewportMediaStreamConstraints(video: maybe<maybe<jsObject>> = Nothin
     Just(it) -> setJsObjectField(obj, "audio", it)
     Nothing -> ()
 
-  ViewportMediaStreamConstraints(obj);
+  ViewportMediaStreamConstraints(obj)
 
 pub inline fun video(obj: viewportMediaStreamConstraints, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "video", value.obj)

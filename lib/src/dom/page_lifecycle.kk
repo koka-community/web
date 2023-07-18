@@ -5,6 +5,6 @@ import web/wasm
 
 
 
-pub alias clientLifecycleState = string;
+pub alias clientLifecycleState = string
 
 

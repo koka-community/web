@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias scriptingPolicyViolationType = string;
+pub alias scriptingPolicyViolationType = string
 
 pub value struct scriptingPolicyReportBody
   obj: jsObject

@@ -5,9 +5,9 @@ import web/wasm
 
 
 
-pub alias xrEnvironmentBlendMode = string;
+pub alias xrEnvironmentBlendMode = string
 
 
-pub alias xrInteractionMode = string;
+pub alias xrInteractionMode = string
 
 

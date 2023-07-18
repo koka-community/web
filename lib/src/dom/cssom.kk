@@ -93,7 +93,7 @@ pub value struct cssStyleSheetInit
   obj: jsObject
 
 pub fun newCssStyleSheetInit(baseURL: maybe<string> = Nothing, media: maybe<maybe<jsObject>> = Nothing, disabled: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match baseURL
     Just(it) -> setJsObjectField(obj, "baseURL", it)
     Nothing -> ()
@@ -104,7 +104,7 @@ pub fun newCssStyleSheetInit(baseURL: maybe<string> = Nothing, media: maybe<mayb
     Just(it) -> setJsObjectField(obj, "disabled", it)
     Nothing -> ()
 
-  CssStyleSheetInit(obj);
+  CssStyleSheetInit(obj)
 
 pub inline fun baseURL(obj: cssStyleSheetInit, value: string): web ()
   setJsObjectField(obj.obj, "baseURL", value.obj)

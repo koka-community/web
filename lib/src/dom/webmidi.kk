@@ -5,24 +5,24 @@ import web/wasm
 
 
 
-pub alias midiPortType = string;
+pub alias midiPortType = string
 
 
-pub alias midiPortDeviceState = string;
+pub alias midiPortDeviceState = string
 
 
-pub alias midiPortConnectionState = string;
+pub alias midiPortConnectionState = string
 
 pub value struct midiPermissionDescriptor
   obj: jsObject
 
 pub fun newMidiPermissionDescriptor(sysex: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match sysex
     Just(it) -> setJsObjectField(obj, "sysex", it)
     Nothing -> ()
 
-  MidiPermissionDescriptor(obj);
+  MidiPermissionDescriptor(obj)
 
 pub inline fun sysex(obj: midiPermissionDescriptor, value: bool): web ()
   setJsObjectField(obj.obj, "sysex", value.obj)
@@ -34,7 +34,7 @@ pub value struct midiOptions
   obj: jsObject
 
 pub fun newMidiOptions(sysex: maybe<bool> = Nothing, software: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match sysex
     Just(it) -> setJsObjectField(obj, "sysex", it)
     Nothing -> ()
@@ -42,7 +42,7 @@ pub fun newMidiOptions(sysex: maybe<bool> = Nothing, software: maybe<bool> = Not
     Just(it) -> setJsObjectField(obj, "software", it)
     Nothing -> ()
 
-  MidiOptions(obj);
+  MidiOptions(obj)
 
 pub inline fun sysex(obj: midiOptions, value: bool): web ()
   setJsObjectField(obj.obj, "sysex", value.obj)
@@ -155,12 +155,12 @@ pub value struct midiMessageEventInit
   obj: jsObject
 
 pub fun newMidiMessageEventInit(data: maybe<jsUint8Array> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match data
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  MidiMessageEventInit(obj);
+  MidiMessageEventInit(obj)
 
 pub inline fun data(obj: midiMessageEventInit, value: jsUint8Array): web ()
   setJsObjectField(obj.obj, "data", value.obj)
@@ -181,12 +181,12 @@ pub value struct midiConnectionEventInit
   obj: jsObject
 
 pub fun newMidiConnectionEventInit(port: maybe<midiPort> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match port
     Just(it) -> setJsObjectField(obj, "port", it)
     Nothing -> ()
 
-  MidiConnectionEventInit(obj);
+  MidiConnectionEventInit(obj)
 
 pub inline fun port(obj: midiConnectionEventInit, value: midiPort): web ()
   setJsObjectField(obj.obj, "port", value.obj)

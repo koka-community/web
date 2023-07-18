@@ -10,7 +10,7 @@ pub value struct propertyDefinition
   obj: jsObject
 
 pub fun newPropertyDefinition(name: string, syntax: maybe<string> = Nothing, inherits: bool, initialValue: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "name", name);  match syntax
     Just(it) -> setJsObjectField(obj, "syntax", it)
     Nothing -> ()
@@ -18,7 +18,7 @@ pub fun newPropertyDefinition(name: string, syntax: maybe<string> = Nothing, inh
     Just(it) -> setJsObjectField(obj, "initialValue", it)
     Nothing -> ()
 
-  PropertyDefinition(obj);
+  PropertyDefinition(obj)
 
 pub inline fun name(obj: propertyDefinition, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)

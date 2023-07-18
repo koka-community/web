@@ -5,18 +5,18 @@ import web/wasm
 
 
 
-pub alias xrDepthUsage = string;
+pub alias xrDepthUsage = string
 
 
-pub alias xrDepthDataFormat = string;
+pub alias xrDepthDataFormat = string
 
 pub value struct xrDepthStateInit
   obj: jsObject
 
 pub fun newXrDepthStateInit(usagePreference: jsArray, dataFormatPreference: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "usagePreference", usagePreference);  setJsObjectField(obj, "dataFormatPreference", dataFormatPreference);
-  XrDepthStateInit(obj);
+  XrDepthStateInit(obj)
 
 pub inline fun usagePreference(obj: xrDepthStateInit, value: jsArray): web ()
   setJsObjectField(obj.obj, "usagePreference", value.obj)

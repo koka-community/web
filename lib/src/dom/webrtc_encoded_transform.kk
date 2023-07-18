@@ -2,34 +2,34 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias rtcRtpTransform = JSAny;
+pub alias rtcRtpTransform = JSAny
 
 
-pub alias smallCryptoKeyID = int;
+pub alias smallCryptoKeyID = int
 
 
-pub alias cryptoKeyID = JSAny;
+pub alias cryptoKeyID = JSAny
 
 
 
-pub alias sFrameTransformRole = string;
+pub alias sFrameTransformRole = string
 
 
-pub alias sFrameTransformErrorEventType = string;
+pub alias sFrameTransformErrorEventType = string
 
 
-pub alias rtcEncodedVideoFrameType = string;
+pub alias rtcEncodedVideoFrameType = string
 
 pub value struct sFrameTransformOptions
   obj: jsObject
 
 pub fun newSFrameTransformOptions(role: maybe<sFrameTransformRole> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match role
     Just(it) -> setJsObjectField(obj, "role", it)
     Nothing -> ()
 
-  SFrameTransformOptions(obj);
+  SFrameTransformOptions(obj)
 
 pub inline fun role(obj: sFrameTransformOptions, value: sFrameTransformRole): web ()
   setJsObjectField(obj.obj, "role", value.obj)
@@ -71,12 +71,12 @@ pub value struct sFrameTransformErrorEventInit
   obj: jsObject
 
 pub fun newSFrameTransformErrorEventInit(errorType: sFrameTransformErrorEventType, frame: maybe<jsObject>, keyID: maybe<maybe<cryptoKeyID>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "errorType", errorType);  setJsObjectField(obj, "frame", frame);  match keyID
     Just(it) -> setJsObjectField(obj, "keyID", it)
     Nothing -> ()
 
-  SFrameTransformErrorEventInit(obj);
+  SFrameTransformErrorEventInit(obj)
 
 pub inline fun errorType(obj: sFrameTransformErrorEventInit, value: sFrameTransformErrorEventType): web ()
   setJsObjectField(obj.obj, "errorType", value.obj)
@@ -100,7 +100,7 @@ pub value struct rtcEncodedVideoFrameMetadata
   obj: jsObject
 
 pub fun newRtcEncodedVideoFrameMetadata(frameId: maybe<int> = Nothing, dependencies: maybe<jsArray> = Nothing, width: maybe<int> = Nothing, height: maybe<int> = Nothing, spatialIndex: maybe<int> = Nothing, temporalIndex: maybe<int> = Nothing, synchronizationSource: maybe<int> = Nothing, payloadType: maybe<int> = Nothing, contributingSources: maybe<jsArray> = Nothing, timestamp: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match frameId
     Just(it) -> setJsObjectField(obj, "frameId", it)
     Nothing -> ()
@@ -132,7 +132,7 @@ pub fun newRtcEncodedVideoFrameMetadata(frameId: maybe<int> = Nothing, dependenc
     Just(it) -> setJsObjectField(obj, "timestamp", it)
     Nothing -> ()
 
-  RtcEncodedVideoFrameMetadata(obj);
+  RtcEncodedVideoFrameMetadata(obj)
 
 pub inline fun frameId(obj: rtcEncodedVideoFrameMetadata, value: int): web ()
   setJsObjectField(obj.obj, "frameId", value.obj)
@@ -217,7 +217,7 @@ pub value struct rtcEncodedAudioFrameMetadata
   obj: jsObject
 
 pub fun newRtcEncodedAudioFrameMetadata(synchronizationSource: maybe<int> = Nothing, payloadType: maybe<int> = Nothing, contributingSources: maybe<jsArray> = Nothing, sequenceNumber: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match synchronizationSource
     Just(it) -> setJsObjectField(obj, "synchronizationSource", it)
     Nothing -> ()
@@ -231,7 +231,7 @@ pub fun newRtcEncodedAudioFrameMetadata(synchronizationSource: maybe<int> = Noth
     Just(it) -> setJsObjectField(obj, "sequenceNumber", it)
     Nothing -> ()
 
-  RtcEncodedAudioFrameMetadata(obj);
+  RtcEncodedAudioFrameMetadata(obj)
 
 pub inline fun synchronizationSource(obj: rtcEncodedAudioFrameMetadata, value: int): web ()
   setJsObjectField(obj.obj, "synchronizationSource", value.obj)

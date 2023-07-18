@@ -2,9 +2,9 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias sharedStorageResponse = JSAny;
+pub alias sharedStorageResponse = JSAny
 
-pub alias sharedStorageOperationConstructor = jsFunction;
+pub alias sharedStorageOperationConstructor = jsFunction
 
 
 
@@ -27,7 +27,7 @@ pub value struct sharedStorageRunOperationMethodOptions
   obj: jsObject
 
 pub fun newSharedStorageRunOperationMethodOptions(data: maybe<jsObject> = Nothing, resolveToConfig: maybe<bool> = Nothing, keepAlive: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match data
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
@@ -38,7 +38,7 @@ pub fun newSharedStorageRunOperationMethodOptions(data: maybe<jsObject> = Nothin
     Just(it) -> setJsObjectField(obj, "keepAlive", it)
     Nothing -> ()
 
-  SharedStorageRunOperationMethodOptions(obj);
+  SharedStorageRunOperationMethodOptions(obj)
 
 pub inline fun data(obj: sharedStorageRunOperationMethodOptions, value: jsObject): web ()
   setJsObjectField(obj.obj, "data", value.obj)
@@ -92,12 +92,12 @@ pub value struct sharedStorageSetMethodOptions
   obj: jsObject
 
 pub fun newSharedStorageSetMethodOptions(ignoreIfPresent: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match ignoreIfPresent
     Just(it) -> setJsObjectField(obj, "ignoreIfPresent", it)
     Nothing -> ()
 
-  SharedStorageSetMethodOptions(obj);
+  SharedStorageSetMethodOptions(obj)
 
 pub inline fun ignoreIfPresent(obj: sharedStorageSetMethodOptions, value: bool): web ()
   setJsObjectField(obj.obj, "ignoreIfPresent", value.obj)
@@ -122,12 +122,12 @@ pub value struct sharedStorageUrlWithMetadata
   obj: jsObject
 
 pub fun newSharedStorageUrlWithMetadata(url: string, reportingMetadata: maybe<jsObject> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "url", url);  match reportingMetadata
     Just(it) -> setJsObjectField(obj, "reportingMetadata", it)
     Nothing -> ()
 
-  SharedStorageUrlWithMetadata(obj);
+  SharedStorageUrlWithMetadata(obj)
 
 pub inline fun url(obj: sharedStorageUrlWithMetadata, value: string): web ()
   setJsObjectField(obj.obj, "url", value.obj)

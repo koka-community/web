@@ -35,9 +35,9 @@ pub value struct pictureInPictureEventInit
   obj: jsObject
 
 pub fun newPictureInPictureEventInit(pictureInPictureWindow: pictureInPictureWindow)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "pictureInPictureWindow", pictureInPictureWindow);
-  PictureInPictureEventInit(obj);
+  PictureInPictureEventInit(obj)
 
 pub inline fun pictureInPictureWindow(obj: pictureInPictureEventInit, value: pictureInPictureWindow): web ()
   setJsObjectField(obj.obj, "pictureInPictureWindow", value.obj)

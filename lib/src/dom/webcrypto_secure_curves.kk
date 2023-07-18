@@ -10,12 +10,12 @@ pub value struct ed448Params
   obj: jsObject
 
 pub fun newEd448Params(context: maybe<webidl/bufferSource> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match context
     Just(it) -> setJsObjectField(obj, "context", it)
     Nothing -> ()
 
-  Ed448Params(obj);
+  Ed448Params(obj)
 
 pub inline fun context(obj: ed448Params, value: webidl/bufferSource): web ()
   setJsObjectField(obj.obj, "context", value.obj)

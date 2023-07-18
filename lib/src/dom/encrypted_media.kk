@@ -5,25 +5,25 @@ import web/wasm
 
 
 
-pub alias mediaKeysRequirement = string;
+pub alias mediaKeysRequirement = string
 
 
-pub alias mediaKeySessionType = string;
+pub alias mediaKeySessionType = string
 
 
-pub alias mediaKeySessionClosedReason = string;
+pub alias mediaKeySessionClosedReason = string
 
 
-pub alias mediaKeyStatus = string;
+pub alias mediaKeyStatus = string
 
 
-pub alias mediaKeyMessageType = string;
+pub alias mediaKeyMessageType = string
 
 pub value struct mediaKeySystemConfiguration
   obj: jsObject
 
 pub fun newMediaKeySystemConfiguration(label: maybe<string> = Nothing, initDataTypes: maybe<jsArray> = Nothing, audioCapabilities: maybe<jsArray> = Nothing, videoCapabilities: maybe<jsArray> = Nothing, distinctiveIdentifier: maybe<mediaKeysRequirement> = Nothing, persistentState: maybe<mediaKeysRequirement> = Nothing, sessionTypes: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match label
     Just(it) -> setJsObjectField(obj, "label", it)
     Nothing -> ()
@@ -46,7 +46,7 @@ pub fun newMediaKeySystemConfiguration(label: maybe<string> = Nothing, initDataT
     Just(it) -> setJsObjectField(obj, "sessionTypes", it)
     Nothing -> ()
 
-  MediaKeySystemConfiguration(obj);
+  MediaKeySystemConfiguration(obj)
 
 pub inline fun label(obj: mediaKeySystemConfiguration, value: string): web ()
   setJsObjectField(obj.obj, "label", value.obj)
@@ -94,7 +94,7 @@ pub value struct mediaKeySystemMediaCapability
   obj: jsObject
 
 pub fun newMediaKeySystemMediaCapability(contentType: maybe<string> = Nothing, encryptionScheme: maybe<maybe<string>> = Nothing, robustness: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match contentType
     Just(it) -> setJsObjectField(obj, "contentType", it)
     Nothing -> ()
@@ -105,7 +105,7 @@ pub fun newMediaKeySystemMediaCapability(contentType: maybe<string> = Nothing, e
     Just(it) -> setJsObjectField(obj, "robustness", it)
     Nothing -> ()
 
-  MediaKeySystemMediaCapability(obj);
+  MediaKeySystemMediaCapability(obj)
 
 pub inline fun contentType(obj: mediaKeySystemMediaCapability, value: string): web ()
   setJsObjectField(obj.obj, "contentType", value.obj)
@@ -220,9 +220,9 @@ pub value struct mediaKeyMessageEventInit
   obj: jsObject
 
 pub fun newMediaKeyMessageEventInit(messageType: mediaKeyMessageType, message: jsArrayBuffer)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "messageType", messageType);  setJsObjectField(obj, "message", message);
-  MediaKeyMessageEventInit(obj);
+  MediaKeyMessageEventInit(obj)
 
 pub inline fun messageType(obj: mediaKeyMessageEventInit, value: mediaKeyMessageType): web ()
   setJsObjectField(obj.obj, "messageType", value.obj)
@@ -252,7 +252,7 @@ pub value struct mediaEncryptedEventInit
   obj: jsObject
 
 pub fun newMediaEncryptedEventInit(initDataType: maybe<string> = Nothing, initData: maybe<maybe<jsArrayBuffer>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match initDataType
     Just(it) -> setJsObjectField(obj, "initDataType", it)
     Nothing -> ()
@@ -260,7 +260,7 @@ pub fun newMediaEncryptedEventInit(initDataType: maybe<string> = Nothing, initDa
     Just(it) -> setJsObjectField(obj, "initData", it)
     Nothing -> ()
 
-  MediaEncryptedEventInit(obj);
+  MediaEncryptedEventInit(obj)
 
 pub inline fun initDataType(obj: mediaEncryptedEventInit, value: string): web ()
   setJsObjectField(obj.obj, "initDataType", value.obj)

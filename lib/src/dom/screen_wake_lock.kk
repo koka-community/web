@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias wakeLockType = string;
+pub alias wakeLockType = string
 
 pub value struct wakeLock
   obj: jsObject

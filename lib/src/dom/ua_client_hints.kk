@@ -10,7 +10,7 @@ pub value struct navigatorUABrandVersion
   obj: jsObject
 
 pub fun newNavigatorUABrandVersion(brand: maybe<string> = Nothing, version: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match brand
     Just(it) -> setJsObjectField(obj, "brand", it)
     Nothing -> ()
@@ -18,7 +18,7 @@ pub fun newNavigatorUABrandVersion(brand: maybe<string> = Nothing, version: mayb
     Just(it) -> setJsObjectField(obj, "version", it)
     Nothing -> ()
 
-  NavigatorUABrandVersion(obj);
+  NavigatorUABrandVersion(obj)
 
 pub inline fun brand(obj: navigatorUABrandVersion, value: string): web ()
   setJsObjectField(obj.obj, "brand", value.obj)
@@ -36,7 +36,7 @@ pub value struct uaDataValues
   obj: jsObject
 
 pub fun newUaDataValues(architecture: maybe<string> = Nothing, bitness: maybe<string> = Nothing, brands: maybe<jsArray> = Nothing, formFactor: maybe<string> = Nothing, fullVersionList: maybe<jsArray> = Nothing, model: maybe<string> = Nothing, mobile: maybe<bool> = Nothing, platform: maybe<string> = Nothing, platformVersion: maybe<string> = Nothing, uaFullVersion: maybe<string> = Nothing, wow64: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match architecture
     Just(it) -> setJsObjectField(obj, "architecture", it)
     Nothing -> ()
@@ -71,7 +71,7 @@ pub fun newUaDataValues(architecture: maybe<string> = Nothing, bitness: maybe<st
     Just(it) -> setJsObjectField(obj, "wow64", it)
     Nothing -> ()
 
-  UaDataValues(obj);
+  UaDataValues(obj)
 
 pub inline fun architecture(obj: uaDataValues, value: string): web ()
   setJsObjectField(obj.obj, "architecture", value.obj)
@@ -143,7 +143,7 @@ pub value struct uaLowEntropyJSON
   obj: jsObject
 
 pub fun newUaLowEntropyJSON(brands: maybe<jsArray> = Nothing, mobile: maybe<bool> = Nothing, platform: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match brands
     Just(it) -> setJsObjectField(obj, "brands", it)
     Nothing -> ()
@@ -154,7 +154,7 @@ pub fun newUaLowEntropyJSON(brands: maybe<jsArray> = Nothing, mobile: maybe<bool
     Just(it) -> setJsObjectField(obj, "platform", it)
     Nothing -> ()
 
-  UaLowEntropyJSON(obj);
+  UaLowEntropyJSON(obj)
 
 pub inline fun brands(obj: uaLowEntropyJSON, value: jsArray): web ()
   setJsObjectField(obj.obj, "brands", value.obj)

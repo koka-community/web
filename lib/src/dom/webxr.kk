@@ -2,27 +2,27 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias xrWebGLRenderingContext = JSAny;
+pub alias xrWebGLRenderingContext = JSAny
 
-pub alias xrFrameRequestCallback = jsFunction;
-
-
-pub alias xrSessionMode = string;
+pub alias xrFrameRequestCallback = jsFunction
 
 
-pub alias xrVisibilityState = string;
+pub alias xrSessionMode = string
 
 
-pub alias xrReferenceSpaceType = string;
+pub alias xrVisibilityState = string
 
 
-pub alias xrEye = string;
+pub alias xrReferenceSpaceType = string
 
 
-pub alias xrHandedness = string;
+pub alias xrEye = string
 
 
-pub alias xrTargetRayMode = string;
+pub alias xrHandedness = string
+
+
+pub alias xrTargetRayMode = string
 
 pub value struct xrSystem
   obj: jsObject
@@ -44,7 +44,7 @@ pub value struct xrSessionInit
   obj: jsObject
 
 pub fun newXrSessionInit(depthSensing: maybe<webxr_depth_sensing/xrDepthStateInit> = Nothing, domOverlay: maybe<maybe<webxr_dom_overlays/xrdomOverlayInit>> = Nothing, requiredFeatures: maybe<jsArray> = Nothing, optionalFeatures: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match depthSensing
     Just(it) -> setJsObjectField(obj, "depthSensing", it)
     Nothing -> ()
@@ -58,7 +58,7 @@ pub fun newXrSessionInit(depthSensing: maybe<webxr_depth_sensing/xrDepthStateIni
     Just(it) -> setJsObjectField(obj, "optionalFeatures", it)
     Nothing -> ()
 
-  XrSessionInit(obj);
+  XrSessionInit(obj)
 
 pub inline fun depthSensing(obj: xrSessionInit, value: webxr_depth_sensing/xrDepthStateInit): web ()
   setJsObjectField(obj.obj, "depthSensing", value.obj)
@@ -227,7 +227,7 @@ pub value struct xrRenderStateInit
   obj: jsObject
 
 pub fun newXrRenderStateInit(depthNear: maybe<double> = Nothing, depthFar: maybe<double> = Nothing, inlineVerticalFieldOfView: maybe<double> = Nothing, baseLayer: maybe<maybe<xrWebGLLayer>> = Nothing, layers: maybe<maybe<jsArray>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match depthNear
     Just(it) -> setJsObjectField(obj, "depthNear", it)
     Nothing -> ()
@@ -244,7 +244,7 @@ pub fun newXrRenderStateInit(depthNear: maybe<double> = Nothing, depthFar: maybe
     Just(it) -> setJsObjectField(obj, "layers", it)
     Nothing -> ()
 
-  XrRenderStateInit(obj);
+  XrRenderStateInit(obj)
 
 pub inline fun depthNear(obj: xrRenderStateInit, value: double): web ()
   setJsObjectField(obj.obj, "depthNear", value.obj)
@@ -487,7 +487,7 @@ pub value struct xrWebGLLayerInit
   obj: jsObject
 
 pub fun newXrWebGLLayerInit(antialias: maybe<bool> = Nothing, depth: maybe<bool> = Nothing, stencil: maybe<bool> = Nothing, alpha: maybe<bool> = Nothing, ignoreDepthValues: maybe<bool> = Nothing, framebufferScaleFactor: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match antialias
     Just(it) -> setJsObjectField(obj, "antialias", it)
     Nothing -> ()
@@ -507,7 +507,7 @@ pub fun newXrWebGLLayerInit(antialias: maybe<bool> = Nothing, depth: maybe<bool>
     Just(it) -> setJsObjectField(obj, "framebufferScaleFactor", it)
     Nothing -> ()
 
-  XrWebGLLayerInit(obj);
+  XrWebGLLayerInit(obj)
 
 pub inline fun antialias(obj: xrWebGLLayerInit, value: bool): web ()
   setJsObjectField(obj.obj, "antialias", value.obj)
@@ -590,9 +590,9 @@ pub value struct xrSessionEventInit
   obj: jsObject
 
 pub fun newXrSessionEventInit(session: xrSession)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "session", session);
-  XrSessionEventInit(obj);
+  XrSessionEventInit(obj)
 
 pub inline fun session(obj: xrSessionEventInit, value: xrSession): web ()
   setJsObjectField(obj.obj, "session", value.obj)
@@ -616,9 +616,9 @@ pub value struct xrInputSourceEventInit
   obj: jsObject
 
 pub fun newXrInputSourceEventInit(frame: xrFrame, inputSource: xrInputSource)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "frame", frame);  setJsObjectField(obj, "inputSource", inputSource);
-  XrInputSourceEventInit(obj);
+  XrInputSourceEventInit(obj)
 
 pub inline fun frame(obj: xrInputSourceEventInit, value: xrFrame): web ()
   setJsObjectField(obj.obj, "frame", value.obj)
@@ -651,9 +651,9 @@ pub value struct xrInputSourcesChangeEventInit
   obj: jsObject
 
 pub fun newXrInputSourcesChangeEventInit(session: xrSession, added: jsArray, removed: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "session", session);  setJsObjectField(obj, "added", added);  setJsObjectField(obj, "removed", removed);
-  XrInputSourcesChangeEventInit(obj);
+  XrInputSourcesChangeEventInit(obj)
 
 pub inline fun session(obj: xrInputSourcesChangeEventInit, value: xrSession): web ()
   setJsObjectField(obj.obj, "session", value.obj)
@@ -689,12 +689,12 @@ pub value struct xrReferenceSpaceEventInit
   obj: jsObject
 
 pub fun newXrReferenceSpaceEventInit(referenceSpace: xrReferenceSpace, transform: maybe<maybe<xrRigidTransform>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "referenceSpace", referenceSpace);  match transform
     Just(it) -> setJsObjectField(obj, "transform", it)
     Nothing -> ()
 
-  XrReferenceSpaceEventInit(obj);
+  XrReferenceSpaceEventInit(obj)
 
 pub inline fun referenceSpace(obj: xrReferenceSpaceEventInit, value: xrReferenceSpace): web ()
   setJsObjectField(obj.obj, "referenceSpace", value.obj)
@@ -712,12 +712,12 @@ pub value struct xrSessionSupportedPermissionDescriptor
   obj: jsObject
 
 pub fun newXrSessionSupportedPermissionDescriptor(mode: maybe<xrSessionMode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match mode
     Just(it) -> setJsObjectField(obj, "mode", it)
     Nothing -> ()
 
-  XrSessionSupportedPermissionDescriptor(obj);
+  XrSessionSupportedPermissionDescriptor(obj)
 
 pub inline fun mode(obj: xrSessionSupportedPermissionDescriptor, value: xrSessionMode): web ()
   setJsObjectField(obj.obj, "mode", value.obj)
@@ -729,7 +729,7 @@ pub value struct xrPermissionDescriptor
   obj: jsObject
 
 pub fun newXrPermissionDescriptor(mode: maybe<xrSessionMode> = Nothing, requiredFeatures: maybe<jsArray> = Nothing, optionalFeatures: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match mode
     Just(it) -> setJsObjectField(obj, "mode", it)
     Nothing -> ()
@@ -740,7 +740,7 @@ pub fun newXrPermissionDescriptor(mode: maybe<xrSessionMode> = Nothing, required
     Just(it) -> setJsObjectField(obj, "optionalFeatures", it)
     Nothing -> ()
 
-  XrPermissionDescriptor(obj);
+  XrPermissionDescriptor(obj)
 
 pub inline fun mode(obj: xrPermissionDescriptor, value: xrSessionMode): web ()
   setJsObjectField(obj.obj, "mode", value.obj)

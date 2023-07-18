@@ -20,12 +20,12 @@ pub value struct paintRenderingContext2DSettings
   obj: jsObject
 
 pub fun newPaintRenderingContext2DSettings(alpha: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match alpha
     Just(it) -> setJsObjectField(obj, "alpha", it)
     Nothing -> ()
 
-  PaintRenderingContext2DSettings(obj);
+  PaintRenderingContext2DSettings(obj)
 
 pub inline fun alpha(obj: paintRenderingContext2DSettings, value: bool): web ()
   setJsObjectField(obj.obj, "alpha", value.obj)

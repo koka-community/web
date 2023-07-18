@@ -2,16 +2,16 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias uuiD = String;
+pub alias uuiD = String
 
 
-pub alias bluetoothServiceUUID = JSAny;
+pub alias bluetoothServiceUUID = JSAny
 
 
-pub alias bluetoothCharacteristicUUID = JSAny;
+pub alias bluetoothCharacteristicUUID = JSAny
 
 
-pub alias bluetoothDescriptorUUID = JSAny;
+pub alias bluetoothDescriptorUUID = JSAny
 
 
 
@@ -20,7 +20,7 @@ pub value struct bluetoothDataFilterInit
   obj: jsObject
 
 pub fun newBluetoothDataFilterInit(dataPrefix: maybe<webidl/bufferSource> = Nothing, mask: maybe<webidl/bufferSource> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match dataPrefix
     Just(it) -> setJsObjectField(obj, "dataPrefix", it)
     Nothing -> ()
@@ -28,7 +28,7 @@ pub fun newBluetoothDataFilterInit(dataPrefix: maybe<webidl/bufferSource> = Noth
     Just(it) -> setJsObjectField(obj, "mask", it)
     Nothing -> ()
 
-  BluetoothDataFilterInit(obj);
+  BluetoothDataFilterInit(obj)
 
 pub inline fun dataPrefix(obj: bluetoothDataFilterInit, value: webidl/bufferSource): web ()
   setJsObjectField(obj.obj, "dataPrefix", value.obj)
@@ -46,9 +46,9 @@ pub value struct bluetoothManufacturerDataFilterInit
   obj: jsObject
 
 pub fun newBluetoothManufacturerDataFilterInit(companyIdentifier: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "companyIdentifier", companyIdentifier);
-  BluetoothManufacturerDataFilterInit(obj);
+  BluetoothManufacturerDataFilterInit(obj)
 
 pub inline fun companyIdentifier(obj: bluetoothManufacturerDataFilterInit, value: int): web ()
   setJsObjectField(obj.obj, "companyIdentifier", value.obj)
@@ -60,9 +60,9 @@ pub value struct bluetoothServiceDataFilterInit
   obj: jsObject
 
 pub fun newBluetoothServiceDataFilterInit(service: bluetoothServiceUUID)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "service", service);
-  BluetoothServiceDataFilterInit(obj);
+  BluetoothServiceDataFilterInit(obj)
 
 pub inline fun service(obj: bluetoothServiceDataFilterInit, value: bluetoothServiceUUID): web ()
   setJsObjectField(obj.obj, "service", value.obj)
@@ -74,7 +74,7 @@ pub value struct bluetoothLEScanFilterInit
   obj: jsObject
 
 pub fun newBluetoothLEScanFilterInit(services: maybe<jsArray> = Nothing, name: maybe<string> = Nothing, namePrefix: maybe<string> = Nothing, manufacturerData: maybe<jsArray> = Nothing, serviceData: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match services
     Just(it) -> setJsObjectField(obj, "services", it)
     Nothing -> ()
@@ -91,7 +91,7 @@ pub fun newBluetoothLEScanFilterInit(services: maybe<jsArray> = Nothing, name: m
     Just(it) -> setJsObjectField(obj, "serviceData", it)
     Nothing -> ()
 
-  BluetoothLEScanFilterInit(obj);
+  BluetoothLEScanFilterInit(obj)
 
 pub inline fun services(obj: bluetoothLEScanFilterInit, value: jsArray): web ()
   setJsObjectField(obj.obj, "services", value.obj)
@@ -127,7 +127,7 @@ pub value struct requestDeviceOptions
   obj: jsObject
 
 pub fun newRequestDeviceOptions(filters: maybe<jsArray> = Nothing, exclusionFilters: maybe<jsArray> = Nothing, optionalServices: maybe<jsArray> = Nothing, optionalManufacturerData: maybe<jsArray> = Nothing, acceptAllDevices: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match filters
     Just(it) -> setJsObjectField(obj, "filters", it)
     Nothing -> ()
@@ -144,7 +144,7 @@ pub fun newRequestDeviceOptions(filters: maybe<jsArray> = Nothing, exclusionFilt
     Just(it) -> setJsObjectField(obj, "acceptAllDevices", it)
     Nothing -> ()
 
-  RequestDeviceOptions(obj);
+  RequestDeviceOptions(obj)
 
 pub inline fun filters(obj: requestDeviceOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "filters", value.obj)
@@ -202,7 +202,7 @@ pub value struct bluetoothPermissionDescriptor
   obj: jsObject
 
 pub fun newBluetoothPermissionDescriptor(deviceId: maybe<string> = Nothing, filters: maybe<jsArray> = Nothing, optionalServices: maybe<jsArray> = Nothing, optionalManufacturerData: maybe<jsArray> = Nothing, acceptAllDevices: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match deviceId
     Just(it) -> setJsObjectField(obj, "deviceId", it)
     Nothing -> ()
@@ -219,7 +219,7 @@ pub fun newBluetoothPermissionDescriptor(deviceId: maybe<string> = Nothing, filt
     Just(it) -> setJsObjectField(obj, "acceptAllDevices", it)
     Nothing -> ()
 
-  BluetoothPermissionDescriptor(obj);
+  BluetoothPermissionDescriptor(obj)
 
 pub inline fun deviceId(obj: bluetoothPermissionDescriptor, value: string): web ()
   setJsObjectField(obj.obj, "deviceId", value.obj)
@@ -255,9 +255,9 @@ pub value struct allowedBluetoothDevice
   obj: jsObject
 
 pub fun newAllowedBluetoothDevice(deviceId: string, mayUseGATT: bool, allowedServices: maybe<jsObject>, allowedManufacturerData: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "deviceId", deviceId);  setJsObjectField(obj, "mayUseGATT", mayUseGATT);  setJsObjectField(obj, "allowedServices", allowedServices);  setJsObjectField(obj, "allowedManufacturerData", allowedManufacturerData);
-  AllowedBluetoothDevice(obj);
+  AllowedBluetoothDevice(obj)
 
 pub inline fun deviceId(obj: allowedBluetoothDevice, value: string): web ()
   setJsObjectField(obj.obj, "deviceId", value.obj)
@@ -287,9 +287,9 @@ pub value struct bluetoothPermissionStorage
   obj: jsObject
 
 pub fun newBluetoothPermissionStorage(allowedDevices: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "allowedDevices", allowedDevices);
-  BluetoothPermissionStorage(obj);
+  BluetoothPermissionStorage(obj)
 
 pub inline fun allowedDevices(obj: bluetoothPermissionStorage, value: jsArray): web ()
   setJsObjectField(obj.obj, "allowedDevices", value.obj)
@@ -320,12 +320,12 @@ pub value struct valueEventInit
   obj: jsObject
 
 pub fun newValueEventInit(value: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match value
     Just(it) -> setJsObjectField(obj, "value", it)
     Nothing -> ()
 
-  ValueEventInit(obj);
+  ValueEventInit(obj)
 
 pub inline fun value(obj: valueEventInit, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "value", value.obj)
@@ -359,12 +359,12 @@ pub value struct watchAdvertisementsOptions
   obj: jsObject
 
 pub fun newWatchAdvertisementsOptions(signal: maybe<dom/abortSignal> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match signal
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
 
-  WatchAdvertisementsOptions(obj);
+  WatchAdvertisementsOptions(obj)
 
 pub inline fun signal(obj: watchAdvertisementsOptions, value: dom/abortSignal): web ()
   setJsObjectField(obj.obj, "signal", value.obj)
@@ -416,7 +416,7 @@ pub value struct bluetoothAdvertisingEventInit
   obj: jsObject
 
 pub fun newBluetoothAdvertisingEventInit(device: bluetoothDevice, uuids: maybe<jsArray> = Nothing, name: maybe<string> = Nothing, appearance: maybe<int> = Nothing, txPower: maybe<int> = Nothing, rssi: maybe<int> = Nothing, manufacturerData: maybe<bluetoothManufacturerDataMap> = Nothing, serviceData: maybe<bluetoothServiceDataMap> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "device", device);  match uuids
     Just(it) -> setJsObjectField(obj, "uuids", it)
     Nothing -> ()
@@ -439,7 +439,7 @@ pub fun newBluetoothAdvertisingEventInit(device: bluetoothDevice, uuids: maybe<j
     Just(it) -> setJsObjectField(obj, "serviceData", it)
     Nothing -> ()
 
-  BluetoothAdvertisingEventInit(obj);
+  BluetoothAdvertisingEventInit(obj)
 
 pub inline fun device(obj: bluetoothAdvertisingEventInit, value: bluetoothDevice): web ()
   setJsObjectField(obj.obj, "device", value.obj)

@@ -5,13 +5,13 @@ import web/wasm
 
 
 
-pub alias webTransportReliabilityMode = string;
+pub alias webTransportReliabilityMode = string
 
 
-pub alias webTransportCongestionControl = string;
+pub alias webTransportCongestionControl = string
 
 
-pub alias webTransportErrorSource = string;
+pub alias webTransportErrorSource = string
 
 pub value struct webTransportDatagramDuplexStream
   obj: jsObject
@@ -96,7 +96,7 @@ pub value struct webTransportHash
   obj: jsObject
 
 pub fun newWebTransportHash(algorithm: maybe<string> = Nothing, value: maybe<webidl/bufferSource> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match algorithm
     Just(it) -> setJsObjectField(obj, "algorithm", it)
     Nothing -> ()
@@ -104,7 +104,7 @@ pub fun newWebTransportHash(algorithm: maybe<string> = Nothing, value: maybe<web
     Just(it) -> setJsObjectField(obj, "value", it)
     Nothing -> ()
 
-  WebTransportHash(obj);
+  WebTransportHash(obj)
 
 pub inline fun algorithm(obj: webTransportHash, value: string): web ()
   setJsObjectField(obj.obj, "algorithm", value.obj)
@@ -122,7 +122,7 @@ pub value struct webTransportOptions
   obj: jsObject
 
 pub fun newWebTransportOptions(allowPooling: maybe<bool> = Nothing, requireUnreliable: maybe<bool> = Nothing, serverCertificateHashes: maybe<jsArray> = Nothing, congestionControl: maybe<webTransportCongestionControl> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match allowPooling
     Just(it) -> setJsObjectField(obj, "allowPooling", it)
     Nothing -> ()
@@ -136,7 +136,7 @@ pub fun newWebTransportOptions(allowPooling: maybe<bool> = Nothing, requireUnrel
     Just(it) -> setJsObjectField(obj, "congestionControl", it)
     Nothing -> ()
 
-  WebTransportOptions(obj);
+  WebTransportOptions(obj)
 
 pub inline fun allowPooling(obj: webTransportOptions, value: bool): web ()
   setJsObjectField(obj.obj, "allowPooling", value.obj)
@@ -166,7 +166,7 @@ pub value struct webTransportCloseInfo
   obj: jsObject
 
 pub fun newWebTransportCloseInfo(closeCode: maybe<int> = Nothing, reason: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match closeCode
     Just(it) -> setJsObjectField(obj, "closeCode", it)
     Nothing -> ()
@@ -174,7 +174,7 @@ pub fun newWebTransportCloseInfo(closeCode: maybe<int> = Nothing, reason: maybe<
     Just(it) -> setJsObjectField(obj, "reason", it)
     Nothing -> ()
 
-  WebTransportCloseInfo(obj);
+  WebTransportCloseInfo(obj)
 
 pub inline fun closeCode(obj: webTransportCloseInfo, value: int): web ()
   setJsObjectField(obj.obj, "closeCode", value.obj)
@@ -192,12 +192,12 @@ pub value struct webTransportSendStreamOptions
   obj: jsObject
 
 pub fun newWebTransportSendStreamOptions(sendOrder: maybe<maybe<int>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match sendOrder
     Just(it) -> setJsObjectField(obj, "sendOrder", it)
     Nothing -> ()
 
-  WebTransportSendStreamOptions(obj);
+  WebTransportSendStreamOptions(obj)
 
 pub inline fun sendOrder(obj: webTransportSendStreamOptions, value: maybe<int>): web ()
   setJsObjectField(obj.obj, "sendOrder", value.obj)
@@ -209,7 +209,7 @@ pub value struct webTransportStats
   obj: jsObject
 
 pub fun newWebTransportStats(timestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, bytesSent: maybe<int> = Nothing, packetsSent: maybe<int> = Nothing, packetsLost: maybe<int> = Nothing, numOutgoingStreamsCreated: maybe<int> = Nothing, numIncomingStreamsCreated: maybe<int> = Nothing, bytesReceived: maybe<int> = Nothing, packetsReceived: maybe<int> = Nothing, smoothedRtt: maybe<hr_time/domHighResTimeStamp> = Nothing, rttVariation: maybe<hr_time/domHighResTimeStamp> = Nothing, minRtt: maybe<hr_time/domHighResTimeStamp> = Nothing, datagrams: maybe<webTransportDatagramStats> = Nothing, estimatedSendRate: maybe<maybe<int>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match timestamp
     Just(it) -> setJsObjectField(obj, "timestamp", it)
     Nothing -> ()
@@ -250,7 +250,7 @@ pub fun newWebTransportStats(timestamp: maybe<hr_time/domHighResTimeStamp> = Not
     Just(it) -> setJsObjectField(obj, "estimatedSendRate", it)
     Nothing -> ()
 
-  WebTransportStats(obj);
+  WebTransportStats(obj)
 
 pub inline fun timestamp(obj: webTransportStats, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "timestamp", value.obj)
@@ -334,7 +334,7 @@ pub value struct webTransportDatagramStats
   obj: jsObject
 
 pub fun newWebTransportDatagramStats(timestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, expiredOutgoing: maybe<int> = Nothing, droppedIncoming: maybe<int> = Nothing, lostOutgoing: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match timestamp
     Just(it) -> setJsObjectField(obj, "timestamp", it)
     Nothing -> ()
@@ -348,7 +348,7 @@ pub fun newWebTransportDatagramStats(timestamp: maybe<hr_time/domHighResTimeStam
     Just(it) -> setJsObjectField(obj, "lostOutgoing", it)
     Nothing -> ()
 
-  WebTransportDatagramStats(obj);
+  WebTransportDatagramStats(obj)
 
 pub inline fun timestamp(obj: webTransportDatagramStats, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "timestamp", value.obj)
@@ -391,7 +391,7 @@ pub value struct webTransportSendStreamStats
   obj: jsObject
 
 pub fun newWebTransportSendStreamStats(timestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, bytesWritten: maybe<int> = Nothing, bytesSent: maybe<int> = Nothing, bytesAcknowledged: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match timestamp
     Just(it) -> setJsObjectField(obj, "timestamp", it)
     Nothing -> ()
@@ -405,7 +405,7 @@ pub fun newWebTransportSendStreamStats(timestamp: maybe<hr_time/domHighResTimeSt
     Just(it) -> setJsObjectField(obj, "bytesAcknowledged", it)
     Nothing -> ()
 
-  WebTransportSendStreamStats(obj);
+  WebTransportSendStreamStats(obj)
 
 pub inline fun timestamp(obj: webTransportSendStreamStats, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "timestamp", value.obj)
@@ -442,7 +442,7 @@ pub value struct webTransportReceiveStreamStats
   obj: jsObject
 
 pub fun newWebTransportReceiveStreamStats(timestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, bytesReceived: maybe<int> = Nothing, bytesRead: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match timestamp
     Just(it) -> setJsObjectField(obj, "timestamp", it)
     Nothing -> ()
@@ -453,7 +453,7 @@ pub fun newWebTransportReceiveStreamStats(timestamp: maybe<hr_time/domHighResTim
     Just(it) -> setJsObjectField(obj, "bytesRead", it)
     Nothing -> ()
 
-  WebTransportReceiveStreamStats(obj);
+  WebTransportReceiveStreamStats(obj)
 
 pub inline fun timestamp(obj: webTransportReceiveStreamStats, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "timestamp", value.obj)
@@ -499,7 +499,7 @@ pub value struct webTransportErrorOptions
   obj: jsObject
 
 pub fun newWebTransportErrorOptions(source: maybe<webTransportErrorSource> = Nothing, streamErrorCode: maybe<maybe<int>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match source
     Just(it) -> setJsObjectField(obj, "source", it)
     Nothing -> ()
@@ -507,7 +507,7 @@ pub fun newWebTransportErrorOptions(source: maybe<webTransportErrorSource> = Not
     Just(it) -> setJsObjectField(obj, "streamErrorCode", it)
     Nothing -> ()
 
-  WebTransportErrorOptions(obj);
+  WebTransportErrorOptions(obj)
 
 pub inline fun source(obj: webTransportErrorOptions, value: webTransportErrorSource): web ()
   setJsObjectField(obj.obj, "source", value.obj)

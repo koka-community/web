@@ -5,19 +5,19 @@ import web/wasm
 
 
 
-pub alias refreshPolicy = string;
+pub alias refreshPolicy = string
 
 
-pub alias tokenVersion = string;
+pub alias tokenVersion = string
 
 
-pub alias operationType = string;
+pub alias operationType = string
 
 pub value struct privateToken
   obj: jsObject
 
 pub fun newPrivateToken(version: tokenVersion, operation: operationType, refreshPolicy: maybe<refreshPolicy> = Nothing, issuers: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "version", version);  setJsObjectField(obj, "operation", operation);  match refreshPolicy
     Just(it) -> setJsObjectField(obj, "refreshPolicy", it)
     Nothing -> ()
@@ -25,7 +25,7 @@ pub fun newPrivateToken(version: tokenVersion, operation: operationType, refresh
     Just(it) -> setJsObjectField(obj, "issuers", it)
     Nothing -> ()
 
-  PrivateToken(obj);
+  PrivateToken(obj)
 
 pub inline fun version(obj: privateToken, value: tokenVersion): web ()
   setJsObjectField(obj.obj, "version", value.obj)

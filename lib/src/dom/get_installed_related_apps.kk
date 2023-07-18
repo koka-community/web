@@ -10,7 +10,7 @@ pub value struct relatedApplication
   obj: jsObject
 
 pub fun newRelatedApplication(platform: string, url: maybe<string> = Nothing, id: maybe<string> = Nothing, version: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "platform", platform);  match url
     Just(it) -> setJsObjectField(obj, "url", it)
     Nothing -> ()
@@ -21,7 +21,7 @@ pub fun newRelatedApplication(platform: string, url: maybe<string> = Nothing, id
     Just(it) -> setJsObjectField(obj, "version", it)
     Nothing -> ()
 
-  RelatedApplication(obj);
+  RelatedApplication(obj)
 
 pub inline fun platform(obj: relatedApplication, value: string): web ()
   setJsObjectField(obj.obj, "platform", value.obj)

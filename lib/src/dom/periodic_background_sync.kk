@@ -23,12 +23,12 @@ pub value struct backgroundSyncOptions
   obj: jsObject
 
 pub fun newBackgroundSyncOptions(minInterval: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match minInterval
     Just(it) -> setJsObjectField(obj, "minInterval", it)
     Nothing -> ()
 
-  BackgroundSyncOptions(obj);
+  BackgroundSyncOptions(obj)
 
 pub inline fun minInterval(obj: backgroundSyncOptions, value: int): web ()
   setJsObjectField(obj.obj, "minInterval", value.obj)
@@ -40,9 +40,9 @@ pub value struct periodicSyncEventInit
   obj: jsObject
 
 pub fun newPeriodicSyncEventInit(tag: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "tag", tag);
-  PeriodicSyncEventInit(obj);
+  PeriodicSyncEventInit(obj)
 
 pub inline fun tag(obj: periodicSyncEventInit, value: string): web ()
   setJsObjectField(obj.obj, "tag", value.obj)

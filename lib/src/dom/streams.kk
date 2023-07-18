@@ -2,48 +2,48 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias readableStreamReader = JSAny;
+pub alias readableStreamReader = JSAny
 
 
-pub alias readableStreamController = JSAny;
+pub alias readableStreamController = JSAny
 
-pub alias underlyingSourceStartCallback = jsFunction;
-
-
-pub alias underlyingSourcePullCallback = jsFunction;
+pub alias underlyingSourceStartCallback = jsFunction
 
 
-pub alias underlyingSourceCancelCallback = jsFunction;
+pub alias underlyingSourcePullCallback = jsFunction
 
 
-pub alias underlyingSinkStartCallback = jsFunction;
+pub alias underlyingSourceCancelCallback = jsFunction
 
 
-pub alias underlyingSinkWriteCallback = jsFunction;
+pub alias underlyingSinkStartCallback = jsFunction
 
 
-pub alias underlyingSinkCloseCallback = jsFunction;
+pub alias underlyingSinkWriteCallback = jsFunction
 
 
-pub alias underlyingSinkAbortCallback = jsFunction;
+pub alias underlyingSinkCloseCallback = jsFunction
 
 
-pub alias transformerStartCallback = jsFunction;
+pub alias underlyingSinkAbortCallback = jsFunction
 
 
-pub alias transformerFlushCallback = jsFunction;
+pub alias transformerStartCallback = jsFunction
 
 
-pub alias transformerTransformCallback = jsFunction;
+pub alias transformerFlushCallback = jsFunction
 
 
-pub alias queuingStrategySize = jsFunction;
+pub alias transformerTransformCallback = jsFunction
 
 
-pub alias readableStreamReaderMode = string;
+pub alias queuingStrategySize = jsFunction
 
 
-pub alias readableStreamType = string;
+pub alias readableStreamReaderMode = string
+
+
+pub alias readableStreamType = string
 
 pub value struct readableStream
   obj: jsObject
@@ -75,12 +75,12 @@ pub value struct readableStreamGetReaderOptions
   obj: jsObject
 
 pub fun newReadableStreamGetReaderOptions(mode: maybe<readableStreamReaderMode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match mode
     Just(it) -> setJsObjectField(obj, "mode", it)
     Nothing -> ()
 
-  ReadableStreamGetReaderOptions(obj);
+  ReadableStreamGetReaderOptions(obj)
 
 pub inline fun mode(obj: readableStreamGetReaderOptions, value: readableStreamReaderMode): web ()
   setJsObjectField(obj.obj, "mode", value.obj)
@@ -92,12 +92,12 @@ pub value struct readableStreamIteratorOptions
   obj: jsObject
 
 pub fun newReadableStreamIteratorOptions(preventCancel: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match preventCancel
     Just(it) -> setJsObjectField(obj, "preventCancel", it)
     Nothing -> ()
 
-  ReadableStreamIteratorOptions(obj);
+  ReadableStreamIteratorOptions(obj)
 
 pub inline fun preventCancel(obj: readableStreamIteratorOptions, value: bool): web ()
   setJsObjectField(obj.obj, "preventCancel", value.obj)
@@ -109,9 +109,9 @@ pub value struct readableWritablePair
   obj: jsObject
 
 pub fun newReadableWritablePair(readable: readableStream, writable: writableStream)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "readable", readable);  setJsObjectField(obj, "writable", writable);
-  ReadableWritablePair(obj);
+  ReadableWritablePair(obj)
 
 pub inline fun readable(obj: readableWritablePair, value: readableStream): web ()
   setJsObjectField(obj.obj, "readable", value.obj)
@@ -129,7 +129,7 @@ pub value struct streamPipeOptions
   obj: jsObject
 
 pub fun newStreamPipeOptions(preventClose: maybe<bool> = Nothing, preventAbort: maybe<bool> = Nothing, preventCancel: maybe<bool> = Nothing, signal: maybe<dom/abortSignal> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match preventClose
     Just(it) -> setJsObjectField(obj, "preventClose", it)
     Nothing -> ()
@@ -143,7 +143,7 @@ pub fun newStreamPipeOptions(preventClose: maybe<bool> = Nothing, preventAbort: 
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
 
-  StreamPipeOptions(obj);
+  StreamPipeOptions(obj)
 
 pub inline fun preventClose(obj: streamPipeOptions, value: bool): web ()
   setJsObjectField(obj.obj, "preventClose", value.obj)
@@ -173,7 +173,7 @@ pub value struct underlyingSource
   obj: jsObject
 
 pub fun newUnderlyingSource(start: maybe<underlyingSourceStartCallback> = Nothing, pull: maybe<underlyingSourcePullCallback> = Nothing, cancel: maybe<underlyingSourceCancelCallback> = Nothing, type: maybe<readableStreamType> = Nothing, autoAllocateChunkSize: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match start
     Just(it) -> setJsObjectField(obj, "start", it)
     Nothing -> ()
@@ -190,7 +190,7 @@ pub fun newUnderlyingSource(start: maybe<underlyingSourceStartCallback> = Nothin
     Just(it) -> setJsObjectField(obj, "autoAllocateChunkSize", it)
     Nothing -> ()
 
-  UnderlyingSource(obj);
+  UnderlyingSource(obj)
 
 pub inline fun start(obj: underlyingSource, value: underlyingSourceStartCallback): web ()
   setJsObjectField(obj.obj, "start", value.obj)
@@ -248,7 +248,7 @@ pub value struct readableStreamReadResult
   obj: jsObject
 
 pub fun newReadableStreamReadResult(value: maybe<maybe<jsObject>> = Nothing, done: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match value
     Just(it) -> setJsObjectField(obj, "value", it)
     Nothing -> ()
@@ -256,7 +256,7 @@ pub fun newReadableStreamReadResult(value: maybe<maybe<jsObject>> = Nothing, don
     Just(it) -> setJsObjectField(obj, "done", it)
     Nothing -> ()
 
-  ReadableStreamReadResult(obj);
+  ReadableStreamReadResult(obj)
 
 pub inline fun value(obj: readableStreamReadResult, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "value", value.obj)
@@ -352,7 +352,7 @@ pub value struct underlyingSink
   obj: jsObject
 
 pub fun newUnderlyingSink(start: maybe<underlyingSinkStartCallback> = Nothing, write: maybe<underlyingSinkWriteCallback> = Nothing, close: maybe<underlyingSinkCloseCallback> = Nothing, abort: maybe<underlyingSinkAbortCallback> = Nothing, type: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match start
     Just(it) -> setJsObjectField(obj, "start", it)
     Nothing -> ()
@@ -369,7 +369,7 @@ pub fun newUnderlyingSink(start: maybe<underlyingSinkStartCallback> = Nothing, w
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
 
-  UnderlyingSink(obj);
+  UnderlyingSink(obj)
 
 pub inline fun start(obj: underlyingSink, value: underlyingSinkStartCallback): web ()
   setJsObjectField(obj.obj, "start", value.obj)
@@ -454,7 +454,7 @@ pub value struct transformer
   obj: jsObject
 
 pub fun newTransformer(start: maybe<transformerStartCallback> = Nothing, transform: maybe<transformerTransformCallback> = Nothing, flush: maybe<transformerFlushCallback> = Nothing, readableType: maybe<maybe<jsObject>> = Nothing, writableType: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match start
     Just(it) -> setJsObjectField(obj, "start", it)
     Nothing -> ()
@@ -471,7 +471,7 @@ pub fun newTransformer(start: maybe<transformerStartCallback> = Nothing, transfo
     Just(it) -> setJsObjectField(obj, "writableType", it)
     Nothing -> ()
 
-  Transformer(obj);
+  Transformer(obj)
 
 pub inline fun start(obj: transformer, value: transformerStartCallback): web ()
   setJsObjectField(obj.obj, "start", value.obj)
@@ -523,7 +523,7 @@ pub value struct queuingStrategy
   obj: jsObject
 
 pub fun newQueuingStrategy(highWaterMark: maybe<double> = Nothing, size: maybe<queuingStrategySize> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match highWaterMark
     Just(it) -> setJsObjectField(obj, "highWaterMark", it)
     Nothing -> ()
@@ -531,7 +531,7 @@ pub fun newQueuingStrategy(highWaterMark: maybe<double> = Nothing, size: maybe<q
     Just(it) -> setJsObjectField(obj, "size", it)
     Nothing -> ()
 
-  QueuingStrategy(obj);
+  QueuingStrategy(obj)
 
 pub inline fun highWaterMark(obj: queuingStrategy, value: double): web ()
   setJsObjectField(obj.obj, "highWaterMark", value.obj)
@@ -549,9 +549,9 @@ pub value struct queuingStrategyInit
   obj: jsObject
 
 pub fun newQueuingStrategyInit(highWaterMark: double)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "highWaterMark", highWaterMark);
-  QueuingStrategyInit(obj);
+  QueuingStrategyInit(obj)
 
 pub inline fun highWaterMark(obj: queuingStrategyInit, value: double): web ()
   setJsObjectField(obj.obj, "highWaterMark", value.obj)

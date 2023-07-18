@@ -5,13 +5,13 @@ import web/wasm
 
 
 
-pub alias touchType = string;
+pub alias touchType = string
 
 pub value struct touchInit
   obj: jsObject
 
 pub fun newTouchInit(identifier: int, target: dom/eventTarget, clientX: maybe<double> = Nothing, clientY: maybe<double> = Nothing, screenX: maybe<double> = Nothing, screenY: maybe<double> = Nothing, pageX: maybe<double> = Nothing, pageY: maybe<double> = Nothing, radiusX: maybe<double> = Nothing, radiusY: maybe<double> = Nothing, rotationAngle: maybe<double> = Nothing, force: maybe<double> = Nothing, altitudeAngle: maybe<double> = Nothing, azimuthAngle: maybe<double> = Nothing, touchType: maybe<touchType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "identifier", identifier);  setJsObjectField(obj, "target", target);  match clientX
     Just(it) -> setJsObjectField(obj, "clientX", it)
     Nothing -> ()
@@ -52,7 +52,7 @@ pub fun newTouchInit(identifier: int, target: dom/eventTarget, clientX: maybe<do
     Just(it) -> setJsObjectField(obj, "touchType", it)
     Nothing -> ()
 
-  TouchInit(obj);
+  TouchInit(obj)
 
 pub inline fun identifier(obj: touchInit, value: int): web ()
   setJsObjectField(obj.obj, "identifier", value.obj)
@@ -209,7 +209,7 @@ pub value struct touchEventInit
   obj: jsObject
 
 pub fun newTouchEventInit(touches: maybe<jsArray> = Nothing, targetTouches: maybe<jsArray> = Nothing, changedTouches: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match touches
     Just(it) -> setJsObjectField(obj, "touches", it)
     Nothing -> ()
@@ -220,7 +220,7 @@ pub fun newTouchEventInit(touches: maybe<jsArray> = Nothing, targetTouches: mayb
     Just(it) -> setJsObjectField(obj, "changedTouches", it)
     Nothing -> ()
 
-  TouchEventInit(obj);
+  TouchEventInit(obj)
 
 pub inline fun touches(obj: touchEventInit, value: jsArray): web ()
   setJsObjectField(obj.obj, "touches", value.obj)

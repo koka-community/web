@@ -10,12 +10,12 @@ pub value struct hmacGetSecretInput
   obj: jsObject
 
 pub fun newHmacGetSecretInput(salt1: jsArrayBuffer, salt2: maybe<jsArrayBuffer> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "salt1", salt1);  match salt2
     Just(it) -> setJsObjectField(obj, "salt2", it)
     Nothing -> ()
 
-  HmacGetSecretInput(obj);
+  HmacGetSecretInput(obj)
 
 pub inline fun salt1(obj: hmacGetSecretInput, value: jsArrayBuffer): web ()
   setJsObjectField(obj.obj, "salt1", value.obj)
@@ -33,12 +33,12 @@ pub value struct hmacGetSecretOutput
   obj: jsObject
 
 pub fun newHmacGetSecretOutput(output1: jsArrayBuffer, output2: maybe<jsArrayBuffer> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "output1", output1);  match output2
     Just(it) -> setJsObjectField(obj, "output2", it)
     Nothing -> ()
 
-  HmacGetSecretOutput(obj);
+  HmacGetSecretOutput(obj)
 
 pub inline fun output1(obj: hmacGetSecretOutput, value: jsArrayBuffer): web ()
   setJsObjectField(obj.obj, "output1", value.obj)

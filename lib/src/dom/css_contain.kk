@@ -19,12 +19,12 @@ pub value struct contentVisibilityAutoStateChangeEventInit
   obj: jsObject
 
 pub fun newContentVisibilityAutoStateChangeEventInit(skipped: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match skipped
     Just(it) -> setJsObjectField(obj, "skipped", it)
     Nothing -> ()
 
-  ContentVisibilityAutoStateChangeEventInit(obj);
+  ContentVisibilityAutoStateChangeEventInit(obj)
 
 pub inline fun skipped(obj: contentVisibilityAutoStateChangeEventInit, value: bool): web ()
   setJsObjectField(obj.obj, "skipped", value.obj)

@@ -2,11 +2,11 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias blobPart = JSAny;
+pub alias blobPart = JSAny
 
 
 
-pub alias endingType = string;
+pub alias endingType = string
 
 pub value struct blob
   obj: jsObject
@@ -36,7 +36,7 @@ pub value struct blobPropertyBag
   obj: jsObject
 
 pub fun newBlobPropertyBag(type: maybe<string> = Nothing, endings: maybe<endingType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match type
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
@@ -44,7 +44,7 @@ pub fun newBlobPropertyBag(type: maybe<string> = Nothing, endings: maybe<endingT
     Just(it) -> setJsObjectField(obj, "endings", it)
     Nothing -> ()
 
-  BlobPropertyBag(obj);
+  BlobPropertyBag(obj)
 
 pub inline fun type(obj: blobPropertyBag, value: string): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -77,12 +77,12 @@ pub value struct filePropertyBag
   obj: jsObject
 
 pub fun newFilePropertyBag(lastModified: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match lastModified
     Just(it) -> setJsObjectField(obj, "lastModified", it)
     Nothing -> ()
 
-  FilePropertyBag(obj);
+  FilePropertyBag(obj)
 
 pub inline fun lastModified(obj: filePropertyBag, value: int): web ()
   setJsObjectField(obj.obj, "lastModified", value.obj)

@@ -2,28 +2,28 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias geometryNode = JSAny;
+pub alias geometryNode = JSAny
 
 
 
-pub alias scrollBehavior = string;
+pub alias scrollBehavior = string
 
 
-pub alias scrollLogicalPosition = string;
+pub alias scrollLogicalPosition = string
 
 
-pub alias cssBoxType = string;
+pub alias cssBoxType = string
 
 pub value struct scrollOptions
   obj: jsObject
 
 pub fun newScrollOptions(behavior: maybe<scrollBehavior> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match behavior
     Just(it) -> setJsObjectField(obj, "behavior", it)
     Nothing -> ()
 
-  ScrollOptions(obj);
+  ScrollOptions(obj)
 
 pub inline fun behavior(obj: scrollOptions, value: scrollBehavior): web ()
   setJsObjectField(obj.obj, "behavior", value.obj)
@@ -35,7 +35,7 @@ pub value struct scrollToOptions
   obj: jsObject
 
 pub fun newScrollToOptions(left: maybe<double> = Nothing, top: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match left
     Just(it) -> setJsObjectField(obj, "left", it)
     Nothing -> ()
@@ -43,7 +43,7 @@ pub fun newScrollToOptions(left: maybe<double> = Nothing, top: maybe<double> = N
     Just(it) -> setJsObjectField(obj, "top", it)
     Nothing -> ()
 
-  ScrollToOptions(obj);
+  ScrollToOptions(obj)
 
 pub inline fun left(obj: scrollToOptions, value: double): web ()
   setJsObjectField(obj.obj, "left", value.obj)
@@ -95,7 +95,7 @@ pub value struct mediaQueryListEventInit
   obj: jsObject
 
 pub fun newMediaQueryListEventInit(media: maybe<string> = Nothing, matches: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match media
     Just(it) -> setJsObjectField(obj, "media", it)
     Nothing -> ()
@@ -103,7 +103,7 @@ pub fun newMediaQueryListEventInit(media: maybe<string> = Nothing, matches: mayb
     Just(it) -> setJsObjectField(obj, "matches", it)
     Nothing -> ()
 
-  MediaQueryListEventInit(obj);
+  MediaQueryListEventInit(obj)
 
 pub inline fun media(obj: mediaQueryListEventInit, value: string): web ()
   setJsObjectField(obj.obj, "media", value.obj)
@@ -168,7 +168,7 @@ pub value struct scrollIntoViewOptions
   obj: jsObject
 
 pub fun newScrollIntoViewOptions(block: maybe<scrollLogicalPosition> = Nothing, inline: maybe<scrollLogicalPosition> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match block
     Just(it) -> setJsObjectField(obj, "block", it)
     Nothing -> ()
@@ -176,7 +176,7 @@ pub fun newScrollIntoViewOptions(block: maybe<scrollLogicalPosition> = Nothing, 
     Just(it) -> setJsObjectField(obj, "inline", it)
     Nothing -> ()
 
-  ScrollIntoViewOptions(obj);
+  ScrollIntoViewOptions(obj)
 
 pub inline fun block(obj: scrollIntoViewOptions, value: scrollLogicalPosition): web ()
   setJsObjectField(obj.obj, "block", value.obj)
@@ -194,7 +194,7 @@ pub value struct checkVisibilityOptions
   obj: jsObject
 
 pub fun newCheckVisibilityOptions(checkOpacity: maybe<bool> = Nothing, checkVisibilityCSS: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match checkOpacity
     Just(it) -> setJsObjectField(obj, "checkOpacity", it)
     Nothing -> ()
@@ -202,7 +202,7 @@ pub fun newCheckVisibilityOptions(checkOpacity: maybe<bool> = Nothing, checkVisi
     Just(it) -> setJsObjectField(obj, "checkVisibilityCSS", it)
     Nothing -> ()
 
-  CheckVisibilityOptions(obj);
+  CheckVisibilityOptions(obj)
 
 pub inline fun checkOpacity(obj: checkVisibilityOptions, value: bool): web ()
   setJsObjectField(obj.obj, "checkOpacity", value.obj)
@@ -220,7 +220,7 @@ pub value struct boxQuadOptions
   obj: jsObject
 
 pub fun newBoxQuadOptions(box: maybe<cssBoxType> = Nothing, relativeTo: maybe<geometryNode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match box
     Just(it) -> setJsObjectField(obj, "box", it)
     Nothing -> ()
@@ -228,7 +228,7 @@ pub fun newBoxQuadOptions(box: maybe<cssBoxType> = Nothing, relativeTo: maybe<ge
     Just(it) -> setJsObjectField(obj, "relativeTo", it)
     Nothing -> ()
 
-  BoxQuadOptions(obj);
+  BoxQuadOptions(obj)
 
 pub inline fun box(obj: boxQuadOptions, value: cssBoxType): web ()
   setJsObjectField(obj.obj, "box", value.obj)
@@ -246,7 +246,7 @@ pub value struct convertCoordinateOptions
   obj: jsObject
 
 pub fun newConvertCoordinateOptions(fromBox: maybe<cssBoxType> = Nothing, toBox: maybe<cssBoxType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match fromBox
     Just(it) -> setJsObjectField(obj, "fromBox", it)
     Nothing -> ()
@@ -254,7 +254,7 @@ pub fun newConvertCoordinateOptions(fromBox: maybe<cssBoxType> = Nothing, toBox:
     Just(it) -> setJsObjectField(obj, "toBox", it)
     Nothing -> ()
 
-  ConvertCoordinateOptions(obj);
+  ConvertCoordinateOptions(obj)
 
 pub inline fun fromBox(obj: convertCoordinateOptions, value: cssBoxType): web ()
   setJsObjectField(obj.obj, "fromBox", value.obj)

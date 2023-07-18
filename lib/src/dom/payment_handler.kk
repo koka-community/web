@@ -5,10 +5,10 @@ import web/wasm
 
 
 
-pub alias paymentDelegation = string;
+pub alias paymentDelegation = string
 
 
-pub alias paymentShippingType = string;
+pub alias paymentShippingType = string
 
 pub value struct paymentManager
   obj: jsObject
@@ -36,7 +36,7 @@ pub value struct paymentRequestDetailsUpdate
   obj: jsObject
 
 pub fun newPaymentRequestDetailsUpdate(error: maybe<string> = Nothing, total: maybe<payment_request/paymentCurrencyAmount> = Nothing, modifiers: maybe<jsArray> = Nothing, shippingOptions: maybe<jsArray> = Nothing, paymentMethodErrors: maybe<jsObject> = Nothing, shippingAddressErrors: maybe<addressErrors> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match error
     Just(it) -> setJsObjectField(obj, "error", it)
     Nothing -> ()
@@ -56,7 +56,7 @@ pub fun newPaymentRequestDetailsUpdate(error: maybe<string> = Nothing, total: ma
     Just(it) -> setJsObjectField(obj, "shippingAddressErrors", it)
     Nothing -> ()
 
-  PaymentRequestDetailsUpdate(obj);
+  PaymentRequestDetailsUpdate(obj)
 
 pub inline fun error(obj: paymentRequestDetailsUpdate, value: string): web ()
   setJsObjectField(obj.obj, "error", value.obj)
@@ -143,7 +143,7 @@ pub value struct paymentRequestEventInit
   obj: jsObject
 
 pub fun newPaymentRequestEventInit(topOrigin: maybe<string> = Nothing, paymentRequestOrigin: maybe<string> = Nothing, paymentRequestId: maybe<string> = Nothing, methodData: maybe<jsArray> = Nothing, total: maybe<payment_request/paymentCurrencyAmount> = Nothing, modifiers: maybe<jsArray> = Nothing, paymentOptions: maybe<paymentOptions> = Nothing, shippingOptions: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match topOrigin
     Just(it) -> setJsObjectField(obj, "topOrigin", it)
     Nothing -> ()
@@ -169,7 +169,7 @@ pub fun newPaymentRequestEventInit(topOrigin: maybe<string> = Nothing, paymentRe
     Just(it) -> setJsObjectField(obj, "shippingOptions", it)
     Nothing -> ()
 
-  PaymentRequestEventInit(obj);
+  PaymentRequestEventInit(obj)
 
 pub inline fun topOrigin(obj: paymentRequestEventInit, value: string): web ()
   setJsObjectField(obj.obj, "topOrigin", value.obj)
@@ -223,7 +223,7 @@ pub value struct paymentHandlerResponse
   obj: jsObject
 
 pub fun newPaymentHandlerResponse(methodName: maybe<string> = Nothing, details: maybe<jsObject> = Nothing, payerName: maybe<maybe<string>> = Nothing, payerEmail: maybe<maybe<string>> = Nothing, payerPhone: maybe<maybe<string>> = Nothing, shippingAddress: maybe<addressInit> = Nothing, shippingOption: maybe<maybe<string>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match methodName
     Just(it) -> setJsObjectField(obj, "methodName", it)
     Nothing -> ()
@@ -246,7 +246,7 @@ pub fun newPaymentHandlerResponse(methodName: maybe<string> = Nothing, details: 
     Just(it) -> setJsObjectField(obj, "shippingOption", it)
     Nothing -> ()
 
-  PaymentHandlerResponse(obj);
+  PaymentHandlerResponse(obj)
 
 pub inline fun methodName(obj: paymentHandlerResponse, value: string): web ()
   setJsObjectField(obj.obj, "methodName", value.obj)
@@ -294,7 +294,7 @@ pub value struct addressInit
   obj: jsObject
 
 pub fun newAddressInit(country: maybe<string> = Nothing, addressLine: maybe<jsArray> = Nothing, region: maybe<string> = Nothing, city: maybe<string> = Nothing, dependentLocality: maybe<string> = Nothing, postalCode: maybe<string> = Nothing, sortingCode: maybe<string> = Nothing, organization: maybe<string> = Nothing, recipient: maybe<string> = Nothing, phone: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match country
     Just(it) -> setJsObjectField(obj, "country", it)
     Nothing -> ()
@@ -326,7 +326,7 @@ pub fun newAddressInit(country: maybe<string> = Nothing, addressLine: maybe<jsAr
     Just(it) -> setJsObjectField(obj, "phone", it)
     Nothing -> ()
 
-  AddressInit(obj);
+  AddressInit(obj)
 
 pub inline fun country(obj: addressInit, value: string): web ()
   setJsObjectField(obj.obj, "country", value.obj)
@@ -392,7 +392,7 @@ pub value struct paymentOptions
   obj: jsObject
 
 pub fun newPaymentOptions(requestPayerName: maybe<bool> = Nothing, requestBillingAddress: maybe<bool> = Nothing, requestPayerEmail: maybe<bool> = Nothing, requestPayerPhone: maybe<bool> = Nothing, requestShipping: maybe<bool> = Nothing, shippingType: maybe<paymentShippingType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match requestPayerName
     Just(it) -> setJsObjectField(obj, "requestPayerName", it)
     Nothing -> ()
@@ -412,7 +412,7 @@ pub fun newPaymentOptions(requestPayerName: maybe<bool> = Nothing, requestBillin
     Just(it) -> setJsObjectField(obj, "shippingType", it)
     Nothing -> ()
 
-  PaymentOptions(obj);
+  PaymentOptions(obj)
 
 pub inline fun requestPayerName(obj: paymentOptions, value: bool): web ()
   setJsObjectField(obj.obj, "requestPayerName", value.obj)
@@ -454,12 +454,12 @@ pub value struct paymentShippingOption
   obj: jsObject
 
 pub fun newPaymentShippingOption(id: string, label: string, amount: payment_request/paymentCurrencyAmount, selected: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "id", id);  setJsObjectField(obj, "label", label);  setJsObjectField(obj, "amount", amount);  match selected
     Just(it) -> setJsObjectField(obj, "selected", it)
     Nothing -> ()
 
-  PaymentShippingOption(obj);
+  PaymentShippingOption(obj)
 
 pub inline fun id(obj: paymentShippingOption, value: string): web ()
   setJsObjectField(obj.obj, "id", value.obj)
@@ -489,7 +489,7 @@ pub value struct addressErrors
   obj: jsObject
 
 pub fun newAddressErrors(addressLine: maybe<string> = Nothing, city: maybe<string> = Nothing, country: maybe<string> = Nothing, dependentLocality: maybe<string> = Nothing, organization: maybe<string> = Nothing, phone: maybe<string> = Nothing, postalCode: maybe<string> = Nothing, recipient: maybe<string> = Nothing, region: maybe<string> = Nothing, sortingCode: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match addressLine
     Just(it) -> setJsObjectField(obj, "addressLine", it)
     Nothing -> ()
@@ -521,7 +521,7 @@ pub fun newAddressErrors(addressLine: maybe<string> = Nothing, city: maybe<strin
     Just(it) -> setJsObjectField(obj, "sortingCode", it)
     Nothing -> ()
 
-  AddressErrors(obj);
+  AddressErrors(obj)
 
 pub inline fun addressLine(obj: addressErrors, value: string): web ()
   setJsObjectField(obj.obj, "addressLine", value.obj)

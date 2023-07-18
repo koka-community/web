@@ -22,7 +22,7 @@ pub value struct capturedMouseEventInit
   obj: jsObject
 
 pub fun newCapturedMouseEventInit(surfaceX: maybe<int> = Nothing, surfaceY: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match surfaceX
     Just(it) -> setJsObjectField(obj, "surfaceX", it)
     Nothing -> ()
@@ -30,7 +30,7 @@ pub fun newCapturedMouseEventInit(surfaceX: maybe<int> = Nothing, surfaceY: mayb
     Just(it) -> setJsObjectField(obj, "surfaceY", it)
     Nothing -> ()
 
-  CapturedMouseEventInit(obj);
+  CapturedMouseEventInit(obj)
 
 pub inline fun surfaceX(obj: capturedMouseEventInit, value: int): web ()
   setJsObjectField(obj.obj, "surfaceX", value.obj)

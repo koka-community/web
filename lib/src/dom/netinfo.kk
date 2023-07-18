@@ -2,17 +2,17 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias megabit = double;
+pub alias megabit = double
 
 
-pub alias millisecond = int;
+pub alias millisecond = int
 
 
 
-pub alias connectionType = string;
+pub alias connectionType = string
 
 
-pub alias effectiveConnectionType = string;
+pub alias effectiveConnectionType = string
 
 pub value struct navigatorNetworkInformation
   obj: jsObject

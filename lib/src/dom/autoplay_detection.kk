@@ -5,9 +5,9 @@ import web/wasm
 
 
 
-pub alias autoplayPolicy = string;
+pub alias autoplayPolicy = string
 
 
-pub alias autoplayPolicyMediaType = string;
+pub alias autoplayPolicyMediaType = string
 
 

@@ -3,21 +3,21 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias resizeObserverCallback = jsFunction;
+pub alias resizeObserverCallback = jsFunction
 
 
-pub alias resizeObserverBoxOptions = string;
+pub alias resizeObserverBoxOptions = string
 
 pub value struct resizeObserverOptions
   obj: jsObject
 
 pub fun newResizeObserverOptions(box: maybe<resizeObserverBoxOptions> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match box
     Just(it) -> setJsObjectField(obj, "box", it)
     Nothing -> ()
 
-  ResizeObserverOptions(obj);
+  ResizeObserverOptions(obj)
 
 pub inline fun box(obj: resizeObserverOptions, value: resizeObserverBoxOptions): web ()
   setJsObjectField(obj.obj, "box", value.obj)

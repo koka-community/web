@@ -10,12 +10,12 @@ pub value struct audioOutputOptions
   obj: jsObject
 
 pub fun newAudioOutputOptions(deviceId: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match deviceId
     Just(it) -> setJsObjectField(obj, "deviceId", it)
     Nothing -> ()
 
-  AudioOutputOptions(obj);
+  AudioOutputOptions(obj)
 
 pub inline fun deviceId(obj: audioOutputOptions, value: string): web ()
   setJsObjectField(obj.obj, "deviceId", value.obj)

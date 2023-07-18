@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias gyroscopeLocalCoordinateSystem = string;
+pub alias gyroscopeLocalCoordinateSystem = string
 
 pub value struct gyroscope
   obj: jsObject
@@ -26,12 +26,12 @@ pub value struct gyroscopeSensorOptions
   obj: jsObject
 
 pub fun newGyroscopeSensorOptions(referenceFrame: maybe<gyroscopeLocalCoordinateSystem> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match referenceFrame
     Just(it) -> setJsObjectField(obj, "referenceFrame", it)
     Nothing -> ()
 
-  GyroscopeSensorOptions(obj);
+  GyroscopeSensorOptions(obj)
 
 pub inline fun referenceFrame(obj: gyroscopeSensorOptions, value: gyroscopeLocalCoordinateSystem): web ()
   setJsObjectField(obj.obj, "referenceFrame", value.obj)
@@ -43,9 +43,9 @@ pub value struct gyroscopeReadingValues
   obj: jsObject
 
 pub fun newGyroscopeReadingValues(x: maybe<double>, y: maybe<double>, z: maybe<double>)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "x", x);  setJsObjectField(obj, "y", y);  setJsObjectField(obj, "z", z);
-  GyroscopeReadingValues(obj);
+  GyroscopeReadingValues(obj)
 
 pub inline fun x(obj: gyroscopeReadingValues, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "x", value.obj)

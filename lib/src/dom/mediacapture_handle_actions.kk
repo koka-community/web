@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias captureAction = string;
+pub alias captureAction = string
 
 pub value struct captureActionEvent
   obj: jsObject
@@ -20,12 +20,12 @@ pub value struct captureActionEventInit
   obj: jsObject
 
 pub fun newCaptureActionEventInit(action: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match action
     Just(it) -> setJsObjectField(obj, "action", it)
     Nothing -> ()
 
-  CaptureActionEventInit(obj);
+  CaptureActionEventInit(obj)
 
 pub inline fun action(obj: captureActionEventInit, value: string): web ()
   setJsObjectField(obj.obj, "action", value.obj)

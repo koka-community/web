@@ -19,9 +19,9 @@ pub value struct ambientLightReadingValues
   obj: jsObject
 
 pub fun newAmbientLightReadingValues(illuminance: maybe<double>)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "illuminance", illuminance);
-  AmbientLightReadingValues(obj);
+  AmbientLightReadingValues(obj)
 
 pub inline fun illuminance(obj: ambientLightReadingValues, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "illuminance", value.obj)

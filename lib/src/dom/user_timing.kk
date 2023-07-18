@@ -10,7 +10,7 @@ pub value struct performanceMarkOptions
   obj: jsObject
 
 pub fun newPerformanceMarkOptions(detail: maybe<maybe<jsObject>> = Nothing, startTime: maybe<hr_time/domHighResTimeStamp> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match detail
     Just(it) -> setJsObjectField(obj, "detail", it)
     Nothing -> ()
@@ -18,7 +18,7 @@ pub fun newPerformanceMarkOptions(detail: maybe<maybe<jsObject>> = Nothing, star
     Just(it) -> setJsObjectField(obj, "startTime", it)
     Nothing -> ()
 
-  PerformanceMarkOptions(obj);
+  PerformanceMarkOptions(obj)
 
 pub inline fun detail(obj: performanceMarkOptions, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "detail", value.obj)
@@ -36,7 +36,7 @@ pub value struct performanceMeasureOptions
   obj: jsObject
 
 pub fun newPerformanceMeasureOptions(detail: maybe<maybe<jsObject>> = Nothing, start: maybe<maybe<jsObject>> = Nothing, duration: maybe<hr_time/domHighResTimeStamp> = Nothing, end: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match detail
     Just(it) -> setJsObjectField(obj, "detail", it)
     Nothing -> ()
@@ -50,7 +50,7 @@ pub fun newPerformanceMeasureOptions(detail: maybe<maybe<jsObject>> = Nothing, s
     Just(it) -> setJsObjectField(obj, "end", it)
     Nothing -> ()
 
-  PerformanceMeasureOptions(obj);
+  PerformanceMeasureOptions(obj)
 
 pub inline fun detail(obj: performanceMeasureOptions, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "detail", value.obj)

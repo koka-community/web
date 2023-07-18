@@ -5,10 +5,10 @@ import web/wasm
 
 
 
-pub alias orientationLockType = string;
+pub alias orientationLockType = string
 
 
-pub alias orientationType = string;
+pub alias orientationType = string
 
 pub value struct screenOrientation
   obj: jsObject

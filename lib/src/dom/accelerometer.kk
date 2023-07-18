@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias accelerometerLocalCoordinateSystem = string;
+pub alias accelerometerLocalCoordinateSystem = string
 
 pub value struct accelerometer
   obj: jsObject
@@ -26,12 +26,12 @@ pub value struct accelerometerSensorOptions
   obj: jsObject
 
 pub fun newAccelerometerSensorOptions(referenceFrame: maybe<accelerometerLocalCoordinateSystem> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match referenceFrame
     Just(it) -> setJsObjectField(obj, "referenceFrame", it)
     Nothing -> ()
 
-  AccelerometerSensorOptions(obj);
+  AccelerometerSensorOptions(obj)
 
 pub inline fun referenceFrame(obj: accelerometerSensorOptions, value: accelerometerLocalCoordinateSystem): web ()
   setJsObjectField(obj.obj, "referenceFrame", value.obj)
@@ -55,9 +55,9 @@ pub value struct accelerometerReadingValues
   obj: jsObject
 
 pub fun newAccelerometerReadingValues(x: maybe<double>, y: maybe<double>, z: maybe<double>)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "x", x);  setJsObjectField(obj, "y", y);  setJsObjectField(obj, "z", z);
-  AccelerometerReadingValues(obj);
+  AccelerometerReadingValues(obj)
 
 pub inline fun x(obj: accelerometerReadingValues, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "x", value.obj)
@@ -81,15 +81,15 @@ pub value struct linearAccelerationReadingValues
   obj: jsObject
 
 pub fun newLinearAccelerationReadingValues()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  LinearAccelerationReadingValues(obj);
+  LinearAccelerationReadingValues(obj)
 
 pub value struct gravityReadingValues
   obj: jsObject
 
 pub fun newGravityReadingValues()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  GravityReadingValues(obj);
+  GravityReadingValues(obj)
 

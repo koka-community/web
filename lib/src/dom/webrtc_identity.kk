@@ -3,13 +3,13 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias generateAssertionCallback = jsFunction;
+pub alias generateAssertionCallback = jsFunction
 
 
-pub alias validateAssertionCallback = jsFunction;
+pub alias validateAssertionCallback = jsFunction
 
 
-pub alias rtcErrorDetailTypeIdp = string;
+pub alias rtcErrorDetailTypeIdp = string
 
 pub value struct rtcIdentityProviderGlobalScope
   obj: jsObject
@@ -29,9 +29,9 @@ pub value struct rtcIdentityProvider
   obj: jsObject
 
 pub fun newRtcIdentityProvider(generateAssertion: generateAssertionCallback, validateAssertion: validateAssertionCallback)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "generateAssertion", generateAssertion);  setJsObjectField(obj, "validateAssertion", validateAssertion);
-  RtcIdentityProvider(obj);
+  RtcIdentityProvider(obj)
 
 pub inline fun generateAssertion(obj: rtcIdentityProvider, value: generateAssertionCallback): web ()
   setJsObjectField(obj.obj, "generateAssertion", value.obj)
@@ -49,9 +49,9 @@ pub value struct rtcIdentityAssertionResult
   obj: jsObject
 
 pub fun newRtcIdentityAssertionResult(idp: rtcIdentityProviderDetails, assertion: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "idp", idp);  setJsObjectField(obj, "assertion", assertion);
-  RtcIdentityAssertionResult(obj);
+  RtcIdentityAssertionResult(obj)
 
 pub inline fun idp(obj: rtcIdentityAssertionResult, value: rtcIdentityProviderDetails): web ()
   setJsObjectField(obj.obj, "idp", value.obj)
@@ -69,12 +69,12 @@ pub value struct rtcIdentityProviderDetails
   obj: jsObject
 
 pub fun newRtcIdentityProviderDetails(domain: string, protocol: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "domain", domain);  match protocol
     Just(it) -> setJsObjectField(obj, "protocol", it)
     Nothing -> ()
 
-  RtcIdentityProviderDetails(obj);
+  RtcIdentityProviderDetails(obj)
 
 pub inline fun domain(obj: rtcIdentityProviderDetails, value: string): web ()
   setJsObjectField(obj.obj, "domain", value.obj)
@@ -92,9 +92,9 @@ pub value struct rtcIdentityValidationResult
   obj: jsObject
 
 pub fun newRtcIdentityValidationResult(identity: string, contents: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "identity", identity);  setJsObjectField(obj, "contents", contents);
-  RtcIdentityValidationResult(obj);
+  RtcIdentityValidationResult(obj)
 
 pub inline fun identity(obj: rtcIdentityValidationResult, value: string): web ()
   setJsObjectField(obj.obj, "identity", value.obj)
@@ -112,7 +112,7 @@ pub value struct rtcIdentityProviderOptions
   obj: jsObject
 
 pub fun newRtcIdentityProviderOptions(protocol: maybe<string> = Nothing, usernameHint: maybe<string> = Nothing, peerIdentity: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match protocol
     Just(it) -> setJsObjectField(obj, "protocol", it)
     Nothing -> ()
@@ -123,7 +123,7 @@ pub fun newRtcIdentityProviderOptions(protocol: maybe<string> = Nothing, usernam
     Just(it) -> setJsObjectField(obj, "peerIdentity", it)
     Nothing -> ()
 
-  RtcIdentityProviderOptions(obj);
+  RtcIdentityProviderOptions(obj)
 
 pub inline fun protocol(obj: rtcIdentityProviderOptions, value: string): web ()
   setJsObjectField(obj.obj, "protocol", value.obj)

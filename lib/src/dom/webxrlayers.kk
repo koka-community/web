@@ -5,13 +5,13 @@ import web/wasm
 
 
 
-pub alias xrLayerLayout = string;
+pub alias xrLayerLayout = string
 
 
-pub alias xrLayerQuality = string;
+pub alias xrLayerQuality = string
 
 
-pub alias xrTextureType = string;
+pub alias xrTextureType = string
 
 pub value struct xrCompositionLayer
   obj: jsObject
@@ -268,7 +268,7 @@ pub value struct xrProjectionLayerInit
   obj: jsObject
 
 pub fun newXrProjectionLayerInit(textureType: maybe<xrTextureType> = Nothing, colorFormat: maybe<webgl1/gLenum> = Nothing, depthFormat: maybe<webgl1/gLenum> = Nothing, scaleFactor: maybe<double> = Nothing, clearOnAccess: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match textureType
     Just(it) -> setJsObjectField(obj, "textureType", it)
     Nothing -> ()
@@ -285,7 +285,7 @@ pub fun newXrProjectionLayerInit(textureType: maybe<xrTextureType> = Nothing, co
     Just(it) -> setJsObjectField(obj, "clearOnAccess", it)
     Nothing -> ()
 
-  XrProjectionLayerInit(obj);
+  XrProjectionLayerInit(obj)
 
 pub inline fun textureType(obj: xrProjectionLayerInit, value: xrTextureType): web ()
   setJsObjectField(obj.obj, "textureType", value.obj)
@@ -321,7 +321,7 @@ pub value struct xrLayerInit
   obj: jsObject
 
 pub fun newXrLayerInit(space: webxr/xrSpace, colorFormat: maybe<webgl1/gLenum> = Nothing, depthFormat: maybe<maybe<webgl1/gLenum>> = Nothing, mipLevels: maybe<int> = Nothing, viewPixelWidth: int, viewPixelHeight: int, layout: maybe<xrLayerLayout> = Nothing, isStatic: maybe<bool> = Nothing, clearOnAccess: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "space", space);  match colorFormat
     Just(it) -> setJsObjectField(obj, "colorFormat", it)
     Nothing -> ()
@@ -341,7 +341,7 @@ pub fun newXrLayerInit(space: webxr/xrSpace, colorFormat: maybe<webgl1/gLenum> =
     Just(it) -> setJsObjectField(obj, "clearOnAccess", it)
     Nothing -> ()
 
-  XrLayerInit(obj);
+  XrLayerInit(obj)
 
 pub inline fun space(obj: xrLayerInit, value: webxr/xrSpace): web ()
   setJsObjectField(obj.obj, "space", value.obj)
@@ -401,7 +401,7 @@ pub value struct xrQuadLayerInit
   obj: jsObject
 
 pub fun newXrQuadLayerInit(textureType: maybe<xrTextureType> = Nothing, transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, width: maybe<double> = Nothing, height: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match textureType
     Just(it) -> setJsObjectField(obj, "textureType", it)
     Nothing -> ()
@@ -415,7 +415,7 @@ pub fun newXrQuadLayerInit(textureType: maybe<xrTextureType> = Nothing, transfor
     Just(it) -> setJsObjectField(obj, "height", it)
     Nothing -> ()
 
-  XrQuadLayerInit(obj);
+  XrQuadLayerInit(obj)
 
 pub inline fun textureType(obj: xrQuadLayerInit, value: xrTextureType): web ()
   setJsObjectField(obj.obj, "textureType", value.obj)
@@ -445,7 +445,7 @@ pub value struct xrCylinderLayerInit
   obj: jsObject
 
 pub fun newXrCylinderLayerInit(textureType: maybe<xrTextureType> = Nothing, transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralAngle: maybe<double> = Nothing, aspectRatio: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match textureType
     Just(it) -> setJsObjectField(obj, "textureType", it)
     Nothing -> ()
@@ -462,7 +462,7 @@ pub fun newXrCylinderLayerInit(textureType: maybe<xrTextureType> = Nothing, tran
     Just(it) -> setJsObjectField(obj, "aspectRatio", it)
     Nothing -> ()
 
-  XrCylinderLayerInit(obj);
+  XrCylinderLayerInit(obj)
 
 pub inline fun textureType(obj: xrCylinderLayerInit, value: xrTextureType): web ()
   setJsObjectField(obj.obj, "textureType", value.obj)
@@ -498,7 +498,7 @@ pub value struct xrEquirectLayerInit
   obj: jsObject
 
 pub fun newXrEquirectLayerInit(textureType: maybe<xrTextureType> = Nothing, transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralHorizontalAngle: maybe<double> = Nothing, upperVerticalAngle: maybe<double> = Nothing, lowerVerticalAngle: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match textureType
     Just(it) -> setJsObjectField(obj, "textureType", it)
     Nothing -> ()
@@ -518,7 +518,7 @@ pub fun newXrEquirectLayerInit(textureType: maybe<xrTextureType> = Nothing, tran
     Just(it) -> setJsObjectField(obj, "lowerVerticalAngle", it)
     Nothing -> ()
 
-  XrEquirectLayerInit(obj);
+  XrEquirectLayerInit(obj)
 
 pub inline fun textureType(obj: xrEquirectLayerInit, value: xrTextureType): web ()
   setJsObjectField(obj.obj, "textureType", value.obj)
@@ -560,12 +560,12 @@ pub value struct xrCubeLayerInit
   obj: jsObject
 
 pub fun newXrCubeLayerInit(orientation: maybe<maybe<geometry/domPointReadOnly>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match orientation
     Just(it) -> setJsObjectField(obj, "orientation", it)
     Nothing -> ()
 
-  XrCubeLayerInit(obj);
+  XrCubeLayerInit(obj)
 
 pub inline fun orientation(obj: xrCubeLayerInit, value: maybe<geometry/domPointReadOnly>): web ()
   setJsObjectField(obj.obj, "orientation", value.obj)
@@ -619,7 +619,7 @@ pub value struct xrMediaLayerInit
   obj: jsObject
 
 pub fun newXrMediaLayerInit(space: webxr/xrSpace, layout: maybe<xrLayerLayout> = Nothing, invertStereo: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "space", space);  match layout
     Just(it) -> setJsObjectField(obj, "layout", it)
     Nothing -> ()
@@ -627,7 +627,7 @@ pub fun newXrMediaLayerInit(space: webxr/xrSpace, layout: maybe<xrLayerLayout> =
     Just(it) -> setJsObjectField(obj, "invertStereo", it)
     Nothing -> ()
 
-  XrMediaLayerInit(obj);
+  XrMediaLayerInit(obj)
 
 pub inline fun space(obj: xrMediaLayerInit, value: webxr/xrSpace): web ()
   setJsObjectField(obj.obj, "space", value.obj)
@@ -651,7 +651,7 @@ pub value struct xrMediaQuadLayerInit
   obj: jsObject
 
 pub fun newXrMediaQuadLayerInit(transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, width: maybe<maybe<double>> = Nothing, height: maybe<maybe<double>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match transform
     Just(it) -> setJsObjectField(obj, "transform", it)
     Nothing -> ()
@@ -662,7 +662,7 @@ pub fun newXrMediaQuadLayerInit(transform: maybe<maybe<webxr/xrRigidTransform>> 
     Just(it) -> setJsObjectField(obj, "height", it)
     Nothing -> ()
 
-  XrMediaQuadLayerInit(obj);
+  XrMediaQuadLayerInit(obj)
 
 pub inline fun transform(obj: xrMediaQuadLayerInit, value: maybe<webxr/xrRigidTransform>): web ()
   setJsObjectField(obj.obj, "transform", value.obj)
@@ -686,7 +686,7 @@ pub value struct xrMediaCylinderLayerInit
   obj: jsObject
 
 pub fun newXrMediaCylinderLayerInit(transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralAngle: maybe<double> = Nothing, aspectRatio: maybe<maybe<double>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match transform
     Just(it) -> setJsObjectField(obj, "transform", it)
     Nothing -> ()
@@ -700,7 +700,7 @@ pub fun newXrMediaCylinderLayerInit(transform: maybe<maybe<webxr/xrRigidTransfor
     Just(it) -> setJsObjectField(obj, "aspectRatio", it)
     Nothing -> ()
 
-  XrMediaCylinderLayerInit(obj);
+  XrMediaCylinderLayerInit(obj)
 
 pub inline fun transform(obj: xrMediaCylinderLayerInit, value: maybe<webxr/xrRigidTransform>): web ()
   setJsObjectField(obj.obj, "transform", value.obj)
@@ -730,7 +730,7 @@ pub value struct xrMediaEquirectLayerInit
   obj: jsObject
 
 pub fun newXrMediaEquirectLayerInit(transform: maybe<maybe<webxr/xrRigidTransform>> = Nothing, radius: maybe<double> = Nothing, centralHorizontalAngle: maybe<double> = Nothing, upperVerticalAngle: maybe<double> = Nothing, lowerVerticalAngle: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match transform
     Just(it) -> setJsObjectField(obj, "transform", it)
     Nothing -> ()
@@ -747,7 +747,7 @@ pub fun newXrMediaEquirectLayerInit(transform: maybe<maybe<webxr/xrRigidTransfor
     Just(it) -> setJsObjectField(obj, "lowerVerticalAngle", it)
     Nothing -> ()
 
-  XrMediaEquirectLayerInit(obj);
+  XrMediaEquirectLayerInit(obj)
 
 pub inline fun transform(obj: xrMediaEquirectLayerInit, value: maybe<webxr/xrRigidTransform>): web ()
   setJsObjectField(obj.obj, "transform", value.obj)
@@ -807,9 +807,9 @@ pub value struct xrLayerEventInit
   obj: jsObject
 
 pub fun newXrLayerEventInit(layer: webxr/xrLayer)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "layer", layer);
-  XrLayerEventInit(obj);
+  XrLayerEventInit(obj)
 
 pub inline fun layer(obj: xrLayerEventInit, value: webxr/xrLayer): web ()
   setJsObjectField(obj.obj, "layer", value.obj)

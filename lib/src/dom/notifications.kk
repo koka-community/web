@@ -3,13 +3,13 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias notificationPermissionCallback = jsFunction;
+pub alias notificationPermissionCallback = jsFunction
 
 
-pub alias notificationPermission = string;
+pub alias notificationPermission = string
 
 
-pub alias notificationDirection = string;
+pub alias notificationDirection = string
 
 pub value struct notification
   obj: jsObject
@@ -101,7 +101,7 @@ pub value struct notificationOptions
   obj: jsObject
 
 pub fun newNotificationOptions(dir: maybe<notificationDirection> = Nothing, lang: maybe<string> = Nothing, body: maybe<string> = Nothing, tag: maybe<string> = Nothing, image: maybe<string> = Nothing, icon: maybe<string> = Nothing, badge: maybe<string> = Nothing, vibrate: maybe<vibration/vibratePattern> = Nothing, timestamp: maybe<hr_time/epochTimeStamp> = Nothing, renotify: maybe<bool> = Nothing, silent: maybe<maybe<bool>> = Nothing, requireInteraction: maybe<bool> = Nothing, data: maybe<maybe<jsObject>> = Nothing, actions: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match dir
     Just(it) -> setJsObjectField(obj, "dir", it)
     Nothing -> ()
@@ -145,7 +145,7 @@ pub fun newNotificationOptions(dir: maybe<notificationDirection> = Nothing, lang
     Just(it) -> setJsObjectField(obj, "actions", it)
     Nothing -> ()
 
-  NotificationOptions(obj);
+  NotificationOptions(obj)
 
 pub inline fun dir(obj: notificationOptions, value: notificationDirection): web ()
   setJsObjectField(obj.obj, "dir", value.obj)
@@ -235,12 +235,12 @@ pub value struct notificationAction
   obj: jsObject
 
 pub fun newNotificationAction(action: string, title: string, icon: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "action", action);  setJsObjectField(obj, "title", title);  match icon
     Just(it) -> setJsObjectField(obj, "icon", it)
     Nothing -> ()
 
-  NotificationAction(obj);
+  NotificationAction(obj)
 
 pub inline fun action(obj: notificationAction, value: string): web ()
   setJsObjectField(obj.obj, "action", value.obj)
@@ -264,12 +264,12 @@ pub value struct getNotificationOptions
   obj: jsObject
 
 pub fun newGetNotificationOptions(tag: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match tag
     Just(it) -> setJsObjectField(obj, "tag", it)
     Nothing -> ()
 
-  GetNotificationOptions(obj);
+  GetNotificationOptions(obj)
 
 pub inline fun tag(obj: getNotificationOptions, value: string): web ()
   setJsObjectField(obj.obj, "tag", value.obj)
@@ -293,12 +293,12 @@ pub value struct notificationEventInit
   obj: jsObject
 
 pub fun newNotificationEventInit(notification: notification, action: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "notification", notification);  match action
     Just(it) -> setJsObjectField(obj, "action", it)
     Nothing -> ()
 
-  NotificationEventInit(obj);
+  NotificationEventInit(obj)
 
 pub inline fun notification(obj: notificationEventInit, value: notification): web ()
   setJsObjectField(obj.obj, "notification", value.obj)

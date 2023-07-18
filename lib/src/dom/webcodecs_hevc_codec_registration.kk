@@ -5,18 +5,18 @@ import web/wasm
 
 
 
-pub alias hevcBitstreamFormat = string;
+pub alias hevcBitstreamFormat = string
 
 pub value struct hevcEncoderConfig
   obj: jsObject
 
 pub fun newHevcEncoderConfig(format: maybe<hevcBitstreamFormat> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match format
     Just(it) -> setJsObjectField(obj, "format", it)
     Nothing -> ()
 
-  HevcEncoderConfig(obj);
+  HevcEncoderConfig(obj)
 
 pub inline fun format(obj: hevcEncoderConfig, value: hevcBitstreamFormat): web ()
   setJsObjectField(obj.obj, "format", value.obj)

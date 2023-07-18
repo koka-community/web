@@ -5,10 +5,10 @@ import web/wasm
 
 
 
-pub alias presentationConnectionState = string;
+pub alias presentationConnectionState = string
 
 
-pub alias presentationConnectionCloseReason = string;
+pub alias presentationConnectionCloseReason = string
 
 pub value struct presentation
   obj: jsObject
@@ -70,9 +70,9 @@ pub value struct presentationConnectionAvailableEventInit
   obj: jsObject
 
 pub fun newPresentationConnectionAvailableEventInit(connection: presentationConnection)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "connection", connection);
-  PresentationConnectionAvailableEventInit(obj);
+  PresentationConnectionAvailableEventInit(obj)
 
 pub inline fun connection(obj: presentationConnectionAvailableEventInit, value: presentationConnection): web ()
   setJsObjectField(obj.obj, "connection", value.obj)
@@ -148,12 +148,12 @@ pub value struct presentationConnectionCloseEventInit
   obj: jsObject
 
 pub fun newPresentationConnectionCloseEventInit(reason: presentationConnectionCloseReason, message: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "reason", reason);  match message
     Just(it) -> setJsObjectField(obj, "message", it)
     Nothing -> ()
 
-  PresentationConnectionCloseEventInit(obj);
+  PresentationConnectionCloseEventInit(obj)
 
 pub inline fun reason(obj: presentationConnectionCloseEventInit, value: presentationConnectionCloseReason): web ()
   setJsObjectField(obj.obj, "reason", value.obj)

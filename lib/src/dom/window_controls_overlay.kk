@@ -38,12 +38,12 @@ pub value struct windowControlsOverlayGeometryChangeEventInit
   obj: jsObject
 
 pub fun newWindowControlsOverlayGeometryChangeEventInit(titlebarAreaRect: geometry/domRect, visible: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "titlebarAreaRect", titlebarAreaRect);  match visible
     Just(it) -> setJsObjectField(obj, "visible", it)
     Nothing -> ()
 
-  WindowControlsOverlayGeometryChangeEventInit(obj);
+  WindowControlsOverlayGeometryChangeEventInit(obj)
 
 pub inline fun titlebarAreaRect(obj: windowControlsOverlayGeometryChangeEventInit, value: geometry/domRect): web ()
   setJsObjectField(obj.obj, "titlebarAreaRect", value.obj)

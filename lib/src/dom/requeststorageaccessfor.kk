@@ -10,12 +10,12 @@ pub value struct topLevelStorageAccessPermissionDescriptor
   obj: jsObject
 
 pub fun newTopLevelStorageAccessPermissionDescriptor(requestedOrigin: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match requestedOrigin
     Just(it) -> setJsObjectField(obj, "requestedOrigin", it)
     Nothing -> ()
 
-  TopLevelStorageAccessPermissionDescriptor(obj);
+  TopLevelStorageAccessPermissionDescriptor(obj)
 
 pub inline fun requestedOrigin(obj: topLevelStorageAccessPermissionDescriptor, value: string): web ()
   setJsObjectField(obj.obj, "requestedOrigin", value.obj)

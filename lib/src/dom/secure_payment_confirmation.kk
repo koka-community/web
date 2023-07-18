@@ -10,7 +10,7 @@ pub value struct securePaymentConfirmationRequest
   obj: jsObject
 
 pub fun newSecurePaymentConfirmationRequest(challenge: webidl/bufferSource, rpId: string, credentialIds: jsArray, instrument: paymentCredentialInstrument, timeout: maybe<int> = Nothing, payeeName: maybe<string> = Nothing, payeeOrigin: maybe<string> = Nothing, extensions: maybe<webauthn/authenticationExtensionsClientInputs> = Nothing, locale: maybe<jsArray> = Nothing, showOptOut: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "challenge", challenge);  setJsObjectField(obj, "rpId", rpId);  setJsObjectField(obj, "credentialIds", credentialIds);  setJsObjectField(obj, "instrument", instrument);  match timeout
     Just(it) -> setJsObjectField(obj, "timeout", it)
     Nothing -> ()
@@ -30,7 +30,7 @@ pub fun newSecurePaymentConfirmationRequest(challenge: webidl/bufferSource, rpId
     Just(it) -> setJsObjectField(obj, "showOptOut", it)
     Nothing -> ()
 
-  SecurePaymentConfirmationRequest(obj);
+  SecurePaymentConfirmationRequest(obj)
 
 pub inline fun challenge(obj: securePaymentConfirmationRequest, value: webidl/bufferSource): web ()
   setJsObjectField(obj.obj, "challenge", value.obj)
@@ -96,7 +96,7 @@ pub value struct authenticationExtensionsPaymentInputs
   obj: jsObject
 
 pub fun newAuthenticationExtensionsPaymentInputs(isPayment: maybe<bool> = Nothing, rpId: maybe<string> = Nothing, topOrigin: maybe<string> = Nothing, payeeName: maybe<string> = Nothing, payeeOrigin: maybe<string> = Nothing, total: maybe<payment_request/paymentCurrencyAmount> = Nothing, instrument: maybe<paymentCredentialInstrument> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match isPayment
     Just(it) -> setJsObjectField(obj, "isPayment", it)
     Nothing -> ()
@@ -119,7 +119,7 @@ pub fun newAuthenticationExtensionsPaymentInputs(isPayment: maybe<bool> = Nothin
     Just(it) -> setJsObjectField(obj, "instrument", it)
     Nothing -> ()
 
-  AuthenticationExtensionsPaymentInputs(obj);
+  AuthenticationExtensionsPaymentInputs(obj)
 
 pub inline fun isPayment(obj: authenticationExtensionsPaymentInputs, value: bool): web ()
   setJsObjectField(obj.obj, "isPayment", value.obj)
@@ -167,9 +167,9 @@ pub value struct collectedClientPaymentData
   obj: jsObject
 
 pub fun newCollectedClientPaymentData(payment: collectedClientAdditionalPaymentData)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "payment", payment);
-  CollectedClientPaymentData(obj);
+  CollectedClientPaymentData(obj)
 
 pub inline fun payment(obj: collectedClientPaymentData, value: collectedClientAdditionalPaymentData): web ()
   setJsObjectField(obj.obj, "payment", value.obj)
@@ -181,7 +181,7 @@ pub value struct collectedClientAdditionalPaymentData
   obj: jsObject
 
 pub fun newCollectedClientAdditionalPaymentData(rpId: string, topOrigin: string, payeeName: maybe<string> = Nothing, payeeOrigin: maybe<string> = Nothing, total: payment_request/paymentCurrencyAmount, instrument: paymentCredentialInstrument)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "rpId", rpId);  setJsObjectField(obj, "topOrigin", topOrigin);  match payeeName
     Just(it) -> setJsObjectField(obj, "payeeName", it)
     Nothing -> ()
@@ -189,7 +189,7 @@ pub fun newCollectedClientAdditionalPaymentData(rpId: string, topOrigin: string,
     Just(it) -> setJsObjectField(obj, "payeeOrigin", it)
     Nothing -> ()
   setJsObjectField(obj, "total", total);  setJsObjectField(obj, "instrument", instrument);
-  CollectedClientAdditionalPaymentData(obj);
+  CollectedClientAdditionalPaymentData(obj)
 
 pub inline fun rpId(obj: collectedClientAdditionalPaymentData, value: string): web ()
   setJsObjectField(obj.obj, "rpId", value.obj)
@@ -231,12 +231,12 @@ pub value struct paymentCredentialInstrument
   obj: jsObject
 
 pub fun newPaymentCredentialInstrument(displayName: string, icon: string, iconMustBeShown: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "displayName", displayName);  setJsObjectField(obj, "icon", icon);  match iconMustBeShown
     Just(it) -> setJsObjectField(obj, "iconMustBeShown", it)
     Nothing -> ()
 
-  PaymentCredentialInstrument(obj);
+  PaymentCredentialInstrument(obj)
 
 pub inline fun displayName(obj: paymentCredentialInstrument, value: string): web ()
   setJsObjectField(obj.obj, "displayName", value.obj)

@@ -2,14 +2,14 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias fileSystemWriteChunkType = JSAny;
+pub alias fileSystemWriteChunkType = JSAny
 
 
 
-pub alias fileSystemHandleKind = string;
+pub alias fileSystemHandleKind = string
 
 
-pub alias writeCommandType = string;
+pub alias writeCommandType = string
 
 pub value struct fileSystemHandle
   obj: jsObject
@@ -34,12 +34,12 @@ pub value struct fileSystemCreateWritableOptions
   obj: jsObject
 
 pub fun newFileSystemCreateWritableOptions(keepExistingData: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match keepExistingData
     Just(it) -> setJsObjectField(obj, "keepExistingData", it)
     Nothing -> ()
 
-  FileSystemCreateWritableOptions(obj);
+  FileSystemCreateWritableOptions(obj)
 
 pub inline fun keepExistingData(obj: fileSystemCreateWritableOptions, value: bool): web ()
   setJsObjectField(obj.obj, "keepExistingData", value.obj)
@@ -64,12 +64,12 @@ pub value struct fileSystemGetFileOptions
   obj: jsObject
 
 pub fun newFileSystemGetFileOptions(create: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match create
     Just(it) -> setJsObjectField(obj, "create", it)
     Nothing -> ()
 
-  FileSystemGetFileOptions(obj);
+  FileSystemGetFileOptions(obj)
 
 pub inline fun create(obj: fileSystemGetFileOptions, value: bool): web ()
   setJsObjectField(obj.obj, "create", value.obj)
@@ -81,12 +81,12 @@ pub value struct fileSystemGetDirectoryOptions
   obj: jsObject
 
 pub fun newFileSystemGetDirectoryOptions(create: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match create
     Just(it) -> setJsObjectField(obj, "create", it)
     Nothing -> ()
 
-  FileSystemGetDirectoryOptions(obj);
+  FileSystemGetDirectoryOptions(obj)
 
 pub inline fun create(obj: fileSystemGetDirectoryOptions, value: bool): web ()
   setJsObjectField(obj.obj, "create", value.obj)
@@ -98,12 +98,12 @@ pub value struct fileSystemRemoveOptions
   obj: jsObject
 
 pub fun newFileSystemRemoveOptions(recursive: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match recursive
     Just(it) -> setJsObjectField(obj, "recursive", it)
     Nothing -> ()
 
-  FileSystemRemoveOptions(obj);
+  FileSystemRemoveOptions(obj)
 
 pub inline fun recursive(obj: fileSystemRemoveOptions, value: bool): web ()
   setJsObjectField(obj.obj, "recursive", value.obj)
@@ -131,7 +131,7 @@ pub value struct writeParams
   obj: jsObject
 
 pub fun newWriteParams(type: writeCommandType, size: maybe<maybe<int>> = Nothing, position: maybe<maybe<int>> = Nothing, data: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);  match size
     Just(it) -> setJsObjectField(obj, "size", it)
     Nothing -> ()
@@ -142,7 +142,7 @@ pub fun newWriteParams(type: writeCommandType, size: maybe<maybe<int>> = Nothing
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  WriteParams(obj);
+  WriteParams(obj)
 
 pub inline fun type(obj: writeParams, value: writeCommandType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -185,12 +185,12 @@ pub value struct fileSystemReadWriteOptions
   obj: jsObject
 
 pub fun newFileSystemReadWriteOptions(at: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match at
     Just(it) -> setJsObjectField(obj, "at", it)
     Nothing -> ()
 
-  FileSystemReadWriteOptions(obj);
+  FileSystemReadWriteOptions(obj)
 
 pub inline fun at(obj: fileSystemReadWriteOptions, value: int): web ()
   setJsObjectField(obj.obj, "at", value.obj)

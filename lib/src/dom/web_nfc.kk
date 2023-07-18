@@ -2,7 +2,7 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias ndefMessageSource = JSAny;
+pub alias ndefMessageSource = JSAny
 
 
 
@@ -20,9 +20,9 @@ pub value struct ndefMessageInit
   obj: jsObject
 
 pub fun newNdefMessageInit(records: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "records", records);
-  NdefMessageInit(obj);
+  NdefMessageInit(obj)
 
 pub inline fun records(obj: ndefMessageInit, value: jsArray): web ()
   setJsObjectField(obj.obj, "records", value.obj)
@@ -61,7 +61,7 @@ pub value struct ndefRecordInit
   obj: jsObject
 
 pub fun newNdefRecordInit(recordType: string, mediaType: maybe<string> = Nothing, id: maybe<string> = Nothing, encoding: maybe<string> = Nothing, lang: maybe<string> = Nothing, data: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "recordType", recordType);  match mediaType
     Just(it) -> setJsObjectField(obj, "mediaType", it)
     Nothing -> ()
@@ -78,7 +78,7 @@ pub fun newNdefRecordInit(recordType: string, mediaType: maybe<string> = Nothing
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  NdefRecordInit(obj);
+  NdefRecordInit(obj)
 
 pub inline fun recordType(obj: ndefRecordInit, value: string): web ()
   setJsObjectField(obj.obj, "recordType", value.obj)
@@ -159,12 +159,12 @@ pub value struct ndefReadingEventInit
   obj: jsObject
 
 pub fun newNdefReadingEventInit(serialNumber: maybe<maybe<string>> = Nothing, message: ndefMessageInit)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match serialNumber
     Just(it) -> setJsObjectField(obj, "serialNumber", it)
     Nothing -> ()
   setJsObjectField(obj, "message", message);
-  NdefReadingEventInit(obj);
+  NdefReadingEventInit(obj)
 
 pub inline fun serialNumber(obj: ndefReadingEventInit, value: maybe<string>): web ()
   setJsObjectField(obj.obj, "serialNumber", value.obj)
@@ -182,7 +182,7 @@ pub value struct ndefWriteOptions
   obj: jsObject
 
 pub fun newNdefWriteOptions(overwrite: maybe<bool> = Nothing, signal: maybe<maybe<dom/abortSignal>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match overwrite
     Just(it) -> setJsObjectField(obj, "overwrite", it)
     Nothing -> ()
@@ -190,7 +190,7 @@ pub fun newNdefWriteOptions(overwrite: maybe<bool> = Nothing, signal: maybe<mayb
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
 
-  NdefWriteOptions(obj);
+  NdefWriteOptions(obj)
 
 pub inline fun overwrite(obj: ndefWriteOptions, value: bool): web ()
   setJsObjectField(obj.obj, "overwrite", value.obj)
@@ -208,12 +208,12 @@ pub value struct ndefMakeReadOnlyOptions
   obj: jsObject
 
 pub fun newNdefMakeReadOnlyOptions(signal: maybe<maybe<dom/abortSignal>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match signal
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
 
-  NdefMakeReadOnlyOptions(obj);
+  NdefMakeReadOnlyOptions(obj)
 
 pub inline fun signal(obj: ndefMakeReadOnlyOptions, value: maybe<dom/abortSignal>): web ()
   setJsObjectField(obj.obj, "signal", value.obj)
@@ -225,12 +225,12 @@ pub value struct ndefScanOptions
   obj: jsObject
 
 pub fun newNdefScanOptions(signal: maybe<dom/abortSignal> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match signal
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
 
-  NdefScanOptions(obj);
+  NdefScanOptions(obj)
 
 pub inline fun signal(obj: ndefScanOptions, value: dom/abortSignal): web ()
   setJsObjectField(obj.obj, "signal", value.obj)

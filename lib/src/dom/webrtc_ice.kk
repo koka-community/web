@@ -10,7 +10,7 @@ pub value struct rtcIceGatherOptions
   obj: jsObject
 
 pub fun newRtcIceGatherOptions(gatherPolicy: maybe<webrtc/rtcIceTransportPolicy> = Nothing, iceServers: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match gatherPolicy
     Just(it) -> setJsObjectField(obj, "gatherPolicy", it)
     Nothing -> ()
@@ -18,7 +18,7 @@ pub fun newRtcIceGatherOptions(gatherPolicy: maybe<webrtc/rtcIceTransportPolicy>
     Just(it) -> setJsObjectField(obj, "iceServers", it)
     Nothing -> ()
 
-  RtcIceGatherOptions(obj);
+  RtcIceGatherOptions(obj)
 
 pub inline fun gatherPolicy(obj: rtcIceGatherOptions, value: webrtc/rtcIceTransportPolicy): web ()
   setJsObjectField(obj.obj, "gatherPolicy", value.obj)

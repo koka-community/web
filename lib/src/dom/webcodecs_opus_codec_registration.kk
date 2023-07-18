@@ -5,13 +5,13 @@ import web/wasm
 
 
 
-pub alias opusBitstreamFormat = string;
+pub alias opusBitstreamFormat = string
 
 pub value struct opusEncoderConfig
   obj: jsObject
 
 pub fun newOpusEncoderConfig(format: maybe<opusBitstreamFormat> = Nothing, frameDuration: maybe<int> = Nothing, complexity: maybe<int> = Nothing, packetlossperc: maybe<int> = Nothing, useinbandfec: maybe<bool> = Nothing, usedtx: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match format
     Just(it) -> setJsObjectField(obj, "format", it)
     Nothing -> ()
@@ -31,7 +31,7 @@ pub fun newOpusEncoderConfig(format: maybe<opusBitstreamFormat> = Nothing, frame
     Just(it) -> setJsObjectField(obj, "usedtx", it)
     Nothing -> ()
 
-  OpusEncoderConfig(obj);
+  OpusEncoderConfig(obj)
 
 pub inline fun format(obj: opusEncoderConfig, value: opusBitstreamFormat): web ()
   setJsObjectField(obj.obj, "format", value.obj)

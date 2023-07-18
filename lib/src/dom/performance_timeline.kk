@@ -2,9 +2,9 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias performanceEntryList = JSArray;
+pub alias performanceEntryList = JSArray
 
-pub alias performanceObserverCallback = jsFunction;
+pub alias performanceObserverCallback = jsFunction
 
 
 
@@ -48,12 +48,12 @@ pub value struct performanceObserverCallbackOptions
   obj: jsObject
 
 pub fun newPerformanceObserverCallbackOptions(droppedEntriesCount: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match droppedEntriesCount
     Just(it) -> setJsObjectField(obj, "droppedEntriesCount", it)
     Nothing -> ()
 
-  PerformanceObserverCallbackOptions(obj);
+  PerformanceObserverCallbackOptions(obj)
 
 pub inline fun droppedEntriesCount(obj: performanceObserverCallbackOptions, value: int): web ()
   setJsObjectField(obj.obj, "droppedEntriesCount", value.obj)
@@ -65,7 +65,7 @@ pub value struct performanceObserverInit
   obj: jsObject
 
 pub fun newPerformanceObserverInit(durationThreshold: maybe<hr_time/domHighResTimeStamp> = Nothing, entryTypes: maybe<jsArray> = Nothing, type: maybe<string> = Nothing, buffered: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match durationThreshold
     Just(it) -> setJsObjectField(obj, "durationThreshold", it)
     Nothing -> ()
@@ -79,7 +79,7 @@ pub fun newPerformanceObserverInit(durationThreshold: maybe<hr_time/domHighResTi
     Just(it) -> setJsObjectField(obj, "buffered", it)
     Nothing -> ()
 
-  PerformanceObserverInit(obj);
+  PerformanceObserverInit(obj)
 
 pub inline fun durationThreshold(obj: performanceObserverInit, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "durationThreshold", value.obj)

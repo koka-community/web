@@ -2,179 +2,179 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias gpuBufferUsageFlags = int;
+pub alias gpuBufferUsageFlags = int
 
 
-pub alias gpuMapModeFlags = int;
+pub alias gpuMapModeFlags = int
 
 
-pub alias gpuTextureUsageFlags = int;
+pub alias gpuTextureUsageFlags = int
 
 
-pub alias gpuShaderStageFlags = int;
+pub alias gpuShaderStageFlags = int
 
 
-pub alias gpuBindingResource = JSAny;
+pub alias gpuBindingResource = JSAny
 
 
-pub alias gpuPipelineConstantValue = double;
+pub alias gpuPipelineConstantValue = double
 
 
-pub alias gpuColorWriteFlags = int;
+pub alias gpuColorWriteFlags = int
 
 
-pub alias gpuImageCopyExternalImageSource = JSAny;
+pub alias gpuImageCopyExternalImageSource = JSAny
 
 
-pub alias gpuBufferDynamicOffset = int;
+pub alias gpuBufferDynamicOffset = int
 
 
-pub alias gpuStencilValue = int;
+pub alias gpuStencilValue = int
 
 
-pub alias gpuSampleMask = int;
+pub alias gpuSampleMask = int
 
 
-pub alias gpuDepthBias = int;
+pub alias gpuDepthBias = int
 
 
-pub alias gpuSize64 = int;
+pub alias gpuSize64 = int
 
 
-pub alias gpuIntegerCoordinate = int;
+pub alias gpuIntegerCoordinate = int
 
 
-pub alias gpuIndex32 = int;
+pub alias gpuIndex32 = int
 
 
-pub alias gpuSize32 = int;
+pub alias gpuSize32 = int
 
 
-pub alias gpuSignedOffset32 = int;
+pub alias gpuSignedOffset32 = int
 
 
-pub alias gpuSize64Out = int;
+pub alias gpuSize64Out = int
 
 
-pub alias gpuIntegerCoordinateOut = int;
+pub alias gpuIntegerCoordinateOut = int
 
 
-pub alias gpuSize32Out = int;
+pub alias gpuSize32Out = int
 
 
-pub alias gpuFlagsConstant = int;
+pub alias gpuFlagsConstant = int
 
 
-pub alias gpuColor = JSAny;
+pub alias gpuColor = JSAny
 
 
-pub alias gpuOrigin2D = JSAny;
+pub alias gpuOrigin2D = JSAny
 
 
-pub alias gpuOrigin3D = JSAny;
+pub alias gpuOrigin3D = JSAny
 
 
-pub alias gpuExtent3D = JSAny;
+pub alias gpuExtent3D = JSAny
 
 
 
-pub alias gpuPowerPreference = string;
+pub alias gpuPowerPreference = string
 
 
-pub alias gpuFeatureName = string;
+pub alias gpuFeatureName = string
 
 
-pub alias gpuBufferMapState = string;
+pub alias gpuBufferMapState = string
 
 
-pub alias gpuTextureDimension = string;
+pub alias gpuTextureDimension = string
 
 
-pub alias gpuTextureViewDimension = string;
+pub alias gpuTextureViewDimension = string
 
 
-pub alias gpuTextureAspect = string;
+pub alias gpuTextureAspect = string
 
 
-pub alias gpuTextureFormat = string;
+pub alias gpuTextureFormat = string
 
 
-pub alias gpuAddressMode = string;
+pub alias gpuAddressMode = string
 
 
-pub alias gpuFilterMode = string;
+pub alias gpuFilterMode = string
 
 
-pub alias gpuMipmapFilterMode = string;
+pub alias gpuMipmapFilterMode = string
 
 
-pub alias gpuCompareFunction = string;
+pub alias gpuCompareFunction = string
 
 
-pub alias gpuBufferBindingType = string;
+pub alias gpuBufferBindingType = string
 
 
-pub alias gpuSamplerBindingType = string;
+pub alias gpuSamplerBindingType = string
 
 
-pub alias gpuTextureSampleType = string;
+pub alias gpuTextureSampleType = string
 
 
-pub alias gpuStorageTextureAccess = string;
+pub alias gpuStorageTextureAccess = string
 
 
-pub alias gpuCompilationMessageType = string;
+pub alias gpuCompilationMessageType = string
 
 
-pub alias gpuPipelineErrorReason = string;
+pub alias gpuPipelineErrorReason = string
 
 
-pub alias gpuAutoLayoutMode = string;
+pub alias gpuAutoLayoutMode = string
 
 
-pub alias gpuPrimitiveTopology = string;
+pub alias gpuPrimitiveTopology = string
 
 
-pub alias gpuFrontFace = string;
+pub alias gpuFrontFace = string
 
 
-pub alias gpuCullMode = string;
+pub alias gpuCullMode = string
 
 
-pub alias gpuBlendFactor = string;
+pub alias gpuBlendFactor = string
 
 
-pub alias gpuBlendOperation = string;
+pub alias gpuBlendOperation = string
 
 
-pub alias gpuStencilOperation = string;
+pub alias gpuStencilOperation = string
 
 
-pub alias gpuIndexFormat = string;
+pub alias gpuIndexFormat = string
 
 
-pub alias gpuVertexFormat = string;
+pub alias gpuVertexFormat = string
 
 
-pub alias gpuVertexStepMode = string;
+pub alias gpuVertexStepMode = string
 
 
-pub alias gpuLoadOp = string;
+pub alias gpuLoadOp = string
 
 
-pub alias gpuStoreOp = string;
+pub alias gpuStoreOp = string
 
 
-pub alias gpuQueryType = string;
+pub alias gpuQueryType = string
 
 
-pub alias gpuCanvasAlphaMode = string;
+pub alias gpuCanvasAlphaMode = string
 
 
-pub alias gpuDeviceLostReason = string;
+pub alias gpuDeviceLostReason = string
 
 
-pub alias gpuErrorFilter = string;
+pub alias gpuErrorFilter = string
 
 pub value struct gpuObjectBase
   obj: jsObject
@@ -190,12 +190,12 @@ pub value struct gpuObjectDescriptorBase
   obj: jsObject
 
 pub fun newGpuObjectDescriptorBase(label: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match label
     Just(it) -> setJsObjectField(obj, "label", it)
     Nothing -> ()
 
-  GpuObjectDescriptorBase(obj);
+  GpuObjectDescriptorBase(obj)
 
 pub inline fun label(obj: gpuObjectDescriptorBase, value: string): web ()
   setJsObjectField(obj.obj, "label", value.obj)
@@ -353,7 +353,7 @@ pub value struct gpuRequestAdapterOptions
   obj: jsObject
 
 pub fun newGpuRequestAdapterOptions(powerPreference: maybe<gpuPowerPreference> = Nothing, forceFallbackAdapter: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match powerPreference
     Just(it) -> setJsObjectField(obj, "powerPreference", it)
     Nothing -> ()
@@ -361,7 +361,7 @@ pub fun newGpuRequestAdapterOptions(powerPreference: maybe<gpuPowerPreference> =
     Just(it) -> setJsObjectField(obj, "forceFallbackAdapter", it)
     Nothing -> ()
 
-  GpuRequestAdapterOptions(obj);
+  GpuRequestAdapterOptions(obj)
 
 pub inline fun powerPreference(obj: gpuRequestAdapterOptions, value: gpuPowerPreference): web ()
   setJsObjectField(obj.obj, "powerPreference", value.obj)
@@ -398,7 +398,7 @@ pub value struct gpuDeviceDescriptor
   obj: jsObject
 
 pub fun newGpuDeviceDescriptor(requiredFeatures: maybe<jsArray> = Nothing, requiredLimits: maybe<maybe<jsObject>> = Nothing, defaultQueue: maybe<gpuQueueDescriptor> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match requiredFeatures
     Just(it) -> setJsObjectField(obj, "requiredFeatures", it)
     Nothing -> ()
@@ -409,7 +409,7 @@ pub fun newGpuDeviceDescriptor(requiredFeatures: maybe<jsArray> = Nothing, requi
     Just(it) -> setJsObjectField(obj, "defaultQueue", it)
     Nothing -> ()
 
-  GpuDeviceDescriptor(obj);
+  GpuDeviceDescriptor(obj)
 
 pub inline fun requiredFeatures(obj: gpuDeviceDescriptor, value: jsArray): web ()
   setJsObjectField(obj.obj, "requiredFeatures", value.obj)
@@ -534,12 +534,12 @@ pub value struct gpuBufferDescriptor
   obj: jsObject
 
 pub fun newGpuBufferDescriptor(size: gpuSize64, usage: gpuBufferUsageFlags, mappedAtCreation: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "size", size);  setJsObjectField(obj, "usage", usage);  match mappedAtCreation
     Just(it) -> setJsObjectField(obj, "mappedAtCreation", it)
     Nothing -> ()
 
-  GpuBufferDescriptor(obj);
+  GpuBufferDescriptor(obj)
 
 pub inline fun size(obj: gpuBufferDescriptor, value: gpuSize64): web ()
   setJsObjectField(obj.obj, "size", value.obj)
@@ -643,7 +643,7 @@ pub value struct gpuTextureDescriptor
   obj: jsObject
 
 pub fun newGpuTextureDescriptor(size: gpuExtent3D, mipLevelCount: maybe<gpuIntegerCoordinate> = Nothing, sampleCount: maybe<gpuSize32> = Nothing, dimension: maybe<gpuTextureDimension> = Nothing, format: gpuTextureFormat, usage: gpuTextureUsageFlags, viewFormats: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "size", size);  match mipLevelCount
     Just(it) -> setJsObjectField(obj, "mipLevelCount", it)
     Nothing -> ()
@@ -657,7 +657,7 @@ pub fun newGpuTextureDescriptor(size: gpuExtent3D, mipLevelCount: maybe<gpuInteg
     Just(it) -> setJsObjectField(obj, "viewFormats", it)
     Nothing -> ()
 
-  GpuTextureDescriptor(obj);
+  GpuTextureDescriptor(obj)
 
 pub inline fun size(obj: gpuTextureDescriptor, value: gpuExtent3D): web ()
   setJsObjectField(obj.obj, "size", value.obj)
@@ -729,7 +729,7 @@ pub value struct gpuTextureViewDescriptor
   obj: jsObject
 
 pub fun newGpuTextureViewDescriptor(format: maybe<gpuTextureFormat> = Nothing, dimension: maybe<gpuTextureViewDimension> = Nothing, aspect: maybe<gpuTextureAspect> = Nothing, baseMipLevel: maybe<gpuIntegerCoordinate> = Nothing, mipLevelCount: maybe<gpuIntegerCoordinate> = Nothing, baseArrayLayer: maybe<gpuIntegerCoordinate> = Nothing, arrayLayerCount: maybe<gpuIntegerCoordinate> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match format
     Just(it) -> setJsObjectField(obj, "format", it)
     Nothing -> ()
@@ -752,7 +752,7 @@ pub fun newGpuTextureViewDescriptor(format: maybe<gpuTextureFormat> = Nothing, d
     Just(it) -> setJsObjectField(obj, "arrayLayerCount", it)
     Nothing -> ()
 
-  GpuTextureViewDescriptor(obj);
+  GpuTextureViewDescriptor(obj)
 
 pub inline fun format(obj: gpuTextureViewDescriptor, value: gpuTextureFormat): web ()
   setJsObjectField(obj.obj, "format", value.obj)
@@ -804,12 +804,12 @@ pub value struct gpuExternalTextureDescriptor
   obj: jsObject
 
 pub fun newGpuExternalTextureDescriptor(source: maybe<jsObject>, colorSpace: maybe<html/predefinedColorSpace> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "source", source);  match colorSpace
     Just(it) -> setJsObjectField(obj, "colorSpace", it)
     Nothing -> ()
 
-  GpuExternalTextureDescriptor(obj);
+  GpuExternalTextureDescriptor(obj)
 
 pub inline fun source(obj: gpuExternalTextureDescriptor, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "source", value.obj)
@@ -831,7 +831,7 @@ pub value struct gpuSamplerDescriptor
   obj: jsObject
 
 pub fun newGpuSamplerDescriptor(addressModeU: maybe<gpuAddressMode> = Nothing, addressModeV: maybe<gpuAddressMode> = Nothing, addressModeW: maybe<gpuAddressMode> = Nothing, magFilter: maybe<gpuFilterMode> = Nothing, minFilter: maybe<gpuFilterMode> = Nothing, mipmapFilter: maybe<gpuMipmapFilterMode> = Nothing, lodMinClamp: maybe<double> = Nothing, lodMaxClamp: maybe<double> = Nothing, compare: maybe<gpuCompareFunction> = Nothing, maxAnisotropy: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match addressModeU
     Just(it) -> setJsObjectField(obj, "addressModeU", it)
     Nothing -> ()
@@ -863,7 +863,7 @@ pub fun newGpuSamplerDescriptor(addressModeU: maybe<gpuAddressMode> = Nothing, a
     Just(it) -> setJsObjectField(obj, "maxAnisotropy", it)
     Nothing -> ()
 
-  GpuSamplerDescriptor(obj);
+  GpuSamplerDescriptor(obj)
 
 pub inline fun addressModeU(obj: gpuSamplerDescriptor, value: gpuAddressMode): web ()
   setJsObjectField(obj.obj, "addressModeU", value.obj)
@@ -933,9 +933,9 @@ pub value struct gpuBindGroupLayoutDescriptor
   obj: jsObject
 
 pub fun newGpuBindGroupLayoutDescriptor(entries: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "entries", entries);
-  GpuBindGroupLayoutDescriptor(obj);
+  GpuBindGroupLayoutDescriptor(obj)
 
 pub inline fun entries(obj: gpuBindGroupLayoutDescriptor, value: jsArray): web ()
   setJsObjectField(obj.obj, "entries", value.obj)
@@ -947,7 +947,7 @@ pub value struct gpuBindGroupLayoutEntry
   obj: jsObject
 
 pub fun newGpuBindGroupLayoutEntry(binding: gpuIndex32, visibility: gpuShaderStageFlags, buffer: maybe<gpuBufferBindingLayout> = Nothing, sampler: maybe<gpuSamplerBindingLayout> = Nothing, texture: maybe<gpuTextureBindingLayout> = Nothing, storageTexture: maybe<gpuStorageTextureBindingLayout> = Nothing, externalTexture: maybe<gpuExternalTextureBindingLayout> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "binding", binding);  setJsObjectField(obj, "visibility", visibility);  match buffer
     Just(it) -> setJsObjectField(obj, "buffer", it)
     Nothing -> ()
@@ -964,7 +964,7 @@ pub fun newGpuBindGroupLayoutEntry(binding: gpuIndex32, visibility: gpuShaderSta
     Just(it) -> setJsObjectField(obj, "externalTexture", it)
     Nothing -> ()
 
-  GpuBindGroupLayoutEntry(obj);
+  GpuBindGroupLayoutEntry(obj)
 
 pub inline fun binding(obj: gpuBindGroupLayoutEntry, value: gpuIndex32): web ()
   setJsObjectField(obj.obj, "binding", value.obj)
@@ -1026,7 +1026,7 @@ pub value struct gpuBufferBindingLayout
   obj: jsObject
 
 pub fun newGpuBufferBindingLayout(type: maybe<gpuBufferBindingType> = Nothing, hasDynamicOffset: maybe<bool> = Nothing, minBindingSize: maybe<gpuSize64> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match type
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
@@ -1037,7 +1037,7 @@ pub fun newGpuBufferBindingLayout(type: maybe<gpuBufferBindingType> = Nothing, h
     Just(it) -> setJsObjectField(obj, "minBindingSize", it)
     Nothing -> ()
 
-  GpuBufferBindingLayout(obj);
+  GpuBufferBindingLayout(obj)
 
 pub inline fun type(obj: gpuBufferBindingLayout, value: gpuBufferBindingType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -1061,12 +1061,12 @@ pub value struct gpuSamplerBindingLayout
   obj: jsObject
 
 pub fun newGpuSamplerBindingLayout(type: maybe<gpuSamplerBindingType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match type
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
 
-  GpuSamplerBindingLayout(obj);
+  GpuSamplerBindingLayout(obj)
 
 pub inline fun type(obj: gpuSamplerBindingLayout, value: gpuSamplerBindingType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -1078,7 +1078,7 @@ pub value struct gpuTextureBindingLayout
   obj: jsObject
 
 pub fun newGpuTextureBindingLayout(sampleType: maybe<gpuTextureSampleType> = Nothing, viewDimension: maybe<gpuTextureViewDimension> = Nothing, multisampled: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match sampleType
     Just(it) -> setJsObjectField(obj, "sampleType", it)
     Nothing -> ()
@@ -1089,7 +1089,7 @@ pub fun newGpuTextureBindingLayout(sampleType: maybe<gpuTextureSampleType> = Not
     Just(it) -> setJsObjectField(obj, "multisampled", it)
     Nothing -> ()
 
-  GpuTextureBindingLayout(obj);
+  GpuTextureBindingLayout(obj)
 
 pub inline fun sampleType(obj: gpuTextureBindingLayout, value: gpuTextureSampleType): web ()
   setJsObjectField(obj.obj, "sampleType", value.obj)
@@ -1113,7 +1113,7 @@ pub value struct gpuStorageTextureBindingLayout
   obj: jsObject
 
 pub fun newGpuStorageTextureBindingLayout(access: maybe<gpuStorageTextureAccess> = Nothing, format: gpuTextureFormat, viewDimension: maybe<gpuTextureViewDimension> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match access
     Just(it) -> setJsObjectField(obj, "access", it)
     Nothing -> ()
@@ -1121,7 +1121,7 @@ pub fun newGpuStorageTextureBindingLayout(access: maybe<gpuStorageTextureAccess>
     Just(it) -> setJsObjectField(obj, "viewDimension", it)
     Nothing -> ()
 
-  GpuStorageTextureBindingLayout(obj);
+  GpuStorageTextureBindingLayout(obj)
 
 pub inline fun access(obj: gpuStorageTextureBindingLayout, value: gpuStorageTextureAccess): web ()
   setJsObjectField(obj.obj, "access", value.obj)
@@ -1145,9 +1145,9 @@ pub value struct gpuExternalTextureBindingLayout
   obj: jsObject
 
 pub fun newGpuExternalTextureBindingLayout()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  GpuExternalTextureBindingLayout(obj);
+  GpuExternalTextureBindingLayout(obj)
 
 pub value struct gpuBindGroup
   obj: jsObject
@@ -1157,9 +1157,9 @@ pub value struct gpuBindGroupDescriptor
   obj: jsObject
 
 pub fun newGpuBindGroupDescriptor(layout: gpuBindGroupLayout, entries: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "layout", layout);  setJsObjectField(obj, "entries", entries);
-  GpuBindGroupDescriptor(obj);
+  GpuBindGroupDescriptor(obj)
 
 pub inline fun layout(obj: gpuBindGroupDescriptor, value: gpuBindGroupLayout): web ()
   setJsObjectField(obj.obj, "layout", value.obj)
@@ -1177,9 +1177,9 @@ pub value struct gpuBindGroupEntry
   obj: jsObject
 
 pub fun newGpuBindGroupEntry(binding: gpuIndex32, resource: gpuBindingResource)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "binding", binding);  setJsObjectField(obj, "resource", resource);
-  GpuBindGroupEntry(obj);
+  GpuBindGroupEntry(obj)
 
 pub inline fun binding(obj: gpuBindGroupEntry, value: gpuIndex32): web ()
   setJsObjectField(obj.obj, "binding", value.obj)
@@ -1197,7 +1197,7 @@ pub value struct gpuBufferBinding
   obj: jsObject
 
 pub fun newGpuBufferBinding(buffer: gpuBuffer, offset: maybe<gpuSize64> = Nothing, size: maybe<gpuSize64> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "buffer", buffer);  match offset
     Just(it) -> setJsObjectField(obj, "offset", it)
     Nothing -> ()
@@ -1205,7 +1205,7 @@ pub fun newGpuBufferBinding(buffer: gpuBuffer, offset: maybe<gpuSize64> = Nothin
     Just(it) -> setJsObjectField(obj, "size", it)
     Nothing -> ()
 
-  GpuBufferBinding(obj);
+  GpuBufferBinding(obj)
 
 pub inline fun buffer(obj: gpuBufferBinding, value: gpuBuffer): web ()
   setJsObjectField(obj.obj, "buffer", value.obj)
@@ -1233,9 +1233,9 @@ pub value struct gpuPipelineLayoutDescriptor
   obj: jsObject
 
 pub fun newGpuPipelineLayoutDescriptor(bindGroupLayouts: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "bindGroupLayouts", bindGroupLayouts);
-  GpuPipelineLayoutDescriptor(obj);
+  GpuPipelineLayoutDescriptor(obj)
 
 pub inline fun bindGroupLayouts(obj: gpuPipelineLayoutDescriptor, value: jsArray): web ()
   setJsObjectField(obj.obj, "bindGroupLayouts", value.obj)
@@ -1254,7 +1254,7 @@ pub value struct gpuShaderModuleDescriptor
   obj: jsObject
 
 pub fun newGpuShaderModuleDescriptor(code: string, sourceMap: maybe<jsObject> = Nothing, hints: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "code", code);  match sourceMap
     Just(it) -> setJsObjectField(obj, "sourceMap", it)
     Nothing -> ()
@@ -1262,7 +1262,7 @@ pub fun newGpuShaderModuleDescriptor(code: string, sourceMap: maybe<jsObject> = 
     Just(it) -> setJsObjectField(obj, "hints", it)
     Nothing -> ()
 
-  GpuShaderModuleDescriptor(obj);
+  GpuShaderModuleDescriptor(obj)
 
 pub inline fun code(obj: gpuShaderModuleDescriptor, value: string): web ()
   setJsObjectField(obj.obj, "code", value.obj)
@@ -1286,12 +1286,12 @@ pub value struct gpuShaderModuleCompilationHint
   obj: jsObject
 
 pub fun newGpuShaderModuleCompilationHint(layout: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match layout
     Just(it) -> setJsObjectField(obj, "layout", it)
     Nothing -> ()
 
-  GpuShaderModuleCompilationHint(obj);
+  GpuShaderModuleCompilationHint(obj)
 
 pub inline fun layout(obj: gpuShaderModuleCompilationHint, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "layout", value.obj)
@@ -1341,9 +1341,9 @@ pub value struct gpuPipelineErrorInit
   obj: jsObject
 
 pub fun newGpuPipelineErrorInit(reason: gpuPipelineErrorReason)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "reason", reason);
-  GpuPipelineErrorInit(obj);
+  GpuPipelineErrorInit(obj)
 
 pub inline fun reason(obj: gpuPipelineErrorInit, value: gpuPipelineErrorReason): web ()
   setJsObjectField(obj.obj, "reason", value.obj)
@@ -1355,9 +1355,9 @@ pub value struct gpuPipelineDescriptorBase
   obj: jsObject
 
 pub fun newGpuPipelineDescriptorBase(layout: maybe<jsObject>)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "layout", layout);
-  GpuPipelineDescriptorBase(obj);
+  GpuPipelineDescriptorBase(obj)
 
 pub inline fun layout(obj: gpuPipelineDescriptorBase, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "layout", value.obj)
@@ -1376,12 +1376,12 @@ pub value struct gpuProgrammableStage
   obj: jsObject
 
 pub fun newGpuProgrammableStage(module: gpuShaderModule, entryPoint: string, constants: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "module", module);  setJsObjectField(obj, "entryPoint", entryPoint);  match constants
     Just(it) -> setJsObjectField(obj, "constants", it)
     Nothing -> ()
 
-  GpuProgrammableStage(obj);
+  GpuProgrammableStage(obj)
 
 pub inline fun module(obj: gpuProgrammableStage, value: gpuShaderModule): web ()
   setJsObjectField(obj.obj, "module", value.obj)
@@ -1409,9 +1409,9 @@ pub value struct gpuComputePipelineDescriptor
   obj: jsObject
 
 pub fun newGpuComputePipelineDescriptor(compute: gpuProgrammableStage)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "compute", compute);
-  GpuComputePipelineDescriptor(obj);
+  GpuComputePipelineDescriptor(obj)
 
 pub inline fun compute(obj: gpuComputePipelineDescriptor, value: gpuProgrammableStage): web ()
   setJsObjectField(obj.obj, "compute", value.obj)
@@ -1427,7 +1427,7 @@ pub value struct gpuRenderPipelineDescriptor
   obj: jsObject
 
 pub fun newGpuRenderPipelineDescriptor(vertex: gpuVertexState, primitive: maybe<gpuPrimitiveState> = Nothing, depthStencil: maybe<gpuDepthStencilState> = Nothing, multisample: maybe<gpuMultisampleState> = Nothing, fragment: maybe<gpuFragmentState> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "vertex", vertex);  match primitive
     Just(it) -> setJsObjectField(obj, "primitive", it)
     Nothing -> ()
@@ -1441,7 +1441,7 @@ pub fun newGpuRenderPipelineDescriptor(vertex: gpuVertexState, primitive: maybe<
     Just(it) -> setJsObjectField(obj, "fragment", it)
     Nothing -> ()
 
-  GpuRenderPipelineDescriptor(obj);
+  GpuRenderPipelineDescriptor(obj)
 
 pub inline fun vertex(obj: gpuRenderPipelineDescriptor, value: gpuVertexState): web ()
   setJsObjectField(obj.obj, "vertex", value.obj)
@@ -1477,7 +1477,7 @@ pub value struct gpuPrimitiveState
   obj: jsObject
 
 pub fun newGpuPrimitiveState(topology: maybe<gpuPrimitiveTopology> = Nothing, stripIndexFormat: maybe<gpuIndexFormat> = Nothing, frontFace: maybe<gpuFrontFace> = Nothing, cullMode: maybe<gpuCullMode> = Nothing, unclippedDepth: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match topology
     Just(it) -> setJsObjectField(obj, "topology", it)
     Nothing -> ()
@@ -1494,7 +1494,7 @@ pub fun newGpuPrimitiveState(topology: maybe<gpuPrimitiveTopology> = Nothing, st
     Just(it) -> setJsObjectField(obj, "unclippedDepth", it)
     Nothing -> ()
 
-  GpuPrimitiveState(obj);
+  GpuPrimitiveState(obj)
 
 pub inline fun topology(obj: gpuPrimitiveState, value: gpuPrimitiveTopology): web ()
   setJsObjectField(obj.obj, "topology", value.obj)
@@ -1530,7 +1530,7 @@ pub value struct gpuMultisampleState
   obj: jsObject
 
 pub fun newGpuMultisampleState(count: maybe<gpuSize32> = Nothing, mask: maybe<gpuSampleMask> = Nothing, alphaToCoverageEnabled: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match count
     Just(it) -> setJsObjectField(obj, "count", it)
     Nothing -> ()
@@ -1541,7 +1541,7 @@ pub fun newGpuMultisampleState(count: maybe<gpuSize32> = Nothing, mask: maybe<gp
     Just(it) -> setJsObjectField(obj, "alphaToCoverageEnabled", it)
     Nothing -> ()
 
-  GpuMultisampleState(obj);
+  GpuMultisampleState(obj)
 
 pub inline fun count(obj: gpuMultisampleState, value: gpuSize32): web ()
   setJsObjectField(obj.obj, "count", value.obj)
@@ -1565,9 +1565,9 @@ pub value struct gpuFragmentState
   obj: jsObject
 
 pub fun newGpuFragmentState(targets: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "targets", targets);
-  GpuFragmentState(obj);
+  GpuFragmentState(obj)
 
 pub inline fun targets(obj: gpuFragmentState, value: jsArray): web ()
   setJsObjectField(obj.obj, "targets", value.obj)
@@ -1579,7 +1579,7 @@ pub value struct gpuColorTargetState
   obj: jsObject
 
 pub fun newGpuColorTargetState(format: gpuTextureFormat, blend: maybe<gpuBlendState> = Nothing, writeMask: maybe<gpuColorWriteFlags> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "format", format);  match blend
     Just(it) -> setJsObjectField(obj, "blend", it)
     Nothing -> ()
@@ -1587,7 +1587,7 @@ pub fun newGpuColorTargetState(format: gpuTextureFormat, blend: maybe<gpuBlendSt
     Just(it) -> setJsObjectField(obj, "writeMask", it)
     Nothing -> ()
 
-  GpuColorTargetState(obj);
+  GpuColorTargetState(obj)
 
 pub inline fun format(obj: gpuColorTargetState, value: gpuTextureFormat): web ()
   setJsObjectField(obj.obj, "format", value.obj)
@@ -1611,9 +1611,9 @@ pub value struct gpuBlendState
   obj: jsObject
 
 pub fun newGpuBlendState(color: gpuBlendComponent, alpha: gpuBlendComponent)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "color", color);  setJsObjectField(obj, "alpha", alpha);
-  GpuBlendState(obj);
+  GpuBlendState(obj)
 
 pub inline fun color(obj: gpuBlendState, value: gpuBlendComponent): web ()
   setJsObjectField(obj.obj, "color", value.obj)
@@ -1651,7 +1651,7 @@ pub value struct gpuBlendComponent
   obj: jsObject
 
 pub fun newGpuBlendComponent(operation: maybe<gpuBlendOperation> = Nothing, srcFactor: maybe<gpuBlendFactor> = Nothing, dstFactor: maybe<gpuBlendFactor> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match operation
     Just(it) -> setJsObjectField(obj, "operation", it)
     Nothing -> ()
@@ -1662,7 +1662,7 @@ pub fun newGpuBlendComponent(operation: maybe<gpuBlendOperation> = Nothing, srcF
     Just(it) -> setJsObjectField(obj, "dstFactor", it)
     Nothing -> ()
 
-  GpuBlendComponent(obj);
+  GpuBlendComponent(obj)
 
 pub inline fun operation(obj: gpuBlendComponent, value: gpuBlendOperation): web ()
   setJsObjectField(obj.obj, "operation", value.obj)
@@ -1686,7 +1686,7 @@ pub value struct gpuDepthStencilState
   obj: jsObject
 
 pub fun newGpuDepthStencilState(format: gpuTextureFormat, depthWriteEnabled: bool, depthCompare: gpuCompareFunction, stencilFront: maybe<gpuStencilFaceState> = Nothing, stencilBack: maybe<gpuStencilFaceState> = Nothing, stencilReadMask: maybe<gpuStencilValue> = Nothing, stencilWriteMask: maybe<gpuStencilValue> = Nothing, depthBias: maybe<gpuDepthBias> = Nothing, depthBiasSlopeScale: maybe<double> = Nothing, depthBiasClamp: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "format", format);  setJsObjectField(obj, "depthWriteEnabled", depthWriteEnabled);  setJsObjectField(obj, "depthCompare", depthCompare);  match stencilFront
     Just(it) -> setJsObjectField(obj, "stencilFront", it)
     Nothing -> ()
@@ -1709,7 +1709,7 @@ pub fun newGpuDepthStencilState(format: gpuTextureFormat, depthWriteEnabled: boo
     Just(it) -> setJsObjectField(obj, "depthBiasClamp", it)
     Nothing -> ()
 
-  GpuDepthStencilState(obj);
+  GpuDepthStencilState(obj)
 
 pub inline fun format(obj: gpuDepthStencilState, value: gpuTextureFormat): web ()
   setJsObjectField(obj.obj, "format", value.obj)
@@ -1775,7 +1775,7 @@ pub value struct gpuStencilFaceState
   obj: jsObject
 
 pub fun newGpuStencilFaceState(compare: maybe<gpuCompareFunction> = Nothing, failOp: maybe<gpuStencilOperation> = Nothing, depthFailOp: maybe<gpuStencilOperation> = Nothing, passOp: maybe<gpuStencilOperation> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match compare
     Just(it) -> setJsObjectField(obj, "compare", it)
     Nothing -> ()
@@ -1789,7 +1789,7 @@ pub fun newGpuStencilFaceState(compare: maybe<gpuCompareFunction> = Nothing, fai
     Just(it) -> setJsObjectField(obj, "passOp", it)
     Nothing -> ()
 
-  GpuStencilFaceState(obj);
+  GpuStencilFaceState(obj)
 
 pub inline fun compare(obj: gpuStencilFaceState, value: gpuCompareFunction): web ()
   setJsObjectField(obj.obj, "compare", value.obj)
@@ -1819,12 +1819,12 @@ pub value struct gpuVertexState
   obj: jsObject
 
 pub fun newGpuVertexState(buffers: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match buffers
     Just(it) -> setJsObjectField(obj, "buffers", it)
     Nothing -> ()
 
-  GpuVertexState(obj);
+  GpuVertexState(obj)
 
 pub inline fun buffers(obj: gpuVertexState, value: jsArray): web ()
   setJsObjectField(obj.obj, "buffers", value.obj)
@@ -1836,12 +1836,12 @@ pub value struct gpuVertexBufferLayout
   obj: jsObject
 
 pub fun newGpuVertexBufferLayout(arrayStride: gpuSize64, stepMode: maybe<gpuVertexStepMode> = Nothing, attributes: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "arrayStride", arrayStride);  match stepMode
     Just(it) -> setJsObjectField(obj, "stepMode", it)
     Nothing -> ()
   setJsObjectField(obj, "attributes", attributes);
-  GpuVertexBufferLayout(obj);
+  GpuVertexBufferLayout(obj)
 
 pub inline fun arrayStride(obj: gpuVertexBufferLayout, value: gpuSize64): web ()
   setJsObjectField(obj.obj, "arrayStride", value.obj)
@@ -1865,9 +1865,9 @@ pub value struct gpuVertexAttribute
   obj: jsObject
 
 pub fun newGpuVertexAttribute(format: gpuVertexFormat, offset: gpuSize64, shaderLocation: gpuIndex32)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "format", format);  setJsObjectField(obj, "offset", offset);  setJsObjectField(obj, "shaderLocation", shaderLocation);
-  GpuVertexAttribute(obj);
+  GpuVertexAttribute(obj)
 
 pub inline fun format(obj: gpuVertexAttribute, value: gpuVertexFormat): web ()
   setJsObjectField(obj.obj, "format", value.obj)
@@ -1891,7 +1891,7 @@ pub value struct gpuImageDataLayout
   obj: jsObject
 
 pub fun newGpuImageDataLayout(offset: maybe<gpuSize64> = Nothing, bytesPerRow: maybe<gpuSize32> = Nothing, rowsPerImage: maybe<gpuSize32> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match offset
     Just(it) -> setJsObjectField(obj, "offset", it)
     Nothing -> ()
@@ -1902,7 +1902,7 @@ pub fun newGpuImageDataLayout(offset: maybe<gpuSize64> = Nothing, bytesPerRow: m
     Just(it) -> setJsObjectField(obj, "rowsPerImage", it)
     Nothing -> ()
 
-  GpuImageDataLayout(obj);
+  GpuImageDataLayout(obj)
 
 pub inline fun offset(obj: gpuImageDataLayout, value: gpuSize64): web ()
   setJsObjectField(obj.obj, "offset", value.obj)
@@ -1926,9 +1926,9 @@ pub value struct gpuImageCopyBuffer
   obj: jsObject
 
 pub fun newGpuImageCopyBuffer(buffer: gpuBuffer)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "buffer", buffer);
-  GpuImageCopyBuffer(obj);
+  GpuImageCopyBuffer(obj)
 
 pub inline fun buffer(obj: gpuImageCopyBuffer, value: gpuBuffer): web ()
   setJsObjectField(obj.obj, "buffer", value.obj)
@@ -1940,7 +1940,7 @@ pub value struct gpuImageCopyTexture
   obj: jsObject
 
 pub fun newGpuImageCopyTexture(texture: gpuTexture, mipLevel: maybe<gpuIntegerCoordinate> = Nothing, origin: maybe<gpuOrigin3D> = Nothing, aspect: maybe<gpuTextureAspect> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "texture", texture);  match mipLevel
     Just(it) -> setJsObjectField(obj, "mipLevel", it)
     Nothing -> ()
@@ -1951,7 +1951,7 @@ pub fun newGpuImageCopyTexture(texture: gpuTexture, mipLevel: maybe<gpuIntegerCo
     Just(it) -> setJsObjectField(obj, "aspect", it)
     Nothing -> ()
 
-  GpuImageCopyTexture(obj);
+  GpuImageCopyTexture(obj)
 
 pub inline fun texture(obj: gpuImageCopyTexture, value: gpuTexture): web ()
   setJsObjectField(obj.obj, "texture", value.obj)
@@ -1981,7 +1981,7 @@ pub value struct gpuImageCopyTextureTagged
   obj: jsObject
 
 pub fun newGpuImageCopyTextureTagged(colorSpace: maybe<html/predefinedColorSpace> = Nothing, premultipliedAlpha: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match colorSpace
     Just(it) -> setJsObjectField(obj, "colorSpace", it)
     Nothing -> ()
@@ -1989,7 +1989,7 @@ pub fun newGpuImageCopyTextureTagged(colorSpace: maybe<html/predefinedColorSpace
     Just(it) -> setJsObjectField(obj, "premultipliedAlpha", it)
     Nothing -> ()
 
-  GpuImageCopyTextureTagged(obj);
+  GpuImageCopyTextureTagged(obj)
 
 pub inline fun colorSpace(obj: gpuImageCopyTextureTagged, value: html/predefinedColorSpace): web ()
   setJsObjectField(obj.obj, "colorSpace", value.obj)
@@ -2007,7 +2007,7 @@ pub value struct gpuImageCopyExternalImage
   obj: jsObject
 
 pub fun newGpuImageCopyExternalImage(source: gpuImageCopyExternalImageSource, origin: maybe<gpuOrigin2D> = Nothing, flipY: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "source", source);  match origin
     Just(it) -> setJsObjectField(obj, "origin", it)
     Nothing -> ()
@@ -2015,7 +2015,7 @@ pub fun newGpuImageCopyExternalImage(source: gpuImageCopyExternalImageSource, or
     Just(it) -> setJsObjectField(obj, "flipY", it)
     Nothing -> ()
 
-  GpuImageCopyExternalImage(obj);
+  GpuImageCopyExternalImage(obj)
 
 pub inline fun source(obj: gpuImageCopyExternalImage, value: gpuImageCopyExternalImageSource): web ()
   setJsObjectField(obj.obj, "source", value.obj)
@@ -2043,9 +2043,9 @@ pub value struct gpuCommandBufferDescriptor
   obj: jsObject
 
 pub fun newGpuCommandBufferDescriptor()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  GpuCommandBufferDescriptor(obj);
+  GpuCommandBufferDescriptor(obj)
 
 pub value struct gpuCommandsMixin
   obj: jsObject
@@ -2089,9 +2089,9 @@ pub value struct gpuCommandEncoderDescriptor
   obj: jsObject
 
 pub fun newGpuCommandEncoderDescriptor()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  GpuCommandEncoderDescriptor(obj);
+  GpuCommandEncoderDescriptor(obj)
 
 pub value struct gpuBindingCommandsMixin
   obj: jsObject
@@ -2133,7 +2133,7 @@ pub value struct gpuComputePassTimestampWrites
   obj: jsObject
 
 pub fun newGpuComputePassTimestampWrites(querySet: gpuQuerySet, beginningOfPassWriteIndex: maybe<gpuSize32> = Nothing, endOfPassWriteIndex: maybe<gpuSize32> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "querySet", querySet);  match beginningOfPassWriteIndex
     Just(it) -> setJsObjectField(obj, "beginningOfPassWriteIndex", it)
     Nothing -> ()
@@ -2141,7 +2141,7 @@ pub fun newGpuComputePassTimestampWrites(querySet: gpuQuerySet, beginningOfPassW
     Just(it) -> setJsObjectField(obj, "endOfPassWriteIndex", it)
     Nothing -> ()
 
-  GpuComputePassTimestampWrites(obj);
+  GpuComputePassTimestampWrites(obj)
 
 pub inline fun querySet(obj: gpuComputePassTimestampWrites, value: gpuQuerySet): web ()
   setJsObjectField(obj.obj, "querySet", value.obj)
@@ -2165,12 +2165,12 @@ pub value struct gpuComputePassDescriptor
   obj: jsObject
 
 pub fun newGpuComputePassDescriptor(timestampWrites: maybe<gpuComputePassTimestampWrites> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match timestampWrites
     Just(it) -> setJsObjectField(obj, "timestampWrites", it)
     Nothing -> ()
 
-  GpuComputePassDescriptor(obj);
+  GpuComputePassDescriptor(obj)
 
 pub inline fun timestampWrites(obj: gpuComputePassDescriptor, value: gpuComputePassTimestampWrites): web ()
   setJsObjectField(obj.obj, "timestampWrites", value.obj)
@@ -2210,7 +2210,7 @@ pub value struct gpuRenderPassTimestampWrites
   obj: jsObject
 
 pub fun newGpuRenderPassTimestampWrites(querySet: gpuQuerySet, beginningOfPassWriteIndex: maybe<gpuSize32> = Nothing, endOfPassWriteIndex: maybe<gpuSize32> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "querySet", querySet);  match beginningOfPassWriteIndex
     Just(it) -> setJsObjectField(obj, "beginningOfPassWriteIndex", it)
     Nothing -> ()
@@ -2218,7 +2218,7 @@ pub fun newGpuRenderPassTimestampWrites(querySet: gpuQuerySet, beginningOfPassWr
     Just(it) -> setJsObjectField(obj, "endOfPassWriteIndex", it)
     Nothing -> ()
 
-  GpuRenderPassTimestampWrites(obj);
+  GpuRenderPassTimestampWrites(obj)
 
 pub inline fun querySet(obj: gpuRenderPassTimestampWrites, value: gpuQuerySet): web ()
   setJsObjectField(obj.obj, "querySet", value.obj)
@@ -2242,7 +2242,7 @@ pub value struct gpuRenderPassDescriptor
   obj: jsObject
 
 pub fun newGpuRenderPassDescriptor(colorAttachments: jsArray, depthStencilAttachment: maybe<gpuRenderPassDepthStencilAttachment> = Nothing, occlusionQuerySet: maybe<gpuQuerySet> = Nothing, timestampWrites: maybe<gpuRenderPassTimestampWrites> = Nothing, maxDrawCount: maybe<gpuSize64> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "colorAttachments", colorAttachments);  match depthStencilAttachment
     Just(it) -> setJsObjectField(obj, "depthStencilAttachment", it)
     Nothing -> ()
@@ -2256,7 +2256,7 @@ pub fun newGpuRenderPassDescriptor(colorAttachments: jsArray, depthStencilAttach
     Just(it) -> setJsObjectField(obj, "maxDrawCount", it)
     Nothing -> ()
 
-  GpuRenderPassDescriptor(obj);
+  GpuRenderPassDescriptor(obj)
 
 pub inline fun colorAttachments(obj: gpuRenderPassDescriptor, value: jsArray): web ()
   setJsObjectField(obj.obj, "colorAttachments", value.obj)
@@ -2292,7 +2292,7 @@ pub value struct gpuRenderPassColorAttachment
   obj: jsObject
 
 pub fun newGpuRenderPassColorAttachment(view: gpuTextureView, resolveTarget: maybe<gpuTextureView> = Nothing, clearValue: maybe<gpuColor> = Nothing, loadOp: gpuLoadOp, storeOp: gpuStoreOp)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "view", view);  match resolveTarget
     Just(it) -> setJsObjectField(obj, "resolveTarget", it)
     Nothing -> ()
@@ -2300,7 +2300,7 @@ pub fun newGpuRenderPassColorAttachment(view: gpuTextureView, resolveTarget: may
     Just(it) -> setJsObjectField(obj, "clearValue", it)
     Nothing -> ()
   setJsObjectField(obj, "loadOp", loadOp);  setJsObjectField(obj, "storeOp", storeOp);
-  GpuRenderPassColorAttachment(obj);
+  GpuRenderPassColorAttachment(obj)
 
 pub inline fun view(obj: gpuRenderPassColorAttachment, value: gpuTextureView): web ()
   setJsObjectField(obj.obj, "view", value.obj)
@@ -2336,7 +2336,7 @@ pub value struct gpuRenderPassDepthStencilAttachment
   obj: jsObject
 
 pub fun newGpuRenderPassDepthStencilAttachment(view: gpuTextureView, depthClearValue: maybe<double> = Nothing, depthLoadOp: maybe<gpuLoadOp> = Nothing, depthStoreOp: maybe<gpuStoreOp> = Nothing, depthReadOnly: maybe<bool> = Nothing, stencilClearValue: maybe<gpuStencilValue> = Nothing, stencilLoadOp: maybe<gpuLoadOp> = Nothing, stencilStoreOp: maybe<gpuStoreOp> = Nothing, stencilReadOnly: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "view", view);  match depthClearValue
     Just(it) -> setJsObjectField(obj, "depthClearValue", it)
     Nothing -> ()
@@ -2362,7 +2362,7 @@ pub fun newGpuRenderPassDepthStencilAttachment(view: gpuTextureView, depthClearV
     Just(it) -> setJsObjectField(obj, "stencilReadOnly", it)
     Nothing -> ()
 
-  GpuRenderPassDepthStencilAttachment(obj);
+  GpuRenderPassDepthStencilAttachment(obj)
 
 pub inline fun view(obj: gpuRenderPassDepthStencilAttachment, value: gpuTextureView): web ()
   setJsObjectField(obj.obj, "view", value.obj)
@@ -2422,7 +2422,7 @@ pub value struct gpuRenderPassLayout
   obj: jsObject
 
 pub fun newGpuRenderPassLayout(colorFormats: jsArray, depthStencilFormat: maybe<gpuTextureFormat> = Nothing, sampleCount: maybe<gpuSize32> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "colorFormats", colorFormats);  match depthStencilFormat
     Just(it) -> setJsObjectField(obj, "depthStencilFormat", it)
     Nothing -> ()
@@ -2430,7 +2430,7 @@ pub fun newGpuRenderPassLayout(colorFormats: jsArray, depthStencilFormat: maybe<
     Just(it) -> setJsObjectField(obj, "sampleCount", it)
     Nothing -> ()
 
-  GpuRenderPassLayout(obj);
+  GpuRenderPassLayout(obj)
 
 pub inline fun colorFormats(obj: gpuRenderPassLayout, value: jsArray): web ()
   setJsObjectField(obj.obj, "colorFormats", value.obj)
@@ -2483,9 +2483,9 @@ pub value struct gpuRenderBundleDescriptor
   obj: jsObject
 
 pub fun newGpuRenderBundleDescriptor()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  GpuRenderBundleDescriptor(obj);
+  GpuRenderBundleDescriptor(obj)
 
 pub value struct gpuRenderBundleEncoder
   obj: jsObject
@@ -2498,7 +2498,7 @@ pub value struct gpuRenderBundleEncoderDescriptor
   obj: jsObject
 
 pub fun newGpuRenderBundleEncoderDescriptor(depthReadOnly: maybe<bool> = Nothing, stencilReadOnly: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match depthReadOnly
     Just(it) -> setJsObjectField(obj, "depthReadOnly", it)
     Nothing -> ()
@@ -2506,7 +2506,7 @@ pub fun newGpuRenderBundleEncoderDescriptor(depthReadOnly: maybe<bool> = Nothing
     Just(it) -> setJsObjectField(obj, "stencilReadOnly", it)
     Nothing -> ()
 
-  GpuRenderBundleEncoderDescriptor(obj);
+  GpuRenderBundleEncoderDescriptor(obj)
 
 pub inline fun depthReadOnly(obj: gpuRenderBundleEncoderDescriptor, value: bool): web ()
   setJsObjectField(obj.obj, "depthReadOnly", value.obj)
@@ -2524,9 +2524,9 @@ pub value struct gpuQueueDescriptor
   obj: jsObject
 
 pub fun newGpuQueueDescriptor()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  GpuQueueDescriptor(obj);
+  GpuQueueDescriptor(obj)
 
 pub value struct gpuQueue
   obj: jsObject
@@ -2564,9 +2564,9 @@ pub value struct gpuQuerySetDescriptor
   obj: jsObject
 
 pub fun newGpuQuerySetDescriptor(type: gpuQueryType, count: gpuSize32)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);  setJsObjectField(obj, "count", count);
-  GpuQuerySetDescriptor(obj);
+  GpuQuerySetDescriptor(obj)
 
 pub inline fun type(obj: gpuQuerySetDescriptor, value: gpuQueryType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -2600,7 +2600,7 @@ pub value struct gpuCanvasConfiguration
   obj: jsObject
 
 pub fun newGpuCanvasConfiguration(device: gpuDevice, format: gpuTextureFormat, usage: maybe<gpuTextureUsageFlags> = Nothing, viewFormats: maybe<jsArray> = Nothing, colorSpace: maybe<html/predefinedColorSpace> = Nothing, alphaMode: maybe<gpuCanvasAlphaMode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "device", device);  setJsObjectField(obj, "format", format);  match usage
     Just(it) -> setJsObjectField(obj, "usage", it)
     Nothing -> ()
@@ -2614,7 +2614,7 @@ pub fun newGpuCanvasConfiguration(device: gpuDevice, format: gpuTextureFormat, u
     Just(it) -> setJsObjectField(obj, "alphaMode", it)
     Nothing -> ()
 
-  GpuCanvasConfiguration(obj);
+  GpuCanvasConfiguration(obj)
 
 pub inline fun device(obj: gpuCanvasConfiguration, value: gpuDevice): web ()
   setJsObjectField(obj.obj, "device", value.obj)
@@ -2700,9 +2700,9 @@ pub value struct gpuUncapturedErrorEventInit
   obj: jsObject
 
 pub fun newGpuUncapturedErrorEventInit(error: gpuError)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "error", error);
-  GpuUncapturedErrorEventInit(obj);
+  GpuUncapturedErrorEventInit(obj)
 
 pub inline fun error(obj: gpuUncapturedErrorEventInit, value: gpuError): web ()
   setJsObjectField(obj.obj, "error", value.obj)
@@ -2714,9 +2714,9 @@ pub value struct gpuColorDict
   obj: jsObject
 
 pub fun newGpuColorDict(r: double, g: double, b: double, a: double)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "r", r);  setJsObjectField(obj, "g", g);  setJsObjectField(obj, "b", b);  setJsObjectField(obj, "a", a);
-  GpuColorDict(obj);
+  GpuColorDict(obj)
 
 pub inline fun r(obj: gpuColorDict, value: double): web ()
   setJsObjectField(obj.obj, "r", value.obj)
@@ -2746,7 +2746,7 @@ pub value struct gpuOrigin2DDict
   obj: jsObject
 
 pub fun newGpuOrigin2DDict(x: maybe<gpuIntegerCoordinate> = Nothing, y: maybe<gpuIntegerCoordinate> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match x
     Just(it) -> setJsObjectField(obj, "x", it)
     Nothing -> ()
@@ -2754,7 +2754,7 @@ pub fun newGpuOrigin2DDict(x: maybe<gpuIntegerCoordinate> = Nothing, y: maybe<gp
     Just(it) -> setJsObjectField(obj, "y", it)
     Nothing -> ()
 
-  GpuOrigin2DDict(obj);
+  GpuOrigin2DDict(obj)
 
 pub inline fun x(obj: gpuOrigin2DDict, value: gpuIntegerCoordinate): web ()
   setJsObjectField(obj.obj, "x", value.obj)
@@ -2772,7 +2772,7 @@ pub value struct gpuOrigin3DDict
   obj: jsObject
 
 pub fun newGpuOrigin3DDict(x: maybe<gpuIntegerCoordinate> = Nothing, y: maybe<gpuIntegerCoordinate> = Nothing, z: maybe<gpuIntegerCoordinate> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match x
     Just(it) -> setJsObjectField(obj, "x", it)
     Nothing -> ()
@@ -2783,7 +2783,7 @@ pub fun newGpuOrigin3DDict(x: maybe<gpuIntegerCoordinate> = Nothing, y: maybe<gp
     Just(it) -> setJsObjectField(obj, "z", it)
     Nothing -> ()
 
-  GpuOrigin3DDict(obj);
+  GpuOrigin3DDict(obj)
 
 pub inline fun x(obj: gpuOrigin3DDict, value: gpuIntegerCoordinate): web ()
   setJsObjectField(obj.obj, "x", value.obj)
@@ -2807,7 +2807,7 @@ pub value struct gpuExtent3DDict
   obj: jsObject
 
 pub fun newGpuExtent3DDict(width: gpuIntegerCoordinate, height: maybe<gpuIntegerCoordinate> = Nothing, depthOrArrayLayers: maybe<gpuIntegerCoordinate> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "width", width);  match height
     Just(it) -> setJsObjectField(obj, "height", it)
     Nothing -> ()
@@ -2815,7 +2815,7 @@ pub fun newGpuExtent3DDict(width: gpuIntegerCoordinate, height: maybe<gpuInteger
     Just(it) -> setJsObjectField(obj, "depthOrArrayLayers", it)
     Nothing -> ()
 
-  GpuExtent3DDict(obj);
+  GpuExtent3DDict(obj)
 
 pub inline fun width(obj: gpuExtent3DDict, value: gpuIntegerCoordinate): web ()
   setJsObjectField(obj.obj, "width", value.obj)

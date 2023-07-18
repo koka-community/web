@@ -10,12 +10,12 @@ pub value struct colorSelectionResult
   obj: jsObject
 
 pub fun newColorSelectionResult(sRGBHex: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match sRGBHex
     Just(it) -> setJsObjectField(obj, "sRGBHex", it)
     Nothing -> ()
 
-  ColorSelectionResult(obj);
+  ColorSelectionResult(obj)
 
 pub inline fun sRGBHex(obj: colorSelectionResult, value: string): web ()
   setJsObjectField(obj.obj, "sRGBHex", value.obj)
@@ -27,12 +27,12 @@ pub value struct colorSelectionOptions
   obj: jsObject
 
 pub fun newColorSelectionOptions(signal: maybe<dom/abortSignal> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match signal
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
 
-  ColorSelectionOptions(obj);
+  ColorSelectionOptions(obj)
 
 pub inline fun signal(obj: colorSelectionOptions, value: dom/abortSignal): web ()
   setJsObjectField(obj.obj, "signal", value.obj)

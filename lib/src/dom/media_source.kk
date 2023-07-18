@@ -5,13 +5,13 @@ import web/wasm
 
 
 
-pub alias readyState = string;
+pub alias readyState = string
 
 
-pub alias endOfStreamError = string;
+pub alias endOfStreamError = string
 
 
-pub alias appendMode = string;
+pub alias appendMode = string
 
 pub value struct mediaSource
   obj: jsObject

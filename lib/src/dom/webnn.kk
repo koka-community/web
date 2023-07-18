@@ -2,59 +2,59 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias mlNamedArrayBufferViews = JSAny;
+pub alias mlNamedArrayBufferViews = JSAny
 
 
-pub alias mlgpuResource = JSAny;
+pub alias mlgpuResource = JSAny
 
 
-pub alias mlNamedGPUResources = JSAny;
+pub alias mlNamedGPUResources = JSAny
 
 
-pub alias mlNamedOperands = JSAny;
+pub alias mlNamedOperands = JSAny
 
 
-pub alias mlBufferView = JSAny;
+pub alias mlBufferView = JSAny
 
 
 
-pub alias mlDeviceType = string;
+pub alias mlDeviceType = string
 
 
-pub alias mlPowerPreference = string;
+pub alias mlPowerPreference = string
 
 
-pub alias mlInputOperandLayout = string;
+pub alias mlInputOperandLayout = string
 
 
-pub alias mlOperandType = string;
+pub alias mlOperandType = string
 
 
-pub alias mlConv2dFilterOperandLayout = string;
+pub alias mlConv2dFilterOperandLayout = string
 
 
-pub alias mlAutoPad = string;
+pub alias mlAutoPad = string
 
 
-pub alias mlConvTranspose2dFilterOperandLayout = string;
+pub alias mlConvTranspose2dFilterOperandLayout = string
 
 
-pub alias mlGruWeightLayout = string;
+pub alias mlGruWeightLayout = string
 
 
-pub alias mlRecurrentNetworkDirection = string;
+pub alias mlRecurrentNetworkDirection = string
 
 
-pub alias mlLstmWeightLayout = string;
+pub alias mlLstmWeightLayout = string
 
 
-pub alias mlPaddingMode = string;
+pub alias mlPaddingMode = string
 
 
-pub alias mlRoundingType = string;
+pub alias mlRoundingType = string
 
 
-pub alias mlInterpolationMode = string;
+pub alias mlInterpolationMode = string
 
 pub value struct navigatorML
   obj: jsObject
@@ -67,7 +67,7 @@ pub value struct mlContextOptions
   obj: jsObject
 
 pub fun newMlContextOptions(deviceType: maybe<mlDeviceType> = Nothing, powerPreference: maybe<mlPowerPreference> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match deviceType
     Just(it) -> setJsObjectField(obj, "deviceType", it)
     Nothing -> ()
@@ -75,7 +75,7 @@ pub fun newMlContextOptions(deviceType: maybe<mlDeviceType> = Nothing, powerPref
     Just(it) -> setJsObjectField(obj, "powerPreference", it)
     Nothing -> ()
 
-  MlContextOptions(obj);
+  MlContextOptions(obj)
 
 pub inline fun deviceType(obj: mlContextOptions, value: mlDeviceType): web ()
   setJsObjectField(obj.obj, "deviceType", value.obj)
@@ -107,12 +107,12 @@ pub value struct mlOperandDescriptor
   obj: jsObject
 
 pub fun newMlOperandDescriptor(type: mlOperandType, dimensions: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);  match dimensions
     Just(it) -> setJsObjectField(obj, "dimensions", it)
     Nothing -> ()
 
-  MlOperandDescriptor(obj);
+  MlOperandDescriptor(obj)
 
 pub inline fun type(obj: mlOperandDescriptor, value: mlOperandType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -151,7 +151,7 @@ pub value struct mlComputeResult
   obj: jsObject
 
 pub fun newMlComputeResult(inputs: maybe<mlNamedArrayBufferViews> = Nothing, outputs: maybe<mlNamedArrayBufferViews> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match inputs
     Just(it) -> setJsObjectField(obj, "inputs", it)
     Nothing -> ()
@@ -159,7 +159,7 @@ pub fun newMlComputeResult(inputs: maybe<mlNamedArrayBufferViews> = Nothing, out
     Just(it) -> setJsObjectField(obj, "outputs", it)
     Nothing -> ()
 
-  MlComputeResult(obj);
+  MlComputeResult(obj)
 
 pub inline fun inputs(obj: mlComputeResult, value: mlNamedArrayBufferViews): web ()
   setJsObjectField(obj.obj, "inputs", value.obj)
@@ -190,7 +190,7 @@ pub value struct mlBufferResourceView
   obj: jsObject
 
 pub fun newMlBufferResourceView(resource: webgpu/gpuBuffer, offset: maybe<int> = Nothing, size: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "resource", resource);  match offset
     Just(it) -> setJsObjectField(obj, "offset", it)
     Nothing -> ()
@@ -198,7 +198,7 @@ pub fun newMlBufferResourceView(resource: webgpu/gpuBuffer, offset: maybe<int> =
     Just(it) -> setJsObjectField(obj, "size", it)
     Nothing -> ()
 
-  MlBufferResourceView(obj);
+  MlBufferResourceView(obj)
 
 pub inline fun resource(obj: mlBufferResourceView, value: webgpu/gpuBuffer): web ()
   setJsObjectField(obj.obj, "resource", value.obj)
@@ -420,7 +420,7 @@ pub value struct mlBatchNormalizationOptions
   obj: jsObject
 
 pub fun newMlBatchNormalizationOptions(scale: maybe<mlOperand> = Nothing, bias: maybe<mlOperand> = Nothing, axis: maybe<int> = Nothing, epsilon: maybe<double> = Nothing, activation: maybe<mlActivation> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match scale
     Just(it) -> setJsObjectField(obj, "scale", it)
     Nothing -> ()
@@ -437,7 +437,7 @@ pub fun newMlBatchNormalizationOptions(scale: maybe<mlOperand> = Nothing, bias: 
     Just(it) -> setJsObjectField(obj, "activation", it)
     Nothing -> ()
 
-  MlBatchNormalizationOptions(obj);
+  MlBatchNormalizationOptions(obj)
 
 pub inline fun scale(obj: mlBatchNormalizationOptions, value: mlOperand): web ()
   setJsObjectField(obj.obj, "scale", value.obj)
@@ -473,7 +473,7 @@ pub value struct mlClampOptions
   obj: jsObject
 
 pub fun newMlClampOptions(minValue: maybe<double> = Nothing, maxValue: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match minValue
     Just(it) -> setJsObjectField(obj, "minValue", it)
     Nothing -> ()
@@ -481,7 +481,7 @@ pub fun newMlClampOptions(minValue: maybe<double> = Nothing, maxValue: maybe<dou
     Just(it) -> setJsObjectField(obj, "maxValue", it)
     Nothing -> ()
 
-  MlClampOptions(obj);
+  MlClampOptions(obj)
 
 pub inline fun minValue(obj: mlClampOptions, value: double): web ()
   setJsObjectField(obj.obj, "minValue", value.obj)
@@ -499,7 +499,7 @@ pub value struct mlConv2dOptions
   obj: jsObject
 
 pub fun newMlConv2dOptions(padding: maybe<jsArray> = Nothing, strides: maybe<jsArray> = Nothing, dilations: maybe<jsArray> = Nothing, autoPad: maybe<mlAutoPad> = Nothing, groups: maybe<int> = Nothing, inputLayout: maybe<mlInputOperandLayout> = Nothing, filterLayout: maybe<mlConv2dFilterOperandLayout> = Nothing, bias: maybe<mlOperand> = Nothing, activation: maybe<mlActivation> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match padding
     Just(it) -> setJsObjectField(obj, "padding", it)
     Nothing -> ()
@@ -528,7 +528,7 @@ pub fun newMlConv2dOptions(padding: maybe<jsArray> = Nothing, strides: maybe<jsA
     Just(it) -> setJsObjectField(obj, "activation", it)
     Nothing -> ()
 
-  MlConv2dOptions(obj);
+  MlConv2dOptions(obj)
 
 pub inline fun padding(obj: mlConv2dOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "padding", value.obj)
@@ -588,7 +588,7 @@ pub value struct mlConvTranspose2dOptions
   obj: jsObject
 
 pub fun newMlConvTranspose2dOptions(padding: maybe<jsArray> = Nothing, strides: maybe<jsArray> = Nothing, dilations: maybe<jsArray> = Nothing, outputPadding: maybe<jsArray> = Nothing, outputSizes: maybe<jsArray> = Nothing, autoPad: maybe<mlAutoPad> = Nothing, groups: maybe<int> = Nothing, inputLayout: maybe<mlInputOperandLayout> = Nothing, filterLayout: maybe<mlConvTranspose2dFilterOperandLayout> = Nothing, bias: maybe<mlOperand> = Nothing, activation: maybe<mlActivation> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match padding
     Just(it) -> setJsObjectField(obj, "padding", it)
     Nothing -> ()
@@ -623,7 +623,7 @@ pub fun newMlConvTranspose2dOptions(padding: maybe<jsArray> = Nothing, strides: 
     Just(it) -> setJsObjectField(obj, "activation", it)
     Nothing -> ()
 
-  MlConvTranspose2dOptions(obj);
+  MlConvTranspose2dOptions(obj)
 
 pub inline fun padding(obj: mlConvTranspose2dOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "padding", value.obj)
@@ -695,12 +695,12 @@ pub value struct mlEluOptions
   obj: jsObject
 
 pub fun newMlEluOptions(alpha: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match alpha
     Just(it) -> setJsObjectField(obj, "alpha", it)
     Nothing -> ()
 
-  MlEluOptions(obj);
+  MlEluOptions(obj)
 
 pub inline fun alpha(obj: mlEluOptions, value: double): web ()
   setJsObjectField(obj.obj, "alpha", value.obj)
@@ -712,7 +712,7 @@ pub value struct mlGemmOptions
   obj: jsObject
 
 pub fun newMlGemmOptions(c: maybe<mlOperand> = Nothing, alpha: maybe<double> = Nothing, beta: maybe<double> = Nothing, aTranspose: maybe<bool> = Nothing, bTranspose: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match c
     Just(it) -> setJsObjectField(obj, "c", it)
     Nothing -> ()
@@ -729,7 +729,7 @@ pub fun newMlGemmOptions(c: maybe<mlOperand> = Nothing, alpha: maybe<double> = N
     Just(it) -> setJsObjectField(obj, "bTranspose", it)
     Nothing -> ()
 
-  MlGemmOptions(obj);
+  MlGemmOptions(obj)
 
 pub inline fun c(obj: mlGemmOptions, value: mlOperand): web ()
   setJsObjectField(obj.obj, "c", value.obj)
@@ -765,7 +765,7 @@ pub value struct mlGruOptions
   obj: jsObject
 
 pub fun newMlGruOptions(bias: maybe<mlOperand> = Nothing, recurrentBias: maybe<mlOperand> = Nothing, initialHiddenState: maybe<mlOperand> = Nothing, resetAfter: maybe<bool> = Nothing, returnSequence: maybe<bool> = Nothing, direction: maybe<mlRecurrentNetworkDirection> = Nothing, layout: maybe<mlGruWeightLayout> = Nothing, activations: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match bias
     Just(it) -> setJsObjectField(obj, "bias", it)
     Nothing -> ()
@@ -791,7 +791,7 @@ pub fun newMlGruOptions(bias: maybe<mlOperand> = Nothing, recurrentBias: maybe<m
     Just(it) -> setJsObjectField(obj, "activations", it)
     Nothing -> ()
 
-  MlGruOptions(obj);
+  MlGruOptions(obj)
 
 pub inline fun bias(obj: mlGruOptions, value: mlOperand): web ()
   setJsObjectField(obj.obj, "bias", value.obj)
@@ -845,7 +845,7 @@ pub value struct mlGruCellOptions
   obj: jsObject
 
 pub fun newMlGruCellOptions(bias: maybe<mlOperand> = Nothing, recurrentBias: maybe<mlOperand> = Nothing, resetAfter: maybe<bool> = Nothing, layout: maybe<mlGruWeightLayout> = Nothing, activations: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match bias
     Just(it) -> setJsObjectField(obj, "bias", it)
     Nothing -> ()
@@ -862,7 +862,7 @@ pub fun newMlGruCellOptions(bias: maybe<mlOperand> = Nothing, recurrentBias: may
     Just(it) -> setJsObjectField(obj, "activations", it)
     Nothing -> ()
 
-  MlGruCellOptions(obj);
+  MlGruCellOptions(obj)
 
 pub inline fun bias(obj: mlGruCellOptions, value: mlOperand): web ()
   setJsObjectField(obj.obj, "bias", value.obj)
@@ -898,7 +898,7 @@ pub value struct mlHardSigmoidOptions
   obj: jsObject
 
 pub fun newMlHardSigmoidOptions(alpha: maybe<double> = Nothing, beta: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match alpha
     Just(it) -> setJsObjectField(obj, "alpha", it)
     Nothing -> ()
@@ -906,7 +906,7 @@ pub fun newMlHardSigmoidOptions(alpha: maybe<double> = Nothing, beta: maybe<doub
     Just(it) -> setJsObjectField(obj, "beta", it)
     Nothing -> ()
 
-  MlHardSigmoidOptions(obj);
+  MlHardSigmoidOptions(obj)
 
 pub inline fun alpha(obj: mlHardSigmoidOptions, value: double): web ()
   setJsObjectField(obj.obj, "alpha", value.obj)
@@ -924,7 +924,7 @@ pub value struct mlInstanceNormalizationOptions
   obj: jsObject
 
 pub fun newMlInstanceNormalizationOptions(scale: maybe<mlOperand> = Nothing, bias: maybe<mlOperand> = Nothing, epsilon: maybe<double> = Nothing, layout: maybe<mlInputOperandLayout> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match scale
     Just(it) -> setJsObjectField(obj, "scale", it)
     Nothing -> ()
@@ -938,7 +938,7 @@ pub fun newMlInstanceNormalizationOptions(scale: maybe<mlOperand> = Nothing, bia
     Just(it) -> setJsObjectField(obj, "layout", it)
     Nothing -> ()
 
-  MlInstanceNormalizationOptions(obj);
+  MlInstanceNormalizationOptions(obj)
 
 pub inline fun scale(obj: mlInstanceNormalizationOptions, value: mlOperand): web ()
   setJsObjectField(obj.obj, "scale", value.obj)
@@ -968,12 +968,12 @@ pub value struct mlLeakyReluOptions
   obj: jsObject
 
 pub fun newMlLeakyReluOptions(alpha: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match alpha
     Just(it) -> setJsObjectField(obj, "alpha", it)
     Nothing -> ()
 
-  MlLeakyReluOptions(obj);
+  MlLeakyReluOptions(obj)
 
 pub inline fun alpha(obj: mlLeakyReluOptions, value: double): web ()
   setJsObjectField(obj.obj, "alpha", value.obj)
@@ -985,7 +985,7 @@ pub value struct mlLinearOptions
   obj: jsObject
 
 pub fun newMlLinearOptions(alpha: maybe<double> = Nothing, beta: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match alpha
     Just(it) -> setJsObjectField(obj, "alpha", it)
     Nothing -> ()
@@ -993,7 +993,7 @@ pub fun newMlLinearOptions(alpha: maybe<double> = Nothing, beta: maybe<double> =
     Just(it) -> setJsObjectField(obj, "beta", it)
     Nothing -> ()
 
-  MlLinearOptions(obj);
+  MlLinearOptions(obj)
 
 pub inline fun alpha(obj: mlLinearOptions, value: double): web ()
   setJsObjectField(obj.obj, "alpha", value.obj)
@@ -1011,7 +1011,7 @@ pub value struct mlLstmOptions
   obj: jsObject
 
 pub fun newMlLstmOptions(bias: maybe<mlOperand> = Nothing, recurrentBias: maybe<mlOperand> = Nothing, peepholeWeight: maybe<mlOperand> = Nothing, initialHiddenState: maybe<mlOperand> = Nothing, initialCellState: maybe<mlOperand> = Nothing, returnSequence: maybe<bool> = Nothing, direction: maybe<mlRecurrentNetworkDirection> = Nothing, layout: maybe<mlLstmWeightLayout> = Nothing, activations: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match bias
     Just(it) -> setJsObjectField(obj, "bias", it)
     Nothing -> ()
@@ -1040,7 +1040,7 @@ pub fun newMlLstmOptions(bias: maybe<mlOperand> = Nothing, recurrentBias: maybe<
     Just(it) -> setJsObjectField(obj, "activations", it)
     Nothing -> ()
 
-  MlLstmOptions(obj);
+  MlLstmOptions(obj)
 
 pub inline fun bias(obj: mlLstmOptions, value: mlOperand): web ()
   setJsObjectField(obj.obj, "bias", value.obj)
@@ -1100,7 +1100,7 @@ pub value struct mlLstmCellOptions
   obj: jsObject
 
 pub fun newMlLstmCellOptions(bias: maybe<mlOperand> = Nothing, recurrentBias: maybe<mlOperand> = Nothing, peepholeWeight: maybe<mlOperand> = Nothing, layout: maybe<mlLstmWeightLayout> = Nothing, activations: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match bias
     Just(it) -> setJsObjectField(obj, "bias", it)
     Nothing -> ()
@@ -1117,7 +1117,7 @@ pub fun newMlLstmCellOptions(bias: maybe<mlOperand> = Nothing, recurrentBias: ma
     Just(it) -> setJsObjectField(obj, "activations", it)
     Nothing -> ()
 
-  MlLstmCellOptions(obj);
+  MlLstmCellOptions(obj)
 
 pub inline fun bias(obj: mlLstmCellOptions, value: mlOperand): web ()
   setJsObjectField(obj.obj, "bias", value.obj)
@@ -1153,7 +1153,7 @@ pub value struct mlPadOptions
   obj: jsObject
 
 pub fun newMlPadOptions(mode: maybe<mlPaddingMode> = Nothing, value: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match mode
     Just(it) -> setJsObjectField(obj, "mode", it)
     Nothing -> ()
@@ -1161,7 +1161,7 @@ pub fun newMlPadOptions(mode: maybe<mlPaddingMode> = Nothing, value: maybe<doubl
     Just(it) -> setJsObjectField(obj, "value", it)
     Nothing -> ()
 
-  MlPadOptions(obj);
+  MlPadOptions(obj)
 
 pub inline fun mode(obj: mlPadOptions, value: mlPaddingMode): web ()
   setJsObjectField(obj.obj, "mode", value.obj)
@@ -1179,7 +1179,7 @@ pub value struct mlPool2dOptions
   obj: jsObject
 
 pub fun newMlPool2dOptions(windowDimensions: maybe<jsArray> = Nothing, padding: maybe<jsArray> = Nothing, strides: maybe<jsArray> = Nothing, dilations: maybe<jsArray> = Nothing, autoPad: maybe<mlAutoPad> = Nothing, layout: maybe<mlInputOperandLayout> = Nothing, roundingType: maybe<mlRoundingType> = Nothing, outputSizes: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match windowDimensions
     Just(it) -> setJsObjectField(obj, "windowDimensions", it)
     Nothing -> ()
@@ -1205,7 +1205,7 @@ pub fun newMlPool2dOptions(windowDimensions: maybe<jsArray> = Nothing, padding: 
     Just(it) -> setJsObjectField(obj, "outputSizes", it)
     Nothing -> ()
 
-  MlPool2dOptions(obj);
+  MlPool2dOptions(obj)
 
 pub inline fun windowDimensions(obj: mlPool2dOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "windowDimensions", value.obj)
@@ -1259,7 +1259,7 @@ pub value struct mlReduceOptions
   obj: jsObject
 
 pub fun newMlReduceOptions(axes: maybe<jsArray> = Nothing, keepDimensions: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match axes
     Just(it) -> setJsObjectField(obj, "axes", it)
     Nothing -> ()
@@ -1267,7 +1267,7 @@ pub fun newMlReduceOptions(axes: maybe<jsArray> = Nothing, keepDimensions: maybe
     Just(it) -> setJsObjectField(obj, "keepDimensions", it)
     Nothing -> ()
 
-  MlReduceOptions(obj);
+  MlReduceOptions(obj)
 
 pub inline fun axes(obj: mlReduceOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "axes", value.obj)
@@ -1285,7 +1285,7 @@ pub value struct mlResample2dOptions
   obj: jsObject
 
 pub fun newMlResample2dOptions(mode: maybe<mlInterpolationMode> = Nothing, scales: maybe<jsArray> = Nothing, sizes: maybe<jsArray> = Nothing, axes: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match mode
     Just(it) -> setJsObjectField(obj, "mode", it)
     Nothing -> ()
@@ -1299,7 +1299,7 @@ pub fun newMlResample2dOptions(mode: maybe<mlInterpolationMode> = Nothing, scale
     Just(it) -> setJsObjectField(obj, "axes", it)
     Nothing -> ()
 
-  MlResample2dOptions(obj);
+  MlResample2dOptions(obj)
 
 pub inline fun mode(obj: mlResample2dOptions, value: mlInterpolationMode): web ()
   setJsObjectField(obj.obj, "mode", value.obj)
@@ -1329,12 +1329,12 @@ pub value struct mlSoftplusOptions
   obj: jsObject
 
 pub fun newMlSoftplusOptions(steepness: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match steepness
     Just(it) -> setJsObjectField(obj, "steepness", it)
     Nothing -> ()
 
-  MlSoftplusOptions(obj);
+  MlSoftplusOptions(obj)
 
 pub inline fun steepness(obj: mlSoftplusOptions, value: double): web ()
   setJsObjectField(obj.obj, "steepness", value.obj)
@@ -1346,12 +1346,12 @@ pub value struct mlSplitOptions
   obj: jsObject
 
 pub fun newMlSplitOptions(axis: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match axis
     Just(it) -> setJsObjectField(obj, "axis", it)
     Nothing -> ()
 
-  MlSplitOptions(obj);
+  MlSplitOptions(obj)
 
 pub inline fun axis(obj: mlSplitOptions, value: int): web ()
   setJsObjectField(obj.obj, "axis", value.obj)
@@ -1363,12 +1363,12 @@ pub value struct mlSqueezeOptions
   obj: jsObject
 
 pub fun newMlSqueezeOptions(axes: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match axes
     Just(it) -> setJsObjectField(obj, "axes", it)
     Nothing -> ()
 
-  MlSqueezeOptions(obj);
+  MlSqueezeOptions(obj)
 
 pub inline fun axes(obj: mlSqueezeOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "axes", value.obj)
@@ -1380,12 +1380,12 @@ pub value struct mlTransposeOptions
   obj: jsObject
 
 pub fun newMlTransposeOptions(permutation: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match permutation
     Just(it) -> setJsObjectField(obj, "permutation", it)
     Nothing -> ()
 
-  MlTransposeOptions(obj);
+  MlTransposeOptions(obj)
 
 pub inline fun permutation(obj: mlTransposeOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "permutation", value.obj)

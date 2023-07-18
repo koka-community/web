@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias xrReflectionFormat = string;
+pub alias xrReflectionFormat = string
 
 pub value struct xrLightProbe
   obj: jsObject
@@ -37,12 +37,12 @@ pub value struct xrLightProbeInit
   obj: jsObject
 
 pub fun newXrLightProbeInit(reflectionFormat: maybe<xrReflectionFormat> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match reflectionFormat
     Just(it) -> setJsObjectField(obj, "reflectionFormat", it)
     Nothing -> ()
 
-  XrLightProbeInit(obj);
+  XrLightProbeInit(obj)
 
 pub inline fun reflectionFormat(obj: xrLightProbeInit, value: xrReflectionFormat): web ()
   setJsObjectField(obj.obj, "reflectionFormat", value.obj)

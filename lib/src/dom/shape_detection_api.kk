@@ -5,10 +5,10 @@ import web/wasm
 
 
 
-pub alias landmarkType = string;
+pub alias landmarkType = string
 
 
-pub alias barcodeFormat = string;
+pub alias barcodeFormat = string
 
 pub value struct faceDetector
   obj: jsObject
@@ -23,7 +23,7 @@ pub value struct faceDetectorOptions
   obj: jsObject
 
 pub fun newFaceDetectorOptions(maxDetectedFaces: maybe<int> = Nothing, fastMode: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match maxDetectedFaces
     Just(it) -> setJsObjectField(obj, "maxDetectedFaces", it)
     Nothing -> ()
@@ -31,7 +31,7 @@ pub fun newFaceDetectorOptions(maxDetectedFaces: maybe<int> = Nothing, fastMode:
     Just(it) -> setJsObjectField(obj, "fastMode", it)
     Nothing -> ()
 
-  FaceDetectorOptions(obj);
+  FaceDetectorOptions(obj)
 
 pub inline fun maxDetectedFaces(obj: faceDetectorOptions, value: int): web ()
   setJsObjectField(obj.obj, "maxDetectedFaces", value.obj)
@@ -49,9 +49,9 @@ pub value struct detectedFace
   obj: jsObject
 
 pub fun newDetectedFace(boundingBox: geometry/domRectReadOnly, landmarks: maybe<jsArray>)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "boundingBox", boundingBox);  setJsObjectField(obj, "landmarks", landmarks);
-  DetectedFace(obj);
+  DetectedFace(obj)
 
 pub inline fun boundingBox(obj: detectedFace, value: geometry/domRectReadOnly): web ()
   setJsObjectField(obj.obj, "boundingBox", value.obj)
@@ -69,12 +69,12 @@ pub value struct landmark
   obj: jsObject
 
 pub fun newLandmark(locations: jsArray, type: maybe<landmarkType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "locations", locations);  match type
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
 
-  Landmark(obj);
+  Landmark(obj)
 
 pub inline fun locations(obj: landmark, value: jsArray): web ()
   setJsObjectField(obj.obj, "locations", value.obj)
@@ -103,12 +103,12 @@ pub value struct barcodeDetectorOptions
   obj: jsObject
 
 pub fun newBarcodeDetectorOptions(formats: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match formats
     Just(it) -> setJsObjectField(obj, "formats", it)
     Nothing -> ()
 
-  BarcodeDetectorOptions(obj);
+  BarcodeDetectorOptions(obj)
 
 pub inline fun formats(obj: barcodeDetectorOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "formats", value.obj)
@@ -120,9 +120,9 @@ pub value struct detectedBarcode
   obj: jsObject
 
 pub fun newDetectedBarcode(boundingBox: geometry/domRectReadOnly, rawValue: string, format: barcodeFormat, cornerPoints: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "boundingBox", boundingBox);  setJsObjectField(obj, "rawValue", rawValue);  setJsObjectField(obj, "format", format);  setJsObjectField(obj, "cornerPoints", cornerPoints);
-  DetectedBarcode(obj);
+  DetectedBarcode(obj)
 
 pub inline fun boundingBox(obj: detectedBarcode, value: geometry/domRectReadOnly): web ()
   setJsObjectField(obj.obj, "boundingBox", value.obj)

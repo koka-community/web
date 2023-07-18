@@ -3,79 +3,79 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias rtcPeerConnectionErrorCallback = jsFunction;
+pub alias rtcPeerConnectionErrorCallback = jsFunction
 
 
-pub alias rtcSessionDescriptionCallback = jsFunction;
+pub alias rtcSessionDescriptionCallback = jsFunction
 
 
-pub alias rtcIceTransportPolicy = string;
+pub alias rtcIceTransportPolicy = string
 
 
-pub alias rtcBundlePolicy = string;
+pub alias rtcBundlePolicy = string
 
 
-pub alias rtcRtcpMuxPolicy = string;
+pub alias rtcRtcpMuxPolicy = string
 
 
-pub alias rtcSignalingState = string;
+pub alias rtcSignalingState = string
 
 
-pub alias rtcIceGatheringState = string;
+pub alias rtcIceGatheringState = string
 
 
-pub alias rtcPeerConnectionState = string;
+pub alias rtcPeerConnectionState = string
 
 
-pub alias rtcIceConnectionState = string;
+pub alias rtcIceConnectionState = string
 
 
-pub alias rtcSdpType = string;
+pub alias rtcSdpType = string
 
 
-pub alias rtcIceProtocol = string;
+pub alias rtcIceProtocol = string
 
 
-pub alias rtcIceTcpCandidateType = string;
+pub alias rtcIceTcpCandidateType = string
 
 
-pub alias rtcIceCandidateType = string;
+pub alias rtcIceCandidateType = string
 
 
-pub alias rtcIceServerTransportProtocol = string;
+pub alias rtcIceServerTransportProtocol = string
 
 
-pub alias rtcRtpTransceiverDirection = string;
+pub alias rtcRtpTransceiverDirection = string
 
 
-pub alias rtcDtlsTransportState = string;
+pub alias rtcDtlsTransportState = string
 
 
-pub alias rtcIceGathererState = string;
+pub alias rtcIceGathererState = string
 
 
-pub alias rtcIceTransportState = string;
+pub alias rtcIceTransportState = string
 
 
-pub alias rtcIceRole = string;
+pub alias rtcIceRole = string
 
 
-pub alias rtcIceComponent = string;
+pub alias rtcIceComponent = string
 
 
-pub alias rtcSctpTransportState = string;
+pub alias rtcSctpTransportState = string
 
 
-pub alias rtcDataChannelState = string;
+pub alias rtcDataChannelState = string
 
 
-pub alias rtcErrorDetailType = string;
+pub alias rtcErrorDetailType = string
 
 pub value struct rtcConfiguration
   obj: jsObject
 
 pub fun newRtcConfiguration(peerIdentity: maybe<string> = Nothing, iceServers: maybe<jsArray> = Nothing, iceTransportPolicy: maybe<rtcIceTransportPolicy> = Nothing, bundlePolicy: maybe<rtcBundlePolicy> = Nothing, rtcpMuxPolicy: maybe<rtcRtcpMuxPolicy> = Nothing, certificates: maybe<jsArray> = Nothing, iceCandidatePoolSize: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match peerIdentity
     Just(it) -> setJsObjectField(obj, "peerIdentity", it)
     Nothing -> ()
@@ -98,7 +98,7 @@ pub fun newRtcConfiguration(peerIdentity: maybe<string> = Nothing, iceServers: m
     Just(it) -> setJsObjectField(obj, "iceCandidatePoolSize", it)
     Nothing -> ()
 
-  RtcConfiguration(obj);
+  RtcConfiguration(obj)
 
 pub inline fun peerIdentity(obj: rtcConfiguration, value: string): web ()
   setJsObjectField(obj.obj, "peerIdentity", value.obj)
@@ -146,7 +146,7 @@ pub value struct rtcIceServer
   obj: jsObject
 
 pub fun newRtcIceServer(urls: maybe<jsObject>, username: maybe<string> = Nothing, credential: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "urls", urls);  match username
     Just(it) -> setJsObjectField(obj, "username", it)
     Nothing -> ()
@@ -154,7 +154,7 @@ pub fun newRtcIceServer(urls: maybe<jsObject>, username: maybe<string> = Nothing
     Just(it) -> setJsObjectField(obj, "credential", it)
     Nothing -> ()
 
-  RtcIceServer(obj);
+  RtcIceServer(obj)
 
 pub inline fun urls(obj: rtcIceServer, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "urls", value.obj)
@@ -178,15 +178,15 @@ pub value struct rtcOfferAnswerOptions
   obj: jsObject
 
 pub fun newRtcOfferAnswerOptions()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  RtcOfferAnswerOptions(obj);
+  RtcOfferAnswerOptions(obj)
 
 pub value struct rtcOfferOptions
   obj: jsObject
 
 pub fun newRtcOfferOptions(iceRestart: maybe<bool> = Nothing, offerToReceiveAudio: maybe<bool> = Nothing, offerToReceiveVideo: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match iceRestart
     Just(it) -> setJsObjectField(obj, "iceRestart", it)
     Nothing -> ()
@@ -197,7 +197,7 @@ pub fun newRtcOfferOptions(iceRestart: maybe<bool> = Nothing, offerToReceiveAudi
     Just(it) -> setJsObjectField(obj, "offerToReceiveVideo", it)
     Nothing -> ()
 
-  RtcOfferOptions(obj);
+  RtcOfferOptions(obj)
 
 pub inline fun iceRestart(obj: rtcOfferOptions, value: bool): web ()
   setJsObjectField(obj.obj, "iceRestart", value.obj)
@@ -221,9 +221,9 @@ pub value struct rtcAnswerOptions
   obj: jsObject
 
 pub fun newRtcAnswerOptions()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  RtcAnswerOptions(obj);
+  RtcAnswerOptions(obj)
 
 pub value struct rtcPeerConnection
   obj: jsObject
@@ -408,12 +408,12 @@ pub value struct rtcSessionDescriptionInit
   obj: jsObject
 
 pub fun newRtcSessionDescriptionInit(type: rtcSdpType, sdp: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);  match sdp
     Just(it) -> setJsObjectField(obj, "sdp", it)
     Nothing -> ()
 
-  RtcSessionDescriptionInit(obj);
+  RtcSessionDescriptionInit(obj)
 
 pub inline fun type(obj: rtcSessionDescriptionInit, value: rtcSdpType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -431,7 +431,7 @@ pub value struct rtcLocalSessionDescriptionInit
   obj: jsObject
 
 pub fun newRtcLocalSessionDescriptionInit(type: maybe<rtcSdpType> = Nothing, sdp: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match type
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
@@ -439,7 +439,7 @@ pub fun newRtcLocalSessionDescriptionInit(type: maybe<rtcSdpType> = Nothing, sdp
     Just(it) -> setJsObjectField(obj, "sdp", it)
     Nothing -> ()
 
-  RtcLocalSessionDescriptionInit(obj);
+  RtcLocalSessionDescriptionInit(obj)
 
 pub inline fun type(obj: rtcLocalSessionDescriptionInit, value: rtcSdpType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -514,7 +514,7 @@ pub value struct rtcIceCandidateInit
   obj: jsObject
 
 pub fun newRtcIceCandidateInit(candidate: maybe<string> = Nothing, sdpMid: maybe<maybe<string>> = Nothing, sdpMLineIndex: maybe<maybe<int>> = Nothing, usernameFragment: maybe<maybe<string>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match candidate
     Just(it) -> setJsObjectField(obj, "candidate", it)
     Nothing -> ()
@@ -528,7 +528,7 @@ pub fun newRtcIceCandidateInit(candidate: maybe<string> = Nothing, sdpMid: maybe
     Just(it) -> setJsObjectField(obj, "usernameFragment", it)
     Nothing -> ()
 
-  RtcIceCandidateInit(obj);
+  RtcIceCandidateInit(obj)
 
 pub inline fun candidate(obj: rtcIceCandidateInit, value: string): web ()
   setJsObjectField(obj.obj, "candidate", value.obj)
@@ -570,7 +570,7 @@ pub value struct rtcPeerConnectionIceEventInit
   obj: jsObject
 
 pub fun newRtcPeerConnectionIceEventInit(candidate: maybe<maybe<rtcIceCandidate>> = Nothing, url: maybe<maybe<string>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match candidate
     Just(it) -> setJsObjectField(obj, "candidate", it)
     Nothing -> ()
@@ -578,7 +578,7 @@ pub fun newRtcPeerConnectionIceEventInit(candidate: maybe<maybe<rtcIceCandidate>
     Just(it) -> setJsObjectField(obj, "url", it)
     Nothing -> ()
 
-  RtcPeerConnectionIceEventInit(obj);
+  RtcPeerConnectionIceEventInit(obj)
 
 pub inline fun candidate(obj: rtcPeerConnectionIceEventInit, value: maybe<rtcIceCandidate>): web ()
   setJsObjectField(obj.obj, "candidate", value.obj)
@@ -617,7 +617,7 @@ pub value struct rtcPeerConnectionIceErrorEventInit
   obj: jsObject
 
 pub fun newRtcPeerConnectionIceErrorEventInit(address: maybe<maybe<string>> = Nothing, port: maybe<maybe<int>> = Nothing, url: maybe<string> = Nothing, errorCode: int, errorText: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match address
     Just(it) -> setJsObjectField(obj, "address", it)
     Nothing -> ()
@@ -631,7 +631,7 @@ pub fun newRtcPeerConnectionIceErrorEventInit(address: maybe<maybe<string>> = No
     Just(it) -> setJsObjectField(obj, "errorText", it)
     Nothing -> ()
 
-  RtcPeerConnectionIceErrorEventInit(obj);
+  RtcPeerConnectionIceErrorEventInit(obj)
 
 pub inline fun address(obj: rtcPeerConnectionIceErrorEventInit, value: maybe<string>): web ()
   setJsObjectField(obj.obj, "address", value.obj)
@@ -667,12 +667,12 @@ pub value struct rtcCertificateExpiration
   obj: jsObject
 
 pub fun newRtcCertificateExpiration(expires: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match expires
     Just(it) -> setJsObjectField(obj, "expires", it)
     Nothing -> ()
 
-  RtcCertificateExpiration(obj);
+  RtcCertificateExpiration(obj)
 
 pub inline fun expires(obj: rtcCertificateExpiration, value: int): web ()
   setJsObjectField(obj.obj, "expires", value.obj)
@@ -694,7 +694,7 @@ pub value struct rtcRtpTransceiverInit
   obj: jsObject
 
 pub fun newRtcRtpTransceiverInit(direction: maybe<rtcRtpTransceiverDirection> = Nothing, streams: maybe<jsArray> = Nothing, sendEncodings: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match direction
     Just(it) -> setJsObjectField(obj, "direction", it)
     Nothing -> ()
@@ -705,7 +705,7 @@ pub fun newRtcRtpTransceiverInit(direction: maybe<rtcRtpTransceiverDirection> = 
     Just(it) -> setJsObjectField(obj, "sendEncodings", it)
     Nothing -> ()
 
-  RtcRtpTransceiverInit(obj);
+  RtcRtpTransceiverInit(obj)
 
 pub inline fun direction(obj: rtcRtpTransceiverInit, value: rtcRtpTransceiverDirection): web ()
   setJsObjectField(obj.obj, "direction", value.obj)
@@ -768,9 +768,9 @@ pub value struct rtcRtpParameters
   obj: jsObject
 
 pub fun newRtcRtpParameters(headerExtensions: jsArray, rtcp: rtcRtcpParameters, codecs: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "headerExtensions", headerExtensions);  setJsObjectField(obj, "rtcp", rtcp);  setJsObjectField(obj, "codecs", codecs);
-  RtcRtpParameters(obj);
+  RtcRtpParameters(obj)
 
 pub inline fun headerExtensions(obj: rtcRtpParameters, value: jsArray): web ()
   setJsObjectField(obj.obj, "headerExtensions", value.obj)
@@ -794,12 +794,12 @@ pub value struct rtcRtpSendParameters
   obj: jsObject
 
 pub fun newRtcRtpSendParameters(degradationPreference: maybe<mst_content_hint/rtcDegradationPreference> = Nothing, transactionId: string, encodings: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match degradationPreference
     Just(it) -> setJsObjectField(obj, "degradationPreference", it)
     Nothing -> ()
   setJsObjectField(obj, "transactionId", transactionId);  setJsObjectField(obj, "encodings", encodings);
-  RtcRtpSendParameters(obj);
+  RtcRtpSendParameters(obj)
 
 pub inline fun degradationPreference(obj: rtcRtpSendParameters, value: mst_content_hint/rtcDegradationPreference): web ()
   setJsObjectField(obj.obj, "degradationPreference", value.obj)
@@ -823,20 +823,20 @@ pub value struct rtcRtpReceiveParameters
   obj: jsObject
 
 pub fun newRtcRtpReceiveParameters()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  RtcRtpReceiveParameters(obj);
+  RtcRtpReceiveParameters(obj)
 
 pub value struct rtcRtpCodingParameters
   obj: jsObject
 
 pub fun newRtcRtpCodingParameters(rid: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match rid
     Just(it) -> setJsObjectField(obj, "rid", it)
     Nothing -> ()
 
-  RtcRtpCodingParameters(obj);
+  RtcRtpCodingParameters(obj)
 
 pub inline fun rid(obj: rtcRtpCodingParameters, value: string): web ()
   setJsObjectField(obj.obj, "rid", value.obj)
@@ -848,7 +848,7 @@ pub value struct rtcRtpEncodingParameters
   obj: jsObject
 
 pub fun newRtcRtpEncodingParameters(priority: maybe<webrtc_priority/rtcPriorityType> = Nothing, networkPriority: maybe<webrtc_priority/rtcPriorityType> = Nothing, scalabilityMode: maybe<string> = Nothing, active: maybe<bool> = Nothing, maxBitrate: maybe<int> = Nothing, maxFramerate: maybe<double> = Nothing, scaleResolutionDownBy: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match priority
     Just(it) -> setJsObjectField(obj, "priority", it)
     Nothing -> ()
@@ -871,7 +871,7 @@ pub fun newRtcRtpEncodingParameters(priority: maybe<webrtc_priority/rtcPriorityT
     Just(it) -> setJsObjectField(obj, "scaleResolutionDownBy", it)
     Nothing -> ()
 
-  RtcRtpEncodingParameters(obj);
+  RtcRtpEncodingParameters(obj)
 
 pub inline fun priority(obj: rtcRtpEncodingParameters, value: webrtc_priority/rtcPriorityType): web ()
   setJsObjectField(obj.obj, "priority", value.obj)
@@ -919,7 +919,7 @@ pub value struct rtcRtcpParameters
   obj: jsObject
 
 pub fun newRtcRtcpParameters(cname: maybe<string> = Nothing, reducedSize: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match cname
     Just(it) -> setJsObjectField(obj, "cname", it)
     Nothing -> ()
@@ -927,7 +927,7 @@ pub fun newRtcRtcpParameters(cname: maybe<string> = Nothing, reducedSize: maybe<
     Just(it) -> setJsObjectField(obj, "reducedSize", it)
     Nothing -> ()
 
-  RtcRtcpParameters(obj);
+  RtcRtcpParameters(obj)
 
 pub inline fun cname(obj: rtcRtcpParameters, value: string): web ()
   setJsObjectField(obj.obj, "cname", value.obj)
@@ -945,12 +945,12 @@ pub value struct rtcRtpHeaderExtensionParameters
   obj: jsObject
 
 pub fun newRtcRtpHeaderExtensionParameters(uri: string, id: int, encrypted: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "uri", uri);  setJsObjectField(obj, "id", id);  match encrypted
     Just(it) -> setJsObjectField(obj, "encrypted", it)
     Nothing -> ()
 
-  RtcRtpHeaderExtensionParameters(obj);
+  RtcRtpHeaderExtensionParameters(obj)
 
 pub inline fun uri(obj: rtcRtpHeaderExtensionParameters, value: string): web ()
   setJsObjectField(obj.obj, "uri", value.obj)
@@ -974,7 +974,7 @@ pub value struct rtcRtpCodec
   obj: jsObject
 
 pub fun newRtcRtpCodec(mimeType: string, clockRate: int, channels: maybe<int> = Nothing, sdpFmtpLine: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "mimeType", mimeType);  setJsObjectField(obj, "clockRate", clockRate);  match channels
     Just(it) -> setJsObjectField(obj, "channels", it)
     Nothing -> ()
@@ -982,7 +982,7 @@ pub fun newRtcRtpCodec(mimeType: string, clockRate: int, channels: maybe<int> = 
     Just(it) -> setJsObjectField(obj, "sdpFmtpLine", it)
     Nothing -> ()
 
-  RtcRtpCodec(obj);
+  RtcRtpCodec(obj)
 
 pub inline fun mimeType(obj: rtcRtpCodec, value: string): web ()
   setJsObjectField(obj.obj, "mimeType", value.obj)
@@ -1012,9 +1012,9 @@ pub value struct rtcRtpCodecParameters
   obj: jsObject
 
 pub fun newRtcRtpCodecParameters(payloadType: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "payloadType", payloadType);
-  RtcRtpCodecParameters(obj);
+  RtcRtpCodecParameters(obj)
 
 pub inline fun payloadType(obj: rtcRtpCodecParameters, value: int): web ()
   setJsObjectField(obj.obj, "payloadType", value.obj)
@@ -1026,9 +1026,9 @@ pub value struct rtcRtpCapabilities
   obj: jsObject
 
 pub fun newRtcRtpCapabilities(codecs: jsArray, headerExtensions: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "codecs", codecs);  setJsObjectField(obj, "headerExtensions", headerExtensions);
-  RtcRtpCapabilities(obj);
+  RtcRtpCapabilities(obj)
 
 pub inline fun codecs(obj: rtcRtpCapabilities, value: jsArray): web ()
   setJsObjectField(obj.obj, "codecs", value.obj)
@@ -1046,17 +1046,17 @@ pub value struct rtcRtpCodecCapability
   obj: jsObject
 
 pub fun newRtcRtpCodecCapability()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  RtcRtpCodecCapability(obj);
+  RtcRtpCodecCapability(obj)
 
 pub value struct rtcRtpHeaderExtensionCapability
   obj: jsObject
 
 pub fun newRtcRtpHeaderExtensionCapability(uri: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "uri", uri);
-  RtcRtpHeaderExtensionCapability(obj);
+  RtcRtpHeaderExtensionCapability(obj)
 
 pub inline fun uri(obj: rtcRtpHeaderExtensionCapability, value: string): web ()
   setJsObjectField(obj.obj, "uri", value.obj)
@@ -1098,12 +1098,12 @@ pub value struct rtcRtpContributingSource
   obj: jsObject
 
 pub fun newRtcRtpContributingSource(timestamp: hr_time/domHighResTimeStamp, source: int, audioLevel: maybe<double> = Nothing, rtpTimestamp: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "timestamp", timestamp);  setJsObjectField(obj, "source", source);  match audioLevel
     Just(it) -> setJsObjectField(obj, "audioLevel", it)
     Nothing -> ()
   setJsObjectField(obj, "rtpTimestamp", rtpTimestamp);
-  RtcRtpContributingSource(obj);
+  RtcRtpContributingSource(obj)
 
 pub inline fun timestamp(obj: rtcRtpContributingSource, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "timestamp", value.obj)
@@ -1133,9 +1133,9 @@ pub value struct rtcRtpSynchronizationSource
   obj: jsObject
 
 pub fun newRtcRtpSynchronizationSource()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  RtcRtpSynchronizationSource(obj);
+  RtcRtpSynchronizationSource(obj)
 
 pub value struct rtcRtpTransceiver
   obj: jsObject
@@ -1194,7 +1194,7 @@ pub value struct rtcDtlsFingerprint
   obj: jsObject
 
 pub fun newRtcDtlsFingerprint(algorithm: maybe<string> = Nothing, value: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match algorithm
     Just(it) -> setJsObjectField(obj, "algorithm", it)
     Nothing -> ()
@@ -1202,7 +1202,7 @@ pub fun newRtcDtlsFingerprint(algorithm: maybe<string> = Nothing, value: maybe<s
     Just(it) -> setJsObjectField(obj, "value", it)
     Nothing -> ()
 
-  RtcDtlsFingerprint(obj);
+  RtcDtlsFingerprint(obj)
 
 pub inline fun algorithm(obj: rtcDtlsFingerprint, value: string): web ()
   setJsObjectField(obj.obj, "algorithm", value.obj)
@@ -1295,7 +1295,7 @@ pub value struct rtcIceParameters
   obj: jsObject
 
 pub fun newRtcIceParameters(iceLite: maybe<bool> = Nothing, usernameFragment: maybe<string> = Nothing, password: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match iceLite
     Just(it) -> setJsObjectField(obj, "iceLite", it)
     Nothing -> ()
@@ -1306,7 +1306,7 @@ pub fun newRtcIceParameters(iceLite: maybe<bool> = Nothing, usernameFragment: ma
     Just(it) -> setJsObjectField(obj, "password", it)
     Nothing -> ()
 
-  RtcIceParameters(obj);
+  RtcIceParameters(obj)
 
 pub inline fun iceLite(obj: rtcIceParameters, value: bool): web ()
   setJsObjectField(obj.obj, "iceLite", value.obj)
@@ -1330,7 +1330,7 @@ pub value struct rtcIceCandidatePair
   obj: jsObject
 
 pub fun newRtcIceCandidatePair(local: maybe<rtcIceCandidate> = Nothing, remote: maybe<rtcIceCandidate> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match local
     Just(it) -> setJsObjectField(obj, "local", it)
     Nothing -> ()
@@ -1338,7 +1338,7 @@ pub fun newRtcIceCandidatePair(local: maybe<rtcIceCandidate> = Nothing, remote: 
     Just(it) -> setJsObjectField(obj, "remote", it)
     Nothing -> ()
 
-  RtcIceCandidatePair(obj);
+  RtcIceCandidatePair(obj)
 
 pub inline fun local(obj: rtcIceCandidatePair, value: rtcIceCandidate): web ()
   setJsObjectField(obj.obj, "local", value.obj)
@@ -1374,12 +1374,12 @@ pub value struct rtcTrackEventInit
   obj: jsObject
 
 pub fun newRtcTrackEventInit(receiver: rtcRtpReceiver, track: mediacapture_streams/mediaStreamTrack, streams: maybe<jsArray> = Nothing, transceiver: rtcRtpTransceiver)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "receiver", receiver);  setJsObjectField(obj, "track", track);  match streams
     Just(it) -> setJsObjectField(obj, "streams", it)
     Nothing -> ()
   setJsObjectField(obj, "transceiver", transceiver);
-  RtcTrackEventInit(obj);
+  RtcTrackEventInit(obj)
 
 pub inline fun receiver(obj: rtcTrackEventInit, value: rtcRtpReceiver): web ()
   setJsObjectField(obj.obj, "receiver", value.obj)
@@ -1519,7 +1519,7 @@ pub value struct rtcDataChannelInit
   obj: jsObject
 
 pub fun newRtcDataChannelInit(priority: maybe<webrtc_priority/rtcPriorityType> = Nothing, ordered: maybe<bool> = Nothing, maxPacketLifeTime: maybe<int> = Nothing, maxRetransmits: maybe<int> = Nothing, protocol: maybe<string> = Nothing, negotiated: maybe<bool> = Nothing, id: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match priority
     Just(it) -> setJsObjectField(obj, "priority", it)
     Nothing -> ()
@@ -1542,7 +1542,7 @@ pub fun newRtcDataChannelInit(priority: maybe<webrtc_priority/rtcPriorityType> =
     Just(it) -> setJsObjectField(obj, "id", it)
     Nothing -> ()
 
-  RtcDataChannelInit(obj);
+  RtcDataChannelInit(obj)
 
 pub inline fun priority(obj: rtcDataChannelInit, value: webrtc_priority/rtcPriorityType): web ()
   setJsObjectField(obj.obj, "priority", value.obj)
@@ -1599,9 +1599,9 @@ pub value struct rtcDataChannelEventInit
   obj: jsObject
 
 pub fun newRtcDataChannelEventInit(channel: rtcDataChannel)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "channel", channel);
-  RtcDataChannelEventInit(obj);
+  RtcDataChannelEventInit(obj)
 
 pub inline fun channel(obj: rtcDataChannelEventInit, value: rtcDataChannel): web ()
   setJsObjectField(obj.obj, "channel", value.obj)
@@ -1641,12 +1641,12 @@ pub value struct rtcdtmfToneChangeEventInit
   obj: jsObject
 
 pub fun newRtcdtmfToneChangeEventInit(tone: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match tone
     Just(it) -> setJsObjectField(obj, "tone", it)
     Nothing -> ()
 
-  RtcdtmfToneChangeEventInit(obj);
+  RtcdtmfToneChangeEventInit(obj)
 
 pub inline fun tone(obj: rtcdtmfToneChangeEventInit, value: string): web ()
   setJsObjectField(obj.obj, "tone", value.obj)
@@ -1663,9 +1663,9 @@ pub value struct rtcStats
   obj: jsObject
 
 pub fun newRtcStats(timestamp: hr_time/domHighResTimeStamp, type: webrtc_stats/rtcStatsType, id: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "timestamp", timestamp);  setJsObjectField(obj, "type", type);  setJsObjectField(obj, "id", id);
-  RtcStats(obj);
+  RtcStats(obj)
 
 pub inline fun timestamp(obj: rtcStats, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "timestamp", value.obj)
@@ -1713,7 +1713,7 @@ pub value struct rtcErrorInit
   obj: jsObject
 
 pub fun newRtcErrorInit(httpRequestStatusCode: maybe<int> = Nothing, errorDetail: rtcErrorDetailType, sdpLineNumber: maybe<int> = Nothing, sctpCauseCode: maybe<int> = Nothing, receivedAlert: maybe<int> = Nothing, sentAlert: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match httpRequestStatusCode
     Just(it) -> setJsObjectField(obj, "httpRequestStatusCode", it)
     Nothing -> ()
@@ -1730,7 +1730,7 @@ pub fun newRtcErrorInit(httpRequestStatusCode: maybe<int> = Nothing, errorDetail
     Just(it) -> setJsObjectField(obj, "sentAlert", it)
     Nothing -> ()
 
-  RtcErrorInit(obj);
+  RtcErrorInit(obj)
 
 pub inline fun httpRequestStatusCode(obj: rtcErrorInit, value: int): web ()
   setJsObjectField(obj.obj, "httpRequestStatusCode", value.obj)
@@ -1781,9 +1781,9 @@ pub value struct rtcErrorEventInit
   obj: jsObject
 
 pub fun newRtcErrorEventInit(error: rtcError)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "error", error);
-  RtcErrorEventInit(obj);
+  RtcErrorEventInit(obj)
 
 pub inline fun error(obj: rtcErrorEventInit, value: rtcError): web ()
   setJsObjectField(obj.obj, "error", value.obj)

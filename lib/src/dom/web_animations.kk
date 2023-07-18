@@ -5,22 +5,22 @@ import web/wasm
 
 
 
-pub alias animationPlayState = string;
+pub alias animationPlayState = string
 
 
-pub alias animationReplaceState = string;
+pub alias animationReplaceState = string
 
 
-pub alias fillMode = string;
+pub alias fillMode = string
 
 
-pub alias playbackDirection = string;
+pub alias playbackDirection = string
 
 
-pub alias compositeOperation = string;
+pub alias compositeOperation = string
 
 
-pub alias compositeOperationOrAuto = string;
+pub alias compositeOperationOrAuto = string
 
 pub value struct animationTimeline
   obj: jsObject
@@ -39,12 +39,12 @@ pub value struct documentTimelineOptions
   obj: jsObject
 
 pub fun newDocumentTimelineOptions(originTime: maybe<hr_time/domHighResTimeStamp> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match originTime
     Just(it) -> setJsObjectField(obj, "originTime", it)
     Nothing -> ()
 
-  DocumentTimelineOptions(obj);
+  DocumentTimelineOptions(obj)
 
 pub inline fun originTime(obj: documentTimelineOptions, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "originTime", value.obj)
@@ -195,7 +195,7 @@ pub value struct effectTiming
   obj: jsObject
 
 pub fun newEffectTiming(delay: maybe<double> = Nothing, endDelay: maybe<double> = Nothing, playbackRate: maybe<double> = Nothing, duration: maybe<maybe<jsObject>> = Nothing, fill: maybe<fillMode> = Nothing, iterationStart: maybe<double> = Nothing, iterations: maybe<double> = Nothing, direction: maybe<playbackDirection> = Nothing, easing: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match delay
     Just(it) -> setJsObjectField(obj, "delay", it)
     Nothing -> ()
@@ -224,7 +224,7 @@ pub fun newEffectTiming(delay: maybe<double> = Nothing, endDelay: maybe<double> 
     Just(it) -> setJsObjectField(obj, "easing", it)
     Nothing -> ()
 
-  EffectTiming(obj);
+  EffectTiming(obj)
 
 pub inline fun delay(obj: effectTiming, value: double): web ()
   setJsObjectField(obj.obj, "delay", value.obj)
@@ -284,7 +284,7 @@ pub value struct optionalEffectTiming
   obj: jsObject
 
 pub fun newOptionalEffectTiming(playbackRate: maybe<double> = Nothing, delay: maybe<double> = Nothing, endDelay: maybe<double> = Nothing, fill: maybe<fillMode> = Nothing, iterationStart: maybe<double> = Nothing, iterations: maybe<double> = Nothing, duration: maybe<maybe<jsObject>> = Nothing, direction: maybe<playbackDirection> = Nothing, easing: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match playbackRate
     Just(it) -> setJsObjectField(obj, "playbackRate", it)
     Nothing -> ()
@@ -313,7 +313,7 @@ pub fun newOptionalEffectTiming(playbackRate: maybe<double> = Nothing, delay: ma
     Just(it) -> setJsObjectField(obj, "easing", it)
     Nothing -> ()
 
-  OptionalEffectTiming(obj);
+  OptionalEffectTiming(obj)
 
 pub inline fun playbackRate(obj: optionalEffectTiming, value: double): web ()
   setJsObjectField(obj.obj, "playbackRate", value.obj)
@@ -373,7 +373,7 @@ pub value struct computedEffectTiming
   obj: jsObject
 
 pub fun newComputedEffectTiming(startTime: maybe<css_typed_om/cssNumberish> = Nothing, endTime: maybe<css_typed_om/cssNumberish> = Nothing, activeDuration: maybe<css_typed_om/cssNumberish> = Nothing, localTime: maybe<maybe<css_typed_om/cssNumberish>> = Nothing, progress: maybe<maybe<double>> = Nothing, currentIteration: maybe<maybe<double>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match startTime
     Just(it) -> setJsObjectField(obj, "startTime", it)
     Nothing -> ()
@@ -393,7 +393,7 @@ pub fun newComputedEffectTiming(startTime: maybe<css_typed_om/cssNumberish> = No
     Just(it) -> setJsObjectField(obj, "currentIteration", it)
     Nothing -> ()
 
-  ComputedEffectTiming(obj);
+  ComputedEffectTiming(obj)
 
 pub inline fun startTime(obj: computedEffectTiming, value: css_typed_om/cssNumberish): web ()
   setJsObjectField(obj.obj, "startTime", value.obj)
@@ -471,7 +471,7 @@ pub value struct baseComputedKeyframe
   obj: jsObject
 
 pub fun newBaseComputedKeyframe(offset: maybe<maybe<double>> = Nothing, computedOffset: maybe<double> = Nothing, easing: maybe<string> = Nothing, composite: maybe<compositeOperationOrAuto> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match offset
     Just(it) -> setJsObjectField(obj, "offset", it)
     Nothing -> ()
@@ -485,7 +485,7 @@ pub fun newBaseComputedKeyframe(offset: maybe<maybe<double>> = Nothing, computed
     Just(it) -> setJsObjectField(obj, "composite", it)
     Nothing -> ()
 
-  BaseComputedKeyframe(obj);
+  BaseComputedKeyframe(obj)
 
 pub inline fun offset(obj: baseComputedKeyframe, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "offset", value.obj)
@@ -515,7 +515,7 @@ pub value struct basePropertyIndexedKeyframe
   obj: jsObject
 
 pub fun newBasePropertyIndexedKeyframe(offset: maybe<maybe<jsObject>> = Nothing, easing: maybe<maybe<jsObject>> = Nothing, composite: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match offset
     Just(it) -> setJsObjectField(obj, "offset", it)
     Nothing -> ()
@@ -526,7 +526,7 @@ pub fun newBasePropertyIndexedKeyframe(offset: maybe<maybe<jsObject>> = Nothing,
     Just(it) -> setJsObjectField(obj, "composite", it)
     Nothing -> ()
 
-  BasePropertyIndexedKeyframe(obj);
+  BasePropertyIndexedKeyframe(obj)
 
 pub inline fun offset(obj: basePropertyIndexedKeyframe, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "offset", value.obj)
@@ -550,7 +550,7 @@ pub value struct baseKeyframe
   obj: jsObject
 
 pub fun newBaseKeyframe(offset: maybe<maybe<double>> = Nothing, easing: maybe<string> = Nothing, composite: maybe<compositeOperationOrAuto> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match offset
     Just(it) -> setJsObjectField(obj, "offset", it)
     Nothing -> ()
@@ -561,7 +561,7 @@ pub fun newBaseKeyframe(offset: maybe<maybe<double>> = Nothing, easing: maybe<st
     Just(it) -> setJsObjectField(obj, "composite", it)
     Nothing -> ()
 
-  BaseKeyframe(obj);
+  BaseKeyframe(obj)
 
 pub inline fun offset(obj: baseKeyframe, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "offset", value.obj)
@@ -585,7 +585,7 @@ pub value struct keyframeEffectOptions
   obj: jsObject
 
 pub fun newKeyframeEffectOptions(iterationComposite: maybe<web_animations_2/iterationCompositeOperation> = Nothing, composite: maybe<compositeOperation> = Nothing, pseudoElement: maybe<maybe<string>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match iterationComposite
     Just(it) -> setJsObjectField(obj, "iterationComposite", it)
     Nothing -> ()
@@ -596,7 +596,7 @@ pub fun newKeyframeEffectOptions(iterationComposite: maybe<web_animations_2/iter
     Just(it) -> setJsObjectField(obj, "pseudoElement", it)
     Nothing -> ()
 
-  KeyframeEffectOptions(obj);
+  KeyframeEffectOptions(obj)
 
 pub inline fun iterationComposite(obj: keyframeEffectOptions, value: web_animations_2/iterationCompositeOperation): web ()
   setJsObjectField(obj.obj, "iterationComposite", value.obj)
@@ -630,7 +630,7 @@ pub value struct keyframeAnimationOptions
   obj: jsObject
 
 pub fun newKeyframeAnimationOptions(rangeStart: maybe<maybe<jsObject>> = Nothing, rangeEnd: maybe<maybe<jsObject>> = Nothing, id: maybe<string> = Nothing, timeline: maybe<maybe<animationTimeline>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match rangeStart
     Just(it) -> setJsObjectField(obj, "rangeStart", it)
     Nothing -> ()
@@ -644,7 +644,7 @@ pub fun newKeyframeAnimationOptions(rangeStart: maybe<maybe<jsObject>> = Nothing
     Just(it) -> setJsObjectField(obj, "timeline", it)
     Nothing -> ()
 
-  KeyframeAnimationOptions(obj);
+  KeyframeAnimationOptions(obj)
 
 pub inline fun rangeStart(obj: keyframeAnimationOptions, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "rangeStart", value.obj)
@@ -674,12 +674,12 @@ pub value struct getAnimationsOptions
   obj: jsObject
 
 pub fun newGetAnimationsOptions(subtree: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match subtree
     Just(it) -> setJsObjectField(obj, "subtree", it)
     Nothing -> ()
 
-  GetAnimationsOptions(obj);
+  GetAnimationsOptions(obj)
 
 pub inline fun subtree(obj: getAnimationsOptions, value: bool): web ()
   setJsObjectField(obj.obj, "subtree", value.obj)

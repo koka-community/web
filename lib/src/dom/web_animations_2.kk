@@ -3,10 +3,10 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias effectCallback = jsFunction;
+pub alias effectCallback = jsFunction
 
 
-pub alias iterationCompositeOperation = string;
+pub alias iterationCompositeOperation = string
 
 pub value struct groupEffect
   obj: jsObject
@@ -55,7 +55,7 @@ pub value struct timelineRangeOffset
   obj: jsObject
 
 pub fun newTimelineRangeOffset(rangeName: maybe<maybe<string>> = Nothing, offset: maybe<css_typed_om/cssNumericValue> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match rangeName
     Just(it) -> setJsObjectField(obj, "rangeName", it)
     Nothing -> ()
@@ -63,7 +63,7 @@ pub fun newTimelineRangeOffset(rangeName: maybe<maybe<string>> = Nothing, offset
     Just(it) -> setJsObjectField(obj, "offset", it)
     Nothing -> ()
 
-  TimelineRangeOffset(obj);
+  TimelineRangeOffset(obj)
 
 pub inline fun rangeName(obj: timelineRangeOffset, value: maybe<string>): web ()
   setJsObjectField(obj.obj, "rangeName", value.obj)
@@ -93,7 +93,7 @@ pub value struct animationPlaybackEventInit
   obj: jsObject
 
 pub fun newAnimationPlaybackEventInit(currentTime: maybe<maybe<css_typed_om/cssNumberish>> = Nothing, timelineTime: maybe<maybe<css_typed_om/cssNumberish>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match currentTime
     Just(it) -> setJsObjectField(obj, "currentTime", it)
     Nothing -> ()
@@ -101,7 +101,7 @@ pub fun newAnimationPlaybackEventInit(currentTime: maybe<maybe<css_typed_om/cssN
     Just(it) -> setJsObjectField(obj, "timelineTime", it)
     Nothing -> ()
 
-  AnimationPlaybackEventInit(obj);
+  AnimationPlaybackEventInit(obj)
 
 pub inline fun currentTime(obj: animationPlaybackEventInit, value: maybe<css_typed_om/cssNumberish>): web ()
   setJsObjectField(obj.obj, "currentTime", value.obj)

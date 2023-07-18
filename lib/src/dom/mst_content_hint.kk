@@ -5,6 +5,6 @@ import web/wasm
 
 
 
-pub alias rtcDegradationPreference = string;
+pub alias rtcDegradationPreference = string
 
 

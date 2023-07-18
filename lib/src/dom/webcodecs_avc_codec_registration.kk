@@ -5,18 +5,18 @@ import web/wasm
 
 
 
-pub alias avcBitstreamFormat = string;
+pub alias avcBitstreamFormat = string
 
 pub value struct avcEncoderConfig
   obj: jsObject
 
 pub fun newAvcEncoderConfig(format: maybe<avcBitstreamFormat> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match format
     Just(it) -> setJsObjectField(obj, "format", it)
     Nothing -> ()
 
-  AvcEncoderConfig(obj);
+  AvcEncoderConfig(obj)
 
 pub inline fun format(obj: avcEncoderConfig, value: avcBitstreamFormat): web ()
   setJsObjectField(obj.obj, "format", value.obj)
@@ -28,12 +28,12 @@ pub value struct videoEncoderEncodeOptionsForAvc
   obj: jsObject
 
 pub fun newVideoEncoderEncodeOptionsForAvc(quantizer: maybe<maybe<int>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match quantizer
     Just(it) -> setJsObjectField(obj, "quantizer", it)
     Nothing -> ()
 
-  VideoEncoderEncodeOptionsForAvc(obj);
+  VideoEncoderEncodeOptionsForAvc(obj)
 
 pub inline fun quantizer(obj: videoEncoderEncodeOptionsForAvc, value: maybe<int>): web ()
   setJsObjectField(obj.obj, "quantizer", value.obj)

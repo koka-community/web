@@ -2,35 +2,35 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias cssUnparsedSegment = JSAny;
+pub alias cssUnparsedSegment = JSAny
 
 
-pub alias cssKeywordish = JSAny;
+pub alias cssKeywordish = JSAny
 
 
-pub alias cssNumberish = JSAny;
+pub alias cssNumberish = JSAny
 
 
-pub alias cssPerspectiveValue = JSAny;
+pub alias cssPerspectiveValue = JSAny
 
 
-pub alias cssColorRGBComp = JSAny;
+pub alias cssColorRGBComp = JSAny
 
 
-pub alias cssColorPercent = JSAny;
+pub alias cssColorPercent = JSAny
 
 
-pub alias cssColorNumber = JSAny;
+pub alias cssColorNumber = JSAny
 
 
-pub alias cssColorAngle = JSAny;
+pub alias cssColorAngle = JSAny
 
 
 
-pub alias cssNumericBaseType = string;
+pub alias cssNumericBaseType = string
 
 
-pub alias cssMathOperator = string;
+pub alias cssMathOperator = string
 
 pub value struct cssStyleValue
   obj: jsObject
@@ -113,7 +113,7 @@ pub value struct cssNumericType
   obj: jsObject
 
 pub fun newCssNumericType(length: maybe<int> = Nothing, angle: maybe<int> = Nothing, time: maybe<int> = Nothing, frequency: maybe<int> = Nothing, resolution: maybe<int> = Nothing, flex: maybe<int> = Nothing, percent: maybe<int> = Nothing, percentHint: maybe<cssNumericBaseType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match length
     Just(it) -> setJsObjectField(obj, "length", it)
     Nothing -> ()
@@ -139,7 +139,7 @@ pub fun newCssNumericType(length: maybe<int> = Nothing, angle: maybe<int> = Noth
     Just(it) -> setJsObjectField(obj, "percentHint", it)
     Nothing -> ()
 
-  CssNumericType(obj);
+  CssNumericType(obj)
 
 pub inline fun length(obj: cssNumericType, value: int): web ()
   setJsObjectField(obj.obj, "length", value.obj)
@@ -499,12 +499,12 @@ pub value struct cssMatrixComponentOptions
   obj: jsObject
 
 pub fun newCssMatrixComponentOptions(is2D: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match is2D
     Just(it) -> setJsObjectField(obj, "is2D", it)
     Nothing -> ()
 
-  CssMatrixComponentOptions(obj);
+  CssMatrixComponentOptions(obj)
 
 pub inline fun is2D(obj: cssMatrixComponentOptions, value: bool): web ()
   setJsObjectField(obj.obj, "is2D", value.obj)

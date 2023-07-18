@@ -5,22 +5,22 @@ import web/wasm
 
 
 
-pub alias rtcStatsType = string;
+pub alias rtcStatsType = string
 
 
-pub alias rtcQualityLimitationReason = string;
+pub alias rtcQualityLimitationReason = string
 
 
-pub alias rtcDtlsRole = string;
+pub alias rtcDtlsRole = string
 
 
-pub alias rtcStatsIceCandidatePairState = string;
+pub alias rtcStatsIceCandidatePairState = string
 
 pub value struct rtcRtpStreamStats
   obj: jsObject
 
 pub fun newRtcRtpStreamStats(ssrc: int, kind: string, transportId: maybe<string> = Nothing, codecId: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "ssrc", ssrc);  setJsObjectField(obj, "kind", kind);  match transportId
     Just(it) -> setJsObjectField(obj, "transportId", it)
     Nothing -> ()
@@ -28,7 +28,7 @@ pub fun newRtcRtpStreamStats(ssrc: int, kind: string, transportId: maybe<string>
     Just(it) -> setJsObjectField(obj, "codecId", it)
     Nothing -> ()
 
-  RtcRtpStreamStats(obj);
+  RtcRtpStreamStats(obj)
 
 pub inline fun ssrc(obj: rtcRtpStreamStats, value: int): web ()
   setJsObjectField(obj.obj, "ssrc", value.obj)
@@ -58,7 +58,7 @@ pub value struct rtcCodecStats
   obj: jsObject
 
 pub fun newRtcCodecStats(payloadType: int, transportId: string, mimeType: string, clockRate: maybe<int> = Nothing, channels: maybe<int> = Nothing, sdpFmtpLine: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "payloadType", payloadType);  setJsObjectField(obj, "transportId", transportId);  setJsObjectField(obj, "mimeType", mimeType);  match clockRate
     Just(it) -> setJsObjectField(obj, "clockRate", it)
     Nothing -> ()
@@ -69,7 +69,7 @@ pub fun newRtcCodecStats(payloadType: int, transportId: string, mimeType: string
     Just(it) -> setJsObjectField(obj, "sdpFmtpLine", it)
     Nothing -> ()
 
-  RtcCodecStats(obj);
+  RtcCodecStats(obj)
 
 pub inline fun payloadType(obj: rtcCodecStats, value: int): web ()
   setJsObjectField(obj.obj, "payloadType", value.obj)
@@ -111,7 +111,7 @@ pub value struct rtcReceivedRtpStreamStats
   obj: jsObject
 
 pub fun newRtcReceivedRtpStreamStats(packetsReceived: maybe<int> = Nothing, packetsLost: maybe<int> = Nothing, jitter: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match packetsReceived
     Just(it) -> setJsObjectField(obj, "packetsReceived", it)
     Nothing -> ()
@@ -122,7 +122,7 @@ pub fun newRtcReceivedRtpStreamStats(packetsReceived: maybe<int> = Nothing, pack
     Just(it) -> setJsObjectField(obj, "jitter", it)
     Nothing -> ()
 
-  RtcReceivedRtpStreamStats(obj);
+  RtcReceivedRtpStreamStats(obj)
 
 pub inline fun packetsReceived(obj: rtcReceivedRtpStreamStats, value: int): web ()
   setJsObjectField(obj.obj, "packetsReceived", value.obj)
@@ -146,7 +146,7 @@ pub value struct rtcInboundRtpStreamStats
   obj: jsObject
 
 pub fun newRtcInboundRtpStreamStats(trackIdentifier: string, kind: string, mid: maybe<string> = Nothing, remoteId: maybe<string> = Nothing, framesDecoded: maybe<int> = Nothing, keyFramesDecoded: maybe<int> = Nothing, framesRendered: maybe<int> = Nothing, framesDropped: maybe<int> = Nothing, frameWidth: maybe<int> = Nothing, frameHeight: maybe<int> = Nothing, framesPerSecond: maybe<double> = Nothing, qpSum: maybe<int> = Nothing, totalDecodeTime: maybe<double> = Nothing, totalInterFrameDelay: maybe<double> = Nothing, totalSquaredInterFrameDelay: maybe<double> = Nothing, pauseCount: maybe<int> = Nothing, totalPausesDuration: maybe<double> = Nothing, freezeCount: maybe<int> = Nothing, totalFreezesDuration: maybe<double> = Nothing, lastPacketReceivedTimestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, headerBytesReceived: maybe<int> = Nothing, packetsDiscarded: maybe<int> = Nothing, fecBytesReceived: maybe<int> = Nothing, fecPacketsReceived: maybe<int> = Nothing, fecPacketsDiscarded: maybe<int> = Nothing, bytesReceived: maybe<int> = Nothing, nackCount: maybe<int> = Nothing, firCount: maybe<int> = Nothing, pliCount: maybe<int> = Nothing, totalProcessingDelay: maybe<double> = Nothing, estimatedPlayoutTimestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, jitterBufferDelay: maybe<double> = Nothing, jitterBufferTargetDelay: maybe<double> = Nothing, jitterBufferEmittedCount: maybe<int> = Nothing, jitterBufferMinimumDelay: maybe<double> = Nothing, totalSamplesReceived: maybe<int> = Nothing, concealedSamples: maybe<int> = Nothing, silentConcealedSamples: maybe<int> = Nothing, concealmentEvents: maybe<int> = Nothing, insertedSamplesForDeceleration: maybe<int> = Nothing, removedSamplesForAcceleration: maybe<int> = Nothing, audioLevel: maybe<double> = Nothing, totalAudioEnergy: maybe<double> = Nothing, totalSamplesDuration: maybe<double> = Nothing, framesReceived: maybe<int> = Nothing, decoderImplementation: maybe<string> = Nothing, playoutId: maybe<string> = Nothing, powerEfficientDecoder: maybe<bool> = Nothing, framesAssembledFromMultiplePackets: maybe<int> = Nothing, totalAssemblyTime: maybe<double> = Nothing, retransmittedPacketsReceived: maybe<int> = Nothing, retransmittedBytesReceived: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "trackIdentifier", trackIdentifier);  setJsObjectField(obj, "kind", kind);  match mid
     Just(it) -> setJsObjectField(obj, "mid", it)
     Nothing -> ()
@@ -298,7 +298,7 @@ pub fun newRtcInboundRtpStreamStats(trackIdentifier: string, kind: string, mid: 
     Just(it) -> setJsObjectField(obj, "retransmittedBytesReceived", it)
     Nothing -> ()
 
-  RtcInboundRtpStreamStats(obj);
+  RtcInboundRtpStreamStats(obj)
 
 pub inline fun trackIdentifier(obj: rtcInboundRtpStreamStats, value: string): web ()
   setJsObjectField(obj.obj, "trackIdentifier", value.obj)
@@ -616,7 +616,7 @@ pub value struct rtcRemoteInboundRtpStreamStats
   obj: jsObject
 
 pub fun newRtcRemoteInboundRtpStreamStats(localId: maybe<string> = Nothing, roundTripTime: maybe<double> = Nothing, totalRoundTripTime: maybe<double> = Nothing, fractionLost: maybe<double> = Nothing, roundTripTimeMeasurements: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match localId
     Just(it) -> setJsObjectField(obj, "localId", it)
     Nothing -> ()
@@ -633,7 +633,7 @@ pub fun newRtcRemoteInboundRtpStreamStats(localId: maybe<string> = Nothing, roun
     Just(it) -> setJsObjectField(obj, "roundTripTimeMeasurements", it)
     Nothing -> ()
 
-  RtcRemoteInboundRtpStreamStats(obj);
+  RtcRemoteInboundRtpStreamStats(obj)
 
 pub inline fun localId(obj: rtcRemoteInboundRtpStreamStats, value: string): web ()
   setJsObjectField(obj.obj, "localId", value.obj)
@@ -669,7 +669,7 @@ pub value struct rtcSentRtpStreamStats
   obj: jsObject
 
 pub fun newRtcSentRtpStreamStats(packetsSent: maybe<int> = Nothing, bytesSent: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match packetsSent
     Just(it) -> setJsObjectField(obj, "packetsSent", it)
     Nothing -> ()
@@ -677,7 +677,7 @@ pub fun newRtcSentRtpStreamStats(packetsSent: maybe<int> = Nothing, bytesSent: m
     Just(it) -> setJsObjectField(obj, "bytesSent", it)
     Nothing -> ()
 
-  RtcSentRtpStreamStats(obj);
+  RtcSentRtpStreamStats(obj)
 
 pub inline fun packetsSent(obj: rtcSentRtpStreamStats, value: int): web ()
   setJsObjectField(obj.obj, "packetsSent", value.obj)
@@ -695,7 +695,7 @@ pub value struct rtcOutboundRtpStreamStats
   obj: jsObject
 
 pub fun newRtcOutboundRtpStreamStats(mid: maybe<string> = Nothing, mediaSourceId: maybe<string> = Nothing, remoteId: maybe<string> = Nothing, rid: maybe<string> = Nothing, headerBytesSent: maybe<int> = Nothing, retransmittedPacketsSent: maybe<int> = Nothing, retransmittedBytesSent: maybe<int> = Nothing, targetBitrate: maybe<double> = Nothing, totalEncodedBytesTarget: maybe<int> = Nothing, frameWidth: maybe<int> = Nothing, frameHeight: maybe<int> = Nothing, framesPerSecond: maybe<double> = Nothing, framesSent: maybe<int> = Nothing, hugeFramesSent: maybe<int> = Nothing, framesEncoded: maybe<int> = Nothing, keyFramesEncoded: maybe<int> = Nothing, qpSum: maybe<int> = Nothing, totalEncodeTime: maybe<double> = Nothing, totalPacketSendDelay: maybe<double> = Nothing, qualityLimitationReason: maybe<rtcQualityLimitationReason> = Nothing, qualityLimitationDurations: maybe<maybe<jsObject>> = Nothing, qualityLimitationResolutionChanges: maybe<int> = Nothing, nackCount: maybe<int> = Nothing, firCount: maybe<int> = Nothing, pliCount: maybe<int> = Nothing, encoderImplementation: maybe<string> = Nothing, powerEfficientEncoder: maybe<bool> = Nothing, active: maybe<bool> = Nothing, scalabilityMode: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match mid
     Just(it) -> setJsObjectField(obj, "mid", it)
     Nothing -> ()
@@ -784,7 +784,7 @@ pub fun newRtcOutboundRtpStreamStats(mid: maybe<string> = Nothing, mediaSourceId
     Just(it) -> setJsObjectField(obj, "scalabilityMode", it)
     Nothing -> ()
 
-  RtcOutboundRtpStreamStats(obj);
+  RtcOutboundRtpStreamStats(obj)
 
 pub inline fun mid(obj: rtcOutboundRtpStreamStats, value: string): web ()
   setJsObjectField(obj.obj, "mid", value.obj)
@@ -964,7 +964,7 @@ pub value struct rtcRemoteOutboundRtpStreamStats
   obj: jsObject
 
 pub fun newRtcRemoteOutboundRtpStreamStats(localId: maybe<string> = Nothing, remoteTimestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, reportsSent: maybe<int> = Nothing, roundTripTime: maybe<double> = Nothing, totalRoundTripTime: maybe<double> = Nothing, roundTripTimeMeasurements: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match localId
     Just(it) -> setJsObjectField(obj, "localId", it)
     Nothing -> ()
@@ -984,7 +984,7 @@ pub fun newRtcRemoteOutboundRtpStreamStats(localId: maybe<string> = Nothing, rem
     Just(it) -> setJsObjectField(obj, "roundTripTimeMeasurements", it)
     Nothing -> ()
 
-  RtcRemoteOutboundRtpStreamStats(obj);
+  RtcRemoteOutboundRtpStreamStats(obj)
 
 pub inline fun localId(obj: rtcRemoteOutboundRtpStreamStats, value: string): web ()
   setJsObjectField(obj.obj, "localId", value.obj)
@@ -1026,9 +1026,9 @@ pub value struct rtcMediaSourceStats
   obj: jsObject
 
 pub fun newRtcMediaSourceStats(trackIdentifier: string, kind: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "trackIdentifier", trackIdentifier);  setJsObjectField(obj, "kind", kind);
-  RtcMediaSourceStats(obj);
+  RtcMediaSourceStats(obj)
 
 pub inline fun trackIdentifier(obj: rtcMediaSourceStats, value: string): web ()
   setJsObjectField(obj.obj, "trackIdentifier", value.obj)
@@ -1046,7 +1046,7 @@ pub value struct rtcAudioSourceStats
   obj: jsObject
 
 pub fun newRtcAudioSourceStats(audioLevel: maybe<double> = Nothing, totalAudioEnergy: maybe<double> = Nothing, totalSamplesDuration: maybe<double> = Nothing, echoReturnLoss: maybe<double> = Nothing, echoReturnLossEnhancement: maybe<double> = Nothing, droppedSamplesDuration: maybe<double> = Nothing, droppedSamplesEvents: maybe<int> = Nothing, totalCaptureDelay: maybe<double> = Nothing, totalSamplesCaptured: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match audioLevel
     Just(it) -> setJsObjectField(obj, "audioLevel", it)
     Nothing -> ()
@@ -1075,7 +1075,7 @@ pub fun newRtcAudioSourceStats(audioLevel: maybe<double> = Nothing, totalAudioEn
     Just(it) -> setJsObjectField(obj, "totalSamplesCaptured", it)
     Nothing -> ()
 
-  RtcAudioSourceStats(obj);
+  RtcAudioSourceStats(obj)
 
 pub inline fun audioLevel(obj: rtcAudioSourceStats, value: double): web ()
   setJsObjectField(obj.obj, "audioLevel", value.obj)
@@ -1135,7 +1135,7 @@ pub value struct rtcVideoSourceStats
   obj: jsObject
 
 pub fun newRtcVideoSourceStats(width: maybe<int> = Nothing, height: maybe<int> = Nothing, frames: maybe<int> = Nothing, framesPerSecond: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match width
     Just(it) -> setJsObjectField(obj, "width", it)
     Nothing -> ()
@@ -1149,7 +1149,7 @@ pub fun newRtcVideoSourceStats(width: maybe<int> = Nothing, height: maybe<int> =
     Just(it) -> setJsObjectField(obj, "framesPerSecond", it)
     Nothing -> ()
 
-  RtcVideoSourceStats(obj);
+  RtcVideoSourceStats(obj)
 
 pub inline fun width(obj: rtcVideoSourceStats, value: int): web ()
   setJsObjectField(obj.obj, "width", value.obj)
@@ -1179,7 +1179,7 @@ pub value struct rtcAudioPlayoutStats
   obj: jsObject
 
 pub fun newRtcAudioPlayoutStats(kind: string, synthesizedSamplesDuration: maybe<double> = Nothing, synthesizedSamplesEvents: maybe<int> = Nothing, totalSamplesDuration: maybe<double> = Nothing, totalPlayoutDelay: maybe<double> = Nothing, totalSamplesCount: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "kind", kind);  match synthesizedSamplesDuration
     Just(it) -> setJsObjectField(obj, "synthesizedSamplesDuration", it)
     Nothing -> ()
@@ -1196,7 +1196,7 @@ pub fun newRtcAudioPlayoutStats(kind: string, synthesizedSamplesDuration: maybe<
     Just(it) -> setJsObjectField(obj, "totalSamplesCount", it)
     Nothing -> ()
 
-  RtcAudioPlayoutStats(obj);
+  RtcAudioPlayoutStats(obj)
 
 pub inline fun kind(obj: rtcAudioPlayoutStats, value: string): web ()
   setJsObjectField(obj.obj, "kind", value.obj)
@@ -1238,7 +1238,7 @@ pub value struct rtcPeerConnectionStats
   obj: jsObject
 
 pub fun newRtcPeerConnectionStats(dataChannelsOpened: maybe<int> = Nothing, dataChannelsClosed: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match dataChannelsOpened
     Just(it) -> setJsObjectField(obj, "dataChannelsOpened", it)
     Nothing -> ()
@@ -1246,7 +1246,7 @@ pub fun newRtcPeerConnectionStats(dataChannelsOpened: maybe<int> = Nothing, data
     Just(it) -> setJsObjectField(obj, "dataChannelsClosed", it)
     Nothing -> ()
 
-  RtcPeerConnectionStats(obj);
+  RtcPeerConnectionStats(obj)
 
 pub inline fun dataChannelsOpened(obj: rtcPeerConnectionStats, value: int): web ()
   setJsObjectField(obj.obj, "dataChannelsOpened", value.obj)
@@ -1264,7 +1264,7 @@ pub value struct rtcDataChannelStats
   obj: jsObject
 
 pub fun newRtcDataChannelStats(label: maybe<string> = Nothing, protocol: maybe<string> = Nothing, dataChannelIdentifier: maybe<int> = Nothing, state: webrtc/rtcDataChannelState, messagesSent: maybe<int> = Nothing, bytesSent: maybe<int> = Nothing, messagesReceived: maybe<int> = Nothing, bytesReceived: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match label
     Just(it) -> setJsObjectField(obj, "label", it)
     Nothing -> ()
@@ -1287,7 +1287,7 @@ pub fun newRtcDataChannelStats(label: maybe<string> = Nothing, protocol: maybe<s
     Just(it) -> setJsObjectField(obj, "bytesReceived", it)
     Nothing -> ()
 
-  RtcDataChannelStats(obj);
+  RtcDataChannelStats(obj)
 
 pub inline fun label(obj: rtcDataChannelStats, value: string): web ()
   setJsObjectField(obj.obj, "label", value.obj)
@@ -1341,7 +1341,7 @@ pub value struct rtcTransportStats
   obj: jsObject
 
 pub fun newRtcTransportStats(packetsSent: maybe<int> = Nothing, packetsReceived: maybe<int> = Nothing, bytesSent: maybe<int> = Nothing, bytesReceived: maybe<int> = Nothing, iceRole: maybe<webrtc/rtcIceRole> = Nothing, iceLocalUsernameFragment: maybe<string> = Nothing, dtlsState: webrtc/rtcDtlsTransportState, iceState: maybe<webrtc/rtcIceTransportState> = Nothing, selectedCandidatePairId: maybe<string> = Nothing, localCertificateId: maybe<string> = Nothing, remoteCertificateId: maybe<string> = Nothing, tlsVersion: maybe<string> = Nothing, dtlsCipher: maybe<string> = Nothing, dtlsRole: maybe<rtcDtlsRole> = Nothing, srtpCipher: maybe<string> = Nothing, selectedCandidatePairChanges: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match packetsSent
     Just(it) -> setJsObjectField(obj, "packetsSent", it)
     Nothing -> ()
@@ -1388,7 +1388,7 @@ pub fun newRtcTransportStats(packetsSent: maybe<int> = Nothing, packetsReceived:
     Just(it) -> setJsObjectField(obj, "selectedCandidatePairChanges", it)
     Nothing -> ()
 
-  RtcTransportStats(obj);
+  RtcTransportStats(obj)
 
 pub inline fun packetsSent(obj: rtcTransportStats, value: int): web ()
   setJsObjectField(obj.obj, "packetsSent", value.obj)
@@ -1490,7 +1490,7 @@ pub value struct rtcIceCandidateStats
   obj: jsObject
 
 pub fun newRtcIceCandidateStats(transportId: string, address: maybe<maybe<string>> = Nothing, port: maybe<int> = Nothing, protocol: maybe<string> = Nothing, candidateType: webrtc/rtcIceCandidateType, priority: maybe<int> = Nothing, url: maybe<string> = Nothing, relayProtocol: maybe<webrtc/rtcIceServerTransportProtocol> = Nothing, foundation: maybe<string> = Nothing, relatedAddress: maybe<string> = Nothing, relatedPort: maybe<int> = Nothing, usernameFragment: maybe<string> = Nothing, tcpType: maybe<webrtc/rtcIceTcpCandidateType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "transportId", transportId);  match address
     Just(it) -> setJsObjectField(obj, "address", it)
     Nothing -> ()
@@ -1525,7 +1525,7 @@ pub fun newRtcIceCandidateStats(transportId: string, address: maybe<maybe<string
     Just(it) -> setJsObjectField(obj, "tcpType", it)
     Nothing -> ()
 
-  RtcIceCandidateStats(obj);
+  RtcIceCandidateStats(obj)
 
 pub inline fun transportId(obj: rtcIceCandidateStats, value: string): web ()
   setJsObjectField(obj.obj, "transportId", value.obj)
@@ -1609,7 +1609,7 @@ pub value struct rtcIceCandidatePairStats
   obj: jsObject
 
 pub fun newRtcIceCandidatePairStats(transportId: string, localCandidateId: string, remoteCandidateId: string, state: rtcStatsIceCandidatePairState, nominated: maybe<bool> = Nothing, packetsSent: maybe<int> = Nothing, packetsReceived: maybe<int> = Nothing, bytesSent: maybe<int> = Nothing, bytesReceived: maybe<int> = Nothing, lastPacketSentTimestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, lastPacketReceivedTimestamp: maybe<hr_time/domHighResTimeStamp> = Nothing, totalRoundTripTime: maybe<double> = Nothing, currentRoundTripTime: maybe<double> = Nothing, availableOutgoingBitrate: maybe<double> = Nothing, availableIncomingBitrate: maybe<double> = Nothing, requestsReceived: maybe<int> = Nothing, requestsSent: maybe<int> = Nothing, responsesReceived: maybe<int> = Nothing, responsesSent: maybe<int> = Nothing, consentRequestsSent: maybe<int> = Nothing, packetsDiscardedOnSend: maybe<int> = Nothing, bytesDiscardedOnSend: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "transportId", transportId);  setJsObjectField(obj, "localCandidateId", localCandidateId);  setJsObjectField(obj, "remoteCandidateId", remoteCandidateId);  setJsObjectField(obj, "state", state);  match nominated
     Just(it) -> setJsObjectField(obj, "nominated", it)
     Nothing -> ()
@@ -1665,7 +1665,7 @@ pub fun newRtcIceCandidatePairStats(transportId: string, localCandidateId: strin
     Just(it) -> setJsObjectField(obj, "bytesDiscardedOnSend", it)
     Nothing -> ()
 
-  RtcIceCandidatePairStats(obj);
+  RtcIceCandidatePairStats(obj)
 
 pub inline fun transportId(obj: rtcIceCandidatePairStats, value: string): web ()
   setJsObjectField(obj.obj, "transportId", value.obj)
@@ -1803,12 +1803,12 @@ pub value struct rtcCertificateStats
   obj: jsObject
 
 pub fun newRtcCertificateStats(fingerprint: string, fingerprintAlgorithm: string, base64Certificate: string, issuerCertificateId: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "fingerprint", fingerprint);  setJsObjectField(obj, "fingerprintAlgorithm", fingerprintAlgorithm);  setJsObjectField(obj, "base64Certificate", base64Certificate);  match issuerCertificateId
     Just(it) -> setJsObjectField(obj, "issuerCertificateId", it)
     Nothing -> ()
 
-  RtcCertificateStats(obj);
+  RtcCertificateStats(obj)
 
 pub inline fun fingerprint(obj: rtcCertificateStats, value: string): web ()
   setJsObjectField(obj.obj, "fingerprint", value.obj)

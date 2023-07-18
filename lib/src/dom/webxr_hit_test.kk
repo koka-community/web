@@ -5,13 +5,13 @@ import web/wasm
 
 
 
-pub alias xrHitTestTrackableType = string;
+pub alias xrHitTestTrackableType = string
 
 pub value struct xrHitTestOptionsInit
   obj: jsObject
 
 pub fun newXrHitTestOptionsInit(space: webxr/xrSpace, entityTypes: maybe<jsArray> = Nothing, offsetRay: maybe<xrRay> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "space", space);  match entityTypes
     Just(it) -> setJsObjectField(obj, "entityTypes", it)
     Nothing -> ()
@@ -19,7 +19,7 @@ pub fun newXrHitTestOptionsInit(space: webxr/xrSpace, entityTypes: maybe<jsArray
     Just(it) -> setJsObjectField(obj, "offsetRay", it)
     Nothing -> ()
 
-  XrHitTestOptionsInit(obj);
+  XrHitTestOptionsInit(obj)
 
 pub inline fun space(obj: xrHitTestOptionsInit, value: webxr/xrSpace): web ()
   setJsObjectField(obj.obj, "space", value.obj)
@@ -43,7 +43,7 @@ pub value struct xrTransientInputHitTestOptionsInit
   obj: jsObject
 
 pub fun newXrTransientInputHitTestOptionsInit(profile: string, entityTypes: maybe<jsArray> = Nothing, offsetRay: maybe<xrRay> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "profile", profile);  match entityTypes
     Just(it) -> setJsObjectField(obj, "entityTypes", it)
     Nothing -> ()
@@ -51,7 +51,7 @@ pub fun newXrTransientInputHitTestOptionsInit(profile: string, entityTypes: mayb
     Just(it) -> setJsObjectField(obj, "offsetRay", it)
     Nothing -> ()
 
-  XrTransientInputHitTestOptionsInit(obj);
+  XrTransientInputHitTestOptionsInit(obj)
 
 pub inline fun profile(obj: xrTransientInputHitTestOptionsInit, value: string): web ()
   setJsObjectField(obj.obj, "profile", value.obj)
@@ -109,7 +109,7 @@ pub value struct xrRayDirectionInit
   obj: jsObject
 
 pub fun newXrRayDirectionInit(x: maybe<double> = Nothing, y: maybe<double> = Nothing, z: maybe<double> = Nothing, w: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match x
     Just(it) -> setJsObjectField(obj, "x", it)
     Nothing -> ()
@@ -123,7 +123,7 @@ pub fun newXrRayDirectionInit(x: maybe<double> = Nothing, y: maybe<double> = Not
     Just(it) -> setJsObjectField(obj, "w", it)
     Nothing -> ()
 
-  XrRayDirectionInit(obj);
+  XrRayDirectionInit(obj)
 
 pub inline fun x(obj: xrRayDirectionInit, value: double): web ()
   setJsObjectField(obj.obj, "x", value.obj)

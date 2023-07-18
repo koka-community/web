@@ -10,7 +10,7 @@ pub value struct shareData
   obj: jsObject
 
 pub fun newShareData(files: maybe<jsArray> = Nothing, title: maybe<string> = Nothing, text: maybe<string> = Nothing, url: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match files
     Just(it) -> setJsObjectField(obj, "files", it)
     Nothing -> ()
@@ -24,7 +24,7 @@ pub fun newShareData(files: maybe<jsArray> = Nothing, title: maybe<string> = Not
     Just(it) -> setJsObjectField(obj, "url", it)
     Nothing -> ()
 
-  ShareData(obj);
+  ShareData(obj)
 
 pub inline fun files(obj: shareData, value: jsArray): web ()
   setJsObjectField(obj.obj, "files", value.obj)

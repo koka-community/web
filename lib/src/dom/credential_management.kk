@@ -2,11 +2,11 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias passwordCredentialInit = JSAny;
+pub alias passwordCredentialInit = JSAny
 
 
 
-pub alias credentialMediationRequirement = string;
+pub alias credentialMediationRequirement = string
 
 pub value struct credential
   obj: jsObject
@@ -50,9 +50,9 @@ pub value struct credentialData
   obj: jsObject
 
 pub fun newCredentialData(id: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "id", id);
-  CredentialData(obj);
+  CredentialData(obj)
 
 pub inline fun id(obj: credentialData, value: string): web ()
   setJsObjectField(obj.obj, "id", value.obj)
@@ -64,7 +64,7 @@ pub value struct credentialRequestOptions
   obj: jsObject
 
 pub fun newCredentialRequestOptions(identity: maybe<fedcm/identityCredentialRequestOptions> = Nothing, mediation: maybe<credentialMediationRequirement> = Nothing, signal: maybe<dom/abortSignal> = Nothing, password: maybe<bool> = Nothing, federated: maybe<federatedCredentialRequestOptions> = Nothing, otp: maybe<web_otp/otpCredentialRequestOptions> = Nothing, publicKey: maybe<webauthn/publicKeyCredentialRequestOptions> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match identity
     Just(it) -> setJsObjectField(obj, "identity", it)
     Nothing -> ()
@@ -87,7 +87,7 @@ pub fun newCredentialRequestOptions(identity: maybe<fedcm/identityCredentialRequ
     Just(it) -> setJsObjectField(obj, "publicKey", it)
     Nothing -> ()
 
-  CredentialRequestOptions(obj);
+  CredentialRequestOptions(obj)
 
 pub inline fun identity(obj: credentialRequestOptions, value: fedcm/identityCredentialRequestOptions): web ()
   setJsObjectField(obj.obj, "identity", value.obj)
@@ -135,7 +135,7 @@ pub value struct credentialCreationOptions
   obj: jsObject
 
 pub fun newCredentialCreationOptions(signal: maybe<dom/abortSignal> = Nothing, password: maybe<passwordCredentialInit> = Nothing, federated: maybe<federatedCredentialInit> = Nothing, publicKey: maybe<webauthn/publicKeyCredentialCreationOptions> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match signal
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
@@ -149,7 +149,7 @@ pub fun newCredentialCreationOptions(signal: maybe<dom/abortSignal> = Nothing, p
     Just(it) -> setJsObjectField(obj, "publicKey", it)
     Nothing -> ()
 
-  CredentialCreationOptions(obj);
+  CredentialCreationOptions(obj)
 
 pub inline fun signal(obj: credentialCreationOptions, value: dom/abortSignal): web ()
   setJsObjectField(obj.obj, "signal", value.obj)
@@ -188,7 +188,7 @@ pub value struct passwordCredentialData
   obj: jsObject
 
 pub fun newPasswordCredentialData(name: maybe<string> = Nothing, iconURL: maybe<string> = Nothing, origin: string, password: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match name
     Just(it) -> setJsObjectField(obj, "name", it)
     Nothing -> ()
@@ -196,7 +196,7 @@ pub fun newPasswordCredentialData(name: maybe<string> = Nothing, iconURL: maybe<
     Just(it) -> setJsObjectField(obj, "iconURL", it)
     Nothing -> ()
   setJsObjectField(obj, "origin", origin);  setJsObjectField(obj, "password", password);
-  PasswordCredentialData(obj);
+  PasswordCredentialData(obj)
 
 pub inline fun name(obj: passwordCredentialData, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -238,7 +238,7 @@ pub value struct federatedCredentialRequestOptions
   obj: jsObject
 
 pub fun newFederatedCredentialRequestOptions(providers: maybe<jsArray> = Nothing, protocols: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match providers
     Just(it) -> setJsObjectField(obj, "providers", it)
     Nothing -> ()
@@ -246,7 +246,7 @@ pub fun newFederatedCredentialRequestOptions(providers: maybe<jsArray> = Nothing
     Just(it) -> setJsObjectField(obj, "protocols", it)
     Nothing -> ()
 
-  FederatedCredentialRequestOptions(obj);
+  FederatedCredentialRequestOptions(obj)
 
 pub inline fun providers(obj: federatedCredentialRequestOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "providers", value.obj)
@@ -264,7 +264,7 @@ pub value struct federatedCredentialInit
   obj: jsObject
 
 pub fun newFederatedCredentialInit(name: maybe<string> = Nothing, iconURL: maybe<string> = Nothing, origin: string, provider: string, protocol: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match name
     Just(it) -> setJsObjectField(obj, "name", it)
     Nothing -> ()
@@ -275,7 +275,7 @@ pub fun newFederatedCredentialInit(name: maybe<string> = Nothing, iconURL: maybe
     Just(it) -> setJsObjectField(obj, "protocol", it)
     Nothing -> ()
 
-  FederatedCredentialInit(obj);
+  FederatedCredentialInit(obj)
 
 pub inline fun name(obj: federatedCredentialInit, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)

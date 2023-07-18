@@ -3,20 +3,20 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias mutationCallback = jsFunction;
+pub alias mutationCallback = jsFunction
 
-pub alias eventListener = jsFunction;
-
-
-pub alias nodeFilter = jsFunction;
+pub alias eventListener = jsFunction
 
 
-pub alias xPathNSResolver = jsFunction;
-
-pub alias shadowRootMode = string;
+pub alias nodeFilter = jsFunction
 
 
-pub alias slotAssignmentMode = string;
+pub alias xPathNSResolver = jsFunction
+
+pub alias shadowRootMode = string
+
+
+pub alias slotAssignmentMode = string
 
 pub value struct event
   obj: jsObject
@@ -99,7 +99,7 @@ pub value struct eventInit
   obj: jsObject
 
 pub fun newEventInit(bubbles: maybe<bool> = Nothing, cancelable: maybe<bool> = Nothing, composed: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match bubbles
     Just(it) -> setJsObjectField(obj, "bubbles", it)
     Nothing -> ()
@@ -110,7 +110,7 @@ pub fun newEventInit(bubbles: maybe<bool> = Nothing, cancelable: maybe<bool> = N
     Just(it) -> setJsObjectField(obj, "composed", it)
     Nothing -> ()
 
-  EventInit(obj);
+  EventInit(obj)
 
 pub inline fun bubbles(obj: eventInit, value: bool): web ()
   setJsObjectField(obj.obj, "bubbles", value.obj)
@@ -146,12 +146,12 @@ pub value struct customEventInit
   obj: jsObject
 
 pub fun newCustomEventInit(detail: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match detail
     Just(it) -> setJsObjectField(obj, "detail", it)
     Nothing -> ()
 
-  CustomEventInit(obj);
+  CustomEventInit(obj)
 
 pub inline fun detail(obj: customEventInit, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "detail", value.obj)
@@ -178,12 +178,12 @@ pub value struct eventListenerOptions
   obj: jsObject
 
 pub fun newEventListenerOptions(capture: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match capture
     Just(it) -> setJsObjectField(obj, "capture", it)
     Nothing -> ()
 
-  EventListenerOptions(obj);
+  EventListenerOptions(obj)
 
 pub inline fun capture(obj: eventListenerOptions, value: bool): web ()
   setJsObjectField(obj.obj, "capture", value.obj)
@@ -195,7 +195,7 @@ pub value struct addEventListenerOptions
   obj: jsObject
 
 pub fun newAddEventListenerOptions(passive: maybe<bool> = Nothing, once: maybe<bool> = Nothing, signal: maybe<abortSignal> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match passive
     Just(it) -> setJsObjectField(obj, "passive", it)
     Nothing -> ()
@@ -206,7 +206,7 @@ pub fun newAddEventListenerOptions(passive: maybe<bool> = Nothing, once: maybe<b
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
 
-  AddEventListenerOptions(obj);
+  AddEventListenerOptions(obj)
 
 pub inline fun passive(obj: addEventListenerOptions, value: bool): web ()
   setJsObjectField(obj.obj, "passive", value.obj)
@@ -406,7 +406,7 @@ pub value struct mutationObserverInit
   obj: jsObject
 
 pub fun newMutationObserverInit(childList: maybe<bool> = Nothing, attributes: maybe<bool> = Nothing, characterData: maybe<bool> = Nothing, subtree: maybe<bool> = Nothing, attributeOldValue: maybe<bool> = Nothing, characterDataOldValue: maybe<bool> = Nothing, attributeFilter: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match childList
     Just(it) -> setJsObjectField(obj, "childList", it)
     Nothing -> ()
@@ -429,7 +429,7 @@ pub fun newMutationObserverInit(childList: maybe<bool> = Nothing, attributes: ma
     Just(it) -> setJsObjectField(obj, "attributeFilter", it)
     Nothing -> ()
 
-  MutationObserverInit(obj);
+  MutationObserverInit(obj)
 
 pub inline fun childList(obj: mutationObserverInit, value: bool): web ()
   setJsObjectField(obj.obj, "childList", value.obj)
@@ -658,12 +658,12 @@ pub value struct getRootNodeOptions
   obj: jsObject
 
 pub fun newGetRootNodeOptions(composed: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match composed
     Just(it) -> setJsObjectField(obj, "composed", it)
     Nothing -> ()
 
-  GetRootNodeOptions(obj);
+  GetRootNodeOptions(obj)
 
 pub inline fun composed(obj: getRootNodeOptions, value: bool): web ()
   setJsObjectField(obj.obj, "composed", value.obj)
@@ -1068,12 +1068,12 @@ pub value struct elementCreationOptions
   obj: jsObject
 
 pub fun newElementCreationOptions(is_: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match is_
     Just(it) -> setJsObjectField(obj, "is_", it)
     Nothing -> ()
 
-  ElementCreationOptions(obj);
+  ElementCreationOptions(obj)
 
 pub inline fun is(obj: elementCreationOptions, value: string): web ()
   setJsObjectField(obj.obj, "is_", value.obj)
@@ -1374,7 +1374,7 @@ pub value struct shadowRootInit
   obj: jsObject
 
 pub fun newShadowRootInit(mode: shadowRootMode, delegatesFocus: maybe<bool> = Nothing, slotAssignment: maybe<slotAssignmentMode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "mode", mode);  match delegatesFocus
     Just(it) -> setJsObjectField(obj, "delegatesFocus", it)
     Nothing -> ()
@@ -1382,7 +1382,7 @@ pub fun newShadowRootInit(mode: shadowRootMode, delegatesFocus: maybe<bool> = No
     Just(it) -> setJsObjectField(obj, "slotAssignment", it)
     Nothing -> ()
 
-  ShadowRootInit(obj);
+  ShadowRootInit(obj)
 
 pub inline fun mode(obj: shadowRootInit, value: shadowRootMode): web ()
   setJsObjectField(obj.obj, "mode", value.obj)
@@ -1538,9 +1538,9 @@ pub value struct staticRangeInit
   obj: jsObject
 
 pub fun newStaticRangeInit(startContainer: node, startOffset: int, endContainer: node, endOffset: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "startContainer", startContainer);  setJsObjectField(obj, "startOffset", startOffset);  setJsObjectField(obj, "endContainer", endContainer);  setJsObjectField(obj, "endOffset", endOffset);
-  StaticRangeInit(obj);
+  StaticRangeInit(obj)
 
 pub inline fun startContainer(obj: staticRangeInit, value: node): web ()
   setJsObjectField(obj.obj, "startContainer", value.obj)

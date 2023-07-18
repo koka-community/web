@@ -22,7 +22,7 @@ pub value struct inputDeviceCapabilitiesInit
   obj: jsObject
 
 pub fun newInputDeviceCapabilitiesInit(firesTouchEvents: maybe<bool> = Nothing, pointerMovementScrolls: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match firesTouchEvents
     Just(it) -> setJsObjectField(obj, "firesTouchEvents", it)
     Nothing -> ()
@@ -30,7 +30,7 @@ pub fun newInputDeviceCapabilitiesInit(firesTouchEvents: maybe<bool> = Nothing, 
     Just(it) -> setJsObjectField(obj, "pointerMovementScrolls", it)
     Nothing -> ()
 
-  InputDeviceCapabilitiesInit(obj);
+  InputDeviceCapabilitiesInit(obj)
 
 pub inline fun firesTouchEvents(obj: inputDeviceCapabilitiesInit, value: bool): web ()
   setJsObjectField(obj.obj, "firesTouchEvents", value.obj)

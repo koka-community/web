@@ -10,12 +10,12 @@ pub value struct isInputPendingOptions
   obj: jsObject
 
 pub fun newIsInputPendingOptions(includeContinuous: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match includeContinuous
     Just(it) -> setJsObjectField(obj, "includeContinuous", it)
     Nothing -> ()
 
-  IsInputPendingOptions(obj);
+  IsInputPendingOptions(obj)
 
 pub inline fun includeContinuous(obj: isInputPendingOptions, value: bool): web ()
   setJsObjectField(obj.obj, "includeContinuous", value.obj)

@@ -5,16 +5,16 @@ import web/wasm
 
 
 
-pub alias idbRequestReadyState = string;
+pub alias idbRequestReadyState = string
 
 
-pub alias idbTransactionDurability = string;
+pub alias idbTransactionDurability = string
 
 
-pub alias idbCursorDirection = string;
+pub alias idbCursorDirection = string
 
 
-pub alias idbTransactionMode = string;
+pub alias idbTransactionMode = string
 
 pub value struct idbRequest
   obj: jsObject
@@ -79,7 +79,7 @@ pub value struct idbVersionChangeEventInit
   obj: jsObject
 
 pub fun newIdbVersionChangeEventInit(oldVersion: maybe<int> = Nothing, newVersion: maybe<maybe<int>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match oldVersion
     Just(it) -> setJsObjectField(obj, "oldVersion", it)
     Nothing -> ()
@@ -87,7 +87,7 @@ pub fun newIdbVersionChangeEventInit(oldVersion: maybe<int> = Nothing, newVersio
     Just(it) -> setJsObjectField(obj, "newVersion", it)
     Nothing -> ()
 
-  IdbVersionChangeEventInit(obj);
+  IdbVersionChangeEventInit(obj)
 
 pub inline fun oldVersion(obj: idbVersionChangeEventInit, value: int): web ()
   setJsObjectField(obj.obj, "oldVersion", value.obj)
@@ -121,7 +121,7 @@ pub value struct idbDatabaseInfo
   obj: jsObject
 
 pub fun newIdbDatabaseInfo(name: maybe<string> = Nothing, version: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match name
     Just(it) -> setJsObjectField(obj, "name", it)
     Nothing -> ()
@@ -129,7 +129,7 @@ pub fun newIdbDatabaseInfo(name: maybe<string> = Nothing, version: maybe<int> = 
     Just(it) -> setJsObjectField(obj, "version", it)
     Nothing -> ()
 
-  IdbDatabaseInfo(obj);
+  IdbDatabaseInfo(obj)
 
 pub inline fun name(obj: idbDatabaseInfo, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -196,12 +196,12 @@ pub value struct idbTransactionOptions
   obj: jsObject
 
 pub fun newIdbTransactionOptions(durability: maybe<idbTransactionDurability> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match durability
     Just(it) -> setJsObjectField(obj, "durability", it)
     Nothing -> ()
 
-  IdbTransactionOptions(obj);
+  IdbTransactionOptions(obj)
 
 pub inline fun durability(obj: idbTransactionOptions, value: idbTransactionDurability): web ()
   setJsObjectField(obj.obj, "durability", value.obj)
@@ -213,7 +213,7 @@ pub value struct idbObjectStoreParameters
   obj: jsObject
 
 pub fun newIdbObjectStoreParameters(keyPath: maybe<maybe<jsObject>> = Nothing, autoIncrement: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match keyPath
     Just(it) -> setJsObjectField(obj, "keyPath", it)
     Nothing -> ()
@@ -221,7 +221,7 @@ pub fun newIdbObjectStoreParameters(keyPath: maybe<maybe<jsObject>> = Nothing, a
     Just(it) -> setJsObjectField(obj, "autoIncrement", it)
     Nothing -> ()
 
-  IdbObjectStoreParameters(obj);
+  IdbObjectStoreParameters(obj)
 
 pub inline fun keyPath(obj: idbObjectStoreParameters, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "keyPath", value.obj)
@@ -303,7 +303,7 @@ pub value struct idbIndexParameters
   obj: jsObject
 
 pub fun newIdbIndexParameters(unique: maybe<bool> = Nothing, multiEntry: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match unique
     Just(it) -> setJsObjectField(obj, "unique", it)
     Nothing -> ()
@@ -311,7 +311,7 @@ pub fun newIdbIndexParameters(unique: maybe<bool> = Nothing, multiEntry: maybe<b
     Just(it) -> setJsObjectField(obj, "multiEntry", it)
     Nothing -> ()
 
-  IdbIndexParameters(obj);
+  IdbIndexParameters(obj)
 
 pub inline fun unique(obj: idbIndexParameters, value: bool): web ()
   setJsObjectField(obj.obj, "unique", value.obj)

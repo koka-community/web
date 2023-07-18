@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias mockSensorType = string;
+pub alias mockSensorType = string
 
 pub value struct sensor
   obj: jsObject
@@ -48,12 +48,12 @@ pub value struct sensorOptions
   obj: jsObject
 
 pub fun newSensorOptions(frequency: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match frequency
     Just(it) -> setJsObjectField(obj, "frequency", it)
     Nothing -> ()
 
-  SensorOptions(obj);
+  SensorOptions(obj)
 
 pub inline fun frequency(obj: sensorOptions, value: double): web ()
   setJsObjectField(obj.obj, "frequency", value.obj)
@@ -74,9 +74,9 @@ pub value struct sensorErrorEventInit
   obj: jsObject
 
 pub fun newSensorErrorEventInit(error: webidl/domException)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "error", error);
-  SensorErrorEventInit(obj);
+  SensorErrorEventInit(obj)
 
 pub inline fun error(obj: sensorErrorEventInit, value: webidl/domException): web ()
   setJsObjectField(obj.obj, "error", value.obj)
@@ -88,7 +88,7 @@ pub value struct mockSensorConfiguration
   obj: jsObject
 
 pub fun newMockSensorConfiguration(mockSensorType: mockSensorType, connected: maybe<bool> = Nothing, maxSamplingFrequency: maybe<maybe<double>> = Nothing, minSamplingFrequency: maybe<maybe<double>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "mockSensorType", mockSensorType);  match connected
     Just(it) -> setJsObjectField(obj, "connected", it)
     Nothing -> ()
@@ -99,7 +99,7 @@ pub fun newMockSensorConfiguration(mockSensorType: mockSensorType, connected: ma
     Just(it) -> setJsObjectField(obj, "minSamplingFrequency", it)
     Nothing -> ()
 
-  MockSensorConfiguration(obj);
+  MockSensorConfiguration(obj)
 
 pub inline fun mockSensorType(obj: mockSensorConfiguration, value: mockSensorType): web ()
   setJsObjectField(obj.obj, "mockSensorType", value.obj)
@@ -129,7 +129,7 @@ pub value struct mockSensor
   obj: jsObject
 
 pub fun newMockSensor(maxSamplingFrequency: maybe<double> = Nothing, minSamplingFrequency: maybe<double> = Nothing, requestedSamplingFrequency: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match maxSamplingFrequency
     Just(it) -> setJsObjectField(obj, "maxSamplingFrequency", it)
     Nothing -> ()
@@ -140,7 +140,7 @@ pub fun newMockSensor(maxSamplingFrequency: maybe<double> = Nothing, minSampling
     Just(it) -> setJsObjectField(obj, "requestedSamplingFrequency", it)
     Nothing -> ()
 
-  MockSensor(obj);
+  MockSensor(obj)
 
 pub inline fun maxSamplingFrequency(obj: mockSensor, value: double): web ()
   setJsObjectField(obj.obj, "maxSamplingFrequency", value.obj)
@@ -164,7 +164,7 @@ pub value struct mockSensorReadingValues
   obj: jsObject
 
 pub fun newMockSensorReadingValues()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  MockSensorReadingValues(obj);
+  MockSensorReadingValues(obj)
 

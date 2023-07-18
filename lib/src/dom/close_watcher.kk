@@ -34,12 +34,12 @@ pub value struct closeWatcherOptions
   obj: jsObject
 
 pub fun newCloseWatcherOptions(signal: maybe<dom/abortSignal> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match signal
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
 
-  CloseWatcherOptions(obj);
+  CloseWatcherOptions(obj)
 
 pub inline fun signal(obj: closeWatcherOptions, value: dom/abortSignal): web ()
   setJsObjectField(obj.obj, "signal", value.obj)

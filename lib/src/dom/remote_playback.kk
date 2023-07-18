@@ -3,10 +3,10 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias remotePlaybackAvailabilityCallback = jsFunction;
+pub alias remotePlaybackAvailabilityCallback = jsFunction
 
 
-pub alias remotePlaybackState = string;
+pub alias remotePlaybackState = string
 
 pub value struct remotePlayback
   obj: jsObject

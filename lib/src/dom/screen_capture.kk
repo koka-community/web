@@ -5,22 +5,22 @@ import web/wasm
 
 
 
-pub alias captureStartFocusBehavior = string;
+pub alias captureStartFocusBehavior = string
 
 
-pub alias selfCapturePreferenceEnum = string;
+pub alias selfCapturePreferenceEnum = string
 
 
-pub alias systemAudioPreferenceEnum = string;
+pub alias systemAudioPreferenceEnum = string
 
 
-pub alias surfaceSwitchingPreferenceEnum = string;
+pub alias surfaceSwitchingPreferenceEnum = string
 
 
-pub alias displayCaptureSurfaceType = string;
+pub alias displayCaptureSurfaceType = string
 
 
-pub alias cursorCaptureConstraint = string;
+pub alias cursorCaptureConstraint = string
 
 pub value struct captureController
   obj: jsObject
@@ -41,7 +41,7 @@ pub value struct displayMediaStreamOptions
   obj: jsObject
 
 pub fun newDisplayMediaStreamOptions(video: maybe<maybe<jsObject>> = Nothing, audio: maybe<maybe<jsObject>> = Nothing, controller: maybe<captureController> = Nothing, selfBrowserSurface: maybe<selfCapturePreferenceEnum> = Nothing, systemAudio: maybe<systemAudioPreferenceEnum> = Nothing, surfaceSwitching: maybe<surfaceSwitchingPreferenceEnum> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match video
     Just(it) -> setJsObjectField(obj, "video", it)
     Nothing -> ()
@@ -61,7 +61,7 @@ pub fun newDisplayMediaStreamOptions(video: maybe<maybe<jsObject>> = Nothing, au
     Just(it) -> setJsObjectField(obj, "surfaceSwitching", it)
     Nothing -> ()
 
-  DisplayMediaStreamOptions(obj);
+  DisplayMediaStreamOptions(obj)
 
 pub inline fun video(obj: displayMediaStreamOptions, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "video", value.obj)

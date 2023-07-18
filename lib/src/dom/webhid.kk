@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias hidUnitSystem = string;
+pub alias hidUnitSystem = string
 
 pub value struct hiD
   obj: jsObject
@@ -33,12 +33,12 @@ pub value struct hidDeviceRequestOptions
   obj: jsObject
 
 pub fun newHidDeviceRequestOptions(filters: jsArray, exclusionFilters: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "filters", filters);  match exclusionFilters
     Just(it) -> setJsObjectField(obj, "exclusionFilters", it)
     Nothing -> ()
 
-  HidDeviceRequestOptions(obj);
+  HidDeviceRequestOptions(obj)
 
 pub inline fun filters(obj: hidDeviceRequestOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "filters", value.obj)
@@ -56,7 +56,7 @@ pub value struct hidDeviceFilter
   obj: jsObject
 
 pub fun newHidDeviceFilter(vendorId: maybe<int> = Nothing, productId: maybe<int> = Nothing, usagePage: maybe<int> = Nothing, usage: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match vendorId
     Just(it) -> setJsObjectField(obj, "vendorId", it)
     Nothing -> ()
@@ -70,7 +70,7 @@ pub fun newHidDeviceFilter(vendorId: maybe<int> = Nothing, productId: maybe<int>
     Just(it) -> setJsObjectField(obj, "usage", it)
     Nothing -> ()
 
-  HidDeviceFilter(obj);
+  HidDeviceFilter(obj)
 
 pub inline fun vendorId(obj: hidDeviceFilter, value: int): web ()
   setJsObjectField(obj.obj, "vendorId", value.obj)
@@ -152,9 +152,9 @@ pub value struct hidConnectionEventInit
   obj: jsObject
 
 pub fun newHidConnectionEventInit(device: hidDevice)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "device", device);
-  HidConnectionEventInit(obj);
+  HidConnectionEventInit(obj)
 
 pub inline fun device(obj: hidConnectionEventInit, value: hidDevice): web ()
   setJsObjectField(obj.obj, "device", value.obj)
@@ -181,9 +181,9 @@ pub value struct hidInputReportEventInit
   obj: jsObject
 
 pub fun newHidInputReportEventInit(device: hidDevice, reportId: int, data: jsDataView)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "device", device);  setJsObjectField(obj, "reportId", reportId);  setJsObjectField(obj, "data", data);
-  HidInputReportEventInit(obj);
+  HidInputReportEventInit(obj)
 
 pub inline fun device(obj: hidInputReportEventInit, value: hidDevice): web ()
   setJsObjectField(obj.obj, "device", value.obj)
@@ -207,7 +207,7 @@ pub value struct hidCollectionInfo
   obj: jsObject
 
 pub fun newHidCollectionInfo(usagePage: maybe<int> = Nothing, usage: maybe<int> = Nothing, type: maybe<int> = Nothing, children: maybe<jsArray> = Nothing, inputReports: maybe<jsArray> = Nothing, outputReports: maybe<jsArray> = Nothing, featureReports: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match usagePage
     Just(it) -> setJsObjectField(obj, "usagePage", it)
     Nothing -> ()
@@ -230,7 +230,7 @@ pub fun newHidCollectionInfo(usagePage: maybe<int> = Nothing, usage: maybe<int> 
     Just(it) -> setJsObjectField(obj, "featureReports", it)
     Nothing -> ()
 
-  HidCollectionInfo(obj);
+  HidCollectionInfo(obj)
 
 pub inline fun usagePage(obj: hidCollectionInfo, value: int): web ()
   setJsObjectField(obj.obj, "usagePage", value.obj)
@@ -278,7 +278,7 @@ pub value struct hidReportInfo
   obj: jsObject
 
 pub fun newHidReportInfo(reportId: maybe<int> = Nothing, items: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match reportId
     Just(it) -> setJsObjectField(obj, "reportId", it)
     Nothing -> ()
@@ -286,7 +286,7 @@ pub fun newHidReportInfo(reportId: maybe<int> = Nothing, items: maybe<jsArray> =
     Just(it) -> setJsObjectField(obj, "items", it)
     Nothing -> ()
 
-  HidReportInfo(obj);
+  HidReportInfo(obj)
 
 pub inline fun reportId(obj: hidReportInfo, value: int): web ()
   setJsObjectField(obj.obj, "reportId", value.obj)
@@ -304,7 +304,7 @@ pub value struct hidReportItem
   obj: jsObject
 
 pub fun newHidReportItem(isAbsolute: maybe<bool> = Nothing, isArray: maybe<bool> = Nothing, isBufferedBytes: maybe<bool> = Nothing, isConstant: maybe<bool> = Nothing, isLinear: maybe<bool> = Nothing, isRange: maybe<bool> = Nothing, isVolatile: maybe<bool> = Nothing, hasNull: maybe<bool> = Nothing, hasPreferredState: maybe<bool> = Nothing, wrap: maybe<bool> = Nothing, usages: maybe<jsArray> = Nothing, usageMinimum: maybe<int> = Nothing, usageMaximum: maybe<int> = Nothing, reportSize: maybe<int> = Nothing, reportCount: maybe<int> = Nothing, unitExponent: maybe<int> = Nothing, unitSystem: maybe<hidUnitSystem> = Nothing, unitFactorLengthExponent: maybe<int> = Nothing, unitFactorMassExponent: maybe<int> = Nothing, unitFactorTimeExponent: maybe<int> = Nothing, unitFactorTemperatureExponent: maybe<int> = Nothing, unitFactorCurrentExponent: maybe<int> = Nothing, unitFactorLuminousIntensityExponent: maybe<int> = Nothing, logicalMinimum: maybe<int> = Nothing, logicalMaximum: maybe<int> = Nothing, physicalMinimum: maybe<int> = Nothing, physicalMaximum: maybe<int> = Nothing, strings: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match isAbsolute
     Just(it) -> setJsObjectField(obj, "isAbsolute", it)
     Nothing -> ()
@@ -390,7 +390,7 @@ pub fun newHidReportItem(isAbsolute: maybe<bool> = Nothing, isArray: maybe<bool>
     Just(it) -> setJsObjectField(obj, "strings", it)
     Nothing -> ()
 
-  HidReportItem(obj);
+  HidReportItem(obj)
 
 pub inline fun isAbsolute(obj: hidReportItem, value: bool): web ()
   setJsObjectField(obj.obj, "isAbsolute", value.obj)

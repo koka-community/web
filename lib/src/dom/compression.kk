@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias compressionFormat = string;
+pub alias compressionFormat = string
 
 pub value struct compressionStream
   obj: jsObject

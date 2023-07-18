@@ -5,13 +5,13 @@ import web/wasm
 
 
 
-pub alias mockCapturePromptResult = string;
+pub alias mockCapturePromptResult = string
 
 pub value struct mockCapturePromptResultConfiguration
   obj: jsObject
 
 pub fun newMockCapturePromptResultConfiguration(getUserMedia: maybe<mockCapturePromptResult> = Nothing, getDisplayMedia: maybe<mockCapturePromptResult> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match getUserMedia
     Just(it) -> setJsObjectField(obj, "getUserMedia", it)
     Nothing -> ()
@@ -19,7 +19,7 @@ pub fun newMockCapturePromptResultConfiguration(getUserMedia: maybe<mockCaptureP
     Just(it) -> setJsObjectField(obj, "getDisplayMedia", it)
     Nothing -> ()
 
-  MockCapturePromptResultConfiguration(obj);
+  MockCapturePromptResultConfiguration(obj)
 
 pub inline fun getUserMedia(obj: mockCapturePromptResultConfiguration, value: mockCapturePromptResult): web ()
   setJsObjectField(obj.obj, "getUserMedia", value.obj)
@@ -37,7 +37,7 @@ pub value struct mockCaptureDeviceConfiguration
   obj: jsObject
 
 pub fun newMockCaptureDeviceConfiguration(label: maybe<string> = Nothing, deviceId: maybe<string> = Nothing, groupId: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match label
     Just(it) -> setJsObjectField(obj, "label", it)
     Nothing -> ()
@@ -48,7 +48,7 @@ pub fun newMockCaptureDeviceConfiguration(label: maybe<string> = Nothing, device
     Just(it) -> setJsObjectField(obj, "groupId", it)
     Nothing -> ()
 
-  MockCaptureDeviceConfiguration(obj);
+  MockCaptureDeviceConfiguration(obj)
 
 pub inline fun label(obj: mockCaptureDeviceConfiguration, value: string): web ()
   setJsObjectField(obj.obj, "label", value.obj)
@@ -72,7 +72,7 @@ pub value struct mockCameraConfiguration
   obj: jsObject
 
 pub fun newMockCameraConfiguration(defaultFrameRate: maybe<double> = Nothing, facingMode: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match defaultFrameRate
     Just(it) -> setJsObjectField(obj, "defaultFrameRate", it)
     Nothing -> ()
@@ -80,7 +80,7 @@ pub fun newMockCameraConfiguration(defaultFrameRate: maybe<double> = Nothing, fa
     Just(it) -> setJsObjectField(obj, "facingMode", it)
     Nothing -> ()
 
-  MockCameraConfiguration(obj);
+  MockCameraConfiguration(obj)
 
 pub inline fun defaultFrameRate(obj: mockCameraConfiguration, value: double): web ()
   setJsObjectField(obj.obj, "defaultFrameRate", value.obj)
@@ -98,12 +98,12 @@ pub value struct mockMicrophoneConfiguration
   obj: jsObject
 
 pub fun newMockMicrophoneConfiguration(defaultSampleRate: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match defaultSampleRate
     Just(it) -> setJsObjectField(obj, "defaultSampleRate", it)
     Nothing -> ()
 
-  MockMicrophoneConfiguration(obj);
+  MockMicrophoneConfiguration(obj)
 
 pub inline fun defaultSampleRate(obj: mockMicrophoneConfiguration, value: int): web ()
   setJsObjectField(obj.obj, "defaultSampleRate", value.obj)

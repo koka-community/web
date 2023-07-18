@@ -5,21 +5,21 @@ import web/wasm
 
 
 
-pub alias spatialNavigationDirection = string;
+pub alias spatialNavigationDirection = string
 
 
-pub alias focusableAreaSearchMode = string;
+pub alias focusableAreaSearchMode = string
 
 pub value struct focusableAreasOption
   obj: jsObject
 
 pub fun newFocusableAreasOption(mode: maybe<focusableAreaSearchMode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match mode
     Just(it) -> setJsObjectField(obj, "mode", it)
     Nothing -> ()
 
-  FocusableAreasOption(obj);
+  FocusableAreasOption(obj)
 
 pub inline fun mode(obj: focusableAreasOption, value: focusableAreaSearchMode): web ()
   setJsObjectField(obj.obj, "mode", value.obj)
@@ -31,7 +31,7 @@ pub value struct spatialNavigationSearchOptions
   obj: jsObject
 
 pub fun newSpatialNavigationSearchOptions(candidates: maybe<maybe<jsArray>> = Nothing, container: maybe<maybe<dom/node>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match candidates
     Just(it) -> setJsObjectField(obj, "candidates", it)
     Nothing -> ()
@@ -39,7 +39,7 @@ pub fun newSpatialNavigationSearchOptions(candidates: maybe<maybe<jsArray>> = No
     Just(it) -> setJsObjectField(obj, "container", it)
     Nothing -> ()
 
-  SpatialNavigationSearchOptions(obj);
+  SpatialNavigationSearchOptions(obj)
 
 pub inline fun candidates(obj: spatialNavigationSearchOptions, value: maybe<jsArray>): web ()
   setJsObjectField(obj.obj, "candidates", value.obj)
@@ -69,7 +69,7 @@ pub value struct navigationEventInit
   obj: jsObject
 
 pub fun newNavigationEventInit(dir: maybe<spatialNavigationDirection> = Nothing, relatedTarget: maybe<maybe<dom/eventTarget>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match dir
     Just(it) -> setJsObjectField(obj, "dir", it)
     Nothing -> ()
@@ -77,7 +77,7 @@ pub fun newNavigationEventInit(dir: maybe<spatialNavigationDirection> = Nothing,
     Just(it) -> setJsObjectField(obj, "relatedTarget", it)
     Nothing -> ()
 
-  NavigationEventInit(obj);
+  NavigationEventInit(obj)
 
 pub inline fun dir(obj: navigationEventInit, value: spatialNavigationDirection): web ()
   setJsObjectField(obj.obj, "dir", value.obj)

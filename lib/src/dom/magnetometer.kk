@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias magnetometerLocalCoordinateSystem = string;
+pub alias magnetometerLocalCoordinateSystem = string
 
 pub value struct magnetometer
   obj: jsObject
@@ -26,12 +26,12 @@ pub value struct magnetometerSensorOptions
   obj: jsObject
 
 pub fun newMagnetometerSensorOptions(referenceFrame: maybe<magnetometerLocalCoordinateSystem> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match referenceFrame
     Just(it) -> setJsObjectField(obj, "referenceFrame", it)
     Nothing -> ()
 
-  MagnetometerSensorOptions(obj);
+  MagnetometerSensorOptions(obj)
 
 pub inline fun referenceFrame(obj: magnetometerSensorOptions, value: magnetometerLocalCoordinateSystem): web ()
   setJsObjectField(obj.obj, "referenceFrame", value.obj)
@@ -67,9 +67,9 @@ pub value struct magnetometerReadingValues
   obj: jsObject
 
 pub fun newMagnetometerReadingValues(x: maybe<double>, y: maybe<double>, z: maybe<double>)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "x", x);  setJsObjectField(obj, "y", y);  setJsObjectField(obj, "z", z);
-  MagnetometerReadingValues(obj);
+  MagnetometerReadingValues(obj)
 
 pub inline fun x(obj: magnetometerReadingValues, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "x", value.obj)
@@ -93,9 +93,9 @@ pub value struct uncalibratedMagnetometerReadingValues
   obj: jsObject
 
 pub fun newUncalibratedMagnetometerReadingValues(x: maybe<double>, y: maybe<double>, z: maybe<double>, xBias: maybe<double>, yBias: maybe<double>, zBias: maybe<double>)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "x", x);  setJsObjectField(obj, "y", y);  setJsObjectField(obj, "z", z);  setJsObjectField(obj, "xBias", xBias);  setJsObjectField(obj, "yBias", yBias);  setJsObjectField(obj, "zBias", zBias);
-  UncalibratedMagnetometerReadingValues(obj);
+  UncalibratedMagnetometerReadingValues(obj)
 
 pub inline fun x(obj: uncalibratedMagnetometerReadingValues, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "x", value.obj)

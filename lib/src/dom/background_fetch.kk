@@ -5,10 +5,10 @@ import web/wasm
 
 
 
-pub alias backgroundFetchResult = string;
+pub alias backgroundFetchResult = string
 
 
-pub alias backgroundFetchFailureReason = string;
+pub alias backgroundFetchFailureReason = string
 
 pub value struct backgroundFetchManager
   obj: jsObject
@@ -27,7 +27,7 @@ pub value struct backgroundFetchUIOptions
   obj: jsObject
 
 pub fun newBackgroundFetchUIOptions(icons: maybe<jsArray> = Nothing, title: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match icons
     Just(it) -> setJsObjectField(obj, "icons", it)
     Nothing -> ()
@@ -35,7 +35,7 @@ pub fun newBackgroundFetchUIOptions(icons: maybe<jsArray> = Nothing, title: mayb
     Just(it) -> setJsObjectField(obj, "title", it)
     Nothing -> ()
 
-  BackgroundFetchUIOptions(obj);
+  BackgroundFetchUIOptions(obj)
 
 pub inline fun icons(obj: backgroundFetchUIOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "icons", value.obj)
@@ -53,12 +53,12 @@ pub value struct backgroundFetchOptions
   obj: jsObject
 
 pub fun newBackgroundFetchOptions(downloadTotal: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match downloadTotal
     Just(it) -> setJsObjectField(obj, "downloadTotal", it)
     Nothing -> ()
 
-  BackgroundFetchOptions(obj);
+  BackgroundFetchOptions(obj)
 
 pub inline fun downloadTotal(obj: backgroundFetchOptions, value: int): web ()
   setJsObjectField(obj.obj, "downloadTotal", value.obj)
@@ -132,9 +132,9 @@ pub value struct backgroundFetchEventInit
   obj: jsObject
 
 pub fun newBackgroundFetchEventInit(registration: backgroundFetchRegistration)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "registration", registration);
-  BackgroundFetchEventInit(obj);
+  BackgroundFetchEventInit(obj)
 
 pub inline fun registration(obj: backgroundFetchEventInit, value: backgroundFetchRegistration): web ()
   setJsObjectField(obj.obj, "registration", value.obj)

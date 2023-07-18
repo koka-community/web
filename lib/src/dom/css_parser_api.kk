@@ -2,10 +2,10 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias cssStringSource = JSAny;
+pub alias cssStringSource = JSAny
 
 
-pub alias cssToken = JSAny;
+pub alias cssToken = JSAny
 
 
 
@@ -14,12 +14,12 @@ pub value struct cssParserOptions
   obj: jsObject
 
 pub fun newCssParserOptions(atRules: maybe<jsObject> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match atRules
     Just(it) -> setJsObjectField(obj, "atRules", it)
     Nothing -> ()
 
-  CssParserOptions(obj);
+  CssParserOptions(obj)
 
 pub inline fun atRules(obj: cssParserOptions, value: jsObject): web ()
   setJsObjectField(obj.obj, "atRules", value.obj)

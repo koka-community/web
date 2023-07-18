@@ -5,13 +5,13 @@ import web/wasm
 
 
 
-pub alias scrollAxis = string;
+pub alias scrollAxis = string
 
 pub value struct scrollTimelineOptions
   obj: jsObject
 
 pub fun newScrollTimelineOptions(source: maybe<maybe<dom/element>> = Nothing, axis: maybe<scrollAxis> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match source
     Just(it) -> setJsObjectField(obj, "source", it)
     Nothing -> ()
@@ -19,7 +19,7 @@ pub fun newScrollTimelineOptions(source: maybe<maybe<dom/element>> = Nothing, ax
     Just(it) -> setJsObjectField(obj, "axis", it)
     Nothing -> ()
 
-  ScrollTimelineOptions(obj);
+  ScrollTimelineOptions(obj)
 
 pub inline fun source(obj: scrollTimelineOptions, value: maybe<dom/element>): web ()
   setJsObjectField(obj.obj, "source", value.obj)
@@ -49,7 +49,7 @@ pub value struct viewTimelineOptions
   obj: jsObject
 
 pub fun newViewTimelineOptions(subject: maybe<dom/element> = Nothing, axis: maybe<scrollAxis> = Nothing, inset: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match subject
     Just(it) -> setJsObjectField(obj, "subject", it)
     Nothing -> ()
@@ -60,7 +60,7 @@ pub fun newViewTimelineOptions(subject: maybe<dom/element> = Nothing, axis: mayb
     Just(it) -> setJsObjectField(obj, "inset", it)
     Nothing -> ()
 
-  ViewTimelineOptions(obj);
+  ViewTimelineOptions(obj)
 
 pub inline fun subject(obj: viewTimelineOptions, value: dom/element): web ()
   setJsObjectField(obj.obj, "subject", value.obj)

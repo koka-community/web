@@ -10,7 +10,7 @@ pub value struct editContextInit
   obj: jsObject
 
 pub fun newEditContextInit(text: maybe<string> = Nothing, selectionStart: maybe<int> = Nothing, selectionEnd: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match text
     Just(it) -> setJsObjectField(obj, "text", it)
     Nothing -> ()
@@ -21,7 +21,7 @@ pub fun newEditContextInit(text: maybe<string> = Nothing, selectionStart: maybe<
     Just(it) -> setJsObjectField(obj, "selectionEnd", it)
     Nothing -> ()
 
-  EditContextInit(obj);
+  EditContextInit(obj)
 
 pub inline fun text(obj: editContextInit, value: string): web ()
   setJsObjectField(obj.obj, "text", value.obj)
@@ -129,7 +129,7 @@ pub value struct textUpdateEventInit
   obj: jsObject
 
 pub fun newTextUpdateEventInit(updateRangeStart: maybe<int> = Nothing, updateRangeEnd: maybe<int> = Nothing, text: maybe<string> = Nothing, selectionStart: maybe<int> = Nothing, selectionEnd: maybe<int> = Nothing, compositionStart: maybe<int> = Nothing, compositionEnd: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match updateRangeStart
     Just(it) -> setJsObjectField(obj, "updateRangeStart", it)
     Nothing -> ()
@@ -152,7 +152,7 @@ pub fun newTextUpdateEventInit(updateRangeStart: maybe<int> = Nothing, updateRan
     Just(it) -> setJsObjectField(obj, "compositionEnd", it)
     Nothing -> ()
 
-  TextUpdateEventInit(obj);
+  TextUpdateEventInit(obj)
 
 pub inline fun updateRangeStart(obj: textUpdateEventInit, value: int): web ()
   setJsObjectField(obj.obj, "updateRangeStart", value.obj)
@@ -227,7 +227,7 @@ pub value struct textFormatInit
   obj: jsObject
 
 pub fun newTextFormatInit(rangeStart: maybe<int> = Nothing, rangeEnd: maybe<int> = Nothing, textColor: maybe<string> = Nothing, backgroundColor: maybe<string> = Nothing, underlineStyle: maybe<string> = Nothing, underlineThickness: maybe<string> = Nothing, underlineColor: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match rangeStart
     Just(it) -> setJsObjectField(obj, "rangeStart", it)
     Nothing -> ()
@@ -250,7 +250,7 @@ pub fun newTextFormatInit(rangeStart: maybe<int> = Nothing, rangeEnd: maybe<int>
     Just(it) -> setJsObjectField(obj, "underlineColor", it)
     Nothing -> ()
 
-  TextFormatInit(obj);
+  TextFormatInit(obj)
 
 pub inline fun rangeStart(obj: textFormatInit, value: int): web ()
   setJsObjectField(obj.obj, "rangeStart", value.obj)
@@ -325,12 +325,12 @@ pub value struct textFormatUpdateEventInit
   obj: jsObject
 
 pub fun newTextFormatUpdateEventInit(textFormats: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match textFormats
     Just(it) -> setJsObjectField(obj, "textFormats", it)
     Nothing -> ()
 
-  TextFormatUpdateEventInit(obj);
+  TextFormatUpdateEventInit(obj)
 
 pub inline fun textFormats(obj: textFormatUpdateEventInit, value: jsArray): web ()
   setJsObjectField(obj.obj, "textFormats", value.obj)
@@ -351,7 +351,7 @@ pub value struct characterBoundsUpdateEventInit
   obj: jsObject
 
 pub fun newCharacterBoundsUpdateEventInit(rangeStart: maybe<int> = Nothing, rangeEnd: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match rangeStart
     Just(it) -> setJsObjectField(obj, "rangeStart", it)
     Nothing -> ()
@@ -359,7 +359,7 @@ pub fun newCharacterBoundsUpdateEventInit(rangeStart: maybe<int> = Nothing, rang
     Just(it) -> setJsObjectField(obj, "rangeEnd", it)
     Nothing -> ()
 
-  CharacterBoundsUpdateEventInit(obj);
+  CharacterBoundsUpdateEventInit(obj)
 
 pub inline fun rangeStart(obj: characterBoundsUpdateEventInit, value: int): web ()
   setJsObjectField(obj.obj, "rangeStart", value.obj)

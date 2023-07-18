@@ -5,25 +5,25 @@ import web/wasm
 
 
 
-pub alias usbTransferStatus = string;
+pub alias usbTransferStatus = string
 
 
-pub alias usbRequestType = string;
+pub alias usbRequestType = string
 
 
-pub alias usbRecipient = string;
+pub alias usbRecipient = string
 
 
-pub alias usbDirection = string;
+pub alias usbDirection = string
 
 
-pub alias usbEndpointType = string;
+pub alias usbEndpointType = string
 
 pub value struct usbDeviceFilter
   obj: jsObject
 
 pub fun newUsbDeviceFilter(vendorId: maybe<int> = Nothing, productId: maybe<int> = Nothing, classCode: maybe<int> = Nothing, subclassCode: maybe<int> = Nothing, protocolCode: maybe<int> = Nothing, serialNumber: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match vendorId
     Just(it) -> setJsObjectField(obj, "vendorId", it)
     Nothing -> ()
@@ -43,7 +43,7 @@ pub fun newUsbDeviceFilter(vendorId: maybe<int> = Nothing, productId: maybe<int>
     Just(it) -> setJsObjectField(obj, "serialNumber", it)
     Nothing -> ()
 
-  UsbDeviceFilter(obj);
+  UsbDeviceFilter(obj)
 
 pub inline fun vendorId(obj: usbDeviceFilter, value: int): web ()
   setJsObjectField(obj.obj, "vendorId", value.obj)
@@ -85,12 +85,12 @@ pub value struct usbDeviceRequestOptions
   obj: jsObject
 
 pub fun newUsbDeviceRequestOptions(filters: jsArray, exclusionFilters: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "filters", filters);  match exclusionFilters
     Just(it) -> setJsObjectField(obj, "exclusionFilters", it)
     Nothing -> ()
 
-  UsbDeviceRequestOptions(obj);
+  UsbDeviceRequestOptions(obj)
 
 pub inline fun filters(obj: usbDeviceRequestOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "filters", value.obj)
@@ -130,9 +130,9 @@ pub value struct usbConnectionEventInit
   obj: jsObject
 
 pub fun newUsbConnectionEventInit(device: usbDevice)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "device", device);
-  UsbConnectionEventInit(obj);
+  UsbConnectionEventInit(obj)
 
 pub inline fun device(obj: usbConnectionEventInit, value: usbDevice): web ()
   setJsObjectField(obj.obj, "device", value.obj)
@@ -322,9 +322,9 @@ pub value struct usbControlTransferParameters
   obj: jsObject
 
 pub fun newUsbControlTransferParameters(requestType: usbRequestType, recipient: usbRecipient, request: int, value: int, index: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "requestType", requestType);  setJsObjectField(obj, "recipient", recipient);  setJsObjectField(obj, "request", request);  setJsObjectField(obj, "value", value);  setJsObjectField(obj, "index", index);
-  UsbControlTransferParameters(obj);
+  UsbControlTransferParameters(obj)
 
 pub inline fun requestType(obj: usbControlTransferParameters, value: usbRequestType): web ()
   setJsObjectField(obj.obj, "requestType", value.obj)
@@ -435,7 +435,7 @@ pub value struct usbPermissionDescriptor
   obj: jsObject
 
 pub fun newUsbPermissionDescriptor(filters: maybe<jsArray> = Nothing, exclusionFilters: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match filters
     Just(it) -> setJsObjectField(obj, "filters", it)
     Nothing -> ()
@@ -443,7 +443,7 @@ pub fun newUsbPermissionDescriptor(filters: maybe<jsArray> = Nothing, exclusionF
     Just(it) -> setJsObjectField(obj, "exclusionFilters", it)
     Nothing -> ()
 
-  UsbPermissionDescriptor(obj);
+  UsbPermissionDescriptor(obj)
 
 pub inline fun filters(obj: usbPermissionDescriptor, value: jsArray): web ()
   setJsObjectField(obj.obj, "filters", value.obj)
@@ -461,12 +461,12 @@ pub value struct allowedUSBDevice
   obj: jsObject
 
 pub fun newAllowedUSBDevice(vendorId: int, productId: int, serialNumber: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "vendorId", vendorId);  setJsObjectField(obj, "productId", productId);  match serialNumber
     Just(it) -> setJsObjectField(obj, "serialNumber", it)
     Nothing -> ()
 
-  AllowedUSBDevice(obj);
+  AllowedUSBDevice(obj)
 
 pub inline fun vendorId(obj: allowedUSBDevice, value: int): web ()
   setJsObjectField(obj.obj, "vendorId", value.obj)
@@ -490,12 +490,12 @@ pub value struct usbPermissionStorage
   obj: jsObject
 
 pub fun newUsbPermissionStorage(allowedDevices: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match allowedDevices
     Just(it) -> setJsObjectField(obj, "allowedDevices", it)
     Nothing -> ()
 
-  UsbPermissionStorage(obj);
+  UsbPermissionStorage(obj)
 
 pub inline fun allowedDevices(obj: usbPermissionStorage, value: jsArray): web ()
   setJsObjectField(obj.obj, "allowedDevices", value.obj)

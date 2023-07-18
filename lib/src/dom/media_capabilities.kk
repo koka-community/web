@@ -5,25 +5,25 @@ import web/wasm
 
 
 
-pub alias mediaDecodingType = string;
+pub alias mediaDecodingType = string
 
 
-pub alias mediaEncodingType = string;
+pub alias mediaEncodingType = string
 
 
-pub alias hdrMetadataType = string;
+pub alias hdrMetadataType = string
 
 
-pub alias colorGamut = string;
+pub alias colorGamut = string
 
 
-pub alias transferFunction = string;
+pub alias transferFunction = string
 
 pub value struct mediaConfiguration
   obj: jsObject
 
 pub fun newMediaConfiguration(video: maybe<videoConfiguration> = Nothing, audio: maybe<audioConfiguration> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match video
     Just(it) -> setJsObjectField(obj, "video", it)
     Nothing -> ()
@@ -31,7 +31,7 @@ pub fun newMediaConfiguration(video: maybe<videoConfiguration> = Nothing, audio:
     Just(it) -> setJsObjectField(obj, "audio", it)
     Nothing -> ()
 
-  MediaConfiguration(obj);
+  MediaConfiguration(obj)
 
 pub inline fun video(obj: mediaConfiguration, value: videoConfiguration): web ()
   setJsObjectField(obj.obj, "video", value.obj)
@@ -49,12 +49,12 @@ pub value struct mediaDecodingConfiguration
   obj: jsObject
 
 pub fun newMediaDecodingConfiguration(type: mediaDecodingType, keySystemConfiguration: maybe<mediaCapabilitiesKeySystemConfiguration> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);  match keySystemConfiguration
     Just(it) -> setJsObjectField(obj, "keySystemConfiguration", it)
     Nothing -> ()
 
-  MediaDecodingConfiguration(obj);
+  MediaDecodingConfiguration(obj)
 
 pub inline fun type(obj: mediaDecodingConfiguration, value: mediaDecodingType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -72,9 +72,9 @@ pub value struct mediaEncodingConfiguration
   obj: jsObject
 
 pub fun newMediaEncodingConfiguration(type: mediaEncodingType)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);
-  MediaEncodingConfiguration(obj);
+  MediaEncodingConfiguration(obj)
 
 pub inline fun type(obj: mediaEncodingConfiguration, value: mediaEncodingType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -86,7 +86,7 @@ pub value struct videoConfiguration
   obj: jsObject
 
 pub fun newVideoConfiguration(contentType: string, width: int, height: int, bitrate: int, framerate: double, hasAlphaChannel: maybe<bool> = Nothing, hdrMetadataType: maybe<hdrMetadataType> = Nothing, colorGamut: maybe<colorGamut> = Nothing, transferFunction: maybe<transferFunction> = Nothing, scalabilityMode: maybe<string> = Nothing, spatialScalability: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "contentType", contentType);  setJsObjectField(obj, "width", width);  setJsObjectField(obj, "height", height);  setJsObjectField(obj, "bitrate", bitrate);  setJsObjectField(obj, "framerate", framerate);  match hasAlphaChannel
     Just(it) -> setJsObjectField(obj, "hasAlphaChannel", it)
     Nothing -> ()
@@ -106,7 +106,7 @@ pub fun newVideoConfiguration(contentType: string, width: int, height: int, bitr
     Just(it) -> setJsObjectField(obj, "spatialScalability", it)
     Nothing -> ()
 
-  VideoConfiguration(obj);
+  VideoConfiguration(obj)
 
 pub inline fun contentType(obj: videoConfiguration, value: string): web ()
   setJsObjectField(obj.obj, "contentType", value.obj)
@@ -178,7 +178,7 @@ pub value struct audioConfiguration
   obj: jsObject
 
 pub fun newAudioConfiguration(contentType: string, channels: maybe<string> = Nothing, bitrate: maybe<int> = Nothing, samplerate: maybe<int> = Nothing, spatialRendering: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "contentType", contentType);  match channels
     Just(it) -> setJsObjectField(obj, "channels", it)
     Nothing -> ()
@@ -192,7 +192,7 @@ pub fun newAudioConfiguration(contentType: string, channels: maybe<string> = Not
     Just(it) -> setJsObjectField(obj, "spatialRendering", it)
     Nothing -> ()
 
-  AudioConfiguration(obj);
+  AudioConfiguration(obj)
 
 pub inline fun contentType(obj: audioConfiguration, value: string): web ()
   setJsObjectField(obj.obj, "contentType", value.obj)
@@ -228,7 +228,7 @@ pub value struct mediaCapabilitiesKeySystemConfiguration
   obj: jsObject
 
 pub fun newMediaCapabilitiesKeySystemConfiguration(keySystem: string, initDataType: maybe<string> = Nothing, distinctiveIdentifier: maybe<encrypted_media/mediaKeysRequirement> = Nothing, persistentState: maybe<encrypted_media/mediaKeysRequirement> = Nothing, sessionTypes: maybe<jsArray> = Nothing, audio: maybe<keySystemTrackConfiguration> = Nothing, video: maybe<keySystemTrackConfiguration> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "keySystem", keySystem);  match initDataType
     Just(it) -> setJsObjectField(obj, "initDataType", it)
     Nothing -> ()
@@ -248,7 +248,7 @@ pub fun newMediaCapabilitiesKeySystemConfiguration(keySystem: string, initDataTy
     Just(it) -> setJsObjectField(obj, "video", it)
     Nothing -> ()
 
-  MediaCapabilitiesKeySystemConfiguration(obj);
+  MediaCapabilitiesKeySystemConfiguration(obj)
 
 pub inline fun keySystem(obj: mediaCapabilitiesKeySystemConfiguration, value: string): web ()
   setJsObjectField(obj.obj, "keySystem", value.obj)
@@ -296,7 +296,7 @@ pub value struct keySystemTrackConfiguration
   obj: jsObject
 
 pub fun newKeySystemTrackConfiguration(robustness: maybe<string> = Nothing, encryptionScheme: maybe<maybe<string>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match robustness
     Just(it) -> setJsObjectField(obj, "robustness", it)
     Nothing -> ()
@@ -304,7 +304,7 @@ pub fun newKeySystemTrackConfiguration(robustness: maybe<string> = Nothing, encr
     Just(it) -> setJsObjectField(obj, "encryptionScheme", it)
     Nothing -> ()
 
-  KeySystemTrackConfiguration(obj);
+  KeySystemTrackConfiguration(obj)
 
 pub inline fun robustness(obj: keySystemTrackConfiguration, value: string): web ()
   setJsObjectField(obj.obj, "robustness", value.obj)
@@ -322,9 +322,9 @@ pub value struct mediaCapabilitiesInfo
   obj: jsObject
 
 pub fun newMediaCapabilitiesInfo(supported: bool, smooth: bool, powerEfficient: bool)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "supported", supported);  setJsObjectField(obj, "smooth", smooth);  setJsObjectField(obj, "powerEfficient", powerEfficient);
-  MediaCapabilitiesInfo(obj);
+  MediaCapabilitiesInfo(obj)
 
 pub inline fun supported(obj: mediaCapabilitiesInfo, value: bool): web ()
   setJsObjectField(obj.obj, "supported", value.obj)
@@ -348,12 +348,12 @@ pub value struct mediaCapabilitiesDecodingInfo
   obj: jsObject
 
 pub fun newMediaCapabilitiesDecodingInfo(keySystemAccess: encrypted_media/mediaKeySystemAccess, configuration: maybe<mediaDecodingConfiguration> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "keySystemAccess", keySystemAccess);  match configuration
     Just(it) -> setJsObjectField(obj, "configuration", it)
     Nothing -> ()
 
-  MediaCapabilitiesDecodingInfo(obj);
+  MediaCapabilitiesDecodingInfo(obj)
 
 pub inline fun keySystemAccess(obj: mediaCapabilitiesDecodingInfo, value: encrypted_media/mediaKeySystemAccess): web ()
   setJsObjectField(obj.obj, "keySystemAccess", value.obj)
@@ -371,12 +371,12 @@ pub value struct mediaCapabilitiesEncodingInfo
   obj: jsObject
 
 pub fun newMediaCapabilitiesEncodingInfo(configuration: maybe<mediaEncodingConfiguration> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match configuration
     Just(it) -> setJsObjectField(obj, "configuration", it)
     Nothing -> ()
 
-  MediaCapabilitiesEncodingInfo(obj);
+  MediaCapabilitiesEncodingInfo(obj)
 
 pub inline fun configuration(obj: mediaCapabilitiesEncodingInfo, value: mediaEncodingConfiguration): web ()
   setJsObjectField(obj.obj, "configuration", value.obj)

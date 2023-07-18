@@ -17,12 +17,12 @@ pub value struct inkPresenterParam
   obj: jsObject
 
 pub fun newInkPresenterParam(presentationArea: maybe<maybe<dom/element>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match presentationArea
     Just(it) -> setJsObjectField(obj, "presentationArea", it)
     Nothing -> ()
 
-  InkPresenterParam(obj);
+  InkPresenterParam(obj)
 
 pub inline fun presentationArea(obj: inkPresenterParam, value: maybe<dom/element>): web ()
   setJsObjectField(obj.obj, "presentationArea", value.obj)
@@ -47,9 +47,9 @@ pub value struct inkTrailStyle
   obj: jsObject
 
 pub fun newInkTrailStyle(color: string, diameter: double)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "color", color);  setJsObjectField(obj, "diameter", diameter);
-  InkTrailStyle(obj);
+  InkTrailStyle(obj)
 
 pub inline fun color(obj: inkTrailStyle, value: string): web ()
   setJsObjectField(obj.obj, "color", value.obj)

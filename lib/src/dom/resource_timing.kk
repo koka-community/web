@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias renderBlockingStatusType = string;
+pub alias renderBlockingStatusType = string
 
 pub value struct performanceResourceTiming
   obj: jsObject

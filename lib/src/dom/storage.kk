@@ -33,7 +33,7 @@ pub value struct storageEstimate
   obj: jsObject
 
 pub fun newStorageEstimate(usage: maybe<int> = Nothing, quota: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match usage
     Just(it) -> setJsObjectField(obj, "usage", it)
     Nothing -> ()
@@ -41,7 +41,7 @@ pub fun newStorageEstimate(usage: maybe<int> = Nothing, quota: maybe<int> = Noth
     Just(it) -> setJsObjectField(obj, "quota", it)
     Nothing -> ()
 
-  StorageEstimate(obj);
+  StorageEstimate(obj)
 
 pub inline fun usage(obj: storageEstimate, value: int): web ()
   setJsObjectField(obj.obj, "usage", value.obj)

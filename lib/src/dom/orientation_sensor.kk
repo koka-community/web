@@ -2,11 +2,11 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias rotationMatrixType = JSAny;
+pub alias rotationMatrixType = JSAny
 
 
 
-pub alias orientationSensorLocalCoordinateSystem = string;
+pub alias orientationSensorLocalCoordinateSystem = string
 
 pub value struct orientationSensor
   obj: jsObject
@@ -22,12 +22,12 @@ pub value struct orientationSensorOptions
   obj: jsObject
 
 pub fun newOrientationSensorOptions(referenceFrame: maybe<orientationSensorLocalCoordinateSystem> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match referenceFrame
     Just(it) -> setJsObjectField(obj, "referenceFrame", it)
     Nothing -> ()
 
-  OrientationSensorOptions(obj);
+  OrientationSensorOptions(obj)
 
 pub inline fun referenceFrame(obj: orientationSensorOptions, value: orientationSensorLocalCoordinateSystem): web ()
   setJsObjectField(obj.obj, "referenceFrame", value.obj)
@@ -51,9 +51,9 @@ pub value struct absoluteOrientationReadingValues
   obj: jsObject
 
 pub fun newAbsoluteOrientationReadingValues(quaternion: maybe<jsArray>)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "quaternion", quaternion);
-  AbsoluteOrientationReadingValues(obj);
+  AbsoluteOrientationReadingValues(obj)
 
 pub inline fun quaternion(obj: absoluteOrientationReadingValues, value: maybe<jsArray>): web ()
   setJsObjectField(obj.obj, "quaternion", value.obj)
@@ -65,7 +65,7 @@ pub value struct relativeOrientationReadingValues
   obj: jsObject
 
 pub fun newRelativeOrientationReadingValues()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  RelativeOrientationReadingValues(obj);
+  RelativeOrientationReadingValues(obj)
 

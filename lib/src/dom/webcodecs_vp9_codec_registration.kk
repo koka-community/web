@@ -10,12 +10,12 @@ pub value struct videoEncoderEncodeOptionsForVp9
   obj: jsObject
 
 pub fun newVideoEncoderEncodeOptionsForVp9(quantizer: maybe<maybe<int>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match quantizer
     Just(it) -> setJsObjectField(obj, "quantizer", it)
     Nothing -> ()
 
-  VideoEncoderEncodeOptionsForVp9(obj);
+  VideoEncoderEncodeOptionsForVp9(obj)
 
 pub inline fun quantizer(obj: videoEncoderEncodeOptionsForVp9, value: maybe<int>): web ()
   setJsObjectField(obj.obj, "quantizer", value.obj)

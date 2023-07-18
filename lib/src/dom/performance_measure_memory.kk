@@ -10,7 +10,7 @@ pub value struct memoryMeasurement
   obj: jsObject
 
 pub fun newMemoryMeasurement(bytes: maybe<int> = Nothing, breakdown: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match bytes
     Just(it) -> setJsObjectField(obj, "bytes", it)
     Nothing -> ()
@@ -18,7 +18,7 @@ pub fun newMemoryMeasurement(bytes: maybe<int> = Nothing, breakdown: maybe<jsArr
     Just(it) -> setJsObjectField(obj, "breakdown", it)
     Nothing -> ()
 
-  MemoryMeasurement(obj);
+  MemoryMeasurement(obj)
 
 pub inline fun bytes(obj: memoryMeasurement, value: int): web ()
   setJsObjectField(obj.obj, "bytes", value.obj)
@@ -36,7 +36,7 @@ pub value struct memoryBreakdownEntry
   obj: jsObject
 
 pub fun newMemoryBreakdownEntry(bytes: maybe<int> = Nothing, attribution: maybe<jsArray> = Nothing, types: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match bytes
     Just(it) -> setJsObjectField(obj, "bytes", it)
     Nothing -> ()
@@ -47,7 +47,7 @@ pub fun newMemoryBreakdownEntry(bytes: maybe<int> = Nothing, attribution: maybe<
     Just(it) -> setJsObjectField(obj, "types", it)
     Nothing -> ()
 
-  MemoryBreakdownEntry(obj);
+  MemoryBreakdownEntry(obj)
 
 pub inline fun bytes(obj: memoryBreakdownEntry, value: int): web ()
   setJsObjectField(obj.obj, "bytes", value.obj)
@@ -71,7 +71,7 @@ pub value struct memoryAttribution
   obj: jsObject
 
 pub fun newMemoryAttribution(url: maybe<string> = Nothing, container: maybe<memoryAttributionContainer> = Nothing, scope: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match url
     Just(it) -> setJsObjectField(obj, "url", it)
     Nothing -> ()
@@ -82,7 +82,7 @@ pub fun newMemoryAttribution(url: maybe<string> = Nothing, container: maybe<memo
     Just(it) -> setJsObjectField(obj, "scope", it)
     Nothing -> ()
 
-  MemoryAttribution(obj);
+  MemoryAttribution(obj)
 
 pub inline fun url(obj: memoryAttribution, value: string): web ()
   setJsObjectField(obj.obj, "url", value.obj)
@@ -106,7 +106,7 @@ pub value struct memoryAttributionContainer
   obj: jsObject
 
 pub fun newMemoryAttributionContainer(id: maybe<string> = Nothing, src: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match id
     Just(it) -> setJsObjectField(obj, "id", it)
     Nothing -> ()
@@ -114,7 +114,7 @@ pub fun newMemoryAttributionContainer(id: maybe<string> = Nothing, src: maybe<st
     Just(it) -> setJsObjectField(obj, "src", it)
     Nothing -> ()
 
-  MemoryAttributionContainer(obj);
+  MemoryAttributionContainer(obj)
 
 pub inline fun id(obj: memoryAttributionContainer, value: string): web ()
   setJsObjectField(obj.obj, "id", value.obj)

@@ -2,24 +2,24 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias htmlString = String;
+pub alias htmlString = String
 
 
-pub alias scriptString = String;
+pub alias scriptString = String
 
 
-pub alias scriptURLString = String;
+pub alias scriptURLString = String
 
 
-pub alias trustedType = JSAny;
+pub alias trustedType = JSAny
 
-pub alias createHTMLCallback = jsFunction;
-
-
-pub alias createScriptCallback = jsFunction;
+pub alias createHTMLCallback = jsFunction
 
 
-pub alias createScriptURLCallback = jsFunction;
+pub alias createScriptCallback = jsFunction
+
+
+pub alias createScriptURLCallback = jsFunction
 
 
 
@@ -101,7 +101,7 @@ pub value struct trustedTypePolicyOptions
   obj: jsObject
 
 pub fun newTrustedTypePolicyOptions(createHTML: maybe<maybe<createHTMLCallback>> = Nothing, createScript: maybe<maybe<createScriptCallback>> = Nothing, createScriptURL: maybe<maybe<createScriptURLCallback>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match createHTML
     Just(it) -> setJsObjectField(obj, "createHTML", it)
     Nothing -> ()
@@ -112,7 +112,7 @@ pub fun newTrustedTypePolicyOptions(createHTML: maybe<maybe<createHTMLCallback>>
     Just(it) -> setJsObjectField(obj, "createScriptURL", it)
     Nothing -> ()
 
-  TrustedTypePolicyOptions(obj);
+  TrustedTypePolicyOptions(obj)
 
 pub inline fun createHTML(obj: trustedTypePolicyOptions, value: maybe<createHTMLCallback>): web ()
   setJsObjectField(obj.obj, "createHTML", value.obj)

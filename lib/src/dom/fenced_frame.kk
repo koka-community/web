@@ -2,20 +2,20 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias fencedFrameConfigSize = JSAny;
+pub alias fencedFrameConfigSize = JSAny
 
 
-pub alias fencedFrameConfigURL = String;
+pub alias fencedFrameConfigURL = String
 
 
-pub alias reportEventType = JSAny;
+pub alias reportEventType = JSAny
 
 
 
-pub alias opaqueProperty = string;
+pub alias opaqueProperty = string
 
 
-pub alias fenceReportingDestination = string;
+pub alias fenceReportingDestination = string
 
 pub value struct htmlFencedFrameElement
   obj: jsObject
@@ -70,9 +70,9 @@ pub value struct fenceEvent
   obj: jsObject
 
 pub fun newFenceEvent(eventType: string, eventData: string, destination: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "eventType", eventType);  setJsObjectField(obj, "eventData", eventData);  setJsObjectField(obj, "destination", destination);
-  FenceEvent(obj);
+  FenceEvent(obj)
 
 pub inline fun eventType(obj: fenceEvent, value: string): web ()
   setJsObjectField(obj.obj, "eventType", value.obj)

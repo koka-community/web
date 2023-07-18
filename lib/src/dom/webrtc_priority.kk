@@ -5,6 +5,6 @@ import web/wasm
 
 
 
-pub alias rtcPriorityType = string;
+pub alias rtcPriorityType = string
 
 

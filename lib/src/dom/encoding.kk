@@ -23,7 +23,7 @@ pub value struct textDecoderOptions
   obj: jsObject
 
 pub fun newTextDecoderOptions(fatal: maybe<bool> = Nothing, ignoreBOM: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match fatal
     Just(it) -> setJsObjectField(obj, "fatal", it)
     Nothing -> ()
@@ -31,7 +31,7 @@ pub fun newTextDecoderOptions(fatal: maybe<bool> = Nothing, ignoreBOM: maybe<boo
     Just(it) -> setJsObjectField(obj, "ignoreBOM", it)
     Nothing -> ()
 
-  TextDecoderOptions(obj);
+  TextDecoderOptions(obj)
 
 pub inline fun fatal(obj: textDecoderOptions, value: bool): web ()
   setJsObjectField(obj.obj, "fatal", value.obj)
@@ -49,12 +49,12 @@ pub value struct textDecodeOptions
   obj: jsObject
 
 pub fun newTextDecodeOptions(stream: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match stream
     Just(it) -> setJsObjectField(obj, "stream", it)
     Nothing -> ()
 
-  TextDecodeOptions(obj);
+  TextDecodeOptions(obj)
 
 pub inline fun stream(obj: textDecodeOptions, value: bool): web ()
   setJsObjectField(obj.obj, "stream", value.obj)
@@ -82,7 +82,7 @@ pub value struct textEncoderEncodeIntoResult
   obj: jsObject
 
 pub fun newTextEncoderEncodeIntoResult(read: maybe<int> = Nothing, written: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match read
     Just(it) -> setJsObjectField(obj, "read", it)
     Nothing -> ()
@@ -90,7 +90,7 @@ pub fun newTextEncoderEncodeIntoResult(read: maybe<int> = Nothing, written: mayb
     Just(it) -> setJsObjectField(obj, "written", it)
     Nothing -> ()
 
-  TextEncoderEncodeIntoResult(obj);
+  TextEncoderEncodeIntoResult(obj)
 
 pub inline fun read(obj: textEncoderEncodeIntoResult, value: int): web ()
   setJsObjectField(obj.obj, "read", value.obj)

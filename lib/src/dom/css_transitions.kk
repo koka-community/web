@@ -25,7 +25,7 @@ pub value struct transitionEventInit
   obj: jsObject
 
 pub fun newTransitionEventInit(propertyName: maybe<string> = Nothing, elapsedTime: maybe<double> = Nothing, pseudoElement: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match propertyName
     Just(it) -> setJsObjectField(obj, "propertyName", it)
     Nothing -> ()
@@ -36,7 +36,7 @@ pub fun newTransitionEventInit(propertyName: maybe<string> = Nothing, elapsedTim
     Just(it) -> setJsObjectField(obj, "pseudoElement", it)
     Nothing -> ()
 
-  TransitionEventInit(obj);
+  TransitionEventInit(obj)
 
 pub inline fun propertyName(obj: transitionEventInit, value: string): web ()
   setJsObjectField(obj.obj, "propertyName", value.obj)

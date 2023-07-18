@@ -20,9 +20,9 @@ pub value struct attributionReportingRequestOptions
   obj: jsObject
 
 pub fun newAttributionReportingRequestOptions(eventSourceEligible: bool, triggerEligible: bool)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "eventSourceEligible", eventSourceEligible);  setJsObjectField(obj, "triggerEligible", triggerEligible);
-  AttributionReportingRequestOptions(obj);
+  AttributionReportingRequestOptions(obj)
 
 pub inline fun eventSourceEligible(obj: attributionReportingRequestOptions, value: bool): web ()
   setJsObjectField(obj.obj, "eventSourceEligible", value.obj)

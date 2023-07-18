@@ -68,7 +68,7 @@ pub value struct domPointInit
   obj: jsObject
 
 pub fun newDomPointInit(x: maybe<double> = Nothing, y: maybe<double> = Nothing, z: maybe<double> = Nothing, w: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match x
     Just(it) -> setJsObjectField(obj, "x", it)
     Nothing -> ()
@@ -82,7 +82,7 @@ pub fun newDomPointInit(x: maybe<double> = Nothing, y: maybe<double> = Nothing, 
     Just(it) -> setJsObjectField(obj, "w", it)
     Nothing -> ()
 
-  DomPointInit(obj);
+  DomPointInit(obj)
 
 pub inline fun x(obj: domPointInit, value: double): web ()
   setJsObjectField(obj.obj, "x", value.obj)
@@ -179,7 +179,7 @@ pub value struct domRectInit
   obj: jsObject
 
 pub fun newDomRectInit(x: maybe<double> = Nothing, y: maybe<double> = Nothing, width: maybe<double> = Nothing, height: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match x
     Just(it) -> setJsObjectField(obj, "x", it)
     Nothing -> ()
@@ -193,7 +193,7 @@ pub fun newDomRectInit(x: maybe<double> = Nothing, y: maybe<double> = Nothing, w
     Just(it) -> setJsObjectField(obj, "height", it)
     Nothing -> ()
 
-  DomRectInit(obj);
+  DomRectInit(obj)
 
 pub inline fun x(obj: domRectInit, value: double): web ()
   setJsObjectField(obj.obj, "x", value.obj)
@@ -262,7 +262,7 @@ pub value struct domQuadInit
   obj: jsObject
 
 pub fun newDomQuadInit(p1: maybe<domPointInit> = Nothing, p2: maybe<domPointInit> = Nothing, p3: maybe<domPointInit> = Nothing, p4: maybe<domPointInit> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match p1
     Just(it) -> setJsObjectField(obj, "p1", it)
     Nothing -> ()
@@ -276,7 +276,7 @@ pub fun newDomQuadInit(p1: maybe<domPointInit> = Nothing, p2: maybe<domPointInit
     Just(it) -> setJsObjectField(obj, "p4", it)
     Nothing -> ()
 
-  DomQuadInit(obj);
+  DomQuadInit(obj)
 
 pub inline fun p1(obj: domQuadInit, value: domPointInit): web ()
   setJsObjectField(obj.obj, "p1", value.obj)
@@ -625,7 +625,7 @@ pub value struct domMatrix2DInit
   obj: jsObject
 
 pub fun newDomMatrix2DInit(a: maybe<double> = Nothing, b: maybe<double> = Nothing, c: maybe<double> = Nothing, d: maybe<double> = Nothing, e: maybe<double> = Nothing, f: maybe<double> = Nothing, m11: maybe<double> = Nothing, m12: maybe<double> = Nothing, m21: maybe<double> = Nothing, m22: maybe<double> = Nothing, m41: maybe<double> = Nothing, m42: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match a
     Just(it) -> setJsObjectField(obj, "a", it)
     Nothing -> ()
@@ -663,7 +663,7 @@ pub fun newDomMatrix2DInit(a: maybe<double> = Nothing, b: maybe<double> = Nothin
     Just(it) -> setJsObjectField(obj, "m42", it)
     Nothing -> ()
 
-  DomMatrix2DInit(obj);
+  DomMatrix2DInit(obj)
 
 pub inline fun a(obj: domMatrix2DInit, value: double): web ()
   setJsObjectField(obj.obj, "a", value.obj)
@@ -741,7 +741,7 @@ pub value struct domMatrixInit
   obj: jsObject
 
 pub fun newDomMatrixInit(m13: maybe<double> = Nothing, m14: maybe<double> = Nothing, m23: maybe<double> = Nothing, m24: maybe<double> = Nothing, m31: maybe<double> = Nothing, m32: maybe<double> = Nothing, m33: maybe<double> = Nothing, m34: maybe<double> = Nothing, m43: maybe<double> = Nothing, m44: maybe<double> = Nothing, is2D: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match m13
     Just(it) -> setJsObjectField(obj, "m13", it)
     Nothing -> ()
@@ -776,7 +776,7 @@ pub fun newDomMatrixInit(m13: maybe<double> = Nothing, m14: maybe<double> = Noth
     Just(it) -> setJsObjectField(obj, "is2D", it)
     Nothing -> ()
 
-  DomMatrixInit(obj);
+  DomMatrixInit(obj)
 
 pub inline fun m13(obj: domMatrixInit, value: double): web ()
   setJsObjectField(obj.obj, "m13", value.obj)

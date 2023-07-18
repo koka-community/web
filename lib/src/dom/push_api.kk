@@ -2,22 +2,22 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias pushMessageDataInit = JSAny;
+pub alias pushMessageDataInit = JSAny
 
 
 
-pub alias pushEncryptionKeyName = string;
+pub alias pushEncryptionKeyName = string
 
 pub value struct pushPermissionDescriptor
   obj: jsObject
 
 pub fun newPushPermissionDescriptor(userVisibleOnly: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match userVisibleOnly
     Just(it) -> setJsObjectField(obj, "userVisibleOnly", it)
     Nothing -> ()
 
-  PushPermissionDescriptor(obj);
+  PushPermissionDescriptor(obj)
 
 pub inline fun userVisibleOnly(obj: pushPermissionDescriptor, value: bool): web ()
   setJsObjectField(obj.obj, "userVisibleOnly", value.obj)
@@ -54,7 +54,7 @@ pub value struct pushSubscriptionOptionsInit
   obj: jsObject
 
 pub fun newPushSubscriptionOptionsInit(userVisibleOnly: maybe<bool> = Nothing, applicationServerKey: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match userVisibleOnly
     Just(it) -> setJsObjectField(obj, "userVisibleOnly", it)
     Nothing -> ()
@@ -62,7 +62,7 @@ pub fun newPushSubscriptionOptionsInit(userVisibleOnly: maybe<bool> = Nothing, a
     Just(it) -> setJsObjectField(obj, "applicationServerKey", it)
     Nothing -> ()
 
-  PushSubscriptionOptionsInit(obj);
+  PushSubscriptionOptionsInit(obj)
 
 pub inline fun userVisibleOnly(obj: pushSubscriptionOptionsInit, value: bool): web ()
   setJsObjectField(obj.obj, "userVisibleOnly", value.obj)
@@ -102,7 +102,7 @@ pub value struct pushSubscriptionJSON
   obj: jsObject
 
 pub fun newPushSubscriptionJSON(endpoint: maybe<string> = Nothing, expirationTime: maybe<maybe<hr_time/epochTimeStamp>> = Nothing, keys: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match endpoint
     Just(it) -> setJsObjectField(obj, "endpoint", it)
     Nothing -> ()
@@ -113,7 +113,7 @@ pub fun newPushSubscriptionJSON(endpoint: maybe<string> = Nothing, expirationTim
     Just(it) -> setJsObjectField(obj, "keys", it)
     Nothing -> ()
 
-  PushSubscriptionJSON(obj);
+  PushSubscriptionJSON(obj)
 
 pub inline fun endpoint(obj: pushSubscriptionJSON, value: string): web ()
   setJsObjectField(obj.obj, "endpoint", value.obj)
@@ -162,12 +162,12 @@ pub value struct pushEventInit
   obj: jsObject
 
 pub fun newPushEventInit(data: maybe<pushMessageDataInit> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match data
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  PushEventInit(obj);
+  PushEventInit(obj)
 
 pub inline fun data(obj: pushEventInit, value: pushMessageDataInit): web ()
   setJsObjectField(obj.obj, "data", value.obj)
@@ -191,7 +191,7 @@ pub value struct pushSubscriptionChangeEventInit
   obj: jsObject
 
 pub fun newPushSubscriptionChangeEventInit(newSubscription: maybe<pushSubscription> = Nothing, oldSubscription: maybe<pushSubscription> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match newSubscription
     Just(it) -> setJsObjectField(obj, "newSubscription", it)
     Nothing -> ()
@@ -199,7 +199,7 @@ pub fun newPushSubscriptionChangeEventInit(newSubscription: maybe<pushSubscripti
     Just(it) -> setJsObjectField(obj, "oldSubscription", it)
     Nothing -> ()
 
-  PushSubscriptionChangeEventInit(obj);
+  PushSubscriptionChangeEventInit(obj)
 
 pub inline fun newSubscription(obj: pushSubscriptionChangeEventInit, value: pushSubscription): web ()
   setJsObjectField(obj.obj, "newSubscription", value.obj)

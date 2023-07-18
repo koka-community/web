@@ -39,20 +39,20 @@ pub value struct geolocationSensorOptions
   obj: jsObject
 
 pub fun newGeolocationSensorOptions()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  GeolocationSensorOptions(obj);
+  GeolocationSensorOptions(obj)
 
 pub value struct readOptions
   obj: jsObject
 
 pub fun newReadOptions(signal: maybe<maybe<dom/abortSignal>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match signal
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
 
-  ReadOptions(obj);
+  ReadOptions(obj)
 
 pub inline fun signal(obj: readOptions, value: maybe<dom/abortSignal>): web ()
   setJsObjectField(obj.obj, "signal", value.obj)
@@ -64,7 +64,7 @@ pub value struct geolocationSensorReading
   obj: jsObject
 
 pub fun newGeolocationSensorReading(timestamp: maybe<maybe<hr_time/domHighResTimeStamp>> = Nothing, latitude: maybe<maybe<double>> = Nothing, longitude: maybe<maybe<double>> = Nothing, altitude: maybe<maybe<double>> = Nothing, accuracy: maybe<maybe<double>> = Nothing, altitudeAccuracy: maybe<maybe<double>> = Nothing, heading: maybe<maybe<double>> = Nothing, speed: maybe<maybe<double>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match timestamp
     Just(it) -> setJsObjectField(obj, "timestamp", it)
     Nothing -> ()
@@ -90,7 +90,7 @@ pub fun newGeolocationSensorReading(timestamp: maybe<maybe<hr_time/domHighResTim
     Just(it) -> setJsObjectField(obj, "speed", it)
     Nothing -> ()
 
-  GeolocationSensorReading(obj);
+  GeolocationSensorReading(obj)
 
 pub inline fun timestamp(obj: geolocationSensorReading, value: maybe<hr_time/domHighResTimeStamp>): web ()
   setJsObjectField(obj.obj, "timestamp", value.obj)
@@ -144,9 +144,9 @@ pub value struct geolocationReadingValues
   obj: jsObject
 
 pub fun newGeolocationReadingValues(latitude: maybe<double>, longitude: maybe<double>, altitude: maybe<double>, accuracy: maybe<double>, altitudeAccuracy: maybe<double>, heading: maybe<double>, speed: maybe<double>)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "latitude", latitude);  setJsObjectField(obj, "longitude", longitude);  setJsObjectField(obj, "altitude", altitude);  setJsObjectField(obj, "accuracy", accuracy);  setJsObjectField(obj, "altitudeAccuracy", altitudeAccuracy);  setJsObjectField(obj, "heading", heading);  setJsObjectField(obj, "speed", speed);
-  GeolocationReadingValues(obj);
+  GeolocationReadingValues(obj)
 
 pub inline fun latitude(obj: geolocationReadingValues, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "latitude", value.obj)

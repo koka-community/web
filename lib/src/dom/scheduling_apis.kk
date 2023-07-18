@@ -3,16 +3,16 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias schedulerPostTaskCallback = jsFunction;
+pub alias schedulerPostTaskCallback = jsFunction
 
 
-pub alias taskPriority = string;
+pub alias taskPriority = string
 
 pub value struct schedulerPostTaskOptions
   obj: jsObject
 
 pub fun newSchedulerPostTaskOptions(signal: maybe<dom/abortSignal> = Nothing, priority: maybe<taskPriority> = Nothing, delay: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match signal
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
@@ -23,7 +23,7 @@ pub fun newSchedulerPostTaskOptions(signal: maybe<dom/abortSignal> = Nothing, pr
     Just(it) -> setJsObjectField(obj, "delay", it)
     Nothing -> ()
 
-  SchedulerPostTaskOptions(obj);
+  SchedulerPostTaskOptions(obj)
 
 pub inline fun signal(obj: schedulerPostTaskOptions, value: dom/abortSignal): web ()
   setJsObjectField(obj.obj, "signal", value.obj)
@@ -63,9 +63,9 @@ pub value struct taskPriorityChangeEventInit
   obj: jsObject
 
 pub fun newTaskPriorityChangeEventInit(previousPriority: taskPriority)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "previousPriority", previousPriority);
-  TaskPriorityChangeEventInit(obj);
+  TaskPriorityChangeEventInit(obj)
 
 pub inline fun previousPriority(obj: taskPriorityChangeEventInit, value: taskPriority): web ()
   setJsObjectField(obj.obj, "previousPriority", value.obj)
@@ -77,12 +77,12 @@ pub value struct taskControllerInit
   obj: jsObject
 
 pub fun newTaskControllerInit(priority: maybe<taskPriority> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match priority
     Just(it) -> setJsObjectField(obj, "priority", it)
     Nothing -> ()
 
-  TaskControllerInit(obj);
+  TaskControllerInit(obj)
 
 pub inline fun priority(obj: taskControllerInit, value: taskPriority): web ()
   setJsObjectField(obj.obj, "priority", value.obj)
@@ -103,12 +103,12 @@ pub value struct taskSignalAnyInit
   obj: jsObject
 
 pub fun newTaskSignalAnyInit(priority: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match priority
     Just(it) -> setJsObjectField(obj, "priority", it)
     Nothing -> ()
 
-  TaskSignalAnyInit(obj);
+  TaskSignalAnyInit(obj)
 
 pub inline fun priority(obj: taskSignalAnyInit, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "priority", value.obj)

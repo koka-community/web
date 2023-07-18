@@ -10,7 +10,7 @@ pub value struct imageResource
   obj: jsObject
 
 pub fun newImageResource(src: string, sizes: maybe<string> = Nothing, type: maybe<string> = Nothing, label: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "src", src);  match sizes
     Just(it) -> setJsObjectField(obj, "sizes", it)
     Nothing -> ()
@@ -21,7 +21,7 @@ pub fun newImageResource(src: string, sizes: maybe<string> = Nothing, type: mayb
     Just(it) -> setJsObjectField(obj, "label", it)
     Nothing -> ()
 
-  ImageResource(obj);
+  ImageResource(obj)
 
 pub inline fun src(obj: imageResource, value: string): web ()
   setJsObjectField(obj.obj, "src", value.obj)

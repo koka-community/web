@@ -2,7 +2,7 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias urlPatternInput = JSAny;
+pub alias urlPatternInput = JSAny
 
 
 
@@ -47,7 +47,7 @@ pub value struct urlPatternInit
   obj: jsObject
 
 pub fun newUrlPatternInit(protocol: maybe<string> = Nothing, username: maybe<string> = Nothing, password: maybe<string> = Nothing, hostname: maybe<string> = Nothing, port: maybe<string> = Nothing, pathname: maybe<string> = Nothing, search: maybe<string> = Nothing, hash: maybe<string> = Nothing, baseURL: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match protocol
     Just(it) -> setJsObjectField(obj, "protocol", it)
     Nothing -> ()
@@ -76,7 +76,7 @@ pub fun newUrlPatternInit(protocol: maybe<string> = Nothing, username: maybe<str
     Just(it) -> setJsObjectField(obj, "baseURL", it)
     Nothing -> ()
 
-  UrlPatternInit(obj);
+  UrlPatternInit(obj)
 
 pub inline fun protocol(obj: urlPatternInit, value: string): web ()
   setJsObjectField(obj.obj, "protocol", value.obj)
@@ -136,12 +136,12 @@ pub value struct urlPatternOptions
   obj: jsObject
 
 pub fun newUrlPatternOptions(ignoreCase: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match ignoreCase
     Just(it) -> setJsObjectField(obj, "ignoreCase", it)
     Nothing -> ()
 
-  UrlPatternOptions(obj);
+  UrlPatternOptions(obj)
 
 pub inline fun ignoreCase(obj: urlPatternOptions, value: bool): web ()
   setJsObjectField(obj.obj, "ignoreCase", value.obj)
@@ -153,7 +153,7 @@ pub value struct urlPatternResult
   obj: jsObject
 
 pub fun newUrlPatternResult(inputs: maybe<jsArray> = Nothing, protocol: maybe<urlPatternComponentResult> = Nothing, username: maybe<urlPatternComponentResult> = Nothing, password: maybe<urlPatternComponentResult> = Nothing, hostname: maybe<urlPatternComponentResult> = Nothing, port: maybe<urlPatternComponentResult> = Nothing, pathname: maybe<urlPatternComponentResult> = Nothing, search: maybe<urlPatternComponentResult> = Nothing, hash: maybe<urlPatternComponentResult> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match inputs
     Just(it) -> setJsObjectField(obj, "inputs", it)
     Nothing -> ()
@@ -182,7 +182,7 @@ pub fun newUrlPatternResult(inputs: maybe<jsArray> = Nothing, protocol: maybe<ur
     Just(it) -> setJsObjectField(obj, "hash", it)
     Nothing -> ()
 
-  UrlPatternResult(obj);
+  UrlPatternResult(obj)
 
 pub inline fun inputs(obj: urlPatternResult, value: jsArray): web ()
   setJsObjectField(obj.obj, "inputs", value.obj)
@@ -242,7 +242,7 @@ pub value struct urlPatternComponentResult
   obj: jsObject
 
 pub fun newUrlPatternComponentResult(input: maybe<string> = Nothing, groups: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match input
     Just(it) -> setJsObjectField(obj, "input", it)
     Nothing -> ()
@@ -250,7 +250,7 @@ pub fun newUrlPatternComponentResult(input: maybe<string> = Nothing, groups: may
     Just(it) -> setJsObjectField(obj, "groups", it)
     Nothing -> ()
 
-  UrlPatternComponentResult(obj);
+  UrlPatternComponentResult(obj)
 
 pub inline fun input(obj: urlPatternComponentResult, value: string): web ()
   setJsObjectField(obj.obj, "input", value.obj)

@@ -3,7 +3,7 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias videoFrameRequestCallback = jsFunction;
+pub alias videoFrameRequestCallback = jsFunction
 
 
 
@@ -11,7 +11,7 @@ pub value struct videoFrameCallbackMetadata
   obj: jsObject
 
 pub fun newVideoFrameCallbackMetadata(presentationTime: hr_time/domHighResTimeStamp, expectedDisplayTime: hr_time/domHighResTimeStamp, width: int, height: int, mediaTime: double, presentedFrames: int, processingDuration: maybe<double> = Nothing, captureTime: maybe<hr_time/domHighResTimeStamp> = Nothing, receiveTime: maybe<hr_time/domHighResTimeStamp> = Nothing, rtpTimestamp: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "presentationTime", presentationTime);  setJsObjectField(obj, "expectedDisplayTime", expectedDisplayTime);  setJsObjectField(obj, "width", width);  setJsObjectField(obj, "height", height);  setJsObjectField(obj, "mediaTime", mediaTime);  setJsObjectField(obj, "presentedFrames", presentedFrames);  match processingDuration
     Just(it) -> setJsObjectField(obj, "processingDuration", it)
     Nothing -> ()
@@ -25,7 +25,7 @@ pub fun newVideoFrameCallbackMetadata(presentationTime: hr_time/domHighResTimeSt
     Just(it) -> setJsObjectField(obj, "rtpTimestamp", it)
     Nothing -> ()
 
-  VideoFrameCallbackMetadata(obj);
+  VideoFrameCallbackMetadata(obj)
 
 pub inline fun presentationTime(obj: videoFrameCallbackMetadata, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "presentationTime", value.obj)

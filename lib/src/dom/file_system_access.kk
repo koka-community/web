@@ -2,25 +2,25 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias startInDirectory = JSAny;
+pub alias startInDirectory = JSAny
 
 
 
-pub alias fileSystemPermissionMode = string;
+pub alias fileSystemPermissionMode = string
 
 
-pub alias wellKnownDirectory = string;
+pub alias wellKnownDirectory = string
 
 pub value struct fileSystemPermissionDescriptor
   obj: jsObject
 
 pub fun newFileSystemPermissionDescriptor(handle: fs/fileSystemHandle, mode: maybe<fileSystemPermissionMode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "handle", handle);  match mode
     Just(it) -> setJsObjectField(obj, "mode", it)
     Nothing -> ()
 
-  FileSystemPermissionDescriptor(obj);
+  FileSystemPermissionDescriptor(obj)
 
 pub inline fun handle(obj: fileSystemPermissionDescriptor, value: fs/fileSystemHandle): web ()
   setJsObjectField(obj.obj, "handle", value.obj)
@@ -38,12 +38,12 @@ pub value struct fileSystemHandlePermissionDescriptor
   obj: jsObject
 
 pub fun newFileSystemHandlePermissionDescriptor(mode: maybe<fileSystemPermissionMode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match mode
     Just(it) -> setJsObjectField(obj, "mode", it)
     Nothing -> ()
 
-  FileSystemHandlePermissionDescriptor(obj);
+  FileSystemHandlePermissionDescriptor(obj)
 
 pub inline fun mode(obj: fileSystemHandlePermissionDescriptor, value: fileSystemPermissionMode): web ()
   setJsObjectField(obj.obj, "mode", value.obj)
@@ -55,7 +55,7 @@ pub value struct filePickerAcceptType
   obj: jsObject
 
 pub fun newFilePickerAcceptType(description: maybe<string> = Nothing, accept: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match description
     Just(it) -> setJsObjectField(obj, "description", it)
     Nothing -> ()
@@ -63,7 +63,7 @@ pub fun newFilePickerAcceptType(description: maybe<string> = Nothing, accept: ma
     Just(it) -> setJsObjectField(obj, "accept", it)
     Nothing -> ()
 
-  FilePickerAcceptType(obj);
+  FilePickerAcceptType(obj)
 
 pub inline fun description(obj: filePickerAcceptType, value: string): web ()
   setJsObjectField(obj.obj, "description", value.obj)
@@ -81,7 +81,7 @@ pub value struct filePickerOptions
   obj: jsObject
 
 pub fun newFilePickerOptions(types: maybe<jsArray> = Nothing, excludeAcceptAllOption: maybe<bool> = Nothing, id: maybe<string> = Nothing, startIn: maybe<startInDirectory> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match types
     Just(it) -> setJsObjectField(obj, "types", it)
     Nothing -> ()
@@ -95,7 +95,7 @@ pub fun newFilePickerOptions(types: maybe<jsArray> = Nothing, excludeAcceptAllOp
     Just(it) -> setJsObjectField(obj, "startIn", it)
     Nothing -> ()
 
-  FilePickerOptions(obj);
+  FilePickerOptions(obj)
 
 pub inline fun types(obj: filePickerOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "types", value.obj)
@@ -125,12 +125,12 @@ pub value struct openFilePickerOptions
   obj: jsObject
 
 pub fun newOpenFilePickerOptions(multiple: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match multiple
     Just(it) -> setJsObjectField(obj, "multiple", it)
     Nothing -> ()
 
-  OpenFilePickerOptions(obj);
+  OpenFilePickerOptions(obj)
 
 pub inline fun multiple(obj: openFilePickerOptions, value: bool): web ()
   setJsObjectField(obj.obj, "multiple", value.obj)
@@ -142,12 +142,12 @@ pub value struct saveFilePickerOptions
   obj: jsObject
 
 pub fun newSaveFilePickerOptions(suggestedName: maybe<maybe<string>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match suggestedName
     Just(it) -> setJsObjectField(obj, "suggestedName", it)
     Nothing -> ()
 
-  SaveFilePickerOptions(obj);
+  SaveFilePickerOptions(obj)
 
 pub inline fun suggestedName(obj: saveFilePickerOptions, value: maybe<string>): web ()
   setJsObjectField(obj.obj, "suggestedName", value.obj)
@@ -159,7 +159,7 @@ pub value struct directoryPickerOptions
   obj: jsObject
 
 pub fun newDirectoryPickerOptions(id: maybe<string> = Nothing, startIn: maybe<startInDirectory> = Nothing, mode: maybe<fileSystemPermissionMode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match id
     Just(it) -> setJsObjectField(obj, "id", it)
     Nothing -> ()
@@ -170,7 +170,7 @@ pub fun newDirectoryPickerOptions(id: maybe<string> = Nothing, startIn: maybe<st
     Just(it) -> setJsObjectField(obj, "mode", it)
     Nothing -> ()
 
-  DirectoryPickerOptions(obj);
+  DirectoryPickerOptions(obj)
 
 pub inline fun id(obj: directoryPickerOptions, value: string): web ()
   setJsObjectField(obj.obj, "id", value.obj)

@@ -25,7 +25,7 @@ pub value struct animationEventInit
   obj: jsObject
 
 pub fun newAnimationEventInit(animationName: maybe<string> = Nothing, elapsedTime: maybe<double> = Nothing, pseudoElement: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match animationName
     Just(it) -> setJsObjectField(obj, "animationName", it)
     Nothing -> ()
@@ -36,7 +36,7 @@ pub fun newAnimationEventInit(animationName: maybe<string> = Nothing, elapsedTim
     Just(it) -> setJsObjectField(obj, "pseudoElement", it)
     Nothing -> ()
 
-  AnimationEventInit(obj);
+  AnimationEventInit(obj)
 
 pub inline fun animationName(obj: animationEventInit, value: string): web ()
   setJsObjectField(obj.obj, "animationName", value.obj)

@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias xrHandJoint = string;
+pub alias xrHandJoint = string
 
 pub value struct xrHand
   obj: jsObject

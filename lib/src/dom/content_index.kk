@@ -5,13 +5,13 @@ import web/wasm
 
 
 
-pub alias contentCategory = string;
+pub alias contentCategory = string
 
 pub value struct contentDescription
   obj: jsObject
 
 pub fun newContentDescription(id: string, title: string, description: string, category: maybe<contentCategory> = Nothing, icons: maybe<jsArray> = Nothing, url: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "id", id);  setJsObjectField(obj, "title", title);  setJsObjectField(obj, "description", description);  match category
     Just(it) -> setJsObjectField(obj, "category", it)
     Nothing -> ()
@@ -19,7 +19,7 @@ pub fun newContentDescription(id: string, title: string, description: string, ca
     Just(it) -> setJsObjectField(obj, "icons", it)
     Nothing -> ()
   setJsObjectField(obj, "url", url);
-  ContentDescription(obj);
+  ContentDescription(obj)
 
 pub inline fun id(obj: contentDescription, value: string): web ()
   setJsObjectField(obj.obj, "id", value.obj)
@@ -74,9 +74,9 @@ pub value struct contentIndexEventInit
   obj: jsObject
 
 pub fun newContentIndexEventInit(id: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "id", id);
-  ContentIndexEventInit(obj);
+  ContentIndexEventInit(obj)
 
 pub inline fun id(obj: contentIndexEventInit, value: string): web ()
   setJsObjectField(obj.obj, "id", value.obj)

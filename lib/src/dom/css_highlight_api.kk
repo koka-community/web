@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias highlightType = string;
+pub alias highlightType = string
 
 pub value struct highlight
   obj: jsObject

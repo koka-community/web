@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias appBannerPromptOutcome = string;
+pub alias appBannerPromptOutcome = string
 
 pub value struct beforeInstallPromptEvent
   obj: jsObject
@@ -20,12 +20,12 @@ pub value struct promptResponseObject
   obj: jsObject
 
 pub fun newPromptResponseObject(userChoice: maybe<appBannerPromptOutcome> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match userChoice
     Just(it) -> setJsObjectField(obj, "userChoice", it)
     Nothing -> ()
 
-  PromptResponseObject(obj);
+  PromptResponseObject(obj)
 
 pub inline fun userChoice(obj: promptResponseObject, value: appBannerPromptOutcome): web ()
   setJsObjectField(obj.obj, "userChoice", value.obj)

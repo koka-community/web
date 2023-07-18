@@ -22,12 +22,12 @@ pub value struct mediaStreamTrackProcessorInit
   obj: jsObject
 
 pub fun newMediaStreamTrackProcessorInit(track: mediacapture_streams/mediaStreamTrack, maxBufferSize: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "track", track);  match maxBufferSize
     Just(it) -> setJsObjectField(obj, "maxBufferSize", it)
     Nothing -> ()
 
-  MediaStreamTrackProcessorInit(obj);
+  MediaStreamTrackProcessorInit(obj)
 
 pub inline fun track(obj: mediaStreamTrackProcessorInit, value: mediacapture_streams/mediaStreamTrack): web ()
   setJsObjectField(obj.obj, "track", value.obj)

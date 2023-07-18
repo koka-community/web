@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias contactProperty = string;
+pub alias contactProperty = string
 
 pub value struct contactAddress
   obj: jsObject
@@ -48,7 +48,7 @@ pub value struct contactInfo
   obj: jsObject
 
 pub fun newContactInfo(address: maybe<jsArray> = Nothing, email: maybe<jsArray> = Nothing, icon: maybe<jsArray> = Nothing, name: maybe<jsArray> = Nothing, tel: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match address
     Just(it) -> setJsObjectField(obj, "address", it)
     Nothing -> ()
@@ -65,7 +65,7 @@ pub fun newContactInfo(address: maybe<jsArray> = Nothing, email: maybe<jsArray> 
     Just(it) -> setJsObjectField(obj, "tel", it)
     Nothing -> ()
 
-  ContactInfo(obj);
+  ContactInfo(obj)
 
 pub inline fun address(obj: contactInfo, value: jsArray): web ()
   setJsObjectField(obj.obj, "address", value.obj)
@@ -101,12 +101,12 @@ pub value struct contactsSelectOptions
   obj: jsObject
 
 pub fun newContactsSelectOptions(multiple: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match multiple
     Just(it) -> setJsObjectField(obj, "multiple", it)
     Nothing -> ()
 
-  ContactsSelectOptions(obj);
+  ContactsSelectOptions(obj)
 
 pub inline fun multiple(obj: contactsSelectOptions, value: bool): web ()
   setJsObjectField(obj.obj, "multiple", value.obj)

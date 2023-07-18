@@ -2,44 +2,44 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias base64URLString = String;
+pub alias base64URLString = String
 
 
-pub alias publicKeyCredentialJSON = JSAny;
+pub alias publicKeyCredentialJSON = JSAny
 
 
-pub alias coseAlgorithmIdentifier = int;
+pub alias coseAlgorithmIdentifier = int
 
 
-pub alias uvmEntry = JSArray;
+pub alias uvmEntry = JSArray
 
 
-pub alias uvmEntries = JSArray;
+pub alias uvmEntries = JSArray
 
 
 
-pub alias authenticatorAttachment = string;
+pub alias authenticatorAttachment = string
 
 
-pub alias residentKeyRequirement = string;
+pub alias residentKeyRequirement = string
 
 
-pub alias attestationConveyancePreference = string;
+pub alias attestationConveyancePreference = string
 
 
-pub alias tokenBindingStatus = string;
+pub alias tokenBindingStatus = string
 
 
-pub alias publicKeyCredentialType = string;
+pub alias publicKeyCredentialType = string
 
 
-pub alias authenticatorTransport = string;
+pub alias authenticatorTransport = string
 
 
-pub alias userVerificationRequirement = string;
+pub alias userVerificationRequirement = string
 
 
-pub alias largeBlobSupport = string;
+pub alias largeBlobSupport = string
 
 pub value struct publicKeyCredential
   obj: jsObject
@@ -75,12 +75,12 @@ pub value struct registrationResponseJSON
   obj: jsObject
 
 pub fun newRegistrationResponseJSON(id: base64URLString, rawId: base64URLString, response: authenticatorAttestationResponseJSON, authenticatorAttachment: maybe<string> = Nothing, clientExtensionResults: authenticationExtensionsClientOutputsJSON, type: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "id", id);  setJsObjectField(obj, "rawId", rawId);  setJsObjectField(obj, "response", response);  match authenticatorAttachment
     Just(it) -> setJsObjectField(obj, "authenticatorAttachment", it)
     Nothing -> ()
   setJsObjectField(obj, "clientExtensionResults", clientExtensionResults);  setJsObjectField(obj, "type", type);
-  RegistrationResponseJSON(obj);
+  RegistrationResponseJSON(obj)
 
 pub inline fun id(obj: registrationResponseJSON, value: base64URLString): web ()
   setJsObjectField(obj.obj, "id", value.obj)
@@ -122,12 +122,12 @@ pub value struct authenticatorAttestationResponseJSON
   obj: jsObject
 
 pub fun newAuthenticatorAttestationResponseJSON(clientDataJSON: base64URLString, authenticatorData: base64URLString, transports: jsArray, publicKey: maybe<base64URLString> = Nothing, publicKeyAlgorithm: int, attestationObject: base64URLString)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "clientDataJSON", clientDataJSON);  setJsObjectField(obj, "authenticatorData", authenticatorData);  setJsObjectField(obj, "transports", transports);  match publicKey
     Just(it) -> setJsObjectField(obj, "publicKey", it)
     Nothing -> ()
   setJsObjectField(obj, "publicKeyAlgorithm", publicKeyAlgorithm);  setJsObjectField(obj, "attestationObject", attestationObject);
-  AuthenticatorAttestationResponseJSON(obj);
+  AuthenticatorAttestationResponseJSON(obj)
 
 pub inline fun clientDataJSON(obj: authenticatorAttestationResponseJSON, value: base64URLString): web ()
   setJsObjectField(obj.obj, "clientDataJSON", value.obj)
@@ -169,12 +169,12 @@ pub value struct authenticationResponseJSON
   obj: jsObject
 
 pub fun newAuthenticationResponseJSON(id: base64URLString, rawId: base64URLString, response: authenticatorAssertionResponseJSON, authenticatorAttachment: maybe<string> = Nothing, clientExtensionResults: authenticationExtensionsClientOutputsJSON, type: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "id", id);  setJsObjectField(obj, "rawId", rawId);  setJsObjectField(obj, "response", response);  match authenticatorAttachment
     Just(it) -> setJsObjectField(obj, "authenticatorAttachment", it)
     Nothing -> ()
   setJsObjectField(obj, "clientExtensionResults", clientExtensionResults);  setJsObjectField(obj, "type", type);
-  AuthenticationResponseJSON(obj);
+  AuthenticationResponseJSON(obj)
 
 pub inline fun id(obj: authenticationResponseJSON, value: base64URLString): web ()
   setJsObjectField(obj.obj, "id", value.obj)
@@ -216,12 +216,12 @@ pub value struct authenticatorAssertionResponseJSON
   obj: jsObject
 
 pub fun newAuthenticatorAssertionResponseJSON(clientDataJSON: base64URLString, authenticatorData: base64URLString, signature: base64URLString, userHandle: maybe<base64URLString> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "clientDataJSON", clientDataJSON);  setJsObjectField(obj, "authenticatorData", authenticatorData);  setJsObjectField(obj, "signature", signature);  match userHandle
     Just(it) -> setJsObjectField(obj, "userHandle", it)
     Nothing -> ()
 
-  AuthenticatorAssertionResponseJSON(obj);
+  AuthenticatorAssertionResponseJSON(obj)
 
 pub inline fun clientDataJSON(obj: authenticatorAssertionResponseJSON, value: base64URLString): web ()
   setJsObjectField(obj.obj, "clientDataJSON", value.obj)
@@ -251,15 +251,15 @@ pub value struct authenticationExtensionsClientOutputsJSON
   obj: jsObject
 
 pub fun newAuthenticationExtensionsClientOutputsJSON()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  AuthenticationExtensionsClientOutputsJSON(obj);
+  AuthenticationExtensionsClientOutputsJSON(obj)
 
 pub value struct publicKeyCredentialCreationOptionsJSON
   obj: jsObject
 
 pub fun newPublicKeyCredentialCreationOptionsJSON(rp: publicKeyCredentialRpEntity, user: publicKeyCredentialUserEntityJSON, challenge: base64URLString, pubKeyCredParams: jsArray, timeout: maybe<int> = Nothing, excludeCredentials: maybe<jsArray> = Nothing, authenticatorSelection: maybe<authenticatorSelectionCriteria> = Nothing, attestation: maybe<string> = Nothing, extensions: maybe<authenticationExtensionsClientInputsJSON> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "rp", rp);  setJsObjectField(obj, "user", user);  setJsObjectField(obj, "challenge", challenge);  setJsObjectField(obj, "pubKeyCredParams", pubKeyCredParams);  match timeout
     Just(it) -> setJsObjectField(obj, "timeout", it)
     Nothing -> ()
@@ -276,7 +276,7 @@ pub fun newPublicKeyCredentialCreationOptionsJSON(rp: publicKeyCredentialRpEntit
     Just(it) -> setJsObjectField(obj, "extensions", it)
     Nothing -> ()
 
-  PublicKeyCredentialCreationOptionsJSON(obj);
+  PublicKeyCredentialCreationOptionsJSON(obj)
 
 pub inline fun rp(obj: publicKeyCredentialCreationOptionsJSON, value: publicKeyCredentialRpEntity): web ()
   setJsObjectField(obj.obj, "rp", value.obj)
@@ -336,9 +336,9 @@ pub value struct publicKeyCredentialUserEntityJSON
   obj: jsObject
 
 pub fun newPublicKeyCredentialUserEntityJSON(id: base64URLString, name: string, displayName: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "id", id);  setJsObjectField(obj, "name", name);  setJsObjectField(obj, "displayName", displayName);
-  PublicKeyCredentialUserEntityJSON(obj);
+  PublicKeyCredentialUserEntityJSON(obj)
 
 pub inline fun id(obj: publicKeyCredentialUserEntityJSON, value: base64URLString): web ()
   setJsObjectField(obj.obj, "id", value.obj)
@@ -362,12 +362,12 @@ pub value struct publicKeyCredentialDescriptorJSON
   obj: jsObject
 
 pub fun newPublicKeyCredentialDescriptorJSON(id: base64URLString, type: string, transports: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "id", id);  setJsObjectField(obj, "type", type);  match transports
     Just(it) -> setJsObjectField(obj, "transports", it)
     Nothing -> ()
 
-  PublicKeyCredentialDescriptorJSON(obj);
+  PublicKeyCredentialDescriptorJSON(obj)
 
 pub inline fun id(obj: publicKeyCredentialDescriptorJSON, value: base64URLString): web ()
   setJsObjectField(obj.obj, "id", value.obj)
@@ -391,15 +391,15 @@ pub value struct authenticationExtensionsClientInputsJSON
   obj: jsObject
 
 pub fun newAuthenticationExtensionsClientInputsJSON()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  AuthenticationExtensionsClientInputsJSON(obj);
+  AuthenticationExtensionsClientInputsJSON(obj)
 
 pub value struct publicKeyCredentialRequestOptionsJSON
   obj: jsObject
 
 pub fun newPublicKeyCredentialRequestOptionsJSON(challenge: base64URLString, timeout: maybe<int> = Nothing, rpId: maybe<string> = Nothing, allowCredentials: maybe<jsArray> = Nothing, userVerification: maybe<string> = Nothing, extensions: maybe<authenticationExtensionsClientInputsJSON> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "challenge", challenge);  match timeout
     Just(it) -> setJsObjectField(obj, "timeout", it)
     Nothing -> ()
@@ -416,7 +416,7 @@ pub fun newPublicKeyCredentialRequestOptionsJSON(challenge: base64URLString, tim
     Just(it) -> setJsObjectField(obj, "extensions", it)
     Nothing -> ()
 
-  PublicKeyCredentialRequestOptionsJSON(obj);
+  PublicKeyCredentialRequestOptionsJSON(obj)
 
 pub inline fun challenge(obj: publicKeyCredentialRequestOptionsJSON, value: base64URLString): web ()
   setJsObjectField(obj.obj, "challenge", value.obj)
@@ -500,9 +500,9 @@ pub value struct publicKeyCredentialParameters
   obj: jsObject
 
 pub fun newPublicKeyCredentialParameters(type: string, alg: coseAlgorithmIdentifier)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);  setJsObjectField(obj, "alg", alg);
-  PublicKeyCredentialParameters(obj);
+  PublicKeyCredentialParameters(obj)
 
 pub inline fun type(obj: publicKeyCredentialParameters, value: string): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -520,7 +520,7 @@ pub value struct publicKeyCredentialCreationOptions
   obj: jsObject
 
 pub fun newPublicKeyCredentialCreationOptions(rp: publicKeyCredentialRpEntity, user: publicKeyCredentialUserEntity, challenge: webidl/bufferSource, pubKeyCredParams: jsArray, timeout: maybe<int> = Nothing, excludeCredentials: maybe<jsArray> = Nothing, authenticatorSelection: maybe<authenticatorSelectionCriteria> = Nothing, attestation: maybe<string> = Nothing, attestationFormats: maybe<jsArray> = Nothing, extensions: maybe<authenticationExtensionsClientInputs> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "rp", rp);  setJsObjectField(obj, "user", user);  setJsObjectField(obj, "challenge", challenge);  setJsObjectField(obj, "pubKeyCredParams", pubKeyCredParams);  match timeout
     Just(it) -> setJsObjectField(obj, "timeout", it)
     Nothing -> ()
@@ -540,7 +540,7 @@ pub fun newPublicKeyCredentialCreationOptions(rp: publicKeyCredentialRpEntity, u
     Just(it) -> setJsObjectField(obj, "extensions", it)
     Nothing -> ()
 
-  PublicKeyCredentialCreationOptions(obj);
+  PublicKeyCredentialCreationOptions(obj)
 
 pub inline fun rp(obj: publicKeyCredentialCreationOptions, value: publicKeyCredentialRpEntity): web ()
   setJsObjectField(obj.obj, "rp", value.obj)
@@ -606,9 +606,9 @@ pub value struct publicKeyCredentialEntity
   obj: jsObject
 
 pub fun newPublicKeyCredentialEntity(name: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "name", name);
-  PublicKeyCredentialEntity(obj);
+  PublicKeyCredentialEntity(obj)
 
 pub inline fun name(obj: publicKeyCredentialEntity, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -620,12 +620,12 @@ pub value struct publicKeyCredentialRpEntity
   obj: jsObject
 
 pub fun newPublicKeyCredentialRpEntity(id: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match id
     Just(it) -> setJsObjectField(obj, "id", it)
     Nothing -> ()
 
-  PublicKeyCredentialRpEntity(obj);
+  PublicKeyCredentialRpEntity(obj)
 
 pub inline fun id(obj: publicKeyCredentialRpEntity, value: string): web ()
   setJsObjectField(obj.obj, "id", value.obj)
@@ -637,9 +637,9 @@ pub value struct publicKeyCredentialUserEntity
   obj: jsObject
 
 pub fun newPublicKeyCredentialUserEntity(id: webidl/bufferSource, displayName: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "id", id);  setJsObjectField(obj, "displayName", displayName);
-  PublicKeyCredentialUserEntity(obj);
+  PublicKeyCredentialUserEntity(obj)
 
 pub inline fun id(obj: publicKeyCredentialUserEntity, value: webidl/bufferSource): web ()
   setJsObjectField(obj.obj, "id", value.obj)
@@ -657,7 +657,7 @@ pub value struct authenticatorSelectionCriteria
   obj: jsObject
 
 pub fun newAuthenticatorSelectionCriteria(authenticatorAttachment: maybe<string> = Nothing, residentKey: maybe<string> = Nothing, requireResidentKey: maybe<bool> = Nothing, userVerification: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match authenticatorAttachment
     Just(it) -> setJsObjectField(obj, "authenticatorAttachment", it)
     Nothing -> ()
@@ -671,7 +671,7 @@ pub fun newAuthenticatorSelectionCriteria(authenticatorAttachment: maybe<string>
     Just(it) -> setJsObjectField(obj, "userVerification", it)
     Nothing -> ()
 
-  AuthenticatorSelectionCriteria(obj);
+  AuthenticatorSelectionCriteria(obj)
 
 pub inline fun authenticatorAttachment(obj: authenticatorSelectionCriteria, value: string): web ()
   setJsObjectField(obj.obj, "authenticatorAttachment", value.obj)
@@ -701,7 +701,7 @@ pub value struct publicKeyCredentialRequestOptions
   obj: jsObject
 
 pub fun newPublicKeyCredentialRequestOptions(challenge: webidl/bufferSource, timeout: maybe<int> = Nothing, rpId: maybe<string> = Nothing, allowCredentials: maybe<jsArray> = Nothing, userVerification: maybe<string> = Nothing, attestation: maybe<string> = Nothing, attestationFormats: maybe<jsArray> = Nothing, extensions: maybe<authenticationExtensionsClientInputs> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "challenge", challenge);  match timeout
     Just(it) -> setJsObjectField(obj, "timeout", it)
     Nothing -> ()
@@ -724,7 +724,7 @@ pub fun newPublicKeyCredentialRequestOptions(challenge: webidl/bufferSource, tim
     Just(it) -> setJsObjectField(obj, "extensions", it)
     Nothing -> ()
 
-  PublicKeyCredentialRequestOptions(obj);
+  PublicKeyCredentialRequestOptions(obj)
 
 pub inline fun challenge(obj: publicKeyCredentialRequestOptions, value: webidl/bufferSource): web ()
   setJsObjectField(obj.obj, "challenge", value.obj)
@@ -778,7 +778,7 @@ pub value struct authenticationExtensionsClientInputs
   obj: jsObject
 
 pub fun newAuthenticationExtensionsClientInputs(credentialProtectionPolicy: maybe<string> = Nothing, enforceCredentialProtectionPolicy: maybe<bool> = Nothing, credBlob: maybe<jsArrayBuffer> = Nothing, getCredBlob: maybe<bool> = Nothing, minPinLength: maybe<bool> = Nothing, hmacCreateSecret: maybe<bool> = Nothing, hmacGetSecret: maybe<fido/hmacGetSecretInput> = Nothing, payment: maybe<secure_payment_confirmation/authenticationExtensionsPaymentInputs> = Nothing, appid: maybe<string> = Nothing, appidExclude: maybe<string> = Nothing, credProps: maybe<bool> = Nothing, prf: maybe<authenticationExtensionsPRFInputs> = Nothing, largeBlob: maybe<authenticationExtensionsLargeBlobInputs> = Nothing, uvm: maybe<bool> = Nothing, devicePubKey: maybe<authenticationExtensionsDevicePublicKeyInputs> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match credentialProtectionPolicy
     Just(it) -> setJsObjectField(obj, "credentialProtectionPolicy", it)
     Nothing -> ()
@@ -825,7 +825,7 @@ pub fun newAuthenticationExtensionsClientInputs(credentialProtectionPolicy: mayb
     Just(it) -> setJsObjectField(obj, "devicePubKey", it)
     Nothing -> ()
 
-  AuthenticationExtensionsClientInputs(obj);
+  AuthenticationExtensionsClientInputs(obj)
 
 pub inline fun credentialProtectionPolicy(obj: authenticationExtensionsClientInputs, value: string): web ()
   setJsObjectField(obj.obj, "credentialProtectionPolicy", value.obj)
@@ -921,7 +921,7 @@ pub value struct authenticationExtensionsClientOutputs
   obj: jsObject
 
 pub fun newAuthenticationExtensionsClientOutputs(hmacCreateSecret: maybe<bool> = Nothing, hmacGetSecret: maybe<fido/hmacGetSecretOutput> = Nothing, appid: maybe<bool> = Nothing, appidExclude: maybe<bool> = Nothing, credProps: maybe<credentialPropertiesOutput> = Nothing, prf: maybe<authenticationExtensionsPRFOutputs> = Nothing, largeBlob: maybe<authenticationExtensionsLargeBlobOutputs> = Nothing, uvm: maybe<uvmEntries> = Nothing, devicePubKey: maybe<authenticationExtensionsDevicePublicKeyOutputs> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match hmacCreateSecret
     Just(it) -> setJsObjectField(obj, "hmacCreateSecret", it)
     Nothing -> ()
@@ -950,7 +950,7 @@ pub fun newAuthenticationExtensionsClientOutputs(hmacCreateSecret: maybe<bool> =
     Just(it) -> setJsObjectField(obj, "devicePubKey", it)
     Nothing -> ()
 
-  AuthenticationExtensionsClientOutputs(obj);
+  AuthenticationExtensionsClientOutputs(obj)
 
 pub inline fun hmacCreateSecret(obj: authenticationExtensionsClientOutputs, value: bool): web ()
   setJsObjectField(obj.obj, "hmacCreateSecret", value.obj)
@@ -1010,7 +1010,7 @@ pub value struct collectedClientData
   obj: jsObject
 
 pub fun newCollectedClientData(type: string, challenge: string, origin: string, topOrigin: maybe<string> = Nothing, crossOrigin: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);  setJsObjectField(obj, "challenge", challenge);  setJsObjectField(obj, "origin", origin);  match topOrigin
     Just(it) -> setJsObjectField(obj, "topOrigin", it)
     Nothing -> ()
@@ -1018,7 +1018,7 @@ pub fun newCollectedClientData(type: string, challenge: string, origin: string, 
     Just(it) -> setJsObjectField(obj, "crossOrigin", it)
     Nothing -> ()
 
-  CollectedClientData(obj);
+  CollectedClientData(obj)
 
 pub inline fun type(obj: collectedClientData, value: string): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -1054,12 +1054,12 @@ pub value struct tokenBinding
   obj: jsObject
 
 pub fun newTokenBinding(status: string, id: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "status", status);  match id
     Just(it) -> setJsObjectField(obj, "id", it)
     Nothing -> ()
 
-  TokenBinding(obj);
+  TokenBinding(obj)
 
 pub inline fun status(obj: tokenBinding, value: string): web ()
   setJsObjectField(obj.obj, "status", value.obj)
@@ -1077,12 +1077,12 @@ pub value struct publicKeyCredentialDescriptor
   obj: jsObject
 
 pub fun newPublicKeyCredentialDescriptor(type: string, id: webidl/bufferSource, transports: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);  setJsObjectField(obj, "id", id);  match transports
     Just(it) -> setJsObjectField(obj, "transports", it)
     Nothing -> ()
 
-  PublicKeyCredentialDescriptor(obj);
+  PublicKeyCredentialDescriptor(obj)
 
 pub inline fun type(obj: publicKeyCredentialDescriptor, value: string): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -1106,12 +1106,12 @@ pub value struct credentialPropertiesOutput
   obj: jsObject
 
 pub fun newCredentialPropertiesOutput(rk: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match rk
     Just(it) -> setJsObjectField(obj, "rk", it)
     Nothing -> ()
 
-  CredentialPropertiesOutput(obj);
+  CredentialPropertiesOutput(obj)
 
 pub inline fun rk(obj: credentialPropertiesOutput, value: bool): web ()
   setJsObjectField(obj.obj, "rk", value.obj)
@@ -1123,12 +1123,12 @@ pub value struct authenticationExtensionsPRFValues
   obj: jsObject
 
 pub fun newAuthenticationExtensionsPRFValues(first: webidl/bufferSource, second: maybe<webidl/bufferSource> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "first", first);  match second
     Just(it) -> setJsObjectField(obj, "second", it)
     Nothing -> ()
 
-  AuthenticationExtensionsPRFValues(obj);
+  AuthenticationExtensionsPRFValues(obj)
 
 pub inline fun first(obj: authenticationExtensionsPRFValues, value: webidl/bufferSource): web ()
   setJsObjectField(obj.obj, "first", value.obj)
@@ -1146,7 +1146,7 @@ pub value struct authenticationExtensionsPRFInputs
   obj: jsObject
 
 pub fun newAuthenticationExtensionsPRFInputs(eval: maybe<authenticationExtensionsPRFValues> = Nothing, evalByCredential: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match eval
     Just(it) -> setJsObjectField(obj, "eval", it)
     Nothing -> ()
@@ -1154,7 +1154,7 @@ pub fun newAuthenticationExtensionsPRFInputs(eval: maybe<authenticationExtension
     Just(it) -> setJsObjectField(obj, "evalByCredential", it)
     Nothing -> ()
 
-  AuthenticationExtensionsPRFInputs(obj);
+  AuthenticationExtensionsPRFInputs(obj)
 
 pub inline fun eval(obj: authenticationExtensionsPRFInputs, value: authenticationExtensionsPRFValues): web ()
   setJsObjectField(obj.obj, "eval", value.obj)
@@ -1172,7 +1172,7 @@ pub value struct authenticationExtensionsPRFOutputs
   obj: jsObject
 
 pub fun newAuthenticationExtensionsPRFOutputs(enabled: maybe<bool> = Nothing, results: maybe<authenticationExtensionsPRFValues> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match enabled
     Just(it) -> setJsObjectField(obj, "enabled", it)
     Nothing -> ()
@@ -1180,7 +1180,7 @@ pub fun newAuthenticationExtensionsPRFOutputs(enabled: maybe<bool> = Nothing, re
     Just(it) -> setJsObjectField(obj, "results", it)
     Nothing -> ()
 
-  AuthenticationExtensionsPRFOutputs(obj);
+  AuthenticationExtensionsPRFOutputs(obj)
 
 pub inline fun enabled(obj: authenticationExtensionsPRFOutputs, value: bool): web ()
   setJsObjectField(obj.obj, "enabled", value.obj)
@@ -1198,7 +1198,7 @@ pub value struct authenticationExtensionsLargeBlobInputs
   obj: jsObject
 
 pub fun newAuthenticationExtensionsLargeBlobInputs(support: maybe<string> = Nothing, read: maybe<bool> = Nothing, write: maybe<webidl/bufferSource> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match support
     Just(it) -> setJsObjectField(obj, "support", it)
     Nothing -> ()
@@ -1209,7 +1209,7 @@ pub fun newAuthenticationExtensionsLargeBlobInputs(support: maybe<string> = Noth
     Just(it) -> setJsObjectField(obj, "write", it)
     Nothing -> ()
 
-  AuthenticationExtensionsLargeBlobInputs(obj);
+  AuthenticationExtensionsLargeBlobInputs(obj)
 
 pub inline fun support(obj: authenticationExtensionsLargeBlobInputs, value: string): web ()
   setJsObjectField(obj.obj, "support", value.obj)
@@ -1233,7 +1233,7 @@ pub value struct authenticationExtensionsLargeBlobOutputs
   obj: jsObject
 
 pub fun newAuthenticationExtensionsLargeBlobOutputs(supported: maybe<bool> = Nothing, blob: maybe<jsArrayBuffer> = Nothing, written: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match supported
     Just(it) -> setJsObjectField(obj, "supported", it)
     Nothing -> ()
@@ -1244,7 +1244,7 @@ pub fun newAuthenticationExtensionsLargeBlobOutputs(supported: maybe<bool> = Not
     Just(it) -> setJsObjectField(obj, "written", it)
     Nothing -> ()
 
-  AuthenticationExtensionsLargeBlobOutputs(obj);
+  AuthenticationExtensionsLargeBlobOutputs(obj)
 
 pub inline fun supported(obj: authenticationExtensionsLargeBlobOutputs, value: bool): web ()
   setJsObjectField(obj.obj, "supported", value.obj)
@@ -1268,7 +1268,7 @@ pub value struct authenticationExtensionsDevicePublicKeyInputs
   obj: jsObject
 
 pub fun newAuthenticationExtensionsDevicePublicKeyInputs(attestation: maybe<string> = Nothing, attestationFormats: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match attestation
     Just(it) -> setJsObjectField(obj, "attestation", it)
     Nothing -> ()
@@ -1276,7 +1276,7 @@ pub fun newAuthenticationExtensionsDevicePublicKeyInputs(attestation: maybe<stri
     Just(it) -> setJsObjectField(obj, "attestationFormats", it)
     Nothing -> ()
 
-  AuthenticationExtensionsDevicePublicKeyInputs(obj);
+  AuthenticationExtensionsDevicePublicKeyInputs(obj)
 
 pub inline fun attestation(obj: authenticationExtensionsDevicePublicKeyInputs, value: string): web ()
   setJsObjectField(obj.obj, "attestation", value.obj)
@@ -1294,12 +1294,12 @@ pub value struct authenticationExtensionsDevicePublicKeyOutputs
   obj: jsObject
 
 pub fun newAuthenticationExtensionsDevicePublicKeyOutputs(signature: maybe<jsArrayBuffer> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match signature
     Just(it) -> setJsObjectField(obj, "signature", it)
     Nothing -> ()
 
-  AuthenticationExtensionsDevicePublicKeyOutputs(obj);
+  AuthenticationExtensionsDevicePublicKeyOutputs(obj)
 
 pub inline fun signature(obj: authenticationExtensionsDevicePublicKeyOutputs, value: jsArrayBuffer): web ()
   setJsObjectField(obj.obj, "signature", value.obj)

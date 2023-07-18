@@ -2,65 +2,65 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias gLenum = int;
+pub alias gLenum = int
 
 
-pub alias gLboolean = bool;
+pub alias gLboolean = bool
 
 
-pub alias gLbitfield = int;
+pub alias gLbitfield = int
 
 
-pub alias gLbyte = int;
+pub alias gLbyte = int
 
 
-pub alias gLshort = int;
+pub alias gLshort = int
 
 
-pub alias gLint = int;
+pub alias gLint = int
 
 
-pub alias gLsizei = int;
+pub alias gLsizei = int
 
 
-pub alias gLintptr = int;
+pub alias gLintptr = int
 
 
-pub alias gLsizeiptr = int;
+pub alias gLsizeiptr = int
 
 
-pub alias gLubyte = int;
+pub alias gLubyte = int
 
 
-pub alias gLushort = int;
+pub alias gLushort = int
 
 
-pub alias gLuint = int;
+pub alias gLuint = int
 
 
-pub alias gLfloat = double;
+pub alias gLfloat = double
 
 
-pub alias gLclampf = double;
+pub alias gLclampf = double
 
 
-pub alias texImageSource = JSAny;
+pub alias texImageSource = JSAny
 
 
-pub alias float32List = JSAny;
+pub alias float32List = JSAny
 
 
-pub alias int32List = JSAny;
+pub alias int32List = JSAny
 
 
 
-pub alias webGLPowerPreference = string;
+pub alias webGLPowerPreference = string
 
 pub value struct webGLContextAttributes
   obj: jsObject
 
 pub fun newWebGLContextAttributes(alpha: maybe<bool> = Nothing, depth: maybe<bool> = Nothing, stencil: maybe<bool> = Nothing, antialias: maybe<bool> = Nothing, premultipliedAlpha: maybe<bool> = Nothing, preserveDrawingBuffer: maybe<bool> = Nothing, powerPreference: maybe<webGLPowerPreference> = Nothing, failIfMajorPerformanceCaveat: maybe<bool> = Nothing, desynchronized: maybe<bool> = Nothing, xrCompatible: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match alpha
     Just(it) -> setJsObjectField(obj, "alpha", it)
     Nothing -> ()
@@ -92,7 +92,7 @@ pub fun newWebGLContextAttributes(alpha: maybe<bool> = Nothing, depth: maybe<boo
     Just(it) -> setJsObjectField(obj, "xrCompatible", it)
     Nothing -> ()
 
-  WebGLContextAttributes(obj);
+  WebGLContextAttributes(obj)
 
 pub inline fun alpha(obj: webGLContextAttributes, value: bool): web ()
   setJsObjectField(obj.obj, "alpha", value.obj)
@@ -1556,12 +1556,12 @@ pub value struct webGLContextEventInit
   obj: jsObject
 
 pub fun newWebGLContextEventInit(statusMessage: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match statusMessage
     Just(it) -> setJsObjectField(obj, "statusMessage", it)
     Nothing -> ()
 
-  WebGLContextEventInit(obj);
+  WebGLContextEventInit(obj)
 
 pub inline fun statusMessage(obj: webGLContextEventInit, value: string): web ()
   setJsObjectField(obj.obj, "statusMessage", value.obj)

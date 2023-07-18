@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias storageBucketDurability = string;
+pub alias storageBucketDurability = string
 
 pub value struct navigatorStorageBuckets
   obj: jsObject
@@ -31,7 +31,7 @@ pub value struct storageBucketOptions
   obj: jsObject
 
 pub fun newStorageBucketOptions(persisted: maybe<maybe<bool>> = Nothing, durability: maybe<maybe<storageBucketDurability>> = Nothing, quota: maybe<maybe<int>> = Nothing, expires: maybe<maybe<hr_time/domHighResTimeStamp>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match persisted
     Just(it) -> setJsObjectField(obj, "persisted", it)
     Nothing -> ()
@@ -45,7 +45,7 @@ pub fun newStorageBucketOptions(persisted: maybe<maybe<bool>> = Nothing, durabil
     Just(it) -> setJsObjectField(obj, "expires", it)
     Nothing -> ()
 
-  StorageBucketOptions(obj);
+  StorageBucketOptions(obj)
 
 pub inline fun persisted(obj: storageBucketOptions, value: maybe<bool>): web ()
   setJsObjectField(obj.obj, "persisted", value.obj)

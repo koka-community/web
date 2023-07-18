@@ -5,16 +5,16 @@ import web/wasm
 
 
 
-pub alias serviceWorkerState = string;
+pub alias serviceWorkerState = string
 
 
-pub alias serviceWorkerUpdateViaCache = string;
+pub alias serviceWorkerUpdateViaCache = string
 
 
-pub alias frameType = string;
+pub alias frameType = string
 
 
-pub alias clientType = string;
+pub alias clientType = string
 
 pub value struct serviceWorker
   obj: jsObject
@@ -140,7 +140,7 @@ pub value struct registrationOptions
   obj: jsObject
 
 pub fun newRegistrationOptions(scope: maybe<string> = Nothing, type: maybe<html/workerType> = Nothing, updateViaCache: maybe<serviceWorkerUpdateViaCache> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match scope
     Just(it) -> setJsObjectField(obj, "scope", it)
     Nothing -> ()
@@ -151,7 +151,7 @@ pub fun newRegistrationOptions(scope: maybe<string> = Nothing, type: maybe<html/
     Just(it) -> setJsObjectField(obj, "updateViaCache", it)
     Nothing -> ()
 
-  RegistrationOptions(obj);
+  RegistrationOptions(obj)
 
 pub inline fun scope(obj: registrationOptions, value: string): web ()
   setJsObjectField(obj.obj, "scope", value.obj)
@@ -191,7 +191,7 @@ pub value struct navigationPreloadState
   obj: jsObject
 
 pub fun newNavigationPreloadState(enabled: maybe<bool> = Nothing, headerValue: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match enabled
     Just(it) -> setJsObjectField(obj, "enabled", it)
     Nothing -> ()
@@ -199,7 +199,7 @@ pub fun newNavigationPreloadState(enabled: maybe<bool> = Nothing, headerValue: m
     Just(it) -> setJsObjectField(obj, "headerValue", it)
     Nothing -> ()
 
-  NavigationPreloadState(obj);
+  NavigationPreloadState(obj)
 
 pub inline fun enabled(obj: navigationPreloadState, value: bool): web ()
   setJsObjectField(obj.obj, "enabled", value.obj)
@@ -407,7 +407,7 @@ pub value struct clientQueryOptions
   obj: jsObject
 
 pub fun newClientQueryOptions(includeUncontrolled: maybe<bool> = Nothing, type: maybe<clientType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match includeUncontrolled
     Just(it) -> setJsObjectField(obj, "includeUncontrolled", it)
     Nothing -> ()
@@ -415,7 +415,7 @@ pub fun newClientQueryOptions(includeUncontrolled: maybe<bool> = Nothing, type: 
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
 
-  ClientQueryOptions(obj);
+  ClientQueryOptions(obj)
 
 pub inline fun includeUncontrolled(obj: clientQueryOptions, value: bool): web ()
   setJsObjectField(obj.obj, "includeUncontrolled", value.obj)
@@ -442,9 +442,9 @@ pub value struct extendableEventInit
   obj: jsObject
 
 pub fun newExtendableEventInit()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  ExtendableEventInit(obj);
+  ExtendableEventInit(obj)
 
 pub value struct fetchEvent
   obj: jsObject
@@ -477,7 +477,7 @@ pub value struct fetchEventInit
   obj: jsObject
 
 pub fun newFetchEventInit(request: fetch/request, preloadResponse: maybe<jsPromise> = Nothing, clientId: maybe<string> = Nothing, resultingClientId: maybe<string> = Nothing, replacesClientId: maybe<string> = Nothing, handled: maybe<jsPromise> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "request", request);  match preloadResponse
     Just(it) -> setJsObjectField(obj, "preloadResponse", it)
     Nothing -> ()
@@ -494,7 +494,7 @@ pub fun newFetchEventInit(request: fetch/request, preloadResponse: maybe<jsPromi
     Just(it) -> setJsObjectField(obj, "handled", it)
     Nothing -> ()
 
-  FetchEventInit(obj);
+  FetchEventInit(obj)
 
 pub inline fun request(obj: fetchEventInit, value: fetch/request): web ()
   setJsObjectField(obj.obj, "request", value.obj)
@@ -557,7 +557,7 @@ pub value struct extendableMessageEventInit
   obj: jsObject
 
 pub fun newExtendableMessageEventInit(data: maybe<maybe<jsObject>> = Nothing, origin: maybe<string> = Nothing, lastEventId: maybe<string> = Nothing, source: maybe<maybe<jsObject>> = Nothing, ports: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match data
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
@@ -574,7 +574,7 @@ pub fun newExtendableMessageEventInit(data: maybe<maybe<jsObject>> = Nothing, or
     Just(it) -> setJsObjectField(obj, "ports", it)
     Nothing -> ()
 
-  ExtendableMessageEventInit(obj);
+  ExtendableMessageEventInit(obj)
 
 pub inline fun data(obj: extendableMessageEventInit, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "data", value.obj)
@@ -635,7 +635,7 @@ pub value struct cacheQueryOptions
   obj: jsObject
 
 pub fun newCacheQueryOptions(ignoreSearch: maybe<bool> = Nothing, ignoreMethod: maybe<bool> = Nothing, ignoreVary: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match ignoreSearch
     Just(it) -> setJsObjectField(obj, "ignoreSearch", it)
     Nothing -> ()
@@ -646,7 +646,7 @@ pub fun newCacheQueryOptions(ignoreSearch: maybe<bool> = Nothing, ignoreMethod: 
     Just(it) -> setJsObjectField(obj, "ignoreVary", it)
     Nothing -> ()
 
-  CacheQueryOptions(obj);
+  CacheQueryOptions(obj)
 
 pub inline fun ignoreSearch(obj: cacheQueryOptions, value: bool): web ()
   setJsObjectField(obj.obj, "ignoreSearch", value.obj)
@@ -689,12 +689,12 @@ pub value struct multiCacheQueryOptions
   obj: jsObject
 
 pub fun newMultiCacheQueryOptions(cacheName: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match cacheName
     Just(it) -> setJsObjectField(obj, "cacheName", it)
     Nothing -> ()
 
-  MultiCacheQueryOptions(obj);
+  MultiCacheQueryOptions(obj)
 
 pub inline fun cacheName(obj: multiCacheQueryOptions, value: string): web ()
   setJsObjectField(obj.obj, "cacheName", value.obj)

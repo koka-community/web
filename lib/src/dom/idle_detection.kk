@@ -5,16 +5,16 @@ import web/wasm
 
 
 
-pub alias userIdleState = string;
+pub alias userIdleState = string
 
 
-pub alias screenIdleState = string;
+pub alias screenIdleState = string
 
 pub value struct idleOptions
   obj: jsObject
 
 pub fun newIdleOptions(threshold: maybe<int> = Nothing, signal: maybe<dom/abortSignal> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match threshold
     Just(it) -> setJsObjectField(obj, "threshold", it)
     Nothing -> ()
@@ -22,7 +22,7 @@ pub fun newIdleOptions(threshold: maybe<int> = Nothing, signal: maybe<dom/abortS
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
 
-  IdleOptions(obj);
+  IdleOptions(obj)
 
 pub inline fun threshold(obj: idleOptions, value: int): web ()
   setJsObjectField(obj.obj, "threshold", value.obj)

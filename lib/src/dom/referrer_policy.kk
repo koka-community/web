@@ -5,6 +5,6 @@ import web/wasm
 
 
 
-pub alias referrerPolicy = string;
+pub alias referrerPolicy = string
 
 

@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias itemType = string;
+pub alias itemType = string
 
 pub value struct digitalGoodsService
   obj: jsObject
@@ -27,7 +27,7 @@ pub value struct itemDetails
   obj: jsObject
 
 pub fun newItemDetails(itemId: string, title: string, price: payment_request/paymentCurrencyAmount, type: maybe<itemType> = Nothing, description: maybe<string> = Nothing, iconURLs: maybe<jsArray> = Nothing, subscriptionPeriod: maybe<string> = Nothing, freeTrialPeriod: maybe<string> = Nothing, introductoryPrice: maybe<payment_request/paymentCurrencyAmount> = Nothing, introductoryPricePeriod: maybe<string> = Nothing, introductoryPriceCycles: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "itemId", itemId);  setJsObjectField(obj, "title", title);  setJsObjectField(obj, "price", price);  match type
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
@@ -53,7 +53,7 @@ pub fun newItemDetails(itemId: string, title: string, price: payment_request/pay
     Just(it) -> setJsObjectField(obj, "introductoryPriceCycles", it)
     Nothing -> ()
 
-  ItemDetails(obj);
+  ItemDetails(obj)
 
 pub inline fun itemId(obj: itemDetails, value: string): web ()
   setJsObjectField(obj.obj, "itemId", value.obj)
@@ -125,9 +125,9 @@ pub value struct purchaseDetails
   obj: jsObject
 
 pub fun newPurchaseDetails(itemId: string, purchaseToken: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "itemId", itemId);  setJsObjectField(obj, "purchaseToken", purchaseToken);
-  PurchaseDetails(obj);
+  PurchaseDetails(obj)
 
 pub inline fun itemId(obj: purchaseDetails, value: string): web ()
   setJsObjectField(obj.obj, "itemId", value.obj)

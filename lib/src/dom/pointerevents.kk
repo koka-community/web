@@ -10,7 +10,7 @@ pub value struct pointerEventInit
   obj: jsObject
 
 pub fun newPointerEventInit(pointerId: maybe<int> = Nothing, width: maybe<double> = Nothing, height: maybe<double> = Nothing, pressure: maybe<double> = Nothing, tangentialPressure: maybe<double> = Nothing, tiltX: maybe<int> = Nothing, tiltY: maybe<int> = Nothing, twist: maybe<int> = Nothing, altitudeAngle: maybe<double> = Nothing, azimuthAngle: maybe<double> = Nothing, pointerType: maybe<string> = Nothing, isPrimary: maybe<bool> = Nothing, coalescedEvents: maybe<jsArray> = Nothing, predictedEvents: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match pointerId
     Just(it) -> setJsObjectField(obj, "pointerId", it)
     Nothing -> ()
@@ -54,7 +54,7 @@ pub fun newPointerEventInit(pointerId: maybe<int> = Nothing, width: maybe<double
     Just(it) -> setJsObjectField(obj, "predictedEvents", it)
     Nothing -> ()
 
-  PointerEventInit(obj);
+  PointerEventInit(obj)
 
 pub inline fun pointerId(obj: pointerEventInit, value: int): web ()
   setJsObjectField(obj.obj, "pointerId", value.obj)

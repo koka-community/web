@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias paymentComplete = string;
+pub alias paymentComplete = string
 
 pub value struct paymentRequest
   obj: jsObject
@@ -37,12 +37,12 @@ pub value struct paymentMethodData
   obj: jsObject
 
 pub fun newPaymentMethodData(supportedMethods: string, data: maybe<jsObject> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "supportedMethods", supportedMethods);  match data
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  PaymentMethodData(obj);
+  PaymentMethodData(obj)
 
 pub inline fun supportedMethods(obj: paymentMethodData, value: string): web ()
   setJsObjectField(obj.obj, "supportedMethods", value.obj)
@@ -60,9 +60,9 @@ pub value struct paymentCurrencyAmount
   obj: jsObject
 
 pub fun newPaymentCurrencyAmount(currency: string, value: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "currency", currency);  setJsObjectField(obj, "value", value);
-  PaymentCurrencyAmount(obj);
+  PaymentCurrencyAmount(obj)
 
 pub inline fun currency(obj: paymentCurrencyAmount, value: string): web ()
   setJsObjectField(obj.obj, "currency", value.obj)
@@ -80,7 +80,7 @@ pub value struct paymentDetailsBase
   obj: jsObject
 
 pub fun newPaymentDetailsBase(displayItems: maybe<jsArray> = Nothing, modifiers: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match displayItems
     Just(it) -> setJsObjectField(obj, "displayItems", it)
     Nothing -> ()
@@ -88,7 +88,7 @@ pub fun newPaymentDetailsBase(displayItems: maybe<jsArray> = Nothing, modifiers:
     Just(it) -> setJsObjectField(obj, "modifiers", it)
     Nothing -> ()
 
-  PaymentDetailsBase(obj);
+  PaymentDetailsBase(obj)
 
 pub inline fun displayItems(obj: paymentDetailsBase, value: jsArray): web ()
   setJsObjectField(obj.obj, "displayItems", value.obj)
@@ -106,12 +106,12 @@ pub value struct paymentDetailsInit
   obj: jsObject
 
 pub fun newPaymentDetailsInit(id: maybe<string> = Nothing, total: paymentItem)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match id
     Just(it) -> setJsObjectField(obj, "id", it)
     Nothing -> ()
   setJsObjectField(obj, "total", total);
-  PaymentDetailsInit(obj);
+  PaymentDetailsInit(obj)
 
 pub inline fun id(obj: paymentDetailsInit, value: string): web ()
   setJsObjectField(obj.obj, "id", value.obj)
@@ -129,7 +129,7 @@ pub value struct paymentDetailsUpdate
   obj: jsObject
 
 pub fun newPaymentDetailsUpdate(total: maybe<paymentItem> = Nothing, paymentMethodErrors: maybe<jsObject> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match total
     Just(it) -> setJsObjectField(obj, "total", it)
     Nothing -> ()
@@ -137,7 +137,7 @@ pub fun newPaymentDetailsUpdate(total: maybe<paymentItem> = Nothing, paymentMeth
     Just(it) -> setJsObjectField(obj, "paymentMethodErrors", it)
     Nothing -> ()
 
-  PaymentDetailsUpdate(obj);
+  PaymentDetailsUpdate(obj)
 
 pub inline fun total(obj: paymentDetailsUpdate, value: paymentItem): web ()
   setJsObjectField(obj.obj, "total", value.obj)
@@ -155,7 +155,7 @@ pub value struct paymentDetailsModifier
   obj: jsObject
 
 pub fun newPaymentDetailsModifier(supportedMethods: string, total: maybe<paymentItem> = Nothing, additionalDisplayItems: maybe<jsArray> = Nothing, data: maybe<jsObject> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "supportedMethods", supportedMethods);  match total
     Just(it) -> setJsObjectField(obj, "total", it)
     Nothing -> ()
@@ -166,7 +166,7 @@ pub fun newPaymentDetailsModifier(supportedMethods: string, total: maybe<payment
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  PaymentDetailsModifier(obj);
+  PaymentDetailsModifier(obj)
 
 pub inline fun supportedMethods(obj: paymentDetailsModifier, value: string): web ()
   setJsObjectField(obj.obj, "supportedMethods", value.obj)
@@ -196,12 +196,12 @@ pub value struct paymentItem
   obj: jsObject
 
 pub fun newPaymentItem(label: string, amount: paymentCurrencyAmount, pending: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "label", label);  setJsObjectField(obj, "amount", amount);  match pending
     Just(it) -> setJsObjectField(obj, "pending", it)
     Nothing -> ()
 
-  PaymentItem(obj);
+  PaymentItem(obj)
 
 pub inline fun label(obj: paymentItem, value: string): web ()
   setJsObjectField(obj.obj, "label", value.obj)
@@ -225,12 +225,12 @@ pub value struct paymentCompleteDetails
   obj: jsObject
 
 pub fun newPaymentCompleteDetails(data: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match data
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  PaymentCompleteDetails(obj);
+  PaymentCompleteDetails(obj)
 
 pub inline fun data(obj: paymentCompleteDetails, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "data", value.obj)
@@ -264,7 +264,7 @@ pub value struct paymentValidationErrors
   obj: jsObject
 
 pub fun newPaymentValidationErrors(error: maybe<string> = Nothing, paymentMethod: maybe<jsObject> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match error
     Just(it) -> setJsObjectField(obj, "error", it)
     Nothing -> ()
@@ -272,7 +272,7 @@ pub fun newPaymentValidationErrors(error: maybe<string> = Nothing, paymentMethod
     Just(it) -> setJsObjectField(obj, "paymentMethod", it)
     Nothing -> ()
 
-  PaymentValidationErrors(obj);
+  PaymentValidationErrors(obj)
 
 pub inline fun error(obj: paymentValidationErrors, value: string): web ()
   setJsObjectField(obj.obj, "error", value.obj)
@@ -302,7 +302,7 @@ pub value struct paymentMethodChangeEventInit
   obj: jsObject
 
 pub fun newPaymentMethodChangeEventInit(methodName: maybe<string> = Nothing, methodDetails: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match methodName
     Just(it) -> setJsObjectField(obj, "methodName", it)
     Nothing -> ()
@@ -310,7 +310,7 @@ pub fun newPaymentMethodChangeEventInit(methodName: maybe<string> = Nothing, met
     Just(it) -> setJsObjectField(obj, "methodDetails", it)
     Nothing -> ()
 
-  PaymentMethodChangeEventInit(obj);
+  PaymentMethodChangeEventInit(obj)
 
 pub inline fun methodName(obj: paymentMethodChangeEventInit, value: string): web ()
   setJsObjectField(obj.obj, "methodName", value.obj)
@@ -337,7 +337,7 @@ pub value struct paymentRequestUpdateEventInit
   obj: jsObject
 
 pub fun newPaymentRequestUpdateEventInit()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  PaymentRequestUpdateEventInit(obj);
+  PaymentRequestUpdateEventInit(obj)
 

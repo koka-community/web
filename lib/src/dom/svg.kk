@@ -23,7 +23,7 @@ pub value struct svgBoundingBoxOptions
   obj: jsObject
 
 pub fun newSvgBoundingBoxOptions(fill: maybe<bool> = Nothing, stroke: maybe<bool> = Nothing, markers: maybe<bool> = Nothing, clipped: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match fill
     Just(it) -> setJsObjectField(obj, "fill", it)
     Nothing -> ()
@@ -37,7 +37,7 @@ pub fun newSvgBoundingBoxOptions(fill: maybe<bool> = Nothing, stroke: maybe<bool
     Just(it) -> setJsObjectField(obj, "clipped", it)
     Nothing -> ()
 
-  SvgBoundingBoxOptions(obj);
+  SvgBoundingBoxOptions(obj)
 
 pub inline fun fill(obj: svgBoundingBoxOptions, value: bool): web ()
   setJsObjectField(obj.obj, "fill", value.obj)

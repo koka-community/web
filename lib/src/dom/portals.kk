@@ -46,12 +46,12 @@ pub value struct portalActivateOptions
   obj: jsObject
 
 pub fun newPortalActivateOptions(data: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match data
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  PortalActivateOptions(obj);
+  PortalActivateOptions(obj)
 
 pub inline fun data(obj: portalActivateOptions, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "data", value.obj)
@@ -94,12 +94,12 @@ pub value struct portalActivateEventInit
   obj: jsObject
 
 pub fun newPortalActivateEventInit(data: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match data
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  PortalActivateEventInit(obj);
+  PortalActivateEventInit(obj)
 
 pub inline fun data(obj: portalActivateEventInit, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "data", value.obj)

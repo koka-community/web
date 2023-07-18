@@ -2,11 +2,11 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias formDataEntryValue = JSAny;
+pub alias formDataEntryValue = JSAny
 
 
 
-pub alias xmlHttpRequestResponseType = string;
+pub alias xmlHttpRequestResponseType = string
 
 pub value struct xmlHttpRequestEventTarget
   obj: jsObject
@@ -193,7 +193,7 @@ pub value struct progressEventInit
   obj: jsObject
 
 pub fun newProgressEventInit(lengthComputable: maybe<bool> = Nothing, loaded: maybe<int> = Nothing, total: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match lengthComputable
     Just(it) -> setJsObjectField(obj, "lengthComputable", it)
     Nothing -> ()
@@ -204,7 +204,7 @@ pub fun newProgressEventInit(lengthComputable: maybe<bool> = Nothing, loaded: ma
     Just(it) -> setJsObjectField(obj, "total", it)
     Nothing -> ()
 
-  ProgressEventInit(obj);
+  ProgressEventInit(obj)
 
 pub inline fun lengthComputable(obj: progressEventInit, value: bool): web ()
   setJsObjectField(obj.obj, "lengthComputable", value.obj)

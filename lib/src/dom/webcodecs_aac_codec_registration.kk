@@ -5,18 +5,18 @@ import web/wasm
 
 
 
-pub alias aacBitstreamFormat = string;
+pub alias aacBitstreamFormat = string
 
 pub value struct aacEncoderConfig
   obj: jsObject
 
 pub fun newAacEncoderConfig(format: maybe<aacBitstreamFormat> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match format
     Just(it) -> setJsObjectField(obj, "format", it)
     Nothing -> ()
 
-  AacEncoderConfig(obj);
+  AacEncoderConfig(obj)
 
 pub inline fun format(obj: aacEncoderConfig, value: aacBitstreamFormat): web ()
   setJsObjectField(obj.obj, "format", value.obj)

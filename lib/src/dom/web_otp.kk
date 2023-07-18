@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias otpCredentialTransportType = string;
+pub alias otpCredentialTransportType = string
 
 pub value struct otpCredential
   obj: jsObject
@@ -18,12 +18,12 @@ pub value struct otpCredentialRequestOptions
   obj: jsObject
 
 pub fun newOtpCredentialRequestOptions(transport: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match transport
     Just(it) -> setJsObjectField(obj, "transport", it)
     Nothing -> ()
 
-  OtpCredentialRequestOptions(obj);
+  OtpCredentialRequestOptions(obj)
 
 pub inline fun transport(obj: otpCredentialRequestOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "transport", value.obj)

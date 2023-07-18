@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias permissionState = string;
+pub alias permissionState = string
 
 pub value struct permissions
   obj: jsObject
@@ -24,9 +24,9 @@ pub value struct permissionDescriptor
   obj: jsObject
 
 pub fun newPermissionDescriptor(name: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "name", name);
-  PermissionDescriptor(obj);
+  PermissionDescriptor(obj)
 
 pub inline fun name(obj: permissionDescriptor, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -54,9 +54,9 @@ pub value struct permissionSetParameters
   obj: jsObject
 
 pub fun newPermissionSetParameters(descriptor: permissionDescriptor, state: permissionState)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "descriptor", descriptor);  setJsObjectField(obj, "state", state);
-  PermissionSetParameters(obj);
+  PermissionSetParameters(obj)
 
 pub inline fun descriptor(obj: permissionSetParameters, value: permissionDescriptor): web ()
   setJsObjectField(obj.obj, "descriptor", value.obj)

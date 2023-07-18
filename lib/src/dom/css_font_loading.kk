@@ -2,20 +2,20 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias binaryData = JSAny;
+pub alias binaryData = JSAny
 
 
 
-pub alias fontFaceLoadStatus = string;
+pub alias fontFaceLoadStatus = string
 
 
-pub alias fontFaceSetLoadStatus = string;
+pub alias fontFaceSetLoadStatus = string
 
 pub value struct fontFaceDescriptors
   obj: jsObject
 
 pub fun newFontFaceDescriptors(style: maybe<string> = Nothing, weight: maybe<string> = Nothing, stretch: maybe<string> = Nothing, unicodeRange: maybe<string> = Nothing, variant: maybe<string> = Nothing, featureSettings: maybe<string> = Nothing, variationSettings: maybe<string> = Nothing, display: maybe<string> = Nothing, ascentOverride: maybe<string> = Nothing, descentOverride: maybe<string> = Nothing, lineGapOverride: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match style
     Just(it) -> setJsObjectField(obj, "style", it)
     Nothing -> ()
@@ -50,7 +50,7 @@ pub fun newFontFaceDescriptors(style: maybe<string> = Nothing, weight: maybe<str
     Just(it) -> setJsObjectField(obj, "lineGapOverride", it)
     Nothing -> ()
 
-  FontFaceDescriptors(obj);
+  FontFaceDescriptors(obj)
 
 pub inline fun style(obj: fontFaceDescriptors, value: string): web ()
   setJsObjectField(obj.obj, "style", value.obj)
@@ -266,12 +266,12 @@ pub value struct fontFaceSetLoadEventInit
   obj: jsObject
 
 pub fun newFontFaceSetLoadEventInit(fontfaces: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match fontfaces
     Just(it) -> setJsObjectField(obj, "fontfaces", it)
     Nothing -> ()
 
-  FontFaceSetLoadEventInit(obj);
+  FontFaceSetLoadEventInit(obj)
 
 pub inline fun fontfaces(obj: fontFaceSetLoadEventInit, value: jsArray): web ()
   setJsObjectField(obj.obj, "fontfaces", value.obj)

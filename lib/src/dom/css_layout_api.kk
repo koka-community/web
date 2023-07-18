@@ -5,16 +5,16 @@ import web/wasm
 
 
 
-pub alias childDisplayType = string;
+pub alias childDisplayType = string
 
 
-pub alias layoutSizingMode = string;
+pub alias layoutSizingMode = string
 
 
-pub alias blockFragmentationType = string;
+pub alias blockFragmentationType = string
 
 
-pub alias breakType = string;
+pub alias breakType = string
 
 pub value struct layoutWorkletGlobalScope
   obj: jsObject
@@ -27,7 +27,7 @@ pub value struct layoutOptions
   obj: jsObject
 
 pub fun newLayoutOptions(childDisplay: maybe<childDisplayType> = Nothing, sizing: maybe<layoutSizingMode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match childDisplay
     Just(it) -> setJsObjectField(obj, "childDisplay", it)
     Nothing -> ()
@@ -35,7 +35,7 @@ pub fun newLayoutOptions(childDisplay: maybe<childDisplayType> = Nothing, sizing
     Just(it) -> setJsObjectField(obj, "sizing", it)
     Nothing -> ()
 
-  LayoutOptions(obj);
+  LayoutOptions(obj)
 
 pub inline fun childDisplay(obj: layoutOptions, value: childDisplayType): web ()
   setJsObjectField(obj.obj, "childDisplay", value.obj)
@@ -135,7 +135,7 @@ pub value struct layoutConstraintsOptions
   obj: jsObject
 
 pub fun newLayoutConstraintsOptions(availableInlineSize: maybe<double> = Nothing, availableBlockSize: maybe<double> = Nothing, fixedInlineSize: maybe<double> = Nothing, fixedBlockSize: maybe<double> = Nothing, percentageInlineSize: maybe<double> = Nothing, percentageBlockSize: maybe<double> = Nothing, blockFragmentationOffset: maybe<double> = Nothing, blockFragmentationType: maybe<blockFragmentationType> = Nothing, data: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match availableInlineSize
     Just(it) -> setJsObjectField(obj, "availableInlineSize", it)
     Nothing -> ()
@@ -164,7 +164,7 @@ pub fun newLayoutConstraintsOptions(availableInlineSize: maybe<double> = Nothing
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  LayoutConstraintsOptions(obj);
+  LayoutConstraintsOptions(obj)
 
 pub inline fun availableInlineSize(obj: layoutConstraintsOptions, value: double): web ()
   setJsObjectField(obj.obj, "availableInlineSize", value.obj)
@@ -244,7 +244,7 @@ pub value struct breakTokenOptions
   obj: jsObject
 
 pub fun newBreakTokenOptions(childBreakTokens: maybe<jsArray> = Nothing, data: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match childBreakTokens
     Just(it) -> setJsObjectField(obj, "childBreakTokens", it)
     Nothing -> ()
@@ -252,7 +252,7 @@ pub fun newBreakTokenOptions(childBreakTokens: maybe<jsArray> = Nothing, data: m
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  BreakTokenOptions(obj);
+  BreakTokenOptions(obj)
 
 pub inline fun childBreakTokens(obj: breakTokenOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "childBreakTokens", value.obj)
@@ -292,7 +292,7 @@ pub value struct fragmentResultOptions
   obj: jsObject
 
 pub fun newFragmentResultOptions(inlineSize: maybe<double> = Nothing, blockSize: maybe<double> = Nothing, autoBlockSize: maybe<double> = Nothing, childFragments: maybe<jsArray> = Nothing, data: maybe<maybe<jsObject>> = Nothing, breakToken: maybe<breakTokenOptions> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match inlineSize
     Just(it) -> setJsObjectField(obj, "inlineSize", it)
     Nothing -> ()
@@ -312,7 +312,7 @@ pub fun newFragmentResultOptions(inlineSize: maybe<double> = Nothing, blockSize:
     Just(it) -> setJsObjectField(obj, "breakToken", it)
     Nothing -> ()
 
-  FragmentResultOptions(obj);
+  FragmentResultOptions(obj)
 
 pub inline fun inlineSize(obj: fragmentResultOptions, value: double): web ()
   setJsObjectField(obj.obj, "inlineSize", value.obj)
@@ -366,7 +366,7 @@ pub value struct intrinsicSizesResultOptions
   obj: jsObject
 
 pub fun newIntrinsicSizesResultOptions(maxContentSize: maybe<double> = Nothing, minContentSize: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match maxContentSize
     Just(it) -> setJsObjectField(obj, "maxContentSize", it)
     Nothing -> ()
@@ -374,7 +374,7 @@ pub fun newIntrinsicSizesResultOptions(maxContentSize: maybe<double> = Nothing, 
     Just(it) -> setJsObjectField(obj, "minContentSize", it)
     Nothing -> ()
 
-  IntrinsicSizesResultOptions(obj);
+  IntrinsicSizesResultOptions(obj)
 
 pub inline fun maxContentSize(obj: intrinsicSizesResultOptions, value: double): web ()
   setJsObjectField(obj.obj, "maxContentSize", value.obj)

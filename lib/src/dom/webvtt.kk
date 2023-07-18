@@ -2,26 +2,26 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias lineAndPositionSetting = JSAny;
+pub alias lineAndPositionSetting = JSAny
 
 
 
-pub alias autoKeyword = string;
+pub alias autoKeyword = string
 
 
-pub alias directionSetting = string;
+pub alias directionSetting = string
 
 
-pub alias lineAlignSetting = string;
+pub alias lineAlignSetting = string
 
 
-pub alias positionAlignSetting = string;
+pub alias positionAlignSetting = string
 
 
-pub alias alignSetting = string;
+pub alias alignSetting = string
 
 
-pub alias scrollSetting = string;
+pub alias scrollSetting = string
 
 pub value struct vttCue
   obj: jsObject

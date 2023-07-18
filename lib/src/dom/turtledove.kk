@@ -10,12 +10,12 @@ pub value struct auctionAd
   obj: jsObject
 
 pub fun newAuctionAd(renderURL: string, metadata: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "renderURL", renderURL);  match metadata
     Just(it) -> setJsObjectField(obj, "metadata", it)
     Nothing -> ()
 
-  AuctionAd(obj);
+  AuctionAd(obj)
 
 pub inline fun renderURL(obj: auctionAd, value: string): web ()
   setJsObjectField(obj.obj, "renderURL", value.obj)
@@ -33,7 +33,7 @@ pub value struct generateBidInterestGroup
   obj: jsObject
 
 pub fun newGenerateBidInterestGroup(owner: string, name: string, lifetimeMs: double, enableBiddingSignalsPrioritization: maybe<bool> = Nothing, priorityVector: maybe<maybe<jsObject>> = Nothing, executionMode: maybe<string> = Nothing, biddingLogicURL: maybe<string> = Nothing, biddingWasmHelperURL: maybe<string> = Nothing, updateURL: maybe<string> = Nothing, trustedBiddingSignalsURL: maybe<string> = Nothing, trustedBiddingSignalsKeys: maybe<jsArray> = Nothing, userBiddingSignals: maybe<maybe<jsObject>> = Nothing, ads: maybe<jsArray> = Nothing, adComponents: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "owner", owner);  setJsObjectField(obj, "name", name);  setJsObjectField(obj, "lifetimeMs", lifetimeMs);  match enableBiddingSignalsPrioritization
     Just(it) -> setJsObjectField(obj, "enableBiddingSignalsPrioritization", it)
     Nothing -> ()
@@ -68,7 +68,7 @@ pub fun newGenerateBidInterestGroup(owner: string, name: string, lifetimeMs: dou
     Just(it) -> setJsObjectField(obj, "adComponents", it)
     Nothing -> ()
 
-  GenerateBidInterestGroup(obj);
+  GenerateBidInterestGroup(obj)
 
 pub inline fun owner(obj: generateBidInterestGroup, value: string): web ()
   setJsObjectField(obj.obj, "owner", value.obj)
@@ -158,7 +158,7 @@ pub value struct auctionAdInterestGroup
   obj: jsObject
 
 pub fun newAuctionAdInterestGroup(priority: maybe<double> = Nothing, prioritySignalsOverrides: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match priority
     Just(it) -> setJsObjectField(obj, "priority", it)
     Nothing -> ()
@@ -166,7 +166,7 @@ pub fun newAuctionAdInterestGroup(priority: maybe<double> = Nothing, prioritySig
     Just(it) -> setJsObjectField(obj, "prioritySignalsOverrides", it)
     Nothing -> ()
 
-  AuctionAdInterestGroup(obj);
+  AuctionAdInterestGroup(obj)
 
 pub inline fun priority(obj: auctionAdInterestGroup, value: double): web ()
   setJsObjectField(obj.obj, "priority", value.obj)
@@ -184,9 +184,9 @@ pub value struct auctionAdInterestGroupKey
   obj: jsObject
 
 pub fun newAuctionAdInterestGroupKey(owner: string, name: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "owner", owner);  setJsObjectField(obj, "name", name);
-  AuctionAdInterestGroupKey(obj);
+  AuctionAdInterestGroupKey(obj)
 
 pub inline fun owner(obj: auctionAdInterestGroupKey, value: string): web ()
   setJsObjectField(obj.obj, "owner", value.obj)
@@ -204,7 +204,7 @@ pub value struct auctionAdConfig
   obj: jsObject
 
 pub fun newAuctionAdConfig(seller: string, decisionLogicURL: string, trustedScoringSignalsURL: maybe<string> = Nothing, interestGroupBuyers: maybe<jsArray> = Nothing, auctionSignals: maybe<jsPromise> = Nothing, sellerSignals: maybe<jsPromise> = Nothing, directFromSellerSignals: maybe<jsPromise> = Nothing, sellerTimeout: maybe<int> = Nothing, sellerExperimentGroupId: maybe<int> = Nothing, sellerCurrency: maybe<string> = Nothing, perBuyerSignals: maybe<jsPromise> = Nothing, perBuyerTimeouts: maybe<jsPromise> = Nothing, perBuyerGroupLimits: maybe<maybe<jsObject>> = Nothing, perBuyerExperimentGroupIds: maybe<maybe<jsObject>> = Nothing, perBuyerPrioritySignals: maybe<maybe<jsObject>> = Nothing, perBuyerCurrencies: maybe<jsPromise> = Nothing, componentAuctions: maybe<jsArray> = Nothing, signal: maybe<maybe<dom/abortSignal>> = Nothing, resolveToConfig: maybe<jsPromise> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "seller", seller);  setJsObjectField(obj, "decisionLogicURL", decisionLogicURL);  match trustedScoringSignalsURL
     Just(it) -> setJsObjectField(obj, "trustedScoringSignalsURL", it)
     Nothing -> ()
@@ -257,7 +257,7 @@ pub fun newAuctionAdConfig(seller: string, decisionLogicURL: string, trustedScor
     Just(it) -> setJsObjectField(obj, "resolveToConfig", it)
     Nothing -> ()
 
-  AuctionAdConfig(obj);
+  AuctionAdConfig(obj)
 
 pub inline fun seller(obj: auctionAdConfig, value: string): web ()
   setJsObjectField(obj.obj, "seller", value.obj)
@@ -394,9 +394,9 @@ pub value struct adRender
   obj: jsObject
 
 pub fun newAdRender(url: string, width: string, height: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "url", url);  setJsObjectField(obj, "width", width);  setJsObjectField(obj, "height", height);
-  AdRender(obj);
+  AdRender(obj)
 
 pub inline fun url(obj: adRender, value: string): web ()
   setJsObjectField(obj.obj, "url", value.obj)
@@ -420,7 +420,7 @@ pub value struct generateBidOutput
   obj: jsObject
 
 pub fun newGenerateBidOutput(bid: double, bidCurrency: maybe<string> = Nothing, render: maybe<jsObject>, ad: maybe<maybe<jsObject>> = Nothing, adComponents: maybe<jsArray> = Nothing, adCost: maybe<double> = Nothing, modelingSignals: maybe<double> = Nothing, allowComponentAuction: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "bid", bid);  match bidCurrency
     Just(it) -> setJsObjectField(obj, "bidCurrency", it)
     Nothing -> ()
@@ -440,7 +440,7 @@ pub fun newGenerateBidOutput(bid: double, bidCurrency: maybe<string> = Nothing, 
     Just(it) -> setJsObjectField(obj, "allowComponentAuction", it)
     Nothing -> ()
 
-  GenerateBidOutput(obj);
+  GenerateBidOutput(obj)
 
 pub inline fun bid(obj: generateBidOutput, value: double): web ()
   setJsObjectField(obj.obj, "bid", value.obj)
@@ -508,9 +508,9 @@ pub value struct previousWin
   obj: jsObject
 
 pub fun newPreviousWin(timeDelta: int, adJSON: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "timeDelta", timeDelta);  setJsObjectField(obj, "adJSON", adJSON);
-  PreviousWin(obj);
+  PreviousWin(obj)
 
 pub inline fun timeDelta(obj: previousWin, value: int): web ()
   setJsObjectField(obj.obj, "timeDelta", value.obj)
@@ -528,7 +528,7 @@ pub value struct biddingBrowserSignals
   obj: jsObject
 
 pub fun newBiddingBrowserSignals(topWindowHostname: string, seller: string, joinCount: int, bidCount: int, topLevelSeller: maybe<string> = Nothing, prevWinsMs: maybe<jsArray> = Nothing, wasmHelper: maybe<jsObject> = Nothing, dataVersion: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "topWindowHostname", topWindowHostname);  setJsObjectField(obj, "seller", seller);  setJsObjectField(obj, "joinCount", joinCount);  setJsObjectField(obj, "bidCount", bidCount);  match topLevelSeller
     Just(it) -> setJsObjectField(obj, "topLevelSeller", it)
     Nothing -> ()
@@ -542,7 +542,7 @@ pub fun newBiddingBrowserSignals(topWindowHostname: string, seller: string, join
     Just(it) -> setJsObjectField(obj, "dataVersion", it)
     Nothing -> ()
 
-  BiddingBrowserSignals(obj);
+  BiddingBrowserSignals(obj)
 
 pub inline fun topWindowHostname(obj: biddingBrowserSignals, value: string): web ()
   setJsObjectField(obj.obj, "topWindowHostname", value.obj)
@@ -596,7 +596,7 @@ pub value struct scoringBrowserSignals
   obj: jsObject
 
 pub fun newScoringBrowserSignals(topWindowHostname: string, interestGroupOwner: string, renderURL: string, biddingDurationMsec: int, bidCurrency: string, dataVersion: maybe<int> = Nothing, adComponents: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "topWindowHostname", topWindowHostname);  setJsObjectField(obj, "interestGroupOwner", interestGroupOwner);  setJsObjectField(obj, "renderURL", renderURL);  setJsObjectField(obj, "biddingDurationMsec", biddingDurationMsec);  setJsObjectField(obj, "bidCurrency", bidCurrency);  match dataVersion
     Just(it) -> setJsObjectField(obj, "dataVersion", it)
     Nothing -> ()
@@ -604,7 +604,7 @@ pub fun newScoringBrowserSignals(topWindowHostname: string, interestGroupOwner: 
     Just(it) -> setJsObjectField(obj, "adComponents", it)
     Nothing -> ()
 
-  ScoringBrowserSignals(obj);
+  ScoringBrowserSignals(obj)
 
 pub inline fun topWindowHostname(obj: scoringBrowserSignals, value: string): web ()
   setJsObjectField(obj.obj, "topWindowHostname", value.obj)
@@ -652,7 +652,7 @@ pub value struct scoreAdOutput
   obj: jsObject
 
 pub fun newScoreAdOutput(desirability: double, bid: maybe<double> = Nothing, bidCurrency: maybe<string> = Nothing, incomingBidInSellerCurrency: maybe<double> = Nothing, allowComponentAuction: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "desirability", desirability);  match bid
     Just(it) -> setJsObjectField(obj, "bid", it)
     Nothing -> ()
@@ -666,7 +666,7 @@ pub fun newScoreAdOutput(desirability: double, bid: maybe<double> = Nothing, bid
     Just(it) -> setJsObjectField(obj, "allowComponentAuction", it)
     Nothing -> ()
 
-  ScoreAdOutput(obj);
+  ScoreAdOutput(obj)
 
 pub inline fun desirability(obj: scoreAdOutput, value: double): web ()
   setJsObjectField(obj.obj, "desirability", value.obj)

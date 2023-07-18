@@ -19,9 +19,9 @@ pub value struct detectedText
   obj: jsObject
 
 pub fun newDetectedText(boundingBox: geometry/domRectReadOnly, rawValue: string, cornerPoints: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "boundingBox", boundingBox);  setJsObjectField(obj, "rawValue", rawValue);  setJsObjectField(obj, "cornerPoints", cornerPoints);
-  DetectedText(obj);
+  DetectedText(obj)
 
 pub inline fun boundingBox(obj: detectedText, value: geometry/domRectReadOnly): web ()
   setJsObjectField(obj.obj, "boundingBox", value.obj)

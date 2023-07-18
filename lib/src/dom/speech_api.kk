@@ -5,10 +5,10 @@ import web/wasm
 
 
 
-pub alias speechRecognitionErrorCode = string;
+pub alias speechRecognitionErrorCode = string
 
 
-pub alias speechSynthesisErrorCode = string;
+pub alias speechSynthesisErrorCode = string
 
 pub value struct speechRecognition
   obj: jsObject
@@ -137,12 +137,12 @@ pub value struct speechRecognitionErrorEventInit
   obj: jsObject
 
 pub fun newSpeechRecognitionErrorEventInit(error: speechRecognitionErrorCode, message: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "error", error);  match message
     Just(it) -> setJsObjectField(obj, "message", it)
     Nothing -> ()
 
-  SpeechRecognitionErrorEventInit(obj);
+  SpeechRecognitionErrorEventInit(obj)
 
 pub inline fun error(obj: speechRecognitionErrorEventInit, value: speechRecognitionErrorCode): web ()
   setJsObjectField(obj.obj, "error", value.obj)
@@ -205,12 +205,12 @@ pub value struct speechRecognitionEventInit
   obj: jsObject
 
 pub fun newSpeechRecognitionEventInit(resultIndex: maybe<int> = Nothing, results: speechRecognitionResultList)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match resultIndex
     Just(it) -> setJsObjectField(obj, "resultIndex", it)
     Nothing -> ()
   setJsObjectField(obj, "results", results);
-  SpeechRecognitionEventInit(obj);
+  SpeechRecognitionEventInit(obj)
 
 pub inline fun resultIndex(obj: speechRecognitionEventInit, value: int): web ()
   setJsObjectField(obj.obj, "resultIndex", value.obj)
@@ -401,7 +401,7 @@ pub value struct speechSynthesisEventInit
   obj: jsObject
 
 pub fun newSpeechSynthesisEventInit(utterance: speechSynthesisUtterance, charIndex: maybe<int> = Nothing, charLength: maybe<int> = Nothing, elapsedTime: maybe<double> = Nothing, name: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "utterance", utterance);  match charIndex
     Just(it) -> setJsObjectField(obj, "charIndex", it)
     Nothing -> ()
@@ -415,7 +415,7 @@ pub fun newSpeechSynthesisEventInit(utterance: speechSynthesisUtterance, charInd
     Just(it) -> setJsObjectField(obj, "name", it)
     Nothing -> ()
 
-  SpeechSynthesisEventInit(obj);
+  SpeechSynthesisEventInit(obj)
 
 pub inline fun utterance(obj: speechSynthesisEventInit, value: speechSynthesisUtterance): web ()
   setJsObjectField(obj.obj, "utterance", value.obj)
@@ -460,9 +460,9 @@ pub value struct speechSynthesisErrorEventInit
   obj: jsObject
 
 pub fun newSpeechSynthesisErrorEventInit(error: speechSynthesisErrorCode)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "error", error);
-  SpeechSynthesisErrorEventInit(obj);
+  SpeechSynthesisErrorEventInit(obj)
 
 pub inline fun error(obj: speechSynthesisErrorEventInit, value: speechSynthesisErrorCode): web ()
   setJsObjectField(obj.obj, "error", value.obj)

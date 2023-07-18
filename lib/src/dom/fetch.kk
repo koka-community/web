@@ -2,41 +2,41 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias headersInit = JSAny;
+pub alias headersInit = JSAny
 
 
-pub alias xmlHttpRequestBodyInit = JSAny;
+pub alias xmlHttpRequestBodyInit = JSAny
 
 
-pub alias bodyInit = JSAny;
+pub alias bodyInit = JSAny
 
 
-pub alias requestInfo = JSAny;
+pub alias requestInfo = JSAny
 
 
 
-pub alias requestDestination = string;
+pub alias requestDestination = string
 
 
-pub alias requestMode = string;
+pub alias requestMode = string
 
 
-pub alias requestCredentials = string;
+pub alias requestCredentials = string
 
 
-pub alias requestCache = string;
+pub alias requestCache = string
 
 
-pub alias requestRedirect = string;
+pub alias requestRedirect = string
 
 
-pub alias requestDuplex = string;
+pub alias requestDuplex = string
 
 
-pub alias requestPriority = string;
+pub alias requestPriority = string
 
 
-pub alias responseType = string;
+pub alias responseType = string
 
 pub value struct headers
   obj: jsObject
@@ -148,7 +148,7 @@ pub value struct requestInit
   obj: jsObject
 
 pub fun newRequestInit(attributionReporting: maybe<attribution_reporting_api/attributionReportingRequestOptions> = Nothing, method: maybe<string> = Nothing, headers: maybe<headersInit> = Nothing, body: maybe<maybe<bodyInit>> = Nothing, referrer: maybe<string> = Nothing, referrerPolicy: maybe<referrer_policy/referrerPolicy> = Nothing, mode: maybe<requestMode> = Nothing, credentials: maybe<requestCredentials> = Nothing, cache: maybe<requestCache> = Nothing, redirect: maybe<requestRedirect> = Nothing, integrity: maybe<string> = Nothing, keepalive: maybe<bool> = Nothing, signal: maybe<maybe<dom/abortSignal>> = Nothing, duplex: maybe<requestDuplex> = Nothing, priority: maybe<requestPriority> = Nothing, window: maybe<maybe<jsObject>> = Nothing, privateToken: maybe<trust_token_api/privateToken> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match attributionReporting
     Just(it) -> setJsObjectField(obj, "attributionReporting", it)
     Nothing -> ()
@@ -201,7 +201,7 @@ pub fun newRequestInit(attributionReporting: maybe<attribution_reporting_api/att
     Just(it) -> setJsObjectField(obj, "privateToken", it)
     Nothing -> ()
 
-  RequestInit(obj);
+  RequestInit(obj)
 
 pub inline fun attributionReporting(obj: requestInit, value: attribution_reporting_api/attributionReportingRequestOptions): web ()
   setJsObjectField(obj.obj, "attributionReporting", value.obj)
@@ -347,7 +347,7 @@ pub value struct responseInit
   obj: jsObject
 
 pub fun newResponseInit(status: maybe<int> = Nothing, statusText: maybe<string> = Nothing, headers: maybe<headersInit> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match status
     Just(it) -> setJsObjectField(obj, "status", it)
     Nothing -> ()
@@ -358,7 +358,7 @@ pub fun newResponseInit(status: maybe<int> = Nothing, statusText: maybe<string> 
     Just(it) -> setJsObjectField(obj, "headers", it)
     Nothing -> ()
 
-  ResponseInit(obj);
+  ResponseInit(obj)
 
 pub inline fun status(obj: responseInit, value: int): web ()
   setJsObjectField(obj.obj, "status", value.obj)

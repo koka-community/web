@@ -2,15 +2,15 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias arrayBufferView = JSAny;
+pub alias arrayBufferView = JSAny
 
 
-pub alias bufferSource = JSAny;
+pub alias bufferSource = JSAny
 
 
-pub alias allowSharedBufferSource = JSAny;
+pub alias allowSharedBufferSource = JSAny
 
-pub alias voidFunction = jsFunction;
+pub alias voidFunction = jsFunction
 
 
 

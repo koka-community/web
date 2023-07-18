@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias securityPolicyViolationEventDisposition = string;
+pub alias securityPolicyViolationEventDisposition = string
 
 pub value struct cspViolationReportBody
   obj: jsObject
@@ -93,7 +93,7 @@ pub value struct securityPolicyViolationEventInit
   obj: jsObject
 
 pub fun newSecurityPolicyViolationEventInit(documentURI: string, referrer: maybe<string> = Nothing, blockedURI: maybe<string> = Nothing, violatedDirective: string, effectiveDirective: string, originalPolicy: string, sourceFile: maybe<string> = Nothing, sample: maybe<string> = Nothing, disposition: securityPolicyViolationEventDisposition, statusCode: int, lineNumber: maybe<int> = Nothing, columnNumber: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "documentURI", documentURI);  match referrer
     Just(it) -> setJsObjectField(obj, "referrer", it)
     Nothing -> ()
@@ -113,7 +113,7 @@ pub fun newSecurityPolicyViolationEventInit(documentURI: string, referrer: maybe
     Just(it) -> setJsObjectField(obj, "columnNumber", it)
     Nothing -> ()
 
-  SecurityPolicyViolationEventInit(obj);
+  SecurityPolicyViolationEventInit(obj)
 
 pub inline fun documentURI(obj: securityPolicyViolationEventInit, value: string): web ()
   setJsObjectField(obj.obj, "documentURI", value.obj)

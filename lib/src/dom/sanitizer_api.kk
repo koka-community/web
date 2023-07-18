@@ -2,7 +2,7 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias attributeMatchList = JSAny;
+pub alias attributeMatchList = JSAny
 
 
 
@@ -28,12 +28,12 @@ pub value struct setHTMLOptions
   obj: jsObject
 
 pub fun newSetHTMLOptions(sanitizer: maybe<sanitizer> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match sanitizer
     Just(it) -> setJsObjectField(obj, "sanitizer", it)
     Nothing -> ()
 
-  SetHTMLOptions(obj);
+  SetHTMLOptions(obj)
 
 pub inline fun sanitizer(obj: setHTMLOptions, value: sanitizer): web ()
   setJsObjectField(obj.obj, "sanitizer", value.obj)
@@ -45,7 +45,7 @@ pub value struct sanitizerConfig
   obj: jsObject
 
 pub fun newSanitizerConfig(allowElements: maybe<jsArray> = Nothing, blockElements: maybe<jsArray> = Nothing, dropElements: maybe<jsArray> = Nothing, allowAttributes: maybe<attributeMatchList> = Nothing, dropAttributes: maybe<attributeMatchList> = Nothing, allowCustomElements: maybe<bool> = Nothing, allowUnknownMarkup: maybe<bool> = Nothing, allowComments: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match allowElements
     Just(it) -> setJsObjectField(obj, "allowElements", it)
     Nothing -> ()
@@ -71,7 +71,7 @@ pub fun newSanitizerConfig(allowElements: maybe<jsArray> = Nothing, blockElement
     Just(it) -> setJsObjectField(obj, "allowComments", it)
     Nothing -> ()
 
-  SanitizerConfig(obj);
+  SanitizerConfig(obj)
 
 pub inline fun allowElements(obj: sanitizerConfig, value: jsArray): web ()
   setJsObjectField(obj.obj, "allowElements", value.obj)

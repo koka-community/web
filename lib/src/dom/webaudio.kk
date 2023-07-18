@@ -3,49 +3,49 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias decodeErrorCallback = jsFunction;
+pub alias decodeErrorCallback = jsFunction
 
 
-pub alias decodeSuccessCallback = jsFunction;
+pub alias decodeSuccessCallback = jsFunction
 
 
-pub alias audioWorkletProcessorConstructor = jsFunction;
+pub alias audioWorkletProcessorConstructor = jsFunction
 
 
-pub alias audioWorkletProcessCallback = jsFunction;
+pub alias audioWorkletProcessCallback = jsFunction
 
 
-pub alias audioContextState = string;
+pub alias audioContextState = string
 
 
-pub alias audioContextLatencyCategory = string;
+pub alias audioContextLatencyCategory = string
 
 
-pub alias audioSinkType = string;
+pub alias audioSinkType = string
 
 
-pub alias channelCountMode = string;
+pub alias channelCountMode = string
 
 
-pub alias channelInterpretation = string;
+pub alias channelInterpretation = string
 
 
-pub alias automationRate = string;
+pub alias automationRate = string
 
 
-pub alias biquadFilterType = string;
+pub alias biquadFilterType = string
 
 
-pub alias oscillatorType = string;
+pub alias oscillatorType = string
 
 
-pub alias panningModelType = string;
+pub alias panningModelType = string
 
 
-pub alias distanceModelType = string;
+pub alias distanceModelType = string
 
 
-pub alias overSampleType = string;
+pub alias overSampleType = string
 
 pub value struct baseAudioContext
   obj: jsObject
@@ -187,7 +187,7 @@ pub value struct audioContextOptions
   obj: jsObject
 
 pub fun newAudioContextOptions(latencyHint: maybe<maybe<jsObject>> = Nothing, sampleRate: maybe<double> = Nothing, sinkId: maybe<maybe<jsObject>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match latencyHint
     Just(it) -> setJsObjectField(obj, "latencyHint", it)
     Nothing -> ()
@@ -198,7 +198,7 @@ pub fun newAudioContextOptions(latencyHint: maybe<maybe<jsObject>> = Nothing, sa
     Just(it) -> setJsObjectField(obj, "sinkId", it)
     Nothing -> ()
 
-  AudioContextOptions(obj);
+  AudioContextOptions(obj)
 
 pub inline fun latencyHint(obj: audioContextOptions, value: maybe<jsObject>): web ()
   setJsObjectField(obj.obj, "latencyHint", value.obj)
@@ -222,9 +222,9 @@ pub value struct audioSinkOptions
   obj: jsObject
 
 pub fun newAudioSinkOptions(type: audioSinkType)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);
-  AudioSinkOptions(obj);
+  AudioSinkOptions(obj)
 
 pub inline fun type(obj: audioSinkOptions, value: audioSinkType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -243,7 +243,7 @@ pub value struct audioTimestamp
   obj: jsObject
 
 pub fun newAudioTimestamp(contextTime: maybe<double> = Nothing, performanceTime: maybe<hr_time/domHighResTimeStamp> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match contextTime
     Just(it) -> setJsObjectField(obj, "contextTime", it)
     Nothing -> ()
@@ -251,7 +251,7 @@ pub fun newAudioTimestamp(contextTime: maybe<double> = Nothing, performanceTime:
     Just(it) -> setJsObjectField(obj, "performanceTime", it)
     Nothing -> ()
 
-  AudioTimestamp(obj);
+  AudioTimestamp(obj)
 
 pub inline fun contextTime(obj: audioTimestamp, value: double): web ()
   setJsObjectField(obj.obj, "contextTime", value.obj)
@@ -285,12 +285,12 @@ pub value struct audioRenderCapacityOptions
   obj: jsObject
 
 pub fun newAudioRenderCapacityOptions(updateInterval: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match updateInterval
     Just(it) -> setJsObjectField(obj, "updateInterval", it)
     Nothing -> ()
 
-  AudioRenderCapacityOptions(obj);
+  AudioRenderCapacityOptions(obj)
 
 pub inline fun updateInterval(obj: audioRenderCapacityOptions, value: double): web ()
   setJsObjectField(obj.obj, "updateInterval", value.obj)
@@ -320,7 +320,7 @@ pub value struct audioRenderCapacityEventInit
   obj: jsObject
 
 pub fun newAudioRenderCapacityEventInit(timestamp: maybe<double> = Nothing, averageLoad: maybe<double> = Nothing, peakLoad: maybe<double> = Nothing, underrunRatio: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match timestamp
     Just(it) -> setJsObjectField(obj, "timestamp", it)
     Nothing -> ()
@@ -334,7 +334,7 @@ pub fun newAudioRenderCapacityEventInit(timestamp: maybe<double> = Nothing, aver
     Just(it) -> setJsObjectField(obj, "underrunRatio", it)
     Nothing -> ()
 
-  AudioRenderCapacityEventInit(obj);
+  AudioRenderCapacityEventInit(obj)
 
 pub inline fun timestamp(obj: audioRenderCapacityEventInit, value: double): web ()
   setJsObjectField(obj.obj, "timestamp", value.obj)
@@ -388,12 +388,12 @@ pub value struct offlineAudioContextOptions
   obj: jsObject
 
 pub fun newOfflineAudioContextOptions(numberOfChannels: maybe<int> = Nothing, length: int, sampleRate: double)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match numberOfChannels
     Just(it) -> setJsObjectField(obj, "numberOfChannels", it)
     Nothing -> ()
   setJsObjectField(obj, "length", length);  setJsObjectField(obj, "sampleRate", sampleRate);
-  OfflineAudioContextOptions(obj);
+  OfflineAudioContextOptions(obj)
 
 pub inline fun numberOfChannels(obj: offlineAudioContextOptions, value: int): web ()
   setJsObjectField(obj.obj, "numberOfChannels", value.obj)
@@ -426,9 +426,9 @@ pub value struct offlineAudioCompletionEventInit
   obj: jsObject
 
 pub fun newOfflineAudioCompletionEventInit(renderedBuffer: audioBuffer)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "renderedBuffer", renderedBuffer);
-  OfflineAudioCompletionEventInit(obj);
+  OfflineAudioCompletionEventInit(obj)
 
 pub inline fun renderedBuffer(obj: offlineAudioCompletionEventInit, value: audioBuffer): web ()
   setJsObjectField(obj.obj, "renderedBuffer", value.obj)
@@ -467,12 +467,12 @@ pub value struct audioBufferOptions
   obj: jsObject
 
 pub fun newAudioBufferOptions(numberOfChannels: maybe<int> = Nothing, length: int, sampleRate: double)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match numberOfChannels
     Just(it) -> setJsObjectField(obj, "numberOfChannels", it)
     Nothing -> ()
   setJsObjectField(obj, "length", length);  setJsObjectField(obj, "sampleRate", sampleRate);
-  AudioBufferOptions(obj);
+  AudioBufferOptions(obj)
 
 pub inline fun numberOfChannels(obj: audioBufferOptions, value: int): web ()
   setJsObjectField(obj.obj, "numberOfChannels", value.obj)
@@ -533,7 +533,7 @@ pub value struct audioNodeOptions
   obj: jsObject
 
 pub fun newAudioNodeOptions(channelCount: maybe<int> = Nothing, channelCountMode: maybe<channelCountMode> = Nothing, channelInterpretation: maybe<channelInterpretation> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match channelCount
     Just(it) -> setJsObjectField(obj, "channelCount", it)
     Nothing -> ()
@@ -544,7 +544,7 @@ pub fun newAudioNodeOptions(channelCount: maybe<int> = Nothing, channelCountMode
     Just(it) -> setJsObjectField(obj, "channelInterpretation", it)
     Nothing -> ()
 
-  AudioNodeOptions(obj);
+  AudioNodeOptions(obj)
 
 pub inline fun channelCount(obj: audioNodeOptions, value: int): web ()
   setJsObjectField(obj.obj, "channelCount", value.obj)
@@ -675,7 +675,7 @@ pub value struct analyserOptions
   obj: jsObject
 
 pub fun newAnalyserOptions(fftSize: maybe<int> = Nothing, maxDecibels: maybe<double> = Nothing, minDecibels: maybe<double> = Nothing, smoothingTimeConstant: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match fftSize
     Just(it) -> setJsObjectField(obj, "fftSize", it)
     Nothing -> ()
@@ -689,7 +689,7 @@ pub fun newAnalyserOptions(fftSize: maybe<int> = Nothing, maxDecibels: maybe<dou
     Just(it) -> setJsObjectField(obj, "smoothingTimeConstant", it)
     Nothing -> ()
 
-  AnalyserOptions(obj);
+  AnalyserOptions(obj)
 
 pub inline fun fftSize(obj: analyserOptions, value: int): web ()
   setJsObjectField(obj.obj, "fftSize", value.obj)
@@ -758,7 +758,7 @@ pub value struct audioBufferSourceOptions
   obj: jsObject
 
 pub fun newAudioBufferSourceOptions(buffer: maybe<maybe<audioBuffer>> = Nothing, detune: maybe<double> = Nothing, loop: maybe<bool> = Nothing, loopEnd: maybe<double> = Nothing, loopStart: maybe<double> = Nothing, playbackRate: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match buffer
     Just(it) -> setJsObjectField(obj, "buffer", it)
     Nothing -> ()
@@ -778,7 +778,7 @@ pub fun newAudioBufferSourceOptions(buffer: maybe<maybe<audioBuffer>> = Nothing,
     Just(it) -> setJsObjectField(obj, "playbackRate", it)
     Nothing -> ()
 
-  AudioBufferSourceOptions(obj);
+  AudioBufferSourceOptions(obj)
 
 pub inline fun buffer(obj: audioBufferSourceOptions, value: maybe<audioBuffer>): web ()
   setJsObjectField(obj.obj, "buffer", value.obj)
@@ -879,9 +879,9 @@ pub value struct audioProcessingEventInit
   obj: jsObject
 
 pub fun newAudioProcessingEventInit(playbackTime: double, inputBuffer: audioBuffer, outputBuffer: audioBuffer)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "playbackTime", playbackTime);  setJsObjectField(obj, "inputBuffer", inputBuffer);  setJsObjectField(obj, "outputBuffer", outputBuffer);
-  AudioProcessingEventInit(obj);
+  AudioProcessingEventInit(obj)
 
 pub inline fun playbackTime(obj: audioProcessingEventInit, value: double): web ()
   setJsObjectField(obj.obj, "playbackTime", value.obj)
@@ -932,7 +932,7 @@ pub value struct biquadFilterOptions
   obj: jsObject
 
 pub fun newBiquadFilterOptions(type: maybe<biquadFilterType> = Nothing, Q: maybe<double> = Nothing, detune: maybe<double> = Nothing, frequency: maybe<double> = Nothing, gain: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match type
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
@@ -949,7 +949,7 @@ pub fun newBiquadFilterOptions(type: maybe<biquadFilterType> = Nothing, Q: maybe
     Just(it) -> setJsObjectField(obj, "gain", it)
     Nothing -> ()
 
-  BiquadFilterOptions(obj);
+  BiquadFilterOptions(obj)
 
 pub inline fun type(obj: biquadFilterOptions, value: biquadFilterType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -991,12 +991,12 @@ pub value struct channelMergerOptions
   obj: jsObject
 
 pub fun newChannelMergerOptions(numberOfInputs: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match numberOfInputs
     Just(it) -> setJsObjectField(obj, "numberOfInputs", it)
     Nothing -> ()
 
-  ChannelMergerOptions(obj);
+  ChannelMergerOptions(obj)
 
 pub inline fun numberOfInputs(obj: channelMergerOptions, value: int): web ()
   setJsObjectField(obj.obj, "numberOfInputs", value.obj)
@@ -1014,12 +1014,12 @@ pub value struct channelSplitterOptions
   obj: jsObject
 
 pub fun newChannelSplitterOptions(numberOfOutputs: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match numberOfOutputs
     Just(it) -> setJsObjectField(obj, "numberOfOutputs", it)
     Nothing -> ()
 
-  ChannelSplitterOptions(obj);
+  ChannelSplitterOptions(obj)
 
 pub inline fun numberOfOutputs(obj: channelSplitterOptions, value: int): web ()
   setJsObjectField(obj.obj, "numberOfOutputs", value.obj)
@@ -1040,12 +1040,12 @@ pub value struct constantSourceOptions
   obj: jsObject
 
 pub fun newConstantSourceOptions(offset: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match offset
     Just(it) -> setJsObjectField(obj, "offset", it)
     Nothing -> ()
 
-  ConstantSourceOptions(obj);
+  ConstantSourceOptions(obj)
 
 pub inline fun offset(obj: constantSourceOptions, value: double): web ()
   setJsObjectField(obj.obj, "offset", value.obj)
@@ -1075,7 +1075,7 @@ pub value struct convolverOptions
   obj: jsObject
 
 pub fun newConvolverOptions(buffer: maybe<maybe<audioBuffer>> = Nothing, disableNormalization: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match buffer
     Just(it) -> setJsObjectField(obj, "buffer", it)
     Nothing -> ()
@@ -1083,7 +1083,7 @@ pub fun newConvolverOptions(buffer: maybe<maybe<audioBuffer>> = Nothing, disable
     Just(it) -> setJsObjectField(obj, "disableNormalization", it)
     Nothing -> ()
 
-  ConvolverOptions(obj);
+  ConvolverOptions(obj)
 
 pub inline fun buffer(obj: convolverOptions, value: maybe<audioBuffer>): web ()
   setJsObjectField(obj.obj, "buffer", value.obj)
@@ -1110,7 +1110,7 @@ pub value struct delayOptions
   obj: jsObject
 
 pub fun newDelayOptions(maxDelayTime: maybe<double> = Nothing, delayTime: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match maxDelayTime
     Just(it) -> setJsObjectField(obj, "maxDelayTime", it)
     Nothing -> ()
@@ -1118,7 +1118,7 @@ pub fun newDelayOptions(maxDelayTime: maybe<double> = Nothing, delayTime: maybe<
     Just(it) -> setJsObjectField(obj, "delayTime", it)
     Nothing -> ()
 
-  DelayOptions(obj);
+  DelayOptions(obj)
 
 pub inline fun maxDelayTime(obj: delayOptions, value: double): web ()
   setJsObjectField(obj.obj, "maxDelayTime", value.obj)
@@ -1160,7 +1160,7 @@ pub value struct dynamicsCompressorOptions
   obj: jsObject
 
 pub fun newDynamicsCompressorOptions(attack: maybe<double> = Nothing, knee: maybe<double> = Nothing, ratio: maybe<double> = Nothing, release: maybe<double> = Nothing, threshold: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match attack
     Just(it) -> setJsObjectField(obj, "attack", it)
     Nothing -> ()
@@ -1177,7 +1177,7 @@ pub fun newDynamicsCompressorOptions(attack: maybe<double> = Nothing, knee: mayb
     Just(it) -> setJsObjectField(obj, "threshold", it)
     Nothing -> ()
 
-  DynamicsCompressorOptions(obj);
+  DynamicsCompressorOptions(obj)
 
 pub inline fun attack(obj: dynamicsCompressorOptions, value: double): web ()
   setJsObjectField(obj.obj, "attack", value.obj)
@@ -1222,12 +1222,12 @@ pub value struct gainOptions
   obj: jsObject
 
 pub fun newGainOptions(gain: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match gain
     Just(it) -> setJsObjectField(obj, "gain", it)
     Nothing -> ()
 
-  GainOptions(obj);
+  GainOptions(obj)
 
 pub inline fun gain(obj: gainOptions, value: double): web ()
   setJsObjectField(obj.obj, "gain", value.obj)
@@ -1248,9 +1248,9 @@ pub value struct iirFilterOptions
   obj: jsObject
 
 pub fun newIirFilterOptions(feedforward: jsArray, feedback: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "feedforward", feedforward);  setJsObjectField(obj, "feedback", feedback);
-  IirFilterOptions(obj);
+  IirFilterOptions(obj)
 
 pub inline fun feedforward(obj: iirFilterOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "feedforward", value.obj)
@@ -1277,9 +1277,9 @@ pub value struct mediaElementAudioSourceOptions
   obj: jsObject
 
 pub fun newMediaElementAudioSourceOptions(mediaElement: html/htmlMediaElement)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "mediaElement", mediaElement);
-  MediaElementAudioSourceOptions(obj);
+  MediaElementAudioSourceOptions(obj)
 
 pub inline fun mediaElement(obj: mediaElementAudioSourceOptions, value: html/htmlMediaElement): web ()
   setJsObjectField(obj.obj, "mediaElement", value.obj)
@@ -1309,9 +1309,9 @@ pub value struct mediaStreamAudioSourceOptions
   obj: jsObject
 
 pub fun newMediaStreamAudioSourceOptions(mediaStream: mediacapture_streams/mediaStream)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "mediaStream", mediaStream);
-  MediaStreamAudioSourceOptions(obj);
+  MediaStreamAudioSourceOptions(obj)
 
 pub inline fun mediaStream(obj: mediaStreamAudioSourceOptions, value: mediacapture_streams/mediaStream): web ()
   setJsObjectField(obj.obj, "mediaStream", value.obj)
@@ -1329,9 +1329,9 @@ pub value struct mediaStreamTrackAudioSourceOptions
   obj: jsObject
 
 pub fun newMediaStreamTrackAudioSourceOptions(mediaStreamTrack: mediacapture_streams/mediaStreamTrack)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "mediaStreamTrack", mediaStreamTrack);
-  MediaStreamTrackAudioSourceOptions(obj);
+  MediaStreamTrackAudioSourceOptions(obj)
 
 pub inline fun mediaStreamTrack(obj: mediaStreamTrackAudioSourceOptions, value: mediacapture_streams/mediaStreamTrack): web ()
   setJsObjectField(obj.obj, "mediaStreamTrack", value.obj)
@@ -1364,7 +1364,7 @@ pub value struct oscillatorOptions
   obj: jsObject
 
 pub fun newOscillatorOptions(type: maybe<oscillatorType> = Nothing, frequency: maybe<double> = Nothing, detune: maybe<double> = Nothing, periodicWave: maybe<periodicWave> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match type
     Just(it) -> setJsObjectField(obj, "type", it)
     Nothing -> ()
@@ -1378,7 +1378,7 @@ pub fun newOscillatorOptions(type: maybe<oscillatorType> = Nothing, frequency: m
     Just(it) -> setJsObjectField(obj, "periodicWave", it)
     Nothing -> ()
 
-  OscillatorOptions(obj);
+  OscillatorOptions(obj)
 
 pub inline fun type(obj: oscillatorOptions, value: oscillatorType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -1486,7 +1486,7 @@ pub value struct pannerOptions
   obj: jsObject
 
 pub fun newPannerOptions(panningModel: maybe<panningModelType> = Nothing, distanceModel: maybe<distanceModelType> = Nothing, positionX: maybe<double> = Nothing, positionY: maybe<double> = Nothing, positionZ: maybe<double> = Nothing, orientationX: maybe<double> = Nothing, orientationY: maybe<double> = Nothing, orientationZ: maybe<double> = Nothing, refDistance: maybe<double> = Nothing, maxDistance: maybe<double> = Nothing, rolloffFactor: maybe<double> = Nothing, coneInnerAngle: maybe<double> = Nothing, coneOuterAngle: maybe<double> = Nothing, coneOuterGain: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match panningModel
     Just(it) -> setJsObjectField(obj, "panningModel", it)
     Nothing -> ()
@@ -1530,7 +1530,7 @@ pub fun newPannerOptions(panningModel: maybe<panningModelType> = Nothing, distan
     Just(it) -> setJsObjectField(obj, "coneOuterGain", it)
     Nothing -> ()
 
-  PannerOptions(obj);
+  PannerOptions(obj)
 
 pub inline fun panningModel(obj: pannerOptions, value: panningModelType): web ()
   setJsObjectField(obj.obj, "panningModel", value.obj)
@@ -1626,12 +1626,12 @@ pub value struct periodicWaveConstraints
   obj: jsObject
 
 pub fun newPeriodicWaveConstraints(disableNormalization: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match disableNormalization
     Just(it) -> setJsObjectField(obj, "disableNormalization", it)
     Nothing -> ()
 
-  PeriodicWaveConstraints(obj);
+  PeriodicWaveConstraints(obj)
 
 pub inline fun disableNormalization(obj: periodicWaveConstraints, value: bool): web ()
   setJsObjectField(obj.obj, "disableNormalization", value.obj)
@@ -1643,7 +1643,7 @@ pub value struct periodicWaveOptions
   obj: jsObject
 
 pub fun newPeriodicWaveOptions(real: maybe<jsArray> = Nothing, imag: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match real
     Just(it) -> setJsObjectField(obj, "real", it)
     Nothing -> ()
@@ -1651,7 +1651,7 @@ pub fun newPeriodicWaveOptions(real: maybe<jsArray> = Nothing, imag: maybe<jsArr
     Just(it) -> setJsObjectField(obj, "imag", it)
     Nothing -> ()
 
-  PeriodicWaveOptions(obj);
+  PeriodicWaveOptions(obj)
 
 pub inline fun real(obj: periodicWaveOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "real", value.obj)
@@ -1691,12 +1691,12 @@ pub value struct stereoPannerOptions
   obj: jsObject
 
 pub fun newStereoPannerOptions(pan: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match pan
     Just(it) -> setJsObjectField(obj, "pan", it)
     Nothing -> ()
 
-  StereoPannerOptions(obj);
+  StereoPannerOptions(obj)
 
 pub inline fun pan(obj: stereoPannerOptions, value: double): web ()
   setJsObjectField(obj.obj, "pan", value.obj)
@@ -1726,7 +1726,7 @@ pub value struct waveShaperOptions
   obj: jsObject
 
 pub fun newWaveShaperOptions(curve: maybe<jsArray> = Nothing, oversample: maybe<overSampleType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match curve
     Just(it) -> setJsObjectField(obj, "curve", it)
     Nothing -> ()
@@ -1734,7 +1734,7 @@ pub fun newWaveShaperOptions(curve: maybe<jsArray> = Nothing, oversample: maybe<
     Just(it) -> setJsObjectField(obj, "oversample", it)
     Nothing -> ()
 
-  WaveShaperOptions(obj);
+  WaveShaperOptions(obj)
 
 pub inline fun curve(obj: waveShaperOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "curve", value.obj)
@@ -1801,7 +1801,7 @@ pub value struct audioWorkletNodeOptions
   obj: jsObject
 
 pub fun newAudioWorkletNodeOptions(numberOfInputs: maybe<int> = Nothing, numberOfOutputs: maybe<int> = Nothing, outputChannelCount: maybe<jsArray> = Nothing, parameterData: maybe<maybe<jsObject>> = Nothing, processorOptions: maybe<jsObject> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match numberOfInputs
     Just(it) -> setJsObjectField(obj, "numberOfInputs", it)
     Nothing -> ()
@@ -1818,7 +1818,7 @@ pub fun newAudioWorkletNodeOptions(numberOfInputs: maybe<int> = Nothing, numberO
     Just(it) -> setJsObjectField(obj, "processorOptions", it)
     Nothing -> ()
 
-  AudioWorkletNodeOptions(obj);
+  AudioWorkletNodeOptions(obj)
 
 pub inline fun numberOfInputs(obj: audioWorkletNodeOptions, value: int): web ()
   setJsObjectField(obj.obj, "numberOfInputs", value.obj)
@@ -1863,7 +1863,7 @@ pub value struct audioParamDescriptor
   obj: jsObject
 
 pub fun newAudioParamDescriptor(name: string, defaultValue: maybe<double> = Nothing, minValue: maybe<double> = Nothing, maxValue: maybe<double> = Nothing, automationRate: maybe<automationRate> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "name", name);  match defaultValue
     Just(it) -> setJsObjectField(obj, "defaultValue", it)
     Nothing -> ()
@@ -1877,7 +1877,7 @@ pub fun newAudioParamDescriptor(name: string, defaultValue: maybe<double> = Noth
     Just(it) -> setJsObjectField(obj, "automationRate", it)
     Nothing -> ()
 
-  AudioParamDescriptor(obj);
+  AudioParamDescriptor(obj)
 
 pub inline fun name(obj: audioParamDescriptor, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)

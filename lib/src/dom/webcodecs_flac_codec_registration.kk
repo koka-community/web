@@ -10,7 +10,7 @@ pub value struct flacEncoderConfig
   obj: jsObject
 
 pub fun newFlacEncoderConfig(blockSize: maybe<int> = Nothing, compressLevel: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match blockSize
     Just(it) -> setJsObjectField(obj, "blockSize", it)
     Nothing -> ()
@@ -18,7 +18,7 @@ pub fun newFlacEncoderConfig(blockSize: maybe<int> = Nothing, compressLevel: may
     Just(it) -> setJsObjectField(obj, "compressLevel", it)
     Nothing -> ()
 
-  FlacEncoderConfig(obj);
+  FlacEncoderConfig(obj)
 
 pub inline fun blockSize(obj: flacEncoderConfig, value: int): web ()
   setJsObjectField(obj.obj, "blockSize", value.obj)

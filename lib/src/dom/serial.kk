@@ -5,10 +5,10 @@ import web/wasm
 
 
 
-pub alias parityType = string;
+pub alias parityType = string
 
 
-pub alias flowControlType = string;
+pub alias flowControlType = string
 
 pub value struct serial
   obj: jsObject
@@ -36,12 +36,12 @@ pub value struct serialPortRequestOptions
   obj: jsObject
 
 pub fun newSerialPortRequestOptions(filters: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match filters
     Just(it) -> setJsObjectField(obj, "filters", it)
     Nothing -> ()
 
-  SerialPortRequestOptions(obj);
+  SerialPortRequestOptions(obj)
 
 pub inline fun filters(obj: serialPortRequestOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "filters", value.obj)
@@ -53,7 +53,7 @@ pub value struct serialPortFilter
   obj: jsObject
 
 pub fun newSerialPortFilter(usbVendorId: maybe<int> = Nothing, usbProductId: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match usbVendorId
     Just(it) -> setJsObjectField(obj, "usbVendorId", it)
     Nothing -> ()
@@ -61,7 +61,7 @@ pub fun newSerialPortFilter(usbVendorId: maybe<int> = Nothing, usbProductId: may
     Just(it) -> setJsObjectField(obj, "usbProductId", it)
     Nothing -> ()
 
-  SerialPortFilter(obj);
+  SerialPortFilter(obj)
 
 pub inline fun usbVendorId(obj: serialPortFilter, value: int): web ()
   setJsObjectField(obj.obj, "usbVendorId", value.obj)
@@ -119,7 +119,7 @@ pub value struct serialPortInfo
   obj: jsObject
 
 pub fun newSerialPortInfo(usbVendorId: maybe<int> = Nothing, usbProductId: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match usbVendorId
     Just(it) -> setJsObjectField(obj, "usbVendorId", it)
     Nothing -> ()
@@ -127,7 +127,7 @@ pub fun newSerialPortInfo(usbVendorId: maybe<int> = Nothing, usbProductId: maybe
     Just(it) -> setJsObjectField(obj, "usbProductId", it)
     Nothing -> ()
 
-  SerialPortInfo(obj);
+  SerialPortInfo(obj)
 
 pub inline fun usbVendorId(obj: serialPortInfo, value: int): web ()
   setJsObjectField(obj.obj, "usbVendorId", value.obj)
@@ -145,7 +145,7 @@ pub value struct serialOptions
   obj: jsObject
 
 pub fun newSerialOptions(baudRate: int, dataBits: maybe<int> = Nothing, stopBits: maybe<int> = Nothing, parity: maybe<parityType> = Nothing, bufferSize: maybe<int> = Nothing, flowControl: maybe<flowControlType> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "baudRate", baudRate);  match dataBits
     Just(it) -> setJsObjectField(obj, "dataBits", it)
     Nothing -> ()
@@ -162,7 +162,7 @@ pub fun newSerialOptions(baudRate: int, dataBits: maybe<int> = Nothing, stopBits
     Just(it) -> setJsObjectField(obj, "flowControl", it)
     Nothing -> ()
 
-  SerialOptions(obj);
+  SerialOptions(obj)
 
 pub inline fun baudRate(obj: serialOptions, value: int): web ()
   setJsObjectField(obj.obj, "baudRate", value.obj)
@@ -204,7 +204,7 @@ pub value struct serialOutputSignals
   obj: jsObject
 
 pub fun newSerialOutputSignals(dataTerminalReady: maybe<bool> = Nothing, requestToSend: maybe<bool> = Nothing, break_: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match dataTerminalReady
     Just(it) -> setJsObjectField(obj, "dataTerminalReady", it)
     Nothing -> ()
@@ -215,7 +215,7 @@ pub fun newSerialOutputSignals(dataTerminalReady: maybe<bool> = Nothing, request
     Just(it) -> setJsObjectField(obj, "break_", it)
     Nothing -> ()
 
-  SerialOutputSignals(obj);
+  SerialOutputSignals(obj)
 
 pub inline fun dataTerminalReady(obj: serialOutputSignals, value: bool): web ()
   setJsObjectField(obj.obj, "dataTerminalReady", value.obj)
@@ -239,9 +239,9 @@ pub value struct serialInputSignals
   obj: jsObject
 
 pub fun newSerialInputSignals(dataCarrierDetect: bool, clearToSend: bool, ringIndicator: bool, dataSetReady: bool)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "dataCarrierDetect", dataCarrierDetect);  setJsObjectField(obj, "clearToSend", clearToSend);  setJsObjectField(obj, "ringIndicator", ringIndicator);  setJsObjectField(obj, "dataSetReady", dataSetReady);
-  SerialInputSignals(obj);
+  SerialInputSignals(obj)
 
 pub inline fun dataCarrierDetect(obj: serialInputSignals, value: bool): web ()
   setJsObjectField(obj.obj, "dataCarrierDetect", value.obj)

@@ -5,16 +5,16 @@ import web/wasm
 
 
 
-pub alias gamepadHand = string;
+pub alias gamepadHand = string
 
 
-pub alias gamepadHapticsResult = string;
+pub alias gamepadHapticsResult = string
 
 
-pub alias gamepadHapticActuatorType = string;
+pub alias gamepadHapticActuatorType = string
 
 
-pub alias gamepadHapticEffectType = string;
+pub alias gamepadHapticEffectType = string
 
 pub value struct gamepadHapticActuator
   obj: jsObject
@@ -39,7 +39,7 @@ pub value struct gamepadEffectParameters
   obj: jsObject
 
 pub fun newGamepadEffectParameters(duration: maybe<double> = Nothing, startDelay: maybe<double> = Nothing, strongMagnitude: maybe<double> = Nothing, weakMagnitude: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match duration
     Just(it) -> setJsObjectField(obj, "duration", it)
     Nothing -> ()
@@ -53,7 +53,7 @@ pub fun newGamepadEffectParameters(duration: maybe<double> = Nothing, startDelay
     Just(it) -> setJsObjectField(obj, "weakMagnitude", it)
     Nothing -> ()
 
-  GamepadEffectParameters(obj);
+  GamepadEffectParameters(obj)
 
 pub inline fun duration(obj: gamepadEffectParameters, value: double): web ()
   setJsObjectField(obj.obj, "duration", value.obj)

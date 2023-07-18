@@ -26,7 +26,7 @@ pub value struct documentPictureInPictureOptions
   obj: jsObject
 
 pub fun newDocumentPictureInPictureOptions(width: maybe<int> = Nothing, height: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match width
     Just(it) -> setJsObjectField(obj, "width", it)
     Nothing -> ()
@@ -34,7 +34,7 @@ pub fun newDocumentPictureInPictureOptions(width: maybe<int> = Nothing, height: 
     Just(it) -> setJsObjectField(obj, "height", it)
     Nothing -> ()
 
-  DocumentPictureInPictureOptions(obj);
+  DocumentPictureInPictureOptions(obj)
 
 pub inline fun width(obj: documentPictureInPictureOptions, value: int): web ()
   setJsObjectField(obj.obj, "width", value.obj)
@@ -61,9 +61,9 @@ pub value struct documentPictureInPictureEventInit
   obj: jsObject
 
 pub fun newDocumentPictureInPictureEventInit(window: html/window)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "window", window);
-  DocumentPictureInPictureEventInit(obj);
+  DocumentPictureInPictureEventInit(obj)
 
 pub inline fun window(obj: documentPictureInPictureEventInit, value: html/window): web ()
   setJsObjectField(obj.obj, "window", value.obj)

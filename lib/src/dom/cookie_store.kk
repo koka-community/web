@@ -2,11 +2,11 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias cookieList = JSArray;
+pub alias cookieList = JSArray
 
 
 
-pub alias cookieSameSite = string;
+pub alias cookieSameSite = string
 
 pub value struct cookieStore
   obj: jsObject
@@ -34,7 +34,7 @@ pub value struct cookieStoreGetOptions
   obj: jsObject
 
 pub fun newCookieStoreGetOptions(name: maybe<string> = Nothing, url: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match name
     Just(it) -> setJsObjectField(obj, "name", it)
     Nothing -> ()
@@ -42,7 +42,7 @@ pub fun newCookieStoreGetOptions(name: maybe<string> = Nothing, url: maybe<strin
     Just(it) -> setJsObjectField(obj, "url", it)
     Nothing -> ()
 
-  CookieStoreGetOptions(obj);
+  CookieStoreGetOptions(obj)
 
 pub inline fun name(obj: cookieStoreGetOptions, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -60,7 +60,7 @@ pub value struct cookieInit
   obj: jsObject
 
 pub fun newCookieInit(name: string, value: string, expires: maybe<maybe<hr_time/domHighResTimeStamp>> = Nothing, domain: maybe<maybe<string>> = Nothing, path: maybe<string> = Nothing, sameSite: maybe<cookieSameSite> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "name", name);  setJsObjectField(obj, "value", value);  match expires
     Just(it) -> setJsObjectField(obj, "expires", it)
     Nothing -> ()
@@ -74,7 +74,7 @@ pub fun newCookieInit(name: string, value: string, expires: maybe<maybe<hr_time/
     Just(it) -> setJsObjectField(obj, "sameSite", it)
     Nothing -> ()
 
-  CookieInit(obj);
+  CookieInit(obj)
 
 pub inline fun name(obj: cookieInit, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -116,7 +116,7 @@ pub value struct cookieStoreDeleteOptions
   obj: jsObject
 
 pub fun newCookieStoreDeleteOptions(name: string, domain: maybe<maybe<string>> = Nothing, path: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "name", name);  match domain
     Just(it) -> setJsObjectField(obj, "domain", it)
     Nothing -> ()
@@ -124,7 +124,7 @@ pub fun newCookieStoreDeleteOptions(name: string, domain: maybe<maybe<string>> =
     Just(it) -> setJsObjectField(obj, "path", it)
     Nothing -> ()
 
-  CookieStoreDeleteOptions(obj);
+  CookieStoreDeleteOptions(obj)
 
 pub inline fun name(obj: cookieStoreDeleteOptions, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -148,7 +148,7 @@ pub value struct cookieListItem
   obj: jsObject
 
 pub fun newCookieListItem(name: maybe<string> = Nothing, value: maybe<string> = Nothing, domain: maybe<maybe<string>> = Nothing, path: maybe<string> = Nothing, expires: maybe<maybe<hr_time/domHighResTimeStamp>> = Nothing, secure: maybe<bool> = Nothing, sameSite: maybe<cookieSameSite> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match name
     Just(it) -> setJsObjectField(obj, "name", it)
     Nothing -> ()
@@ -171,7 +171,7 @@ pub fun newCookieListItem(name: maybe<string> = Nothing, value: maybe<string> = 
     Just(it) -> setJsObjectField(obj, "sameSite", it)
     Nothing -> ()
 
-  CookieListItem(obj);
+  CookieListItem(obj)
 
 pub inline fun name(obj: cookieListItem, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -244,7 +244,7 @@ pub value struct cookieChangeEventInit
   obj: jsObject
 
 pub fun newCookieChangeEventInit(changed: maybe<cookieList> = Nothing, deleted: maybe<cookieList> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match changed
     Just(it) -> setJsObjectField(obj, "changed", it)
     Nothing -> ()
@@ -252,7 +252,7 @@ pub fun newCookieChangeEventInit(changed: maybe<cookieList> = Nothing, deleted: 
     Just(it) -> setJsObjectField(obj, "deleted", it)
     Nothing -> ()
 
-  CookieChangeEventInit(obj);
+  CookieChangeEventInit(obj)
 
 pub inline fun changed(obj: cookieChangeEventInit, value: cookieList): web ()
   setJsObjectField(obj.obj, "changed", value.obj)
@@ -282,7 +282,7 @@ pub value struct extendableCookieChangeEventInit
   obj: jsObject
 
 pub fun newExtendableCookieChangeEventInit(changed: maybe<cookieList> = Nothing, deleted: maybe<cookieList> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match changed
     Just(it) -> setJsObjectField(obj, "changed", it)
     Nothing -> ()
@@ -290,7 +290,7 @@ pub fun newExtendableCookieChangeEventInit(changed: maybe<cookieList> = Nothing,
     Just(it) -> setJsObjectField(obj, "deleted", it)
     Nothing -> ()
 
-  ExtendableCookieChangeEventInit(obj);
+  ExtendableCookieChangeEventInit(obj)
 
 pub inline fun changed(obj: extendableCookieChangeEventInit, value: cookieList): web ()
   setJsObjectField(obj.obj, "changed", value.obj)

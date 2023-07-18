@@ -2,9 +2,9 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias reportList = JSArray;
+pub alias reportList = JSArray
 
-pub alias reportingObserverCallback = jsFunction;
+pub alias reportingObserverCallback = jsFunction
 
 
 
@@ -50,7 +50,7 @@ pub value struct reportingObserverOptions
   obj: jsObject
 
 pub fun newReportingObserverOptions(types: maybe<jsArray> = Nothing, buffered: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match types
     Just(it) -> setJsObjectField(obj, "types", it)
     Nothing -> ()
@@ -58,7 +58,7 @@ pub fun newReportingObserverOptions(types: maybe<jsArray> = Nothing, buffered: m
     Just(it) -> setJsObjectField(obj, "buffered", it)
     Nothing -> ()
 
-  ReportingObserverOptions(obj);
+  ReportingObserverOptions(obj)
 
 pub inline fun types(obj: reportingObserverOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "types", value.obj)
@@ -76,12 +76,12 @@ pub value struct generateTestReportParameters
   obj: jsObject
 
 pub fun newGenerateTestReportParameters(message: string, group: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "message", message);  match group
     Just(it) -> setJsObjectField(obj, "group", it)
     Nothing -> ()
 
-  GenerateTestReportParameters(obj);
+  GenerateTestReportParameters(obj)
 
 pub inline fun message(obj: generateTestReportParameters, value: string): web ()
   setJsObjectField(obj.obj, "message", value.obj)

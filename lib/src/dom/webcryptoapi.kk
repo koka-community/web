@@ -2,26 +2,26 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias algorithmIdentifier = JSAny;
+pub alias algorithmIdentifier = JSAny
 
 
-pub alias hashAlgorithmIdentifier = AlgorithmIdentifier;
+pub alias hashAlgorithmIdentifier = AlgorithmIdentifier
 
 
-pub alias bigInteger = JSUint8Array;
+pub alias bigInteger = JSUint8Array
 
 
-pub alias namedCurve = String;
+pub alias namedCurve = String
 
 
 
-pub alias keyType = string;
+pub alias keyType = string
 
 
-pub alias keyUsage = string;
+pub alias keyUsage = string
 
 
-pub alias keyFormat = string;
+pub alias keyFormat = string
 
 pub value struct crypto
   obj: jsObject
@@ -40,9 +40,9 @@ pub value struct algorithm
   obj: jsObject
 
 pub fun newAlgorithm(name: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "name", name);
-  Algorithm(obj);
+  Algorithm(obj)
 
 pub inline fun name(obj: algorithm, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -54,9 +54,9 @@ pub value struct keyAlgorithm
   obj: jsObject
 
 pub fun newKeyAlgorithm(name: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "name", name);
-  KeyAlgorithm(obj);
+  KeyAlgorithm(obj)
 
 pub inline fun name(obj: keyAlgorithm, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -124,7 +124,7 @@ pub value struct rsaOtherPrimesInfo
   obj: jsObject
 
 pub fun newRsaOtherPrimesInfo(r: maybe<string> = Nothing, d: maybe<string> = Nothing, t: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match r
     Just(it) -> setJsObjectField(obj, "r", it)
     Nothing -> ()
@@ -135,7 +135,7 @@ pub fun newRsaOtherPrimesInfo(r: maybe<string> = Nothing, d: maybe<string> = Not
     Just(it) -> setJsObjectField(obj, "t", it)
     Nothing -> ()
 
-  RsaOtherPrimesInfo(obj);
+  RsaOtherPrimesInfo(obj)
 
 pub inline fun r(obj: rsaOtherPrimesInfo, value: string): web ()
   setJsObjectField(obj.obj, "r", value.obj)
@@ -159,7 +159,7 @@ pub value struct jsonWebKey
   obj: jsObject
 
 pub fun newJsonWebKey(kty: maybe<string> = Nothing, use: maybe<string> = Nothing, key_ops: maybe<jsArray> = Nothing, alg: maybe<string> = Nothing, ext: maybe<bool> = Nothing, crv: maybe<string> = Nothing, x: maybe<string> = Nothing, y: maybe<string> = Nothing, d: maybe<string> = Nothing, n: maybe<string> = Nothing, e: maybe<string> = Nothing, p: maybe<string> = Nothing, q: maybe<string> = Nothing, dp: maybe<string> = Nothing, dq: maybe<string> = Nothing, qi: maybe<string> = Nothing, oth: maybe<jsArray> = Nothing, k: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match kty
     Just(it) -> setJsObjectField(obj, "kty", it)
     Nothing -> ()
@@ -215,7 +215,7 @@ pub fun newJsonWebKey(kty: maybe<string> = Nothing, use: maybe<string> = Nothing
     Just(it) -> setJsObjectField(obj, "k", it)
     Nothing -> ()
 
-  JsonWebKey(obj);
+  JsonWebKey(obj)
 
 pub inline fun kty(obj: jsonWebKey, value: string): web ()
   setJsObjectField(obj.obj, "kty", value.obj)
@@ -329,7 +329,7 @@ pub value struct cryptoKeyPair
   obj: jsObject
 
 pub fun newCryptoKeyPair(publicKey: maybe<cryptoKey> = Nothing, privateKey: maybe<cryptoKey> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match publicKey
     Just(it) -> setJsObjectField(obj, "publicKey", it)
     Nothing -> ()
@@ -337,7 +337,7 @@ pub fun newCryptoKeyPair(publicKey: maybe<cryptoKey> = Nothing, privateKey: mayb
     Just(it) -> setJsObjectField(obj, "privateKey", it)
     Nothing -> ()
 
-  CryptoKeyPair(obj);
+  CryptoKeyPair(obj)
 
 pub inline fun publicKey(obj: cryptoKeyPair, value: cryptoKey): web ()
   setJsObjectField(obj.obj, "publicKey", value.obj)
@@ -355,9 +355,9 @@ pub value struct rsaKeyGenParams
   obj: jsObject
 
 pub fun newRsaKeyGenParams(modulusLength: int, publicExponent: bigInteger)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "modulusLength", modulusLength);  setJsObjectField(obj, "publicExponent", publicExponent);
-  RsaKeyGenParams(obj);
+  RsaKeyGenParams(obj)
 
 pub inline fun modulusLength(obj: rsaKeyGenParams, value: int): web ()
   setJsObjectField(obj.obj, "modulusLength", value.obj)
@@ -375,9 +375,9 @@ pub value struct rsaHashedKeyGenParams
   obj: jsObject
 
 pub fun newRsaHashedKeyGenParams(hash: hashAlgorithmIdentifier)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "hash", hash);
-  RsaHashedKeyGenParams(obj);
+  RsaHashedKeyGenParams(obj)
 
 pub inline fun hash(obj: rsaHashedKeyGenParams, value: hashAlgorithmIdentifier): web ()
   setJsObjectField(obj.obj, "hash", value.obj)
@@ -389,9 +389,9 @@ pub value struct rsaKeyAlgorithm
   obj: jsObject
 
 pub fun newRsaKeyAlgorithm(modulusLength: int, publicExponent: bigInteger)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "modulusLength", modulusLength);  setJsObjectField(obj, "publicExponent", publicExponent);
-  RsaKeyAlgorithm(obj);
+  RsaKeyAlgorithm(obj)
 
 pub inline fun modulusLength(obj: rsaKeyAlgorithm, value: int): web ()
   setJsObjectField(obj.obj, "modulusLength", value.obj)
@@ -409,9 +409,9 @@ pub value struct rsaHashedKeyAlgorithm
   obj: jsObject
 
 pub fun newRsaHashedKeyAlgorithm(hash: keyAlgorithm)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "hash", hash);
-  RsaHashedKeyAlgorithm(obj);
+  RsaHashedKeyAlgorithm(obj)
 
 pub inline fun hash(obj: rsaHashedKeyAlgorithm, value: keyAlgorithm): web ()
   setJsObjectField(obj.obj, "hash", value.obj)
@@ -423,9 +423,9 @@ pub value struct rsaHashedImportParams
   obj: jsObject
 
 pub fun newRsaHashedImportParams(hash: hashAlgorithmIdentifier)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "hash", hash);
-  RsaHashedImportParams(obj);
+  RsaHashedImportParams(obj)
 
 pub inline fun hash(obj: rsaHashedImportParams, value: hashAlgorithmIdentifier): web ()
   setJsObjectField(obj.obj, "hash", value.obj)
@@ -437,9 +437,9 @@ pub value struct rsaPssParams
   obj: jsObject
 
 pub fun newRsaPssParams(saltLength: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "saltLength", saltLength);
-  RsaPssParams(obj);
+  RsaPssParams(obj)
 
 pub inline fun saltLength(obj: rsaPssParams, value: int): web ()
   setJsObjectField(obj.obj, "saltLength", value.obj)
@@ -451,12 +451,12 @@ pub value struct rsaOaepParams
   obj: jsObject
 
 pub fun newRsaOaepParams(label: maybe<webidl/bufferSource> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match label
     Just(it) -> setJsObjectField(obj, "label", it)
     Nothing -> ()
 
-  RsaOaepParams(obj);
+  RsaOaepParams(obj)
 
 pub inline fun label(obj: rsaOaepParams, value: webidl/bufferSource): web ()
   setJsObjectField(obj.obj, "label", value.obj)
@@ -468,9 +468,9 @@ pub value struct ecdsaParams
   obj: jsObject
 
 pub fun newEcdsaParams(hash: hashAlgorithmIdentifier)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "hash", hash);
-  EcdsaParams(obj);
+  EcdsaParams(obj)
 
 pub inline fun hash(obj: ecdsaParams, value: hashAlgorithmIdentifier): web ()
   setJsObjectField(obj.obj, "hash", value.obj)
@@ -482,9 +482,9 @@ pub value struct ecKeyGenParams
   obj: jsObject
 
 pub fun newEcKeyGenParams(namedCurve: namedCurve)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "namedCurve", namedCurve);
-  EcKeyGenParams(obj);
+  EcKeyGenParams(obj)
 
 pub inline fun namedCurve(obj: ecKeyGenParams, value: namedCurve): web ()
   setJsObjectField(obj.obj, "namedCurve", value.obj)
@@ -496,9 +496,9 @@ pub value struct ecKeyAlgorithm
   obj: jsObject
 
 pub fun newEcKeyAlgorithm(namedCurve: namedCurve)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "namedCurve", namedCurve);
-  EcKeyAlgorithm(obj);
+  EcKeyAlgorithm(obj)
 
 pub inline fun namedCurve(obj: ecKeyAlgorithm, value: namedCurve): web ()
   setJsObjectField(obj.obj, "namedCurve", value.obj)
@@ -510,9 +510,9 @@ pub value struct ecKeyImportParams
   obj: jsObject
 
 pub fun newEcKeyImportParams(namedCurve: namedCurve)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "namedCurve", namedCurve);
-  EcKeyImportParams(obj);
+  EcKeyImportParams(obj)
 
 pub inline fun namedCurve(obj: ecKeyImportParams, value: namedCurve): web ()
   setJsObjectField(obj.obj, "namedCurve", value.obj)
@@ -524,9 +524,9 @@ pub value struct ecdhKeyDeriveParams
   obj: jsObject
 
 pub fun newEcdhKeyDeriveParams(public: cryptoKey)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "public", public);
-  EcdhKeyDeriveParams(obj);
+  EcdhKeyDeriveParams(obj)
 
 pub inline fun public(obj: ecdhKeyDeriveParams, value: cryptoKey): web ()
   setJsObjectField(obj.obj, "public", value.obj)
@@ -538,9 +538,9 @@ pub value struct aesCtrParams
   obj: jsObject
 
 pub fun newAesCtrParams(counter: webidl/bufferSource, length: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "counter", counter);  setJsObjectField(obj, "length", length);
-  AesCtrParams(obj);
+  AesCtrParams(obj)
 
 pub inline fun counter(obj: aesCtrParams, value: webidl/bufferSource): web ()
   setJsObjectField(obj.obj, "counter", value.obj)
@@ -558,9 +558,9 @@ pub value struct aesKeyAlgorithm
   obj: jsObject
 
 pub fun newAesKeyAlgorithm(length: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "length", length);
-  AesKeyAlgorithm(obj);
+  AesKeyAlgorithm(obj)
 
 pub inline fun length(obj: aesKeyAlgorithm, value: int): web ()
   setJsObjectField(obj.obj, "length", value.obj)
@@ -572,9 +572,9 @@ pub value struct aesKeyGenParams
   obj: jsObject
 
 pub fun newAesKeyGenParams(length: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "length", length);
-  AesKeyGenParams(obj);
+  AesKeyGenParams(obj)
 
 pub inline fun length(obj: aesKeyGenParams, value: int): web ()
   setJsObjectField(obj.obj, "length", value.obj)
@@ -586,9 +586,9 @@ pub value struct aesDerivedKeyParams
   obj: jsObject
 
 pub fun newAesDerivedKeyParams(length: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "length", length);
-  AesDerivedKeyParams(obj);
+  AesDerivedKeyParams(obj)
 
 pub inline fun length(obj: aesDerivedKeyParams, value: int): web ()
   setJsObjectField(obj.obj, "length", value.obj)
@@ -600,9 +600,9 @@ pub value struct aesCbcParams
   obj: jsObject
 
 pub fun newAesCbcParams(iv: webidl/bufferSource)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "iv", iv);
-  AesCbcParams(obj);
+  AesCbcParams(obj)
 
 pub inline fun iv(obj: aesCbcParams, value: webidl/bufferSource): web ()
   setJsObjectField(obj.obj, "iv", value.obj)
@@ -614,7 +614,7 @@ pub value struct aesGcmParams
   obj: jsObject
 
 pub fun newAesGcmParams(iv: webidl/bufferSource, additionalData: maybe<webidl/bufferSource> = Nothing, tagLength: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "iv", iv);  match additionalData
     Just(it) -> setJsObjectField(obj, "additionalData", it)
     Nothing -> ()
@@ -622,7 +622,7 @@ pub fun newAesGcmParams(iv: webidl/bufferSource, additionalData: maybe<webidl/bu
     Just(it) -> setJsObjectField(obj, "tagLength", it)
     Nothing -> ()
 
-  AesGcmParams(obj);
+  AesGcmParams(obj)
 
 pub inline fun iv(obj: aesGcmParams, value: webidl/bufferSource): web ()
   setJsObjectField(obj.obj, "iv", value.obj)
@@ -646,12 +646,12 @@ pub value struct hmacImportParams
   obj: jsObject
 
 pub fun newHmacImportParams(hash: hashAlgorithmIdentifier, length: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "hash", hash);  match length
     Just(it) -> setJsObjectField(obj, "length", it)
     Nothing -> ()
 
-  HmacImportParams(obj);
+  HmacImportParams(obj)
 
 pub inline fun hash(obj: hmacImportParams, value: hashAlgorithmIdentifier): web ()
   setJsObjectField(obj.obj, "hash", value.obj)
@@ -669,9 +669,9 @@ pub value struct hmacKeyAlgorithm
   obj: jsObject
 
 pub fun newHmacKeyAlgorithm(hash: keyAlgorithm, length: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "hash", hash);  setJsObjectField(obj, "length", length);
-  HmacKeyAlgorithm(obj);
+  HmacKeyAlgorithm(obj)
 
 pub inline fun hash(obj: hmacKeyAlgorithm, value: keyAlgorithm): web ()
   setJsObjectField(obj.obj, "hash", value.obj)
@@ -689,12 +689,12 @@ pub value struct hmacKeyGenParams
   obj: jsObject
 
 pub fun newHmacKeyGenParams(hash: hashAlgorithmIdentifier, length: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "hash", hash);  match length
     Just(it) -> setJsObjectField(obj, "length", it)
     Nothing -> ()
 
-  HmacKeyGenParams(obj);
+  HmacKeyGenParams(obj)
 
 pub inline fun hash(obj: hmacKeyGenParams, value: hashAlgorithmIdentifier): web ()
   setJsObjectField(obj.obj, "hash", value.obj)
@@ -712,9 +712,9 @@ pub value struct hkdfParams
   obj: jsObject
 
 pub fun newHkdfParams(hash: hashAlgorithmIdentifier, salt: webidl/bufferSource, info: webidl/bufferSource)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "hash", hash);  setJsObjectField(obj, "salt", salt);  setJsObjectField(obj, "info", info);
-  HkdfParams(obj);
+  HkdfParams(obj)
 
 pub inline fun hash(obj: hkdfParams, value: hashAlgorithmIdentifier): web ()
   setJsObjectField(obj.obj, "hash", value.obj)
@@ -738,9 +738,9 @@ pub value struct pbkdf2Params
   obj: jsObject
 
 pub fun newPbkdf2Params(salt: webidl/bufferSource, iterations: int, hash: hashAlgorithmIdentifier)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "salt", salt);  setJsObjectField(obj, "iterations", iterations);  setJsObjectField(obj, "hash", hash);
-  Pbkdf2Params(obj);
+  Pbkdf2Params(obj)
 
 pub inline fun salt(obj: pbkdf2Params, value: webidl/bufferSource): web ()
   setJsObjectField(obj.obj, "salt", value.obj)

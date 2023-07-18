@@ -2,7 +2,7 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias profilerResource = String;
+pub alias profilerResource = String
 
 
 
@@ -26,9 +26,9 @@ pub value struct profilerTrace
   obj: jsObject
 
 pub fun newProfilerTrace(resources: jsArray, frames: jsArray, stacks: jsArray, samples: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "resources", resources);  setJsObjectField(obj, "frames", frames);  setJsObjectField(obj, "stacks", stacks);  setJsObjectField(obj, "samples", samples);
-  ProfilerTrace(obj);
+  ProfilerTrace(obj)
 
 pub inline fun resources(obj: profilerTrace, value: jsArray): web ()
   setJsObjectField(obj.obj, "resources", value.obj)
@@ -58,12 +58,12 @@ pub value struct profilerSample
   obj: jsObject
 
 pub fun newProfilerSample(timestamp: hr_time/domHighResTimeStamp, stackId: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "timestamp", timestamp);  match stackId
     Just(it) -> setJsObjectField(obj, "stackId", it)
     Nothing -> ()
 
-  ProfilerSample(obj);
+  ProfilerSample(obj)
 
 pub inline fun timestamp(obj: profilerSample, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "timestamp", value.obj)
@@ -81,12 +81,12 @@ pub value struct profilerStack
   obj: jsObject
 
 pub fun newProfilerStack(parentId: maybe<int> = Nothing, frameId: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match parentId
     Just(it) -> setJsObjectField(obj, "parentId", it)
     Nothing -> ()
   setJsObjectField(obj, "frameId", frameId);
-  ProfilerStack(obj);
+  ProfilerStack(obj)
 
 pub inline fun parentId(obj: profilerStack, value: int): web ()
   setJsObjectField(obj.obj, "parentId", value.obj)
@@ -104,7 +104,7 @@ pub value struct profilerFrame
   obj: jsObject
 
 pub fun newProfilerFrame(name: string, resourceId: maybe<int> = Nothing, line: maybe<int> = Nothing, column: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "name", name);  match resourceId
     Just(it) -> setJsObjectField(obj, "resourceId", it)
     Nothing -> ()
@@ -115,7 +115,7 @@ pub fun newProfilerFrame(name: string, resourceId: maybe<int> = Nothing, line: m
     Just(it) -> setJsObjectField(obj, "column", it)
     Nothing -> ()
 
-  ProfilerFrame(obj);
+  ProfilerFrame(obj)
 
 pub inline fun name(obj: profilerFrame, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
@@ -145,9 +145,9 @@ pub value struct profilerInitOptions
   obj: jsObject
 
 pub fun newProfilerInitOptions(sampleInterval: hr_time/domHighResTimeStamp, maxBufferSize: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "sampleInterval", sampleInterval);  setJsObjectField(obj, "maxBufferSize", maxBufferSize);
-  ProfilerInitOptions(obj);
+  ProfilerInitOptions(obj)
 
 pub inline fun sampleInterval(obj: profilerInitOptions, value: hr_time/domHighResTimeStamp): web ()
   setJsObjectField(obj.obj, "sampleInterval", value.obj)

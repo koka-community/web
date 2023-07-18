@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias identityCredentialRequestOptionsContext = string;
+pub alias identityCredentialRequestOptionsContext = string
 
 pub value struct identityCredential
   obj: jsObject
@@ -18,7 +18,7 @@ pub value struct identityCredentialRequestOptions
   obj: jsObject
 
 pub fun newIdentityCredentialRequestOptions(providers: maybe<jsArray> = Nothing, context: maybe<identityCredentialRequestOptionsContext> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match providers
     Just(it) -> setJsObjectField(obj, "providers", it)
     Nothing -> ()
@@ -26,7 +26,7 @@ pub fun newIdentityCredentialRequestOptions(providers: maybe<jsArray> = Nothing,
     Just(it) -> setJsObjectField(obj, "context", it)
     Nothing -> ()
 
-  IdentityCredentialRequestOptions(obj);
+  IdentityCredentialRequestOptions(obj)
 
 pub inline fun providers(obj: identityCredentialRequestOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "providers", value.obj)
@@ -44,7 +44,7 @@ pub value struct identityProviderConfig
   obj: jsObject
 
 pub fun newIdentityProviderConfig(configURL: string, clientId: string, nonce: maybe<string> = Nothing, loginHint: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "configURL", configURL);  setJsObjectField(obj, "clientId", clientId);  match nonce
     Just(it) -> setJsObjectField(obj, "nonce", it)
     Nothing -> ()
@@ -52,7 +52,7 @@ pub fun newIdentityProviderConfig(configURL: string, clientId: string, nonce: ma
     Just(it) -> setJsObjectField(obj, "loginHint", it)
     Nothing -> ()
 
-  IdentityProviderConfig(obj);
+  IdentityProviderConfig(obj)
 
 pub inline fun configURL(obj: identityProviderConfig, value: string): web ()
   setJsObjectField(obj.obj, "configURL", value.obj)
@@ -82,9 +82,9 @@ pub value struct identityProviderWellKnown
   obj: jsObject
 
 pub fun newIdentityProviderWellKnown(provider_urls: jsArray)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "provider_urls", provider_urls);
-  IdentityProviderWellKnown(obj);
+  IdentityProviderWellKnown(obj)
 
 pub inline fun providerUrls(obj: identityProviderWellKnown, value: jsArray): web ()
   setJsObjectField(obj.obj, "provider_urls", value.obj)
@@ -96,12 +96,12 @@ pub value struct identityProviderIcon
   obj: jsObject
 
 pub fun newIdentityProviderIcon(url: string, size: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "url", url);  match size
     Just(it) -> setJsObjectField(obj, "size", it)
     Nothing -> ()
 
-  IdentityProviderIcon(obj);
+  IdentityProviderIcon(obj)
 
 pub inline fun url(obj: identityProviderIcon, value: string): web ()
   setJsObjectField(obj.obj, "url", value.obj)
@@ -119,7 +119,7 @@ pub value struct identityProviderBranding
   obj: jsObject
 
 pub fun newIdentityProviderBranding(background_color: maybe<string> = Nothing, color: maybe<string> = Nothing, icons: maybe<jsArray> = Nothing, name: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match background_color
     Just(it) -> setJsObjectField(obj, "background_color", it)
     Nothing -> ()
@@ -133,7 +133,7 @@ pub fun newIdentityProviderBranding(background_color: maybe<string> = Nothing, c
     Just(it) -> setJsObjectField(obj, "name", it)
     Nothing -> ()
 
-  IdentityProviderBranding(obj);
+  IdentityProviderBranding(obj)
 
 pub inline fun backgroundColor(obj: identityProviderBranding, value: string): web ()
   setJsObjectField(obj.obj, "background_color", value.obj)
@@ -163,12 +163,12 @@ pub value struct identityProviderAPIConfig
   obj: jsObject
 
 pub fun newIdentityProviderAPIConfig(accounts_endpoint: string, client_metadata_endpoint: string, id_assertion_endpoint: string, branding: maybe<identityProviderBranding> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "accounts_endpoint", accounts_endpoint);  setJsObjectField(obj, "client_metadata_endpoint", client_metadata_endpoint);  setJsObjectField(obj, "id_assertion_endpoint", id_assertion_endpoint);  match branding
     Just(it) -> setJsObjectField(obj, "branding", it)
     Nothing -> ()
 
-  IdentityProviderAPIConfig(obj);
+  IdentityProviderAPIConfig(obj)
 
 pub inline fun accountsEndpoint(obj: identityProviderAPIConfig, value: string): web ()
   setJsObjectField(obj.obj, "accounts_endpoint", value.obj)
@@ -198,7 +198,7 @@ pub value struct identityProviderAccount
   obj: jsObject
 
 pub fun newIdentityProviderAccount(id: string, name: string, email: string, given_name: maybe<string> = Nothing, picture: maybe<string> = Nothing, approved_clients: maybe<jsArray> = Nothing, login_hints: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "id", id);  setJsObjectField(obj, "name", name);  setJsObjectField(obj, "email", email);  match given_name
     Just(it) -> setJsObjectField(obj, "given_name", it)
     Nothing -> ()
@@ -212,7 +212,7 @@ pub fun newIdentityProviderAccount(id: string, name: string, email: string, give
     Just(it) -> setJsObjectField(obj, "login_hints", it)
     Nothing -> ()
 
-  IdentityProviderAccount(obj);
+  IdentityProviderAccount(obj)
 
 pub inline fun id(obj: identityProviderAccount, value: string): web ()
   setJsObjectField(obj.obj, "id", value.obj)
@@ -260,12 +260,12 @@ pub value struct identityProviderAccountList
   obj: jsObject
 
 pub fun newIdentityProviderAccountList(accounts: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match accounts
     Just(it) -> setJsObjectField(obj, "accounts", it)
     Nothing -> ()
 
-  IdentityProviderAccountList(obj);
+  IdentityProviderAccountList(obj)
 
 pub inline fun accounts(obj: identityProviderAccountList, value: jsArray): web ()
   setJsObjectField(obj.obj, "accounts", value.obj)
@@ -277,9 +277,9 @@ pub value struct identityProviderToken
   obj: jsObject
 
 pub fun newIdentityProviderToken(token: string)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "token", token);
-  IdentityProviderToken(obj);
+  IdentityProviderToken(obj)
 
 pub inline fun token(obj: identityProviderToken, value: string): web ()
   setJsObjectField(obj.obj, "token", value.obj)
@@ -291,7 +291,7 @@ pub value struct identityProviderClientMetadata
   obj: jsObject
 
 pub fun newIdentityProviderClientMetadata(privacy_policy_url: maybe<string> = Nothing, terms_of_service_url: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match privacy_policy_url
     Just(it) -> setJsObjectField(obj, "privacy_policy_url", it)
     Nothing -> ()
@@ -299,7 +299,7 @@ pub fun newIdentityProviderClientMetadata(privacy_policy_url: maybe<string> = No
     Just(it) -> setJsObjectField(obj, "terms_of_service_url", it)
     Nothing -> ()
 
-  IdentityProviderClientMetadata(obj);
+  IdentityProviderClientMetadata(obj)
 
 pub inline fun privacyPolicyUrl(obj: identityProviderClientMetadata, value: string): web ()
   setJsObjectField(obj.obj, "privacy_policy_url", value.obj)
@@ -317,7 +317,7 @@ pub value struct identityUserInfo
   obj: jsObject
 
 pub fun newIdentityUserInfo(email: maybe<string> = Nothing, name: maybe<string> = Nothing, givenName: maybe<string> = Nothing, picture: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match email
     Just(it) -> setJsObjectField(obj, "email", it)
     Nothing -> ()
@@ -331,7 +331,7 @@ pub fun newIdentityUserInfo(email: maybe<string> = Nothing, name: maybe<string> 
     Just(it) -> setJsObjectField(obj, "picture", it)
     Nothing -> ()
 
-  IdentityUserInfo(obj);
+  IdentityUserInfo(obj)
 
 pub inline fun email(obj: identityUserInfo, value: string): web ()
   setJsObjectField(obj.obj, "email", value.obj)

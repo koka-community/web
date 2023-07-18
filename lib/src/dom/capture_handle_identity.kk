@@ -10,7 +10,7 @@ pub value struct captureHandleConfig
   obj: jsObject
 
 pub fun newCaptureHandleConfig(exposeOrigin: maybe<bool> = Nothing, handle: maybe<string> = Nothing, permittedOrigins: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match exposeOrigin
     Just(it) -> setJsObjectField(obj, "exposeOrigin", it)
     Nothing -> ()
@@ -21,7 +21,7 @@ pub fun newCaptureHandleConfig(exposeOrigin: maybe<bool> = Nothing, handle: mayb
     Just(it) -> setJsObjectField(obj, "permittedOrigins", it)
     Nothing -> ()
 
-  CaptureHandleConfig(obj);
+  CaptureHandleConfig(obj)
 
 pub inline fun exposeOrigin(obj: captureHandleConfig, value: bool): web ()
   setJsObjectField(obj.obj, "exposeOrigin", value.obj)
@@ -45,7 +45,7 @@ pub value struct captureHandle
   obj: jsObject
 
 pub fun newCaptureHandle(origin: maybe<string> = Nothing, handle: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match origin
     Just(it) -> setJsObjectField(obj, "origin", it)
     Nothing -> ()
@@ -53,7 +53,7 @@ pub fun newCaptureHandle(origin: maybe<string> = Nothing, handle: maybe<string> 
     Just(it) -> setJsObjectField(obj, "handle", it)
     Nothing -> ()
 
-  CaptureHandle(obj);
+  CaptureHandle(obj)
 
 pub inline fun origin(obj: captureHandle, value: string): web ()
   setJsObjectField(obj.obj, "origin", value.obj)

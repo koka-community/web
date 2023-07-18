@@ -2,57 +2,57 @@
 //for details. All rights reserved. Use of this source code is governed by a
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
-pub alias imageBufferSource = JSAny;
+pub alias imageBufferSource = JSAny
 
-pub alias audioDataOutputCallback = jsFunction;
-
-
-pub alias videoFrameOutputCallback = jsFunction;
+pub alias audioDataOutputCallback = jsFunction
 
 
-pub alias encodedAudioChunkOutputCallback = jsFunction;
+pub alias videoFrameOutputCallback = jsFunction
 
 
-pub alias encodedVideoChunkOutputCallback = jsFunction;
+pub alias encodedAudioChunkOutputCallback = jsFunction
 
 
-pub alias webCodecsErrorCallback = jsFunction;
+pub alias encodedVideoChunkOutputCallback = jsFunction
 
 
-pub alias hardwareAcceleration = string;
+pub alias webCodecsErrorCallback = jsFunction
 
 
-pub alias alphaOption = string;
+pub alias hardwareAcceleration = string
 
 
-pub alias latencyMode = string;
+pub alias alphaOption = string
 
 
-pub alias videoEncoderBitrateMode = string;
+pub alias latencyMode = string
 
 
-pub alias codecState = string;
+pub alias videoEncoderBitrateMode = string
 
 
-pub alias encodedAudioChunkType = string;
+pub alias codecState = string
 
 
-pub alias encodedVideoChunkType = string;
+pub alias encodedAudioChunkType = string
 
 
-pub alias audioSampleFormat = string;
+pub alias encodedVideoChunkType = string
 
 
-pub alias videoPixelFormat = string;
+pub alias audioSampleFormat = string
 
 
-pub alias videoColorPrimaries = string;
+pub alias videoPixelFormat = string
 
 
-pub alias videoTransferCharacteristics = string;
+pub alias videoColorPrimaries = string
 
 
-pub alias videoMatrixCoefficients = string;
+pub alias videoTransferCharacteristics = string
+
+
+pub alias videoMatrixCoefficients = string
 
 pub value struct audioDecoder
   obj: jsObject
@@ -93,9 +93,9 @@ pub value struct audioDecoderInit
   obj: jsObject
 
 pub fun newAudioDecoderInit(output: audioDataOutputCallback, error: webCodecsErrorCallback)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "output", output);  setJsObjectField(obj, "error", error);
-  AudioDecoderInit(obj);
+  AudioDecoderInit(obj)
 
 pub inline fun output(obj: audioDecoderInit, value: audioDataOutputCallback): web ()
   setJsObjectField(obj.obj, "output", value.obj)
@@ -148,9 +148,9 @@ pub value struct videoDecoderInit
   obj: jsObject
 
 pub fun newVideoDecoderInit(output: videoFrameOutputCallback, error: webCodecsErrorCallback)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "output", output);  setJsObjectField(obj, "error", error);
-  VideoDecoderInit(obj);
+  VideoDecoderInit(obj)
 
 pub inline fun output(obj: videoDecoderInit, value: videoFrameOutputCallback): web ()
   setJsObjectField(obj.obj, "output", value.obj)
@@ -203,9 +203,9 @@ pub value struct audioEncoderInit
   obj: jsObject
 
 pub fun newAudioEncoderInit(output: encodedAudioChunkOutputCallback, error: webCodecsErrorCallback)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "output", output);  setJsObjectField(obj, "error", error);
-  AudioEncoderInit(obj);
+  AudioEncoderInit(obj)
 
 pub inline fun output(obj: audioEncoderInit, value: encodedAudioChunkOutputCallback): web ()
   setJsObjectField(obj.obj, "output", value.obj)
@@ -223,12 +223,12 @@ pub value struct encodedAudioChunkMetadata
   obj: jsObject
 
 pub fun newEncodedAudioChunkMetadata(decoderConfig: maybe<audioDecoderConfig> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match decoderConfig
     Just(it) -> setJsObjectField(obj, "decoderConfig", it)
     Nothing -> ()
 
-  EncodedAudioChunkMetadata(obj);
+  EncodedAudioChunkMetadata(obj)
 
 pub inline fun decoderConfig(obj: encodedAudioChunkMetadata, value: audioDecoderConfig): web ()
   setJsObjectField(obj.obj, "decoderConfig", value.obj)
@@ -275,9 +275,9 @@ pub value struct videoEncoderInit
   obj: jsObject
 
 pub fun newVideoEncoderInit(output: encodedVideoChunkOutputCallback, error: webCodecsErrorCallback)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "output", output);  setJsObjectField(obj, "error", error);
-  VideoEncoderInit(obj);
+  VideoEncoderInit(obj)
 
 pub inline fun output(obj: videoEncoderInit, value: encodedVideoChunkOutputCallback): web ()
   setJsObjectField(obj.obj, "output", value.obj)
@@ -295,7 +295,7 @@ pub value struct encodedVideoChunkMetadata
   obj: jsObject
 
 pub fun newEncodedVideoChunkMetadata(decoderConfig: maybe<videoDecoderConfig> = Nothing, svc: maybe<svcOutputMetadata> = Nothing, alphaSideData: maybe<webidl/bufferSource> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match decoderConfig
     Just(it) -> setJsObjectField(obj, "decoderConfig", it)
     Nothing -> ()
@@ -306,7 +306,7 @@ pub fun newEncodedVideoChunkMetadata(decoderConfig: maybe<videoDecoderConfig> = 
     Just(it) -> setJsObjectField(obj, "alphaSideData", it)
     Nothing -> ()
 
-  EncodedVideoChunkMetadata(obj);
+  EncodedVideoChunkMetadata(obj)
 
 pub inline fun decoderConfig(obj: encodedVideoChunkMetadata, value: videoDecoderConfig): web ()
   setJsObjectField(obj.obj, "decoderConfig", value.obj)
@@ -330,12 +330,12 @@ pub value struct svcOutputMetadata
   obj: jsObject
 
 pub fun newSvcOutputMetadata(temporalLayerId: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match temporalLayerId
     Just(it) -> setJsObjectField(obj, "temporalLayerId", it)
     Nothing -> ()
 
-  SvcOutputMetadata(obj);
+  SvcOutputMetadata(obj)
 
 pub inline fun temporalLayerId(obj: svcOutputMetadata, value: int): web ()
   setJsObjectField(obj.obj, "temporalLayerId", value.obj)
@@ -347,7 +347,7 @@ pub value struct audioDecoderSupport
   obj: jsObject
 
 pub fun newAudioDecoderSupport(supported: maybe<bool> = Nothing, config: maybe<audioDecoderConfig> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match supported
     Just(it) -> setJsObjectField(obj, "supported", it)
     Nothing -> ()
@@ -355,7 +355,7 @@ pub fun newAudioDecoderSupport(supported: maybe<bool> = Nothing, config: maybe<a
     Just(it) -> setJsObjectField(obj, "config", it)
     Nothing -> ()
 
-  AudioDecoderSupport(obj);
+  AudioDecoderSupport(obj)
 
 pub inline fun supported(obj: audioDecoderSupport, value: bool): web ()
   setJsObjectField(obj.obj, "supported", value.obj)
@@ -373,7 +373,7 @@ pub value struct videoDecoderSupport
   obj: jsObject
 
 pub fun newVideoDecoderSupport(supported: maybe<bool> = Nothing, config: maybe<videoDecoderConfig> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match supported
     Just(it) -> setJsObjectField(obj, "supported", it)
     Nothing -> ()
@@ -381,7 +381,7 @@ pub fun newVideoDecoderSupport(supported: maybe<bool> = Nothing, config: maybe<v
     Just(it) -> setJsObjectField(obj, "config", it)
     Nothing -> ()
 
-  VideoDecoderSupport(obj);
+  VideoDecoderSupport(obj)
 
 pub inline fun supported(obj: videoDecoderSupport, value: bool): web ()
   setJsObjectField(obj.obj, "supported", value.obj)
@@ -399,7 +399,7 @@ pub value struct audioEncoderSupport
   obj: jsObject
 
 pub fun newAudioEncoderSupport(supported: maybe<bool> = Nothing, config: maybe<audioEncoderConfig> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match supported
     Just(it) -> setJsObjectField(obj, "supported", it)
     Nothing -> ()
@@ -407,7 +407,7 @@ pub fun newAudioEncoderSupport(supported: maybe<bool> = Nothing, config: maybe<a
     Just(it) -> setJsObjectField(obj, "config", it)
     Nothing -> ()
 
-  AudioEncoderSupport(obj);
+  AudioEncoderSupport(obj)
 
 pub inline fun supported(obj: audioEncoderSupport, value: bool): web ()
   setJsObjectField(obj.obj, "supported", value.obj)
@@ -425,7 +425,7 @@ pub value struct videoEncoderSupport
   obj: jsObject
 
 pub fun newVideoEncoderSupport(supported: maybe<bool> = Nothing, config: maybe<videoEncoderConfig> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match supported
     Just(it) -> setJsObjectField(obj, "supported", it)
     Nothing -> ()
@@ -433,7 +433,7 @@ pub fun newVideoEncoderSupport(supported: maybe<bool> = Nothing, config: maybe<v
     Just(it) -> setJsObjectField(obj, "config", it)
     Nothing -> ()
 
-  VideoEncoderSupport(obj);
+  VideoEncoderSupport(obj)
 
 pub inline fun supported(obj: videoEncoderSupport, value: bool): web ()
   setJsObjectField(obj.obj, "supported", value.obj)
@@ -451,12 +451,12 @@ pub value struct audioDecoderConfig
   obj: jsObject
 
 pub fun newAudioDecoderConfig(codec: string, sampleRate: int, numberOfChannels: int, description: maybe<webidl/bufferSource> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "codec", codec);  setJsObjectField(obj, "sampleRate", sampleRate);  setJsObjectField(obj, "numberOfChannels", numberOfChannels);  match description
     Just(it) -> setJsObjectField(obj, "description", it)
     Nothing -> ()
 
-  AudioDecoderConfig(obj);
+  AudioDecoderConfig(obj)
 
 pub inline fun codec(obj: audioDecoderConfig, value: string): web ()
   setJsObjectField(obj.obj, "codec", value.obj)
@@ -486,7 +486,7 @@ pub value struct videoDecoderConfig
   obj: jsObject
 
 pub fun newVideoDecoderConfig(codec: string, description: maybe<webidl/allowSharedBufferSource> = Nothing, codedWidth: maybe<int> = Nothing, codedHeight: maybe<int> = Nothing, displayAspectWidth: maybe<int> = Nothing, displayAspectHeight: maybe<int> = Nothing, colorSpace: maybe<videoColorSpaceInit> = Nothing, hardwareAcceleration: maybe<hardwareAcceleration> = Nothing, optimizeForLatency: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "codec", codec);  match description
     Just(it) -> setJsObjectField(obj, "description", it)
     Nothing -> ()
@@ -512,7 +512,7 @@ pub fun newVideoDecoderConfig(codec: string, description: maybe<webidl/allowShar
     Just(it) -> setJsObjectField(obj, "optimizeForLatency", it)
     Nothing -> ()
 
-  VideoDecoderConfig(obj);
+  VideoDecoderConfig(obj)
 
 pub inline fun codec(obj: videoDecoderConfig, value: string): web ()
   setJsObjectField(obj.obj, "codec", value.obj)
@@ -572,7 +572,7 @@ pub value struct audioEncoderConfig
   obj: jsObject
 
 pub fun newAudioEncoderConfig(aac: maybe<webcodecs_aac_codec_registration/aacEncoderConfig> = Nothing, flac: maybe<webcodecs_flac_codec_registration/flacEncoderConfig> = Nothing, opus: maybe<webcodecs_opus_codec_registration/opusEncoderConfig> = Nothing, codec: string, sampleRate: maybe<int> = Nothing, numberOfChannels: maybe<int> = Nothing, bitrate: maybe<int> = Nothing, bitrateMode: maybe<mediastream_recording/bitrateMode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match aac
     Just(it) -> setJsObjectField(obj, "aac", it)
     Nothing -> ()
@@ -595,7 +595,7 @@ pub fun newAudioEncoderConfig(aac: maybe<webcodecs_aac_codec_registration/aacEnc
     Just(it) -> setJsObjectField(obj, "bitrateMode", it)
     Nothing -> ()
 
-  AudioEncoderConfig(obj);
+  AudioEncoderConfig(obj)
 
 pub inline fun aac(obj: audioEncoderConfig, value: webcodecs_aac_codec_registration/aacEncoderConfig): web ()
   setJsObjectField(obj.obj, "aac", value.obj)
@@ -649,7 +649,7 @@ pub value struct videoEncoderConfig
   obj: jsObject
 
 pub fun newVideoEncoderConfig(av1: maybe<webcodecs_av1_codec_registration/aV1EncoderConfig> = Nothing, avc: maybe<webcodecs_avc_codec_registration/avcEncoderConfig> = Nothing, hevc: maybe<webcodecs_hevc_codec_registration/hevcEncoderConfig> = Nothing, codec: string, width: int, height: int, displayWidth: maybe<int> = Nothing, displayHeight: maybe<int> = Nothing, bitrate: maybe<int> = Nothing, framerate: maybe<double> = Nothing, hardwareAcceleration: maybe<hardwareAcceleration> = Nothing, alpha: maybe<alphaOption> = Nothing, scalabilityMode: maybe<string> = Nothing, bitrateMode: maybe<videoEncoderBitrateMode> = Nothing, latencyMode: maybe<latencyMode> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match av1
     Just(it) -> setJsObjectField(obj, "av1", it)
     Nothing -> ()
@@ -687,7 +687,7 @@ pub fun newVideoEncoderConfig(av1: maybe<webcodecs_av1_codec_registration/aV1Enc
     Just(it) -> setJsObjectField(obj, "latencyMode", it)
     Nothing -> ()
 
-  VideoEncoderConfig(obj);
+  VideoEncoderConfig(obj)
 
 pub inline fun av1(obj: videoEncoderConfig, value: webcodecs_av1_codec_registration/aV1EncoderConfig): web ()
   setJsObjectField(obj.obj, "av1", value.obj)
@@ -783,7 +783,7 @@ pub value struct videoEncoderEncodeOptions
   obj: jsObject
 
 pub fun newVideoEncoderEncodeOptions(av1: maybe<webcodecs_av1_codec_registration/videoEncoderEncodeOptionsForAv1> = Nothing, avc: maybe<webcodecs_avc_codec_registration/videoEncoderEncodeOptionsForAvc> = Nothing, vp9: maybe<webcodecs_vp9_codec_registration/videoEncoderEncodeOptionsForVp9> = Nothing, keyFrame: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match av1
     Just(it) -> setJsObjectField(obj, "av1", it)
     Nothing -> ()
@@ -797,7 +797,7 @@ pub fun newVideoEncoderEncodeOptions(av1: maybe<webcodecs_av1_codec_registration
     Just(it) -> setJsObjectField(obj, "keyFrame", it)
     Nothing -> ()
 
-  VideoEncoderEncodeOptions(obj);
+  VideoEncoderEncodeOptions(obj)
 
 pub inline fun av1(obj: videoEncoderEncodeOptions, value: webcodecs_av1_codec_registration/videoEncoderEncodeOptionsForAv1): web ()
   setJsObjectField(obj.obj, "av1", value.obj)
@@ -848,12 +848,12 @@ pub value struct encodedAudioChunkInit
   obj: jsObject
 
 pub fun newEncodedAudioChunkInit(type: encodedAudioChunkType, timestamp: int, duration: maybe<int> = Nothing, data: webidl/bufferSource)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);  setJsObjectField(obj, "timestamp", timestamp);  match duration
     Just(it) -> setJsObjectField(obj, "duration", it)
     Nothing -> ()
   setJsObjectField(obj, "data", data);
-  EncodedAudioChunkInit(obj);
+  EncodedAudioChunkInit(obj)
 
 pub inline fun type(obj: encodedAudioChunkInit, value: encodedAudioChunkType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -904,12 +904,12 @@ pub value struct encodedVideoChunkInit
   obj: jsObject
 
 pub fun newEncodedVideoChunkInit(type: encodedVideoChunkType, timestamp: int, duration: maybe<int> = Nothing, data: webidl/allowSharedBufferSource)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);  setJsObjectField(obj, "timestamp", timestamp);  match duration
     Just(it) -> setJsObjectField(obj, "duration", it)
     Nothing -> ()
   setJsObjectField(obj, "data", data);
-  EncodedVideoChunkInit(obj);
+  EncodedVideoChunkInit(obj)
 
 pub inline fun type(obj: encodedVideoChunkInit, value: encodedVideoChunkType): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -975,12 +975,12 @@ pub value struct audioDataInit
   obj: jsObject
 
 pub fun newAudioDataInit(format: audioSampleFormat, sampleRate: double, numberOfFrames: int, numberOfChannels: int, timestamp: int, data: webidl/bufferSource, transfer: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "format", format);  setJsObjectField(obj, "sampleRate", sampleRate);  setJsObjectField(obj, "numberOfFrames", numberOfFrames);  setJsObjectField(obj, "numberOfChannels", numberOfChannels);  setJsObjectField(obj, "timestamp", timestamp);  setJsObjectField(obj, "data", data);  match transfer
     Just(it) -> setJsObjectField(obj, "transfer", it)
     Nothing -> ()
 
-  AudioDataInit(obj);
+  AudioDataInit(obj)
 
 pub inline fun format(obj: audioDataInit, value: audioSampleFormat): web ()
   setJsObjectField(obj.obj, "format", value.obj)
@@ -1028,7 +1028,7 @@ pub value struct audioDataCopyToOptions
   obj: jsObject
 
 pub fun newAudioDataCopyToOptions(planeIndex: int, frameOffset: maybe<int> = Nothing, frameCount: maybe<int> = Nothing, format: maybe<audioSampleFormat> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "planeIndex", planeIndex);  match frameOffset
     Just(it) -> setJsObjectField(obj, "frameOffset", it)
     Nothing -> ()
@@ -1039,7 +1039,7 @@ pub fun newAudioDataCopyToOptions(planeIndex: int, frameOffset: maybe<int> = Not
     Just(it) -> setJsObjectField(obj, "format", it)
     Nothing -> ()
 
-  AudioDataCopyToOptions(obj);
+  AudioDataCopyToOptions(obj)
 
 pub inline fun planeIndex(obj: audioDataCopyToOptions, value: int): web ()
   setJsObjectField(obj.obj, "planeIndex", value.obj)
@@ -1120,7 +1120,7 @@ pub value struct videoFrameInit
   obj: jsObject
 
 pub fun newVideoFrameInit(duration: maybe<int> = Nothing, timestamp: maybe<int> = Nothing, alpha: maybe<alphaOption> = Nothing, visibleRect: maybe<geometry/domRectInit> = Nothing, displayWidth: maybe<int> = Nothing, displayHeight: maybe<int> = Nothing, metadata: maybe<videoFrameMetadata> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match duration
     Just(it) -> setJsObjectField(obj, "duration", it)
     Nothing -> ()
@@ -1143,7 +1143,7 @@ pub fun newVideoFrameInit(duration: maybe<int> = Nothing, timestamp: maybe<int> 
     Just(it) -> setJsObjectField(obj, "metadata", it)
     Nothing -> ()
 
-  VideoFrameInit(obj);
+  VideoFrameInit(obj)
 
 pub inline fun duration(obj: videoFrameInit, value: int): web ()
   setJsObjectField(obj.obj, "duration", value.obj)
@@ -1191,7 +1191,7 @@ pub value struct videoFrameBufferInit
   obj: jsObject
 
 pub fun newVideoFrameBufferInit(format: videoPixelFormat, codedWidth: int, codedHeight: int, timestamp: int, duration: maybe<int> = Nothing, layout: maybe<jsArray> = Nothing, visibleRect: maybe<geometry/domRectInit> = Nothing, displayWidth: maybe<int> = Nothing, displayHeight: maybe<int> = Nothing, colorSpace: maybe<videoColorSpaceInit> = Nothing, transfer: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "format", format);  setJsObjectField(obj, "codedWidth", codedWidth);  setJsObjectField(obj, "codedHeight", codedHeight);  setJsObjectField(obj, "timestamp", timestamp);  match duration
     Just(it) -> setJsObjectField(obj, "duration", it)
     Nothing -> ()
@@ -1214,7 +1214,7 @@ pub fun newVideoFrameBufferInit(format: videoPixelFormat, codedWidth: int, coded
     Just(it) -> setJsObjectField(obj, "transfer", it)
     Nothing -> ()
 
-  VideoFrameBufferInit(obj);
+  VideoFrameBufferInit(obj)
 
 pub inline fun format(obj: videoFrameBufferInit, value: videoPixelFormat): web ()
   setJsObjectField(obj.obj, "format", value.obj)
@@ -1286,15 +1286,15 @@ pub value struct videoFrameMetadata
   obj: jsObject
 
 pub fun newVideoFrameMetadata()
-  val obj = newJsObject();
+  val obj = newJsObject()
 
-  VideoFrameMetadata(obj);
+  VideoFrameMetadata(obj)
 
 pub value struct videoFrameCopyToOptions
   obj: jsObject
 
 pub fun newVideoFrameCopyToOptions(rect: maybe<geometry/domRectInit> = Nothing, layout: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match rect
     Just(it) -> setJsObjectField(obj, "rect", it)
     Nothing -> ()
@@ -1302,7 +1302,7 @@ pub fun newVideoFrameCopyToOptions(rect: maybe<geometry/domRectInit> = Nothing, 
     Just(it) -> setJsObjectField(obj, "layout", it)
     Nothing -> ()
 
-  VideoFrameCopyToOptions(obj);
+  VideoFrameCopyToOptions(obj)
 
 pub inline fun rect(obj: videoFrameCopyToOptions, value: geometry/domRectInit): web ()
   setJsObjectField(obj.obj, "rect", value.obj)
@@ -1320,9 +1320,9 @@ pub value struct planeLayout
   obj: jsObject
 
 pub fun newPlaneLayout(offset: int, stride: int)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "offset", offset);  setJsObjectField(obj, "stride", stride);
-  PlaneLayout(obj);
+  PlaneLayout(obj)
 
 pub inline fun offset(obj: planeLayout, value: int): web ()
   setJsObjectField(obj.obj, "offset", value.obj)
@@ -1361,7 +1361,7 @@ pub value struct videoColorSpaceInit
   obj: jsObject
 
 pub fun newVideoColorSpaceInit(primaries: maybe<maybe<videoColorPrimaries>> = Nothing, transfer: maybe<maybe<videoTransferCharacteristics>> = Nothing, matrix: maybe<maybe<videoMatrixCoefficients>> = Nothing, fullRange: maybe<maybe<bool>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match primaries
     Just(it) -> setJsObjectField(obj, "primaries", it)
     Nothing -> ()
@@ -1375,7 +1375,7 @@ pub fun newVideoColorSpaceInit(primaries: maybe<maybe<videoColorPrimaries>> = No
     Just(it) -> setJsObjectField(obj, "fullRange", it)
     Nothing -> ()
 
-  VideoColorSpaceInit(obj);
+  VideoColorSpaceInit(obj)
 
 pub inline fun primaries(obj: videoColorSpaceInit, value: maybe<videoColorPrimaries>): web ()
   setJsObjectField(obj.obj, "primaries", value.obj)
@@ -1434,7 +1434,7 @@ pub value struct imageDecoderInit
   obj: jsObject
 
 pub fun newImageDecoderInit(type: string, data: imageBufferSource, colorSpaceConversion: maybe<html/colorSpaceConversion> = Nothing, desiredWidth: maybe<int> = Nothing, desiredHeight: maybe<int> = Nothing, preferAnimation: maybe<bool> = Nothing, transfer: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "type", type);  setJsObjectField(obj, "data", data);  match colorSpaceConversion
     Just(it) -> setJsObjectField(obj, "colorSpaceConversion", it)
     Nothing -> ()
@@ -1451,7 +1451,7 @@ pub fun newImageDecoderInit(type: string, data: imageBufferSource, colorSpaceCon
     Just(it) -> setJsObjectField(obj, "transfer", it)
     Nothing -> ()
 
-  ImageDecoderInit(obj);
+  ImageDecoderInit(obj)
 
 pub inline fun type(obj: imageDecoderInit, value: string): web ()
   setJsObjectField(obj.obj, "type", value.obj)
@@ -1499,7 +1499,7 @@ pub value struct imageDecodeOptions
   obj: jsObject
 
 pub fun newImageDecodeOptions(frameIndex: maybe<int> = Nothing, completeFramesOnly: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match frameIndex
     Just(it) -> setJsObjectField(obj, "frameIndex", it)
     Nothing -> ()
@@ -1507,7 +1507,7 @@ pub fun newImageDecodeOptions(frameIndex: maybe<int> = Nothing, completeFramesOn
     Just(it) -> setJsObjectField(obj, "completeFramesOnly", it)
     Nothing -> ()
 
-  ImageDecodeOptions(obj);
+  ImageDecodeOptions(obj)
 
 pub inline fun frameIndex(obj: imageDecodeOptions, value: int): web ()
   setJsObjectField(obj.obj, "frameIndex", value.obj)
@@ -1525,9 +1525,9 @@ pub value struct imageDecodeResult
   obj: jsObject
 
 pub fun newImageDecodeResult(image: videoFrame, complete: bool)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "image", image);  setJsObjectField(obj, "complete", complete);
-  ImageDecodeResult(obj);
+  ImageDecodeResult(obj)
 
 pub inline fun image(obj: imageDecodeResult, value: videoFrame): web ()
   setJsObjectField(obj.obj, "image", value.obj)

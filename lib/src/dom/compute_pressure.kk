@@ -3,13 +3,13 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias pressureUpdateCallback = jsFunction;
+pub alias pressureUpdateCallback = jsFunction
 
 
-pub alias pressureSource = string;
+pub alias pressureSource = string
 
 
-pub alias pressureState = string;
+pub alias pressureState = string
 
 pub value struct pressureObserver
   obj: jsObject
@@ -51,12 +51,12 @@ pub value struct pressureObserverOptions
   obj: jsObject
 
 pub fun newPressureObserverOptions(sampleRate: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match sampleRate
     Just(it) -> setJsObjectField(obj, "sampleRate", it)
     Nothing -> ()
 
-  PressureObserverOptions(obj);
+  PressureObserverOptions(obj)
 
 pub inline fun sampleRate(obj: pressureObserverOptions, value: double): web ()
   setJsObjectField(obj.obj, "sampleRate", value.obj)

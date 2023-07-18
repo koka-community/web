@@ -3,7 +3,7 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias updateCallback = jsFunction;
+pub alias updateCallback = jsFunction
 
 
 

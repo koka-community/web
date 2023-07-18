@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias devicePostureType = string;
+pub alias devicePostureType = string
 
 pub value struct devicePosture
   obj: jsObject

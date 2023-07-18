@@ -31,7 +31,7 @@ pub value struct uiEventInit
   obj: jsObject
 
 pub fun newUiEventInit(sourceCapabilities: maybe<maybe<input_device_capabilities/inputDeviceCapabilities>> = Nothing, view: maybe<maybe<html/window>> = Nothing, detail: maybe<int> = Nothing, which: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match sourceCapabilities
     Just(it) -> setJsObjectField(obj, "sourceCapabilities", it)
     Nothing -> ()
@@ -45,7 +45,7 @@ pub fun newUiEventInit(sourceCapabilities: maybe<maybe<input_device_capabilities
     Just(it) -> setJsObjectField(obj, "which", it)
     Nothing -> ()
 
-  UiEventInit(obj);
+  UiEventInit(obj)
 
 pub inline fun sourceCapabilities(obj: uiEventInit, value: maybe<input_device_capabilities/inputDeviceCapabilities>): web ()
   setJsObjectField(obj.obj, "sourceCapabilities", value.obj)
@@ -84,12 +84,12 @@ pub value struct focusEventInit
   obj: jsObject
 
 pub fun newFocusEventInit(relatedTarget: maybe<maybe<dom/eventTarget>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match relatedTarget
     Just(it) -> setJsObjectField(obj, "relatedTarget", it)
     Nothing -> ()
 
-  FocusEventInit(obj);
+  FocusEventInit(obj)
 
 pub inline fun relatedTarget(obj: focusEventInit, value: maybe<dom/eventTarget>): web ()
   setJsObjectField(obj.obj, "relatedTarget", value.obj)
@@ -170,7 +170,7 @@ pub value struct mouseEventInit
   obj: jsObject
 
 pub fun newMouseEventInit(movementX: maybe<double> = Nothing, movementY: maybe<double> = Nothing, screenX: maybe<int> = Nothing, screenY: maybe<int> = Nothing, clientX: maybe<int> = Nothing, clientY: maybe<int> = Nothing, button: maybe<int> = Nothing, buttons: maybe<int> = Nothing, relatedTarget: maybe<maybe<dom/eventTarget>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match movementX
     Just(it) -> setJsObjectField(obj, "movementX", it)
     Nothing -> ()
@@ -199,7 +199,7 @@ pub fun newMouseEventInit(movementX: maybe<double> = Nothing, movementY: maybe<d
     Just(it) -> setJsObjectField(obj, "relatedTarget", it)
     Nothing -> ()
 
-  MouseEventInit(obj);
+  MouseEventInit(obj)
 
 pub inline fun movementX(obj: mouseEventInit, value: double): web ()
   setJsObjectField(obj.obj, "movementX", value.obj)
@@ -259,7 +259,7 @@ pub value struct eventModifierInit
   obj: jsObject
 
 pub fun newEventModifierInit(ctrlKey: maybe<bool> = Nothing, shiftKey: maybe<bool> = Nothing, altKey: maybe<bool> = Nothing, metaKey: maybe<bool> = Nothing, modifierAltGraph: maybe<bool> = Nothing, modifierCapsLock: maybe<bool> = Nothing, modifierFn: maybe<bool> = Nothing, modifierFnLock: maybe<bool> = Nothing, modifierHyper: maybe<bool> = Nothing, modifierNumLock: maybe<bool> = Nothing, modifierScrollLock: maybe<bool> = Nothing, modifierSuper: maybe<bool> = Nothing, modifierSymbol: maybe<bool> = Nothing, modifierSymbolLock: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match ctrlKey
     Just(it) -> setJsObjectField(obj, "ctrlKey", it)
     Nothing -> ()
@@ -303,7 +303,7 @@ pub fun newEventModifierInit(ctrlKey: maybe<bool> = Nothing, shiftKey: maybe<boo
     Just(it) -> setJsObjectField(obj, "modifierSymbolLock", it)
     Nothing -> ()
 
-  EventModifierInit(obj);
+  EventModifierInit(obj)
 
 pub inline fun ctrlKey(obj: eventModifierInit, value: bool): web ()
   setJsObjectField(obj.obj, "ctrlKey", value.obj)
@@ -419,7 +419,7 @@ pub value struct wheelEventInit
   obj: jsObject
 
 pub fun newWheelEventInit(deltaX: maybe<double> = Nothing, deltaY: maybe<double> = Nothing, deltaZ: maybe<double> = Nothing, deltaMode: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match deltaX
     Just(it) -> setJsObjectField(obj, "deltaX", it)
     Nothing -> ()
@@ -433,7 +433,7 @@ pub fun newWheelEventInit(deltaX: maybe<double> = Nothing, deltaY: maybe<double>
     Just(it) -> setJsObjectField(obj, "deltaMode", it)
     Nothing -> ()
 
-  WheelEventInit(obj);
+  WheelEventInit(obj)
 
 pub inline fun deltaX(obj: wheelEventInit, value: double): web ()
   setJsObjectField(obj.obj, "deltaX", value.obj)
@@ -484,7 +484,7 @@ pub value struct inputEventInit
   obj: jsObject
 
 pub fun newInputEventInit(dataTransfer: maybe<maybe<html/dataTransfer>> = Nothing, targetRanges: maybe<jsArray> = Nothing, data: maybe<maybe<string>> = Nothing, isComposing: maybe<bool> = Nothing, inputType: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match dataTransfer
     Just(it) -> setJsObjectField(obj, "dataTransfer", it)
     Nothing -> ()
@@ -501,7 +501,7 @@ pub fun newInputEventInit(dataTransfer: maybe<maybe<html/dataTransfer>> = Nothin
     Just(it) -> setJsObjectField(obj, "inputType", it)
     Nothing -> ()
 
-  InputEventInit(obj);
+  InputEventInit(obj)
 
 pub inline fun dataTransfer(obj: inputEventInit, value: maybe<html/dataTransfer>): web ()
   setJsObjectField(obj.obj, "dataTransfer", value.obj)
@@ -593,7 +593,7 @@ pub value struct keyboardEventInit
   obj: jsObject
 
 pub fun newKeyboardEventInit(key: maybe<string> = Nothing, code: maybe<string> = Nothing, location: maybe<int> = Nothing, repeat: maybe<bool> = Nothing, isComposing: maybe<bool> = Nothing, charCode: maybe<int> = Nothing, keyCode: maybe<int> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match key
     Just(it) -> setJsObjectField(obj, "key", it)
     Nothing -> ()
@@ -616,7 +616,7 @@ pub fun newKeyboardEventInit(key: maybe<string> = Nothing, code: maybe<string> =
     Just(it) -> setJsObjectField(obj, "keyCode", it)
     Nothing -> ()
 
-  KeyboardEventInit(obj);
+  KeyboardEventInit(obj)
 
 pub inline fun key(obj: keyboardEventInit, value: string): web ()
   setJsObjectField(obj.obj, "key", value.obj)
@@ -676,12 +676,12 @@ pub value struct compositionEventInit
   obj: jsObject
 
 pub fun newCompositionEventInit(data: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match data
     Just(it) -> setJsObjectField(obj, "data", it)
     Nothing -> ()
 
-  CompositionEventInit(obj);
+  CompositionEventInit(obj)
 
 pub inline fun data(obj: compositionEventInit, value: string): web ()
   setJsObjectField(obj.obj, "data", value.obj)

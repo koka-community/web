@@ -347,7 +347,7 @@ class Translator {
   }
 
   String _typedef(String name, String type) =>
-      'pub alias ${lower(name)} = $type;\n';
+      'pub alias ${lower(name)} = $type\n';
 
   String _topLevelGetter(String dartName, String getterName) =>
       'pub extern $getterName(): ${_typeReference(dartName)}\n\tc inline "(topLevelGet($getterName))"';
@@ -459,7 +459,7 @@ class Translator {
       optionalParameterNames.add(_parameterName(field.name.toDart));
     }
     return 'pub fun new${objectName.snakeToPascal}(${parameters(optionalParameters)})\n'
-        '  val obj = newJsObject();\n${members.map((i) {
+        '  val obj = newJsObject()\n${members.map((i) {
       final field = i as idl.Field;
       final isRequired = field.required.toDart;
       final name = _parameterName(field.name.toDart);
@@ -471,7 +471,7 @@ class Translator {
             '    Nothing -> ()\n';
       }
     }).join()}\n'
-        '  ${objectName.snakeToPascal}(obj);\n';
+        '  ${objectName.snakeToPascal}(obj)\n';
   }
 
   _MemberName _memberName(String name) {
@@ -618,7 +618,7 @@ class Translator {
     required bool isObjectLiteral,
   }) =>
       'pub value struct $dartClassName\n  obj: jsObject\n\n'
-      // '${members.where((m) => m.type.toDart == 'field').map((m) => '\n\t${(m as idl.Field).name.toDart}: ${_idlTypeToTypeReference(m.idlType, isReturn: false)}').join()};\n\n'
+      // '${members.where((m) => m.type.toDart == 'field').map((m) => '\n\t${(m as idl.Field).name.toDart}: ${_idlTypeToTypeReference(m.idlType, isReturn: false)}').join()}\n\n'
       // TODO: cast methods for implements?
       '${isObjectLiteral ? _objectLiteral(members, dartClassName) : constructor != null ? _constructor(constructor, dartClassName) : ''}'
       '${_operations(staticOperations, '').followedBy(_members(staticMembers, '')).join('\n')}';

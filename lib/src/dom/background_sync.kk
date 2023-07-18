@@ -32,12 +32,12 @@ pub value struct syncEventInit
   obj: jsObject
 
 pub fun newSyncEventInit(tag: string, lastChance: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "tag", tag);  match lastChance
     Just(it) -> setJsObjectField(obj, "lastChance", it)
     Nothing -> ()
 
-  SyncEventInit(obj);
+  SyncEventInit(obj)
 
 pub inline fun tag(obj: syncEventInit, value: string): web ()
   setJsObjectField(obj.obj, "tag", value.obj)

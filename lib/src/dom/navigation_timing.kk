@@ -5,7 +5,7 @@ import web/wasm
 
 
 
-pub alias navigationTimingType = string;
+pub alias navigationTimingType = string
 
 pub value struct performanceNavigationTiming
   obj: jsObject

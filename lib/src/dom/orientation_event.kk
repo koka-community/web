@@ -30,7 +30,7 @@ pub value struct deviceOrientationEventInit
   obj: jsObject
 
 pub fun newDeviceOrientationEventInit(alpha: maybe<maybe<double>> = Nothing, beta: maybe<maybe<double>> = Nothing, gamma: maybe<maybe<double>> = Nothing, absolute: maybe<bool> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match alpha
     Just(it) -> setJsObjectField(obj, "alpha", it)
     Nothing -> ()
@@ -44,7 +44,7 @@ pub fun newDeviceOrientationEventInit(alpha: maybe<maybe<double>> = Nothing, bet
     Just(it) -> setJsObjectField(obj, "absolute", it)
     Nothing -> ()
 
-  DeviceOrientationEventInit(obj);
+  DeviceOrientationEventInit(obj)
 
 pub inline fun alpha(obj: deviceOrientationEventInit, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "alpha", value.obj)
@@ -120,7 +120,7 @@ pub value struct deviceMotionEventAccelerationInit
   obj: jsObject
 
 pub fun newDeviceMotionEventAccelerationInit(x: maybe<maybe<double>> = Nothing, y: maybe<maybe<double>> = Nothing, z: maybe<maybe<double>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match x
     Just(it) -> setJsObjectField(obj, "x", it)
     Nothing -> ()
@@ -131,7 +131,7 @@ pub fun newDeviceMotionEventAccelerationInit(x: maybe<maybe<double>> = Nothing, 
     Just(it) -> setJsObjectField(obj, "z", it)
     Nothing -> ()
 
-  DeviceMotionEventAccelerationInit(obj);
+  DeviceMotionEventAccelerationInit(obj)
 
 pub inline fun x(obj: deviceMotionEventAccelerationInit, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "x", value.obj)
@@ -155,7 +155,7 @@ pub value struct deviceMotionEventRotationRateInit
   obj: jsObject
 
 pub fun newDeviceMotionEventRotationRateInit(alpha: maybe<maybe<double>> = Nothing, beta: maybe<maybe<double>> = Nothing, gamma: maybe<maybe<double>> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match alpha
     Just(it) -> setJsObjectField(obj, "alpha", it)
     Nothing -> ()
@@ -166,7 +166,7 @@ pub fun newDeviceMotionEventRotationRateInit(alpha: maybe<maybe<double>> = Nothi
     Just(it) -> setJsObjectField(obj, "gamma", it)
     Nothing -> ()
 
-  DeviceMotionEventRotationRateInit(obj);
+  DeviceMotionEventRotationRateInit(obj)
 
 pub inline fun alpha(obj: deviceMotionEventRotationRateInit, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "alpha", value.obj)
@@ -190,7 +190,7 @@ pub value struct deviceMotionEventInit
   obj: jsObject
 
 pub fun newDeviceMotionEventInit(acceleration: maybe<deviceMotionEventAccelerationInit> = Nothing, accelerationIncludingGravity: maybe<deviceMotionEventAccelerationInit> = Nothing, rotationRate: maybe<deviceMotionEventRotationRateInit> = Nothing, interval: maybe<double> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match acceleration
     Just(it) -> setJsObjectField(obj, "acceleration", it)
     Nothing -> ()
@@ -204,7 +204,7 @@ pub fun newDeviceMotionEventInit(acceleration: maybe<deviceMotionEventAccelerati
     Just(it) -> setJsObjectField(obj, "interval", it)
     Nothing -> ()
 
-  DeviceMotionEventInit(obj);
+  DeviceMotionEventInit(obj)
 
 pub inline fun acceleration(obj: deviceMotionEventInit, value: deviceMotionEventAccelerationInit): web ()
   setJsObjectField(obj.obj, "acceleration", value.obj)

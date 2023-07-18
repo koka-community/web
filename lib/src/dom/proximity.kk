@@ -25,9 +25,9 @@ pub value struct proximityReadingValues
   obj: jsObject
 
 pub fun newProximityReadingValues(distance: maybe<double>, max: maybe<double>, near: maybe<bool>)
-  val obj = newJsObject();
+  val obj = newJsObject()
   setJsObjectField(obj, "distance", distance);  setJsObjectField(obj, "max", max);  setJsObjectField(obj, "near", near);
-  ProximityReadingValues(obj);
+  ProximityReadingValues(obj)
 
 pub inline fun distance(obj: proximityReadingValues, value: maybe<double>): web ()
   setJsObjectField(obj.obj, "distance", value.obj)

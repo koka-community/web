@@ -10,12 +10,12 @@ pub value struct queryOptions
   obj: jsObject
 
 pub fun newQueryOptions(postscriptNames: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match postscriptNames
     Just(it) -> setJsObjectField(obj, "postscriptNames", it)
     Nothing -> ()
 
-  QueryOptions(obj);
+  QueryOptions(obj)
 
 pub inline fun postscriptNames(obj: queryOptions, value: jsArray): web ()
   setJsObjectField(obj.obj, "postscriptNames", value.obj)

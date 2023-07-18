@@ -3,10 +3,10 @@
 //BSD-style license that can be found in the LICENSE file.
 import web/wasm
 
-pub alias lockGrantedCallback = jsFunction;
+pub alias lockGrantedCallback = jsFunction
 
 
-pub alias lockMode = string;
+pub alias lockMode = string
 
 pub value struct navigatorLocks
   obj: jsObject
@@ -29,7 +29,7 @@ pub value struct lockOptions
   obj: jsObject
 
 pub fun newLockOptions(mode: maybe<lockMode> = Nothing, ifAvailable: maybe<bool> = Nothing, steal: maybe<bool> = Nothing, signal: maybe<dom/abortSignal> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match mode
     Just(it) -> setJsObjectField(obj, "mode", it)
     Nothing -> ()
@@ -43,7 +43,7 @@ pub fun newLockOptions(mode: maybe<lockMode> = Nothing, ifAvailable: maybe<bool>
     Just(it) -> setJsObjectField(obj, "signal", it)
     Nothing -> ()
 
-  LockOptions(obj);
+  LockOptions(obj)
 
 pub inline fun mode(obj: lockOptions, value: lockMode): web ()
   setJsObjectField(obj.obj, "mode", value.obj)
@@ -73,7 +73,7 @@ pub value struct lockManagerSnapshot
   obj: jsObject
 
 pub fun newLockManagerSnapshot(held: maybe<jsArray> = Nothing, pending: maybe<jsArray> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match held
     Just(it) -> setJsObjectField(obj, "held", it)
     Nothing -> ()
@@ -81,7 +81,7 @@ pub fun newLockManagerSnapshot(held: maybe<jsArray> = Nothing, pending: maybe<js
     Just(it) -> setJsObjectField(obj, "pending", it)
     Nothing -> ()
 
-  LockManagerSnapshot(obj);
+  LockManagerSnapshot(obj)
 
 pub inline fun held(obj: lockManagerSnapshot, value: jsArray): web ()
   setJsObjectField(obj.obj, "held", value.obj)
@@ -99,7 +99,7 @@ pub value struct lockInfo
   obj: jsObject
 
 pub fun newLockInfo(name: maybe<string> = Nothing, mode: maybe<lockMode> = Nothing, clientId: maybe<string> = Nothing)
-  val obj = newJsObject();
+  val obj = newJsObject()
   match name
     Just(it) -> setJsObjectField(obj, "name", it)
     Nothing -> ()
@@ -110,7 +110,7 @@ pub fun newLockInfo(name: maybe<string> = Nothing, mode: maybe<lockMode> = Nothi
     Just(it) -> setJsObjectField(obj, "clientId", it)
     Nothing -> ()
 
-  LockInfo(obj);
+  LockInfo(obj)
 
 pub inline fun name(obj: lockInfo, value: string): web ()
   setJsObjectField(obj.obj, "name", value.obj)
