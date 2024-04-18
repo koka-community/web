@@ -1,5 +1,4 @@
-Lightweight browser API bindings built around
-[JS interop](https://dart.dev/interop/js-interop).
+Lightweight browser API bindings built around Koka's `extern` api.
 
 ## What's this?
 
@@ -7,7 +6,7 @@ This package exposes browser APIs. It's generated from the Web IDL definitions a
 Eventually we will also support WASM.
 
 > [!WARNING]
-> This repository is a WIP, and the package is currently basically not implemented
+> This repository is a WIP, and the package is currently basically not implemented.
 > The plan is to reuse the generators from the Dart language, but generate Koka code.
 > Eventually we might transition to a more optimized workflow for Koka, without all of the extras we don't need. 
 > The below documentation is related to Dart still, and will be updated as we design an appropriate API.
