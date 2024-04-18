@@ -1,37 +1,17 @@
-[![Dart CI](https://github.com/dart-lang/web/actions/workflows/build.yml/badge.svg)](https://github.com/dart-lang/web/actions/workflows/build.yml)
-[![pub package](https://img.shields.io/pub/v/web.svg)](https://pub.dev/packages/web)
-[![package publisher](https://img.shields.io/pub/publisher/web.svg)](https://pub.dev/packages/web/publisher)
-
 Lightweight browser API bindings built around
 [JS interop](https://dart.dev/interop/js-interop).
 
 ## What's this?
 
-This package exposes browser APIs. It's generated from the Web IDL definitions
-and uses recent Dart language features for zero-overhead bindings.
+This package exposes browser APIs. It's generated from the Web IDL definitions and uses Koka's extern `js` api to interface with the browser.
+Eventually we will also support WASM.
 
-This package is intended to replace
-[`dart:html`](https://api.dart.dev/stable/dart-html/dart-html-library.html) and
-similar Dart SDK libraries. It will support access to browser APIs from Dart
-code compiled to either JavaScript or WebAssembly.
-
-## Usage
-
-```dart
-import 'package:web/web.dart';
-
-void main() {
-  final div = document.querySelector('div')!;
-  div.text = 'Text set at ${DateTime.now()}';
-}
-```
-
-## Migrating to package:web
-
-`package:web` is replacing `dart:html` and other web libraries as Dart's 
-long-term web interop solution. To learn how to migrate from `dart:html`
-APIs to `package:web`, see our
-[migration guide](https://dart.dev/go/package-web).
+> [!WARNING]
+> This repository is a WIP, and the package is currently basically not implemented
+> The plan is to reuse the generators from the Dart language, but generate Koka code.
+> Eventually we might transition to a more optimized workflow for Koka, without all of the extras we don't need. 
+> The below documentation is related to Dart still, and will be updated as we design an appropriate API.
+> Every once in a while we should sync from the upstream Dart project, the methodology for doing so is still being determined.
 
 ## Generation conventions
 
