@@ -553,7 +553,7 @@ class Translator {
   }
 
   void collect(String shortName, JSArray<idl.Node> ast) {
-    final libraryPath = '$_librarySubDir/${shortName.kebabToSnake}.dart';
+    final libraryPath = '$_librarySubDir/${shortName.snakeToKebab}.kk';
     assert(!_libraries.containsKey(libraryPath));
 
     final library = _Library(this, '$packageRoot/$libraryPath');
@@ -575,7 +575,6 @@ class Translator {
 
   code.Method _topLevelGetter(_RawType type, String getterName) =>
       code.Method((b) => b
-        ..annotations.addAll(_jsOverride('', alwaysEmit: true))
         ..external = true
         ..returns = _typeReference(type)
         ..name = getterName
@@ -611,12 +610,12 @@ class Translator {
         typeParameter = rawType.typeParameter;
       }
       dartType = switch (dartType) {
-        'JSInteger' => 'JSNumber',
-        'JSDouble' => 'JSNumber',
+        'JSInteger' => 'int',
+        'JSDouble' => 'float64',
         // When the result is `undefined`, we use `JSAny?`. We explicitly
         // declare `JSUndefined` `_RawType`s to be nullable, so no need to set
         // nullable.
-        'JSUndefined' => 'JSAny',
+        'JSUndefined' => 'any',
         _ => dartType,
       };
     } else {
@@ -747,26 +746,11 @@ class Translator {
     }
   }
 
-  // Generates an `@JS` annotation if the given [jsOverride] is not empty or if
-  // [alwaysEmit] is true.
-  //
-  // The value of the annotation is either omitted or [jsOverride] if it isn't
-  // empty.
-  List<code.Expression> _jsOverride(String jsOverride,
-          {bool alwaysEmit = false}) =>
-      [
-        if (jsOverride.isNotEmpty || alwaysEmit)
-          code.refer('JS', 'dart:js_interop').call([
-            if (jsOverride.isNotEmpty) code.literalString(jsOverride),
-          ]),
-      ];
-
   code.Method _operation(_OverridableOperation operation) {
     final memberName = operation.name;
     return _overridableMember<code.Method>(
       operation,
       (requiredParameters, optionalParameters) => code.Method((b) => b
-        ..annotations.addAll(_jsOverride(memberName.jsOverride))
         ..external = true
         ..static = operation.isStatic
         ..returns = _typeToTypeReference(operation.returnType)
@@ -777,48 +761,30 @@ class Translator {
     );
   }
 
-  List<code.Method> _getterSetter({
+  List<String> _getterSetter({
     required String fieldName,
-    required code.Reference Function() getType,
+    required String Function() getType,
     required bool isStatic,
     required bool readOnly,
     required MdnInterface? mdnInterface,
   }) {
+    final type = getType();
     final memberName = _MemberName(fieldName);
     final name = memberName.name;
     final docs = mdnInterface?.propertyFor(name)?.formattedDocs ?? [];
-
     return [
-      code.Method(
-        (b) => b
-          ..annotations.addAll(_jsOverride(memberName.jsOverride))
-          ..external = true
-          ..static = isStatic
-          ..returns = getType()
-          ..type = code.MethodType.getter
-          ..name = name
-          ..docs.addAll(docs),
-      ),
-      if (!readOnly)
-        code.Method(
-          (b) => b
-            ..annotations.addAll(_jsOverride(memberName.jsOverride))
-            ..external = true
-            ..static = isStatic
-            ..type = code.MethodType.setter
-            ..name = name
-            ..requiredParameters.add(
-              code.Parameter(
-                (b) => b
-                  ..type = getType()
-                  ..name = 'value',
-              ),
-            ),
-        ),
+      '$docs',
+      'extern get-$name(${mdnInterface != null ? 'obj: ${mdnInterface.name}' : ''}): $type',
+      '  js inline "#1.$name"',
+      if (!readOnly) ...[
+        '$docs'
+            'extern set-$name(${mdnInterface != null ? 'obj: ${mdnInterface.name}' : ''}, value: $type): ()',
+        '  js inline "#1.$name = #2"',
+      ]
     ];
   }
 
-  List<code.Method> _getterSetterWithIDLType({
+  List<String> _getterSetterWithIDLType({
     required String fieldName,
     required idl.IDLType type,
     required bool isStatic,
@@ -834,8 +800,7 @@ class Translator {
     );
   }
 
-  List<code.Method> _attribute(
-      idl.Attribute attribute, MdnInterface? mdnInterface) {
+  List<String> _attribute(idl.Attribute attribute, MdnInterface? mdnInterface) {
     return _getterSetterWithIDLType(
       fieldName: attribute.name,
       type: attribute.idlType,
@@ -845,18 +810,13 @@ class Translator {
     );
   }
 
-  code.Method _constant(idl.Constant constant) {
-    return code.Method(
-      (b) => b
-        ..external = true
-        ..static = true
-        ..returns = _idlTypeToTypeReference(constant.idlType)
-        ..type = code.MethodType.getter
-        ..name = constant.name,
-    );
+  String _constant(idl.Constant constant) {
+    return 'extern get-${constant.name}(): ${_idlTypeToTypeReference(constant.idlType)}'
+        '  js inline "${constant.name}"'
+        'val ${constant.name} = get-${constant.name}()';
   }
 
-  List<code.Method> _field(idl.Field field, MdnInterface? mdnInterface) {
+  List<String> _field(idl.Field field, MdnInterface? mdnInterface) {
     return _getterSetterWithIDLType(
       fieldName: field.name,
       type: field.idlType,
@@ -866,7 +826,7 @@ class Translator {
     );
   }
 
-  List<code.Method> _member(idl.Member member, MdnInterface? mdnInterface) {
+  List<String> _member(idl.Member member, MdnInterface? mdnInterface) {
     final type = member.type;
     return switch (type) {
       'operation' => throw Exception('Should be handled explicitly.'),
@@ -882,22 +842,21 @@ class Translator {
     };
   }
 
-  List<code.Method> _members(
-      List<idl.Member> members, MdnInterface? mdnInterface) {
+  List<String> _members(List<idl.Member> members, MdnInterface? mdnInterface) {
     return [
       for (final member in members) ..._member(member, mdnInterface),
     ];
   }
 
-  List<code.Method> _operations(List<_OverridableOperation> operations) =>
+  List<String> _operations(List<_OverridableOperation> operations) =>
       [for (final operation in operations) _operation(operation)];
 
-  List<code.Method> _cssStyleDeclarationProperties() {
+  List<String> _cssStyleDeclarationProperties() {
     return [
       for (final style in _cssStyleDeclarations)
         ..._getterSetter(
           fieldName: style,
-          getType: () => code.TypeReference((b) => b..symbol = 'String'),
+          getType: () => 'string',
           isStatic: false,
           readOnly: false,
           mdnInterface: null,
@@ -978,12 +937,12 @@ class Translator {
   }) {
     final docs = mdnInterface == null ? <String>[] : mdnInterface.formattedDocs;
 
-    final jsObject = _typeReference(_RawType('JSObject', false));
+    final jsObject = _typeReference(_RawType('any', false));
     const representationFieldName = '_';
     return code.ExtensionType((b) => b
       ..docs.addAll(docs)
-      ..annotations.addAll(
-          _jsOverride(isObjectLiteral || jsName == dartClassName ? '' : jsName))
+      // ..annotations.addAll(
+      //     _jsOverride(isObjectLiteral || jsName == dartClassName ? '' : jsName))
       ..name = dartClassName
       ..primaryConstructorName = '_'
       ..representationDeclaration = code.RepresentationDeclaration((b) => b
@@ -1064,11 +1023,6 @@ class Translator {
       ...mozLicenseHeader,
     ])
     ..generatedByComment = generatedFileDisclaimer
-    // TODO(srujzs): This is to address the issue around extension type object
-    // literal constructors in https://github.com/dart-lang/sdk/issues/54801.
-    // Once this package moves to an SDK version that contains a fix for that,
-    // this can be removed.
-    ..annotations.addAll(_jsOverride('', alwaysEmit: true))
     ..body.addAll([
       for (final typedef in library.typedefs)
         _typedef(
@@ -1106,7 +1060,7 @@ class Translator {
       }
     }
 
-    dartLibraries['dom.dart'] = generateRootImport(dartLibraries.keys);
+    dartLibraries['dom.kk'] = generateRootImport(dartLibraries.keys);
 
     return dartLibraries;
   }

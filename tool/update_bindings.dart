@@ -64,10 +64,10 @@ $_usage''');
   }
 
   // Determine the set of previously generated files.
-  final domDir = Directory(p.join('lib', 'src', 'dom'));
+  final domDir = Directory(p.join('web', 'src', 'dom'));
   final existingFiles =
       domDir.listSync(recursive: true).whereType<File>().where((file) {
-    if (!file.path.endsWith('.dart')) return false;
+    if (!file.path.endsWith('.kk')) return false;
 
     final contents = file.readAsStringSync();
     return contents.contains('Generated from Web IDL definitions');
@@ -79,7 +79,7 @@ $_usage''');
   // Run app with `node`.
   await _runProc(
     'node',
-    ['main.mjs', '../../lib/src'],
+    ['main.mjs', '../../web/src'],
     workingDirectory: _bindingsGeneratorPath,
   );
 
@@ -169,7 +169,7 @@ Future<void> _runProc(
 Future<void> _generateJsTypeSupertypes() async {
   // Use a file that uses `dart:js_interop` for analysis.
   final contextCollection = AnalysisContextCollection(includedPaths: [
-    p.fromUri(Platform.script.resolve('../lib/src/dom.dart'))
+    p.fromUri(Platform.script.resolve('../web/src/dom.dart'))
   ]);
   final dartJsInterop = (await contextCollection.contexts.single.currentSession
           .getLibraryByUri('dart:js_interop') as LibraryElementResult)

@@ -1,0 +1,48 @@
+// Copyright (c) 2024, the Koka-community authors.
+// All rights reserved. Use of this source code is governed by a
+// MIT-style license that can be found in the LICENSE file.
+//
+// API docs from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web).
+// Attributions and copyright licensing by Mozilla Contributors is licensed
+// under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/.
+
+// Generated from Web IDL definitions.
+
+@JS()
+library;
+
+import 'dart:js_interop';
+
+import 'hr-time.kk';
+
+/// The **`PerformanceServerTiming`** interface surfaces server metrics that are
+/// sent with the response in the  HTTP header.
+///
+/// This interface is restricted to the same origin, but you can use the  header
+/// to specify the domains that are allowed to access the server metrics. Note
+/// that this interface is only available in secure contexts (HTTPS) in some
+/// browsers.
+///
+/// ---
+///
+/// API documentation sourced from
+/// [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceServerTiming).
+extension type PerformanceServerTiming._(any _) implements any {
+  /// The **`toJSON()`** method of the [PerformanceServerTiming] interface is a
+  /// ; it returns a JSON representation of the [PerformanceServerTiming]
+  /// object.
+  external any toJSON();
+
+  /// The **`name`** read-only property returns a
+  /// string value of the server-specified metric name.
+  external string get name;
+
+  /// The **`duration`** read-only property returns a double that contains the
+  /// server-specified metric duration, or the value `0.0`.
+  external DOMHighResTimeStamp get duration;
+
+  /// The **`description`** read-only property returns a
+  /// string value of the server-specified metric description, or an empty
+  /// string.
+  external string get description;
+}

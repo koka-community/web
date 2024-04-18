@@ -25,9 +25,9 @@ void ensureDirectoryExists(String dir) {
 final int year = DateTime.now().year;
 
 final List<String> licenseHeader = [
-  'Copyright (c) $year, the Dart project authors.  Please see the AUTHORS file',
-  'for details. All rights reserved. Use of this source code is governed by a',
-  'BSD-style license that can be found in the LICENSE file.',
+  'Copyright (c) $year, the Koka-community authors.',
+  'All rights reserved. Use of this source code is governed by a',
+  'MIT-style license that can be found in the LICENSE file.',
 ];
 
 final List<String> mozLicenseHeader = [
@@ -48,6 +48,8 @@ extension StringExt on String {
         _snakeBit,
         (match) => match[0]!.toUpperCase(),
       ).replaceAll('_', '');
+
+  String get snakeToKebab => toLowerCase().replaceAll('_', '-');
 }
 
 final _snakeBit = RegExp('_[a-zA-Z]');
