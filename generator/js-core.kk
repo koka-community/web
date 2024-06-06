@@ -4,6 +4,9 @@ struct jsobject<t>
 struct jsarray<t>
   internal: any
 
+pub inline extern extern/new-obj(): jsobject<t>
+  js inline "({})"
+
 extern extern/get-mstring(a: any, key: string): maybe<string>
   js inline "const _x = #1[#2]; _x === null || _x === undefined ? $std_core_types.Nothing() : $std_core_types.Just(_x)"
 
@@ -16,11 +19,23 @@ inline extern extern/get-string(a: any, key: string): string
 pub inline fun get-string(a: jsobject<t>, key: string): string
   get-string(a.internal, key)
 
+inline extern extern/set-string(a: any, key: string, value: string): ()
+  js inline "#1[#2] = #3"
+
+pub inline fun set-string(a: jsobject<t>, key: string, value: string): ()
+  set-string(a.internal, key, value)
+
 inline extern extern/get-bool(a: any, key: string): bool
   js inline "#1[#2]"
 
 pub inline fun get-bool(a: jsobject<t>, key: string): bool
   get-bool(a.internal, key)
+
+inline extern extern/set-bool(a: any, key: string, value: bool): ()
+  js inline "#1[#2] = #3"
+
+pub inline fun set-bool(a: jsobject<t>, key: string, value: bool): ()
+  set-bool(a.internal, key, value)
 
 inline extern exxtern/get-mbool(a: any, key: string): maybe<bool>
   js inline "const _x = #1[#2]; _x === null || _x === undefined ? $std_core_types.Nothing() : $std_core_types.Just(_x)"

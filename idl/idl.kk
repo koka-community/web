@@ -1,4 +1,4 @@
-import js-core
+import generator/js-core
 
 // NEED Extern import of node module
 
