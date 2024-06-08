@@ -1,3 +1,6 @@
+extern import
+  js file "js_core.mjs"
+
 struct jsobject<t>
   internal: any
 
@@ -8,7 +11,7 @@ pub inline extern extern/new-obj(): jsobject<t>
   js inline "({})"
 
 extern extern/get-mstring(a: any, key: string): maybe<string>
-  js inline "const _x = #1[#2]; _x === null || _x === undefined ? $std_core_types.Nothing() : $std_core_types.Just(_x)"
+  js inline "maybeget(#1, #2)"
 
 pub inline fun get-mstring(a: jsobject<t>, key: string): maybe<string>
   get-mstring(a.internal, key)
@@ -38,7 +41,7 @@ pub inline fun set-bool(a: jsobject<t>, key: string, value: bool): ()
   set-bool(a.internal, key, value)
 
 inline extern exxtern/get-mbool(a: any, key: string): maybe<bool>
-  js inline "const _x = #1[#2]; _x === null || _x === undefined ? $std_core_types.Nothing() : $std_core_types.Just(_x)"
+  js inline "maybeget(#1, #2)"
 
 pub inline fun get-mbool(a: jsobject<t>, key: string): maybe<bool>
   get-mbool(a.internal, key)
@@ -47,7 +50,7 @@ inline extern extern/get-obj(a: any, key: string): any
   js inline "#1[#2]"
 
 inline extern extern/get-mobj(a: any, key: string): maybe<any>
-  js inline "const _x = #1[#2]; _x === null || _x === undefined ? $std_core_types.Nothing() : $std_core_types.Just(_x)"
+  js inline "maybeget(#1, #2)"
 
 pub inline fun get-obj(a: jsobject<t>, key: string): jsobject<any>
   Jsobject(a.internal.get-obj(key))
