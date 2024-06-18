@@ -18,6 +18,6 @@ fun snake-to-kebab(s: string): string
 fun snake-to-pascal(s: string): exn string
   s.replace-all("_[a-zA-Z]".regex) fn(sls:list<sslice>)
       match sls
-        [s] -> s.string.to-upper
+        [s'] -> s'.string.to-upper
         _ -> throw("invalid snake case")
   

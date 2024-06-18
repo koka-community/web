@@ -16,3 +16,9 @@ globalThis.elements = elements;
 globalThis.fs = fs;
 globalThis.idl = idl;
 globalThis.location = { href: `file://${process.cwd()}/` }
+
+globalThis.setup = async function () {
+  globalThis.cssSync = await css.listAll()
+  globalThis.elementsSync = await elements.listAll()
+  globalThis.idlSync = await idl.parseAll();
+}

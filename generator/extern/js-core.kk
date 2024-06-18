@@ -55,8 +55,22 @@ inline extern extern/get-mobj(a: any, key: string): maybe<any>
 pub inline fun get-obj(a: jsobject<t>, key: string): jsobject<any>
   Jsobject(a.internal.get-obj(key))
 
-pub inline fun get-array(a: jsobject<t>, key: string): jsarray<any>
+pub inline fun get-array(a: jsobject<t>, key: string): jsarray<s>
   Jsarray(a.internal.get-obj(key))
+
+pub inline fun get-marray(a: jsobject<t>, key: string): maybe<jsarray<s>>
+  match a.internal.get-mobj(key)
+    Just(internal) -> Just(Jsarray(internal))
+    Nothing -> Nothing
+
+inline extern extern/@index(a: any, index: int): any
+  js inline "#1[#2]"
+
+pub inline fun array/@index(a: jsarray<t>, index: int): jsobject<s>
+  Jsobject(a.internal[index])
+
+pub inline fun as-array<s>(a: jsobject<t>): jsarray<jsobject<s>>
+  Jsarray(a.internal)
 
 pub inline fun get-mobj(a: jsobject<t>, key: string): maybe<jsobject<any>>
   get-mobj(a.internal, key).map(Jsobject)

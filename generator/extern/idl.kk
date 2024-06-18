@@ -1,6 +1,9 @@
-import generator/js-core
+import js-core
 
-// NEED Extern import of node module
+extern getidl(): any
+  js inline "globalThis.idlSync"
+
+pub val idl = Jsobject(getidl())
 
 type idltype_t
 pub alias idltype = jsobject<idltype_t>
