@@ -1,9 +1,9 @@
-import js-core
+import ext/js-core
 
 extern getidl(): any
   js inline "globalThis.idlSync"
 
-pub val idl = Jsobject(getidl())
+pub fun idl() Jsobject(getidl())
 
 type idltype_t
 pub alias idltype = jsobject<idltype_t>

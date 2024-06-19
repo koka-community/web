@@ -1,4 +1,4 @@
-import js-core
+import ext/js-core
 
 // Namespace URIs that are needed to construct non-HTML elements.
 // https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris
@@ -19,12 +19,12 @@ pub fun element/singular-article(element-interface: string): exn string
 extern getelements(): any
   js inline "globalThis.elementsSync"
 
-pub val elements = Jsobject(getelements())
+pub fun elements() Jsobject(getelements())
 
 type elemententries_t
 pub alias elements-entries = jsobject<elemententries_t>
 
-pub fun obj/elements(s: jsobject<t>): maybe<jsarray<elements-entries>>
+pub fun obj/elements(s: jsobject<t>): maybe<jsarray<element-entry>>
   s.get-marray("elements")
 
 type elemententry_t

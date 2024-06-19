@@ -22,3 +22,7 @@ globalThis.setup = async function () {
   globalThis.elementsSync = await elements.listAll()
   globalThis.idlSync = await idl.parseAll();
 }
+
+globalThis.doSetup = function(f) {
+  globalThis.setup().then(f);
+}

@@ -1,11 +1,11 @@
-pub import js-core
+pub import ext/js-core
 
 type mkdir-options_t
 alias mkdir-options = jsobject<mkdir-options_t>
 
-fun new/mkdir-options(recursive:bool = False): mkdir-options
+fun new/mkdir-options(recur:bool = False): mkdir-options
   val js = new-obj()
-  js.set-bool("recursive", recursive)
+  js.set-bool("recursive", recur)
   js
 
 type read-file-options_t
@@ -22,7 +22,7 @@ pub inline extern exists-sync(path: string): bool
 inline extern extern/mkdir-sync(path: string, options: any): ()
   js inline "fs.mkdirSync(#1, #2)"
 
-pub inline fun fs/mkdir-sync(path: string, options: mkdir-options = mkdir-options()): ()
+pub fun fs/mkdir-sync(path: string, options: mkdir-options = mkdir-options()): ()
   mkdir-sync(path, options.internal)
 
 inline extern read-file-sync(path: string, options: any): any

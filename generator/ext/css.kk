@@ -1,9 +1,9 @@
-import js-core
+import ext/js-core
 
 extern getcss(): any
   js inline "globalThis.cssSync"
 
-pub val css = Jsobject(getcss())
+pub fun css() Jsobject(getcss())
 
 type cssentry_t
 pub alias css-entry = jsobject<cssentry_t>

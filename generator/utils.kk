@@ -3,7 +3,7 @@ import std/text/regex
 
 fun ensure-dir-exists(s: string): ()
   if !exists-sync(s) then
-    mkdir-sync(s, mkdir-options(recursive=True))
+    mkdir-sync(s, mkdir-options(recur=True))
 
 fun capitalize(s: string): exn string
   match s.slice.next
@@ -20,4 +20,3 @@ fun snake-to-pascal(s: string): exn string
       match sls
         [s'] -> s'.string.to-upper
         _ -> throw("invalid snake case")
-  
