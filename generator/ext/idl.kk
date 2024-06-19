@@ -34,7 +34,26 @@ pub alias node = jsobject<node_t>
 pub inline fun node/as-node(node: node): node
   node
 
-pub inline fun node/get-type(node: jsobject<t>, ?as-node: (jsobject<t>) -> node): string
+pub inline fun node/as-interface-like(node: jsobject<t>): interface-like
+  Jsobject(node.internal)
+
+pub inline fun node/as-typedef(node: jsobject<t>): typedef
+  Jsobject(node.internal)
+
+pub inline fun node/as-enum(node: jsobject<t>): jsenum
+  Jsobject(node.internal)
+
+pub inline fun node/as-includes(node: jsobject<t>): includes
+  Jsobject(node.internal)
+
+pub inline fun node/as-callback(node: jsobject<t>): callback
+  Jsobject(node.internal)
+
+pub inline fun node/as-constant(node: jsobject<t>): constant
+  Jsobject(node.internal)
+
+
+pub inline fun node/get-type(node: jsobject<t>): string
   node.get-string("type")
 
 

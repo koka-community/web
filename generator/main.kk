@@ -1,11 +1,14 @@
 import std/os/env
 import std/os/path
+import std/data/linearmap
+import std/data/linearset
 import std/jsextern
-import utils
 import ext/files
 import ext/idl
 import ext/css
 import ext/elements
+import translator
+import utils
 
 extern import
   js file "main.mjs"
@@ -18,7 +21,7 @@ pub fun main()
   //                                  main jsdebug version .koka generator
   val dir = get-args()[0].unjust.path.nobase.nobase.nobase.nobase.nobase.string
   ensure-dir-exists(dir ++ "/dom")
-  val bindings = generate-bindings("dom") // TODO: Async/Await
+  val bindings = generate-bindings("dom".path) // TODO: Async/Await
   foreach(bindings) fn((lib-path, library))
     println("Writing to " ++ dir ++ " " ++ lib-path)
     write-file-sync(dir ++ "/" ++ lib-path, emit-library(library))
@@ -44,7 +47,7 @@ fun generate-css-style()
   results.concat
 
 fun generate-element-tag-map()
-  elements().entries.foldl([]) fn(acc, (_,value))
+  elements().entries.foldl(LinearMap([])) fn(acc, (_,value))
     val data : elements-entries = value.unsafe-cast()
     match data.elements
       Nothing -> acc
@@ -53,22 +56,23 @@ fun generate-element-tag-map()
           val element = elements[i]
           val tag = element.name()
           val interf = element.elem/interface()
-          match (tag, interf)
-            (Just(t), Just(i'')) ->
-              match acc'.lookup(fn(i') -> i' == i'')
-                Nothing -> Cons((i'', [t]), acc')
-                Just(tags) -> Cons((i'', Cons(t, tags.remove(fn(t') t' == t))), acc'.remove(fn((i',_)) -> i' == i''))
+          match (interf, tag)
+            (Just(i'), Just(t)) ->
+              acc'.update(i', LinearSet([t]), fn(old, new) old.union(new))
             _ -> acc'
 
-fun generate-bindings(dir: string)
+fun generate-bindings(dir: path)
   val cssres = generate-css-style()
   val elementres = generate-element-tag-map()
-  val idls = idl().entries.map fn((shortname, value)) 
+  val t = idl().entries.foldl(Translator(dir, cssres, elementres)) fn(t, (shortname, value)) 
     val ast: jsarray<node> = value.unsafe-as-array()
-    shortname.println
-    ""
-  // println(elementres)
+    t.collect(shortname, ast)
+  // t.set-or-update-interface-likes().translate()
   println("Generating Bindings")
+  t.libraries.foreach fn(shortname, lib)
+    println(shortname ++ ": " ++ lib.url.show)
+  t.typeToLibrary.keys.println
+  // println(elementres)
   [("something.txt", "")]
   
 fun emit-library(c)
