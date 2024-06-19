@@ -1,4 +1,4 @@
-import ext/js-core
+import std/jsextern
 
 extern getidl(): any
   js inline "globalThis.idlSync"

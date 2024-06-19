@@ -1,20 +1,18 @@
-pub import ext/js-core
+import std/jsextern
 
 type mkdir-options_t
 alias mkdir-options = jsobject<mkdir-options_t>
 
-fun new/mkdir-options(recur:bool = False): mkdir-options
-  val js = new-obj()
-  js.set-bool("recursive", recur)
-  js
+pub fun mkdir-options(recur:bool = False): mkdir-options
+  val js = obj/new()
+  js.update-bool("recursive", recur)
 
 type read-file-options_t
 alias read-file-options = jsobject<read-file-options_t>
 
-fun read-file-options(encoding: string): read-file-options
-  val js = new-obj()
-  js.set-string("encoding", encoding)
-  js
+pub fun read-file-options(encoding: string): read-file-options
+  val js = obj/new()
+  js.update-string("encoding", encoding)
 
 pub inline extern exists-sync(path: string): bool
   js inline "fs.existsSync(#1)"

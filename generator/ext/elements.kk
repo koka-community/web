@@ -1,4 +1,4 @@
-import ext/js-core
+import std/jsextern
 
 // Namespace URIs that are needed to construct non-HTML elements.
 // https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris

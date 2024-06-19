@@ -1,4 +1,4 @@
-import ext/js-core
+import std/jsextern
 
 extern getcss(): any
   js inline "globalThis.cssSync"

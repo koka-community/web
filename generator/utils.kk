@@ -1,4 +1,4 @@
-import files
+import ext/files
 import std/text/regex
 
 fun ensure-dir-exists(s: string): ()

@@ -1,7 +1,8 @@
 import std/os/env
 import std/os/path
-import files
+import std/jsextern
 import utils
+import ext/files
 import ext/idl
 import ext/css
 import ext/elements
@@ -24,7 +25,7 @@ pub fun main()
 
 fun generate-css-style()
   val results = css().entries.map fn((_, value))
-    val entry: css-entries = value.cast()
+    val entry: css-entries = value.unsafe-cast()
     match entry.get-properties()
       Nothing -> []
       Just(props) ->
@@ -44,7 +45,7 @@ fun generate-css-style()
 
 fun generate-element-tag-map()
   elements().entries.foldl([]) fn(acc, (_,value))
-    val data : elements-entries = value.cast()
+    val data : elements-entries = value.unsafe-cast()
     match data.elements
       Nothing -> acc
       Just(elements) -> 
@@ -63,7 +64,7 @@ fun generate-bindings(dir: string)
   val cssres = generate-css-style()
   val elementres = generate-element-tag-map()
   val idls = idl().entries.map fn((shortname, value)) 
-    val ast: jsarray<node> = value.cast().as-array()
+    val ast: jsarray<node> = value.unsafe-as-array()
     shortname.println
     ""
   // println(elementres)
