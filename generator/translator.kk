@@ -29,38 +29,121 @@ struct partial-interface-like
   constructor: maybe<overridableCon> = Nothing
 
 fun pinterface-like(n: interface-like, mdn: maybe<mdnInterface>)
-  n.get-members.list.foldl(Partial-interface-like(n.get-name, n.get-type, n.get-inheritence, mdn)) fn(pi, m)
-    pi.add-member(m)
+  n.members.list.foldl(Partial-interface-like(n.name, n.node-type, n.inheritance, mdn), add-member)
+
+fun update(pi: partial-interface-like, i: interface-like): exn partial-interface-like
+  if i.name != pi.name || i.node-type != pi.tp then throw("Mismatched interface-like nodes")
+  val pi' = match pi.inheritance
+    Nothing -> pi(inheritance=i.inheritance)
+    Just(_) -> pi
+  i.members.list.foldl(pi', add-member)
 
 fun hasHtmlConstructorAttribute(c: member): bool
-  c.get-ext-attrs.list.any(fn(a) a.get-name == "HTMLConstructor")
+  c.ext-attrs.list.any(fn(a) a.name == "HTMLConstructor")
 
 fun add-member(pi: partial-interface-like, m: member): exn partial-interface-like
-  match m.get-type
+  match m.member-type
     "constructor" ->
       val c = m.as-constructor
       if m.hasHtmlConstructorAttribute then pi
       else 
         match pi.constructor
-          Nothing -> pi(constructor=Just(overridableMember(c)))
+          Nothing -> pi(constructor=Just(overridableMember(m)))
           Just(oc) -> pi(constructor=Just(update(oc, c)))
-    // TODO: More
+    "const" ->
+      pi(static-members=Cons(m, pi.static-members))
+    "attribute" ->
+      val attr = m.as-attribute
+      if attr.special == "static" then
+        pi(static-members=Cons(m, pi.static-members))
+      elif pi.name == "SVGElement" && attr.name == "className" then
+        // TODO: This is dart specific maybe?
+        // `SVGElement.className` returns an `SVGAnimatedString`, but its
+        // corresponding setter `Element.className` takes a `String`. As
+        // these two types are incompatible, we need to move this member
+        // to an extension instead. As it shares the same name as the
+        // getter `Element.className`, users will need to apply the
+        // extension explicitly.
+        pi(extension-members=Cons(m, pi.extension-members))
+      else
+        pi(members=Cons(m, pi.members))
+    "operation" ->
+      val op = m.as-operation
+      val nm = op.name
+      if nm.is-empty then pi
+      elif op.special == "static" then
+        match pi.static-ops.lookup(nm)
+          Nothing -> 
+            val memberName = if pi.operations.contains-key(nm) then memberName(nm ++ "_", nm) else memberName(nm)
+            pi(static-ops=pi.static-ops.set(nm, overridableOp(memberName, op)))
+          Just(oc) -> pi(static-ops=pi.static-ops.set(nm, oc.update(op)))
+      else 
+        match pi.operations.lookup(nm)
+          Nothing -> 
+            val memberName = if pi.static-ops.contains-key(nm) then memberName(nm ++ "_", nm) else memberName(nm)
+            pi(operations=pi.operations.set(nm, overridableOp(memberName, op)))
+          Just(oc) -> pi(operations=pi.operations.set(nm, oc.update(op)))
+    "field" -> pi(members=Cons(m, pi.members))
+    "maplike" -> pi(members=Cons(m, pi.members))
+    "setlike" -> pi(members=Cons(m, pi.members))
+    "iterable" -> pi(members=Cons(m, pi.members))
+    tp -> throw("Unrecognized member type: " ++ tp)
 
-type overridableOp;
+value struct memberName
+  name: string
+  jsOverride: string
 
+val bannedNames = LinearSet(["assert", "break", "continue", "extends", "default", "in", "is", "as", "var"])
+
+fun koka-rename(jsname: string): exn string
+  val name = jsname.snake-to-kebab.uncapitalize
+  if bannedNames.member(name) then name ++ "_"
+  else name
+
+fun memberName(name: string, js: string = ""): exn memberName
+  val rename = name.koka-rename
+  if rename != name && js == "" then MemberName(rename, name)
+  else MemberName(rename, js)
+
+alias overridableCon = overridableMember
+alias overridableOp = overridableMember;
 struct overridableMember
   parameters: list<parameter>
 
-fun overridableMember(c: jsobject<t>, ?is-subtype: is-subtype<t,constructor_t>): overridableMember
+fun overridableMember(c: member): overridableMember
   OverridableMember([]) // TOOD: More
 
-fun update(c: overridableCon, m: constructor): overridableCon
-  c // TODO: 
+fun overridableOp(s: memberName, c: jsobject<t>): overridableOp
+  OverridableMember([]) // TOOD: More
+
+fun add-parameters(c: overridableMember, p: list<argument>): overridableMember
+  c
+
+fun con/update(c: overridableCon, m: constructor): overridableCon
+  c.add-parameters(m.arguments.list)
+
+fun op/update(o: overridableOp, m: operation): overridableOp
+  o // TODO:
 
 
-alias overridableCon = overridableMember
+type rawType
+  RawType
+    tp: string
+    isNullable: bool
+    tpParam: maybe<rawType>
 
-struct parameter;
+fun new/rawtype(tp: string, isNullable: bool, tpParam: maybe<rawType> = Nothing)
+  if tp == "JSUndefined" then RawType(tp, True, tpParam)
+  else RawType(tp, isNullable, tpParam)
+
+fun tp/update(t: rawType, tp: idltype): rawType
+  t // Compute union...
+
+struct parameter
+  names: linearSet<string>
+  tp: rawType
+  isOptional: bool
+  name: string
 
 struct library
   url: path
@@ -107,19 +190,19 @@ fun add-named(t: translator, n: node, nm: string, url: path): translator
       Translator(dir, css, elements, libs, td.set(nm, n), tl.set(nm, url.string), inc)
       
 fun add(t: translator, lib: library, node: node): exn (translator, library)
-  val tp = node.get-type()
+  val tp = node.node-type
   fun library(l: library): (translator, library)
     (t, l)
   fun add-interface-like(is-mixin: bool = False): (translator, library)
     val ilike = node.as-interface-like()
-    if ilike.get-partial then 
+    if ilike.partial then 
       if is-mixin then lib.add-partial-interface-mixin(ilike).library
       else lib.add-partial-interface(ilike).library
     else
       if is-mixin then 
-        (t.add-named(node, ilike.get-name, lib.url), lib.add-partial-interface-mixin(ilike))
+        (t.add-named(node, ilike.name, lib.url), lib.add-partial-interface-mixin(ilike))
       else
-        (t.add-named(node, ilike.get-name, lib.url), lib.add-interface(ilike))
+        (t.add-named(node, ilike.name, lib.url), lib.add-interface(ilike))
   match tp
     "interface mixin" -> add-interface-like(True)
     "interface" -> add-interface-like()
@@ -127,17 +210,17 @@ fun add(t: translator, lib: library, node: node): exn (translator, library)
     "dictionary" -> add-interface-like()
     "typedef" -> 
       val tydef = node.as-typedef
-      (t.add-named(node, tydef.get-name(), lib.url), lib.add-typedef(tydef))
+      (t.add-named(node, tydef.name, lib.url), lib.add-typedef(tydef))
     "enum" -> 
       val en = node.as-enum
-      (t.add-named(node, en.get-name(), lib.url), lib.add-enum(en))
+      (t.add-named(node, en.name, lib.url), lib.add-enum(en))
     "callback interface" -> 
       val cb = node.as-interface-like
-      (t.add-named(node, cb.get-name, lib.url), lib.add-callback-interface(cb))
+      (t.add-named(node, cb.name, lib.url), lib.add-callback-interface(cb))
     "callback" -> 
       val cl = node.as-callback
-      if cl.get-name() == "Function" then lib.library
-      else (t.add-named(node, node.get-name(), lib.url), lib.add-callback(cl))
+      if cl.name == "Function" then lib.library
+      else (t.add-named(node, cl.name, lib.url), lib.add-callback(cl))
     "includes" -> (t(includes=Cons(node.as-includes, t.includes)), lib)
     "eof" -> lib.library
     _ -> throw("Unexpected node type: " ++ tp)

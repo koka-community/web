@@ -9,6 +9,10 @@ fun capitalize(s: string): exn string
   match s.slice.next
     Just((c, sslice)) -> c.string.to-upper ++ sslice.string
 
+fun uncapitalize(s: string): exn string
+  match s.slice.next
+    Just((c, sslice)) -> c.string.to-lower ++ sslice.string
+
 fun kebab-to-snake(s: string): string
   s.to-lower.replace-all("-", "_")
 
