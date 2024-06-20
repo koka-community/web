@@ -5,33 +5,13 @@ import std/jsextern
 import ext/idl
 import mdn
 import utils
-
-struct translator
-  library-dir: path
-  css-declarations: list<string>
-  element-tags: linearMap<string, linearSet<string>>
-  libraries: linearMap<string, library> = LinearMap([])
-  typeToDeclarations: linearMap<string, node> = LinearMap([])
-  typeToLibrary: linearMap<string, string> = LinearMap([])
-  interfaceLikes: linearMap<string, partial-interface-like> = LinearMap([])
-  includes: list<includes> = []
-
-struct partial-interface-like
-  name: string
-  tp: string
-  inheritance: maybe<string> = Nothing
-  mdnInterface: maybe<mdnInterface> = Nothing
-  operations: linearMap<string, overridableOp> = LinearMap([])
-  static-ops: linearMap<string, overridableOp> = LinearMap([])
-  members: list<member> = []
-  static-members: list<member> = []
-  extension-members: list<member> = []
-  constructor: maybe<overridableCon> = Nothing
+import types
+import base
 
 fun pinterface-like(n: interface-like, mdn: maybe<mdnInterface>)
   n.members.list.foldl(Partial-interface-like(n.name, n.node-type, n.inheritance, mdn), add-member)
 
-fun update(pi: partial-interface-like, i: interface-like): exn partial-interface-like
+fun pi/update(pi: partial-interface-like, i: interface-like): exn partial-interface-like
   if i.name != pi.name || i.node-type != pi.tp then throw("Mismatched interface-like nodes")
   val pi' = match pi.inheritance
     Nothing -> pi(inheritance=i.inheritance)
@@ -89,9 +69,6 @@ fun add-member(pi: partial-interface-like, m: member): exn partial-interface-lik
     "iterable" -> pi(members=Cons(m, pi.members))
     tp -> throw("Unrecognized member type: " ++ tp)
 
-value struct memberName
-  name: string
-  jsOverride: string
 
 val bannedNames = LinearSet(["assert", "break", "continue", "extends", "default", "in", "is", "as", "var"])
 
@@ -105,10 +82,6 @@ fun memberName(name: string, js: string = ""): exn memberName
   if rename != name && js == "" then MemberName(rename, name)
   else MemberName(rename, js)
 
-alias overridableCon = overridableMember
-alias overridableOp = overridableMember;
-struct overridableMember
-  parameters: list<parameter>
 
 fun overridableMember(c: member): overridableMember
   OverridableMember([]) // TOOD: More
@@ -124,54 +97,6 @@ fun con/update(c: overridableCon, m: constructor): overridableCon
 
 fun op/update(o: overridableOp, m: operation): overridableOp
   o // TODO:
-
-
-type rawType
-  RawType
-    tp: string
-    isNullable: bool
-    tpParam: maybe<rawType>
-
-fun new/rawtype(tp: string, isNullable: bool, tpParam: maybe<rawType> = Nothing)
-  if tp == "JSUndefined" then RawType(tp, True, tpParam)
-  else RawType(tp, isNullable, tpParam)
-
-fun tp/update(t: rawType, tp: idltype): rawType
-  t // Compute union...
-
-struct parameter
-  names: linearSet<string>
-  tp: rawType
-  isOptional: bool
-  name: string
-
-struct library
-  url: path
-  interface-likes: list<interface-like> = []
-  partial-interfaces: list<interface-like> = []
-  interface-mixins: list<interface-like> = []
-  partial-interface-mixins: list<interface-like> = []
-  typedefs: list<typedef> = []
-  enums: list<jsenum> = []
-  callbacks: list<callback> = []
-  callback-interfaces: list<interface-like> = []
-
-fun add-interface(lib: library, node: interface-like): library
-  lib(interface-likes=Cons(node, lib.interface-likes))
-fun add-partial-interface(lib: library, node: interface-like): library
-  lib(partial-interfaces=Cons(node, lib.partial-interfaces))
-fun add-partial-interface-mixin(lib: library, node: interface-like): library
-  lib(partial-interface-mixins=Cons(node, lib.partial-interface-mixins))
-fun add-interface-mixin(lib: library, node: interface-like): library
-  lib(interface-mixins=Cons(node, lib.interface-mixins))
-fun add-typedef(lib: library, node: typedef): library
-  lib(typedefs=Cons(node, lib.typedefs))
-fun add-enum(lib: library, node: jsenum): library
-  lib(enums=Cons(node, lib.enums))
-fun add-callback(lib: library, node: callback): library
-  lib(callbacks=Cons(node, lib.callbacks))
-fun add-callback-interface(lib: library, node: interface-like): library
-  lib(callback-interfaces=Cons(node, lib.callback-interfaces))
 
 fun collect(t: translator, shortname: string, ast: jsarray<node>): exn translator
   match t
@@ -189,7 +114,7 @@ fun add-named(t: translator, n: node, nm: string, url: path): translator
     Translator(dir, css, elements, libs, td, tl, inc) ->
       Translator(dir, css, elements, libs, td.set(nm, n), tl.set(nm, url.string), inc)
       
-fun add(t: translator, lib: library, node: node): exn (translator, library)
+fun lib/add(t: translator, lib: library, node: node): exn (translator, library)
   val tp = node.node-type
   fun library(l: library): (translator, library)
     (t, l)
