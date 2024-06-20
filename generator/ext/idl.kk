@@ -11,13 +11,16 @@ pub alias idltype = jsobject<idltype_t>
 pub inline fun idltype/as-idltype(x: idltype): idltype
   x
 
+pub inline fun node/as-idltype(x: node): idltype
+  x.unsafe-cast
+
 pub inline fun idltype/type-string(x: idltype): maybe<string>
   x.get-mstring("type")
 
 pub inline fun idltype/generic(x: idltype): string
   x.get-string("generic")
 
-pub inline fun idltype/idl-type(x: idltype): jsobject<any>
+pub inline fun idltype/idl-type(x: idltype): idltype
   x.get-obj("idlType")
 
 pub inline fun idltype/nullable(x: idltype): bool
