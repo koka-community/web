@@ -5,7 +5,7 @@ import ext/idl
 import std/jsextern
 import std/core/undiv
 
-effect typeDecls
+pub effect typeDecls
   fun tp-lookup(tp: string): maybe<node>
 
 fun withTypeDecls(t: translator, f: () -> <typeDecls|e> a): e a

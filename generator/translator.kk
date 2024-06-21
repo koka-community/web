@@ -1,6 +1,7 @@
 import std/os/path
 import std/data/linearmap
 import std/data/linearset
+import std/data/sort
 import std/jsextern
 import ext/idl
 import mdn
@@ -8,10 +9,52 @@ import utils
 import types
 import base
 
+fun generateParamName(s: linearSet<string>): exn string
+  match s.list.sort
+    Cons(h, t) -> Cons(h, t.map(utils/capitalize)).join("Or")
+
+fun parameter(arg: argument): <pure,typeDecls> parameter
+  val names = LinearSet([arg.name])
+  Parameter(names, getRawType(arg.idl-type), arg.optional, names.generateParamName())
+
+fun param/update(p: parameter, arg: argument): <pure,typeDecls> parameter
+  val nms = p.names.add(arg.name)
+  val tp = p.tp.update(arg.idl-type)
+  Parameter(nms, tp, p.isOptional || arg.optional, nms.generateParamName())
+
+fun overridableMember(c: list<argument>): <pure,typeDecls> overridableMember
+  OverridableMember(c.map(parameter))
+
+fun add-parameters(oldparams: list<parameter>, args: list<argument>): <pure,typeDecls> list<parameter>
+  // Assume if we have extra arguments beyond what was provided in some other
+  // method, that these are all optional.
+  val thatLength = args.length
+  val thisLength = oldparams.length
+  oldparams.zip(args).map-indexed fn(i, (old, new))
+    if i < thisLength && i >= thatLength then old.update(new)(isOptional=True)
+    elif i >= thisLength then parameter(new)(isOptional=True)
+    else old.update(new)
+
+// TODO: MDN
+fun overridableOp(nm: memberName, op: operation): <pure,typeDecls> overridableOp
+  OverridableOp(nm, op.special == "static", getRawType(op.idl-type), op.arguments.list.map(parameter))
+
+fun con/update(c: overridableCon, m: constructor): <pure,typeDecls> overridableCon
+  c(parameters=c.parameters.add-parameters(m.arguments.list))
+
+fun op/update(o: overridableOp, m: operation): <pure,typeDecls> overridableOp
+  match o
+    OverridableOp(nm, isStatic, tp, params, x) -> 
+      val js = nm.jsOverride
+      val newNm = if js == "" then nm.name else js
+      if newNm != nm.name then throw("Mismatched operation names: " ++ nm.name ++ " vs " ++ newNm)
+      if isStatic != (m.special == "static") then throw("Mismatched operation staticness")
+      OverridableOp(nm, isStatic, tp.update(m.idl-type), params.add-parameters(m.arguments.list), x)
+
 fun pinterface-like(n: interface-like, mdn: maybe<mdnInterface>)
   n.members.list.foldl(Partial-interface-like(n.name, n.node-type, n.inheritance, mdn), add-member)
 
-fun pi/update(pi: partial-interface-like, i: interface-like): exn partial-interface-like
+fun pi/update(pi: partial-interface-like, i: interface-like): <pure,typeDecls> partial-interface-like
   if i.name != pi.name || i.node-type != pi.tp then throw("Mismatched interface-like nodes")
   val pi' = match pi.inheritance
     Nothing -> pi(inheritance=i.inheritance)
@@ -21,14 +64,14 @@ fun pi/update(pi: partial-interface-like, i: interface-like): exn partial-interf
 fun hasHtmlConstructorAttribute(c: member): bool
   c.ext-attrs.list.any(fn(a) a.name == "HTMLConstructor")
 
-fun add-member(pi: partial-interface-like, m: member): exn partial-interface-like
+fun add-member(pi: partial-interface-like, m: member): <pure,typeDecls> partial-interface-like
   match m.member-type
     "constructor" ->
       val c = m.as-constructor
       if m.hasHtmlConstructorAttribute then pi
       else 
         match pi.constructor
-          Nothing -> pi(constructor=Just(overridableMember(m)))
+          Nothing -> pi(constructor=Just(overridableMember(c.arguments.list)))
           Just(oc) -> pi(constructor=Just(update(oc, c)))
     "const" ->
       pi(static-members=Cons(m, pi.static-members))
@@ -82,22 +125,6 @@ fun memberName(name: string, js: string = ""): exn memberName
   if rename != name && js == "" then MemberName(rename, name)
   else MemberName(rename, js)
 
-
-fun overridableMember(c: member): overridableMember
-  OverridableMember([]) // TOOD: More
-
-fun overridableOp(s: memberName, c: jsobject<t>): overridableOp
-  OverridableMember([]) // TOOD: More
-
-fun add-parameters(c: overridableMember, p: list<argument>): overridableMember
-  c
-
-fun con/update(c: overridableCon, m: constructor): overridableCon
-  c.add-parameters(m.arguments.list)
-
-fun op/update(o: overridableOp, m: operation): overridableOp
-  o // TODO:
-
 fun collect(t: translator, shortname: string, ast: jsarray<node>): exn translator
   match t
     Translator(dir, _, _, libs) ->
@@ -150,4 +177,40 @@ fun lib/add(t: translator, lib: library, node: node): exn (translator, library)
     "eof" -> lib.library
     _ -> throw("Unexpected node type: " ++ tp)
 
+fun ilike/(==)(a: interface-like, b: interface-like): bool
+  a.name == b.name && a.node-type == b.node-type
 
+fun setOrUpdateInterfaceLikes(t: translator): pure translator
+  var mixins:linearMap<string,linearSet<interface-like>> := LinearMap([])
+  var allIlikes := t.interfaceLikes
+  with withTypeDecls(t)
+  t.libraries.values.map fn(l)
+    val ilikes = l.interface-likes ++ l.partial-interfaces
+    ilikes.foreach fn(i)
+      val nm = i.name
+      match allIlikes.lookup(nm)
+        Just(il) -> 
+          allIlikes := allIlikes.set(nm, il.update(i))
+        Nothing -> 
+          allIlikes := allIlikes.set(nm, pinterface-like(i, Nothing)) // TODO: Doc provider
+    val milikes = l.interface-mixins ++ l.partial-interface-mixins
+    milikes.foreach fn(i) 
+      match mixins.lookup(i.name)
+        Just(ils) -> 
+          mixins := mixins.set(i.name, ils.add(i))
+        Nothing ->
+          mixins := mixins.set(i.name, LinearSet([i]))
+  t.includes.foreach fn(i)
+    val targ = i.target
+    val inc = i.includes
+    // Guard against partial interfaces and mixins that we chose not to generate.
+    match allIlikes.lookup(targ)
+      Just(il) -> 
+        match mixins.lookup(inc)
+          Just(mis) -> 
+            mis.list.foreach fn(partial)
+              allIlikes := allIlikes.set(targ, il.update(partial))
+  t(interfaceLikes=allIlikes)
+        
+      
+      

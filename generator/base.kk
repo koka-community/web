@@ -5,6 +5,7 @@ import std/jsextern
 import ext/idl
 import mdn
 import utils
+import std/core/unsafe
 
 struct translator
   library-dir: path
@@ -44,10 +45,16 @@ value struct memberName
   jsOverride: string
 
 alias overridableCon = overridableMember
-alias overridableOp = overridableMember;
 
 struct overridableMember
   parameters: list<parameter>
+
+struct overridableOp
+  name: memberName
+  isStatic: bool
+  returnType: rawType
+  parameters: list<parameter>
+  mdn: maybe<mdnProperty> = Nothing;
 
 struct parameter
   names: linearSet<string>
