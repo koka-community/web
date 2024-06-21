@@ -1,4 +1,3 @@
-import base
 import std/data/linearmap
 import std/data/linearset
 import ext/idl
@@ -8,11 +7,11 @@ import std/core/undiv
 pub effect typeDecls
   fun tp-lookup(tp: string): maybe<node>
 
-fun withTypeDecls(t: translator, f: () -> <typeDecls|e> a): e a
-  with handler
-    fun tp-lookup(tp: string)
-      t.typeToDeclarations.lookup(tp)
-  f()
+type rawType
+  RawType
+    tp: string
+    isNullable: bool
+    tpParam: maybe<rawType> = Nothing
 
 fun typedef-as-jstype(r: rawType): <pure,typeDecls> maybe<rawType>
   match tp-lookup(r.tp)
@@ -81,6 +80,7 @@ fun getRawType(idl: idltype): <pure,typeDecls> rawType
     match tp 
       Just("WindowProxy") -> tp := Just("Window")
       Just("any") -> null := True
+      Just -> ()
     match tp
       Just(x) -> RawType(idlOrBuiltinToJsTypeAliases.lookup(x).default(x), null, typeParam)
       Nothing -> throw("Unhandled type")
@@ -190,6 +190,7 @@ val idlOrBuiltinToJsTypeAliases = LinearMap([
   ("ByteString", "string"),
   ("CSSOMString", "string"),
 ])
+
 val jsTypeToKokaPrimitiveAliases = LinearMap([
   ("JSBoolean", "bool"),
   ("JSString", "string"),

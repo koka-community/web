@@ -7,17 +7,20 @@ import ext/files
 import ext/idl
 import ext/css
 import ext/elements
-import translator
+import processor
+import common
 import utils
 
 extern import
   js file "main.mjs"
 
-extern doSetup(f: () -> e ()): e ()
+extern doSetup(f: () -> <io-noexn> ()): <io-noexn> ()
   js inline "globalThis.doSetup(#1)"
 
 pub fun main()
   with doSetup
+  with handler
+    final ctl throw-exn(e) -> e.show.println
   //                                  main jsdebug version .koka generator
   val dir = get-args()[0].unjust.path.nobase.nobase.nobase.nobase.nobase.string
   ensure-dir-exists(dir ++ "/dom")
@@ -67,7 +70,7 @@ fun generate-bindings(dir: path)
   val t = idl().entries.foldl(Translator(dir, cssres, elementres)) fn(t, (shortname, value)) 
     val ast: jsarray<node> = value.unsafe-as-array()
     t.collect(shortname, ast)
-  // t.set-or-update-interface-likes().translate()
+  t.setOrUpdateInterfaceLikes() // .translate()
   println("Generating Bindings")
   t.libraries.foreach fn(shortname, lib)
     println(shortname ++ ": " ++ lib.url.show)

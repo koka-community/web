@@ -2,10 +2,11 @@ import std/os/path
 import std/data/linearmap
 import std/data/linearset
 import std/jsextern
+import std/core/unsafe
 import ext/idl
 import mdn
 import utils
-import std/core/unsafe
+import types
 
 struct translator
   library-dir: path
@@ -61,12 +62,6 @@ struct parameter
   tp: rawType
   isOptional: bool
   name: string
-
-type rawType
-  RawType
-    tp: string
-    isNullable: bool
-    tpParam: maybe<rawType> = Nothing
 
 fun add-interface(lib: library, node: interface-like): library
   lib(interface-likes=Cons(node, lib.interface-likes))
