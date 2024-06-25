@@ -5,3 +5,5 @@ pubspec.lock
 tool/generator/*.js
 tool/generator/*.js.*
 tool/generator/node_modules/
+.koka
+scratch
