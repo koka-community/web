@@ -291,6 +291,9 @@ pub alias constant = jsobject<constant_t>
 pub inline fun constant/is-subtype(x: constant, y: member): bool
   True
 
+pub inline fun member/as-constant(x: jsobject<t>, ?as-member: (jsobject<t>) -> member): constant
+  x.as-member.subtype-cast
+
 pub inline fun constant/idl-type(x: jsobject<t>, ?is-subtype: is-subtype<t,constant_t>): idltype
   x.get-obj("idlType")
 

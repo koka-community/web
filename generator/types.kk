@@ -50,7 +50,7 @@ fun compute-raw-type-union(r1: rawType, r2: rawType): <typeDecls,pure> rawType
   val ut2 = getTypeForUnionCalc(r2)
   // JSAny if not both JS types
   RawType(
-    computeJsTypeUnion(ut1.tp, ut2.tp).default("JSAny"),
+    compute-js-type-union(ut1.tp, ut2.tp).default("JSAny"),
     ut1.isNullable || ut2.isNullable,
     computeTpParamUnion(ut1.tpParam, ut2.tpParam)
     )
@@ -85,22 +85,22 @@ fun getRawType(idl: idltype): <pure,typeDecls> rawType
       Just(x) -> RawType(idlOrBuiltinToJsTypeAliases.lookup(x).default(x), null, typeParam)
       Nothing -> throw("Unhandled type")
 
-fun computeJsTypeUnion(tp1: string, tp2: string): maybe<string>
-  if !jsTypeSupertypes.contains-key(tp1) || !jsTypeSupertypes.contains-key(tp2) then return Nothing
+fun compute-js-type-union(tp1: string, tp2: string): maybe<string>
+  if !js-type-supertypes.contains-key(tp1) || !js-type-supertypes.contains-key(tp2) then return Nothing
   else
-    fun pathFromRoot(mtp: maybe<string>): list<string>
+    fun path-from-root(mtp: maybe<string>): list<string>
       match mtp
         Nothing -> Nil
-        Just(tp) -> match jsTypeSupertypes.lookup(tp)
+        Just(tp) -> match js-type-supertypes.lookup(tp)
             Nothing -> Cons(tp, Nil)
-            Just(sup) -> Cons(tp, pathFromRoot(sup.pretend-decreasing))
-    val t1p = pathFromRoot(Just(tp1))
-    val t2p = pathFromRoot(Just(tp2))
-    fun findCommon(common: maybe<string>, tps1: list<string>, tps2: list<string>): maybe<string>
+            Just(sup) -> Cons(tp, path-from-root(sup.pretend-decreasing))
+    val t1p = path-from-root(Just(tp1))
+    val t2p = path-from-root(Just(tp2))
+    fun find-common(common: maybe<string>, tps1: list<string>, tps2: list<string>): maybe<string>
       match (tps1, tps2)
-        (Cons(h1, t1), Cons(h2, t2)) -> if h1 == h2 then findCommon(Just(h1).pretend-decreasing, t1, t2) else common
+        (Cons(h1, t1), Cons(h2, t2)) -> if h1 == h2 then find-common(Just(h1).pretend-decreasing, t1, t2) else common
         _ -> common
-    findCommon(Nothing, t1p, t2p)
+    find-common(Nothing, t1p, t2p)
 
 fun new/rawtype(tp: string, isNullable: bool, tpParam: maybe<rawType> = Nothing)
   if tp == "JSUndefined" then RawType(tp, True, tpParam)
@@ -109,7 +109,7 @@ fun new/rawtype(tp: string, isNullable: bool, tpParam: maybe<rawType> = Nothing)
 fun tp/update(r: rawType, tp: idltype): <pure,typeDecls> rawType
   compute-raw-type-union(r, getRawType(tp))
 
-val jsTypeSupertypes = LinearMap([
+val js-type-supertypes = LinearMap([
   ("JSAny",Nothing),
   ("JSArray",Just("JSObject")),
   ("JSArrayBuffer",Just("JSObject")),

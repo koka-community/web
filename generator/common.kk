@@ -36,9 +36,8 @@ struct partial-interface-like
   mdnInterface: maybe<mdnInterface> = Nothing
   operations: linearMap<string, overridableOp> = LinearMap([])
   static-ops: linearMap<string, overridableOp> = LinearMap([])
-  members: list<member> = []
-  static-members: list<member> = []
-  extension-members: list<member> = []
+  properties: list<property> = []
+  extension-properties: list<property> = []
   constructor: maybe<overridableCon> = Nothing
 
 value struct memberName
@@ -56,6 +55,11 @@ struct overridableOp
   returnType: rawType
   parameters: list<parameter>
   mdn: maybe<mdnProperty> = Nothing;
+
+type property
+  Constant(name: memberName, tp: rawType, mdnProperty: maybe<mdnProperty>)
+  Attribute(name: memberName, tp: rawType, mdnProperty: maybe<mdnProperty>, isStatic: bool, isReadOnly: bool)
+  Field(name: memberName, tp: rawType, mdnProperty: maybe<mdnProperty>, isRequired: bool)
 
 struct parameter
   names: linearSet<string>

@@ -70,6 +70,17 @@ fun pi/update(pi: partial-interface-like, i: interface-like): <pure,typeDecls> p
 fun hasHtmlConstructorAttribute(c: member): bool
   c.ext-attrs.list.any(fn(a) a.name == "HTMLConstructor")
 
+
+fun field(name: memberName, idltp: idltype, isRequired: bool, mdnProp: maybe<mdnProperty> = Nothing)
+  Field(name, getRawType(idltp), mdnProp, isRequired)
+
+fun constant(name: memberName, idltp: idltype, mdnProp: maybe<mdnProperty> = Nothing)
+  Constant(name, getRawType(idltp), mdnProp)
+
+fun attribute(name: memberName, idltp: idltype, isStatic: bool, isRequired: bool, mdnProp: maybe<mdnProperty> = Nothing)
+  Attribute(name, getRawType(idltp), mdnProp, isStatic, isRequired)
+
+// TODO: Update
 fun add-member(pi: partial-interface-like, m: member): <pure,typeDecls> partial-interface-like
   match m.member-type
     "constructor" ->
@@ -80,7 +91,8 @@ fun add-member(pi: partial-interface-like, m: member): <pure,typeDecls> partial-
           Nothing -> pi(constructor=Just(overridableMember(c.arguments.list)))
           Just(oc) -> pi(constructor=Just(update(oc, c)))
     "const" ->
-      pi(static-members=Cons(m, pi.static-members))
+      val c = m.as-constant
+      pi(properties=Cons(constant(memberName(c.name), c.idl-type), pi.properties))
     "attribute" ->
       val attr = m.as-attribute
       if attr.special == "static" then
@@ -218,5 +230,39 @@ fun setOrUpdateInterfaceLikes(t: translator): pure translator
               allIlikes := allIlikes.set(targ, il.update(partial))
   t(interfaceLikes=allIlikes)
         
-      
-      
+/// If `rawTp` corresponds to an IDL type that we declare as a typedef,
+/// desugars the typedef, accounting for nullability along the way.
+///
+/// Otherwise, returns Nothing.
+fun desugar-typedef(rawTp: rawType): <pure,typeDecls> maybe<rawType>
+  match tp-lookup(rawTp.tp)
+    Nothing -> Nothing
+    Just(decl:node) ->  
+      match decl.node-type
+        "typedef" -> 
+          val typedef = decl.as-typedef.idl-type.getRawType
+          Just(typedef(isNullable=rawTp.isNullable))
+        "callback" -> Just(RawType("JSFunction", rawTp.isNullable))
+        "callback interface" -> Just(RawType("JSFunction", rawTp.isNullable))
+        "enum" -> Just(RawType("JSString", rawTp.isNullable))
+
+/// Given a `rawTp`, return its JS type-equivalent type if it's a type that is
+/// declared in the IDL.
+///
+/// Otherwise, return null.
+fun js-type-equivalent(rawTp: rawType)
+  match tp-lookup(rawTp.tp)
+    Nothing -> Nothing
+    Just(decl) -> 
+      match decl.node-type
+        "interface" -> Just(RawType("JSObject", rawTp.isNullable))
+        "dictionary" -> Just(RawType("JSObject", rawTp.isNullable))
+        _ ->
+          match desugar-typedef(rawTp)
+            Nothing -> throw("Unhandled type " ++ rawTp.tp)
+            Just(tp) -> 
+              match js-type-equivalent(tp)
+                Nothing -> Just(tp)
+                Just(tp') -> Just(tp')
+
+// TODO: 
