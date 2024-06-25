@@ -84,6 +84,7 @@ fun attribute(name: memberName, idltp: idltype, isStatic: bool, isRequired: bool
 fun add-member(pi: partial-interface-like, m: member): <pure,typeDecls> partial-interface-like
   match m.member-type
     "constructor" ->
+      if !should-generate-member(pi) then return pi 
       val c = m.as-constructor
       if m.hasHtmlConstructorAttribute then pi
       else 
@@ -95,24 +96,17 @@ fun add-member(pi: partial-interface-like, m: member): <pure,typeDecls> partial-
       pi(properties=Cons(constant(memberName(c.name), c.idl-type), pi.properties))
     "attribute" ->
       val attr = m.as-attribute
-      if attr.special == "static" then
-        pi(static-members=Cons(m, pi.static-members))
-      elif pi.name == "SVGElement" && attr.name == "className" then
-        // TODO: This is dart specific maybe?
-        // `SVGElement.className` returns an `SVGAnimatedString`, but its
-        // corresponding setter `Element.className` takes a `String`. As
-        // these two types are incompatible, we need to move this member
-        // to an extension instead. As it shares the same name as the
-        // getter `Element.className`, users will need to apply the
-        // extension explicitly.
-        pi(extension-members=Cons(m, pi.extension-members))
-      else
-        pi(members=Cons(m, pi.members))
+      val attrname = attr.name
+      val isstatic = attr.special == "static"
+      if !should-generate-member(pi, attrname, isstatic) then return pi
+      pi(properties=Cons(attribute(memberName(attrname), attr.idl-type, isstatic, attr.read-only), pi.properties))
     "operation" ->
       val op = m.as-operation
       val nm = op.name
-      if nm.is-empty then pi
-      elif op.special == "static" then
+      if nm.is-empty then return pi
+      val isstatic = op.special == "static"
+      if !should-generate-member(pi, nm, isstatic) then return pi
+      if isstatic then
         match pi.static-ops.lookup(nm)
           Nothing -> 
             val memberName = if pi.operations.contains-key(nm) then memberName(nm ++ "_", nm) else memberName(nm)
@@ -124,10 +118,14 @@ fun add-member(pi: partial-interface-like, m: member): <pure,typeDecls> partial-
             val memberName = if pi.static-ops.contains-key(nm) then memberName(nm ++ "_", nm) else memberName(nm)
             pi(operations=pi.operations.set(nm, overridableOp(memberName, op)))
           Just(oc) -> pi(operations=pi.operations.set(nm, oc.update(op)))
-    "field" -> pi(members=Cons(m, pi.members))
-    "maplike" -> pi(members=Cons(m, pi.members))
-    "setlike" -> pi(members=Cons(m, pi.members))
-    "iterable" -> pi(members=Cons(m, pi.members))
+    "field" -> 
+      val f = m.as-field
+      val nm = f.name
+      if !should-generate-member(pi, nm) then return pi
+      pi(properties=Cons(field(memberName(nm), f.idl-type, f.required), pi.properties))
+    "maplike" -> pi
+    "setlike" -> pi
+    "iterable" -> pi
     tp -> throw("Unrecognized member type: " ++ tp)
 
 
@@ -137,6 +135,13 @@ fun koka-rename(jsname: string): exn string
   val name = jsname.snake-to-kebab.uncapitalize
   if bannedNames.member(name) then name ++ "_"
   else name
+
+fun should-generate-member(pi: partial-interface-like, name: string = pi.name, isStatic:bool=False)
+  if pi.tp != "interface" && pi.tp != "namespace" then True
+  else
+    // TODO: Browser compatibility
+    if isStatic then True
+    else False
 
 fun memberName(name: string, js: string = ""): exn memberName
   val rename = name.koka-rename
@@ -266,3 +271,5 @@ fun js-type-equivalent(rawTp: rawType)
                 Just(tp') -> Just(tp')
 
 // TODO: 
+//set-inheritance (and usages)
+//markTypeAsUsed
