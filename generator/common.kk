@@ -6,17 +6,100 @@ import std/core/unsafe
 import ext/idl
 import mdn
 import utils
-import types
 
-struct translator
-  library-dir: path
-  css-declarations: list<string>
-  element-tags: linearMap<string, linearSet<string>>
-  libraries: linearMap<string, library> = LinearMap([])
-  typeToDeclarations: linearMap<string, node> = LinearMap([])
-  typeToLibrary: linearMap<string, string> = LinearMap([])
-  interfaceLikes: linearMap<string, partial-interface-like> = LinearMap([])
-  includes: list<includes> = []
+effect translator
+  val library-dir: path
+  fun css-declarations(): list<string>
+  fun element-tags(): linearMap<string, linearSet<string>>
+  fun libraries(): linearMap<string, library>
+  fun typeToDeclarations(): linearMap<string, node>
+  fun typeToLibrary(): linearMap<string, string>
+  fun interfaceLikes(): linearMap<string, partial-interface-like>
+  fun includes(): list<includes>
+  fun used-types(): linearSet<node>
+  fun add-named(n: node, nm: string, url: path): ()
+  fun add-library(nm: string, lib: library): ()
+  fun add-include(i: includes): ()
+  fun add-used(n: node): ()
+  fun set-interface-like(nm: string, i: partial-interface-like): ()
+
+extern node/(==)(a: node, b: node): bool
+  js "#1 === #2"
+
+fun ilike/(==)(a: interface-like, b: interface-like): bool
+  a.name == b.name && a.node-type == b.node-type
+
+fun translator(path: path, css: list<string>, tags: linearMap<string, linearSet<string>>, f: () -> <translator,st<h>|e> a): <st<h>|e> a 
+  val libs = ref(LinearMap([]))
+  val typeToDecls = ref(LinearMap([]))
+  val typeToLib = ref(LinearMap([]))
+  val interfaceLikes = ref(LinearMap([]))
+  val includes = ref([])
+  val usedTypes = ref(LinearSet([]))
+  with handler
+    val library-dir = path
+    fun css-declarations() css
+    fun element-tags() tags
+    fun libraries() !libs
+    fun used-types() !usedTypes
+    fun typeToDeclarations() !typeToDecls
+    fun typeToLibrary() !typeToLib
+    fun interfaceLikes() !interfaceLikes
+    fun includes() !includes
+    fun add-named(n, nm, url)
+      typeToDecls := (!typeToDecls).add(nm, n)
+      typeToLib := (!typeToLib).add(nm, url.string)
+    fun set-interface-like(nm, i)
+      interfaceLikes := (!interfaceLikes).set(nm, i)
+    fun add-library(nm, lib)
+      libs := (!libs).add(nm, lib)
+    fun add-include(i)
+      includes := Cons(i, !includes)
+    fun add-used(n)
+      usedTypes := (!usedTypes).add(n)
+  f()
+
+effect library-builder
+  val lib-url: path
+  fun add-interface(node: interface-like): ()
+  fun add-partial-interface(node: interface-like): ()
+  fun add-partial-interface-mixin(node: interface-like): ()
+  fun add-interface-mixin(node: interface-like): ()
+  fun add-typedef(node: typedef): ()
+  fun add-enum(node: jsenum): ()
+  fun add-callback(node: callback): ()
+  fun add-callback-interface(node: interface-like): ()
+
+fun build-library(nm: string, p: path, f: () -> <library-builder,translator,st<h>|e> ()): <translator,st<h>|e> ()
+  val ilikes = ref([])
+  val pils = ref([])
+  val pims = ref([])
+  val ims = ref([])
+  val tdefs = ref([])
+  val enums = ref([])
+  val cbs = ref([])
+  val cbis = ref([])
+  with handler
+    val lib-url = p
+    fun add-interface(node) ilikes := Cons(node, !ilikes)
+    fun add-partial-interface(node) pils := Cons(node, !pils)
+    fun add-partial-interface-mixin(node) pims := Cons(node, !pims)
+    fun add-interface-mixin(node) ims := Cons(node, !ims)
+    fun add-typedef(node) tdefs := Cons(node, !tdefs)
+    fun add-enum(node) enums := Cons(node, !enums)
+    fun add-callback(node) cbs := Cons(node, !cbs)
+    fun add-callback-interface(node) cbis := Cons(node, !cbis)
+  f()
+  add-library(nm, Library(p, !ilikes, !pils, !ims, !pims, !tdefs, !enums, !cbs, !cbis))  
+
+fun tp-lookup(tp: string): translator maybe<node>
+  typeToDeclarations().lookup(tp)
+
+type rawType
+  RawType
+    tp: string
+    isNullable: bool
+    tpParam: maybe<rawType> = Nothing
 
 struct library
   url: path
@@ -66,20 +149,3 @@ struct parameter
   tp: rawType
   isOptional: bool
   name: string
-
-fun add-interface(lib: library, node: interface-like): library
-  lib(interface-likes=Cons(node, lib.interface-likes))
-fun add-partial-interface(lib: library, node: interface-like): library
-  lib(partial-interfaces=Cons(node, lib.partial-interfaces))
-fun add-partial-interface-mixin(lib: library, node: interface-like): library
-  lib(partial-interface-mixins=Cons(node, lib.partial-interface-mixins))
-fun add-interface-mixin(lib: library, node: interface-like): library
-  lib(interface-mixins=Cons(node, lib.interface-mixins))
-fun add-typedef(lib: library, node: typedef): library
-  lib(typedefs=Cons(node, lib.typedefs))
-fun add-enum(lib: library, node: jsenum): library
-  lib(enums=Cons(node, lib.enums))
-fun add-callback(lib: library, node: callback): library
-  lib(callbacks=Cons(node, lib.callbacks))
-fun add-callback-interface(lib: library, node: interface-like): library
-  lib(callback-interfaces=Cons(node, lib.callback-interfaces))

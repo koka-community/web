@@ -9,29 +9,23 @@ import utils
 import types
 import common
 
-fun withTypeDecls(t: translator, f: () -> <typeDecls|e> a): e a
-  with handler
-    fun tp-lookup(tp: string)
-      t.typeToDeclarations.lookup(tp)
-  f()
-
 fun generateParamName(s: linearSet<string>): exn string
   match s.list.sort
     Cons(h, t) -> Cons(h, t.map(utils/capitalize)).join("Or")
 
-fun parameter(arg: argument): <pure,typeDecls> parameter
+fun parameter(arg: argument): <pure,translator> parameter
   val names = LinearSet([arg.name])
   Parameter(names, getRawType(arg.idl-type), arg.optional, names.generateParamName())
 
-fun param/update(p: parameter, arg: argument): <pure,typeDecls> parameter
+fun param/update(p: parameter, arg: argument): <pure,translator> parameter
   val nms = p.names.add(arg.name)
   val tp = p.tp.update(arg.idl-type)
   Parameter(nms, tp, p.isOptional || arg.optional, nms.generateParamName())
 
-fun overridableMember(c: list<argument>): <pure,typeDecls> overridableMember
+fun overridableMember(c: list<argument>): <pure,translator> overridableMember
   OverridableMember(c.map(parameter))
 
-fun add-parameters(oldparams: list<parameter>, args: list<argument>): <pure,typeDecls> list<parameter>
+fun add-parameters(oldparams: list<parameter>, args: list<argument>): <pure,translator> list<parameter>
   // Assume if we have extra arguments beyond what was provided in some other
   // method, that these are all optional.
   val thatLength = args.length
@@ -42,13 +36,13 @@ fun add-parameters(oldparams: list<parameter>, args: list<argument>): <pure,type
     else old.update(new)
 
 // TODO: MDN
-fun overridableOp(nm: memberName, op: operation): <pure,typeDecls> overridableOp
+fun overridableOp(nm: memberName, op: operation): <pure,translator> overridableOp
   OverridableOp(nm, op.special == "static", getRawType(op.idl-type), op.arguments.list.map(parameter))
 
-fun con/update(c: overridableCon, m: constructor): <pure,typeDecls> overridableCon
+fun con/update(c: overridableCon, m: constructor): <pure,translator> overridableCon
   c(parameters=c.parameters.add-parameters(m.arguments.list))
 
-fun op/update(o: overridableOp, m: operation): <pure,typeDecls> overridableOp
+fun op/update(o: overridableOp, m: operation): <pure,translator> overridableOp
   match o
     OverridableOp(nm, isStatic, tp, params, x) -> 
       val js = nm.jsOverride
@@ -60,8 +54,8 @@ fun op/update(o: overridableOp, m: operation): <pure,typeDecls> overridableOp
 fun pinterface-like(n: interface-like, mdn: maybe<mdnInterface>)
   n.members.list.foldl(Partial-interface-like(n.name, n.node-type, n.inheritance, mdn), add-member)
 
-fun pi/update(pi: partial-interface-like, i: interface-like): <pure,typeDecls> partial-interface-like
-  if i.name != pi.name || i.node-type != pi.tp then throw("Mismatched interface-like nodes")
+fun pi/update(pi: partial-interface-like, i: interface-like): <pure,translator> partial-interface-like
+  if i.name != pi.name || i.node-type != pi.tp then throw("Mismatched interface-like nodes " ++ i.name ++ " vs " ++ pi.name)
   val pi' = match pi.inheritance
     Nothing -> pi(inheritance=i.inheritance)
     Just(_) -> pi
@@ -81,7 +75,7 @@ fun attribute(name: memberName, idltp: idltype, isStatic: bool, isRequired: bool
   Attribute(name, getRawType(idltp), mdnProp, isStatic, isRequired)
 
 // TODO: Update
-fun add-member(pi: partial-interface-like, m: member): <pure,typeDecls> partial-interface-like
+fun add-member(pi: partial-interface-like, m: member): <pure,translator> partial-interface-like
   match m.member-type
     "constructor" ->
       if !should-generate-member(pi) then return pi 
@@ -90,7 +84,7 @@ fun add-member(pi: partial-interface-like, m: member): <pure,typeDecls> partial-
       else 
         match pi.constructor
           Nothing -> pi(constructor=Just(overridableMember(c.arguments.list)))
-          Just(oc) -> pi(constructor=Just(update(oc, c)))
+          Just(oc) -> pi(constructor=Just(oc.update(c)))
     "const" ->
       val c = m.as-constant
       pi(properties=Cons(constant(memberName(c.name), c.idl-type), pi.properties))
@@ -148,36 +142,29 @@ fun memberName(name: string, js: string = ""): exn memberName
   if rename != name && js == "" then MemberName(rename, name)
   else MemberName(rename, js)
 
-fun collect(t: translator, shortname: string, ast: jsarray<node>): exn translator
-  match t
-    Translator(dir, _, _, libs) ->
-      if libs.contains-key(shortname) then t
-      else
-        val libPath = dir / (shortname.snake-to-kebab ++ ".kk")
-        // TODO: Check if should generate based on browser support
-        val (t', lib) = ast.list.foldl((t, Library(libPath))) fn((t', lib'), node) 
-            add(t', lib', node)
-        t'(libraries = libs.set(shortname, lib))
-
-fun add-named(t: translator, n: node, nm: string, url: path): translator
-  match t
-    Translator(dir, css, elements, libs, td, tl, inc) ->
-      Translator(dir, css, elements, libs, td.set(nm, n), tl.set(nm, url.string), inc)
+fun collect(shortname: string, ast: jsarray<node>): <translator,exn> ()
+  if libraries().contains-key(shortname) then
+    ()
+  else 
+    val libPath = library-dir / (shortname.snake-to-kebab ++ ".kk")
+    with build-library(shortname, libPath)
+    ast.list.foreach fn(node)
+      add(node)
       
-fun lib/add(t: translator, lib: library, node: node): exn (translator, library)
+fun lib/add(node: node): <translator,library-builder,exn> ()
   val tp = node.node-type
-  fun library(l: library): (translator, library)
-    (t, l)
-  fun add-interface-like(is-mixin: bool = False): (translator, library)
+  fun add-interface-like(is-mixin: bool = False)
     val ilike = node.as-interface-like()
     if ilike.partial then 
-      if is-mixin then lib.add-partial-interface-mixin(ilike).library
-      else lib.add-partial-interface(ilike).library
+      if is-mixin then add-partial-interface-mixin(ilike)
+      else add-partial-interface(ilike)
     else
       if is-mixin then 
-        (t.add-named(node, ilike.name, lib.url), lib.add-partial-interface-mixin(ilike))
+        add-named(node, ilike.name, lib-url)
+        add-partial-interface-mixin(ilike)
       else
-        (t.add-named(node, ilike.name, lib.url), lib.add-interface(ilike))
+        add-named(node, ilike.name, lib-url)
+        add-interface(ilike)
   match tp
     "interface mixin" -> add-interface-like(True)
     "interface" -> add-interface-like()
@@ -185,37 +172,44 @@ fun lib/add(t: translator, lib: library, node: node): exn (translator, library)
     "dictionary" -> add-interface-like()
     "typedef" -> 
       val tydef = node.as-typedef
-      (t.add-named(node, tydef.name, lib.url), lib.add-typedef(tydef))
+      add-named(node, tydef.name, lib-url)
+      add-typedef(tydef)
     "enum" -> 
       val en = node.as-enum
-      (t.add-named(node, en.name, lib.url), lib.add-enum(en))
+      add-named(node, en.name, lib-url)
+      add-enum(en)
     "callback interface" -> 
       val cb = node.as-interface-like
-      (t.add-named(node, cb.name, lib.url), lib.add-callback-interface(cb))
+      add-named(node, cb.name, lib-url)
+      add-callback-interface(cb)
     "callback" -> 
       val cl = node.as-callback
-      if cl.name == "Function" then lib.library
-      else (t.add-named(node, cl.name, lib.url), lib.add-callback(cl))
-    "includes" -> (t(includes=Cons(node.as-includes, t.includes)), lib)
-    "eof" -> lib.library
+      if cl.name == "Function" then ()
+      else 
+        add-named(node, cl.name, lib-url)
+        add-callback(cl)
+    "includes" -> add-include(node.as-includes)
+    "eof" -> ()
     _ -> throw("Unexpected node type: " ++ tp)
 
-fun ilike/(==)(a: interface-like, b: interface-like): bool
-  a.name == b.name && a.node-type == b.node-type
+fun update-interface-like(nm: string, i: interface-like): <translator,pure> ()
+  match interfaceLikes().lookup(nm)
+    Just(il) -> 
+      set-interface-like(nm, il.update(i))
+    Nothing -> 
+      set-interface-like(nm, pinterface-like(i, Nothing)) 
 
-fun setOrUpdateInterfaceLikes(t: translator): pure translator
+// update interfaces and namespaces
+fun update-interfaces(): <translator,pure> ()
   var mixins:linearMap<string,linearSet<interface-like>> := LinearMap([])
-  var allIlikes := t.interfaceLikes
-  with withTypeDecls(t)
-  t.libraries.values.map fn(l)
+  libraries().values.map fn(l)
     val ilikes = l.interface-likes ++ l.partial-interfaces
     ilikes.foreach fn(i)
       val nm = i.name
-      match allIlikes.lookup(nm)
-        Just(il) -> 
-          allIlikes := allIlikes.set(nm, il.update(i))
-        Nothing -> 
-          allIlikes := allIlikes.set(nm, pinterface-like(i, Nothing)) // TODO: Doc provider
+      if i.node-type == "dictionary" then return ()
+      update-interface-like(nm, i)
+      add-used(i.supertype-cast())
+      // TODO: Doc provider
     val milikes = l.interface-mixins ++ l.partial-interface-mixins
     milikes.foreach fn(i) 
       match mixins.lookup(i.name)
@@ -223,52 +217,22 @@ fun setOrUpdateInterfaceLikes(t: translator): pure translator
           mixins := mixins.set(i.name, ils.add(i))
         Nothing ->
           mixins := mixins.set(i.name, LinearSet([i]))
-  t.includes.foreach fn(i)
+  includes().foreach fn(i)
     val targ = i.target
     val inc = i.includes
     // Guard against partial interfaces and mixins that we chose not to generate.
-    match allIlikes.lookup(targ)
+    match interfaceLikes().lookup(targ)
       Just(il) -> 
         match mixins.lookup(inc)
           Just(mis) -> 
             mis.list.foreach fn(partial)
-              allIlikes := allIlikes.set(targ, il.update(partial))
-  t(interfaceLikes=allIlikes)
-        
-/// If `rawTp` corresponds to an IDL type that we declare as a typedef,
-/// desugars the typedef, accounting for nullability along the way.
-///
-/// Otherwise, returns Nothing.
-fun desugar-typedef(rawTp: rawType): <pure,typeDecls> maybe<rawType>
-  match tp-lookup(rawTp.tp)
-    Nothing -> Nothing
-    Just(decl:node) ->  
-      match decl.node-type
-        "typedef" -> 
-          val typedef = decl.as-typedef.idl-type.getRawType
-          Just(typedef(isNullable=rawTp.isNullable))
-        "callback" -> Just(RawType("JSFunction", rawTp.isNullable))
-        "callback interface" -> Just(RawType("JSFunction", rawTp.isNullable))
-        "enum" -> Just(RawType("JSString", rawTp.isNullable))
+              set-interface-like(targ, il.update(partial))
 
-/// Given a `rawTp`, return its JS type-equivalent type if it's a type that is
-/// declared in the IDL.
-///
-/// Otherwise, return null.
-fun js-type-equivalent(rawTp: rawType)
-  match tp-lookup(rawTp.tp)
-    Nothing -> Nothing
-    Just(decl) -> 
-      match decl.node-type
-        "interface" -> Just(RawType("JSObject", rawTp.isNullable))
-        "dictionary" -> Just(RawType("JSObject", rawTp.isNullable))
-        _ ->
-          match desugar-typedef(rawTp)
-            Nothing -> throw("Unhandled type " ++ rawTp.tp)
-            Just(tp) -> 
-              match js-type-equivalent(tp)
-                Nothing -> Just(tp)
-                Just(tp') -> Just(tp')
+// fun set-inheritance(pi: partial-interface-like, declared-inheritance: maybe<string>)
+//   match declared-inheritance
+//     Nothing -> (t, pi)
+//     Just(di) ->
+      
 
 // TODO: 
 //set-inheritance (and usages)

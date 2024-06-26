@@ -18,9 +18,16 @@ globalThis.idl = idl;
 globalThis.location = { href: `file://${process.cwd()}/` }
 
 globalThis.setup = async function () {
-  globalThis.cssSync = await css.listAll()
-  globalThis.elementsSync = await elements.listAll()
+  globalThis.cssSync = await css.listAll();
+  globalThis.elementsSync = await elements.listAll();
   globalThis.idlSync = await idl.parseAll();
+  // MDN files WebAssembly compat data in a separate folder, so we need to unify.
+  const bcd = JSON.parse(fs.readFileSync('node_modules/@mdn/browser-compat-data/data.json', {encoding: 'utf8'}));
+  const wasm = bcd['websassembly']['api']
+  // Add info for the namespace as well.
+  globalThis.bcd = {...bcd, ...wasm, 'WebAssembly': wasm}
+  globalThis.mdn = JSON.parse(fs.readFileSync('../../third_party/mdn/mdn.json', {encoding: 'utf8'}));
+  
 }
 
 globalThis.doSetup = function(f) {

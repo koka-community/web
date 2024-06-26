@@ -67,16 +67,17 @@ fun generate-element-tag-map()
 fun generate-bindings(dir: path)
   val cssres = generate-css-style()
   val elementres = generate-element-tag-map()
-  val t = idl().entries.foldl(Translator(dir, cssres, elementres)) fn(t, (shortname, value)) 
-    val ast: jsarray<node> = value.unsafe-as-array()
-    t.collect(shortname, ast)
-  t.setOrUpdateInterfaceLikes() // .translate()
-  println("Generating Bindings")
-  t.libraries.foreach fn(shortname, lib)
-    println(shortname ++ ": " ++ lib.url.show)
-  t.typeToLibrary.keys.println
+  translator(dir, cssres, elementres)
+    idl().entries.foreach() fn((shortname, value)) 
+      val ast: jsarray<node> = value.unsafe-as-array()
+      collect(shortname, ast)
+    update-interface-likes() // .translate()
+    println("Generating Bindings")
+    libraries().foreach fn(shortname, lib)
+      println(shortname ++ ": " ++ lib.url.show)
+    typeToLibrary().keys.println
   // println(elementres)
-  [("something.txt", "")]
+  []
   
 fun emit-library(c)
   println("Emitting to library")

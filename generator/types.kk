@@ -3,17 +3,9 @@ import std/data/linearset
 import ext/idl
 import std/jsextern
 import std/core/undiv
+import common
 
-pub effect typeDecls
-  fun tp-lookup(tp: string): maybe<node>
-
-type rawType
-  RawType
-    tp: string
-    isNullable: bool
-    tpParam: maybe<rawType> = Nothing
-
-fun typedef-as-jstype(r: rawType): <pure,typeDecls> maybe<rawType>
+fun typedef-as-jstype(r: rawType): <pure,translator> maybe<rawType>
   match tp-lookup(r.tp)
     Nothing -> Nothing
     Just(decl) ->
@@ -23,8 +15,8 @@ fun typedef-as-jstype(r: rawType): <pure,typeDecls> maybe<rawType>
         "enum" -> Just(RawType("string", False))
         "" -> Nothing
 
-fun compute-raw-type-union(r1: rawType, r2: rawType): <typeDecls,pure> rawType
-  fun computeTpParamUnion(tp1: maybe<rawType>, tp2: maybe<rawType>): <typeDecls,pure> maybe<rawType>
+fun compute-raw-type-union(r1: rawType, r2: rawType): <translator,pure> rawType
+  fun computeTpParamUnion(tp1: maybe<rawType>, tp2: maybe<rawType>): <translator,pure> maybe<rawType>
     match (tp1, tp2)
       (Just(tp1'), Just(tp2')) -> Just(compute-raw-type-union(tp1', tp2'))
       _ -> Nothing
@@ -34,7 +26,7 @@ fun compute-raw-type-union(r1: rawType, r2: rawType): <typeDecls,pure> rawType
 
   // In the case of unions, we should try and get a JS type-able type to get a
   // better LUB.
-  fun getTypeForUnionCalc(r: rawType): <pure,typeDecls> rawType
+  fun getTypeForUnionCalc(r: rawType): <pure,translator> rawType
     val decl = tp-lookup(r.tp)
     match decl
       Nothing -> RawType(r.tp, r.isNullable, r.tpParam)
@@ -55,10 +47,10 @@ fun compute-raw-type-union(r1: rawType, r2: rawType): <typeDecls,pure> rawType
     computeTpParamUnion(ut1.tpParam, ut2.tpParam)
     )
 
-fun getRawType(idl: idltype): <pure,typeDecls> rawType
+fun getRawType(idl: idltype): <pure,translator> rawType
   if idl.union then
     val types:list<idltype> = idl.idl-type.unsafe-as-array.list
-    fun union(tp: rawType, tps: list<idltype>): <pure,typeDecls> rawType
+    fun union(tp: rawType, tps: list<idltype>): <pure,translator> rawType
       match tps
         Nil -> RawType("JSAny", False)
         Cons(h, t) -> union(tp.update(h.as-idltype), t)
@@ -106,8 +98,43 @@ fun new/rawtype(tp: string, isNullable: bool, tpParam: maybe<rawType> = Nothing)
   if tp == "JSUndefined" then RawType(tp, True, tpParam)
   else RawType(tp, isNullable, tpParam)
 
-fun tp/update(r: rawType, tp: idltype): <pure,typeDecls> rawType
+fun tp/update(r: rawType, tp: idltype): <pure,translator> rawType
   compute-raw-type-union(r, getRawType(tp))
+
+/// If `rawTp` corresponds to an IDL type that we declare as a typedef,
+/// desugars the typedef, accounting for nullability along the way.
+///
+/// Otherwise, returns Nothing.
+fun desugar-typedef(rawTp: rawType): <pure,translator> maybe<rawType>
+  match tp-lookup(rawTp.tp)
+    Nothing -> Nothing
+    Just(decl:node) ->  
+      match decl.node-type
+        "typedef" -> 
+          val typedef = decl.as-typedef.idl-type.getRawType
+          Just(typedef(isNullable=rawTp.isNullable))
+        "callback" -> Just(RawType("JSFunction", rawTp.isNullable))
+        "callback interface" -> Just(RawType("JSFunction", rawTp.isNullable))
+        "enum" -> Just(RawType("JSString", rawTp.isNullable))
+
+/// Given a `rawTp`, return its JS type-equivalent type if it's a type that is
+/// declared in the IDL.
+///
+/// Otherwise, return null.
+fun js-type-equivalent(rawTp: rawType)
+  match tp-lookup(rawTp.tp)
+    Nothing -> Nothing
+    Just(decl) -> 
+      match decl.node-type
+        "interface" -> Just(RawType("JSObject", rawTp.isNullable))
+        "dictionary" -> Just(RawType("JSObject", rawTp.isNullable))
+        _ ->
+          match desugar-typedef(rawTp)
+            Nothing -> throw("Unhandled type " ++ rawTp.tp)
+            Just(tp) -> 
+              match js-type-equivalent(tp)
+                Nothing -> Just(tp)
+                Just(tp') -> Just(tp')
 
 val js-type-supertypes = LinearMap([
   ("JSAny",Nothing),
