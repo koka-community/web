@@ -4,8 +4,12 @@ import std/data/linearset
 import std/jsextern
 import std/core/unsafe
 import ext/idl
-import mdn
+import ext/doc
+import ext/bcd
 import utils
+
+alias translating = <translator,pure>
+alias translating-meta = <translating,doc-info,compat-data>
 
 effect translator
   val library-dir: path
@@ -25,6 +29,9 @@ effect translator
 
 extern node/(==)(a: node, b: node): bool
   js "#1 === #2"
+
+fun used(n: node): translator bool
+  used-types().member(n)
 
 fun ilike/(==)(a: interface-like, b: interface-like): bool
   a.name == b.name && a.node-type == b.node-type

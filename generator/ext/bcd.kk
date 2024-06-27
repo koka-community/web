@@ -9,7 +9,7 @@ pub fun bcd() Jsobject(getbcd())
 
 effect compat-data
   fun add-event-handler(name: string, status: property-status): ()
-  fun add-interface(int: interface-status): ()
+  fun add-compat-interface(int: interface-status): ()
   fun is-event-handler-supported(nm: string): bool
   fun interface-compat(nm: string): maybe<interface-status>
 val globalsFilePrefix = "api/_globals"
@@ -28,7 +28,7 @@ fun compat-data(f: () -> <compat-data|e> ()): e ()
   with handler
     fun add-event-handler(name: string, status: property-status)
       event-handlers := event-handlers.update(name, LinearSet([status])) fn(old, new) old.union(new)
-    fun add-interface(int: interface-status)
+    fun add-compat-interface(int: interface-status)
       interfaces := interfaces.set(int.item.name, int)
     fun is-event-handler-supported(nm: string)
       match event-handlers.lookup(nm)
@@ -60,14 +60,14 @@ fun parse-compat-data()
       add-global(s, jsint)
       // The compat data for the console namespace is within this property.
       // It should be exposed both as a global and as a namespace.
-      if s == "console" then add-interface(int)
+      if s == "console" then add-compat-interface(int)
     else
-      add-interface(int)
+      add-compat-interface(int)
     if s == "Window" || s == "WorkerGlobalScope" then
       add-global-interface(int)
   globals.entries.foreach fn((n, gapi))
     globalInterfaces.foreach fn(gi)
-      add-interface(gi.add-property(n, gapi))
+      add-compat-interface(gi.add-property(n, gapi))
 
 struct item
   name: string

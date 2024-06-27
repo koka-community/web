@@ -16,13 +16,13 @@ value struct mdnProperty
   docs: string
 
 effect doc-info
-  fun add-interface(i: mdnInterface): ()
+  fun add-interface-doc(i: mdnInterface): ()
   fun interface-for(n: string): maybe<mdnInterface>
 
 fun doc-info(f)
   var interfaces := LinearMap([])
   with handler
-    fun add-interface(i)
+    fun add-interface-doc(i)
       interfaces := interfaces.add(i.name.to-lower, i)
     fun interface-for(n)
       interfaces.lookup(n.to-lower)
@@ -37,7 +37,7 @@ fun get-interface-info()
       val props = ivalue.get-obj("properties").entries.foldl([]) fn(pacc, (pname, pvalue)) 
         Cons(MdnProperty(pname, pvalue.unsafe-as-string), pacc)
       val docs = ivalue.get-string("docs")
-      add-interface(MdnInterface(iname, docs, props))
+      add-interface-doc(MdnInterface(iname, docs, props))
 
 fun property(p: mdnInterface, n: string): maybe<mdnProperty>
   val n' = n.to-lower

@@ -7,6 +7,8 @@ import ext/files
 import ext/idl
 import ext/css
 import ext/elements
+import ext/doc
+import ext/bcd
 import processor
 import common
 import utils
@@ -67,6 +69,8 @@ fun generate-element-tag-map()
 fun generate-bindings(dir: path)
   val cssres = generate-css-style()
   val elementres = generate-element-tag-map()
+  with compat-data()
+  with doc-info()
   translator(dir, cssres, elementres)
     idl().entries.foreach() fn((shortname, value)) 
       val ast: jsarray<node> = value.unsafe-as-array()
