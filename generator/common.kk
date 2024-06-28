@@ -13,11 +13,12 @@ alias translating-meta = <translating,doc-info,compat-data>
 
 effect translator
   val library-dir: path
+  fun currentlyTranslating(): path
   fun css-declarations(): list<string>
   fun element-tags(): linearMap<string, linearSet<string>>
   fun libraries(): linearMap<string, library>
   fun typeToDeclarations(): linearMap<string, node>
-  fun typeToLibrary(): linearMap<string, string>
+  fun typeToLibrary(): linearMap<string, path>
   fun interfaceLikes(): linearMap<string, partial-interface-like>
   fun includes(): list<includes>
   fun used-types(): linearSet<node>
@@ -26,9 +27,10 @@ effect translator
   fun add-include(i: includes): ()
   fun add-used(n: node): ()
   fun set-interface-like(nm: string, i: partial-interface-like): ()
+  fun set-translating(p: path): ()
 
 extern node/(==)(a: node, b: node): bool
-  js "#1 === #2"
+  js inline "((#1) === (#2))"
 
 fun used(n: node): translator bool
   used-types().member(n)
@@ -43,8 +45,10 @@ fun translator(path: path, css: list<string>, tags: linearMap<string, linearSet<
   val interfaceLikes = ref(LinearMap([]))
   val includes = ref([])
   val usedTypes = ref(LinearSet([]))
+  val current-translation = ref(path)
   with handler
     val library-dir = path
+    fun currentlyTranslating() !current-translation
     fun css-declarations() css
     fun element-tags() tags
     fun libraries() !libs
@@ -55,7 +59,7 @@ fun translator(path: path, css: list<string>, tags: linearMap<string, linearSet<
     fun includes() !includes
     fun add-named(n, nm, url)
       typeToDecls := (!typeToDecls).add(nm, n)
-      typeToLib := (!typeToLib).add(nm, url.string)
+      typeToLib := (!typeToLib).add(nm, url)
     fun set-interface-like(nm, i)
       interfaceLikes := (!interfaceLikes).set(nm, i)
     fun add-library(nm, lib)
@@ -64,6 +68,8 @@ fun translator(path: path, css: list<string>, tags: linearMap<string, linearSet<
       includes := Cons(i, !includes)
     fun add-used(n)
       usedTypes := (!usedTypes).add(n)
+    fun set-translating(p)
+      current-translation := p
   f()
 
 effect library-builder
@@ -101,6 +107,9 @@ fun build-library(nm: string, p: path, f: () -> <library-builder,translator,st<h
 
 fun tp-lookup(tp: string): translator maybe<node>
   typeToDeclarations().lookup(tp)
+
+fun lib-lookup(tp: string): translator maybe<path>
+  typeToLibrary().lookup(tp)
 
 type rawType
   RawType

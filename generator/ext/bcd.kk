@@ -22,7 +22,7 @@ fun should-generate-interface(nm: string)
     Just(int) -> int.item.should-generate
     Nothing -> False
 
-fun compat-data(f: () -> <compat-data|e> ()): e ()
+fun compat-data(f: () -> <compat-data|e> a): e a
   var event-handlers := LinearMap([])
   var interfaces := LinearMap([])
   with handler
@@ -81,7 +81,7 @@ struct item
 
 fun parse-item(name: string, j: jsobject<any>): item
   val compat = j.get-obj("__compat")
-  val status = j.get-obj("source_file")
+  val status = compat.get-obj("status")
   val support = compat.get-obj("support")
   val deprecated = status.get-mbool("deprecated").default(False)
   val experimental = status.get-mbool("experimental").default(False)
@@ -89,7 +89,7 @@ fun parse-item(name: string, j: jsobject<any>): item
   val chrome = support.get-obj("chrome").browser-support()
   val firefox = support.get-obj("firefox").browser-support()
   val safari = support.get-obj("safari").browser-support() 
-  Item(name, chrome, firefox, safari, deprecated, experimental, standard-track, support.get-string("source_file"))
+  Item(name, chrome, firefox, safari, deprecated, experimental, standard-track, compat.get-string("source_file"))
 
 fun browser-support(j: jsobject<any>): bool
   val map = if j.is-array then j.unsafe-as-array().objarray/@index(0) else j

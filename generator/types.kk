@@ -79,6 +79,7 @@ val idlOrBuiltinToJsTypeAliases = LinearMap([
   ("Float64Array", "jsarray<any>"),
   ("BigInt64Array", "jsarray<any>"),
   ("BigUint64Array", "jsarray<any>"),
+  ("Float16Array", "jsarray<any>"),
 
   // Array aliases.
   ("sequence", "jsarray<any>"),

@@ -19,7 +19,7 @@ effect doc-info
   fun add-interface-doc(i: mdnInterface): ()
   fun interface-for(n: string): maybe<mdnInterface>
 
-fun doc-info(f)
+fun doc-info(f: () -> <doc-info|e> a): e a
   var interfaces := LinearMap([])
   with handler
     fun add-interface-doc(i)
@@ -34,8 +34,11 @@ fun get-interface-info()
     if iname.starts-with("__").bool then 
       return ()
     else 
-      val props = ivalue.get-obj("properties").entries.foldl([]) fn(pacc, (pname, pvalue)) 
-        Cons(MdnProperty(pname, pvalue.unsafe-as-string), pacc)
+      val props = match ivalue.get-mobj("properties")
+        Just(jsprops) -> 
+          jsprops.entries.foldl([]) fn(pacc, (pname, pvalue)) 
+            Cons(MdnProperty(pname, pvalue.unsafe-as-string), pacc)
+        Nothing -> []
       val docs = ivalue.get-string("docs")
       add-interface-doc(MdnInterface(iname, docs, props))
 

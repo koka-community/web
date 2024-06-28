@@ -12,7 +12,7 @@ struct kklibrary
 
 type kkdecl
   Fun(name: string, param: list<kkparam>, ret: kktype, body: kkexpr, docs: string)
-  External(name: string, defs: list<kkextern>, docs: string)
+  External(name: string, param: list<kkparam>, ret: kktype, defs: list<kkextern>, docs: string)
   TypeAlias(name: string, ty: kktype, docs: string)
 
 type kkextern

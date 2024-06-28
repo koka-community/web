@@ -58,7 +58,7 @@ fun pinterface-like(n: interface-like, mdn: maybe<mdnInterface>)
   n.members.list.foldl(Partial-interface-like(n.name, n.node-type, n.inheritance, mdn), add-member).set-inheritance(n.inheritance)
 
 fun pi/update(pi: partial-interface-like, i: interface-like): translating-meta partial-interface-like
-  if i.name != pi.name || i.node-type != pi.tp then throw("Mismatched interface-like nodes " ++ i.name ++ " vs " ++ pi.name)
+  if !(i.name == pi.name && i.node-type == pi.tp || i.node-type == "interface mixin") then throw("Mismatched interface-like nodes " ++ i.name ++ ":" ++ pi.name ++ "::" ++ i.node-type ++ ":" ++ pi.tp)
   val pi' = pi.set-inheritance(i.inheritance)
   i.members.list.foldl(pi', add-member)
 
@@ -250,6 +250,8 @@ fun update-interfaces(): translating-meta ()
           Just(mis) -> 
             mis.list.foreach fn(partial)
               set-interface-like(targ, il.update(partial))
+          Nothing -> ()
+      Nothing -> ()
 
 /// Given the [declaredInheritance] by the IDL, find the closest supertype
 /// that is actually generated, and set the inheritance equal to that type.
@@ -260,7 +262,10 @@ fun set-inheritance(pi: partial-interface-like, declared-inheritance: maybe<stri
       if mark-type-as-used(declared) then
         pi(inheritance=Just(declared))
       else
-        pi.set-inheritance(tp-lookup(declared).unjust.as-interface-like.inheritance)
+        match tp-lookup(declared)
+          Just(tp) -> 
+            pi.set-inheritance(tp.as-interface-like.inheritance)
+          Nothing -> throw("Unknown supertype: " ++ declared)
 
 fun tp/update(r: rawType, tp: idltype): translating-meta rawType
   compute-raw-type-union(r, getRawType(tp))
@@ -294,7 +299,9 @@ fun getRawType(idl: idltype): translating-meta rawType
     val js-alias = idlOrBuiltinToJsTypeAliases.lookup(tp2)
     val tp3 = 
       if js-alias == Nothing && !mark-type-as-used(tp2) then
-        js-type-equivalent(RawType(tp2, False)).unjust.rawType/tp
+        match js-type-equivalent(RawType(tp2, False))
+          Just(rtp) -> rtp.rawType/tp
+          Nothing -> throw("Unknown JS Equivalent Type: " ++ tp2 ++ " " ++ decl.is-just.show)
       else tp2
     RawType(js-alias.default(tp3), null, typeParam)
 
