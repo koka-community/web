@@ -85,7 +85,7 @@ fun generateRootImport(l: list<string>): translating-meta kk-library
 
 fun translate(): translating-meta linearMap<string, kk-library>
   val results = ref(LinearMap([]))
-  libraries().foreach() fn(url, lib)
+  libraries().foreach fn(url, lib)
     set-translating(url.path)
     val genlib = library(lib)
     if genlib.decls.is-nil then ()

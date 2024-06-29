@@ -12,6 +12,8 @@ import ext/bcd
 import processor
 import common
 import utils
+import kk-builder
+import translator
 
 extern import
   js file "main.mjs"
@@ -27,7 +29,7 @@ pub fun main()
   val dir = get-args()[0].unjust.path.nobase.nobase.nobase.nobase.nobase.string
   ensure-dir-exists(dir ++ "/dom")
   val bindings = generate-bindings("dom".path) // TODO: Async/Await
-  foreach(bindings) fn((lib-path, library))
+  bindings.foreach fn(lib-path, library)
     println("Writing to " ++ dir ++ " " ++ lib-path)
     write-file-sync(dir ++ "/" ++ lib-path, emit-library(library))
 
@@ -72,17 +74,12 @@ fun generate-bindings(dir: path)
   with compat-data()
   with doc-info()
   with translator(dir, cssres, elementres)
-  idl().entries.foreach() fn((shortname, value)) 
+  idl().entries.foreach fn((shortname, value)) 
     val ast: jsarray<node> = value.unsafe-as-array()
     collect(shortname, ast)
-  update-interfaces() // .translate()
-  println("Generating Bindings")
-  libraries().foreach fn(shortname, lib)
-    println(shortname ++ ": " ++ lib.url.show)
-  typeToLibrary().keys.println
-  // println(elementres)
-  []
-  
-fun emit-library(c)
+  update-interfaces()
+  translate()
+
+fun emit-library(c: kk-library): console string
   println("Emitting to library")
   ""
