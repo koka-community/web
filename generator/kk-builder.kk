@@ -1,30 +1,31 @@
 import std/os/path
 
-struct kkimport
+struct kk-import
   path: string
   name: maybe<string>
+  re-export: bool = False
 
-struct kklibrary
+struct kk-library
   name: string
   path: path
-  imports: list<kkimport>
-  decls: list<kkdecl>
+  imports: list<kk-import>
+  decls: list<kk-decl>
 
-type kkdecl
-  Fun(name: string, param: list<kkparam>, ret: kktype, body: kkexpr, docs: string)
-  External(name: string, param: list<kkparam>, ret: kktype, defs: list<kkextern>, docs: string)
-  TypeAlias(name: string, ty: kktype, docs: string)
+type kk-decl
+  Fun(name: string, param: list<kk-param>, ret: kk-type, body: kk-expr, docs: string)
+  External(name: string, param: list<kk-param>, ret: kk-type, defs: list<kk-extern>, docs: string)
+  TypeAlias(name: string, ty: kk-type, docs: string)
 
-type kkextern
-  InlineExtern(code: string, platform: string)
-  Extern(fnname: string, platform: string)
+type kk-extern
+  InlineExtern(platform: string, code: string)
+  Extern(platform: string, fnname: string)
 
-value struct kkparam
+value struct kk-param
   name: string
-  ty: kktype
+  ty: kk-type
 
-alias kktype = string
-alias kkexpr = string
+alias kk-type = string
+alias kk-expr = string
 
 
 
