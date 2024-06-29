@@ -68,26 +68,40 @@ fun getterSetter(nm: memberName, gettp: string, settp: string, int: maybe<mdnInt
 // _constructor
 // _operations
 // _extension
-// _library
 // _extensionType
 // _overridableMember
 // _operation
 // _cssStyleDeclarationProperties
 // _elementConstructors
 // _interfaceLike
+// _library
 
-fun library(l: library): kk-library
-  // TODO: 
-  Kk-library("", "".path, [], [])
+fun library(url: path, l: library): kk-library
+  // TODO: Types and declarations
+  with build-lib(url.noext.string, url, license ++ mozLicense ++ generated)
+  //
+  ()
+
+
+val license = "Copyright (c) 2024, the Koka-community authors.  Please see the AUTHORS file\n" ++
+              "for details. All rights reserved. Use of this source code is governed by a\n" ++
+              "MIT-style license that can be found in the LICENSE file.\n"
+ 
+val mozLicense = "API docs from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web).\n" ++
+                "Attributions and copyright licensing by Mozilla Contributors is licensed\n" ++ 
+                "under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/.\n"
+
+val generated = "Generated from Web IDL definitions.\n" ++
+                "Generator inspired by https://github.com/dart-lang/web with some major modifications.\n"
 
 fun generateRootImport(l: list<string>): translating-meta kk-library
-  Kk-library("", "dom.kk".path, l.map(fn(p) Kk-import(p, Nothing, True)), [])
+   Kk-library("dom", "dom.kk".path, license, l.map(fn(p) Kk-import(p, Nothing, True)), [])
 
 fun translate(): translating-meta linearMap<string, kk-library>
   val results = ref(LinearMap([]))
   libraries().foreach fn(url, lib)
     set-translating(url.path)
-    val genlib = library(lib)
+    val genlib = library(url.path, lib)
     if genlib.decls.is-nil then ()
     else
       results := (!results).set(url, genlib)
