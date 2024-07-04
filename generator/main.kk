@@ -31,6 +31,7 @@ pub fun main()
   val bindings = generate-bindings("dom".path) // TODO: Async/Await
   bindings.foreach fn(lib-path, library)
     println("Writing to " ++ dir ++ " " ++ lib-path)
+    ensure-dir-exists((dir ++ "/" ++ lib-path).path.dirname)
     write-file-sync(dir ++ "/" ++ lib-path, emit-library(library))
 
 fun generate-css-style()

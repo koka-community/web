@@ -9,12 +9,12 @@ pub fun element/uri(element-interface: string): exn maybe<string>
   if element-interface.starts-with("SVG").bool then return Just(svgNamespace)
   elif element-interface.starts-with("Math").bool then return Just(mathmlNamespace)
   elif element-interface.starts-with("HTML").bool then return Nothing
-  else throw("Unknown interface")
+  else throw("Unknown interface uri " ++ element-interface)
 
 pub fun element/singular-article(element-interface: string): exn string
   if element-interface.starts-with("HTML").bool || element-interface.starts-with("SVG").bool then "an"
   elif element-interface.starts-with("MathML").bool then "a"
-  else throw("Unknown interface")
+  else throw("Unknown interface article " ++ element-interface)
 
 extern getelements(): any
   js inline "globalThis.elementsSync"

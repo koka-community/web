@@ -37,6 +37,9 @@ pub alias node = jsobject<node_t>
 pub inline fun node/as-node(x: node): node
   x
 
+pub inline fun nodex/as-node(x: jsobject<t>, ?is-subtype: is-subtype<t,node_t>): node
+  x.supertype-cast
+
 pub inline fun node/node-type(node: jsobject<t>, ?is-subtype: is-subtype<t,node_t>): string
   node.get-string("type")
 
@@ -67,8 +70,12 @@ pub alias interface-like = jsobject<interface-like_t>
 
 pub inline fun interface-like-named/is-subtype(x: interface-like, y: named-node): bool
   True
+
 pub inline fun interface-like-node/is-subtype(x: interface-like, y: node): bool
   True
+
+pub inline fun interface-like-node/as-node(x: interface-like): node
+  x.supertype-cast
 
 pub inline fun named-node/as-interface-like(x: jsobject<t>, ?as-named-node: (jsobject<t>) -> named-node): interface-like
   x.as-named-node.subtype-cast
@@ -88,6 +95,9 @@ pub alias callback = jsobject<callback_t>
 
 pub inline fun callback/is-subtype(x: callback, y: named-node): bool
   True
+
+pub inline fun callback/as-named(x: callback): named-node
+  x.supertype-cast
 
 pub inline fun node/as-callback(x: node): callback
   x.unsafe-cast
@@ -114,6 +124,9 @@ pub alias jsenum = jsobject<enum_t>
 pub inline fun enum/is-subtype(x: jsenum, y: named-node): bool
   True
 
+pub inline fun enum/as-node(x: jsenum): node
+  x.unsafe-cast // TODO: Supertype cast
+ 
 pub inline fun node/as-enum(x: node): jsenum
   x.unsafe-cast
  
@@ -122,6 +135,9 @@ pub alias typedef = jsobject<typedef_t>
 
 pub inline fun typedef/is-subtype(x: typedef, y: named-node): bool
   True
+
+pub inline fun typedef/as-named(x: typedef): named-node
+  x.supertype-cast
 
 pub inline fun node/as-typedef(x: node): typedef
   x.unsafe-cast

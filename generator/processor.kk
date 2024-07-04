@@ -358,6 +358,7 @@ fun desugar-typedef(rawTp: rawType): translating-meta maybe<rawType>
         "callback" -> Just(RawType("JSFunction", rawTp.isNullable))
         "callback interface" -> Just(RawType("JSFunction", rawTp.isNullable))
         "enum" -> Just(RawType("JSString", rawTp.isNullable))
+        tp -> Nothing
 
 fun typedef-as-jstype(r: rawType): translating-meta maybe<rawType>
   match tp-lookup(r.tp)
