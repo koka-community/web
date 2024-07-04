@@ -49,6 +49,9 @@ fun property(p: mdnInterface, n: string): maybe<mdnProperty>
 val links-regex = r#"\[([\w `-]+?)\](\(\S+\))?"#
 
 // TODO: More formatting
-fun wrap(line: string, width: int)
+fun doc/format(prop: mdnProperty): string
+  line/format(prop.docs.split("\n").map(fn(d) "//" ++ d).join("\n"))
+
+fun line/format(line: string, width: int = 80)
   if line == "" then ""
   else line.replace-all(links-regex, "[$1]($2)")

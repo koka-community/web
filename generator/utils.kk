@@ -1,5 +1,13 @@
 import ext/files
 import std/text/regex
+import std/data/linearset
+
+val bannedNames = LinearSet(["assert", "break", "continue", "extends", "default", "in", "is", "as", "var"])
+
+fun koka-rename(jsname: string): exn string
+  val name = jsname.snake-to-kebab.uncapitalize
+  if bannedNames.member(name) then name ++ "_"
+  else name
 
 fun ensure-dir-exists(s: string): ()
   if !exists-sync(s) then

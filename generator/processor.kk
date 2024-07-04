@@ -123,14 +123,6 @@ fun add-member(pi: partial-interface-like, m: member): translating-meta partial-
     "iterable" -> pi
     tp -> throw("Unrecognized member type: " ++ tp)
 
-
-val bannedNames = LinearSet(["assert", "break", "continue", "extends", "default", "in", "is", "as", "var"])
-
-fun koka-rename(jsname: string): exn string
-  val name = jsname.snake-to-kebab.uncapitalize
-  if bannedNames.member(name) then name ++ "_"
-  else name
-
 /// Given a [memberName] and whether it [isStatic], return whether it is a
 /// member that should be emitted according to the compat data.
 fun should-generate-member(pi: partial-interface-like, memberName: string = pi.name, isStatic:bool=False)

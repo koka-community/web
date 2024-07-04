@@ -1,14 +1,26 @@
 import std/os/path
 import std/data/linearmap
+import std/data/linearset
+import std/data/sort
 import common
 import types
 import kk-builder
 import processor
 import ext/doc
+import ext/elements
 import ext/bcd
+import utils
+
+effect translate-interface
+  fun objtp(): rawType
+  fun objname(): string
 
 fun typedef(nm: string, rawTp: rawType)
   TypeAlias(nm, typeReference(rawTp), "")
+
+fun externTypeReference(tp: rawType, returnTp:bool =True): translating-meta string
+  // TODO: Handle specific types
+  typeReference(tp, returnTp=returnTp)
 
 fun typeReference(rawTp: rawType, returnTp:bool =True): translating-meta string
   var kokaTp := rawTp.tp
@@ -36,50 +48,173 @@ fun urlForType(s: string): translating-meta maybe<string>
         Just(p.string)
 
 fun topLevelGetter(nm: string, rtp: rawType)
-  External(nm, [], typeReference(rtp, returnTp=True), 
-    [InlineExtern("js", nm)], "")
-
+  add-decl(External(nm, [], typeReference(rtp, returnTp=True), 
+    [InlineExtern("js", nm)], ""))
+  
 fun constant(Constant(nm, tp, _))
-  External(nm.name, [], typeReference(tp, returnTp=True), 
-    [InlineExtern("js", nm.jsOverride)], "")
+  add-decl(External(nm.name, [], typeReference(tp, returnTp=True), 
+    [InlineExtern("js", nm.jsOverride)], ""))
 
 fun property(p: property, int: maybe<mdnInterface>)
   match p
-    Constant -> [constant(p)]
+    Constant -> constant(p)
     Field -> field(p, int)
     Attribute -> attribute(p, int)
 
-fun properties(ps: list<property>, int: maybe<mdnInterface>)
-  ps.map(fn(p) property(p, int)).concat
-
 // Static fields
-fun attribute(Attribute(nm, tp, _, _, _), int: maybe<mdnInterface>)
-  getterSetter(nm, typeReference(tp, returnTp=True), typeReference(tp), int)
+fun attribute(Attribute(nm, tp, _, isStatic, readonly), int: maybe<mdnInterface>)
+  getterSetter(nm, tp, tp, int, static=isStatic, readonly=readonly)
 
 fun field(Field(name, tp, _, _), int: maybe<mdnInterface>)
-  getterSetter(name, typeReference(tp, returnTp=True), typeReference(tp), int)
+  getterSetter(name, tp, tp, int)
 
-fun getterSetter(nm: memberName, gettp: string, settp: string, int: maybe<mdnInterface>)
-  [] // TODO:
+fun getterSetter(nm: memberName, gettp: rawType, settp: rawType, int: maybe<mdnInterface>, static : bool = False, readonly: bool = False)
+  val docs = int.map(fn(i) i.doc/property(nm.name).map(format).default("")).default("")
+  add-decl(
+      External("ext/" ++ nm.name, (if static then [] else [Kk-param("this", "any")]), gettp.externTypeReference(returnTp=True),
+      [InlineExtern("js", (if static then "" else "#1.") ++ nm.jsOverride)], ""))
+  if static then () 
+  else 
+    add-decl(
+      Fun("js/" ++ nm.name, [Kk-param("this", objtp().typeReference)], gettp.typeReference(returnTp=True)
+            ,"this.ext/" ++ nm.name() ++ "()", docs)
+      )
+  if readonly then ()
+  else
+    add-decl(External("ext/set-" ++ nm.name, (if static then [Kk-param("v", "any")] 
+                                       else [Kk-param("this", "any"), Kk-param("v", "any")]),"()",
+          [InlineExtern("js", (if static then "" else "#1.") ++ nm.jsOverride ++ " = #2")], "")
+          )
+    if static then () 
+    else 
+      add-decl(
+          Fun("js/set-" ++ nm.name, [Kk-param("this", objtp().typeReference), Kk-param("v", settp.typeReference())], "()", 
+          "this.ext/set-" ++ nm.name() ++ "(v)", ""))
+
+fun properties(ps: list<property>, int: maybe<mdnInterface>)
+  ps.foreach(fn(p) property(p, int))
+
+fun operations(ops: list<overridableOp>, int: maybe<mdnInterface>)
+  ops.foreach(fn(op) operation(op, int))
+
+fun extension(tp: rawType, props: list<property>)
+  with handler
+    fun objtp() tp
+    fun objname() "ext"
+  properties(props, Nothing)
+
+fun cssStyleDeclarationProperties()
+  val styles = css-declarations()
+  styles.foreach fn(style)
+    getterSetter(memberName(style), RawType("JSString", False), RawType("JSString", False), Nothing)
+
+fun overridableMember(parameters: list<parameter>, generator: (list<int>, list<kk-param-x>, list<kk-param-x>) -> <translating-meta|e> ()): <translating-meta|e> ()
+  var required := []
+  var optional := []
+  parameters.foreach-indexed fn(i, p)
+    if p.isOptional then
+      optional := Cons((i + 1, Kk-param-x(p.name.koka-rename, p.tp, Just("Nothing"))), optional) // jsnull?
+    else
+      required := Cons((i + 1, Kk-param-x(p.name.koka-rename, p.tp)), required)
+  val r = required
+  val o = optional
+  val idxs = (r ++ o).map-indexed(fn(i, (jsi, _)) (i, jsi)).sort(?cmp=fn((_, jsj), (_, jsi)) jsj.cmp(jsi)).map(fst)
+  mask<local>{generator(idxs, r.map(snd), o.map(snd))}
+
+value struct kk-param-x
+  name: string
+  ty: rawType
+  default: maybe<string> = Nothing
+
+fun external(p: kk-param-x): translating-meta kk-param
+  Kk-param(p.name, p.ty.externTypeReference())
+
+fun func(p: kk-param-x): translating-meta kk-param
+  Kk-param(p.name, p.ty.typeReference(), p.default)
+
+fun constructor(constr: overridableCon)
+  overridableMember(constr.parameters) fn(idx, r, o)
+    val oname = objname()
+    val kname = oname.koka-rename
+    val params = r ++ o
+    // Always static
+    add-decl(External("ext/new-" ++ kname, params.map(external), "any", 
+        [InlineExtern("js", "new " ++ oname ++ "(" ++ idx.map(show).join(", ") ++ ")")], ""))
+    add-decl(Fun(
+      "new/" ++ kname, params.map(func), "any", 
+      "ext/new-" ++ kname ++ "(" ++ params.map(name).join(", ") ++ ")", ""))
+
+fun operation(o: overridableOp, int: maybe<mdnInterface>)
+  overridableMember(o.parameters) fn(idx, reqs, opts)
+    val params = (if o.isStatic then [] else [KK-param-x("this", objtp())]) ++ reqs ++ opts
+    val idx' = if o.isStatic then idx else idx.map(fn(i) i + 1)
+    val oname = o.name.name
+    val kname = oname.koka-rename
+    add-decl(External("ext/" ++ kname, params.map(external), "any", 
+        [InlineExtern("js", (if o.isStatic then oname else "#1" ++ oname) 
+          ++ "(" ++ idx.map(show).join(", ") ++ ")")], ""))
+    add-decl(Fun(
+      "js/" ++ kname, params.map(func), "any", 
+      (if o.isStatic then "ext/" ++ oname else "this.ext/" ++ oname) ++
+       "(" ++ params.map(name).join(", ") ++ ")", ""))
+
+fun element(jsname: string, kokaclassname: string)
+  match element-tags().lookup(jsname)
+    Nothing -> ()
+    Just(tags) ->
+      val u = jsname.uri
+      val createElementMethod = u.map(fn(_) "createElementNS").default("createElement")
+      tags.list.foreach fn(tag)
+        val oname = tag
+        val kname = tag.koka-rename
+        val art = kokaclassname.singular-article
+        add-decl(External("ext/new-" ++ kname, [], "any", 
+        [InlineExtern("js", "document." ++ createElementMethod ++ "(" ++ u.map(fn(uri) uri ++ ", ").default("") ++ tag ++ ")")], ""))
+        add-decl(Fun(
+          "new/" ++ kname, [], "any",  
+          "ext/new-" ++ kname ++ "()", ""))
+        // TODO: Docs
+
+
+fun objectLiteral(jsname: string)
+  fun params(mdname: maybe<string>)
+    match mdname
+      Nothing -> []
+      Just(dict-name) ->
+        val ilike = interfaceLikes().lookup(dict-name).unjust
+        val ps = ilike.properties.map fn(Field(nm, tp, _))
+          Kk-param-x(nm.name.koka-rename, tp) // TODO: Non-required default value (null->undefined?)
+        ps ++ params(ilike.inheritance)
+  val ps = params(Just(jsname))
+  if ps.is-empty then
+    val oname = jsname
+    val kname = jsname.koka-rename
+    add-decl(External("new/" ++ kname, [], "any", 
+      [InlineExtern("js", "{}")], ""))
+  else
+    val oname = jsname
+    val kname = jsname.koka-rename
+    add-decl(External("ext/new-" ++ kname, ps.map(external), "any", 
+        [InlineExtern("js", "new " ++ oname ++ "(" ++ list(0, ps.length).map(show).join(", ") ++ ")")], ""))
+    add-decl(Fun(
+      "new/" ++ kname, ps.map(func), "any", 
+      "ext/new-" ++ kname ++ "(" ++ ps.map(name).join(", ") ++ ")", ""))
+
+
 
 // TODO:
 // 
-// _objectLiteral
-// _constructor
-// _operations
-// _extension
 // _extensionType
-// _overridableMember
-// _operation
-// _cssStyleDeclarationProperties
-// _elementConstructors
 // _interfaceLike
-// _library
 
 fun library(url: path, l: library): kk-library
   // TODO: Types and declarations
   with build-lib(url.noext.string, url, license ++ mozLicense ++ generated)
-  //
+  // l.gentypedefs()
+  // l.gencallbacks()
+  // l.gencallbackinterfaces()
+  // l.genenums()
+  // l.geninterfaces()
   ()
 
 

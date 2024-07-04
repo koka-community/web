@@ -37,6 +37,7 @@ type kk-extern
 value struct kk-param
   name: string
   ty: kk-type
+  default: maybe<string> = Nothing
 
 alias kk-type = string
 alias kk-expr = string
