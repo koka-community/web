@@ -20,11 +20,11 @@ effect translate-interface
 fun typedef(nm: string, rawTp: rawType)
   add-decl(TypeAlias(nm, typeReference(rawTp), ""))
 
-fun externTypeReference(tp: rawType, returnTp:bool =False): translating-meta string
+fun externTypeReference(tp: rawType, returnTp:bool =False): <translating-meta,build-lib> string
   // TODO: Handle specific types
   typeReference(tp, returnTp=returnTp)
 
-fun typeReference(rawTp: rawType, returnTp:bool =False): translating-meta string
+fun typeReference(rawTp: rawType, returnTp:bool =False): <translating-meta,build-lib> string
   var kokaTp := rawTp.tp
   if returnTp then
     val desugared = desugar-typedef(rawTp)
@@ -40,14 +40,15 @@ fun typeReference(rawTp: rawType, returnTp:bool =False): translating-meta string
   val url = urlForType(kokaTp)
   url.map(fn(u) u ++ "/").default("") ++ kokaTp ++ tyArgs.map(fn(args) args.map(fn(a) "<" ++ a ++ ">").default("")).default("")
 
-fun urlForType(s: string): translating-meta maybe<string>
+fun urlForType(s: string): <translating-meta,build-lib> maybe<string>
   match lib-lookup(s)
-    Nothing -> Just("")
+    Nothing -> Nothing
     Just(p) ->   
       if p.dirname == currentlyTranslating().dirname then
-        Just(p.basename)
+        Nothing
       else
-        Just(p.string)
+        add-import(p.dirname, Nothing, False)
+        Just(p.dirname)
 
 fun topLevelGetter(nm: string, rtp: rawType)
   add-decl(External(nm, [], typeReference(rtp, returnTp=True), 
@@ -102,7 +103,7 @@ fun genoperations(ops: list<overridableOp>)
 fun cssStyleDeclarationProperties()
   val styles = css-declarations()
   styles.foreach fn(style)
-    getterSetter(memberName(style), RawType("JSString", False), RawType("JSString", False), Nothing)
+    getterSetter(memberName(style), RawType("string", False), RawType("string", False), Nothing)
 
 fun overridableMember(parameters: list<parameter>, generator: (list<int>, list<kk-param-x>, list<kk-param-x>) -> <translating-meta|e> ()): <translating-meta|e> ()
   var required := []
@@ -122,10 +123,10 @@ value struct kk-param-x
   ty: rawType
   default: maybe<string> = Nothing
 
-fun external(p: kk-param-x): translating-meta kk-param
+fun external(p: kk-param-x): <translating-meta,build-lib> kk-param
   Kk-param(p.name, p.ty.externTypeReference())
 
-fun func(p: kk-param-x): translating-meta kk-param
+fun func(p: kk-param-x): <translating-meta,build-lib> kk-param
   Kk-param(p.name, p.ty.typeReference(), p.default)
 
 fun constructor(constr: overridableCon)
@@ -135,7 +136,7 @@ fun constructor(constr: overridableCon)
     val params = r ++ o
     // Always static
     add-decl(External("ext/new-" ++ kname, params.map(external), "any", 
-        [InlineExtern("js", "new " ++ oname ++ "(" ++ idx.map(show).join(", ") ++ ")")], ""))
+        [InlineExtern("js", "new " ++ oname ++ "(" ++ idx.map(fn(i) "#" ++ i.show).join(", ") ++ ")")], ""))
     add-decl(Fun(
       "new/" ++ kname, params.map(func), "any", 
       "ext/new-" ++ kname ++ "(" ++ params.map(name).join(", ") ++ ")", ""))
@@ -148,7 +149,7 @@ fun operation(o: overridableOp)
     val kname = oname.koka-rename
     add-decl(External("ext/" ++ kname, params.map(external), "any", 
         [InlineExtern("js", (if o.isStatic then oname else "#1" ++ oname) 
-          ++ "(" ++ idx.map(show).join(", ") ++ ")")], ""))
+          ++ "(" ++ idx'.map(fn(i) "#" ++ i.show).join(", ") ++ ")")], ""))
     add-decl(Fun(
       "js/" ++ kname, params.map(func), "any", 
       (if o.isStatic then "ext/" ++ oname else "this.ext/" ++ oname) ++
@@ -190,7 +191,7 @@ fun objectLiteral(jsname: string)
     val oname = jsname
     val kname = jsname.koka-rename
     add-decl(External("ext/new-" ++ kname, ps.map(external), "any", 
-        [InlineExtern("js", "new " ++ oname ++ "(" ++ list(0, ps.length).map(show).join(", ") ++ ")")], ""))
+        [InlineExtern("js", "new " ++ oname ++ "(" ++ list(0, ps.length).map(fn(i) "#" ++ i.show).join(", ") ++ ")")], ""))
     add-decl(Fun(
       "new/" ++ kname, ps.map(func), "any", 
       "ext/new-" ++ kname ++ "(" ++ ps.map(name).join(", ") ++ ")", ""))
@@ -229,7 +230,8 @@ fun interfaceLike(idl: interface-like)
     ()
 
 fun library(url: path, l: library): translating-meta kk-library
-  with build-lib(url.noext.string, url, license ++ mozLicense ++ generated)
+  with build-lib(url.noext.string.slice.extend(-1).string, url, license ++ "\n" ++ mozLicense ++ "\n" ++ generated)
+  add-import("std/jsextern.kk", Nothing, False)
   l.typedefs.filter(fn(td) td.as-named.as-node.used).foreach fn(td)
     typedef(td.name, desugar-typedef(RawType(td.name, False)).unjust)
   l.callbacks.filter(fn(cb) cb.as-named.as-node.used).foreach fn(td)
@@ -242,24 +244,27 @@ fun library(url: path, l: library): translating-meta kk-library
 
 val license = "Copyright (c) 2024, the Koka-community authors.  Please see the AUTHORS file\n" ++
               "for details. All rights reserved. Use of this source code is governed by a\n" ++
-              "MIT-style license that can be found in the LICENSE file.\n"
+              "MIT-style license that can be found in the LICENSE file."
  
 val mozLicense = "API docs from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web).\n" ++
                 "Attributions and copyright licensing by Mozilla Contributors is licensed\n" ++ 
-                "under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/.\n"
+                "under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/."
 
 val generated = "Generated from Web IDL definitions.\n" ++
-                "Generator inspired by https://github.com/dart-lang/web with some major modifications.\n"
+                "Generator inspired by https://github.com/dart-lang/web with some major modifications."
 
-fun generateRootImport(l: list<string>): translating-meta kk-library
-   Kk-library("dom", "dom.kk".path, license, l.map(fn(p) Kk-import(p, Nothing, True)), [])
+fun generateRootImport(l: list<path>): translating-meta kk-library
+   Kk-library("dom", "web".path / "dom.kk", license, l.map(fn(p) Kk-import(p.string, Nothing, True)), [])
 
-fun translate(): translating-meta linearMap<string, kk-library>
+fun path/(==)(p1: path, p2: path): bool
+  p1.string == p2.string
+
+fun translate(): translating-meta linearMap<path, kk-library>
   val results = ref(LinearMap([]))
-  libraries().foreach fn(url, lib)
-    set-translating(url.path)
-    val genlib = library(url.path, lib)
+  libraries().foreach fn(name, lib)
+    set-translating(lib.url)
+    val genlib = library(lib.url, lib)
     if genlib.decls.is-nil then ()
     else
-      results := (!results).set(url, genlib)
-  (!results).set("dom.kk", generateRootImport((!results).keys))
+      results := (!results).set(lib.url, genlib)
+  (!results).set("web".path / "dom.kk", generateRootImport((!results).keys))

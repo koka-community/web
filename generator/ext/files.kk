@@ -21,7 +21,7 @@ alias read-file-options = jsobject<read-file-options_t>
 type bytes_t
 alias jsbytes = jsobject<bytes_t>
 
-pub inline fun mkdir-options(recur:bool = False): mkdir-options
+pub fun mkdir-options(recur:bool = False): mkdir-options
   val js = obj/new()
   js.update-bool("recursive", recur)
 

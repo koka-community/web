@@ -27,9 +27,10 @@ pub fun main()
     final ctl throw-exn(e) -> e.show.println
   //                                  main jsdebug version .koka generator
   val dir = get-args()[0].unjust.path.nobase.nobase.nobase.nobase.nobase.string
-  ensure-dir-exists(dir ++ "/dom")
-  val bindings = generate-bindings("dom".path) // TODO: Async/Await
-  bindings.foreach fn(lib-path, library)
+  ensure-dir-exists(dir ++ "/web/dom")
+  val bindings = generate-bindings("web/dom".path) // TODO: Async/Await
+  bindings.foreach fn(lib-name, library)
+    val lib-path = library.path.string
     println("Writing to " ++ dir ++ " " ++ lib-path)
     ensure-dir-exists((dir ++ "/" ++ lib-path).path.dirname)
     write-file-sync(dir ++ "/" ++ lib-path, emit-library(library))
@@ -82,5 +83,4 @@ fun generate-bindings(dir: path)
   translate()
 
 fun emit-library(c: kk-library): console string
-  println("Emitting to library")
-  ""
+  c.show

@@ -148,7 +148,7 @@ fun should-generate-member(pi: partial-interface-like, memberName: string = pi.n
 
 fun memberName(name: string, js: string = ""): exn memberName
   val rename = name.koka-rename
-  if rename != name && js == "" then MemberName(rename, name)
+  if js == "" then MemberName(rename, name)
   else MemberName(rename, js)
 
 fun collect(shortname: string, ast: jsarray<node>): <translator,exn> ()
@@ -357,8 +357,8 @@ fun desugar-typedef(rawTp: rawType): translating-meta maybe<rawType>
           Just(typedef(isNullable=rawTp.isNullable))
         "callback" -> Just(RawType("JSFunction", rawTp.isNullable))
         "callback interface" -> Just(RawType("JSFunction", rawTp.isNullable))
-        "enum" -> Just(RawType("JSString", rawTp.isNullable))
-        tp -> Nothing
+        "enum" -> Just(RawType("string", rawTp.isNullable))
+        _ -> Nothing
 
 fun typedef-as-jstype(r: rawType): translating-meta maybe<rawType>
   match tp-lookup(r.tp)
