@@ -1,6 +1,6 @@
 import std/os/path
-import std/data/linearmap
-import std/data/linearset
+import std/data/linear-map
+import std/data/linear-set
 import std/data/sort
 import std/core/undiv
 import std/jsextern
@@ -12,7 +12,7 @@ import types
 import common
 
 
-fun generateParamName(s: linearSet<string>): exn string
+fun generateParamName(s: linear-set<string>): exn string
   match s.list.sort
     Cons(h, t) -> Cons(h, t.map(utils/capitalize)).join("Or")
 
@@ -210,7 +210,7 @@ fun update-interface-like(nm: string, i: interface-like): translating-meta ()
 
 // update interfaces and namespaces
 fun update-interfaces(): translating-meta ()
-  var mixins:linearMap<string,linearSet<interface-like>> := LinearMap([])
+  var mixins:linear-map<string,linear-set<interface-like>> := LinearMap([])
   libraries().values.map fn(l)
     val ilikes = l.interface-likes ++ l.partial-interfaces
     ilikes.foreach fn(i)

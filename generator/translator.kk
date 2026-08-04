@@ -1,6 +1,6 @@
 import std/os/path
-import std/data/linearmap
-import std/data/linearset
+import std/data/linear-map
+import std/data/linear-set
 import std/data/sort
 import common
 import types
@@ -259,7 +259,7 @@ fun generateRootImport(l: list<path>): translating-meta kk-library
 fun path/(==)(p1: path, p2: path): bool
   p1.string == p2.string
 
-fun translate(): translating-meta linearMap<path, kk-library>
+fun translate(): translating-meta linear-map<path, kk-library>
   val results = ref(LinearMap([]))
   libraries().foreach fn(name, lib)
     set-translating(lib.url)

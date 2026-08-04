@@ -1,7 +1,7 @@
 import std/os/env
 import std/os/path
-import std/data/linearmap
-import std/data/linearset
+import std/data/linear-map
+import std/data/linear-set
 import std/jsextern
 import ext/files
 import ext/idl

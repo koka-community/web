@@ -1,6 +1,6 @@
 import std/jsextern
-import std/data/linearmap
-import std/data/linearset
+import std/data/linear-map
+import std/data/linear-set
 
 extern getbcd(): any
   js inline "globalThis.bcd"
@@ -108,7 +108,7 @@ fun item/should-generate(item: item): bool
 
 value struct interface-status
   item: item
-  properties: linearMap<string, property-status>
+  properties: linear-map<string, property-status>
 
 fun symbol-names(j: jsobject<any>): list<string>
   j.keys.list.filter(fn(k) !k.starts-with("_").bool)

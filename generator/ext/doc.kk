@@ -1,5 +1,5 @@
 import std/jsextern
-import std/data/linearmap
+import std/data/linear-map
 
 extern getmdn(): any
   js inline "globalThis.mdn"

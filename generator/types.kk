@@ -1,5 +1,5 @@
-import std/data/linearmap
-import std/data/linearset
+import std/data/linear-map
+import std/data/linear-set
 import ext/idl
 import std/jsextern
 import std/core/undiv

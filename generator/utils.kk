@@ -1,6 +1,6 @@
 import ext/files
 import std/text/regex
-import std/data/linearset
+import std/data/linear-set
 
 val bannedNames = LinearSet(["assert", "break", "continue", "extends", "default", "in", "is", "as", "var"])
 

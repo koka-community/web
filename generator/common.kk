@@ -1,6 +1,6 @@
 import std/os/path
-import std/data/linearmap
-import std/data/linearset
+import std/data/linear-map
+import std/data/linear-set
 import std/jsextern
 import std/core/unsafe
 import ext/idl
@@ -15,13 +15,13 @@ effect translator
   val library-dir: path
   fun currentlyTranslating(): path
   fun css-declarations(): list<string>
-  fun element-tags(): linearMap<string, linearSet<string>>
-  fun libraries(): linearMap<string, library>
-  fun typeToDeclarations(): linearMap<string, node>
-  fun typeToLibrary(): linearMap<string, path>
-  fun interfaceLikes(): linearMap<string, partial-interface-like>
+  fun element-tags(): linear-map<string, linear-set<string>>
+  fun libraries(): linear-map<string, library>
+  fun typeToDeclarations(): linear-map<string, node>
+  fun typeToLibrary(): linear-map<string, path>
+  fun interfaceLikes(): linear-map<string, partial-interface-like>
   fun includes(): list<includes>
-  fun used-types(): linearSet<node>
+  fun used-types(): linear-set<node>
   fun add-named(n: node, nm: string, url: path): ()
   fun add-library(nm: string, lib: library): ()
   fun add-include(i: includes): ()
@@ -38,7 +38,7 @@ fun used(n: node): translator bool
 fun ilike/(==)(a: interface-like, b: interface-like): bool
   a.name == b.name && a.node-type == b.node-type
 
-fun translator(path: path, css: list<string>, tags: linearMap<string, linearSet<string>>, f: () -> <translator,st<h>|e> a): <st<h>|e> a 
+fun translator(path: path, css: list<string>, tags: linear-map<string, linear-set<string>>, f: () -> <translator,st<h>|e> a): <st<h>|e> a 
   val libs = ref(LinearMap([]))
   val typeToDecls = ref(LinearMap([]))
   val typeToLib = ref(LinearMap([]))
@@ -133,8 +133,8 @@ struct partial-interface-like
   tp: string
   inheritance: maybe<string> = Nothing
   mdnInterface: maybe<mdnInterface> = Nothing
-  operations: linearMap<string, overridableOp> = LinearMap([])
-  static-ops: linearMap<string, overridableOp> = LinearMap([])
+  operations: linear-map<string, overridableOp> = LinearMap([])
+  static-ops: linear-map<string, overridableOp> = LinearMap([])
   properties: list<property> = []
   extension-properties: list<property> = []
   constructor: maybe<overridableCon> = Nothing
@@ -161,7 +161,7 @@ type property
   Field(name: memberName, tp: rawType, mdnProperty: maybe<mdnProperty>, isRequired: bool)
 
 struct parameter
-  names: linearSet<string>
+  names: linear-set<string>
   tp: rawType
   isOptional: bool
   name: string
